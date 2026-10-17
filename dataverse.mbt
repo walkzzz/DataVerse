@@ -84,6 +84,9 @@ pub using @datatemporal.version { version_id as dt_version_id, make_version, roo
 pub using @datatemporal.lineage { lineage_id as dt_lineage_id, make_bi_lineage, make_field_lineage, reverse as lineage_reverse, compose as lineage_compose, input_count, output_count }
 pub using @datatemporal.drift { drift_id, make_drift_report, is_significant, drift_direction, merge_reports }
 pub using @datatemporal.replay { replay_id, make_trace, empty_trace, step_count, append_step, replay as replay_trace, trace_summary }
+pub using @datatemporal.aging { aging_id, AgingConfig, make_aging_config, aging_weight, aging_score }
+pub using @datatemporal.incremental { incremental_id, IncrementalUpdate, make_incremental_update, detect_conflicts, merge_incremental }
+pub using @datatemporal.field_lineage { field_lineage_id, FieldDep, FieldLineageGraph, make_field_dep, build_graph, impact_analysis, has_cycle }
 pub using @datatemporal { datatemporal_id }
 pub using @recipe { recipe_id }
 pub using @recipe.cleaning_line { cleaning_line_id, cleaning_line }

@@ -2192,3 +2192,140 @@ test "S2.5 cross_modal_line missing modalities" {
 test "S2.5 cross_modal_line_id" {
   assert_eq(@cross_modal_line.cross_modal_line_id(), "recipe/cross_modal_line")
 }
+
+// ============================================================
+// S2.6 datatemporal 深化测试 / Datatemporal deepening tests
+// ============================================================
+
+test "S2.6 aging_weight basic" {
+  let config = @aging.make_aging_config(30.0, 100.0)
+  let w = @aging.aging_weight(100.0, config)
+  assert_true(w > 0.99)
+}
+
+test "S2.6 aging_weight old data" {
+  let config = @aging.make_aging_config(30.0, 100.0)
+  let w = @aging.aging_weight(70.0, config)
+  assert_true(w > 0.49 && w < 0.51)
+}
+
+test "S2.6 aging_weight future data" {
+  let config = @aging.make_aging_config(30.0, 100.0)
+  let w = @aging.aging_weight(110.0, config)
+  assert_eq(w, 1.0)
+}
+
+test "S2.6 aging_weight degenerate: half_life=0" {
+  let config = @aging.make_aging_config(0.0, 100.0)
+  let w = @aging.aging_weight(50.0, config)
+  assert_eq(w, 1.0)
+}
+
+test "S2.6 aging_score basic" {
+  let config = @aging.make_aging_config(30.0, 100.0)
+  let score = @aging.aging_score([100.0, 70.0, 40.0], config)
+  assert_true(score > 0.0 && score <= 1.0)
+}
+
+test "S2.6 aging_score degenerate: empty" {
+  let config = @aging.make_aging_config(30.0, 100.0)
+  assert_eq(@aging.aging_score([], config), 0.0)
+}
+
+test "S2.6 aging_id" {
+  assert_eq(@aging.aging_id(), "datatemporal/aging")
+}
+
+test "S2.6 detect_conflicts basic" {
+  let base = ["a", "b", "c"]
+  let new_keys = ["b", "d", "e"]
+  let conflicts = @incremental.detect_conflicts(base, new_keys)
+  assert_eq(conflicts, ["b"])
+}
+
+test "S2.6 detect_conflicts no conflict" {
+  let base = ["a", "b"]
+  let new_keys = ["c", "d"]
+  assert_eq(@incremental.detect_conflicts(base, new_keys), [])
+}
+
+test "S2.6 detect_conflicts degenerate: empty" {
+  assert_eq(@incremental.detect_conflicts([], []), [])
+}
+
+test "S2.6 merge_incremental basic" {
+  let result = @incremental.merge_incremental(["a", "b"], ["b", "c"], ["a"])
+  assert_eq(result.base_count, 2)
+  assert_eq(result.added_count, 2)
+  assert_eq(result.removed_count, 1)
+  assert_eq(result.conflict_count, 1)
+  assert_eq(result.final_count, 3)
+}
+
+test "S2.6 make_incremental_update" {
+  let result = @incremental.make_incremental_update(10, 5, 3, ["x"])
+  assert_eq(result.final_count, 12)
+  assert_eq(result.conflict_count, 1)
+}
+
+test "S2.6 incremental_id" {
+  assert_eq(@incremental.incremental_id(), "datatemporal/incremental")
+}
+
+test "S2.6 build_graph basic" {
+  let deps = [
+    @field_lineage.make_field_dep("a", "b", "copy"),
+    @field_lineage.make_field_dep("b", "c", "transform"),
+  ]
+  let graph = @field_lineage.build_graph(deps)
+  assert_eq(graph.fields, ["a", "b", "c"])
+}
+
+test "S2.6 impact_analysis direct" {
+  let deps = [
+    @field_lineage.make_field_dep("a", "b", "copy"),
+    @field_lineage.make_field_dep("a", "c", "transform"),
+  ]
+  let graph = @field_lineage.build_graph(deps)
+  let impacted = @field_lineage.impact_analysis(graph, "a")
+  assert_eq(impacted.length(), 2)
+}
+
+test "S2.6 impact_analysis transitive" {
+  let deps = [
+    @field_lineage.make_field_dep("a", "b", "copy"),
+    @field_lineage.make_field_dep("b", "c", "transform"),
+  ]
+  let graph = @field_lineage.build_graph(deps)
+  let impacted = @field_lineage.impact_analysis(graph, "a")
+  assert_eq(impacted, ["b", "c"])
+}
+
+test "S2.6 impact_analysis no impact" {
+  let deps = [@field_lineage.make_field_dep("a", "b", "copy")]
+  let graph = @field_lineage.build_graph(deps)
+  let impacted = @field_lineage.impact_analysis(graph, "b")
+  assert_eq(impacted, [])
+}
+
+test "S2.6 has_cycle no cycle" {
+  let deps = [
+    @field_lineage.make_field_dep("a", "b", "copy"),
+    @field_lineage.make_field_dep("b", "c", "transform"),
+  ]
+  let graph = @field_lineage.build_graph(deps)
+  assert_true(!@field_lineage.has_cycle(graph))
+}
+
+test "S2.6 has_cycle with cycle" {
+  let deps = [
+    @field_lineage.make_field_dep("a", "b", "copy"),
+    @field_lineage.make_field_dep("b", "a", "transform"),
+  ]
+  let graph = @field_lineage.build_graph(deps)
+  assert_true(@field_lineage.has_cycle(graph))
+}
+
+test "S2.6 field_lineage_id" {
+  assert_eq(@field_lineage.field_lineage_id(), "datatemporal/field_lineage")
+}

@@ -98,6 +98,16 @@ pub fn DOSIIndex::entries(self : DOSIIndex) -> Array[DOSIEntry] {
   self.entries
 }
 
+/// 从条目数组构造 / Build index from entries.
+pub fn DOSIIndex::from_entries(entries : Array[DOSIEntry]) -> DOSIIndex {
+  { entries, }
+}
+
+/// 移除指定路径的条目 / Remove entry by path.
+pub fn DOSIIndex::remove_by_path(self : DOSIIndex, path : String) -> DOSIIndex {
+  { entries: self.entries.filter(fn(e) { e.symbolic.path != path }) }
+}
+
 pub fn dosi_id() -> String {
   "dosi"
 }

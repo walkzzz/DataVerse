@@ -1,6 +1,6 @@
 // spec 形式化规格验证 / Formal Specification Verification
 // R16 阶段门禁：形式化证明（proof-carrying 风格）
-// 验证 Phase 1 关键算子的数学性质：幂等性/不变量/收敛性
+// 验证 Phase 1 + Phase 2 关键算子的数学性质：幂等性/不变量/收敛性
 import {
   "dataverse/dataobject",
   "dataverse/dataobject/schema",
@@ -18,4 +18,17 @@ import {
   "dataverse/datair/ir_optimizer",
   "dataverse/datair/ir_core",
   "dataverse/datair/ir_operator",
+
+  "dataverse/opcore/image",
+  "dataverse/opcore/audio",
+  "dataverse/opcore/video",
+  "dataverse/opcore/semantic",
+  "dataverse/learncore/dl_losses",
+  "dataverse/learncore/cross_validation",
+  "dataverse/learncore/hyperparam_search",
+  "dataverse/datatemporal/aging",
+  "dataverse/datatemporal/field_lineage",
+  "dataverse/dosi",
+  "dataverse/dosi/batch",
+  "dataverse/dosi/versioned",
 }

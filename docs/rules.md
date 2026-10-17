@@ -148,8 +148,9 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S2.4 | learncore 模型评估算子（cross_validation/hyperparam_search 2 子包） | ✅ | f867ceb |
 | S2.5 | recipe Phase 2 复合线（packing_line/eval_line/cross_modal_line 3 子包） | ✅ | 668b1c1 |
 | S2.6 | datatemporal 深化（aging/incremental/field_lineage 3 子包） | ✅ | c2c5655 |
+| S2.7 | Agent-Kit 编排（planner/executor 2 子包） | ✅ | e96dfab |
 
-**当前测试**：288 · **当前 API**：346（pub fn）+ 72（pub type）
+**当前测试**：304 · **当前 API**：357（pub fn）+ 77（pub type）
 
 ---
 

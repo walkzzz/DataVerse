@@ -1,0 +1,5 @@
+// dosi/versioned 多版本索引 / Versioned Index
+// S2.8 填充：版本快照 + 版本查询
+import {
+  "dataverse/dosi",
+}

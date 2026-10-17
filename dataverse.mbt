@@ -8,9 +8,9 @@
 ///
 /// Unified entry `@dataverse`, re-exports all first-level sub-packages' public API.
 /// S0.1 skeleton + S0.2 kernel + S0.3 dataobject + S0.4 opcore + S0.5 datatemporal + S0.6 datair + S0.7 dosi.
-/// S1.1 opcore 14 ops + S2.1 multimodal ops (image/audio/video).
+/// S2.1-S2.8 Phase 2 全域算子成熟期闭环.
 pub fn version() -> String {
-  "dataverse 0.1.0-dev (S2.1 multimodal ops)"
+  "dataverse 0.1.0-dev (S2.8 Phase 2 complete)"
 }
 
 pub using @kernel {
@@ -121,6 +121,12 @@ pub using @dosi.context_budget {
 }
 pub using @dosi.verifier {
   verifier_id, VerifyResult, verify_index, check_dependencies, detect_cycles, valid_result,
+}
+pub using @dosi.batch {
+  batch_id, BatchOp, BatchOperation, batch_add, batch_remove, batch_update, apply_batch, batch_op_name,
+}
+pub using @dosi.versioned {
+  versioned_id, VersionedIndex, make_versioned_index, empty_versioned_index, advance_version, get_version, current as current_version, version_count, rollback,
 }
 pub using @agent_kit { agent_kit_id }
 pub using @agent_kit.dosi_adapter {

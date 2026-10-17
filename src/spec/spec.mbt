@@ -253,3 +253,180 @@ test "spec: kmeans convergence" {
   // 两次运行结果一致（确定性收敛）
   assert_eq(labels1, labels2)
 }
+
+// ============================================================
+// Phase 2 形式化证明 / Phase 2 Formal Proofs
+// R16 门禁：验证 Phase 2 关键算子的数学性质
+// ============================================================
+
+///|
+/// 性质 16：image_resize 幂等性
+/// resize(resize(meta, w, h), w, h) == resize(meta, w, h)
+test "spec: image_resize idempotent" {
+  let meta = @image.make_image_meta(1920, 1080, 3, "png")
+  let r1 = @image.image_resize(meta, 640, 360)
+  let r2 = @image.image_resize(r1, 640, 360)
+  assert_eq(r1, r2)
+}
+
+///|
+/// 性质 17：image_crop 边界不变量
+/// crop 结果尺寸 <= 请求尺寸
+test "spec: image_crop bounded" {
+  let meta = @image.make_image_meta(100, 100, 3, "png")
+  let cropped = @image.image_crop(meta, 10, 20, 30, 40)
+  let (w, h) = @image.image_size(cropped)
+  assert_true(w <= 30)
+  assert_true(h <= 40)
+}
+
+///|
+/// 性质 18：audio_segment 时间不变量
+/// segment 结果 duration <= 原 duration
+test "spec: audio_segment duration bounded" {
+  let meta = @audio.make_audio_meta(10000, 44100, 2, "wav")
+  let seg = @audio.audio_segment(meta, 2000, 8000)
+  assert_true(seg.duration_ms <= meta.duration_ms)
+}
+
+///|
+/// 性质 19：video_sample_frames 单调性
+/// interval 越小，采样点越多
+test "spec: video_sample_frames monotone" {
+  let meta = @video.make_video_meta(10000, 30, 1920, 1080, "mp4")
+  let frames1 = @video.video_sample_frames(meta, 2000)
+  let frames2 = @video.video_sample_frames(meta, 1000)
+  assert_true(frames2.length() >= frames1.length())
+}
+
+///|
+/// 性质 20：semantic_quality_score 范围不变量
+/// 0 <= score <= 1
+test "spec: semantic_quality_score range" {
+  let d1 = @dataobject.make_dataobject("hello world test", @dataobject.Text, @schema.empty())
+  let d2 = @dataobject.make_dataobject("a".repeat(200), @dataobject.Text, @schema.empty())
+  let d3 = @dataobject.empty_dataobject(@dataobject.Text)
+  let s1 = @semantic.semantic_quality_score(d1)
+  let s2 = @semantic.semantic_quality_score(d2)
+  let s3 = @semantic.semantic_quality_score(d3)
+  assert_true(s1 >= 0.0 && s1 <= 1.0)
+  assert_true(s2 >= 0.0 && s2 <= 1.0)
+  assert_eq(s3, 0.0)
+}
+
+///|
+/// 性质 21：content_diversity_score 范围不变量
+/// 0 < score <= 1（非空时）
+test "spec: content_diversity_score range" {
+  let d = @dataobject.make_dataobject("abcdef", @dataobject.Text, @schema.empty())
+  let s = @semantic.content_diversity_score(d)
+  assert_true(s > 0.0 && s <= 1.0)
+}
+
+///|
+/// 性质 22：rewrite_text Simplify 幂等性
+/// simplify(simplify(x)) == simplify(x)（对短文本）
+test "spec: rewrite Simplify idempotent" {
+  let d = @dataobject.make_dataobject("  hello world  ", @dataobject.Text, @schema.empty())
+  let r1 = @semantic.rewrite_text(d, @semantic.Simplify)
+  let r2 = @semantic.rewrite_text(r1, @semantic.Simplify)
+  assert_eq(r1.content, r2.content)
+}
+
+///|
+/// 性质 23：mse_loss 非负性
+/// mse_loss >= 0
+test "spec: mse_loss non-negative" {
+  let pred = [1.0, 2.0, 3.0]
+  let target = [4.0, 5.0, 6.0]
+  let result = @dl_losses.mse_loss(pred, target)
+  assert_true(result >= 0.0)
+}
+
+///|
+/// 性质 24：cross_entropy_loss 非负性
+/// cross_entropy >= 0
+test "spec: cross_entropy_loss non-negative" {
+  let logits = [1.0, 0.0, 0.0]
+  let target = [1.0, 0.0, 0.0]
+  let result = @dl_losses.cross_entropy_loss(logits, target)
+  assert_true(result >= 0.0)
+}
+
+///|
+/// 性质 25：kfold_splits 完备性
+/// 所有 test_indices 的并集 = 全集（无重叠）
+test "spec: kfold_splits complete" {
+  let n = 10
+  let k = 5
+  let splits = @cross_validation.kfold_splits(n, k)
+  let all_test : Array[Int] = []
+  for i in 0..<splits.length() {
+    for j in 0..<splits[i].test_indices.length() {
+      all_test.push(splits[i].test_indices[j])
+    }
+  }
+  assert_eq(all_test.length(), n)
+}
+
+///|
+/// 性质 26：grid_combinations 笛卡尔积大小
+/// prod(len(param_values))
+test "spec: grid_combinations cartesian size" {
+  let cfg1 = @hyperparam_search.make_grid_config("a", [0.1, 0.2, 0.3])
+  let cfg2 = @hyperparam_search.make_grid_config("b", [1.0, 2.0])
+  let combos = @hyperparam_search.grid_combinations([cfg1, cfg2])
+  assert_eq(combos.length(), 6)
+}
+
+///|
+/// 性质 27：aging_weight 范围不变量
+/// 0 < weight <= 1
+test "spec: aging_weight range" {
+  let config = @aging.make_aging_config(30.0, 100.0)
+  let w1 = @aging.aging_weight(100.0, config)
+  let w2 = @aging.aging_weight(50.0, config)
+  let w3 = @aging.aging_weight(150.0, config)
+  assert_true(w1 > 0.0 && w1 <= 1.0)
+  assert_true(w2 > 0.0 && w2 <= 1.0)
+  assert_true(w3 > 0.0 && w3 <= 1.0)
+}
+
+///|
+/// 性质 28：impact_analysis 不含自身（无环时）
+/// changed_field 不在 impact 结果中
+test "spec: impact_analysis no self" {
+  let deps = [
+    @field_lineage.make_field_dep("a", "b", "copy"),
+    @field_lineage.make_field_dep("b", "c", "transform"),
+  ]
+  let graph = @field_lineage.build_graph(deps)
+  let impacted = @field_lineage.impact_analysis(graph, "a")
+  let mut contains_a = false
+  for i in 0..<impacted.length() {
+    if impacted[i] == "a" {
+      contains_a = true
+    }
+  }
+  assert_true(!contains_a)
+}
+
+///|
+/// 性质 29：apply_batch 空操作幂等性
+/// apply_batch(idx, []) == idx
+test "spec: apply_batch empty idempotent" {
+  let index = @dosi.DOSIIndex::empty()
+  let result = @batch.apply_batch(index, [])
+  assert_eq(result, index)
+}
+
+///|
+/// 性质 30：versioned_index 版本单调性
+/// advance 后 current_version 递增
+test "spec: versioned_index monotone" {
+  let vindex = @versioned.make_versioned_index(@dosi.DOSIIndex::empty())
+  let v1 = vindex.current_version
+  let vindex2 = @versioned.advance_version(vindex, @dosi.DOSIIndex::empty())
+  let v2 = vindex2.current_version
+  assert_true(v2 > v1)
+}

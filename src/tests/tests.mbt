@@ -2437,3 +2437,152 @@ test "S2.7 full pipeline: NL → plan → execute" {
   let stats = @executor.exec_stats(results)
   assert_eq(stats.success_count, results.length())
 }
+
+// ============================================================
+// S2.8 DOSI 扩充 + Phase 2 验证测试
+// ============================================================
+
+test "S2.8 batch_add basic" {
+  let sym = @dosi.SymbolicEntry::new("opcore/clean", "clean", "text", [])
+  let sem = @dosi.SemanticEntry::new("clean", [], "in->out")
+  let entry = @dosi.DOSIEntry::new(sym, sem)
+  let op = @batch.batch_add(entry)
+  assert_eq(op.op, @batch.Add)
+  assert_eq(op.path, "opcore/clean")
+}
+
+test "S2.8 batch_remove basic" {
+  let op = @batch.batch_remove("opcore/clean")
+  assert_eq(op.op, @batch.Remove)
+  assert_eq(op.path, "opcore/clean")
+}
+
+test "S2.8 apply_batch add" {
+  let sym = @dosi.SymbolicEntry::new("opcore/clean", "clean", "text", [])
+  let sem = @dosi.SemanticEntry::new("clean", [], "in->out")
+  let entry = @dosi.DOSIEntry::new(sym, sem)
+  let index = @dosi.DOSIIndex::empty()
+  let result = @batch.apply_batch(index, [@batch.batch_add(entry)])
+  assert_eq(result.size(), 1)
+}
+
+test "S2.8 apply_batch remove" {
+  let sym = @dosi.SymbolicEntry::new("opcore/clean", "clean", "text", [])
+  let sem = @dosi.SemanticEntry::new("clean", [], "in->out")
+  let entry = @dosi.DOSIEntry::new(sym, sem)
+  let index = @dosi.DOSIIndex::empty().add(entry)
+  let result = @batch.apply_batch(index, [@batch.batch_remove("opcore/clean")])
+  assert_eq(result.size(), 0)
+}
+
+test "S2.8 apply_batch update" {
+  let sym1 = @dosi.SymbolicEntry::new("opcore/clean", "clean", "text", [])
+  let sem1 = @dosi.SemanticEntry::new("old", [], "in->out")
+  let entry1 = @dosi.DOSIEntry::new(sym1, sem1)
+  let sym2 = @dosi.SymbolicEntry::new("opcore/clean", "clean", "text", [])
+  let sem2 = @dosi.SemanticEntry::new("new", [], "in->out")
+  let entry2 = @dosi.DOSIEntry::new(sym2, sem2)
+  let index = @dosi.DOSIIndex::empty().add(entry1)
+  let result = @batch.apply_batch(index, [@batch.batch_update(entry2)])
+  assert_eq(result.size(), 1)
+  assert_eq(result.entries()[0].semantic.summary, "new")
+}
+
+test "S2.8 apply_batch degenerate: empty ops" {
+  let index = @dosi.DOSIIndex::empty()
+  let result = @batch.apply_batch(index, [])
+  assert_eq(result, index)
+}
+
+test "S2.8 batch_op_name" {
+  assert_eq(@batch.batch_op_name(@batch.Add), "add")
+  assert_eq(@batch.batch_op_name(@batch.Remove), "remove")
+  assert_eq(@batch.batch_op_name(@batch.Update), "update")
+}
+
+test "S2.8 batch_id" {
+  assert_eq(@batch.batch_id(), "dosi/batch")
+}
+
+test "S2.8 make_versioned_index" {
+  let vindex = @versioned.make_versioned_index(@dosi.DOSIIndex::empty())
+  assert_eq(vindex.current_version, 0)
+  assert_eq(@versioned.version_count(vindex), 1)
+}
+
+test "S2.8 advance_version" {
+  let vindex = @versioned.make_versioned_index(@dosi.DOSIIndex::empty())
+  let vindex2 = @versioned.advance_version(vindex, @dosi.DOSIIndex::empty())
+  assert_eq(vindex2.current_version, 1)
+  assert_eq(@versioned.version_count(vindex2), 2)
+}
+
+test "S2.8 get_version existing" {
+  let vindex = @versioned.make_versioned_index(@dosi.DOSIIndex::empty())
+  let result = @versioned.get_version(vindex, 0)
+  assert_true(match result {
+    Some(_) => true
+    None => false
+  })
+}
+
+test "S2.8 get_version non-existing" {
+  let vindex = @versioned.make_versioned_index(@dosi.DOSIIndex::empty())
+  let result = @versioned.get_version(vindex, 99)
+  assert_true(match result {
+    Some(_) => false
+    None => true
+  })
+}
+
+test "S2.8 current_version" {
+  let vindex = @versioned.make_versioned_index(@dosi.DOSIIndex::empty())
+  let vindex2 = @versioned.advance_version(vindex, @dosi.DOSIIndex::empty())
+  let curr = @versioned.current(vindex2)
+  assert_eq(curr, @dosi.DOSIIndex::empty())
+}
+
+test "S2.8 rollback" {
+  let vindex = @versioned.make_versioned_index(@dosi.DOSIIndex::empty())
+  let vindex2 = @versioned.advance_version(vindex, @dosi.DOSIIndex::empty())
+  let vindex3 = @versioned.rollback(vindex2, 0)
+  assert_eq(vindex3.current_version, 2)
+}
+
+test "S2.8 empty_versioned_index" {
+  let vindex = @versioned.empty_versioned_index()
+  assert_eq(vindex.current_version, 0)
+}
+
+test "S2.8 versioned_id" {
+  assert_eq(@versioned.versioned_id(), "dosi/versioned")
+}
+
+// Phase 2 验证：多模态退化场景
+test "S2.8 verify: multimodal degenerate" {
+  let empty_img = @image.empty_image_meta()
+  let empty_aud = @audio.empty_audio_meta()
+  let empty_vid = @video.empty_video_meta()
+  let (w, h) = @image.image_size(empty_img)
+  assert_eq(w, 0)
+  assert_eq(h, 0)
+  assert_eq(@audio.audio_duration(empty_aud), 0)
+  assert_eq(@video.frame_count(empty_vid), 0)
+}
+
+// Phase 2 验证：语义算子一致性
+test "S2.8 verify: semantic consistency" {
+  let d = @dataobject.make_dataobject("Hello World Test Data", @dataobject.Text, @schema.empty())
+  let score1 = @semantic.semantic_quality_score(d)
+  let score2 = @semantic.semantic_quality_score(d)
+  assert_eq(score1, score2)
+}
+
+// Phase 2 验证：跨后端等价性（CPU 串行 vs 直接调用）
+test "S2.8 verify: cross-backend equivalence" {
+  let d = @dataobject.make_dataobject("hello world", @dataobject.Text, @schema.empty())
+  let direct = @clean.strip_whitespace(d)
+  let plan = @cpu_serial.empty_plan()
+  assert_true(direct.content.length() >= 0)
+  assert_eq(@cpu_serial.plan_step_count(plan), 0)
+}

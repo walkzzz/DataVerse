@@ -69,6 +69,8 @@ import {
   "dataverse/dosi/router",
   "dataverse/dosi/context_budget",
   "dataverse/dosi/verifier",
+  "dataverse/dosi/batch",
+  "dataverse/dosi/versioned",
   "dataverse/parallel/cpu_serial",
   "dataverse/agent_kit/dosi_adapter",
   "dataverse/agent_kit/planner",

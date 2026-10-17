@@ -42,6 +42,14 @@ pub using @opcore.pack { pack_id, text_chunk }
 pub using @opcore.eval { eval_id, GlobalStats, global_statistics }
 pub using @opcore.lineage_op { lineage_op_id, attach_lineage, make_op_lineage }
 pub using @opcore.safety { safety_id, mask_digits, mask_email }
+pub using @learncore {
+  learncore_id, ModelSpace, model_space_name, Hyperparams, make_hyperparams,
+}
+pub using @learncore.regression { regression_id, LinearModel, linear_regression, predict_linear }
+pub using @learncore.classify { classify_id, knn_classify }
+pub using @learncore.cluster { cluster_id, kmeans }
+pub using @learncore.feature { feature_id, standardize, normalize_minmax }
+pub using @learncore.metrics { metrics_id, accuracy, mse, mae, confusion_matrix }
 pub using @datatemporal {
   datatemporal_id, make_fingerprint, empty_fingerprint, matches as fingerprint_matches,
 }

@@ -803,3 +803,159 @@ test "S1.1 safety degenerate: no digits and no at sign" {
   assert_eq(@safety.mask_email(at_first).content, "@nope.com")
   assert_eq(@safety.safety_id(), "opcore/safety")
 }
+///|
+/// # S1.2 learncore 传统 ML 算子测试 / Traditional ML operator tests
+///
+/// 每类算子至少 1 个正常用例 + 1 个退化数据用例。
+/// 对标架构 §4.3.5 A（传统 ML）+ D（评估指标）。
+
+test "S1.2 learncore ModelSpace and model_space_name" {
+  assert_eq(@learncore.model_space_name(@learncore.ML), "ml")
+  assert_eq(@learncore.model_space_name(@learncore.DL), "dl")
+  assert_eq(@learncore.model_space_name(@learncore.SSL), "ssl")
+  assert_eq(@learncore.model_space_name(@learncore.Eval), "eval")
+  assert_eq(@learncore.model_space_name(@learncore.Adapt), "adapt")
+  assert_eq(@learncore.model_space_name(@learncore.Optim), "optim")
+  assert_true(@learncore.ML != @learncore.DL)
+  assert_eq(@learncore.learncore_id(), "learncore")
+}
+
+test "S1.2 learncore Hyperparams construction" {
+  let hp = @learncore.make_hyperparams("n_estimators", ["10", "50", "100"])
+  assert_eq(hp.name, "n_estimators")
+  assert_eq(hp.values.length(), 3)
+}
+
+test "S1.2 regression linear_regression basic" {
+  // y = 2x + 1
+  let points = [(0.0, 1.0), (1.0, 3.0), (2.0, 5.0), (3.0, 7.0)]
+  let model = @regression.linear_regression(points)
+  assert_true(model.slope > 1.99 && model.slope < 2.01)
+  assert_true(model.intercept > 0.99 && model.intercept < 1.01)
+  let pred = @regression.predict_linear(model, 5.0)
+  assert_true(pred > 10.99 && pred < 11.01)
+}
+
+test "S1.2 regression degenerate: empty and same x" {
+  let empty_model = @regression.linear_regression([])
+  assert_eq(empty_model.slope, 0.0)
+  assert_eq(empty_model.intercept, 0.0)
+  // 所有 x 相同：slope=0, intercept=mean_y
+  let same_x = [(1.0, 2.0), (1.0, 4.0), (1.0, 6.0)]
+  let model = @regression.linear_regression(same_x)
+  assert_eq(model.slope, 0.0)
+  assert_true(model.intercept > 3.99 && model.intercept < 4.01)
+  assert_eq(@regression.regression_id(), "learncore/regression")
+}
+
+test "S1.2 classify knn_classify basic" {
+  let train = [
+    ([0.0, 0.0], "A"),
+    ([0.0, 1.0], "A"),
+    ([10.0, 10.0], "B"),
+    ([10.0, 11.0], "B"),
+  ]
+  let label = @classify.knn_classify(train, [0.5, 0.5], 3)
+  assert_eq(label, "A")
+  let label2 = @classify.knn_classify(train, [9.5, 10.0], 3)
+  assert_eq(label2, "B")
+}
+
+test "S1.2 classify degenerate: empty train and bad k" {
+  assert_eq(@classify.knn_classify([], [0.0, 0.0], 3), "")
+  let train = [([0.0], "A"), ([1.0], "B")]
+  // k <= 0 默认 k=1
+  assert_eq(@classify.knn_classify(train, [0.1], 0), "A")
+  // k > n 默认 k=n
+  assert_eq(@classify.knn_classify(train, [0.9], 100), "B")
+  assert_eq(@classify.classify_id(), "learncore/classify")
+}
+
+test "S1.2 cluster kmeans basic" {
+  let points = [
+    [0.0, 0.0],
+    [0.0, 1.0],
+    [1.0, 0.0],
+    [10.0, 10.0],
+    [10.0, 11.0],
+    [11.0, 10.0],
+  ]
+  let labels = @cluster.kmeans(points, 2, 10)
+  assert_eq(labels.length(), 6)
+  // 前三个应该同簇，后三个应该同簇
+  assert_eq(labels[0], labels[1])
+  assert_eq(labels[1], labels[2])
+  assert_eq(labels[3], labels[4])
+  assert_eq(labels[4], labels[5])
+  assert_true(labels[0] != labels[3])
+}
+
+test "S1.2 cluster degenerate: empty and bad k" {
+  assert_eq(@cluster.kmeans([], 2, 10).length(), 0)
+  let points = [[0.0], [1.0], [2.0]]
+  // k <= 0 返回全 0
+  let labels = @cluster.kmeans(points, 0, 10)
+  assert_eq(labels, [0, 0, 0])
+  assert_eq(@cluster.cluster_id(), "learncore/cluster")
+}
+
+test "S1.2 feature standardize basic" {
+  let data = [1.0, 2.0, 3.0, 4.0, 5.0]
+  let std = @feature.standardize(data)
+  assert_eq(std.length(), 5)
+  // 标准化后均值≈0
+  let mean = std.fold(init=0.0, fn(acc, x) { acc + x }) / 5.0
+  assert_true(mean > -0.001 && mean < 0.001)
+}
+
+test "S1.2 feature normalize_minmax basic" {
+  let data = [0.0, 5.0, 10.0]
+  let norm = @feature.normalize_minmax(data)
+  assert_true(norm[0] > -0.001 && norm[0] < 0.001)
+  assert_true(norm[1] > 0.49 && norm[1] < 0.51)
+  assert_true(norm[2] > 0.99 && norm[2] < 1.01)
+}
+
+test "S1.2 feature degenerate: empty and constant" {
+  assert_eq(@feature.standardize([]).length(), 0)
+  assert_eq(@feature.normalize_minmax([]).length(), 0)
+  // 所有值相同：std=0 返回全 0
+  let constant = [5.0, 5.0, 5.0]
+  let std = @feature.standardize(constant)
+  assert_eq(std, [0.0, 0.0, 0.0])
+  let norm = @feature.normalize_minmax(constant)
+  assert_eq(norm, [0.0, 0.0, 0.0])
+  assert_eq(@feature.feature_id(), "learncore/feature")
+}
+
+test "S1.2 metrics accuracy and mse and mae" {
+  let pred = ["A", "B", "A", "B"]
+  let actual = ["A", "B", "B", "B"]
+  assert_true(@metrics.accuracy(pred, actual) > 0.74 && @metrics.accuracy(pred, actual) < 0.76)
+  let pred_d = [1.0, 2.0, 3.0]
+  let actual_d = [1.0, 2.0, 4.0]
+  let mse_val = @metrics.mse(pred_d, actual_d)
+  assert_true(mse_val > 0.32 && mse_val < 0.34)
+  let mae_val = @metrics.mae(pred_d, actual_d)
+  assert_true(mae_val > 0.32 && mae_val < 0.34)
+}
+
+test "S1.2 metrics confusion_matrix" {
+  let pred = ["A", "B", "A", "B"]
+  let actual = ["A", "A", "A", "B"]
+  let cm = @metrics.confusion_matrix(pred, actual, ["A", "B"])
+  // cm[真实][预测]
+  assert_eq(cm[0][0], 2) // 真A 预A
+  assert_eq(cm[0][1], 1) // 真A 预B
+  assert_eq(cm[1][0], 0) // 真B 预A
+  assert_eq(cm[1][1], 1) // 真B 预B
+}
+
+test "S1.2 metrics degenerate: empty arrays" {
+  assert_eq(@metrics.accuracy([], []), 0.0)
+  assert_eq(@metrics.mse([], []), 0.0)
+  assert_eq(@metrics.mae([], []), 0.0)
+  let cm = @metrics.confusion_matrix([], [], ["A", "B"])
+  assert_eq(cm, [[0, 0], [0, 0]])
+  assert_eq(@metrics.metrics_id(), "learncore/metrics")
+}

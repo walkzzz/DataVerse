@@ -11,7 +11,7 @@
 | Phase 1 | 核心算子期（14 类算子 + ML + recipe + DataIR + DOSI + 验证） | ✅ 闭环 |
 | Phase 2 | 全域算子成熟期（多模态 + 语义 + DL + 评估 + 编排 + R16 门禁） | ✅ 闭环 |
 | Phase 2 深化 | 质量深化（DL 扩展 + 多模态扩展 + 语义扩展 + 文档治理） | ✅ 闭环 |
-| Phase 3 | 生产化期（真实 I/O + 分布式 + 插件 + 性能） | 待启动 |
+| Phase 3 | 生产化期（真实 I/O + 分布式 + 插件 + 性能） | ✅ 闭环 |
 
 ---
 
@@ -86,18 +86,18 @@
 | S3.2 | 分布式执行后端（parallel/cpu_parallel） | ✅ | 0ce9a46 |
 | S3.3 | 插件系统（动态算子注册） | ✅ | b0bf3f1 |
 | S3.4 | 性能基准 + 优化 | ✅ | 9e45553 |
-| S3.5 | 完整文档站点生成 | 待启动 |
+| S3.5 | 完整文档站点生成 | ✅ | 4d133af |
 
 ---
 
 ## 当前统计 / Current Stats
 
-- **测试**：387 passed
-- **API**：400 pub fn + 86 pub type
+- **测试**：461 passed
+- **API**：475 pub fn + 113 pub type
 - **形式化证明**：30 个 spec 性质
 - **编译**：0 error 0 warning
 - **MoonBit**：moon 0.1.20260920
 
 ---
 
-> DataVerse Roadmap | 2026-10-17 | Phase 2 深化闭环
+> DataVerse Roadmap | 2026-10-17 | Phase 3 闭环

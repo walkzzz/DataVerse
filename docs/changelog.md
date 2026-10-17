@@ -478,6 +478,30 @@
 - API: 449→465 pub fn + 105→111 pub type
 - commit: `9e45553`
 
+### S3.5 - 文档站点生成 + Phase 3 闭环
+
+**新增 / Added**
+- `src/governance/docgen/`：2 type + 10 fn
+  - DocEntry + DocIndex + generate_dataverse_doc_index + doc_entry_to_markdown/doc_index_to_markdown + doc_entry_to_html/doc_index_to_html
+- 测试: +9
+- 总计: 452 → 461 passed
+- API: 465→475 pub fn + 111→113 pub type
+- commit: `4d133af`
+
 ---
 
-> DataVerse Changelog | 2026-10-17
+## Phase 3 闭环总结 / Phase 3 Closure
+
+| Sprint | 内容 | commit | 测试增量 |
+|--------|------|--------|----------|
+| S3.1 | io 数据源/汇适配 | 8e0c9bf | +18 |
+| S3.2 | parallel/cpu_parallel 分布式后端 | 0ce9a46 | +16 |
+| S3.3 | opcore/plugin 插件系统 | b0bf3f1 | +16 |
+| S3.4 | 性能基准 + 算子融合 | 9e45553 | +15 |
+| S3.5 | 文档站点生成 + 闭环 | 4d133af | +9 |
+
+**Phase 3 总计**：测试 387→461（+74），API 400→475 pub fn + 86→113 pub type，0 error 0 warning。
+
+---
+
+> DataVerse Changelog | 2026-10-17 | Phase 3 闭环

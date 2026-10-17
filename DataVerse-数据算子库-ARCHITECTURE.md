@@ -1246,8 +1246,9 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S3.2 | parallel/cpu_parallel 分布式执行后端 | ✅ | 0ce9a46 |
 | S3.3 | opcore/plugin 插件系统 | ✅ | b0bf3f1 |
 | S3.4 | 性能基准 + 算子融合优化 | ✅ | 9e45553 |
+| S3.5 | 文档站点生成 + Phase 3 闭环 | ✅ | 4d133af |
 
-**当前测试**：452 · **当前 API**：465（pub fn）+ 111（pub type）
+**当前测试**：461 · **当前 API**：475（pub fn）+ 113（pub type）
 
 ---
 

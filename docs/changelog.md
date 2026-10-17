@@ -370,6 +370,28 @@
 - `moon check`：0 error 0 warning · `moon test`：352 passed
 - commit：`bab0566`
 
+### S2.10 - opcore 多模态扩展（image flip/rotate + audio mix + video extract_frames）
+
+**新增 / Added**
+- `src/opcore/image/image.mbt` 追加：
+  - `pub(all) enum FlipAxis`（Horizontal/Vertical/Both）+ `pub(all) enum RotateAngle`（D90/D180/D270）
+  - `image_flip` + `image_rotate`（D90/D270 交换 w/h）+ `flip_axis_name` + `rotate_angle_name`
+- `src/opcore/audio/audio.mbt` 追加：
+  - `audio_mix`（混合两路音频，duration=max, sr=a, channels=max）+ `audio_normalize_duration`
+- `src/opcore/video/video.mbt` 追加：
+  - `video_extract_frames`（均匀抽帧为 ImageMeta 数组）+ `video_frame_timestamps` + `video_trim`
+- `src/opcore/video/moon.pkg`：新增 import `dataverse/opcore/image`
+- `dataverse.mbt`：重导出 2 type + 9 fn，version → "S2.10 multimodal extension"
+
+**测试 / Tests**
+- +19：flip 保维度，rotate D90/D270 交换 w/h，audio_mix 取 max duration，video_extract_frames 均匀抽帧，video_trim 裁剪
+- 总计：352 → 371 passed
+
+**统计 / Stats**
+- API：381→390 pub fn + 84→86 pub type
+- `moon check`：0 error 0 warning · `moon test`：371 passed
+- commit：`31fd406`
+
 ---
 
 > DataVerse Changelog | 2026-10-17

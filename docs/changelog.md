@@ -300,6 +300,37 @@
 - API：247 → 260 pub fn（+13），48 → 50 pub type（+2 ContextBudget/VerifyResult）
 - `moon check`：0 error 0 warning · `moon test`：134 passed
 
+### S1.8 - 验证（Data-Juicer P0 对标 + Agent-Kit 接入 DOSI）
+
+**新增 / Added**
+- `agent_kit/dosi_adapter` 子包：
+  - `QueryResult` + `query_dosi`（自然语言关键词 → DOSI 检索）+ `plan_pipeline`（多关键词 → 算子路径列表）
+- 8 个新测试：
+  - Data-Juicer P0 对标验证（5 算子：text_length_filter / exact_deduplicator / whitespace_normalization_mapper / topk_selector / punctuation_normalization_mapper）
+  - dosi_adapter 查询 + 规划 + 退化
+
+**统计 / Stats**
+- 测试：134 → 142（+8）
+- API：260 → 264 pub fn（+4），50 → 51 pub type（+1 QueryResult）
+- `moon check`：0 error 0 warning · `moon test`：142 passed
+
+---
+
+## Phase 1 闭环总结 / Phase 1 Closure
+
+| Sprint | 内容 | commit | 测试增量 |
+|--------|------|--------|----------|
+| S1.1 | opcore 14 类算子 | 2c9e030 | +27 |
+| S1.2 | learncore 传统 ML | c2c9eca | +14 |
+| S1.3 | recipe 4 条复合线 | aee56c3 | +8 |
+| S1.4 | DataIR DAG + 优化器 | a589beb | +6 |
+| S1.5 | datatemporal 深化 | 9e083cc | +9 |
+| S1.6 | 执行后端 CPU 串行 | 24b67d2 | +4 |
+| S1.7 | DOSI 完善 | ec8f631 | +7 |
+| S1.8 | 验证（DJ 对标 + Agent-Kit） | 98f9a68 | +8 |
+
+**Phase 1 总计**：测试 59→142（+83），API 155→264 pub fn + 51 pub type，0 error 0 warning。
+
 ---
 
 > DataVerse Changelog | 2026-10-17

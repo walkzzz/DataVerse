@@ -271,6 +271,22 @@
 - API：229 → 241 pub fn（+12）
 - `moon check`：0 error 0 warning · `moon test`：123 passed
 
+### S1.6 - 执行后端 CPU 串行
+
+**新增 / Added**
+- `parallel/cpu_serial` 子包：
+  - `ExecutionPlan`：拓扑排序后的算子执行计划
+  - `ExecutionResult`：输出指纹 + 执行轨迹 + 步数 + 成功标志
+  - `make_plan`：从 PipelineIR 生成执行计划（拓扑排序）
+  - `execute`：串行执行 + 轨迹记录
+  - `merge_results` + `empty_plan` + `plan_step_count`
+- 4 个新测试（含退化：空计划/有环流水线）
+
+**统计 / Stats**
+- 测试：123 → 127（+4）
+- API：241 → 247 pub fn（+6），46 → 48 pub type（+2 ExecutionPlan/ExecutionResult）
+- `moon check`：0 error 0 warning · `moon test`：127 passed
+
 ---
 
 > DataVerse Changelog | 2026-10-17

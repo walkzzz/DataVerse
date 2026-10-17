@@ -3414,3 +3414,68 @@ test "S3.4 iterative_fusion" {
 test "S3.4 ir_fusion_id" {
   assert_eq(@ir_fusion.ir_fusion_id(), "datair/ir_fusion")
 }
+// ============================================================
+// S3.5 文档生成测试 / Doc generation tests
+// ============================================================
+
+test "S3.5 empty_doc_index" {
+  let index = @docgen.empty_doc_index()
+  assert_eq(index.total_api, 0)
+  assert_eq(index.total_types, 0)
+  assert_eq(index.total_tests, 0)
+}
+
+test "S3.5 add_doc_entry" {
+  let entry = @docgen.make_doc_entry("test_mod", 10, 5, 8, "test module")
+  let index = @docgen.add_doc_entry(@docgen.empty_doc_index(), entry)
+  assert_eq(index.entries.length(), 1)
+  assert_eq(index.total_api, 10)
+  assert_eq(index.total_types, 5)
+  assert_eq(index.total_tests, 8)
+}
+
+test "S3.5 generate_dataverse_doc_index" {
+  let index = @docgen.generate_dataverse_doc_index()
+  assert_true(index.entries.length() >= 12)
+  assert_true(index.total_api > 0)
+  assert_true(index.total_types > 0)
+}
+
+test "S3.5 doc_entry_to_markdown" {
+  let entry = @docgen.make_doc_entry("m1", 10, 5, 8, "desc")
+  let md = @docgen.doc_entry_to_markdown(entry)
+  assert_true(md.length() > 0)
+  assert_true(md.contains("m1"))
+}
+
+test "S3.5 doc_index_to_markdown" {
+  let index = @docgen.generate_dataverse_doc_index()
+  let md = @docgen.doc_index_to_markdown(index)
+  assert_true(md.length() > 0)
+  assert_true(md.contains("DataVerse"))
+}
+
+test "S3.5 doc_entry_to_html" {
+  let entry = @docgen.make_doc_entry("m1", 10, 5, 8, "desc")
+  let html = @docgen.doc_entry_to_html(entry)
+  assert_true(html.contains("<section>"))
+  assert_true(html.contains("m1"))
+}
+
+test "S3.5 doc_index_to_html" {
+  let index = @docgen.generate_dataverse_doc_index()
+  let html = @docgen.doc_index_to_html(index)
+  assert_true(html.contains("<html>"))
+  assert_true(html.contains("</html>"))
+}
+
+test "S3.5 doc_index_stats" {
+  let index = @docgen.generate_dataverse_doc_index()
+  let stats = @docgen.doc_index_stats(index)
+  assert_true(stats.contains("modules="))
+  assert_true(stats.contains("api="))
+}
+
+test "S3.5 docgen_id" {
+  assert_eq(@docgen.docgen_id(), "governance/docgen")
+}

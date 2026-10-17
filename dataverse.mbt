@@ -8,9 +8,9 @@
 ///
 /// Unified entry `@dataverse`, re-exports all first-level sub-packages' public API.
 /// S0.1 skeleton + S0.2 kernel + S0.3 dataobject + S0.4 opcore + S0.5 datatemporal + S0.6 datair + S0.7 dosi.
-/// S2 闭环 + S3.1-S3.4 io/并行/插件/基准+融合.
+/// Phase 3 闭环: io + 并行 + 插件 + 基准+融合 + 文档生成.
 pub fn version() -> String {
-  "dataverse 0.1.0-dev (S3.4 benchmark + fusion)"
+  "dataverse 0.1.0-dev (S3.5 Phase 3 complete)"
 }
 
 pub using @kernel {
@@ -183,4 +183,8 @@ pub using @governance { governance_id }pub using @governance.benchmark {
   benchmark_id, BenchmarkConfig, BenchmarkResult, BenchmarkSuite, SuiteStats,
   make_benchmark_config, default_benchmark_config, run_benchmark,
   make_benchmark_suite, empty_benchmark_suite, add_result, compute_suite_stats, benchmark_suite_uri,
+}pub using @governance.docgen {
+  docgen_id, DocEntry, DocIndex, make_doc_entry, empty_doc_index, add_doc_entry,
+  generate_dataverse_doc_index, doc_entry_to_markdown, doc_index_to_markdown,
+  doc_entry_to_html, doc_index_to_html, doc_index_stats,
 }

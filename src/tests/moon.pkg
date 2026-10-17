@@ -81,4 +81,5 @@ import {
   "dataverse/io/source",
   "dataverse/io/sink",
   "dataverse/governance/benchmark",
+  "dataverse/governance/docgen",
 }

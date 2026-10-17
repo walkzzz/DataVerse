@@ -61,5 +61,6 @@ import {
   "io/sink",
   "governance",
   "governance/benchmark",
+  "governance/docgen",
   "spec",
 }

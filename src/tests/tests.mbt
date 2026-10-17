@@ -2804,3 +2804,110 @@ test "S2.10 video_trim degenerate: end before start" {
   let trimmed = @video.video_trim(meta, 7000, 3000)
   assert_eq(@video.video_duration(trimmed), 0)
 }
+// ============================================================
+// S2.11 opcore 语义扩展测试 / Semantic extension tests
+// ============================================================
+
+test "S2.11 default_stopwords non-empty" {
+  let sw = @semantic.default_stopwords()
+  assert_true(sw.length() > 50)
+}
+
+test "S2.11 remove_stopwords basic" {
+  let d = @dataobject.make_dataobject("the quick brown fox is fast", @dataobject.Text, @schema.empty())
+  let result = @semantic.remove_stopwords(d)
+  assert_true(result.content.length() > 0)
+  assert_true(result.content.length() < d.content.length())
+}
+
+test "S2.11 remove_stopwords degenerate: empty content" {
+  let d = @dataobject.make_dataobject("", @dataobject.Text, @schema.empty())
+  let result = @semantic.remove_stopwords(d)
+  assert_eq(result.content, "")
+}
+
+test "S2.11 remove_stopwords_custom basic" {
+  let d = @dataobject.make_dataobject("foo bar baz", @dataobject.Text, @schema.empty())
+  let result = @semantic.remove_stopwords_custom(d, ["bar"])
+  assert_eq(result.content, "foo baz")
+}
+
+test "S2.11 rewrite_trim basic" {
+  let d = @dataobject.make_dataobject("  hello world  ", @dataobject.Text, @schema.empty())
+  let result = @semantic.rewrite_trim(d)
+  assert_eq(result.content, "hello world")
+}
+
+test "S2.11 rewrite_lowercase basic" {
+  let d = @dataobject.make_dataobject("Hello WORLD", @dataobject.Text, @schema.empty())
+  let result = @semantic.rewrite_lowercase(d)
+  assert_eq(result.content, "hello world")
+}
+
+test "S2.11 rewrite_uppercase basic" {
+  let d = @dataobject.make_dataobject("Hello World", @dataobject.Text, @schema.empty())
+  let result = @semantic.rewrite_uppercase(d)
+  assert_eq(result.content, "HELLO WORLD")
+}
+
+test "S2.11 synthesize_concat basic" {
+  let a = @dataobject.make_dataobject("hello", @dataobject.Text, @schema.empty())
+  let b = @dataobject.make_dataobject("world", @dataobject.Text, @schema.empty())
+  let result = @semantic.synthesize_concat(a, b)
+  assert_eq(result.content, "hello world")
+}
+
+test "S2.11 synthesize_template basic" {
+  let d = @dataobject.make_dataobject("DataVerse", @dataobject.Text, @schema.empty())
+  let result = @semantic.synthesize_template(d, "Hello {}!")
+  assert_eq(result.content, "Hello DataVerse!")
+}
+
+test "S2.11 synthesize_template no placeholder" {
+  let d = @dataobject.make_dataobject("xyz", @dataobject.Text, @schema.empty())
+  let result = @semantic.synthesize_template(d, "no placeholder here")
+  assert_eq(result.content, "no placeholder here")
+}
+
+test "S2.11 word_frequency basic" {
+  let d = @dataobject.make_dataobject("a a b c", @dataobject.Text, @schema.empty())
+  let freq = @semantic.word_frequency(d)
+  assert_eq(freq.length(), 3)
+  let (w0, c0) = freq[0]
+  assert_eq(w0, "a")
+  assert_eq(c0, 2)
+}
+
+test "S2.11 word_frequency degenerate: empty" {
+  let d = @dataobject.make_dataobject("", @dataobject.Text, @schema.empty())
+  let freq = @semantic.word_frequency(d)
+  assert_eq(freq.length(), 0)
+}
+
+test "S2.11 text_similarity identical" {
+  let a = @dataobject.make_dataobject("hello world foo", @dataobject.Text, @schema.empty())
+  let b = @dataobject.make_dataobject("hello world foo", @dataobject.Text, @schema.empty())
+  let sim = @semantic.text_similarity(a, b)
+  assert_eq(sim, 1.0)
+}
+
+test "S2.11 text_similarity disjoint" {
+  let a = @dataobject.make_dataobject("apple banana", @dataobject.Text, @schema.empty())
+  let b = @dataobject.make_dataobject("cherry date", @dataobject.Text, @schema.empty())
+  let sim = @semantic.text_similarity(a, b)
+  assert_eq(sim, 0.0)
+}
+
+test "S2.11 text_similarity partial" {
+  let a = @dataobject.make_dataobject("hello world foo", @dataobject.Text, @schema.empty())
+  let b = @dataobject.make_dataobject("hello world bar", @dataobject.Text, @schema.empty())
+  let sim = @semantic.text_similarity(a, b)
+  assert_eq(sim, 0.5)
+}
+
+test "S2.11 text_similarity degenerate: both empty" {
+  let a = @dataobject.make_dataobject("", @dataobject.Text, @schema.empty())
+  let b = @dataobject.make_dataobject("", @dataobject.Text, @schema.empty())
+  let sim = @semantic.text_similarity(a, b)
+  assert_eq(sim, 0.0)
+}

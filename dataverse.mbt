@@ -8,9 +8,9 @@
 ///
 /// Unified entry `@dataverse`, re-exports all first-level sub-packages' public API.
 /// S0.1 skeleton + S0.2 kernel + S0.3 dataobject + S0.4 opcore + S0.5 datatemporal + S0.6 datair + S0.7 dosi.
-/// S2.1-S2.8 Phase 2 全域算子成熟期闭环. S2.9 DL 扩展层 + S2.10 多模态扩展.
+/// S2.1-S2.8 Phase 2 全域算子成熟期闭环. S2.9 DL + S2.10 多模态 + S2.11 语义扩展.
 pub fn version() -> String {
-  "dataverse 0.1.0-dev (S2.10 multimodal extension)"
+  "dataverse 0.1.0-dev (S2.11 semantic extension)"
 }
 
 pub using @kernel {
@@ -56,6 +56,10 @@ pub using @opcore.video {
 }
 pub using @opcore.semantic {
   semantic_id, RewriteMode, SynthesisMode, semantic_quality_score, content_diversity_score, rewrite_text, synthesize_text, rewrite_mode_name, synthesis_mode_name,
+  default_stopwords, remove_stopwords, remove_stopwords_custom,
+  rewrite_trim, rewrite_lowercase, rewrite_uppercase,
+  synthesize_concat, synthesize_template,
+  word_frequency, text_similarity,
 }
 pub using @learncore {
   learncore_id, ModelSpace, model_space_name, Hyperparams, make_hyperparams,

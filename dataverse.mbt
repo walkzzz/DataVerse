@@ -53,10 +53,10 @@ pub using @learncore.metrics { metrics_id, accuracy, mse, mae, confusion_matrix 
 pub using @datatemporal {
   datatemporal_id, make_fingerprint, empty_fingerprint, matches as fingerprint_matches,
 }
-pub using @datatemporal.version { version_id as dt_version_id, make_version, root_version, empty_tower, append as tower_append, height as tower_height }
-pub using @datatemporal.lineage { lineage_id as dt_lineage_id, make_bi_lineage, make_field_lineage }
-pub using @datatemporal.drift { drift_id, make_drift_report, is_significant }
-pub using @datatemporal.replay { replay_id, make_trace, empty_trace, step_count }
+pub using @datatemporal.version { version_id as dt_version_id, make_version, root_version, empty_tower, append as tower_append, height as tower_height, latest as tower_latest, get_by_id as tower_get_by_id, ancestors as tower_ancestors }
+pub using @datatemporal.lineage { lineage_id as dt_lineage_id, make_bi_lineage, make_field_lineage, reverse as lineage_reverse, compose as lineage_compose, input_count, output_count }
+pub using @datatemporal.drift { drift_id, make_drift_report, is_significant, drift_direction, merge_reports }
+pub using @datatemporal.replay { replay_id, make_trace, empty_trace, step_count, append_step, replay as replay_trace, trace_summary }
 pub using @datatemporal { datatemporal_id }
 pub using @recipe { recipe_id }
 pub using @recipe.cleaning_line { cleaning_line_id, cleaning_line }

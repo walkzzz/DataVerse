@@ -47,6 +47,35 @@ pub fn make_field_lineage(
   { field_name, source_fields, operator }
 }
 
+/// 反转双向血缘 / Reverse bidirectional lineage (swap inputs/outputs).
+///
+/// 用于从输出追溯输入（逆向回溯）。
+pub fn reverse(lineage : BiLineage) -> BiLineage {
+  { operator: lineage.operator, inputs: lineage.outputs, outputs: lineage.inputs, params: lineage.params }
+}
+
+/// 血缘组合 / Compose two lineages (a then b).
+///
+/// a 的输出作为 b 的输入，组合为单条血缘。
+pub fn compose(a : BiLineage, b : BiLineage) -> BiLineage {
+  {
+    operator: a.operator + ";" + b.operator,
+    inputs: a.inputs,
+    outputs: b.outputs,
+    params: a.params + ";" + b.params,
+  }
+}
+
+/// 输入数 / Input count.
+pub fn input_count(lineage : BiLineage) -> Int {
+  lineage.inputs.length()
+}
+
+/// 输出数 / Output count.
+pub fn output_count(lineage : BiLineage) -> Int {
+  lineage.outputs.length()
+}
+
 pub fn lineage_id() -> String {
   "datatemporal/lineage"
 }

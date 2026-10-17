@@ -32,6 +32,23 @@ pub fn step_count(trace : ReplayTrace) -> Int {
   trace.steps.length()
 }
 
+/// 追加步骤 / Append a step to trace.
+pub fn append_step(trace : ReplayTrace, step : String) -> ReplayTrace {
+  { trace_id: trace.trace_id, steps: trace.steps + [step], result_fingerprint: trace.result_fingerprint }
+}
+
+/// 回放 / Replay: return result fingerprint.
+///
+/// 退化安全：空轨迹返回空串。
+pub fn replay(trace : ReplayTrace) -> String {
+  trace.result_fingerprint
+}
+
+/// 轨迹摘要 / Trace summary: trace_id + step count.
+pub fn trace_summary(trace : ReplayTrace) -> String {
+  trace.trace_id + "(" + trace.steps.length().to_string() + " steps)"
+}
+
 pub fn replay_id() -> String {
   "datatemporal/replay"
 }

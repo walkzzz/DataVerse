@@ -1151,3 +1151,91 @@ test "S1.4 ir_optimizer optimize and stats" {
   assert_eq(stats.removed, 2)
   assert_eq(@ir_optimizer.ir_optimizer_id(), "datair/ir_optimizer")
 }
+///|
+/// # S1.5 datatemporal 深化测试 / Datatemporal Deepening Tests
+///
+/// 版本塔（latest/get_by_id/ancestors）+ 双向血缘（reverse/compose）+ 回放（append_step/replay）+ 漂移（direction/merge）。
+
+test "S1.5 version latest and get_by_id" {
+  let v1 = @version.root_version("v1", 100, "snap1")
+  let v2 = @version.make_version("v2", Some("v1"), 200, "snap2")
+  let v3 = @version.make_version("v3", Some("v2"), 300, "snap3")
+  let tower = @version.empty_tower() |> @version.append(v1) |> @version.append(v2) |> @version.append(v3)
+  let latest = @version.latest(tower)
+  assert_true(latest is Some(_))
+  let found = @version.get_by_id(tower, "v2")
+  assert_true(found is Some(_))
+  let not_found = @version.get_by_id(tower, "vX")
+  assert_true(not_found is None)
+}
+
+test "S1.5 version ancestors chain" {
+  let v1 = @version.root_version("v1", 100, "snap1")
+  let v2 = @version.make_version("v2", Some("v1"), 200, "snap2")
+  let v3 = @version.make_version("v3", Some("v2"), 300, "snap3")
+  let tower = @version.empty_tower() |> @version.append(v1) |> @version.append(v2) |> @version.append(v3)
+  let chain = @version.ancestors(tower, "v3")
+  assert_eq(chain.length(), 3)
+  assert_eq(chain[0].version_id, "v3")
+  assert_eq(chain[1].version_id, "v2")
+  assert_eq(chain[2].version_id, "v1")
+}
+
+test "S1.5 version degenerate: empty tower" {
+  let empty = @version.empty_tower()
+  assert_true(@version.latest(empty) is None)
+  assert_true(@version.get_by_id(empty, "x") is None)
+  assert_eq(@version.ancestors(empty, "x").length(), 0)
+}
+
+test "S1.5 lineage reverse and compose" {
+  let l1 = @lineage.make_bi_lineage("normalize", ["in1"], ["out1"], "params1")
+  let reversed = @lineage.reverse(l1)
+  assert_eq(reversed.inputs, ["out1"])
+  assert_eq(reversed.outputs, ["in1"])
+  let l2 = @lineage.make_bi_lineage("truncate", ["out1"], ["out2"], "params2")
+  let composed = @lineage.compose(l1, l2)
+  assert_eq(composed.operator, "normalize;truncate")
+  assert_eq(composed.inputs, ["in1"])
+  assert_eq(composed.outputs, ["out2"])
+}
+
+test "S1.5 lineage input_output_count" {
+  let l = @lineage.make_bi_lineage("op", ["a", "b", "c"], ["x", "y"], "")
+  assert_eq(@lineage.input_count(l), 3)
+  assert_eq(@lineage.output_count(l), 2)
+}
+
+test "S1.5 replay append_step and replay" {
+  let trace = @replay.empty_trace("t1")
+  assert_eq(@replay.step_count(trace), 0)
+  let t1 = @replay.append_step(trace, "step1")
+  assert_eq(@replay.step_count(t1), 1)
+  let t2 = @replay.append_step(t1, "step2")
+  assert_eq(@replay.step_count(t2), 2)
+  let summary = @replay.trace_summary(t2)
+  assert_eq(summary, "t1(2 steps)")
+}
+
+test "S1.5 replay degenerate: empty trace" {
+  let trace = @replay.empty_trace("empty")
+  assert_eq(@replay.replay(trace), "")
+  assert_eq(@replay.trace_summary(trace), "empty(0 steps)")
+}
+
+test "S1.5 drift direction and merge" {
+  let up = @drift.make_drift_report("acc", 0.5, 0.8)
+  let down = @drift.make_drift_report("acc", 0.5, 0.2)
+  let stable = @drift.make_drift_report("acc", 0.5, 0.5)
+  assert_eq(@drift.drift_direction(up), "up")
+  assert_eq(@drift.drift_direction(down), "down")
+  assert_eq(@drift.drift_direction(stable), "stable")
+  let merged = @drift.merge_reports([up, down, stable])
+  assert_true(merged.drift_score > -0.001 && merged.drift_score < 0.001)
+}
+
+test "S1.5 drift degenerate: empty merge" {
+  let merged = @drift.merge_reports([])
+  assert_eq(merged.metric, "merged")
+  assert_eq(merged.drift_score, 0.0)
+}

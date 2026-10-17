@@ -56,6 +56,54 @@ pub fn height(tower : VersionTower) -> Int {
   tower.versions.length()
 }
 
+/// 最新版本 / Latest version.
+///
+/// 退化安全：空塔返回 None。
+pub fn latest(tower : VersionTower) -> Version? {
+  let n = tower.versions.length()
+  if n == 0 {
+    None
+  } else {
+    Some(tower.versions[n - 1])
+  }
+}
+
+/// 按 ID 查找版本 / Find version by id.
+pub fn get_by_id(tower : VersionTower, id : String) -> Version? {
+  let n = tower.versions.length()
+  for i = 0; i < n; i = i + 1 {
+    if tower.versions[i].version_id == id {
+      return Some(tower.versions[i])
+    }
+  }
+  None
+}
+
+/// 祖先链 / Ancestor chain from a version to root.
+///
+/// 返回从给定版本到根的祖先链（含自身）。退化安全：ID 不存在返回空。
+pub fn ancestors(tower : VersionTower, id : String) -> Array[Version] {
+  let result = []
+  let mut current_id = id
+  let mut counter = 0
+  let max = tower.versions.length() + 1
+  while counter < max {
+    let v = get_by_id(tower, current_id)
+    match v {
+      Some(version) => {
+        result.push(version)
+        match version.parent {
+          Some(p) => current_id = p
+          None => counter = max
+        }
+      }
+      None => counter = max
+    }
+    counter = counter + 1
+  }
+  result
+}
+
 pub fn version_id() -> String {
   "datatemporal/version"
 }

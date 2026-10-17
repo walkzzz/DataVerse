@@ -140,8 +140,9 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S1.4 | DataIR 流水线 IR（DAG）+ 基礎优化器（ir_pipeline/ir_optimizer 2 子包） | ✅ | a589beb |
 | S1.5 | datatemporal 深化（version/lineage/replay/drift 4 子包扩展） | ✅ | 9e083cc |
 | S1.6 | 执行后端 CPU 串行（parallel/cpu_serial 1 子包） | ✅ | 24b67d2 |
+| S1.7 | DOSI 完善（context_budget + verifier 2 子包） | ✅ | ec8f631 |
 
-**当前测试**：127 · **当前 API**：247（pub fn）+ 48（pub type）
+**当前测试**：134 · **当前 API**：260（pub fn）+ 50（pub type）
 
 ---
 

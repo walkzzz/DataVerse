@@ -287,6 +287,19 @@
 - API：241 → 247 pub fn（+6），46 → 48 pub type（+2 ExecutionPlan/ExecutionResult）
 - `moon check`：0 error 0 warning · `moon test`：127 passed
 
+### S1.7 - DOSI 完善
+
+**新增 / Added**
+- 2 个子包（`src/dosi/` 下）：
+  - `context_budget/`：ContextBudget + make_budget（配额分区）+ allocate + is_over_budget + remaining + usage_ratio + compress（超预算降级）
+  - `verifier/`：VerifyResult + verify_index（依赖存在性 + 自依赖检测）+ check_dependencies + detect_cycles
+- 7 个新测试（含退化：零配额/空索引）
+
+**统计 / Stats**
+- 测试：127 → 134（+7）
+- API：247 → 260 pub fn（+13），48 → 50 pub type（+2 ContextBudget/VerifyResult）
+- `moon check`：0 error 0 warning · `moon test`：134 passed
+
 ---
 
 > DataVerse Changelog | 2026-10-17

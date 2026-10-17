@@ -1,0 +1,5 @@
+// datair/ir_fusion 算子融合优化 / Operator Fusion Optimization
+// S3.4 填充：融合规则 + 应用 + 统计
+import {
+  "dataverse/datair/ir_pipeline",
+}

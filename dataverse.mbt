@@ -8,9 +8,9 @@
 ///
 /// Unified entry `@dataverse`, re-exports all first-level sub-packages' public API.
 /// S0.1 skeleton + S0.2 kernel + S0.3 dataobject + S0.4 opcore + S0.5 datatemporal + S0.6 datair + S0.7 dosi.
-/// S2 闭环 + S3.1 io + S3.2 并行 + S3.3 插件系统.
+/// S2 闭环 + S3.1-S3.4 io/并行/插件/基准+融合.
 pub fn version() -> String {
-  "dataverse 0.1.0-dev (S3.3 plugin system)"
+  "dataverse 0.1.0-dev (S3.4 benchmark + fusion)"
 }
 
 pub using @kernel {
@@ -124,6 +124,10 @@ pub using @datair.ir_pipeline {
 pub using @datair.ir_optimizer {
   ir_optimizer_id, fuse_adjacent_maps, remove_identity, optimize, OptStats, opt_stats,
 }
+pub using @datair.ir_fusion {
+  ir_fusion_id, FusionRule, FusionResult, fusion_rule_name, make_fusion_result,
+  apply_fusion, fusion_reduction_ratio, fusion_result_uri, iterative_fusion,
+}
 pub using @dosi {
   dosi_id, builder_id, router_id,
   SymbolicEntry, SemanticEntry, DOSIEntry, DOSIIndex,
@@ -175,4 +179,8 @@ pub using @io.sink {
   DataSinkType, SinkConfig, WriteResult, SinkStats, make_sink_config, file_sink, object_storage_sink, in_memory_sink,
   sink_uri, sink_type_name, write_sink, make_write_result, execute_write, make_sink_stats, sink_stats_uri,
 }
-pub using @governance { governance_id }
+pub using @governance { governance_id }pub using @governance.benchmark {
+  benchmark_id, BenchmarkConfig, BenchmarkResult, BenchmarkSuite, SuiteStats,
+  make_benchmark_config, default_benchmark_config, run_benchmark,
+  make_benchmark_suite, empty_benchmark_suite, add_result, compute_suite_stats, benchmark_suite_uri,
+}

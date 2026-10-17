@@ -65,6 +65,7 @@ import {
   "dataverse/datair/ir_operator",
   "dataverse/datair/ir_pipeline",
   "dataverse/datair/ir_optimizer",
+  "dataverse/datair/ir_fusion",
   "dataverse/dosi",
   "dataverse/dosi/builder",
   "dataverse/dosi/router",
@@ -79,4 +80,5 @@ import {
   "dataverse/agent_kit/executor",
   "dataverse/io/source",
   "dataverse/io/sink",
+  "dataverse/governance/benchmark",
 }

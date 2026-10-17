@@ -44,6 +44,7 @@ import {
   "datair/ir_operator",
   "datair/ir_pipeline",
   "datair/ir_optimizer",
+  "datair/ir_fusion",
   "dosi",
   "dosi/builder",
   "dosi/router",
@@ -59,5 +60,6 @@ import {
   "io/source",
   "io/sink",
   "governance",
+  "governance/benchmark",
   "spec",
 }

@@ -3285,3 +3285,132 @@ test "S3.3 plugin_registry_uri" {
 test "S3.3 plugin_id" {
   assert_eq(@plugin.plugin_id(), "opcore/plugin")
 }
+// ============================================================
+// S3.4 性能基准 + 算子融合测试 / Benchmark + fusion tests
+// ============================================================
+
+test "S3.4 default_benchmark_config" {
+  let cfg = @benchmark.default_benchmark_config()
+  assert_eq(cfg.iterations, 100)
+  assert_eq(cfg.warmup, 10)
+}
+
+test "S3.4 run_benchmark basic" {
+  let cfg = @benchmark.make_benchmark_config(10, 2, 1)
+  let result = @benchmark.run_benchmark("test", 100, cfg)
+  assert_eq(result.name, "test")
+  assert_true(result.total_ms > 0)
+  assert_true(result.avg_ms > 0.0)
+}
+
+test "S3.4 run_benchmark degenerate: zero iterations" {
+  let cfg = @benchmark.make_benchmark_config(0, 0, 1)
+  let result = @benchmark.run_benchmark("test", 100, cfg)
+  assert_eq(result.total_ms, 0)
+  assert_eq(result.avg_ms, 0.0)
+}
+
+test "S3.4 benchmark_suite add_result" {
+  let cfg = @benchmark.default_benchmark_config()
+  let r1 = @benchmark.run_benchmark("b1", 100, cfg)
+  let r2 = @benchmark.run_benchmark("b2", 200, cfg)
+  let suite = @benchmark.add_result(@benchmark.add_result(@benchmark.empty_benchmark_suite("suite1"), r1), r2)
+  assert_eq(suite.results.length(), 2)
+}
+
+test "S3.4 compute_suite_stats" {
+  let cfg = @benchmark.make_benchmark_config(10, 0, 1)
+  let r1 = @benchmark.run_benchmark("b1", 100, cfg)
+  let suite = @benchmark.add_result(@benchmark.empty_benchmark_suite("suite1"), r1)
+  let stats = @benchmark.compute_suite_stats(suite)
+  assert_eq(stats.suite_name, "suite1")
+  assert_eq(stats.benchmark_count, 1)
+}
+
+test "S3.4 compute_suite_stats empty" {
+  let suite = @benchmark.empty_benchmark_suite("empty")
+  let stats = @benchmark.compute_suite_stats(suite)
+  assert_eq(stats.benchmark_count, 0)
+  assert_eq(stats.avg_throughput, 0.0)
+}
+
+test "S3.4 benchmark_suite_uri" {
+  let suite = @benchmark.empty_benchmark_suite("my_suite")
+  assert_eq(@benchmark.benchmark_suite_uri(suite), "benchmark://suite/my_suite?count=0")
+}
+
+test "S3.4 benchmark_id" {
+  assert_eq(@benchmark.benchmark_id(), "governance/benchmark")
+}
+
+test "S3.4 fusion_rule_name" {
+  assert_eq(@ir_fusion.fusion_rule_name(@ir_fusion.MapFusion), "map_fusion")
+  assert_eq(@ir_fusion.fusion_rule_name(@ir_fusion.FilterFusion), "filter_fusion")
+  assert_eq(@ir_fusion.fusion_rule_name(@ir_fusion.IdentityElimination), "identity_elimination")
+  assert_eq(@ir_fusion.fusion_rule_name(@ir_fusion.DeadCodeElimination), "dead_code_elimination")
+}
+
+test "S3.4 apply_fusion basic" {
+  let n1 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("op1"), "map1", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let n2 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("op2"), "map2", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let n3 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("op3"), "map3", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let p = @ir_pipeline.PipelineIR::empty().add_node(n1).add_node(n2).add_node(n3)
+  let result = @ir_fusion.apply_fusion(p)
+  assert_eq(result.original_node_count, 3)
+  assert_true(result.fused_node_count <= result.original_node_count)
+  assert_true(result.reduction >= 0)
+}
+
+test "S3.4 apply_fusion degenerate: empty pipeline" {
+  let p = @ir_pipeline.PipelineIR::empty()
+  let result = @ir_fusion.apply_fusion(p)
+  assert_eq(result.original_node_count, 0)
+  assert_eq(result.fused_node_count, 0)
+}
+
+test "S3.4 fusion_reduction_ratio" {
+  let n1 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("op1"), "map1", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let n2 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("op2"), "map2", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let p = @ir_pipeline.PipelineIR::empty().add_node(n1).add_node(n2)
+  let result = @ir_fusion.apply_fusion(p)
+  let ratio = @ir_fusion.fusion_reduction_ratio(result)
+  assert_true(ratio >= 0.0 && ratio <= 1.0)
+}
+
+test "S3.4 fusion_result_uri" {
+  let result = @ir_fusion.make_fusion_result(10, 5, [@ir_fusion.MapFusion])
+  assert_eq(@ir_fusion.fusion_result_uri(result), "fusion://nodes=10->5;reduction=5")
+}
+
+test "S3.4 iterative_fusion" {
+  let n1 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("op1"), "map1", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let n2 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("op2"), "map2", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let n3 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("op3"), "map3", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let n4 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("op4"), "map4", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let p = @ir_pipeline.PipelineIR::empty().add_node(n1).add_node(n2).add_node(n3).add_node(n4)
+  let result = @ir_fusion.iterative_fusion(p, 3)
+  assert_eq(result.original_node_count, 4)
+  assert_true(result.fused_node_count <= result.original_node_count)
+}
+
+test "S3.4 ir_fusion_id" {
+  assert_eq(@ir_fusion.ir_fusion_id(), "datair/ir_fusion")
+}

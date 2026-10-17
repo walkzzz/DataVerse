@@ -1230,8 +1230,17 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S1.6 | 执行后端 CPU 串行（parallel/cpu_serial 1 子包） | ✅ | 24b67d2 |
 | S1.7 | DOSI 完善（context_budget + verifier 2 子包） | ✅ | ec8f631 |
 | S1.8 | 验证（Data-Juicer P0 对标 + Agent-Kit dosi_adapter 1 子包） | ✅ | 98f9a68 |
+| S2.1 | opcore 多模态算子（image/audio/video 3 子包） | ✅ | 78b3204 |
+| S2.2 | opcore 语义算子（semantic 1 子包） | ✅ | 3e1cd7b |
+| S2.3 | learncore DL 算子（dl_layers/dl_losses/dl_optimizers 3 子包） | ✅ | b4069c1 |
+| S2.4 | learncore 模型评估（cross_validation/hyperparam_search 2 子包） | ✅ | f867ceb |
+| S2.5 | recipe Phase 2 复合线（packing_line/eval_line/cross_modal_line 3 子包） | ✅ | 668b1c1 |
+| S2.6 | datatemporal 深化（aging/incremental/field_lineage 3 子包） | ✅ | c2c5655 |
+| S2.7 | Agent-Kit 编排（planner/executor 2 子包） | ✅ | e96dfab |
+| S2.8 | DOSI 扩充 + Phase 2 验证 + R16 门禁（batch/versioned 2 子包 + 15 spec） | ✅ | b721d50 |
+| S2.9 | learncore DL 扩展层（Conv2d/MaxPool/Dropout/BatchNorm） | ✅ | bab0566 |
 
-**当前测试**：157 · **当前 API**：264（pub fn）+ 51（pub type）
+**当前测试**：352 · **当前 API**：381（pub fn）+ 84（pub type）
 
 ---
 

@@ -351,4 +351,25 @@
 
 ---
 
+### S2.9 - learncore DL 扩展层（Conv2d + MaxPool + Dropout + BatchNorm）
+
+**新增 / Added**
+- `src/learncore/dl_layers/dl_layers.mbt` 追加：
+  - `pub(all) struct Conv2dMeta`（in_channels/out_channels/kernel_size/stride/padding）+ `make_conv2d` + `conv2d_output_dim`
+  - `pub(all) struct MaxPoolMeta`（kernel_size/stride/padding）+ `make_maxpool` + `maxpool_output_dim`
+  - `pub(all) enum DropoutMode`（Training/Inference）+ `dropout_forward` + `dropout_mode_name`
+  - `pub(all) struct BatchNormMeta`（gamma/beta/running_mean/running_var/eps）+ `make_batchnorm` + `batchnorm_forward`
+- `dataverse.mbt`：重导出 4 type + 8 fn，version → "S2.9 DL extension layers"
+
+**测试 / Tests**
+- +14：Conv2d 输出维度/前向传播，MaxPool 输出维度/前向传播，Dropout 训练/推理模式，BatchNorm 训练/推理/数值稳定性
+- 总计：338 → 352 passed
+
+**统计 / Stats**
+- API：373→381 pub fn + 80→84 pub type
+- `moon check`：0 error 0 warning · `moon test`：352 passed
+- commit：`bab0566`
+
+---
+
 > DataVerse Changelog | 2026-10-17

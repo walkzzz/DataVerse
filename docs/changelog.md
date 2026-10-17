@@ -21,7 +21,8 @@
 
 **验证 / Verified**
 - `moon check`：0 error
-- `moon test`：通过
+- `moon test`：1 passed
+- commit：`6ded33c`
 
 ---
 

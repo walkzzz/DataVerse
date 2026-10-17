@@ -14,7 +14,7 @@
 
 | Sprint | 内容 | 状态 | commit | 依赖 |
 |--------|------|------|--------|------|
-| S0.1 | 项目骨架 + Roadmap + 根包重导出空骨架 | ✅ | (待提交) | — |
+| S0.1 | 项目骨架 + Roadmap + 根包重导出空骨架 | ✅ | 6ded33c | — |
 | S0.2 | kernel 四模式执行内核（exact/approx/streaming/cache）+ 一致性验证 | ⏸ | — | S0.1 |
 | S0.3 | 基础数据层（DataObject/Schema/Chunk/Embedding/Record/Dataset/Lineage/QualityCard） | ⏸ | — | S0.2 |
 | S0.4 | opcore 框架（统一契约 + 注册表 + 契约校验）+ 清洗/去重/过滤三类核心算子 | ⏸ | — | S0.3 |

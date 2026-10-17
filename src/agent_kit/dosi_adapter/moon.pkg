@@ -1,0 +1,5 @@
+// agent_kit/dosi_adapter DOSI 适配器 / DOSI Adapter
+// S1.8 基礎：自然语言查询 → DOSI 检索
+import {
+  "dataverse/dosi",
+}

@@ -49,6 +49,7 @@ import {
   "dosi/context_budget",
   "dosi/verifier",
   "agent_kit",
+  "agent_kit/dosi_adapter",
   "self_evolve",
   "parallel",
   "parallel/cpu_serial",

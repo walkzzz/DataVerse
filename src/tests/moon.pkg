@@ -55,4 +55,5 @@ import {
   "dataverse/dosi/context_budget",
   "dataverse/dosi/verifier",
   "dataverse/parallel/cpu_serial",
+  "dataverse/agent_kit/dosi_adapter",
 }

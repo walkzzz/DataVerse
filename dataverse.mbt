@@ -90,6 +90,9 @@ pub using @dosi.verifier {
   verifier_id, VerifyResult, verify_index, check_dependencies, detect_cycles, valid_result,
 }
 pub using @agent_kit { agent_kit_id }
+pub using @agent_kit.dosi_adapter {
+  dosi_adapter_id, QueryResult, query_dosi, plan_pipeline, empty_query_result,
+}
 pub using @self_evolve { self_evolve_id }
 pub using @parallel { parallel_id }
 pub using @parallel.cpu_serial {

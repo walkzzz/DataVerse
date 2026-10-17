@@ -1375,3 +1375,94 @@ test "S1.7 verifier degenerate: empty index" {
   assert_true(result.valid)
   assert_eq(@verifier.detect_cycles(empty).length(), 0)
 }
+///|
+/// # S1.8 验证测试 / Validation Tests
+///
+/// Data-Juicer P0 对标验证 + Agent-Kit DOSI 适配器测试。
+/// 架构 §4.3.6 对标映射 + §4.8 Agent-Kit。
+
+test "S1.8 DJ P0: text_length_filter 对标" {
+  // DJ text_length_filter: 按长度过滤
+  // DataVerse: @filter.length_filter(min_len, max_len, dataobject)
+  let s = @schema.empty()
+  let short = @dataobject.make_dataobject("hi", @dataobject.Text, s)
+  let long = @dataobject.make_dataobject("hello world", @dataobject.Text, s)
+  assert_true(@filter.length_filter(5, 20, long))
+  assert_false(@filter.length_filter(5, 20, short))
+}
+
+test "S1.8 DJ P0: exact_deduplicator 对标" {
+  // DJ exact_deduplicator: 精确去重
+  // DataVerse: @dedup.exact_dedup
+  let s = @schema.empty()
+  let d1 = @dataobject.make_dataobject("a", @dataobject.Text, s)
+  let d2 = @dataobject.make_dataobject("b", @dataobject.Text, s)
+  let d3 = @dataobject.make_dataobject("a", @dataobject.Text, s)
+  let result = @dedup.exact_dedup([d1, d2, d3])
+  assert_eq(result.length(), 2)
+}
+
+test "S1.8 DJ P0: whitespace_normalization_mapper 对标" {
+  // DJ whitespace_normalization_mapper: 空白归一
+  // DataVerse: @normalize.whitespace_normalization
+  let s = @schema.empty()
+  let d = @dataobject.make_dataobject("  hello   world  ", @dataobject.Text, s)
+  let n = @normalize.whitespace_normalization(d)
+  assert_eq(n.content, "hello world")
+}
+
+test "S1.8 DJ P0: topk_selector 对标" {
+  // DJ topk_selector: Top-K 选择
+  // DataVerse: @select.topk_by_length
+  let s = @schema.empty()
+  let arr = [
+    @dataobject.make_dataobject("a", @dataobject.Text, s),
+    @dataobject.make_dataobject("bbb", @dataobject.Text, s),
+    @dataobject.make_dataobject("cc", @dataobject.Text, s),
+  ]
+  let top2 = @select.topk_by_length(arr, 2)
+  assert_eq(top2.length(), 2)
+  assert_eq(top2[0].content, "bbb")
+}
+
+test "S1.8 DJ P0: punctuation_normalization_mapper 对标" {
+  // DJ punctuation_normalization_mapper: 标点归一
+  // DataVerse: @normalize.punctuation_normalization
+  let s = @schema.empty()
+  let d = @dataobject.make_dataobject("你好，世界。", @dataobject.Text, s)
+  let n = @normalize.punctuation_normalization(d)
+  assert_eq(n.content, "你好,世界.")
+}
+
+test "S1.8 dosi_adapter query_dosi" {
+  let sym1 = @dosi.SymbolicEntry::new("opcore/clean/remove_empty", "clean", "text", [])
+  let sem1 = @dosi.SemanticEntry::new("remove empty content", [], "in->out")
+  let e1 = @dosi.DOSIEntry::new(sym1, sem1)
+  let sym2 = @dosi.SymbolicEntry::new("opcore/dedup/exact_dedup", "dedup", "text", [])
+  let sem2 = @dosi.SemanticEntry::new("exact deduplication", [], "in->out")
+  let e2 = @dosi.DOSIEntry::new(sym2, sem2)
+  let index = @dosi.DOSIIndex::empty().add(e1).add(e2)
+  let result = @dosi_adapter.query_dosi(index, "dedup")
+  assert_eq(result.total_matches, 1)
+  assert_eq(result.paths[0], "opcore/dedup/exact_dedup")
+}
+
+test "S1.8 dosi_adapter plan_pipeline" {
+  let sym1 = @dosi.SymbolicEntry::new("opcore/clean", "clean", "text", [])
+  let sem1 = @dosi.SemanticEntry::new("clean", [], "in->out")
+  let e1 = @dosi.DOSIEntry::new(sym1, sem1)
+  let sym2 = @dosi.SymbolicEntry::new("opcore/dedup", "dedup", "text", [])
+  let sem2 = @dosi.SemanticEntry::new("dedup", [], "in->out")
+  let e2 = @dosi.DOSIEntry::new(sym2, sem2)
+  let index = @dosi.DOSIIndex::empty().add(e1).add(e2)
+  let plan = @dosi_adapter.plan_pipeline(index, ["clean", "dedup"])
+  assert_eq(plan.length(), 2)
+}
+
+test "S1.8 dosi_adapter degenerate: empty index" {
+  let empty = @dosi.DOSIIndex::empty()
+  let result = @dosi_adapter.query_dosi(empty, "anything")
+  assert_eq(result.total_matches, 0)
+  assert_eq(@dosi_adapter.plan_pipeline(empty, ["x"]).length(), 0)
+  assert_eq(@dosi_adapter.dosi_adapter_id(), "agent_kit/dosi_adapter")
+}

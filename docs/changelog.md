@@ -121,6 +121,32 @@
 - `moon test`：48 passed 0 failed
 - commit：`5f4bb15`
 
+### S0.7 - DOSI 基础设施原型（Builder + Router + 初始索引）
+
+**新增 / Added**
+- `src/dosi/dosi.mbt`：`SymbolicEntry` + `SemanticEntry` + `DOSIEntry` + `DOSIIndex`（二元组索引规范，架构 §4.7.2）
+- `src/dosi/builder`：`build_opcore_index`（5 算子初始索引）+ `build_from_operator_ir` + `merge`
+- `src/dosi/router`：`lookup_by_path` / `lookup_by_category` / `lookup_by_modality` / `lookup_by_prefix`（精确查询基礎版本）
+- `dataverse.mbt`：重导出所有 DOSI 公共 API
+- `src/tests`：11 个 dosi 测试（含退化数据：空索引查询安全返回）
+
+**设计要点 / Design**
+- 索引条目二元组：符号层（路径/分类/模态/依赖）+ 语义层（摘要/参数/契约）
+- builder 为 opcore 三类算子（clean/dedup/filter）生成 5 条初始索引
+- builder 支持 DataIR OperatorIR → DOSIEntry 投影
+- router 支持按路径/分类/模态/前缀精确查询
+- 依赖方向：dosi 根不 import 子包；builder → dosi + ir_operator；router → dosi
+- context_budget / verifier 留 Phase 1
+
+**验证 / Verified**
+- `moon check`：0 error 0 warning
+- `moon test`：59 passed 0 failed
+- commit：`4aa3fbf`
+
+---
+
+> **Phase 0 地基固化期已闭环** | S0.1-S0.7 全部完成 | 2026-10-17
+
 ---
 
 > DataVerse Changelog | 2026-10-17

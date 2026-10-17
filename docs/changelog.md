@@ -65,6 +65,26 @@
 - `moon test`：23 passed 0 failed
 - commit：`d50dee2`
 
+### S0.4 - opcore 框架 + 清洗/去重/过滤三类核心算子
+
+**新增 / Added**
+- `src/opcore/opcore.mbt`：`OperatorCategory`(14) + `Operator` 契约 + `OperatorResult` + `category_name`
+- `src/opcore/registry`：`Registry` + `register` / `lookup` / `size` / `valid_operator`
+- `src/opcore/clean`：`remove_empty` + `strip_whitespace` + `content_len`
+- `src/opcore/dedup`：`exact_dedup`（按 content 精确去重）+ `dedup_count`
+- `src/opcore/filter`：`length_filter` + `non_empty_filter` + `filter_all`
+- `src/tests`：10 个 opcore 测试
+
+**设计决策 / Decisions**
+- 统一签名 `Operator(Input) -> Output + Lineage + Metrics`
+- 依赖方向：opcore → dataobject + kernel；子包 → dataobject；registry → opcore（无循环）
+- 算子函数式：算子是 `pub fn`，注册表存 `Operator` 契约元数据
+
+**验证 / Verified**
+- `moon check`：0 error 0 warning
+- `moon test`：33 passed 0 failed
+- commit：`deb2c4f`
+
 ---
 
 > DataVerse Changelog | 2026-10-17

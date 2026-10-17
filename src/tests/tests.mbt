@@ -959,3 +959,76 @@ test "S1.2 metrics degenerate: empty arrays" {
   assert_eq(cm, [[0, 0], [0, 0]])
   assert_eq(@metrics.metrics_id(), "learncore/metrics")
 }
+///|
+/// # S1.3 recipe 复合线测试 / Composite Pipeline Tests
+///
+/// 4 条复合线：cleaning/dedup/quality/balance。架构 §4.5。
+
+test "S1.3 cleaning_line basic" {
+  let s = @schema.empty()
+  let d1 = @dataobject.make_dataobject("  hello   world  ", @dataobject.Text, s)
+  let d2 = @dataobject.make_dataobject("", @dataobject.Text, s)
+  let d3 = @dataobject.make_dataobject("  foo  bar  ", @dataobject.Text, s)
+  let result = @cleaning_line.cleaning_line([d1, d2, d3])
+  assert_eq(result.length(), 2)
+  assert_eq(result[0].content, "hello world")
+  assert_eq(result[1].content, "foo bar")
+}
+
+test "S1.3 cleaning_line degenerate: empty array" {
+  assert_eq(@cleaning_line.cleaning_line([]).length(), 0)
+  assert_eq(@cleaning_line.cleaning_line_id(), "recipe/cleaning_line")
+}
+
+test "S1.3 dedup_line basic" {
+  let s = @schema.empty()
+  let d1 = @dataobject.make_dataobject("a", @dataobject.Text, s)
+  let d2 = @dataobject.make_dataobject("b", @dataobject.Text, s)
+  let d3 = @dataobject.make_dataobject("a", @dataobject.Text, s)
+  let result = @dedup_line.dedup_line([d1, d2, d3])
+  assert_eq(result.length(), 2)
+  assert_eq(@dedup_line.dedup_line_id(), "recipe/dedup_line")
+}
+
+test "S1.3 dedup_line degenerate: empty array" {
+  assert_eq(@dedup_line.dedup_line([]).length(), 0)
+}
+
+test "S1.3 quality_line basic" {
+  let s = @schema.empty()
+  let d1 = @dataobject.make_dataobject("a".repeat(150), @dataobject.Text, s)
+  let d2 = @dataobject.make_dataobject("b".repeat(50), @dataobject.Text, s)
+  let d3 = @dataobject.make_dataobject("c".repeat(10), @dataobject.Text, s)
+  // min_score=0.5 → 过滤掉质量分 < 0.5 的；k=2 → 取前 2 个
+  let result = @quality_line.quality_line([d1, d2, d3], 0.5, 2)
+  // d1 (score=1.0) 和 d2 (score=0.5) 通过过滤
+  assert_true(result.length() <= 2)
+  assert_eq(@quality_line.quality_line_id(), "recipe/quality_line")
+}
+
+test "S1.3 quality_line degenerate: empty array" {
+  assert_eq(@quality_line.quality_line([], 0.5, 10).length(), 0)
+  // k <= 0 返回过滤后全部
+  let s = @schema.empty()
+  let d = @dataobject.make_dataobject("a".repeat(200), @dataobject.Text, s)
+  assert_eq(@quality_line.quality_line([d], 0.5, 0).length(), 1)
+}
+
+test "S1.3 balance_line basic" {
+  let s = @schema.empty()
+  let texts = [
+    @dataobject.make_dataobject("aaa", @dataobject.Text, s),
+    @dataobject.make_dataobject("bb", @dataobject.Text, s),
+  ]
+  let images = [
+    @dataobject.make_dataobject("img1", @dataobject.Image, s),
+  ]
+  let result = @balance_line.balance_line(texts + images, 1)
+  // 每个模态取 top-1，text 取最长的 "aaa"，image 取 "img1"
+  assert_eq(result.length(), 2)
+}
+
+test "S1.3 balance_line degenerate: empty array" {
+  assert_eq(@balance_line.balance_line([], 5).length(), 0)
+  assert_eq(@balance_line.balance_line_id(), "recipe/balance_line")
+}

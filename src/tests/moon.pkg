@@ -38,6 +38,11 @@ import {
   "dataverse/learncore/cluster",
   "dataverse/learncore/feature",
   "dataverse/learncore/metrics",
+
+  "dataverse/recipe/cleaning_line",
+  "dataverse/recipe/dedup_line",
+  "dataverse/recipe/quality_line",
+  "dataverse/recipe/balance_line",
   "dataverse/datair",
   "dataverse/datair/ir_core",
   "dataverse/datair/ir_entity",

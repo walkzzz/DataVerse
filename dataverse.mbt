@@ -59,6 +59,10 @@ pub using @datatemporal.drift { drift_id, make_drift_report, is_significant }
 pub using @datatemporal.replay { replay_id, make_trace, empty_trace, step_count }
 pub using @datatemporal { datatemporal_id }
 pub using @recipe { recipe_id }
+pub using @recipe.cleaning_line { cleaning_line_id, cleaning_line }
+pub using @recipe.dedup_line { dedup_line_id, dedup_line }
+pub using @recipe.quality_line { quality_line_id, quality_line }
+pub using @recipe.balance_line { balance_line_id, balance_line }
 pub using @datair { datair_id, ir_core_id, ir_entity_id, ir_operator_id, ir_kind_count }
 pub using @datair.ir_core { IRNodeId, IRMetadata }
 pub using @datair.ir_entity { EntityType, EntityIR, entity_type_name }

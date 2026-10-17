@@ -1,0 +1,7 @@
+// recipe/balance_line 配比线 / Balance Pipeline
+// 编排：group_by_modality + 每组 topk_by_length
+import {
+  "dataverse/dataobject",
+  "dataverse/opcore/mix",
+  "dataverse/opcore/select",
+}

@@ -145,8 +145,9 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S2.1 | opcore 多模态算子（image/audio/video 3 子包） | ✅ | 78b3204 |
 | S2.2 | opcore 语义算子（semantic 1 子包） | ✅ | 3e1cd7b |
 | S2.3 | learncore DL 算子（dl_layers/dl_losses/dl_optimizers 3 子包） | ✅ | b4069c1 |
+| S2.4 | learncore 模型评估算子（cross_validation/hyperparam_search 2 子包） | ✅ | f867ceb |
 
-**当前测试**：235 · **当前 API**：317（pub fn）+ 61（pub type）
+**当前测试**：253 · **当前 API**：326（pub fn）+ 66（pub type）
 
 ---
 

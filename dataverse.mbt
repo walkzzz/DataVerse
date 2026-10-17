@@ -90,6 +90,9 @@ pub using @recipe.cleaning_line { cleaning_line_id, cleaning_line }
 pub using @recipe.dedup_line { dedup_line_id, dedup_line }
 pub using @recipe.quality_line { quality_line_id, quality_line }
 pub using @recipe.balance_line { balance_line_id, balance_line }
+pub using @recipe.packing_line { packing_line_id, packing_line }
+pub using @recipe.eval_line { eval_line_id, EvalReport, eval_line, empty_eval_report }
+pub using @recipe.cross_modal_line { cross_modal_line_id, CrossModalReport, cross_modal_line }
 pub using @datair { datair_id, ir_core_id, ir_entity_id, ir_operator_id, ir_kind_count }
 pub using @datair.ir_core { IRNodeId, IRMetadata }
 pub using @datair.ir_entity { EntityType, EntityIR, entity_type_name }

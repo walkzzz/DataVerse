@@ -2084,3 +2084,111 @@ test "S2.4 empty_grid_result" {
 test "S2.4 hyperparam_search_id" {
   assert_eq(@hyperparam_search.hyperparam_search_id(), "learncore/hyperparam_search")
 }
+
+// ============================================================
+// S2.5 recipe Phase 2 复合线测试 / Phase 2 pipeline tests
+// ============================================================
+
+test "S2.5 packing_line basic" {
+  let d1 = @dataobject.make_dataobject("hello world foo bar", @dataobject.Text, @schema.empty())
+  let d2 = @dataobject.make_dataobject("test", @dataobject.Text, @schema.empty())
+  let result = @packing_line.packing_line([d1, d2], 5)
+  assert_eq(result.length(), 5)
+}
+
+test "S2.5 packing_line filters empty" {
+  let d1 = @dataobject.make_dataobject("hello", @dataobject.Text, @schema.empty())
+  let d2 = @dataobject.empty_dataobject(@dataobject.Text)
+  let result = @packing_line.packing_line([d1, d2], 10)
+  assert_eq(result.length(), 1)
+}
+
+test "S2.5 packing_line degenerate: chunk_size <= 0" {
+  let d1 = @dataobject.make_dataobject("hello", @dataobject.Text, @schema.empty())
+  let result = @packing_line.packing_line([d1], 0)
+  assert_eq(result.length(), 1)
+}
+
+test "S2.5 packing_line degenerate: empty array" {
+  let result = @packing_line.packing_line([], 10)
+  assert_eq(result.length(), 0)
+}
+
+test "S2.5 packing_line preserves modality" {
+  let d1 = @dataobject.make_dataobject("hello world", @dataobject.Image, @schema.empty())
+  let result = @packing_line.packing_line([d1], 5)
+  assert_eq(result.length(), 3)
+  assert_eq(result[0].modality, @dataobject.Image)
+}
+
+test "S2.5 packing_line_id" {
+  assert_eq(@packing_line.packing_line_id(), "recipe/packing_line")
+}
+
+test "S2.5 eval_line basic" {
+  let d1 = @dataobject.make_dataobject("hello world this is a long enough text", @dataobject.Text, @schema.empty())
+  let d2 = @dataobject.make_dataobject("short", @dataobject.Text, @schema.empty())
+  let report = @eval_line.eval_line([d1, d2])
+  assert_eq(report.total_count, 2)
+  assert_true(report.avg_quality > 0.0)
+  assert_true(report.max_quality >= report.min_quality)
+}
+
+test "S2.5 eval_line modality counts" {
+  let d1 = @dataobject.make_dataobject("text content here", @dataobject.Text, @schema.empty())
+  let d2 = @dataobject.make_dataobject("image data", @dataobject.Image, @schema.empty())
+  let d3 = @dataobject.make_dataobject("audio data", @dataobject.Audio, @schema.empty())
+  let report = @eval_line.eval_line([d1, d2, d3])
+  assert_eq(report.text_count, 1)
+  assert_eq(report.image_count, 1)
+  assert_eq(report.audio_count, 1)
+  assert_eq(report.video_count, 0)
+}
+
+test "S2.5 eval_line degenerate: empty" {
+  let report = @eval_line.eval_line([])
+  assert_eq(report, @eval_line.empty_eval_report())
+}
+
+test "S2.5 eval_line_id" {
+  assert_eq(@eval_line.eval_line_id(), "recipe/eval_line")
+}
+
+test "S2.5 cross_modal_line basic" {
+  let d1 = @dataobject.make_dataobject("text", @dataobject.Text, @schema.empty())
+  let d2 = @dataobject.make_dataobject("img", @dataobject.Image, @schema.empty())
+  let report = @cross_modal_line.cross_modal_line([d1, d2])
+  assert_eq(report.total_count, 2)
+  assert_eq(report.text_count, 1)
+  assert_eq(report.image_count, 1)
+  assert_eq(report.audio_count, 0)
+  assert_eq(report.video_count, 0)
+  assert_true(report.consistency_score > 0.49 && report.consistency_score < 0.51)
+}
+
+test "S2.5 cross_modal_line all modalities" {
+  let d1 = @dataobject.make_dataobject("t", @dataobject.Text, @schema.empty())
+  let d2 = @dataobject.make_dataobject("i", @dataobject.Image, @schema.empty())
+  let d3 = @dataobject.make_dataobject("a", @dataobject.Audio, @schema.empty())
+  let d4 = @dataobject.make_dataobject("v", @dataobject.Video, @schema.empty())
+  let report = @cross_modal_line.cross_modal_line([d1, d2, d3, d4])
+  assert_eq(report.consistency_score, 1.0)
+  assert_eq(report.missing_modalities.length(), 0)
+}
+
+test "S2.5 cross_modal_line degenerate: empty" {
+  let report = @cross_modal_line.cross_modal_line([])
+  assert_eq(report.total_count, 0)
+  assert_eq(report.consistency_score, 0.0)
+  assert_eq(report.missing_modalities.length(), 4)
+}
+
+test "S2.5 cross_modal_line missing modalities" {
+  let d1 = @dataobject.make_dataobject("text only", @dataobject.Text, @schema.empty())
+  let report = @cross_modal_line.cross_modal_line([d1])
+  assert_eq(report.missing_modalities, ["image", "audio", "video"])
+}
+
+test "S2.5 cross_modal_line_id" {
+  assert_eq(@cross_modal_line.cross_modal_line_id(), "recipe/cross_modal_line")
+}

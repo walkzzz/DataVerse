@@ -1,0 +1,5 @@
+// recipe/cross_modal_line 跨模态一致性线 / Cross-Modal Consistency Pipeline
+// S2.5 填充：modality_count → consistency_score → missing_check
+import {
+  "dataverse/dataobject",
+}

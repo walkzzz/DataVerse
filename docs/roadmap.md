@@ -40,7 +40,7 @@
 | S1.2 | learncore 基礎（传统 ML 算子：回归/分类/聚类/降维 + 评估指标算子） | ✅ | c2c9eca | S1.1 |
 | S1.3 | recipe 复合线（cleaning_line / dedup_line / quality_line / balance_line） | ✅ | aee56c3 | S1.1 |
 | S1.4 | DataIR 流水线 IR（DAG）+ 基础优化器（融合、重排） | ⏸ | — | S0.6 |
-| S1.5 | datatemporal 深化（版本塔/双向血缘/回放完善） | ⏸ | — | S0.5 |
+| S1.5 | datatemporal 深化（版本塔/双向血缘/回放完善） | ✅ | 9e083cc | S0.5 |
 | S1.6 | 执行后端 CPU 串行 | ⏸ | — | S1.1 |
 | S1.7 | DOSI 完善（增量索引 + 依赖校验 + ContextBudget） | ⏸ | — | S0.7 |
 | S1.8 | 验证（Data-Juicer 比对 + Agent-Kit 接入 DOSI） | ⏸ | — | S1.3 |

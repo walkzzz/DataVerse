@@ -253,6 +253,24 @@
 - API：215 → 229 pub fn（+14），43 → 46 pub type（+3 DAGEdge/PipelineIR/OptStats）
 - `moon check`：0 error 0 warning · `moon test`：114 passed
 
+### S1.5 - datatemporal 深化
+
+**新增 / Added**
+- 扩展 4 个子包（`src/datatemporal/` 下）：
+  - `version/`：latest + get_by_id + ancestors（祖先链追溯）
+  - `lineage/`：reverse（反转双向血缘）+ compose（血缘组合）+ input/output_count
+  - `replay/`：append_step + replay + trace_summary
+  - `drift/`：drift_direction（up/down/stable）+ merge_reports（合并多报告）
+- 9 个新测试（含退化：空塔/空轨迹/空合并）
+
+**修复 / Fixed**
+- `guard` 是 MoonBit 保留字 → 改用 `counter`
+
+**统计 / Stats**
+- 测试：114 → 123（+9）
+- API：229 → 241 pub fn（+12）
+- `moon check`：0 error 0 warning · `moon test`：123 passed
+
 ---
 
 > DataVerse Changelog | 2026-10-17

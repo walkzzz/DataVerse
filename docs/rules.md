@@ -138,8 +138,9 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S1.2 | learncore 基礎（regression/classify/cluster/feature/metrics 6 子包） | ✅ | c2c9eca |
 | S1.3 | recipe 复合线（cleaning_line/dedup_line/quality_line/balance_line 4 子包） | ✅ | aee56c3 |
 | S1.4 | DataIR 流水线 IR（DAG）+ 基礎优化器（ir_pipeline/ir_optimizer 2 子包） | ✅ | a589beb |
+| S1.5 | datatemporal 深化（version/lineage/replay/drift 4 子包扩展） | ✅ | 9e083cc |
 
-**当前测试**：114 · **当前 API**：229（pub fn）+ 46（pub type）
+**当前测试**：123 · **当前 API**：241（pub fn）+ 46（pub type）
 
 ---
 

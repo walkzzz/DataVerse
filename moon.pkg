@@ -49,6 +49,7 @@ import {
   "agent_kit",
   "self_evolve",
   "parallel",
+  "parallel/cpu_serial",
   "io",
   "governance",
 }

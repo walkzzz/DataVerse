@@ -86,5 +86,8 @@ pub using @dosi.router {
 pub using @agent_kit { agent_kit_id }
 pub using @self_evolve { self_evolve_id }
 pub using @parallel { parallel_id }
+pub using @parallel.cpu_serial {
+  cpu_serial_id, ExecutionPlan, ExecutionResult, make_plan, execute, empty_plan, plan_step_count, merge_results,
+}
 pub using @io { io_id }
 pub using @governance { governance_id }

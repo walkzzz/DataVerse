@@ -1239,3 +1239,59 @@ test "S1.5 drift degenerate: empty merge" {
   assert_eq(merged.metric, "merged")
   assert_eq(merged.drift_score, 0.0)
 }
+///|
+/// # S1.6 执行后端 CPU 串行测试 / CPU Serial Backend Tests
+///
+/// 执行计划生成 + 串行执行 + 轨迹记录 + 结果合并。
+
+test "S1.6 cpu_serial make_plan and execute" {
+  let n1 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("op1"), "whitespace_normalization", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let n2 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("op2"), "truncate", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let p = @ir_pipeline.PipelineIR::empty().add_node(n1).add_node(n2)
+    .add_edge(@ir_pipeline.DAGEdge::new(@ir_core.IRNodeId::new("op1"), @ir_core.IRNodeId::new("op2")))
+  let plan = @cpu_serial.make_plan(p)
+  assert_eq(@cpu_serial.plan_step_count(plan), 2)
+  assert_eq(plan.steps[0], "whitespace_normalization")
+  assert_eq(plan.steps[1], "truncate")
+  let result = @cpu_serial.execute(plan, "input_fp")
+  assert_eq(result.step_count, 2)
+  assert_true(result.success)
+  assert_eq(result.trace.length(), 2)
+}
+
+test "S1.6 cpu_serial degenerate: empty plan" {
+  let plan = @cpu_serial.empty_plan()
+  assert_eq(@cpu_serial.plan_step_count(plan), 0)
+  let result = @cpu_serial.execute(plan, "fp")
+  assert_eq(result.step_count, 0)
+  assert_eq(result.output_fingerprint, "fp")
+  assert_eq(result.trace.length(), 0)
+}
+
+test "S1.6 cpu_serial merge_results" {
+  let r1 = @cpu_serial.execute(@cpu_serial.empty_plan(), "a")
+  let r2 = @cpu_serial.execute(@cpu_serial.empty_plan(), "b")
+  let merged = @cpu_serial.merge_results(r1, r2)
+  assert_eq(merged.output_fingerprint, "a;b")
+  assert_true(merged.success)
+  assert_eq(@cpu_serial.cpu_serial_id(), "parallel/cpu_serial")
+}
+
+test "S1.6 cpu_serial cyclic pipeline degenerate" {
+  // 有环流水线：topo_order 返回空 → make_plan 返回空计划
+  let n1 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("a"), "op_a", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let n2 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("b"), "op_b", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let cyclic = @ir_pipeline.PipelineIR::empty().add_node(n1).add_node(n2)
+    .add_edge(@ir_pipeline.DAGEdge::new(@ir_core.IRNodeId::new("a"), @ir_core.IRNodeId::new("b")))
+    .add_edge(@ir_pipeline.DAGEdge::new(@ir_core.IRNodeId::new("b"), @ir_core.IRNodeId::new("a")))
+  let plan = @cpu_serial.make_plan(cyclic)
+  assert_eq(@cpu_serial.plan_step_count(plan), 0)
+}

@@ -52,4 +52,5 @@ import {
   "dataverse/dosi",
   "dataverse/dosi/builder",
   "dataverse/dosi/router",
+  "dataverse/parallel/cpu_serial",
 }

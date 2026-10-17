@@ -149,8 +149,9 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S2.5 | recipe Phase 2 复合线（packing_line/eval_line/cross_modal_line 3 子包） | ✅ | 668b1c1 |
 | S2.6 | datatemporal 深化（aging/incremental/field_lineage 3 子包） | ✅ | c2c5655 |
 | S2.7 | Agent-Kit 编排（planner/executor 2 子包） | ✅ | e96dfab |
+| S2.8 | DOSI 扩充 + Phase 2 验证 + R16 门禁（batch/versioned 2 子包 + 15 spec） | ✅ | b721d50 |
 
-**当前测试**：304 · **当前 API**：357（pub fn）+ 77（pub type）
+**当前测试**：338 · **当前 API**：373（pub fn）+ 80（pub type）
 
 ---
 

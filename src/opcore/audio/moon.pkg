@@ -1,0 +1,6 @@
+// opcore/audio 音频算子 / Audio Operators
+// S2.1 填充：AudioMeta + audio_duration + sample_rate_filter + audio_segment
+import {
+  "dataverse/dataobject",
+  "dataverse/dataobject/schema",
+}

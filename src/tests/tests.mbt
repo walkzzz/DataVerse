@@ -1466,3 +1466,195 @@ test "S1.8 dosi_adapter degenerate: empty index" {
   assert_eq(@dosi_adapter.plan_pipeline(empty, ["x"]).length(), 0)
   assert_eq(@dosi_adapter.dosi_adapter_id(), "agent_kit/dosi_adapter")
 }
+
+
+// ============================================================
+// S2.1 opcore 多模态算子测试 / Multimodal operator tests
+// ============================================================
+
+test "S2.1 image_size basic" {
+  let meta = @image.make_image_meta(1920, 1080, 3, "png")
+  let (w, h) = @image.image_size(meta)
+  assert_eq(w, 1920)
+  assert_eq(h, 1080)
+}
+
+test "S2.1 image_size degenerate: empty meta" {
+  let meta = @image.empty_image_meta()
+  let (w, h) = @image.image_size(meta)
+  assert_eq(w, 0)
+  assert_eq(h, 0)
+}
+
+test "S2.1 aspect_ratio basic" {
+  let meta = @image.make_image_meta(1920, 1080, 3, "png")
+  let r = @image.aspect_ratio(meta)
+  assert_true(r > 1.77 && r < 1.78)
+}
+
+test "S2.1 aspect_ratio degenerate: height=0" {
+  let meta = @image.make_image_meta(100, 0, 3, "png")
+  assert_eq(@image.aspect_ratio(meta), 0.0)
+}
+
+test "S2.1 aspect_ratio_filter in range" {
+  let meta = @image.make_image_meta(200, 100, 3, "jpg")
+  assert_true(@image.aspect_ratio_filter(meta, 1.0, 3.0))
+}
+
+test "S2.1 aspect_ratio_filter out of range" {
+  let meta = @image.make_image_meta(200, 100, 3, "jpg")
+  assert_true(!@image.aspect_ratio_filter(meta, 3.0, 4.0))
+}
+
+test "S2.1 image_resize basic" {
+  let meta = @image.make_image_meta(1920, 1080, 3, "png")
+  let resized = @image.image_resize(meta, 640, 360)
+  let (w, h) = @image.image_size(resized)
+  assert_eq(w, 640)
+  assert_eq(h, 360)
+  assert_eq(resized.channels, 3)
+  assert_eq(resized.format, "png")
+}
+
+test "S2.1 image_resize degenerate: negative dims" {
+  let meta = @image.make_image_meta(100, 100, 3, "png")
+  let resized = @image.image_resize(meta, -10, -20)
+  let (w, h) = @image.image_size(resized)
+  assert_eq(w, 0)
+  assert_eq(h, 0)
+}
+
+test "S2.1 image_crop basic" {
+  let meta = @image.make_image_meta(100, 100, 3, "png")
+  let cropped = @image.image_crop(meta, 10, 20, 30, 40)
+  let (w, h) = @image.image_size(cropped)
+  assert_eq(w, 30)
+  assert_eq(h, 40)
+}
+
+test "S2.1 image_crop degenerate: out of bounds" {
+  let meta = @image.make_image_meta(50, 50, 3, "png")
+  let cropped = @image.image_crop(meta, 40, 40, 30, 30)
+  let (w, h) = @image.image_size(cropped)
+  assert_eq(w, 10)
+  assert_eq(h, 10)
+}
+
+test "S2.1 image_crop degenerate: negative origin" {
+  let meta = @image.make_image_meta(100, 100, 3, "png")
+  let cropped = @image.image_crop(meta, -10, -10, 50, 50)
+  let (w, h) = @image.image_size(cropped)
+  assert_eq(w, 50)
+  assert_eq(h, 50)
+}
+
+test "S2.1 image_to_dataobject modality" {
+  let meta = @image.make_image_meta(640, 480, 3, "png")
+  let d = @image.image_to_dataobject(meta)
+  assert_eq(d.modality, @dataobject.Image)
+  assert_true(d.content.length() > 0)
+}
+
+test "S2.1 audio_duration basic" {
+  let meta = @audio.make_audio_meta(5000, 44100, 2, "wav")
+  assert_eq(@audio.audio_duration(meta), 5000)
+}
+
+test "S2.1 audio_duration degenerate: empty meta" {
+  let meta = @audio.empty_audio_meta()
+  assert_eq(@audio.audio_duration(meta), 0)
+}
+
+test "S2.1 sample_rate_filter in range" {
+  let meta = @audio.make_audio_meta(5000, 44100, 2, "wav")
+  assert_true(@audio.sample_rate_filter(meta, 8000, 48000))
+}
+
+test "S2.1 sample_rate_filter out of range" {
+  let meta = @audio.make_audio_meta(5000, 44100, 2, "wav")
+  assert_true(!@audio.sample_rate_filter(meta, 48000, 96000))
+}
+
+test "S2.1 audio_segment basic" {
+  let meta = @audio.make_audio_meta(10000, 44100, 2, "wav")
+  let seg = @audio.audio_segment(meta, 2000, 5000)
+  assert_eq(seg.duration_ms, 3000)
+  assert_eq(seg.sample_rate, 44100)
+}
+
+test "S2.1 audio_segment degenerate: out of bounds" {
+  let meta = @audio.make_audio_meta(5000, 44100, 2, "wav")
+  let seg = @audio.audio_segment(meta, 3000, 10000)
+  assert_eq(seg.duration_ms, 2000)
+}
+
+test "S2.1 audio_segment degenerate: negative start" {
+  let meta = @audio.make_audio_meta(5000, 44100, 2, "wav")
+  let seg = @audio.audio_segment(meta, -100, 2000)
+  assert_eq(seg.duration_ms, 2000)
+}
+
+test "S2.1 audio_segment degenerate: end before start" {
+  let meta = @audio.make_audio_meta(5000, 44100, 2, "wav")
+  let seg = @audio.audio_segment(meta, 3000, 1000)
+  assert_eq(seg.duration_ms, 0)
+}
+
+test "S2.1 audio_to_dataobject modality" {
+  let meta = @audio.make_audio_meta(5000, 44100, 2, "wav")
+  let d = @audio.audio_to_dataobject(meta)
+  assert_eq(d.modality, @dataobject.Audio)
+}
+
+test "S2.1 video_duration basic" {
+  let meta = @video.make_video_meta(60000, 30, 1920, 1080, "mp4")
+  assert_eq(@video.video_duration(meta), 60000)
+}
+
+test "S2.1 frame_count basic" {
+  let meta = @video.make_video_meta(60000, 30, 1920, 1080, "mp4")
+  assert_eq(@video.frame_count(meta), 1800)
+}
+
+test "S2.1 frame_count degenerate: zero fps" {
+  let meta = @video.make_video_meta(60000, 0, 1920, 1080, "mp4")
+  assert_eq(@video.frame_count(meta), 0)
+}
+
+test "S2.1 frame_count degenerate: zero duration" {
+  let meta = @video.make_video_meta(0, 30, 1920, 1080, "mp4")
+  assert_eq(@video.frame_count(meta), 0)
+}
+
+test "S2.1 video_sample_frames basic" {
+  let meta = @video.make_video_meta(10000, 30, 1920, 1080, "mp4")
+  let frames = @video.video_sample_frames(meta, 2000)
+  assert_eq(frames.length(), 5)
+  assert_eq(frames[0], 0)
+  assert_eq(frames[4], 8000)
+}
+
+test "S2.1 video_sample_frames degenerate: zero interval" {
+  let meta = @video.make_video_meta(10000, 30, 1920, 1080, "mp4")
+  let frames = @video.video_sample_frames(meta, 0)
+  assert_eq(frames.length(), 0)
+}
+
+test "S2.1 video_sample_frames degenerate: negative interval" {
+  let meta = @video.make_video_meta(10000, 30, 1920, 1080, "mp4")
+  let frames = @video.video_sample_frames(meta, -100)
+  assert_eq(frames.length(), 0)
+}
+
+test "S2.1 video_to_dataobject modality" {
+  let meta = @video.make_video_meta(60000, 30, 1920, 1080, "mp4")
+  let d = @video.video_to_dataobject(meta)
+  assert_eq(d.modality, @dataobject.Video)
+}
+
+test "S2.1 image_id and audio_id and video_id" {
+  assert_eq(@image.image_id(), "opcore/image")
+  assert_eq(@audio.audio_id(), "opcore/audio")
+  assert_eq(@video.video_id(), "opcore/video")
+}

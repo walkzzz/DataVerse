@@ -1,8 +1,8 @@
 # DataVerse Roadmap
 
-> **当前阶段**：Phase 1 对标成熟期  
+> **当前阶段**：Phase 2 全域算子成熟期  
 > **日期**：2026-10-17  
-> **基线**：架构 §6 Phase 1
+> **基线**：架构 §6 Phase 2
 
 ## Phase 0｜地基固化期（0.5–1 年）✅ 已闭环
 
@@ -39,7 +39,7 @@
 | S1.1 | opcore 补齐 14 类算子（Ingest/Normalize/Quality/Transform/Annotate/Select/Mix/Pack/Eval/Lineage/Safety 11 类） | ✅ | 2c9e030 | S0.4 |
 | S1.2 | learncore 基礎（传统 ML 算子：回归/分类/聚类/降维 + 评估指标算子） | ✅ | c2c9eca | S1.1 |
 | S1.3 | recipe 复合线（cleaning_line / dedup_line / quality_line / balance_line） | ✅ | aee56c3 | S1.1 |
-| S1.4 | DataIR 流水线 IR（DAG）+ 基础优化器（融合、重排） | ⏸ | — | S0.6 |
+| S1.4 | DataIR 流水线 IR（DAG）+ 基础优化器（融合、重排） | ✅ | a589beb | S0.6 |
 | S1.5 | datatemporal 深化（版本塔/双向血缘/回放完善） | ✅ | 9e083cc | S0.5 |
 | S1.6 | 执行后端 CPU 串行 | ✅ | 24b67d2 | S1.1 |
 | S1.7 | DOSI 完善（增量索引 + 依赖校验 + ContextBudget） | ✅ | ec8f631 | S0.7 |
@@ -49,6 +49,30 @@
 
 - 可试用算子库 + 复合流水线 · 可对标 Data-Juicer · 可产出训练就绪数据集
 
+## Phase 2｜全域算子成熟期（2–4 年）
+
+> 风险等级：⚠️ 中等风险 | 交付性质：核心目标，渐进式开发
+
+**目标**：多模态算子齐备，语义算子（评分/变换/合成）成熟，Agent 编排可用
+
+> **实现策略**：MoonBit 无真实 DL/GPU/LLM 解码能力，采用**契约定义 + 元数据驱动 + 模拟实现 + 退化验证**策略（架构 §10"Phase 2 渐进开发，每算子做真值比对"）。
+
+### Sprint 分解
+
+| Sprint | 内容 | 状态 | commit | 依赖 |
+|--------|------|------|--------|------|
+| S2.1 | opcore 多模态算子（image/audio/video 元数据算子：size/aspect_ratio/duration/sample_rate/resize/crop/segment） | ⏳ | — | S1.1 |
+| S2.2 | opcore 语义算子（质量评分/改写/合成契约 + 模拟实现 + 退化验证） | ⏳ | — | S1.1 |
+| S2.3 | learncore DL 算子（网络层/架构族/损失/优化器契约 + 前向传播模拟） | ⏳ | — | S1.2 |
+| S2.4 | learncore 模型评估算子（交叉验证 k-fold / 超参搜索网格） | ⏳ | — | S2.3 |
+| S2.5 | recipe Phase 2 复合线（packing_line / eval_line / 跨模态一致性线） | ⏳ | — | S2.1, S1.3 |
+| S2.6 | datatemporal 深化（漂移检测增强 / 数据衰老 / 增量更新 / 字段级血缘） | ⏳ | — | S1.5 |
+| S2.7 | Agent-Kit 编排（NL→DataIR Planner-Executor 契约 + 模拟） | ⏳ | — | S1.8, S1.4 |
+| S2.8 | DOSI 扩充（批量索引 / 多版本索引）+ Phase 2 验证 + R16 门禁 | ⏳ | — | S2.1-S2.7 |
+
+### Phase 2 交付物
+
+- 多模态算子齐备 · 语义算子契约成熟 · DL 算子契约 + 前向模拟 · Agent 编排可用 · 跨模态一致性流水线
 ## 后续阶段 / Later Phases
 
 | Phase | 目标 | 风险 | 交付性质 |

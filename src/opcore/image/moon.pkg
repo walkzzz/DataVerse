@@ -1,0 +1,6 @@
+// opcore/image 图像算子 / Image Operators
+// S2.1 填充：ImageMeta + image_size + aspect_ratio + image_resize + image_crop
+import {
+  "dataverse/dataobject",
+  "dataverse/dataobject/schema",
+}

@@ -1,0 +1,73 @@
+///|
+/// # opcore/video 视频算子 / Video Operators
+///
+/// 视频元数据算子：时长、帧数、帧采样。架构 §4.3.2 ⑦ Transform（多模态）。
+/// S2.1 填充：元数据驱动（MoonBit 无真实视频解码，操作 VideoMeta 结构体）。
+/// 对标 DJ video_duration_filter / frame_count_filter。
+///
+/// # Video operators
+///
+/// Metadata-driven video operators. See architecture §4.3.2 ⑦.
+
+/// 视频元数据 / Video metadata.
+pub struct VideoMeta {
+  duration_ms : Int
+  fps : Int
+  width : Int
+  height : Int
+  format : String
+} derive(Debug, Eq)
+
+pub extend VideoMeta with Eq::{equal, not_equal}
+pub extend VideoMeta with Debug::{to_repr}
+
+/// 构造视频元数据 / Build video metadata.
+pub fn make_video_meta(duration_ms : Int, fps : Int, width : Int, height : Int, format : String) -> VideoMeta {
+  { duration_ms, fps, width, height, format }
+}
+
+/// 空视频元数据（退化安全）/ Empty video metadata (degenerate-safe).
+pub fn empty_video_meta() -> VideoMeta {
+  { duration_ms: 0, fps: 0, width: 0, height: 0, format: "" }
+}
+
+/// 视频时长（毫秒）/ Video duration in milliseconds.
+pub fn video_duration(meta : VideoMeta) -> Int {
+  meta.duration_ms
+}
+
+/// 帧数 / Frame count.
+///
+/// 公式：`duration_ms * fps / 1000`。
+/// 退化安全：fps=0 或 duration_ms=0 返回 0。
+pub fn frame_count(meta : VideoMeta) -> Int {
+  meta.duration_ms * meta.fps / 1000
+}
+
+/// 帧采样时间戳 / Sample frame timestamps.
+///
+/// 每 interval_ms 毫秒采样一帧，返回时间戳数组（毫秒）。
+/// 退化安全：interval_ms <= 0 返回空数组。
+pub fn video_sample_frames(meta : VideoMeta, interval_ms : Int) -> Array[Int] {
+  if interval_ms <= 0 || meta.duration_ms <= 0 {
+    []
+  } else {
+    let result = []
+    let mut t = 0
+    while t < meta.duration_ms {
+      result.push(t)
+      t = t + interval_ms
+    }
+    result
+  }
+}
+
+/// 视频元数据转 DataObject / Convert video metadata to DataObject.
+pub fn video_to_dataobject(meta : VideoMeta) -> @dataobject.DataObject {
+  let content = "video:" + meta.format.to_string() + ":" + meta.duration_ms.to_string() + "ms@" + meta.fps.to_string() + "fps" + meta.width.to_string() + "x" + meta.height.to_string()
+  @dataobject.make_dataobject(content, @dataobject.Video, @schema.empty())
+}
+
+pub fn video_id() -> String {
+  "opcore/video"
+}

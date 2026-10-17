@@ -8,9 +8,9 @@
 ///
 /// Unified entry `@dataverse`, re-exports all first-level sub-packages' public API.
 /// S0.1 skeleton + S0.2 kernel + S0.3 dataobject + S0.4 opcore + S0.5 datatemporal + S0.6 datair + S0.7 dosi.
-/// S1.1 opcore 补齐 14 类算子（ingest/normalize/quality/transform/annotate/select/mix/pack/eval/lineage_op/safety）.
+/// S1.1 opcore 14 ops + S2.1 multimodal ops (image/audio/video).
 pub fn version() -> String {
-  "dataverse 0.1.0-dev (S1.1 opcore 14 ops)"
+  "dataverse 0.1.0-dev (S2.1 multimodal ops)"
 }
 
 pub using @kernel {
@@ -42,6 +42,15 @@ pub using @opcore.pack { pack_id, text_chunk }
 pub using @opcore.eval { eval_id, GlobalStats, global_statistics }
 pub using @opcore.lineage_op { lineage_op_id, attach_lineage, make_op_lineage }
 pub using @opcore.safety { safety_id, mask_digits, mask_email }
+pub using @opcore.image {
+  image_id, ImageMeta, make_image_meta, empty_image_meta, image_size, aspect_ratio, aspect_ratio_filter, image_resize, image_crop, image_to_dataobject,
+}
+pub using @opcore.audio {
+  audio_id, AudioMeta, make_audio_meta, empty_audio_meta, audio_duration, sample_rate_filter, audio_segment, audio_to_dataobject,
+}
+pub using @opcore.video {
+  video_id, VideoMeta, make_video_meta, empty_video_meta, video_duration, frame_count, video_sample_frames, video_to_dataobject,
+}
 pub using @learncore {
   learncore_id, ModelSpace, model_space_name, Hyperparams, make_hyperparams,
 }

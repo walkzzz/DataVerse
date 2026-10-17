@@ -69,6 +69,12 @@ pub using @datair.ir_entity { EntityType, EntityIR, entity_type_name }
 pub using @datair.ir_operator {
   Determinism, IRModality, CostModel, OperatorIR, determinism_name, modality_name,
 }
+pub using @datair.ir_pipeline {
+  ir_pipeline_id, DAGEdge, PipelineIR,
+}
+pub using @datair.ir_optimizer {
+  ir_optimizer_id, fuse_adjacent_maps, remove_identity, optimize, OptStats, opt_stats,
+}
 pub using @dosi {
   dosi_id, builder_id, router_id,
   SymbolicEntry, SemanticEntry, DOSIEntry, DOSIIndex,

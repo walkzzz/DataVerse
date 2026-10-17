@@ -47,6 +47,8 @@ import {
   "dataverse/datair/ir_core",
   "dataverse/datair/ir_entity",
   "dataverse/datair/ir_operator",
+  "dataverse/datair/ir_pipeline",
+  "dataverse/datair/ir_optimizer",
   "dataverse/dosi",
   "dataverse/dosi/builder",
   "dataverse/dosi/router",

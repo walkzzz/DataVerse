@@ -41,6 +41,8 @@ import {
   "datair/ir_core",
   "datair/ir_entity",
   "datair/ir_operator",
+  "datair/ir_pipeline",
+  "datair/ir_optimizer",
   "dosi",
   "dosi/builder",
   "dosi/router",

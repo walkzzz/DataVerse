@@ -1032,3 +1032,122 @@ test "S1.3 balance_line degenerate: empty array" {
   assert_eq(@balance_line.balance_line([], 5).length(), 0)
   assert_eq(@balance_line.balance_line_id(), "recipe/balance_line")
 }
+///|
+/// # S1.4 DataIR 流水线 IR（DAG）+ 优化器测试 / Pipeline IR + Optimizer Tests
+///
+/// 架构 §4.6：DAG 构造 + 拓扑排序 + 算子融合 + 恒等消除。
+
+test "S1.4 ir_pipeline construction" {
+  let p = @ir_pipeline.PipelineIR::empty()
+  assert_eq(p.node_count(), 0)
+  assert_eq(p.edge_count(), 0)
+  let n1 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("op1"),
+    "whitespace_normalization",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
+  )
+  let p1 = p.add_node(n1)
+  assert_eq(p1.node_count(), 1)
+  let n2 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("op2"),
+    "truncate",
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
+  )
+  let p2 = p1.add_node(n2)
+  let e = @ir_pipeline.DAGEdge::new(
+    @ir_core.IRNodeId::new("op1"),
+    @ir_core.IRNodeId::new("op2"),
+  )
+  let p3 = p2.add_edge(e)
+  assert_eq(p3.node_count(), 2)
+  assert_eq(p3.edge_count(), 1)
+  assert_eq(@ir_pipeline.ir_pipeline_id(), "datair/ir_pipeline")
+}
+
+test "S1.4 ir_pipeline topo_order linear" {
+  let n1 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("a"), "op_a", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let n2 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("b"), "op_b", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let n3 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("c"), "op_c", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let p = @ir_pipeline.PipelineIR::empty().add_node(n1).add_node(n2).add_node(n3)
+    .add_edge(@ir_pipeline.DAGEdge::new(@ir_core.IRNodeId::new("a"), @ir_core.IRNodeId::new("b")))
+    .add_edge(@ir_pipeline.DAGEdge::new(@ir_core.IRNodeId::new("b"), @ir_core.IRNodeId::new("c")))
+  let order = p.topo_order()
+  assert_eq(order.length(), 3)
+  assert_eq(order[0].value(), "a")
+  assert_eq(order[1].value(), "b")
+  assert_eq(order[2].value(), "c")
+}
+
+test "S1.4 ir_pipeline topo_order degenerate: empty and cycle" {
+  let empty = @ir_pipeline.PipelineIR::empty()
+  assert_eq(empty.topo_order().length(), 0)
+  // 有环：a→b→a
+  let na = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("a"), "op_a", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let nb = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("b"), "op_b", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let cyclic = @ir_pipeline.PipelineIR::empty().add_node(na).add_node(nb)
+    .add_edge(@ir_pipeline.DAGEdge::new(@ir_core.IRNodeId::new("a"), @ir_core.IRNodeId::new("b")))
+    .add_edge(@ir_pipeline.DAGEdge::new(@ir_core.IRNodeId::new("b"), @ir_core.IRNodeId::new("a")))
+  assert_eq(cyclic.topo_order().length(), 0)
+}
+
+test "S1.4 ir_optimizer fuse_adjacent_maps" {
+  let n1 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("op1"), "whitespace_normalization", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let n2 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("op2"), "whitespace_normalization", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let n3 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("op3"), "truncate", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let p = @ir_pipeline.PipelineIR::empty().add_node(n1).add_node(n2).add_node(n3)
+  let fused = @ir_optimizer.fuse_adjacent_maps(p)
+  assert_eq(fused.node_count(), 2)
+}
+
+test "S1.4 ir_optimizer remove_identity" {
+  let n1 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("op1"), "identity", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let n2 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("op2"), "truncate", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let n3 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("op3"), "noop", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let p = @ir_pipeline.PipelineIR::empty().add_node(n1).add_node(n2).add_node(n3)
+  let cleaned = @ir_optimizer.remove_identity(p)
+  assert_eq(cleaned.node_count(), 1)
+}
+
+test "S1.4 ir_optimizer optimize and stats" {
+  let n1 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("op1"), "identity", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let n2 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("op2"), "normalize", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let n3 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("op3"), "normalize", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let p = @ir_pipeline.PipelineIR::empty().add_node(n1).add_node(n2).add_node(n3)
+  let opt = @ir_optimizer.optimize(p)
+  assert_eq(opt.node_count(), 1)
+  let stats = @ir_optimizer.opt_stats(p, opt)
+  assert_eq(stats.original_nodes, 3)
+  assert_eq(stats.optimized_nodes, 1)
+  assert_eq(stats.removed, 2)
+  assert_eq(@ir_optimizer.ir_optimizer_id(), "datair/ir_optimizer")
+}

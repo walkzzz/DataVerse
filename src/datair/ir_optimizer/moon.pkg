@@ -1,0 +1,5 @@
+// datair/ir_optimizer 基礎优化器 / Basic Optimizer
+// S1.4 基礎：fuse_adjacent_maps + remove_identity + optimize
+import {
+  "dataverse/datair/ir_pipeline",
+}

@@ -457,6 +457,17 @@
 - API：420→432 pub fn + 93→100 pub type
 - commit：`0ce9a46`
 
+### S3.3 - opcore/plugin 插件系统
+
+**新增 / Added**
+- `src/opcore/plugin/`：5 type + 17 fn
+  - PluginStatus(Loaded/Active/Disabled/Error) + PluginMeta + PluginDependency + PluginEntry + PluginRegistry
+  - register/unregister + enable/disable + list + plugins_by_status + check_dependency + check_all_dependencies
+- 测试: +16
+- 总计: 421 → 437 passed
+- API: 432→449 pub fn + 100→105 pub type
+- commit: `b0bf3f1`
+
 ---
 
 > DataVerse Changelog | 2026-10-17

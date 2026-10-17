@@ -1244,8 +1244,9 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S2.12 | 文档治理（roadmap 重建 + learncore README + 最终验证） | ✅ | — |
 | S3.1 | io 数据源/汇适配（source/sink 契约 + 内存模拟） | ✅ | 8e0c9bf |
 | S3.2 | parallel/cpu_parallel 分布式执行后端 | ✅ | 0ce9a46 |
+| S3.3 | opcore/plugin 插件系统 | ✅ | b0bf3f1 |
 
-**当前测试**：421 · **当前 API**：432（pub fn）+ 100（pub type）
+**当前测试**：437 · **当前 API**：449（pub fn）+ 105（pub type）
 
 ---
 

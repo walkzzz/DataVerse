@@ -331,6 +331,24 @@
 
 **Phase 1 总计**：测试 59→142（+83），API 155→264 pub fn + 51 pub type，0 error 0 warning。
 
+### R16 门禁：形式化证明包
+
+**新增 / Added**
+- `src/spec/` 包：15 个形式化性质验证（proof-carrying 风格）
+  - 幂等性：whitespace_normalization / exact_dedup / mask_digits / to_lowercase
+  - 不变量：topk_by_length 长度+有序 / standardize 零均值 / normalize_minmax [0,1] / accuracy [0,1] / mse 非负
+  - 收敛性：kmeans 确定性收敛
+  - 拓扑合法性：topo_order 边顺序
+  - 单调性：optimize 节点数递减
+  - 精确性：linear_regression 完美拟合
+
+**R16 五手段验证结果**：全部通过 ✅
+1. AI 辅助审查 ✅ 2. FAKE 退化数据 ✅ 3. MOCK 纯函数 ✅ 4. E2E 跨包 ✅ 5. 形式化证明 ✅
+
+**统计 / Stats**
+- 测试：142 → 157（+15）
+- `moon check`：0 error 0 warning · `moon test`：157 passed
+
 ---
 
 > DataVerse Changelog | 2026-10-17

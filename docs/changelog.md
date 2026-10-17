@@ -423,6 +423,22 @@
 - `moon check`：0 error 0 warning · `moon test`：387 passed
 - Phase 2 深化期闭环：S2.9 + S2.10 + S2.11 + S2.12 全部通过
 
+### S3.1 - io 数据源/汇适配（source/sink 契约 + 内存模拟）
+
+**新增 / Added**
+- `src/io/source/`：DataSourceType + SourceConfig + SourceMeta + read_source + source_uri + 3 constructors = 3 type + 9 fn
+- `src/io/sink/`：DataSinkType + SinkConfig + WriteResult + SinkStats + write_sink + execute_write + sink_uri + 3 constructors = 4 type + 11 fn
+- 策略：契约 + 内存模拟（不引入平台 FFI）
+
+**测试 / Tests**
+- +18：source URI/read，sink URI/write/execute，degenerate safety
+- 总计：387 → 405 passed
+
+**统计 / Stats**
+- API：400→420 pub fn + 86→93 pub type
+- `moon check`：0 error 0 warning · `moon test`：405 passed
+- commit：`8e0c9bf`
+
 ---
 
 > DataVerse Changelog | 2026-10-17

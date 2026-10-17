@@ -1,0 +1,2 @@
+// kernel 算子执行内核 / Operator execution kernel
+// S0.2 填充：exact/approx/streaming/cache 四个子包

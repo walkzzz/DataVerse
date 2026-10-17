@@ -1241,6 +1241,7 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S2.9 | learncore DL 扩展层（Conv2d/MaxPool/Dropout/BatchNorm） | ✅ | bab0566 |
 | S2.10 | opcore 多模态扩展（image flip/rotate + audio mix + video extract_frames） | ✅ | 31fd406 |
 | S2.11 | opcore 语义扩展（停用词过滤 + 改写/合成 + 词频 + 相似度） | ✅ | 0bc72c6 |
+| S2.12 | 文档治理（roadmap 重建 + learncore README + 最终验证） | ✅ | — |
 
 **当前测试**：387 · **当前 API**：400（pub fn）+ 86（pub type）
 

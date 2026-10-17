@@ -8,9 +8,9 @@
 ///
 /// Unified entry `@dataverse`, re-exports all first-level sub-packages' public API.
 /// S0.1 skeleton + S0.2 kernel + S0.3 dataobject + S0.4 opcore + S0.5 datatemporal + S0.6 datair + S0.7 dosi.
-/// S2.1-S2.8 Phase 2 全域算子成熟期闭环. S2.9 DL + S2.10 多模态 + S2.11 语义扩展.
+/// S2.1-S2.8 Phase 2 闭环. S2.9-S2.12 Phase 2 深化闭环.
 pub fn version() -> String {
-  "dataverse 0.1.0-dev (S2.11 semantic extension)"
+  "dataverse 0.1.0-dev (S2.12 Phase 2 deepening complete)"
 }
 
 pub using @kernel {

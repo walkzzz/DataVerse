@@ -412,6 +412,17 @@
 - `moon check`：0 error 0 warning · `moon test`：387 passed
 - commit：`0bc72c6`
 
+### S2.12 - 文档治理（roadmap 重建 + learncore README + 最终验证）
+
+**新增 / Added**
+- `docs/roadmap.md`：完整重建（Phase 0-2 + 深化期 + Phase 3 待启动 + 当前统计）
+- `src/learncore/README.md`：learncore 子包说明（10 子包 + 公共 API + 设计说明）
+- `dataverse.mbt`：version → "S2.12 Phase 2 deepening complete"
+
+**验证 / Verified**
+- `moon check`：0 error 0 warning · `moon test`：387 passed
+- Phase 2 深化期闭环：S2.9 + S2.10 + S2.11 + S2.12 全部通过
+
 ---
 
 > DataVerse Changelog | 2026-10-17

@@ -2911,3 +2911,123 @@ test "S2.11 text_similarity degenerate: both empty" {
   let sim = @semantic.text_similarity(a, b)
   assert_eq(sim, 0.0)
 }
+// ============================================================
+// S3.1 io 数据源/汇测试 / IO source/sink tests
+// ============================================================
+
+test "S3.1 source_type_name" {
+  assert_eq(@source.source_type_name(@source.File), "file")
+  assert_eq(@source.source_type_name(@source.ObjectStorage), "object_storage")
+  assert_eq(@source.source_type_name(@source.DataLake), "data_lake")
+  assert_eq(@source.source_type_name(@source.VectorStore), "vector_store")
+  assert_eq(@source.source_type_name(@source.InMemory), "in_memory")
+}
+
+test "S3.1 file_source convenience" {
+  let cfg = @source.file_source("/data/train.json", "json")
+  assert_eq(cfg.source_type, @source.File)
+  assert_eq(cfg.path, "/data/train.json")
+  assert_eq(cfg.format, "json")
+}
+
+test "S3.1 object_storage_source convenience" {
+  let cfg = @source.object_storage_source("obs.cn-east-3", "bucket1", "key1", "parquet")
+  assert_eq(cfg.source_type, @source.ObjectStorage)
+  assert_eq(cfg.endpoint, "obs.cn-east-3")
+  assert_eq(cfg.bucket, "bucket1")
+}
+
+test "S3.1 source_uri file" {
+  let cfg = @source.file_source("/data/train.json", "json")
+  assert_eq(@source.source_uri(cfg), "file:///data/train.json")
+}
+
+test "S3.1 source_uri object_storage" {
+  let cfg = @source.object_storage_source("endpoint", "bucket", "key", "json")
+  assert_eq(@source.source_uri(cfg), "obs://endpoint/bucket/key")
+}
+
+test "S3.1 source_uri in_memory" {
+  let cfg = @source.in_memory_source("json")
+  assert_eq(@source.source_uri(cfg), "memory://json")
+}
+
+test "S3.1 read_source basic" {
+  let cfg = @source.file_source("/data/train.json", "json")
+  let data = @source.read_source(cfg, 3)
+  assert_eq(data.length(), 3)
+  assert_true(data[0].content.length() > 0)
+}
+
+test "S3.1 read_source degenerate: zero count" {
+  let cfg = @source.file_source("/data/train.json", "json")
+  let data = @source.read_source(cfg, 0)
+  assert_eq(data.length(), 0)
+}
+
+test "S3.1 read_source degenerate: negative count" {
+  let cfg = @source.file_source("/data/train.json", "json")
+  let data = @source.read_source(cfg, -1)
+  assert_eq(data.length(), 0)
+}
+
+test "S3.1 source_meta_uri" {
+  let cfg = @source.file_source("/data/train.json", "json")
+  let meta = @source.make_source_meta(cfg, 100, 4096)
+  assert_eq(@source.source_meta_uri(meta), "file:///data/train.json?items=100&size=4096")
+}
+
+test "S3.1 sink_type_name" {
+  assert_eq(@sink.sink_type_name(@sink.File), "file")
+  assert_eq(@sink.sink_type_name(@sink.ObjectStorage), "object_storage")
+  assert_eq(@sink.sink_type_name(@sink.InMemory), "in_memory")
+}
+
+test "S3.1 file_sink convenience" {
+  let cfg = @sink.file_sink("/data/output.json", "json")
+  assert_eq(cfg.sink_type, @sink.File)
+  assert_eq(cfg.path, "/data/output.json")
+}
+
+test "S3.1 sink_uri file" {
+  let cfg = @sink.file_sink("/data/output.json", "json")
+  assert_eq(@sink.sink_uri(cfg), "file:///data/output.json")
+}
+
+test "S3.1 sink_uri object_storage" {
+  let cfg = @sink.object_storage_sink("endpoint", "bucket", "key", "parquet")
+  assert_eq(@sink.sink_uri(cfg), "obs://endpoint/bucket/key")
+}
+
+test "S3.1 write_sink basic" {
+  let cfg = @sink.file_sink("/data/output.json", "json")
+  let data = [
+    @dataobject.make_dataobject("item1", @dataobject.Text, @schema.empty()),
+    @dataobject.make_dataobject("item2", @dataobject.Text, @schema.empty()),
+    @dataobject.make_dataobject("item3", @dataobject.Text, @schema.empty()),
+  ]
+  let count = @sink.write_sink(cfg, data)
+  assert_eq(count, 3)
+}
+
+test "S3.1 write_sink degenerate: empty array" {
+  let cfg = @sink.file_sink("/data/output.json", "json")
+  let count = @sink.write_sink(cfg, [])
+  assert_eq(count, 0)
+}
+
+test "S3.1 execute_write returns result" {
+  let cfg = @sink.file_sink("/data/output.json", "json")
+  let data = [
+    @dataobject.make_dataobject("item1", @dataobject.Text, @schema.empty()),
+  ]
+  let result = @sink.execute_write(cfg, data)
+  assert_eq(result.written_count, 1)
+  assert_eq(result.success, true)
+}
+
+test "S3.1 sink_stats_uri" {
+  let cfg = @sink.file_sink("/data/output.json", "json")
+  let stats = @sink.make_sink_stats(cfg, 500, 8192)
+  assert_eq(@sink.sink_stats_uri(stats), "file:///data/output.json?written=500&bytes=8192")
+}

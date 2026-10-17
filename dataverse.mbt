@@ -8,9 +8,9 @@
 ///
 /// Unified entry `@dataverse`, re-exports all first-level sub-packages' public API.
 /// S0.1 skeleton + S0.2 kernel + S0.3 dataobject + S0.4 opcore + S0.5 datatemporal + S0.6 datair + S0.7 dosi.
-/// S2.1-S2.8 Phase 2 闭环. S2.9-S2.12 Phase 2 深化闭环.
+/// S2 闭环 + S3.1 io 数据源/汇适配.
 pub fn version() -> String {
-  "dataverse 0.1.0-dev (S2.12 Phase 2 deepening complete)"
+  "dataverse 0.1.0-dev (S3.1 io source/sink)"
 }
 
 pub using @kernel {
@@ -153,4 +153,12 @@ pub using @parallel.cpu_serial {
   cpu_serial_id, ExecutionPlan, ExecutionResult, make_plan, execute, empty_plan, plan_step_count, merge_results,
 }
 pub using @io { io_id }
+pub using @io.source {
+  DataSourceType, SourceConfig, SourceMeta, make_source_config, file_source, object_storage_source, in_memory_source,
+  source_uri, source_type_name, read_source, make_source_meta, source_meta_uri,
+}
+pub using @io.sink {
+  DataSinkType, SinkConfig, WriteResult, SinkStats, make_sink_config, file_sink, object_storage_sink, in_memory_sink,
+  sink_uri, sink_type_name, write_sink, make_write_result, execute_write, make_sink_stats, sink_stats_uri,
+}
 pub using @governance { governance_id }

@@ -1,0 +1,6 @@
+// io/source 数据源 / Data source
+// S3.1 填充：DataSource + SourceConfig + read_source 契约 + 内存模拟
+import {
+  "dataverse/dataobject",
+  "dataverse/dataobject/schema",
+}

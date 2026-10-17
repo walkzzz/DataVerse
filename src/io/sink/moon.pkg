@@ -1,0 +1,6 @@
+// io/sink 数据汇 / Data sink
+// S3.1 填充：DataSink + SinkConfig + write_sink 契约 + 内存模拟
+import {
+  "dataverse/dataobject",
+
+}

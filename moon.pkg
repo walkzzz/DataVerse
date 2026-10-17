@@ -54,6 +54,8 @@ import {
   "parallel",
   "parallel/cpu_serial",
   "io",
+  "io/source",
+  "io/sink",
   "governance",
   "spec",
 }

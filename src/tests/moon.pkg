@@ -75,4 +75,6 @@ import {
   "dataverse/agent_kit/dosi_adapter",
   "dataverse/agent_kit/planner",
   "dataverse/agent_kit/executor",
+  "dataverse/io/source",
+  "dataverse/io/sink",
 }

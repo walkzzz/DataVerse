@@ -1245,8 +1245,9 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S3.1 | io 数据源/汇适配（source/sink 契约 + 内存模拟） | ✅ | 8e0c9bf |
 | S3.2 | parallel/cpu_parallel 分布式执行后端 | ✅ | 0ce9a46 |
 | S3.3 | opcore/plugin 插件系统 | ✅ | b0bf3f1 |
+| S3.4 | 性能基准 + 算子融合优化 | ✅ | 9e45553 |
 
-**当前测试**：437 · **当前 API**：449（pub fn）+ 105（pub type）
+**当前测试**：452 · **当前 API**：465（pub fn）+ 111（pub type）
 
 ---
 

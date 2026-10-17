@@ -468,6 +468,16 @@
 - API: 432→449 pub fn + 100→105 pub type
 - commit: `b0bf3f1`
 
+### S3.4 - 性能基准 + 算子融合优化
+
+**新增 / Added**
+- `src/governance/benchmark/`：4 type + 9 fn (BenchmarkConfig + BenchmarkResult + BenchmarkSuite + SuiteStats + run_benchmark + compute_suite_stats)
+- `src/datair/ir_fusion/`：2 type + 7 fn (FusionRule + FusionResult + apply_fusion + iterative_fusion + fusion_reduction_ratio)
+- 测试: +15
+- 总计: 437 → 452 passed
+- API: 449→465 pub fn + 105→111 pub type
+- commit: `9e45553`
+
 ---
 
 > DataVerse Changelog | 2026-10-17

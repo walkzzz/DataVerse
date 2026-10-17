@@ -18,7 +18,7 @@
 | S0.2 | kernel 四模式执行内核（exact/approx/streaming/cache）+ 一致性验证 | ✅ | c53d213 | S0.1 |
 | S0.3 | 基础数据层（DataObject/Schema/Chunk/Embedding/Record/Dataset/Lineage/QualityCard） | ✅ | d50dee2 | S0.2 |
 | S0.4 | opcore 框架（统一契约 + 注册表 + 契约校验）+ 清洗/去重/过滤三类核心算子 | ✅ | deb2c4f | S0.3 |
-| S0.5 | datatemporal 数据结构定型（version/lineage/drift/replay）+ 指纹机制 | ⏸ | — | S0.4 |
+| S0.5 | datatemporal 数据结构定型（version/lineage/drift/replay）+ 指纹机制 | ✅ | e3ace5a | S0.4 |
 | S0.6 | DataIR 基础语法定义（实体 IR + 算子 IR） | ⏸ | — | S0.4 |
 | S0.7 | DOSI 基础设施原型（Builder + Router 初始版本）+ 为 opcore/DataIR 生成初始索引 | ⏸ | — | S0.6 |
 

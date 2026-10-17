@@ -85,6 +85,21 @@
 - `moon test`：33 passed 0 failed
 - commit：`deb2c4f`
 
+### S0.5 - datatemporal 数据结构定型 + 指纹机制
+
+**新增 / Added**
+- `src/datatemporal/datatemporal.mbt`：`Fingerprint` + `make_fingerprint` / `empty_fingerprint` / `matches`
+- `src/datatemporal/version`：`Version` + `VersionTower` + `append` / `height`
+- `src/datatemporal/lineage`：`BiLineage` + `FieldLineage`
+- `src/datatemporal/drift`：`DriftReport` + `is_significant`
+- `src/datatemporal/replay`：`ReplayTrace` + `step_count`
+- `src/tests`：5 个 datatemporal 测试
+
+**验证 / Verified**
+- `moon check`：0 error 0 warning
+- `moon test`：38 passed 0 failed
+- commit：`e3ace5a`
+
 ---
 
 > DataVerse Changelog | 2026-10-17

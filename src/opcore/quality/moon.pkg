@@ -1,0 +1,5 @@
+// opcore/quality 质量评分算子 / Quality Scoring Operators
+// S1.1 填充：length_quality_score + text_quality_score
+import {
+  "dataverse/dataobject",
+}

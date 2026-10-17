@@ -547,3 +547,259 @@ test "dosi degenerate: empty index lookups" {
   assert_eq(@router.lookup_by_modality(e, "x").length(), 0)
   assert_eq(@router.lookup_by_prefix(e, "x").length(), 0)
 }
+///|
+/// # S1.1 opcore 14 类算子测试 / 14-category operator tests
+///
+/// 每类算子至少 1 个正常用例 + 1 个退化数据用例（空串/空数组/越界参数）。
+/// 对标 Data-Juicer P0 高频算子：whitespace_normalization, topk_selector, text_chunk_mapper 等。
+
+test "S1.1 ingest formatters modality" {
+  let t = @ingest.text_formatter("hello")
+  let j = @ingest.json_formatter("{\"a\":1}")
+  let c = @ingest.csv_formatter("a,b,c")
+  assert_eq(t.modality, @dataobject.Text)
+  assert_eq(j.modality, @dataobject.Text)
+  assert_eq(c.modality, @dataobject.Table)
+  assert_eq(t.content, "hello")
+  assert_eq(@ingest.ingest_id(), "opcore/ingest")
+}
+
+test "S1.1 ingest degenerate: empty string" {
+  let t = @ingest.text_formatter("")
+  assert_eq(t.content, "")
+  assert_eq(t.modality, @dataobject.Text)
+}
+
+test "S1.1 normalize whitespace_normalization" {
+  let s = @schema.empty()
+  let d = @dataobject.make_dataobject("  hello   world  ", @dataobject.Text, s)
+  let n = @normalize.whitespace_normalization(d)
+  assert_eq(n.content, "hello world")
+}
+
+test "S1.1 normalize punctuation_normalization" {
+  let s = @schema.empty()
+  let d = @dataobject.make_dataobject("你好，世界。", @dataobject.Text, s)
+  let n = @normalize.punctuation_normalization(d)
+  assert_eq(n.content, "你好,世界.")
+}
+
+test "S1.1 normalize degenerate: empty string" {
+  let s = @schema.empty()
+  let d = @dataobject.make_dataobject("", @dataobject.Text, s)
+  assert_eq(@normalize.whitespace_normalization(d).content, "")
+  assert_eq(@normalize.punctuation_normalization(d).content, "")
+  assert_eq(@normalize.normalize_id(), "opcore/normalize")
+}
+
+test "S1.1 quality length_quality_score boundaries" {
+  let s = @schema.empty()
+  let empty = @dataobject.make_dataobject("", @dataobject.Text, s)
+  let short = @dataobject.make_dataobject("hi", @dataobject.Text, s)
+  let full = @dataobject.make_dataobject("a".repeat(100), @dataobject.Text, s)
+  let over = @dataobject.make_dataobject("a".repeat(200), @dataobject.Text, s)
+  assert_eq(@quality.length_quality_score(empty), 0.0)
+  assert_true(@quality.length_quality_score(short) > 0.0)
+  assert_eq(@quality.length_quality_score(full), 1.0)
+  assert_eq(@quality.length_quality_score(over), 1.0)
+}
+
+test "S1.1 quality text_quality_score" {
+  let s = @schema.empty()
+  let d = @dataobject.make_dataobject("hello world", @dataobject.Text, s)
+  let score = @quality.text_quality_score(d)
+  assert_true(score > 0.0 && score <= 1.0)
+  assert_eq(@quality.quality_id(), "opcore/quality")
+}
+
+test "S1.1 transform to_lowercase and to_uppercase" {
+  let s = @schema.empty()
+  let d = @dataobject.make_dataobject("Hello World", @dataobject.Text, s)
+  assert_eq(@transform.to_lowercase(d).content, "hello world")
+  assert_eq(@transform.to_uppercase(d).content, "HELLO WORLD")
+}
+
+test "S1.1 transform truncate" {
+  let s = @schema.empty()
+  let d = @dataobject.make_dataobject("hello world", @dataobject.Text, s)
+  assert_eq(@transform.truncate(d, 5).content, "hello")
+  assert_eq(@transform.truncate(d, 100).content, "hello world")
+}
+
+test "S1.1 transform degenerate: empty string" {
+  let s = @schema.empty()
+  let d = @dataobject.make_dataobject("", @dataobject.Text, s)
+  assert_eq(@transform.to_lowercase(d).content, "")
+  assert_eq(@transform.to_uppercase(d).content, "")
+  assert_eq(@transform.truncate(d, 5).content, "")
+  assert_eq(@transform.transform_id(), "opcore/transform")
+}
+
+test "S1.1 annotate tag_by_length three tiers" {
+  let s = @schema.empty()
+  let short_d = @dataobject.make_dataobject("hi", @dataobject.Text, s)
+  let med_d = @dataobject.make_dataobject("a".repeat(100), @dataobject.Text, s)
+  let long_d = @dataobject.make_dataobject("a".repeat(300), @dataobject.Text, s)
+  let short_tagged = @annotate.tag_by_length(short_d)
+  let med_tagged = @annotate.tag_by_length(med_d)
+  let long_tagged = @annotate.tag_by_length(long_d)
+  assert_eq(short_tagged.metadata.length(), 1)
+  assert_eq(short_tagged.metadata[0], ("length_tag", "short"))
+  assert_eq(med_tagged.metadata[0], ("length_tag", "medium"))
+  assert_eq(long_tagged.metadata[0], ("length_tag", "long"))
+}
+
+test "S1.1 annotate tag_modality" {
+  let s = @schema.empty()
+  let d = @dataobject.make_dataobject("x", @dataobject.Image, s)
+  let tagged = @annotate.tag_modality(d)
+  assert_eq(tagged.metadata[0], ("modality_tag", "image"))
+  assert_eq(@annotate.annotate_id(), "opcore/annotate")
+}
+
+test "S1.1 select topk_by_length" {
+  let s = @schema.empty()
+  let d1 = @dataobject.make_dataobject("a", @dataobject.Text, s)
+  let d2 = @dataobject.make_dataobject("bbb", @dataobject.Text, s)
+  let d3 = @dataobject.make_dataobject("cc", @dataobject.Text, s)
+  let top2 = @select.topk_by_length([d1, d2, d3], 2)
+  assert_eq(top2.length(), 2)
+  assert_eq(top2[0].content, "bbb")
+  assert_eq(top2[1].content, "cc")
+}
+
+test "S1.1 select threshold_by_length" {
+  let s = @schema.empty()
+  let d1 = @dataobject.make_dataobject("a", @dataobject.Text, s)
+  let d2 = @dataobject.make_dataobject("bbb", @dataobject.Text, s)
+  let result = @select.threshold_by_length([d1, d2], 2)
+  assert_eq(result.length(), 1)
+  assert_eq(result[0].content, "bbb")
+}
+
+test "S1.1 select degenerate: empty array and k<=0" {
+  let s = @schema.empty()
+  let d1 = @dataobject.make_dataobject("a", @dataobject.Text, s)
+  let d2 = @dataobject.make_dataobject("b", @dataobject.Text, s)
+  // k <= 0 返回全部
+  assert_eq(@select.topk_by_length([d1, d2], 0).length(), 2)
+  // k >= length 返回全部
+  assert_eq(@select.topk_by_length([d1, d2], 10).length(), 2)
+  // 空数组
+  assert_eq(@select.topk_by_length([], 5).length(), 0)
+  assert_eq(@select.threshold_by_length([], 1).length(), 0)
+  assert_eq(@select.select_id(), "opcore/select")
+}
+
+test "S1.1 mix group_by_modality" {
+  let s = @schema.empty()
+  let t1 = @dataobject.make_dataobject("a", @dataobject.Text, s)
+  let t2 = @dataobject.make_dataobject("b", @dataobject.Text, s)
+  let i1 = @dataobject.make_dataobject("img", @dataobject.Image, s)
+  let groups = @mix.group_by_modality([t1, t2, i1])
+  assert_eq(groups.length(), 2)
+}
+
+test "S1.1 mix interleave" {
+  let s = @schema.empty()
+  let a = [@dataobject.make_dataobject("a", @dataobject.Text, s), @dataobject.make_dataobject("b", @dataobject.Text, s)]
+  let b = [@dataobject.make_dataobject("1", @dataobject.Text, s)]
+  let result = @mix.interleave(a, b)
+  assert_eq(result.length(), 3)
+  assert_eq(result[0].content, "a")
+  assert_eq(result[1].content, "1")
+  assert_eq(result[2].content, "b")
+}
+
+test "S1.1 mix degenerate: empty arrays" {
+  let s = @schema.empty()
+  let d = @dataobject.make_dataobject("a", @dataobject.Text, s)
+  assert_eq(@mix.group_by_modality([]).length(), 0)
+  assert_eq(@mix.interleave([], []).length(), 0)
+  assert_eq(@mix.interleave([d], []).length(), 1)
+  assert_eq(@mix.mix_id(), "opcore/mix")
+}
+
+test "S1.1 pack text_chunk" {
+  let s = @schema.empty()
+  let d = @dataobject.make_dataobject("abcdefghij", @dataobject.Text, s)
+  let chunks = @pack.text_chunk(d, 3)
+  assert_eq(chunks.length(), 4)
+  assert_eq(chunks[0].content, "abc")
+  assert_eq(chunks[3].content, "j")
+}
+
+test "S1.1 pack degenerate: chunk_size <= 0" {
+  let s = @schema.empty()
+  let d = @dataobject.make_dataobject("hello", @dataobject.Text, s)
+  let chunks = @pack.text_chunk(d, 0)
+  assert_eq(chunks.length(), 1)
+  assert_eq(chunks[0].content, "hello")
+  // 空内容
+  let empty_d = @dataobject.make_dataobject("", @dataobject.Text, s)
+  let empty_chunks = @pack.text_chunk(empty_d, 3)
+  assert_eq(empty_chunks.length(), 1)
+  assert_eq(@pack.pack_id(), "opcore/pack")
+}
+
+test "S1.1 eval global_statistics" {
+  let s = @schema.empty()
+  let d1 = @dataobject.make_dataobject("hello", @dataobject.Text, s)
+  let d2 = @dataobject.make_dataobject("hi", @dataobject.Text, s)
+  let d3 = @dataobject.make_dataobject("", @dataobject.Text, s)
+  let stats = @eval.global_statistics([d1, d2, d3])
+  assert_eq(stats.total_count, 3)
+  assert_eq(stats.nonempty_count, 2)
+  assert_eq(stats.max_length, 5)
+  assert_eq(stats.min_length, 0)
+}
+
+test "S1.1 eval degenerate: empty array" {
+  let stats = @eval.global_statistics([])
+  assert_eq(stats.total_count, 0)
+  assert_eq(stats.avg_length, 0.0)
+  assert_eq(@eval.eval_id(), "opcore/eval")
+}
+
+test "S1.1 lineage_op attach_lineage" {
+  let s = @schema.empty()
+  let d = @dataobject.make_dataobject("hello", @dataobject.Text, s)
+  let (out_d, lineage) = @lineage_op.attach_lineage(d, "whitespace_normalization")
+  assert_eq(out_d.content, "hello")
+  assert_eq(lineage.operator_graph, "whitespace_normalization")
+  assert_eq(lineage.input_fingerprint, "fp:5")
+}
+
+test "S1.1 lineage_op make_op_lineage" {
+  let s = @schema.empty()
+  let d = @dataobject.make_dataobject("hello", @dataobject.Text, s)
+  let lineage = @lineage_op.make_op_lineage("truncate", d, "max_len=10")
+  assert_eq(lineage.operator_graph, "truncate")
+  assert_eq(lineage.params, "max_len=10")
+  assert_eq(@lineage_op.lineage_op_id(), "opcore/lineage_op")
+}
+
+test "S1.1 safety mask_digits" {
+  let s = @schema.empty()
+  let d = @dataobject.make_dataobject("call 138-1234-5678", @dataobject.Text, s)
+  let masked = @safety.mask_digits(d)
+  assert_eq(masked.content, "call ***-****-****")
+}
+
+test "S1.1 safety mask_email" {
+  let s = @schema.empty()
+  let d = @dataobject.make_dataobject("user@example.com", @dataobject.Text, s)
+  let masked = @safety.mask_email(d)
+  assert_eq(masked.content, "***@example.com")
+}
+
+test "S1.1 safety degenerate: no digits and no at sign" {
+  let s = @schema.empty()
+  let d = @dataobject.make_dataobject("plain text", @dataobject.Text, s)
+  assert_eq(@safety.mask_digits(d).content, "plain text")
+  assert_eq(@safety.mask_email(d).content, "plain text")
+  // @ 在开头
+  let at_first = @dataobject.make_dataobject("@nope.com", @dataobject.Text, s)
+  assert_eq(@safety.mask_email(at_first).content, "@nope.com")
+  assert_eq(@safety.safety_id(), "opcore/safety")
+}

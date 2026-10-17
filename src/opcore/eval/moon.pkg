@@ -1,0 +1,5 @@
+// opcore/eval 评估与验证算子 / Eval & Validate Operators
+// S1.1 填充：global_statistics（对标 DJ global_statistics_pipeline）
+import {
+  "dataverse/dataobject",
+}

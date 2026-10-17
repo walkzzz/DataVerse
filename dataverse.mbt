@@ -8,8 +8,9 @@
 ///
 /// Unified entry `@dataverse`, re-exports all first-level sub-packages' public API.
 /// S0.1 skeleton + S0.2 kernel + S0.3 dataobject + S0.4 opcore + S0.5 datatemporal + S0.6 datair + S0.7 dosi.
+/// S1.1 opcore 补齐 14 类算子（ingest/normalize/quality/transform/annotate/select/mix/pack/eval/lineage_op/safety）.
 pub fn version() -> String {
-  "dataverse 0.1.0-dev (S0.7 dosi)"
+  "dataverse 0.1.0-dev (S1.1 opcore 14 ops)"
 }
 
 pub using @kernel {
@@ -30,6 +31,17 @@ pub using @opcore.clean { clean_id, remove_empty, strip_whitespace }
 pub using @opcore.dedup { dedup_id, exact_dedup, dedup_count }
 pub using @opcore.filter { filter_id, length_filter, non_empty_filter, filter_all }
 pub using @opcore.registry { registry_id, empty as empty_registry, register, lookup, size as registry_size, valid_operator }
+pub using @opcore.ingest { ingest_id, text_formatter, json_formatter, csv_formatter }
+pub using @opcore.normalize { normalize_id, whitespace_normalization, punctuation_normalization }
+pub using @opcore.quality { quality_id, length_quality_score, text_quality_score }
+pub using @opcore.transform { transform_id, to_lowercase, to_uppercase, truncate }
+pub using @opcore.annotate { annotate_id, tag_by_length, tag_modality }
+pub using @opcore.select { select_id, topk_by_length, threshold_by_length }
+pub using @opcore.mix { mix_id, group_by_modality, interleave }
+pub using @opcore.pack { pack_id, text_chunk }
+pub using @opcore.eval { eval_id, GlobalStats, global_statistics }
+pub using @opcore.lineage_op { lineage_op_id, attach_lineage, make_op_lineage }
+pub using @opcore.safety { safety_id, mask_digits, mask_email }
 pub using @datatemporal {
   datatemporal_id, make_fingerprint, empty_fingerprint, matches as fingerprint_matches,
 }

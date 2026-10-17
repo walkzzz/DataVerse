@@ -1,0 +1,5 @@
+// opcore/transform 变换与增强算子 / Transform & Augment Operators
+// S1.1 填充：to_lowercase + to_uppercase + truncate
+import {
+  "dataverse/dataobject",
+}

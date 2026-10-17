@@ -1,0 +1,5 @@
+// opcore/normalize 格式化与规范化算子 / Format & Normalize Operators
+// S1.1 填充：whitespace_normalization + punctuation_normalization（对标 DJ）
+import {
+  "dataverse/dataobject",
+}

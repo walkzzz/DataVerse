@@ -1,0 +1,5 @@
+// opcore/lineage_op 血缘与版本算子 / Lineage & Version Operators
+// S1.1 填充：attach_lineage（DataVerse 独有，DJ 无直接对应）
+import {
+  "dataverse/dataobject",
+}

@@ -240,6 +240,19 @@
 - API：207 → 215 pub fn（+8）
 - `moon check`：0 error 0 warning · `moon test`：108 passed
 
+### S1.4 - DataIR 流水线 IR（DAG）+ 基礎优化器
+
+**新增 / Added**
+- 2 个子包（`src/datair/` 下）：
+  - `ir_pipeline/`：PipelineIR（DAG）+ DAGEdge + 拓扑排序（Kahn 算法，环检测退化安全）
+  - `ir_optimizer/`：fuse_adjacent_maps（同名 map 融合）+ remove_identity（恒等消除）+ optimize + OptStats
+- 6 个新测试（DAG 构造 + 拓扑排序 + 优化器 + 退化：空/有环）
+
+**统计 / Stats**
+- 测试：108 → 114（+6）
+- API：215 → 229 pub fn（+14），43 → 46 pub type（+3 DAGEdge/PipelineIR/OptStats）
+- `moon check`：0 error 0 warning · `moon test`：114 passed
+
 ---
 
 > DataVerse Changelog | 2026-10-17

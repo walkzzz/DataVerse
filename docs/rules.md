@@ -120,10 +120,10 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S0.3 | 基础数据层（DataObject/Schema/Chunk/Embedding/Record/Dataset/Lineage/QualityCard） | ✅ | d50dee2 |
 | S0.4 | opcore 框架 + 清洗/去重/过滤三类核心算子 | ✅ | deb2c4f |
 | S0.5 | datatemporal 数据结构定型（version/lineage/drift/replay） | ✅ | e3ace5a |
-| S0.6 | DataIR 基础语法定义（实体 IR + 算子 IR） | ⏸ | — |
+| S0.6 | DataIR 基础语法定义（实体 IR + 算子 IR） | ✅ | 5f4bb15 |
 | S0.7 | DOSI 基础设施原型（Builder + Router 初始版本） | ⏸ | — |
 
-**当前测试**：38 · **当前 API**：112（pub fn）+ 27（pub type）
+**当前测试**：48 · **当前 API**：137（pub fn）+ 35（pub type）
 
 ---
 

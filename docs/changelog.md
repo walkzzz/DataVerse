@@ -100,6 +100,27 @@
 - `moon test`：38 passed 0 failed
 - commit：`e3ace5a`
 
+### S0.6 - DataIR 基础语法定义（实体 IR + 算子 IR）
+
+**新增 / Added**
+- `src/datair/ir_core`：`IRNodeId` + `IRMetadata`（公共基础，被 ir_entity/ir_operator 共享）
+- `src/datair/ir_entity`：`EntityType` + `EntityIR`（DataObject/Chunk/Embedding/Dataset 结构与元数据投影）
+- `src/datair/ir_operator`：`Determinism` + `IRModality` + `CostModel` + `OperatorIR`（原子算子节点：名称、参数、模态、确定性、代价模型）
+- `src/datair/datair.mbt`：`ir_core_id` / `ir_entity_id` / `ir_operator_id` / `ir_kind_count` 聚合
+- `dataverse.mbt`：重导出所有 DataIR 公共 API
+- `src/tests`：10 个 datair 测试（含退化数据：空节点 id 安全处理）
+
+**设计要点 / Design**
+- IR 是源数据的中间表示，不持有源对象引用，避免循环依赖 dataobject/opcore
+- IRModality 独立定义（与 dataobject.Modality 一一对应），避免循环
+- 依赖方向：ir_core ← ir_entity / ir_operator；datair 根不 import 子包（与 datatemporal 一致）
+- 流水线 IR（DAG）+ 优化器留 Phase 1
+
+**验证 / Verified**
+- `moon check`：0 error 0 warning
+- `moon test`：48 passed 0 failed
+- commit：`5f4bb15`
+
 ---
 
 > DataVerse Changelog | 2026-10-17

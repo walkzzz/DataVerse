@@ -2,15 +2,14 @@
 /// # DataVerse 数据算子库根包 / Root Package
 ///
 /// 对外统一入口 `@dataverse`，重导出所有一级子包公共 API。
-/// S0.1 骨架 + S0.2 kernel 四模式 + S0.3 dataobject 8 实体。
-/// 重导出各子包公共 API，后续 Sprint 逐步扩充。
+/// S0.1 骨架 + S0.2 kernel + S0.3 dataobject + S0.4 opcore 框架 + 三类算子。
 ///
 /// # Root package of DataVerse
 ///
 /// Unified entry `@dataverse`, re-exports all first-level sub-packages' public API.
-/// S0.1 skeleton + S0.2 kernel four-mode + S0.3 dataobject 8 entities.
+/// S0.1 skeleton + S0.2 kernel + S0.3 dataobject + S0.4 opcore framework + 3 operators.
 pub fn version() -> String {
-  "dataverse 0.1.0-dev (S0.3 dataobject 8 entities)"
+  "dataverse 0.1.0-dev (S0.4 opcore framework + 3 operators)"
 }
 
 pub using @kernel {
@@ -24,7 +23,13 @@ pub using @dataobject.schema { schema_id, make as make_schema, empty as empty_sc
 pub using @dataobject.chunk { chunk_id, make as make_chunk, length as chunk_length }
 pub using @dataobject.embedding { embedding_id, make as make_embedding, dim as embedding_dim }
 pub using @dataobject.record_dataset { record_dataset_id, make_record, make_dataset, size as dataset_size }
-pub using @opcore { opcore_id }
+pub using @opcore {
+  opcore_id, make_operator, make_result, category_name,
+}
+pub using @opcore.clean { clean_id, remove_empty, strip_whitespace }
+pub using @opcore.dedup { dedup_id, exact_dedup, dedup_count }
+pub using @opcore.filter { filter_id, length_filter, non_empty_filter, filter_all }
+pub using @opcore.registry { registry_id, empty as empty_registry, register, lookup, size as registry_size, valid_operator }
 pub using @datatemporal { datatemporal_id }
 pub using @recipe { recipe_id }
 pub using @datair { datair_id }

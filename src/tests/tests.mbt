@@ -195,3 +195,88 @@ test "dataobject degenerate: empty dataobject" {
   assert_eq(@dataobject.content_length(d), 0)
   assert_false(@dataobject.has_lineage(d))
 }
+// === S0.4 opcore 框架 + 三类算子测试 ===
+
+test "opcore OperatorCategory and category_name" {
+  assert_eq(@opcore.category_name(@opcore.Clean), "clean")
+  assert_eq(@opcore.category_name(@opcore.Dedup), "dedup")
+  assert_eq(@opcore.category_name(@opcore.Filter), "filter")
+  assert_true(@opcore.Clean != @opcore.Dedup)
+}
+
+test "opcore Operator contract construction" {
+  let op = @opcore.make_operator(
+    "text_length_filter", @opcore.Filter, @dataobject.Text, @kernel.Exact, false
+  )
+  assert_eq(op.name, "text_length_filter")
+  assert_eq(op.category, @opcore.Filter)
+  assert_false(op.reversible)
+}
+
+test "opcore clean remove_empty" {
+  let s = @schema.empty()
+  let d1 = @dataobject.make_dataobject("hello", @dataobject.Text, s)
+  let d2 = @dataobject.make_dataobject("", @dataobject.Text, s)
+  assert_eq(@clean.remove_empty(d1).content, "hello")
+  assert_eq(@clean.remove_empty(d2).content, "")
+}
+
+test "opcore clean strip_whitespace" {
+  let s = @schema.empty()
+  let d = @dataobject.make_dataobject("  hello  ", @dataobject.Text, s)
+  assert_eq(@clean.strip_whitespace(d).content, "hello")
+}
+
+test "opcore dedup exact_dedup" {
+  let s = @schema.empty()
+  let d1 = @dataobject.make_dataobject("a", @dataobject.Text, s)
+  let d2 = @dataobject.make_dataobject("b", @dataobject.Text, s)
+  let d3 = @dataobject.make_dataobject("a", @dataobject.Text, s)
+  let result = @dedup.exact_dedup([d1, d2, d3])
+  assert_eq(result.length(), 2)
+  assert_eq(@dedup.dedup_count(3, 2), 1)
+}
+
+test "opcore filter length_filter" {
+  let s = @schema.empty()
+  let d1 = @dataobject.make_dataobject("hi", @dataobject.Text, s)
+  let d2 = @dataobject.make_dataobject("hello world", @dataobject.Text, s)
+  assert_true(@filter.length_filter(3, 20, d2))
+  assert_false(@filter.length_filter(3, 20, d1))
+}
+
+test "opcore filter non_empty_filter" {
+  let s = @schema.empty()
+  let d1 = @dataobject.make_dataobject("x", @dataobject.Text, s)
+  let d2 = @dataobject.make_dataobject("", @dataobject.Text, s)
+  assert_true(@filter.non_empty_filter(d1))
+  assert_false(@filter.non_empty_filter(d2))
+}
+
+test "opcore filter filter_all" {
+  let s = @schema.empty()
+  let d1 = @dataobject.make_dataobject("a", @dataobject.Text, s)
+  let d2 = @dataobject.make_dataobject("", @dataobject.Text, s)
+  let d3 = @dataobject.make_dataobject("bb", @dataobject.Text, s)
+  let result = @filter.filter_all([d1, d2, d3], fn(d) { d.content.length() > 0 })
+  assert_eq(result.length(), 2)
+}
+
+test "opcore registry register and lookup" {
+  let op = @opcore.make_operator(
+    "remove_empty", @opcore.Clean, @dataobject.Text, @kernel.Exact, false
+  )
+  let r = @registry.register(@registry.empty(), op)
+  assert_eq(@registry.size(r), 1)
+  let found = @registry.lookup(r, "remove_empty")
+  assert_true(found is Some(_))
+  let not_found = @registry.lookup(r, "nonexistent")
+  assert_true(not_found is None)
+}
+
+test "opcore registry valid_operator" {
+  let valid = @opcore.make_operator("x", @opcore.Clean, @dataobject.Text, @kernel.Exact, false)
+  let invalid = @opcore.make_operator("", @opcore.Clean, @dataobject.Text, @kernel.Exact, false)
+  assert_true(@registry.valid_operator(valid))
+  assert_false(@registry.valid_operator(invalid))
+}

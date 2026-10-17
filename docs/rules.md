@@ -134,8 +134,9 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S0.5 | datatemporal 数据结构定型（version/lineage/drift/replay） | ✅ | e3ace5a |
 | S0.6 | DataIR 基础语法定义（实体 IR + 算子 IR） | ✅ | 5f4bb15 |
 | S0.7 | DOSI 基础设施原型（Builder + Router 初始版本） | ✅ | 4aa3fbf |
+| S1.1 | opcore 补齐 14 类算子（ingest/normalize/quality/transform/annotate/select/mix/pack/eval/lineage_op/safety 11 子包） | ✅ | 2c9e030 |
 
-**当前测试**：59 · **当前 API**：155（pub fn）+ 39（pub type）
+**当前测试**：86 · **当前 API**：189（pub fn）+ 40（pub type）
 
 ---
 

@@ -179,6 +179,32 @@
 - P0 高频对标 5 算子：text_length_filter, exact_deduplicator, whitespace_normalization_mapper, clean_html_mapper, topk_selector
 - DJ 命名规范：`<功能>_<类型>`，DataVerse 同名实现保持下划线命名便于 recipe 互导
 
+### S1.1 - opcore 补齐 14 类算子
+
+**新增 / Added**
+- 11 个算子子包（`src/opcore/` 下），对标 Data-Juicer P0 高频算子：
+  - `ingest/`：text_formatter + json_formatter + csv_formatter
+  - `normalize/`：whitespace_normalization + punctuation_normalization
+  - `quality/`：length_quality_score + text_quality_score
+  - `transform/`：to_lowercase + to_uppercase + truncate
+  - `annotate/`：tag_by_length + tag_modality
+  - `select/`：topk_by_length + threshold_by_length
+  - `mix/`：group_by_modality + interleave
+  - `pack/`：text_chunk
+  - `eval/`：global_statistics + GlobalStats struct
+  - `lineage_op/`：attach_lineage + make_op_lineage（DataVerse 独有，DJ 无直接对应）
+  - `safety/`：mask_digits + mask_email
+- 27 个新测试（每类算子正常用例 + 退化数据用例：空串/空数组/越界参数）
+
+**变更 / Changed**
+- 根 `moon.pkg` + `src/tests/moon.pkg`：加 11 个 opcore 子包 import
+- `dataverse.mbt`：加 11 个子包 pub using 重导出 + version 改为 `S1.1 opcore 14 ops`
+
+**统计 / Stats**
+- 测试：59 → 86（+27）
+- API：155 → 189 pub fn（+34），39 → 40 pub type（+1 GlobalStats）
+- `moon check`：0 error 0 warning · `moon test`：86 passed
+
 ---
 
 > DataVerse Changelog | 2026-10-17

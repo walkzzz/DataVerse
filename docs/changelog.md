@@ -504,4 +504,23 @@
 
 ---
 
-> DataVerse Changelog | 2026-10-17 | Phase 3 闭环
+### R16 Phase 3 门禁：形式化性质 31-40
+
+**新增 / Added**
+- `src/spec/spec.mbt` 追加 10 个形式化性质：
+  - 31: read_source 空安全 | 32: write_sink 空安全 | 33: execute_write 写入守恒
+  - 34: partition_data 分区守恒 | 35: gather_results 加法性
+  - 36: register_plugin 幂等性 | 37: unregister_plugin 注销安全
+  - 38: run_benchmark 零迭代安全 | 39: apply_fusion 融合不增节点 | 40: add_doc_entry 索引单调性
+
+**R16 五手段验证结果**：全部通过 ✅
+1. AI 辅助审查 ✅ 2. FAKE 退化数据 ✅ 3. MOCK 纯函数 ✅ 4. E2E 跨包 ✅ 5. 形式化证明 ✅
+
+**统计 / Stats**
+- 测试：461 → 471（+10 spec）
+- 形式化性质：30 → 40
+- commit：`3ef28fe`
+
+---
+
+> DataVerse Changelog | 2026-10-17 | Phase 3 闭环 + R16 门禁

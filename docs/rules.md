@@ -160,7 +160,7 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S3.4 | 性能基准 + 算子融合优化（benchmark + ir_fusion 6 type + 16 fn） | ✅ | 9e45553 |
 | S3.5 | 文档站点生成 + Phase 3 闭环（docgen 2 type + 10 fn） | ✅ | 4d133af |
 
-**当前测试**：461 · **当前 API**：475（pub fn）+ 113（pub type）
+**当前测试**：471 · **当前 API**：475（pub fn）+ 113（pub type） · **形式化证明**：40
 
 ---
 

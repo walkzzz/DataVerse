@@ -92,12 +92,12 @@
 
 ## 当前统计 / Current Stats
 
-- **测试**：461 passed
+- **测试**：471 passed
 - **API**：475 pub fn + 113 pub type
-- **形式化证明**：30 个 spec 性质
+- **形式化证明**：40 个 spec 性质
 - **编译**：0 error 0 warning
 - **MoonBit**：moon 0.1.20260920
 
 ---
 
-> DataVerse Roadmap | 2026-10-17 | Phase 3 闭环
+> DataVerse Roadmap | 2026-10-17 | Phase 3 闭环 + R16 门禁

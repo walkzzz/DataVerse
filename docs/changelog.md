@@ -147,6 +147,24 @@
 
 > **Phase 0 地基固化期已闭环** | S0.1-S0.7 全部完成 | 2026-10-17
 
+### 架构补充 - Agent-Kit 工程技能工作流（mattpocock/skills 范式嵌入）
+
+**变更 / Changed**
+- `ARCHITECTURE.md` §4.8.1 新增：Agent-Kit 工程技能工作流（吸收 mattpocock/skills 范式）
+  - grill-me 架构拷问工作流：自动质询设计漏洞、边界条件、依赖风险
+  - wayfinder 项目导航工作流：对接 DOSI，按需加载文档控制 Token
+  - to-spec 规格转换工作流：自然语言 → DataIR 算子规格
+  - docs 文档一致性工作流：校验 ARCHITECTURE/Roadmap/changelog 一致性
+  - changeset 变更追踪工作流：变更影响反查 + 回归测试清单
+- §4.8 章节重新编号：4.8.1（新增）→ 4.8.2 自省类 → 4.8.3 探索类 → 4.8.4 工业课题库
+- §10 映射表新增"Agent 工程技能"行
+
+**设计要点 / Design**
+- 不直接引入 mattpocock/skills 代码，吸收工程范式适配 DataVerse 数据算子领域
+- 领域规则注入：算子统一签名、kernel 四模式、退化数据、datatemporal 时空谓词
+- 与 DOSI/DataIR/datatemporal 深度绑定：wayfinder↔DOSI、to-spec↔DataIR、changeset↔血缘
+- 与自演化层协同：grill-me 风险清单 → 自省类调优；wayfinder 召回 → 探索类配方搜索
+
 ---
 
 > DataVerse Changelog | 2026-10-17

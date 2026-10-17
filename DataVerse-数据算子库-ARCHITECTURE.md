@@ -520,7 +520,70 @@ DataVerse 包含海量对象：14 类算子、上百个具体算子、Schema 定
 - **Agent-Kit**：自然语言转 DataIR 编排。把"把这份语料清洗去重并配比成训练集"转为引擎原生算子图。**Data-Juicer Agent 即此层的一种前端范式**（多智能体：规划者 / 算子选择者 / 执行者 / 质检者）。
 - **自演化层**：分**两类规划**协同——**自省类**（向内：发现与修复已知问题）与**探索类**（向外：主动搜索未知高价值空间）。
 
-#### 4.8.1 自省类规划（Introspection）
+#### 4.8.1 Agent-Kit 工程技能工作流（mattpocock/skills 范式嵌入）【超前规划 · 本次新增】
+
+> **定位**：吸收 [mattpocock/skills](https://github.com/mattpocock/skills) 的 Claude Code Agent 工程技能包思想，作为 Agent-Kit 内置的标准化软件工程工作流。**不直接引入原仓库代码**，而是把通用工程范式改造适配 DataVerse 的数据算子领域，与 DOSI（§4.7）、DataIR（§4.6）、datatemporal（§4.4）深度绑定。
+>
+> **原版 skills 核心代表**：`grill-me`（拷问模式：对着方案持续追问设计漏洞、边界条件、风险点）、`wayfinder`（工程导航：管理大型项目模块、ADR、文档）。
+
+**五大工程技能工作流**
+
+1. **grill-me 架构拷问工作流 / Architecture Grill**
+   - **触发**：修改 ARCHITECTURE.md、新增模块、更新 Roadmap、新增算子契约时自动启动。
+   - **动作**：AI 持续质询设计方案，挖掘缺失约束、边界条件、失败场景、依赖风险，输出风险清单。
+   - **DataVerse 领域规则注入**：
+     - 检查算子统一签名 `Operator(Input) -> Output + Lineage + Metrics` 是否被破坏
+     - 识别退化数据风险（空、超长、乱码、模态缺失、数值精度）
+     - 校验 kernel 四模式一致性契约（exact/approx/streaming/cache）
+     - 检查 datatemporal 血缘闭环、版本塔单调性、漂移检测阈值合理性
+     - 区分原型目标 vs 硬性交付目标，识别 Roadmap 阶段划分的工作量与人才卡点
+   - **收益**：每次迭代架构自动做"可行性拷问"，持续避免超前规划脱离工程现实。
+
+2. **wayfinder 项目导航工作流 / Project Wayfinder**
+   - **定位**：对接 DOSI 符号语义索引（§4.7）。Agent 基于当前任务，通过 DOSI 检索项目模块、ADR、接口契约，按需加载文档片段，控制 Token 开销。
+   - **双层配合**：DOSI 负责底层符号定位（算子路径/分类/模态/依赖/语义摘要）；wayfinder 负责 Agent 侧工程导航工作流（上层 Agent 工作流程）。
+   - **动作**：任务范围 → DOSI-Router 召回相关算子/Schema/recipe 条目 → 按需加载完整文档 → 不全量塞入上下文。
+   - **收益**：把巨型 DataVerse 架构的 Token 消耗压到最低（70%~90% 无效 Token 削减）。
+
+3. **to-spec 规格转换工作流 / Requirement to Spec**
+   - **动作**：自然语言需求 → 校验需求边界 → 生成 DataIR 算子规格。
+   - **对接**：与 Agent-Kit 主流程"自然语言转 DataIR 编排"合一；输出经 grill-me 拷问后才进入 opcore 注册表。
+   - **Data-Juicer Agent 范式**：规划者 / 算子选择者 / 执行者 / 质检者四角色，to-spec 是规划者角色的工程化。
+
+4. **docs 文档一致性工作流 / Docs Consistency**
+   - **动作**：自动校验 ARCHITECTURE、模块文档、Roadmap、changelog 之间内容一致性；文档变更自动触发 DOSI 索引增量更新。
+   - **校验项**：API 计数（pub fn / pub type）、测试计数、Sprint 状态、commit hash、进度表数字、中英文同步。
+   - **与 datatemporal 联动**：文档版本进入版本塔，变更可回放、可举证。
+
+5. **changeset 变更追踪工作流 / Changeset Tracking**
+   - **动作**：记录架构/算子变更，分析变更影响范围，更新测试清单。
+   - **影响分析**：算子签名变更 → 经 DOSI 依赖图反查所有引用方 → 生成回归测试清单。
+   - **与 datatemporal 联动**：变更进入血缘图，字段级血缘追踪变更影响字段。
+
+**与各层联动关系**
+
+| 工作流 | 依赖层 | 联动方式 |
+|--------|--------|----------|
+| grill-me | opcore 契约 + kernel 四模式 + datatemporal | 拷问设计 vs 契约一致性 |
+| wayfinder | DOSI（§4.7） | DOSI-Router 召回，按需加载 |
+| to-spec | DataIR（§4.6）+ opcore 注册表 | 输出 DataIR 规格 → 注册 |
+| docs | DOSI + datatemporal 版本塔 | 文档变更 → 索引增量 + 版本快照 |
+| changeset | DOSI 依赖图 + datatemporal 血缘 | 变更 → 影响反查 → 回归清单 |
+
+**领域适配风险与边界**
+
+- ❌ **不直接引入 mattpocock/skills 代码**：原版面向通用软件项目，无数据算子、退化数据、模态、数据时空领域知识。
+- ✅ **领域规则注入**：把 DataVerse 的算子契约、kernel 四模式、退化数据模式、datatemporal 时空谓词注入到 grill-me 拷问规则、wayfinder 导航索引、to-spec 规格校验中。
+- ✅ **与自演化层协同**：grill-me 输出的风险清单可触发自省类规划（§4.8.2）的算子调优与反例生成；wayfinder 召回的算子集合可 feeding 探索类规划（§4.8.3）的配方搜索。
+
+**收益汇总**
+
+1. 每次迭代架构，自动做"可行性拷问"，持续避免超前规划脱离工程现实；
+2. wayfinder + DOSI 双层配合，把巨型 DataVerse 架构的 Token 消耗压到最低；
+3. 文档、模块、Roadmap 改动自动联动校验，防止文档前后矛盾；
+4. 变更影响自动反查，算子签名改动不漏回归测试。
+
+#### 4.8.2 自省类规划（Introspection）
 
 面向"已知空间内的发现与优化"：
 
@@ -529,7 +592,7 @@ DataVerse 包含海量对象：14 类算子、上百个具体算子、Schema 定
 - **反例生成**：构造边界/对抗数据，测试算子鲁棒性。
 - **recipe 自动优化**：面向下游任务的端到端数据配方优化。
 
-#### 4.8.2 探索类规划（Exploration）【超前规划 · 本次新增】
+#### 4.8.3 探索类规划（Exploration）【超前规划 · 本次新增】
 
 面向"未知空间的主动搜索"——系统不再只处理"已知怎么处理"的问题，而是主动去探索**尚未发现的高价值数据、算子组合与数据-模型规律**。这是自演化层从"被动修复"跃迁到"主动发现"的关键。
 
@@ -572,7 +635,7 @@ ExploreEngine {
 - 所有探索轨迹进入 datatemporal 血缘与版本塔，**可回放、可举证、可审计**。
 - 探索对象为**数据 + 算法策略 + 配方 + 参数**（含工业优化求解策略），不重造分布式训练框架。
 
-#### 4.8.3 工业优化方向标准课题选题库（探索层落地场景 · 超前规划）
+#### 4.8.4 工业优化方向标准课题选题库（探索层落地场景 · 超前规划）
 
 > **定位**：探索层不只探索"数据与算子配方"，更要探索**工业运筹优化问题的最优求解策略**。本节给出面向制造业迫切刚需的工业算法课题库（NP 难组合优化、工业算法类），与"下料排样"同属**工业运筹优化**大类。课题分硕士大课题、本科毕设、小论文子课题、前沿交叉、资源配置与运维五类，适合**开题申报**，突出"生产迫切、降本增效、工程落地"。
 
@@ -1141,6 +1204,7 @@ pub using @pkg { type T, name1, trait Trait1 }
 | 高阶分析 | spatial_analysis（视域/路径/选址） | recipe（清洗/去重/质量/配比/打包/评估） |
 | 符号索引 | AOCI | DOSI |
 | Agent 层 | Agent-Kit → GeoIR | Agent-Kit → DataIR（含 Data-Juicer Agent） |
+| Agent 工程技能 | — | Agent-Kit 内置 mattpocock/skills 范式：grill-me / wayfinder / to-spec / docs / changeset（§4.8.1） |
 | 自演化 | 几何猜想、规则发现 | 自省类（规则发现/算子调优/反例生成）+ 探索类（数据/算子配方/参数/协同探索） |
 
 ---

@@ -8,9 +8,9 @@
 ///
 /// Unified entry `@dataverse`, re-exports all first-level sub-packages' public API.
 /// S0.1 skeleton + S0.2 kernel + S0.3 dataobject + S0.4 opcore + S0.5 datatemporal + S0.6 datair + S0.7 dosi.
-/// S2.1-S2.8 Phase 2 全域算子成熟期闭环. S2.9 DL 扩展层（Conv2d/MaxPool/Dropout/BatchNorm）.
+/// S2.1-S2.8 Phase 2 全域算子成熟期闭环. S2.9 DL 扩展层 + S2.10 多模态扩展.
 pub fn version() -> String {
-  "dataverse 0.1.0-dev (S2.9 DL extension layers)"
+  "dataverse 0.1.0-dev (S2.10 multimodal extension)"
 }
 
 pub using @kernel {
@@ -44,12 +44,15 @@ pub using @opcore.lineage_op { lineage_op_id, attach_lineage, make_op_lineage }
 pub using @opcore.safety { safety_id, mask_digits, mask_email }
 pub using @opcore.image {
   image_id, ImageMeta, make_image_meta, empty_image_meta, image_size, aspect_ratio, aspect_ratio_filter, image_resize, image_crop, image_to_dataobject,
+  FlipAxis, RotateAngle, image_flip, image_rotate, flip_axis_name, rotate_angle_name,
 }
 pub using @opcore.audio {
   audio_id, AudioMeta, make_audio_meta, empty_audio_meta, audio_duration, sample_rate_filter, audio_segment, audio_to_dataobject,
+  audio_mix, audio_normalize_duration,
 }
 pub using @opcore.video {
   video_id, VideoMeta, make_video_meta, empty_video_meta, video_duration, frame_count, video_sample_frames, video_to_dataobject,
+  video_extract_frames, video_frame_timestamps, video_trim,
 }
 pub using @opcore.semantic {
   semantic_id, RewriteMode, SynthesisMode, semantic_quality_score, content_diversity_score, rewrite_text, synthesize_text, rewrite_mode_name, synthesis_mode_name,

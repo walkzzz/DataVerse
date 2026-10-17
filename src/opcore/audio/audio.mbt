@@ -62,3 +62,33 @@ pub fn audio_to_dataobject(meta : AudioMeta) -> @dataobject.DataObject {
 pub fn audio_id() -> String {
   "opcore/audio"
 }
+// ============================================================
+// S2.10 音频混合 / Audio mix
+// ============================================================
+
+/// 音频混合 / Audio mix.
+///
+/// 混合两路音频，weight_a 为第一路权重（[0,1]）。
+/// 结果：duration = max(a, b)，sample_rate = a 的（退化时取 b），channels = max(a, b)。
+/// 退化安全：空音频（duration=0）被忽略。
+pub fn audio_mix(meta_a : AudioMeta, meta_b : AudioMeta, weight_a : Double) -> AudioMeta {
+  let dur = if meta_a.duration_ms > meta_b.duration_ms { meta_a.duration_ms } else { meta_b.duration_ms }
+  let sr = if meta_a.sample_rate > 0 { meta_a.sample_rate } else { meta_b.sample_rate }
+  let ch = if meta_a.channels > meta_b.channels { meta_a.channels } else { meta_b.channels }
+  let fmt = if meta_a.format.length() > 0 { meta_a.format } else { meta_b.format }
+  ignore(weight_a)
+  { duration_ms: dur, sample_rate: sr, channels: ch, format: fmt }
+}
+
+/// 音频归一化时长 / Normalize audio duration.
+///
+/// 将时长归一化到 [0, max_ms] 范围，返回归一化后的比例（[0,1]）。
+/// 退化安全：max_ms=0 返回 0.0。
+pub fn audio_normalize_duration(meta : AudioMeta, max_ms : Int) -> Double {
+  if max_ms == 0 {
+    0.0
+  } else {
+    let r = meta.duration_ms.to_double() / max_ms.to_double()
+    if r > 1.0 { 1.0 } else if r < 0.0 { 0.0 } else { r }
+  }
+}

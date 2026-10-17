@@ -1,6 +1,8 @@
 // opcore/video 视频算子 / Video Operators
 // S2.1 填充：VideoMeta + video_duration + frame_count + video_sample_frames
+// S2.10 扩展：video_extract_frames + video_frame_timestamps + video_trim
 import {
   "dataverse/dataobject",
   "dataverse/dataobject/schema",
+  "dataverse/opcore/image",
 }

@@ -2673,3 +2673,134 @@ test "S2.9 dropout_mode_name" {
   assert_eq(@dl_layers.dropout_mode_name(@dl_layers.Training), "training")
   assert_eq(@dl_layers.dropout_mode_name(@dl_layers.Inference), "inference")
 }
+// ============================================================
+// S2.10 opcore 多模态扩展测试 / Multimodal extension tests
+// ============================================================
+
+test "S2.10 image_flip preserves dimensions" {
+  let meta = @image.make_image_meta(100, 200, 3, "rgb")
+  let h = @image.image_flip(meta, @image.Horizontal)
+  assert_eq(@image.image_size(h), (100, 200))
+  let v = @image.image_flip(meta, @image.Vertical)
+  assert_eq(@image.image_size(v), (100, 200))
+  let b = @image.image_flip(meta, @image.Both)
+  assert_eq(@image.image_size(b), (100, 200))
+}
+
+test "S2.10 image_flip degenerate: empty meta" {
+  let meta = @image.empty_image_meta()
+  let result = @image.image_flip(meta, @image.Horizontal)
+  assert_eq(@image.image_size(result), (0, 0))
+}
+
+test "S2.10 image_rotate D90 swaps width height" {
+  let meta = @image.make_image_meta(100, 200, 3, "rgb")
+  let r = @image.image_rotate(meta, @image.D90)
+  assert_eq(@image.image_size(r), (200, 100))
+}
+
+test "S2.10 image_rotate D180 preserves dimensions" {
+  let meta = @image.make_image_meta(100, 200, 3, "rgb")
+  let r = @image.image_rotate(meta, @image.D180)
+  assert_eq(@image.image_size(r), (100, 200))
+}
+
+test "S2.10 image_rotate D270 swaps width height" {
+  let meta = @image.make_image_meta(100, 200, 3, "rgb")
+  let r = @image.image_rotate(meta, @image.D270)
+  assert_eq(@image.image_size(r), (200, 100))
+}
+
+test "S2.10 flip_axis_name and rotate_angle_name" {
+  assert_eq(@image.flip_axis_name(@image.Horizontal), "horizontal")
+  assert_eq(@image.flip_axis_name(@image.Vertical), "vertical")
+  assert_eq(@image.flip_axis_name(@image.Both), "both")
+  assert_eq(@image.rotate_angle_name(@image.D90), "90")
+  assert_eq(@image.rotate_angle_name(@image.D180), "180")
+  assert_eq(@image.rotate_angle_name(@image.D270), "270")
+}
+
+test "S2.10 audio_mix basic" {
+  let a = @audio.make_audio_meta(1000, 44100, 2, "wav")
+  let b = @audio.make_audio_meta(2000, 44100, 1, "wav")
+  let mixed = @audio.audio_mix(a, b, 0.5)
+  assert_eq(@audio.audio_duration(mixed), 2000)
+  assert_eq(mixed.sample_rate, 44100)
+  assert_eq(mixed.channels, 2)
+}
+
+test "S2.10 audio_mix degenerate: empty first" {
+  let a = @audio.empty_audio_meta()
+  let b = @audio.make_audio_meta(2000, 48000, 1, "mp3")
+  let mixed = @audio.audio_mix(a, b, 0.0)
+  assert_eq(@audio.audio_duration(mixed), 2000)
+  assert_eq(mixed.sample_rate, 48000)
+}
+
+test "S2.10 audio_normalize_duration basic" {
+  let meta = @audio.make_audio_meta(500, 44100, 2, "wav")
+  let r = @audio.audio_normalize_duration(meta, 1000)
+  assert_true(r > 0.49 && r < 0.51)
+}
+
+test "S2.10 audio_normalize_duration degenerate: zero max" {
+  let meta = @audio.make_audio_meta(500, 44100, 2, "wav")
+  let r = @audio.audio_normalize_duration(meta, 0)
+  assert_eq(r, 0.0)
+}
+
+test "S2.10 audio_normalize_duration clamps to 1.0" {
+  let meta = @audio.make_audio_meta(2000, 44100, 2, "wav")
+  let r = @audio.audio_normalize_duration(meta, 1000)
+  assert_eq(r, 1.0)
+}
+
+test "S2.10 video_extract_frames basic" {
+  let meta = @video.make_video_meta(10000, 30, 1920, 1080, "mp4")
+  let frames = @video.video_extract_frames(meta, 5)
+  assert_eq(frames.length(), 5)
+  assert_eq(@image.image_size(frames[0]), (1920, 1080))
+}
+
+test "S2.10 video_extract_frames degenerate: zero count" {
+  let meta = @video.make_video_meta(10000, 30, 1920, 1080, "mp4")
+  let frames = @video.video_extract_frames(meta, 0)
+  assert_eq(frames.length(), 0)
+}
+
+test "S2.10 video_extract_frames degenerate: zero duration" {
+  let meta = @video.empty_video_meta()
+  let frames = @video.video_extract_frames(meta, 5)
+  assert_eq(frames.length(), 0)
+}
+
+test "S2.10 video_frame_timestamps basic" {
+  let meta = @video.make_video_meta(10000, 30, 1920, 1080, "mp4")
+  let ts = @video.video_frame_timestamps(meta, 5)
+  assert_eq(ts.length(), 5)
+  assert_eq(ts[0], 0)
+}
+
+test "S2.10 video_frame_timestamps degenerate: zero count" {
+  let meta = @video.make_video_meta(10000, 30, 1920, 1080, "mp4")
+  let ts = @video.video_frame_timestamps(meta, 0)
+  assert_eq(ts.length(), 0)
+}
+
+test "S2.10 video_trim basic" {
+  let meta = @video.make_video_meta(10000, 30, 1920, 1080, "mp4")
+  let trimmed = @video.video_trim(meta, 2000, 7000)
+  assert_eq(@video.video_duration(trimmed), 5000)
+}
+
+test "S2.10 video_trim degenerate: out of bounds" {
+  let meta = @video.make_video_meta(10000, 30, 1920, 1080, "mp4")
+  let trimmed = @video.video_trim(meta, 8000, 20000)
+  assert_eq(@video.video_duration(trimmed), 2000)
+}
+
+test "S2.10 video_trim degenerate: end before start" {
+  let meta = @video.make_video_meta(10000, 30, 1920, 1080, "mp4")
+  let trimmed = @video.video_trim(meta, 7000, 3000)
+  assert_eq(@video.video_duration(trimmed), 0)
+}

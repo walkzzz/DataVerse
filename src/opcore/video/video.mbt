@@ -71,3 +71,58 @@ pub fn video_to_dataobject(meta : VideoMeta) -> @dataobject.DataObject {
 pub fn video_id() -> String {
   "opcore/video"
 }
+// ============================================================
+// S2.10 视频抽帧 / Video frame extraction
+// ============================================================
+
+/// 视频抽帧 / Extract frames from video.
+///
+/// 均匀抽取 count 帧，返回 ImageMeta 数组（每帧 w×h×3 RGB）。
+/// 退化安全：count<=0 返回空数组，duration<=0 返回空数组。
+pub fn video_extract_frames(meta : VideoMeta, count : Int) -> Array[@image.ImageMeta] {
+  if count <= 0 || meta.duration_ms <= 0 {
+    []
+  } else {
+    let result = []
+    let step = meta.duration_ms / count
+    let mut t = 0
+    for i in 0..<count {
+      ignore(i)
+      result.push(@image.make_image_meta(meta.width, meta.height, 3, "rgb"))
+      t = t + step
+    }
+    ignore(t)
+    result
+  }
+}
+
+/// 视频抽帧时间戳 / Extract frame timestamps.
+///
+/// 均匀抽取 count 帧的时间戳（毫秒）。
+/// 退化安全：count<=0 返回空数组。
+pub fn video_frame_timestamps(meta : VideoMeta, count : Int) -> Array[Int] {
+  if count <= 0 || meta.duration_ms <= 0 {
+    []
+  } else {
+    let result = []
+    let step = meta.duration_ms / count
+    let mut t = 0
+    for i in 0..<count {
+      ignore(i)
+      result.push(t)
+      t = t + step
+    }
+    result
+  }
+}
+
+/// 视频裁剪 / Video trim.
+///
+/// 裁剪 [start_ms, end_ms] 时间段，返回新 VideoMeta。
+/// 退化安全：越界截断到边界，负值取 0。
+pub fn video_trim(meta : VideoMeta, start_ms : Int, end_ms : Int) -> VideoMeta {
+  let s = if start_ms < 0 { 0 } else { start_ms }
+  let e = if end_ms > meta.duration_ms { meta.duration_ms } else { end_ms }
+  let dur = if e > s { e - s } else { 0 }
+  { duration_ms: dur, fps: meta.fps, width: meta.width, height: meta.height, format: meta.format }
+}

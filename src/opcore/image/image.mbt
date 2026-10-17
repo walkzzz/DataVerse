@@ -92,3 +92,65 @@ pub fn image_to_dataobject(meta : ImageMeta) -> @dataobject.DataObject {
 pub fn image_id() -> String {
   "opcore/image"
 }
+// ============================================================
+// S2.10 图像翻转与旋转 / Image flip and rotate
+// ============================================================
+
+/// 翻转轴 / Flip axis.
+pub(all) enum FlipAxis {
+  Horizontal
+  Vertical
+  Both
+} derive(Debug, Eq)
+
+pub extend FlipAxis with Eq::{equal, not_equal}
+pub extend FlipAxis with Debug::{to_repr}
+
+/// 旋转角度 / Rotation angle (90-degree increments).
+pub(all) enum RotateAngle {
+  D90
+  D180
+  D270
+} derive(Debug, Eq)
+
+pub extend RotateAngle with Eq::{equal, not_equal}
+pub extend RotateAngle with Debug::{to_repr}
+
+/// 图像翻转 / Image flip.
+///
+/// 翻转不改变尺寸，返回同尺寸 ImageMeta。
+/// 退化安全：空图像返回空图像。
+pub fn image_flip(meta : ImageMeta, axis : FlipAxis) -> ImageMeta {
+  ignore(axis)
+  { width: meta.width, height: meta.height, channels: meta.channels, format: meta.format }
+}
+
+/// 图像旋转 / Image rotate.
+///
+/// D90/D270 交换 width 和 height，D180 保持不变。
+/// 退化安全：空图像返回空图像。
+pub fn image_rotate(meta : ImageMeta, angle : RotateAngle) -> ImageMeta {
+  match angle {
+    D90 => { width: meta.height, height: meta.width, channels: meta.channels, format: meta.format }
+    D180 => { width: meta.width, height: meta.height, channels: meta.channels, format: meta.format }
+    D270 => { width: meta.height, height: meta.width, channels: meta.channels, format: meta.format }
+  }
+}
+
+/// 翻转轴名称 / Flip axis name.
+pub fn flip_axis_name(axis : FlipAxis) -> String {
+  match axis {
+    Horizontal => "horizontal"
+    Vertical => "vertical"
+    Both => "both"
+  }
+}
+
+/// 旋转角度名称 / Rotation angle name.
+pub fn rotate_angle_name(angle : RotateAngle) -> String {
+  match angle {
+    D90 => "90"
+    D180 => "180"
+    D270 => "270"
+  }
+}

@@ -1658,3 +1658,137 @@ test "S2.1 image_id and audio_id and video_id" {
   assert_eq(@audio.audio_id(), "opcore/audio")
   assert_eq(@video.video_id(), "opcore/video")
 }
+
+// ============================================================
+// S2.2 opcore 语义算子测试 / Semantic operator tests
+// ============================================================
+
+test "S2.2 semantic_quality_score basic" {
+  let d = @dataobject.make_dataobject("Hello world this is a test content for scoring", @dataobject.Text, @schema.empty())
+  let score = @semantic.semantic_quality_score(d)
+  assert_true(score > 0.0 && score <= 1.0)
+}
+
+test "S2.2 semantic_quality_score degenerate: empty" {
+  let d = @dataobject.empty_dataobject(@dataobject.Text)
+  assert_eq(@semantic.semantic_quality_score(d), 0.0)
+}
+
+test "S2.2 semantic_quality_score long content" {
+  let long = "a".repeat(150)
+  let d = @dataobject.make_dataobject(long, @dataobject.Text, @schema.empty())
+  let score = @semantic.semantic_quality_score(d)
+  assert_true(score > 0.0)
+}
+
+test "S2.2 content_diversity_score all same" {
+  let d = @dataobject.make_dataobject("aaaaa", @dataobject.Text, @schema.empty())
+  assert_eq(@semantic.content_diversity_score(d), 0.2)
+}
+
+test "S2.2 content_diversity_score all different" {
+  let d = @dataobject.make_dataobject("abcde", @dataobject.Text, @schema.empty())
+  assert_eq(@semantic.content_diversity_score(d), 1.0)
+}
+
+test "S2.2 content_diversity_score degenerate: empty" {
+  let d = @dataobject.empty_dataobject(@dataobject.Text)
+  assert_eq(@semantic.content_diversity_score(d), 0.0)
+}
+
+test "S2.2 rewrite_text Simplify" {
+  let d = @dataobject.make_dataobject("  hello world  ", @dataobject.Text, @schema.empty())
+  let result = @semantic.rewrite_text(d, @semantic.Simplify)
+  assert_eq(result.content, "hello world")
+}
+
+test "S2.2 rewrite_text Simplify truncate long" {
+  let long = "a".repeat(300)
+  let d = @dataobject.make_dataobject(long, @dataobject.Text, @schema.empty())
+  let result = @semantic.rewrite_text(d, @semantic.Simplify)
+  assert_eq(result.content.length(), 200)
+}
+
+test "S2.2 rewrite_text Formalize lowercase" {
+  let d = @dataobject.make_dataobject("hello world", @dataobject.Text, @schema.empty())
+  let result = @semantic.rewrite_text(d, @semantic.Formalize)
+  assert_eq(result.content, "Hello world")
+}
+
+test "S2.2 rewrite_text Formalize already upper" {
+  let d = @dataobject.make_dataobject("Hello world", @dataobject.Text, @schema.empty())
+  let result = @semantic.rewrite_text(d, @semantic.Formalize)
+  assert_eq(result.content, "Hello world")
+}
+
+test "S2.2 rewrite_text Formalize degenerate: empty" {
+  let d = @dataobject.empty_dataobject(@dataobject.Text)
+  let result = @semantic.rewrite_text(d, @semantic.Formalize)
+  assert_eq(result.content, "")
+}
+
+test "S2.2 rewrite_text Casual passthrough" {
+  let d = @dataobject.make_dataobject("hello world", @dataobject.Text, @schema.empty())
+  let result = @semantic.rewrite_text(d, @semantic.Casual)
+  assert_eq(result.content, "hello world")
+}
+
+test "S2.2 rewrite_text Expand" {
+  let d = @dataobject.make_dataobject("hello world", @dataobject.Text, @schema.empty())
+  let result = @semantic.rewrite_text(d, @semantic.Expand)
+  assert_eq(result.content, "hello world hello world")
+}
+
+test "S2.2 rewrite_text Expand degenerate: empty" {
+  let d = @dataobject.empty_dataobject(@dataobject.Text)
+  let result = @semantic.rewrite_text(d, @semantic.Expand)
+  assert_eq(result.content, "")
+}
+
+test "S2.2 synthesize_text Paraphrase" {
+  let d = @dataobject.make_dataobject("hello", @dataobject.Text, @schema.empty())
+  let result = @semantic.synthesize_text(d, @semantic.Paraphrase)
+  assert_eq(result.content, "[paraphrase] hello [/paraphrase]")
+}
+
+test "S2.2 synthesize_text Augment" {
+  let d = @dataobject.make_dataobject("hello", @dataobject.Text, @schema.empty())
+  let result = @semantic.synthesize_text(d, @semantic.Augment)
+  assert_eq(result.content, "hello | hello")
+}
+
+test "S2.2 synthesize_text Interpolate" {
+  let d = @dataobject.make_dataobject("hello", @dataobject.Text, @schema.empty())
+  let result = @semantic.synthesize_text(d, @semantic.Interpolate)
+  assert_eq(result.content, "[interp] hello")
+}
+
+test "S2.2 synthesize_text degenerate: empty" {
+  let d = @dataobject.empty_dataobject(@dataobject.Text)
+  assert_eq(@semantic.synthesize_text(d, @semantic.Paraphrase).content, "")
+  assert_eq(@semantic.synthesize_text(d, @semantic.Augment).content, "")
+  assert_eq(@semantic.synthesize_text(d, @semantic.Interpolate).content, "")
+}
+
+test "S2.2 rewrite_mode_name" {
+  assert_eq(@semantic.rewrite_mode_name(@semantic.Simplify), "simplify")
+  assert_eq(@semantic.rewrite_mode_name(@semantic.Formalize), "formalize")
+  assert_eq(@semantic.rewrite_mode_name(@semantic.Casual), "casual")
+  assert_eq(@semantic.rewrite_mode_name(@semantic.Expand), "expand")
+}
+
+test "S2.2 synthesis_mode_name" {
+  assert_eq(@semantic.synthesis_mode_name(@semantic.Paraphrase), "paraphrase")
+  assert_eq(@semantic.synthesis_mode_name(@semantic.Augment), "augment")
+  assert_eq(@semantic.synthesis_mode_name(@semantic.Interpolate), "interpolate")
+}
+
+test "S2.2 semantic_id" {
+  assert_eq(@semantic.semantic_id(), "opcore/semantic")
+}
+
+test "S2.2 rewrite_text preserves modality" {
+  let d = @dataobject.make_dataobject("hello", @dataobject.Image, @schema.empty())
+  let result = @semantic.rewrite_text(d, @semantic.Simplify)
+  assert_eq(result.modality, @dataobject.Image)
+}

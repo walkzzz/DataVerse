@@ -142,8 +142,9 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S1.6 | 执行后端 CPU 串行（parallel/cpu_serial 1 子包） | ✅ | 24b67d2 |
 | S1.7 | DOSI 完善（context_budget + verifier 2 子包） | ✅ | ec8f631 |
 | S1.8 | 验证（Data-Juicer P0 对标 + Agent-Kit dosi_adapter 1 子包） | ✅ | 98f9a68 |
+| S2.1 | opcore 多模态算子（image/audio/video 3 子包） | ✅ | 78b3204 |
 
-**当前测试**：157 · **当前 API**：264（pub fn）+ 51（pub type）
+**当前测试**：187 · **当前 API**：290（pub fn）+ 54（pub type）
 
 ---
 

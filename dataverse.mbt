@@ -51,6 +51,9 @@ pub using @opcore.audio {
 pub using @opcore.video {
   video_id, VideoMeta, make_video_meta, empty_video_meta, video_duration, frame_count, video_sample_frames, video_to_dataobject,
 }
+pub using @opcore.semantic {
+  semantic_id, RewriteMode, SynthesisMode, semantic_quality_score, content_diversity_score, rewrite_text, synthesize_text, rewrite_mode_name, synthesis_mode_name,
+}
 pub using @learncore {
   learncore_id, ModelSpace, model_space_name, Hyperparams, make_hyperparams,
 }

@@ -30,6 +30,7 @@ import {
   "dataverse/opcore/image",
   "dataverse/opcore/audio",
   "dataverse/opcore/video",
+  "dataverse/opcore/semantic",
   "dataverse/datatemporal",
   "dataverse/datatemporal/version",
   "dataverse/datatemporal/lineage",

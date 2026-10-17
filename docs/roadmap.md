@@ -38,7 +38,7 @@
 |--------|------|------|--------|------|
 | S1.1 | opcore 补齐 14 类算子（Ingest/Normalize/Quality/Transform/Annotate/Select/Mix/Pack/Eval/Lineage/Safety 11 类） | ✅ | 2c9e030 | S0.4 |
 | S1.2 | learncore 基礎（传统 ML 算子：回归/分类/聚类/降维 + 评估指标算子） | ✅ | c2c9eca | S1.1 |
-| S1.3 | recipe 复合线（cleaning_line / dedup_line / quality_line / balance_line） | ⏸ | — | S1.1 |
+| S1.3 | recipe 复合线（cleaning_line / dedup_line / quality_line / balance_line） | ✅ | aee56c3 | S1.1 |
 | S1.4 | DataIR 流水线 IR（DAG）+ 基础优化器（融合、重排） | ⏸ | — | S0.6 |
 | S1.5 | datatemporal 深化（版本塔/双向血缘/回放完善） | ⏸ | — | S0.5 |
 | S1.6 | 执行后端 CPU 串行 | ⏸ | — | S1.1 |

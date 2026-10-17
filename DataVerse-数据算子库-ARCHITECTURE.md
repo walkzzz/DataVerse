@@ -1224,8 +1224,9 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S0.7 | DOSI 基础设施原型（Builder + Router 初始版本） | ✅ | 4aa3fbf |
 | S1.1 | opcore 补齐 14 类算子（ingest/normalize/quality/transform/annotate/select/mix/pack/eval/lineage_op/safety 11 子包） | ✅ | 2c9e030 |
 | S1.2 | learncore 基礎（regression/classify/cluster/feature/metrics 6 子包） | ✅ | c2c9eca |
+| S1.3 | recipe 复合线（cleaning_line/dedup_line/quality_line/balance_line 4 子包） | ✅ | aee56c3 |
 
-**当前测试**：100 · **当前 API**：207（pub fn）+ 43（pub type）
+**当前测试**：108 · **当前 API**：215（pub fn）+ 43（pub type）
 
 ---
 

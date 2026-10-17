@@ -225,6 +225,21 @@
 - API：189 → 207 pub fn（+18），40 → 43 pub type（+3 ModelSpace/LinearModel/Hyperparams）
 - `moon check`：0 error 0 warning · `moon test`：100 passed
 
+### S1.3 - recipe 复合线
+
+**新增 / Added**
+- 4 个子包（`src/recipe/` 下），编排已有原子算子为复合流水线：
+  - `cleaning_line/`：remove_empty → strip_whitespace → whitespace_normalization
+  - `dedup_line/`：exact_dedup
+  - `quality_line/`：length_quality_score 过滤 + topk_by_length 选择
+  - `balance_line/`：group_by_modality + 每组 topk_by_length
+- 8 个新测试（每条线正常用例 + 退化数据用例）
+
+**统计 / Stats**
+- 测试：100 → 108（+8）
+- API：207 → 215 pub fn（+8）
+- `moon check`：0 error 0 warning · `moon test`：108 passed
+
 ---
 
 > DataVerse Changelog | 2026-10-17

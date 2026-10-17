@@ -430,3 +430,126 @@ test "spec: versioned_index monotone" {
   let v2 = vindex2.current_version
   assert_true(v2 > v1)
 }
+// ============================================================
+// Phase 3 形式化性质 (31-40)
+// ============================================================
+
+///|
+/// 性质 31：read_source 空安全
+/// read_source(cfg, 0) == []
+test "spec: read_source empty safe" {
+  let cfg = @source.file_source("/data/test.json", "json")
+  let result = @source.read_source(cfg, 0)
+  assert_eq(result.length(), 0)
+}
+
+///|
+/// 性质 32：write_sink 空安全
+/// write_sink(cfg, []) == 0
+test "spec: write_sink empty safe" {
+  let cfg = @sink.file_sink("/data/out.json", "json")
+  let count = @sink.write_sink(cfg, [])
+  assert_eq(count, 0)
+}
+
+///|
+/// 性质 33：execute_write 写入守恒
+/// execute_write(cfg, data).written_count == data.length()
+test "spec: execute_write conservation" {
+  let cfg = @sink.file_sink("/data/out.json", "json")
+  let data = [
+    @dataobject.make_dataobject("a", @dataobject.Text, @schema.empty()),
+    @dataobject.make_dataobject("b", @dataobject.Text, @schema.empty()),
+    @dataobject.make_dataobject("c", @dataobject.Text, @schema.empty()),
+  ]
+  let result = @sink.execute_write(cfg, data)
+  assert_eq(result.written_count, data.length())
+}
+
+///|
+/// 性质 34：partition_data 分区守恒
+/// sum(partition_data(data, cfg)) == data.length()
+test "spec: partition_data conservation" {
+  let data = [
+    @dataobject.make_dataobject("a", @dataobject.Text, @schema.empty()),
+    @dataobject.make_dataobject("b", @dataobject.Text, @schema.empty()),
+    @dataobject.make_dataobject("c", @dataobject.Text, @schema.empty()),
+    @dataobject.make_dataobject("d", @dataobject.Text, @schema.empty()),
+    @dataobject.make_dataobject("e", @dataobject.Text, @schema.empty()),
+  ]
+  let cfg = @cpu_parallel.make_partition_config(@cpu_parallel.ByCount, 3, "")
+  let parts = @cpu_parallel.partition_data(data, cfg)
+  let mut total = 0
+  for i in 0..<parts.length() {
+    total = total + parts[i]
+  }
+  assert_eq(total, data.length())
+}
+
+///|
+/// 性质 35：gather_results 加法性
+/// gather_results([a, b, c]) == a + b + c
+test "spec: gather_results additive" {
+  let parts = [10, 20, 30]
+  let total = @cpu_parallel.gather_results(parts, @cpu_parallel.Concat)
+  assert_eq(total, 60)
+}
+
+///|
+/// 性质 36：register_plugin 幂等性
+/// register_plugin(register_plugin(reg, e), e) == register_plugin(reg, e)
+test "spec: register_plugin idempotent" {
+  let meta = @plugin.make_plugin_meta("p", "1.0", "a", "e", "d")
+  let entry = @plugin.make_plugin_entry(meta, @plugin.Loaded, [])
+  let reg1 = @plugin.register_plugin(@plugin.empty_plugin_registry(), entry)
+  let reg2 = @plugin.register_plugin(reg1, entry)
+  assert_eq(@plugin.plugin_count(reg1), @plugin.plugin_count(reg2))
+}
+
+///|
+/// 性质 37：unregister_plugin 注销安全
+/// unregister 后 get_plugin_status == Error
+test "spec: unregister_plugin safety" {
+  let meta = @plugin.make_plugin_meta("p", "1.0", "a", "e", "d")
+  let entry = @plugin.make_plugin_entry(meta, @plugin.Active, [])
+  let reg = @plugin.register_plugin(@plugin.empty_plugin_registry(), entry)
+  let reg2 = @plugin.unregister_plugin(reg, "p")
+  assert_eq(@plugin.get_plugin_status(reg2, "p"), @plugin.Error)
+}
+
+///|
+/// 性质 38：run_benchmark 零迭代安全
+/// run_benchmark(name, n, cfg{iterations=0}).total_ms == 0
+test "spec: run_benchmark zero iteration safe" {
+  let cfg = @benchmark.make_benchmark_config(0, 0, 1)
+  let result = @benchmark.run_benchmark("test", 100, cfg)
+  assert_eq(result.total_ms, 0)
+}
+
+///|
+/// 性质 39：apply_fusion 融合不增节点
+/// apply_fusion(p).fused_node_count <= apply_fusion(p).original_node_count
+test "spec: apply_fusion non_increasing" {
+  let n1 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("op1"), "map1", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let n2 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("op2"), "map2", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let n3 = @ir_operator.OperatorIR::simple(
+    @ir_core.IRNodeId::new("op3"), "map3", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  let p = @ir_pipeline.PipelineIR::empty().add_node(n1).add_node(n2).add_node(n3)
+  let result = @ir_fusion.apply_fusion(p)
+  assert_true(result.fused_node_count <= result.original_node_count)
+}
+
+///|
+/// 性质 40：add_doc_entry 索引单调性
+/// add_doc_entry 后 total_api 严格递增
+test "spec: add_doc_entry monotone" {
+  let index = @docgen.empty_doc_index()
+  let entry = @docgen.make_doc_entry("m", 10, 5, 8, "desc")
+  let index2 = @docgen.add_doc_entry(index, entry)
+  assert_true(index2.total_api > index.total_api)
+}

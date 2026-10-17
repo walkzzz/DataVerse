@@ -62,6 +62,15 @@ pub using @learncore.classify { classify_id, knn_classify }
 pub using @learncore.cluster { cluster_id, kmeans }
 pub using @learncore.feature { feature_id, standardize, normalize_minmax }
 pub using @learncore.metrics { metrics_id, accuracy, mse, mae, confusion_matrix }
+pub using @learncore.dl_layers {
+  dl_layers_id, Activation, LinearLayer, make_linear_layer, make_linear_layer_with_weights, linear_forward, activate, activation_forward, activation_name,
+}
+pub using @learncore.dl_losses {
+  dl_losses_id, LossKind, mse_loss, cross_entropy_loss, hinge_loss, loss_value, loss_name,
+}
+pub using @learncore.dl_optimizers {
+  dl_optimizers_id, OptimizerKind, OptimizerState, make_optimizer, sgd_step, adam_step, optimizer_step, update_state, optimizer_name,
+}
 pub using @datatemporal {
   datatemporal_id, make_fingerprint, empty_fingerprint, matches as fingerprint_matches,
 }

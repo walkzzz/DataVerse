@@ -42,6 +42,9 @@ import {
   "dataverse/learncore/cluster",
   "dataverse/learncore/feature",
   "dataverse/learncore/metrics",
+  "dataverse/learncore/dl_layers",
+  "dataverse/learncore/dl_losses",
+  "dataverse/learncore/dl_optimizers",
 
   "dataverse/recipe/cleaning_line",
   "dataverse/recipe/dedup_line",

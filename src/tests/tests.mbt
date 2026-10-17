@@ -1792,3 +1792,176 @@ test "S2.2 rewrite_text preserves modality" {
   let result = @semantic.rewrite_text(d, @semantic.Simplify)
   assert_eq(result.modality, @dataobject.Image)
 }
+
+// ============================================================
+// S2.3 learncore DL 算子测试 / DL operator tests
+// ============================================================
+
+test "S2.3 linear_forward basic" {
+  let w = [[1.0, 0.0], [0.0, 1.0]]
+  let b = [0.0, 0.0]
+  let layer = @dl_layers.make_linear_layer_with_weights(w, b, 2, 2)
+  let result = @dl_layers.linear_forward(layer, [3.0, 5.0])
+  assert_eq(result.length(), 2)
+  assert_true(result[0] > 2.99 && result[0] < 3.01)
+  assert_true(result[1] > 4.99 && result[1] < 5.01)
+}
+
+test "S2.3 linear_forward with bias" {
+  let w = [[1.0, 1.0]]
+  let b = [2.0]
+  let layer = @dl_layers.make_linear_layer_with_weights(w, b, 2, 1)
+  let result = @dl_layers.linear_forward(layer, [3.0, 5.0])
+  assert_true(result[0] > 9.99 && result[0] < 10.01)
+}
+
+test "S2.3 linear_forward degenerate: dim mismatch" {
+  let layer = @dl_layers.make_linear_layer(3, 2)
+  let result = @dl_layers.linear_forward(layer, [1.0, 2.0])
+  assert_eq(result.length(), 0)
+}
+
+test "S2.3 linear_forward zero init" {
+  let layer = @dl_layers.make_linear_layer(3, 2)
+  let result = @dl_layers.linear_forward(layer, [1.0, 2.0, 3.0])
+  assert_eq(result.length(), 2)
+  assert_eq(result[0], 0.0)
+  assert_eq(result[1], 0.0)
+}
+
+test "S2.3 activate ReLU" {
+  assert_eq(@dl_layers.activate(@dl_layers.ReLU, 5.0), 5.0)
+  assert_eq(@dl_layers.activate(@dl_layers.ReLU, -3.0), 0.0)
+  assert_eq(@dl_layers.activate(@dl_layers.ReLU, 0.0), 0.0)
+}
+
+test "S2.3 activate Identity" {
+  assert_eq(@dl_layers.activate(@dl_layers.Identity, 5.0), 5.0)
+  assert_eq(@dl_layers.activate(@dl_layers.Identity, -3.0), -3.0)
+}
+
+test "S2.3 activate Sigmoid range" {
+  let s1 = @dl_layers.activate(@dl_layers.Sigmoid, 0.0)
+  assert_true(s1 > 0.49 && s1 < 0.51)
+  let s2 = @dl_layers.activate(@dl_layers.Sigmoid, 100.0)
+  assert_true(s2 > 0.99)
+  let s3 = @dl_layers.activate(@dl_layers.Sigmoid, -100.0)
+  assert_true(s3 < 0.01)
+}
+
+test "S2.3 activation_forward basic" {
+  let result = @dl_layers.activation_forward(@dl_layers.ReLU, [-1.0, 2.0, -3.0, 4.0])
+  assert_eq(result, [0.0, 2.0, 0.0, 4.0])
+}
+
+test "S2.3 activation_name" {
+  assert_eq(@dl_layers.activation_name(@dl_layers.ReLU), "relu")
+  assert_eq(@dl_layers.activation_name(@dl_layers.Sigmoid), "sigmoid")
+  assert_eq(@dl_layers.activation_name(@dl_layers.Tanh), "tanh")
+  assert_eq(@dl_layers.activation_name(@dl_layers.Identity), "identity")
+}
+
+test "S2.3 mse_loss basic" {
+  let pred = [1.0, 2.0, 3.0]
+  let target = [1.0, 2.0, 3.0]
+  assert_eq(@dl_losses.mse_loss(pred, target), 0.0)
+}
+
+test "S2.3 mse_loss nonzero" {
+  let pred = [1.0, 2.0]
+  let target = [3.0, 4.0]
+  let result = @dl_losses.mse_loss(pred, target)
+  assert_true(result > 3.99 && result < 4.01)
+}
+
+test "S2.3 mse_loss degenerate: empty" {
+  assert_eq(@dl_losses.mse_loss([], []), 0.0)
+}
+
+test "S2.3 mse_loss degenerate: dim mismatch" {
+  assert_eq(@dl_losses.mse_loss([1.0], [1.0, 2.0]), 0.0)
+}
+
+test "S2.3 cross_entropy_loss basic" {
+  let logits = [0.0, 0.0]
+  let target = [1.0, 0.0]
+  let result = @dl_losses.cross_entropy_loss(logits, target)
+  assert_true(result > 0.0)
+}
+
+test "S2.3 cross_entropy_loss degenerate: empty" {
+  assert_eq(@dl_losses.cross_entropy_loss([], []), 0.0)
+}
+
+test "S2.3 hinge_loss basic" {
+  let pred = [1.0, 1.0]
+  let target = [1.0, 1.0]
+  assert_eq(@dl_losses.hinge_loss(pred, target), 0.0)
+}
+
+test "S2.3 hinge_loss nonzero" {
+  let pred = [-1.0, -1.0]
+  let target = [1.0, 1.0]
+  let result = @dl_losses.hinge_loss(pred, target)
+  assert_true(result > 1.99)
+}
+
+test "S2.3 loss_value dispatch" {
+  let pred = [1.0, 2.0]
+  let target = [1.0, 2.0]
+  assert_eq(@dl_losses.loss_value(@dl_losses.MSE, pred, target), 0.0)
+}
+
+test "S2.3 loss_name" {
+  assert_eq(@dl_losses.loss_name(@dl_losses.MSE), "mse")
+  assert_eq(@dl_losses.loss_name(@dl_losses.CrossEntropy), "cross_entropy")
+  assert_eq(@dl_losses.loss_name(@dl_losses.Hinge), "hinge")
+}
+
+test "S2.3 sgd_step basic" {
+  let state = @dl_optimizers.make_optimizer(@dl_optimizers.SGD, 0.1, [1.0, 2.0])
+  let grads = [0.5, 1.0]
+  let new_params = @dl_optimizers.sgd_step(state, grads)
+  assert_true(new_params[0] > 0.94 && new_params[0] < 0.96)
+  assert_true(new_params[1] > 1.89 && new_params[1] < 1.91)
+}
+
+test "S2.3 sgd_step degenerate: dim mismatch" {
+  let state = @dl_optimizers.make_optimizer(@dl_optimizers.SGD, 0.1, [1.0, 2.0])
+  let new_params = @dl_optimizers.sgd_step(state, [0.5])
+  assert_eq(new_params, [1.0, 2.0])
+}
+
+test "S2.3 adam_step basic" {
+  let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.1, [1.0, 2.0])
+  let grads = [0.5, 1.0]
+  let new_params = @dl_optimizers.adam_step(state, grads)
+  assert_eq(new_params.length(), 2)
+}
+
+test "S2.3 optimizer_step dispatch SGD" {
+  let state = @dl_optimizers.make_optimizer(@dl_optimizers.SGD, 0.1, [1.0])
+  let sgd_result = @dl_optimizers.optimizer_step(state, [0.5])
+  let adam_state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.1, [1.0])
+  let adam_result = @dl_optimizers.optimizer_step(adam_state, [0.5])
+  assert_true(sgd_result[0] != adam_result[0])
+}
+
+test "S2.3 update_state increments step" {
+  let state = @dl_optimizers.make_optimizer(@dl_optimizers.SGD, 0.1, [1.0])
+  let new_params = [0.95]
+  let new_state = @dl_optimizers.update_state(state, new_params)
+  assert_eq(new_state.step_count, 1)
+  assert_eq(new_state.params, [0.95])
+}
+
+test "S2.3 optimizer_name" {
+  assert_eq(@dl_optimizers.optimizer_name(@dl_optimizers.SGD), "sgd")
+  assert_eq(@dl_optimizers.optimizer_name(@dl_optimizers.Adam), "adam")
+}
+
+test "S2.3 dl_layers_id and dl_losses_id and dl_optimizers_id" {
+  assert_eq(@dl_layers.dl_layers_id(), "learncore/dl_layers")
+  assert_eq(@dl_losses.dl_losses_id(), "learncore/dl_losses")
+  assert_eq(@dl_optimizers.dl_optimizers_id(), "learncore/dl_optimizers")
+}

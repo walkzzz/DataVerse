@@ -143,8 +143,9 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S1.7 | DOSI 完善（context_budget + verifier 2 子包） | ✅ | ec8f631 |
 | S1.8 | 验证（Data-Juicer P0 对标 + Agent-Kit dosi_adapter 1 子包） | ✅ | 98f9a68 |
 | S2.1 | opcore 多模态算子（image/audio/video 3 子包） | ✅ | 78b3204 |
+| S2.2 | opcore 语义算子（semantic 1 子包） | ✅ | 3e1cd7b |
 
-**当前测试**：187 · **当前 API**：290（pub fn）+ 54（pub type）
+**当前测试**：209 · **当前 API**：297（pub fn）+ 56（pub type）
 
 ---
 

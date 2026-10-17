@@ -2329,3 +2329,111 @@ test "S2.6 has_cycle with cycle" {
 test "S2.6 field_lineage_id" {
   assert_eq(@field_lineage.field_lineage_id(), "datatemporal/field_lineage")
 }
+
+// ============================================================
+// S2.7 Agent-Kit 编排测试 / Agent-Kit orchestration tests
+// ============================================================
+
+test "S2.7 parse_nl_to_plan basic" {
+  let plan = @planner.parse_nl_to_plan("clean and dedup the data")
+  assert_true(plan.steps.length() >= 2)
+  assert_eq(plan.steps[0].operator_path, "opcore/clean")
+  assert_eq(plan.steps[1].operator_path, "opcore/dedup")
+}
+
+test "S2.7 parse_nl_to_plan single keyword" {
+  let plan = @planner.parse_nl_to_plan("filter the dataset")
+  assert_eq(plan.steps.length(), 1)
+  assert_eq(plan.steps[0].operator_path, "opcore/filter")
+}
+
+test "S2.7 parse_nl_to_plan no keywords" {
+  let plan = @planner.parse_nl_to_plan("hello world foo bar")
+  assert_eq(plan.steps.length(), 0)
+}
+
+test "S2.7 parse_nl_to_plan degenerate: empty" {
+  let plan = @planner.parse_nl_to_plan("")
+  assert_eq(plan, @planner.empty_execution_plan())
+}
+
+test "S2.7 parse_nl_to_plan multiple keywords" {
+  let plan = @planner.parse_nl_to_plan("clean, dedup, filter, normalize.")
+  assert_true(plan.steps.length() >= 4)
+}
+
+test "S2.7 make_plan_step" {
+  let step = @planner.make_plan_step(0, "opcore/clean", [("param", "value")], "test step")
+  assert_eq(step.step_id, 0)
+  assert_eq(step.operator_path, "opcore/clean")
+}
+
+test "S2.7 make_execution_plan" {
+  let steps = [@planner.make_plan_step(0, "opcore/clean", [], "step 0")]
+  let plan = @planner.make_execution_plan("test", "test plan", steps)
+  assert_eq(plan.name, "test")
+  assert_eq(@planner.plan_step_count(plan), 1)
+}
+
+test "S2.7 plan_step_count empty" {
+  let plan = @planner.empty_execution_plan()
+  assert_eq(@planner.plan_step_count(plan), 0)
+}
+
+test "S2.7 planner_id" {
+  assert_eq(@planner.planner_id(), "agent_kit/planner")
+}
+
+test "S2.7 execute_plan basic" {
+  let steps = [
+    @planner.make_plan_step(0, "opcore/clean", [], "step 0"),
+    @planner.make_plan_step(1, "opcore/dedup", [], "step 1"),
+  ]
+  let plan = @planner.make_execution_plan("test", "test plan", steps)
+  let results = @executor.execute_plan(plan)
+  assert_eq(results.length(), 2)
+  assert_eq(results[0].status, @executor.Success)
+  assert_eq(results[1].status, @executor.Success)
+}
+
+test "S2.7 execute_plan degenerate: empty" {
+  let plan = @planner.empty_execution_plan()
+  let results = @executor.execute_plan(plan)
+  assert_eq(results.length(), 0)
+}
+
+test "S2.7 exec_stats basic" {
+  let results = [
+    @executor.make_exec_result(0, @executor.Success, "opcore/clean", "ok", 10),
+    @executor.make_exec_result(1, @executor.Failed, "opcore/dedup", "error", 5),
+  ]
+  let stats = @executor.exec_stats(results)
+  assert_eq(stats.total_steps, 2)
+  assert_eq(stats.success_count, 1)
+  assert_eq(stats.failed_count, 1)
+  assert_eq(stats.total_duration_ms, 15)
+}
+
+test "S2.7 exec_stats degenerate: empty" {
+  let stats = @executor.exec_stats([])
+  assert_eq(stats.total_steps, 0)
+}
+
+test "S2.7 exec_status_name" {
+  assert_eq(@executor.exec_status_name(@executor.Pending), "pending")
+  assert_eq(@executor.exec_status_name(@executor.Running), "running")
+  assert_eq(@executor.exec_status_name(@executor.Success), "success")
+  assert_eq(@executor.exec_status_name(@executor.Failed), "failed")
+}
+
+test "S2.7 executor_id" {
+  assert_eq(@executor.executor_id(), "agent_kit/executor")
+}
+
+test "S2.7 full pipeline: NL → plan → execute" {
+  let plan = @planner.parse_nl_to_plan("clean and dedup and filter")
+  let results = @executor.execute_plan(plan)
+  assert_true(results.length() >= 3)
+  let stats = @executor.exec_stats(results)
+  assert_eq(stats.success_count, results.length())
+}

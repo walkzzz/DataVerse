@@ -126,6 +126,12 @@ pub using @agent_kit { agent_kit_id }
 pub using @agent_kit.dosi_adapter {
   dosi_adapter_id, QueryResult, query_dosi, plan_pipeline, empty_query_result,
 }
+pub using @agent_kit.planner {
+  planner_id, PlanStep, ExecutionPlan, make_plan_step, make_execution_plan, empty_execution_plan, parse_nl_to_plan, plan_step_count,
+}
+pub using @agent_kit.executor {
+  executor_id, ExecStatus, ExecResult, ExecStats, make_exec_result, execute_plan, exec_stats, exec_status_name,
+}
 pub using @self_evolve { self_evolve_id }
 pub using @parallel { parallel_id }
 pub using @parallel.cpu_serial {

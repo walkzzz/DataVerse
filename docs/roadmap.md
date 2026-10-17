@@ -66,7 +66,7 @@
 | S2.3 | learncore DL 算子（网络层/架构族/损失/优化器契约 + 前向传播模拟） | ✅ | b4069c1 | S1.2 |
 | S2.4 | learncore 模型评估算子（交叉验证 k-fold / 超参搜索网格） | ✅ | f867ceb | S2.3 |
 | S2.5 | recipe Phase 2 复合线（packing_line / eval_line / 跨模态一致性线） | ✅ | 668b1c1 | S2.1, S1.3 |
-| S2.6 | datatemporal 深化（漂移检测增强 / 数据衰老 / 增量更新 / 字段级血缘） | ⏳ | — | S1.5 |
+| S2.6 | datatemporal 深化（漂移检测增强 / 数据衰老 / 增量更新 / 字段级血缘） | ✅ | c2c5655 | S1.5 |
 | S2.7 | Agent-Kit 编排（NL→DataIR Planner-Executor 契约 + 模拟） | ⏳ | — | S1.8, S1.4 |
 | S2.8 | DOSI 扩充（批量索引 / 多版本索引）+ Phase 2 验证 + R16 门禁 | ⏳ | — | S2.1-S2.7 |
 

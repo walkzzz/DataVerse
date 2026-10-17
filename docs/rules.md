@@ -144,8 +144,9 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S1.8 | 验证（Data-Juicer P0 对标 + Agent-Kit dosi_adapter 1 子包） | ✅ | 98f9a68 |
 | S2.1 | opcore 多模态算子（image/audio/video 3 子包） | ✅ | 78b3204 |
 | S2.2 | opcore 语义算子（semantic 1 子包） | ✅ | 3e1cd7b |
+| S2.3 | learncore DL 算子（dl_layers/dl_losses/dl_optimizers 3 子包） | ✅ | b4069c1 |
 
-**当前测试**：209 · **当前 API**：297（pub fn）+ 56（pub type）
+**当前测试**：235 · **当前 API**：317（pub fn）+ 61（pub type）
 
 ---
 

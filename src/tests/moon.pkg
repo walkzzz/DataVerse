@@ -45,6 +45,8 @@ import {
   "dataverse/learncore/dl_layers",
   "dataverse/learncore/dl_losses",
   "dataverse/learncore/dl_optimizers",
+  "dataverse/learncore/cross_validation",
+  "dataverse/learncore/hyperparam_search",
 
   "dataverse/recipe/cleaning_line",
   "dataverse/recipe/dedup_line",

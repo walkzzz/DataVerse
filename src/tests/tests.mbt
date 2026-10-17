@@ -1965,3 +1965,122 @@ test "S2.3 dl_layers_id and dl_losses_id and dl_optimizers_id" {
   assert_eq(@dl_losses.dl_losses_id(), "learncore/dl_losses")
   assert_eq(@dl_optimizers.dl_optimizers_id(), "learncore/dl_optimizers")
 }
+
+// ============================================================
+// S2.4 learncore 模型评估算子测试 / Model evaluation tests
+// ============================================================
+
+test "S2.4 kfold_splits basic 5-fold" {
+  let splits = @cross_validation.kfold_splits(10, 5)
+  assert_eq(splits.length(), 5)
+  assert_eq(splits[0].test_indices, [0, 1])
+  assert_eq(splits[0].train_indices.length(), 8)
+  assert_eq(splits[4].test_indices, [8, 9])
+}
+
+test "S2.4 kfold_splits 3-fold 9 samples" {
+  let splits = @cross_validation.kfold_splits(9, 3)
+  assert_eq(splits.length(), 3)
+  assert_eq(splits[0].test_indices, [0, 1, 2])
+  assert_eq(splits[1].test_indices, [3, 4, 5])
+  assert_eq(splits[2].test_indices, [6, 7, 8])
+}
+
+test "S2.4 kfold_splits degenerate: k=0" {
+  let splits = @cross_validation.kfold_splits(10, 0)
+  assert_eq(splits.length(), 0)
+}
+
+test "S2.4 kfold_splits degenerate: n=0" {
+  let splits = @cross_validation.kfold_splits(0, 5)
+  assert_eq(splits.length(), 0)
+}
+
+test "S2.4 kfold_splits fold_id sequential" {
+  let splits = @cross_validation.kfold_splits(6, 3)
+  assert_eq(splits[0].fold_id, 0)
+  assert_eq(splits[1].fold_id, 1)
+  assert_eq(splits[2].fold_id, 2)
+}
+
+test "S2.4 kfold_splits last fold absorbs remainder" {
+  let splits = @cross_validation.kfold_splits(10, 3)
+  assert_eq(splits.length(), 3)
+  assert_eq(splits[2].test_indices, [6, 7, 8, 9])
+}
+
+test "S2.4 cv_stats basic" {
+  let stats = @cross_validation.cv_stats([0.8, 0.9, 0.85])
+  assert_true(stats.mean_score > 0.84 && stats.mean_score < 0.86)
+  assert_true(stats.std_score >= 0.0)
+}
+
+test "S2.4 cv_stats degenerate: empty" {
+  let stats = @cross_validation.cv_stats([])
+  assert_eq(stats.mean_score, 0.0)
+  assert_eq(stats.std_score, 0.0)
+}
+
+test "S2.4 cv_stats zero variance" {
+  let stats = @cross_validation.cv_stats([0.5, 0.5, 0.5])
+  assert_eq(stats.mean_score, 0.5)
+  assert_eq(stats.std_score, 0.0)
+}
+
+test "S2.4 loo_count" {
+  assert_eq(@cross_validation.loo_count(10), 10)
+  assert_eq(@cross_validation.loo_count(0), 0)
+}
+
+test "S2.4 cross_validation_id" {
+  assert_eq(@cross_validation.cross_validation_id(), "learncore/cross_validation")
+}
+
+test "S2.4 grid_combinations single param" {
+  let cfg = @hyperparam_search.make_grid_config("lr", [0.01, 0.1, 1.0])
+  let combos = @hyperparam_search.grid_combinations([cfg])
+  assert_eq(combos.length(), 3)
+  assert_eq(combos[0].length(), 1)
+  assert_eq(combos[0][0], ("lr", 0.01))
+}
+
+test "S2.4 grid_combinations two params" {
+  let cfg1 = @hyperparam_search.make_grid_config("lr", [0.01, 0.1])
+  let cfg2 = @hyperparam_search.make_grid_config("wd", [0.0, 0.01])
+  let combos = @hyperparam_search.grid_combinations([cfg1, cfg2])
+  assert_eq(combos.length(), 4)
+  assert_eq(combos[0].length(), 2)
+}
+
+test "S2.4 grid_combinations degenerate: empty" {
+  let combos = @hyperparam_search.grid_combinations([])
+  assert_eq(combos.length(), 0)
+}
+
+test "S2.4 grid_search basic" {
+  let cfg = @hyperparam_search.make_grid_config("lr", [0.01, 0.1, 1.0])
+  let result = @hyperparam_search.grid_search([cfg], fn(params) {
+    match params[0] {
+      ("lr", v) => if v > 0.05 { v } else { 0.0 }
+      _ => 0.0
+    }
+  })
+  assert_eq(result.total_configs, 3)
+  assert_true(result.best_score > 0.99)
+}
+
+test "S2.4 grid_search degenerate: empty configs" {
+  let result = @hyperparam_search.grid_search([], fn(_params) { 1.0 })
+  assert_eq(result.total_configs, 0)
+  assert_eq(result.best_score, 0.0)
+}
+
+test "S2.4 empty_grid_result" {
+  let result = @hyperparam_search.empty_grid_result()
+  assert_eq(result.total_configs, 0)
+  assert_eq(result.best_score, 0.0)
+}
+
+test "S2.4 hyperparam_search_id" {
+  assert_eq(@hyperparam_search.hyperparam_search_id(), "learncore/hyperparam_search")
+}

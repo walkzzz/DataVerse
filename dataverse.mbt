@@ -71,6 +71,12 @@ pub using @learncore.dl_losses {
 pub using @learncore.dl_optimizers {
   dl_optimizers_id, OptimizerKind, OptimizerState, make_optimizer, sgd_step, adam_step, optimizer_step, update_state, optimizer_name,
 }
+pub using @learncore.cross_validation {
+  cross_validation_id, CVSplit, kfold_splits, CVStats, cv_stats, loo_count,
+}
+pub using @learncore.hyperparam_search {
+  hyperparam_search_id, GridConfig, ParamCombo, GridResult, make_grid_config, grid_combinations, grid_search, empty_grid_result,
+}
 pub using @datatemporal {
   datatemporal_id, make_fingerprint, empty_fingerprint, matches as fingerprint_matches,
 }

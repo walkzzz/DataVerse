@@ -1,2 +1,10 @@
 // kernel 算子执行内核 / Operator execution kernel
-// S0.2 填充：exact/approx/streaming/cache 四个子包
+// S0.2: 四模式执行内核框架 + 一致性契约
+// 依赖方向：kernel -> {exact, approx, streaming, cache}，子包不 import kernel（无循环）
+// 同 module 多段路径需 module 前缀（单段如 "kernel" 可省略，多段如 "kernel/exact" 需 "dataverse/kernel/exact"）
+import {
+  "dataverse/kernel/exact",
+  "dataverse/kernel/approx",
+  "dataverse/kernel/streaming",
+  "dataverse/kernel/cache",
+}

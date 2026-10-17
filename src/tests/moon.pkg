@@ -1,2 +1,10 @@
 // tests 跨包测试 / Cross-package tests
-// S0.2+ 填充：算子鲁棒性、退化数据、一致性回归
+// S0.2: kernel 四模式一致性回归测试
+// 非根包引用同 module 子包需完整 module 前缀 "dataverse/<pkg_path>"
+import {
+  "dataverse/kernel",
+  "dataverse/kernel/exact",
+  "dataverse/kernel/approx",
+  "dataverse/kernel/streaming",
+  "dataverse/kernel/cache",
+}

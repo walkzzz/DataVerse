@@ -1,0 +1,2 @@
+// kernel/approx 近似概率模式 / Approximate probabilistic mode
+// S0.2: MinHash/SimHash、概率采样、近似分位的执行模式基座（种子化）

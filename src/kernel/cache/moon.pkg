@@ -1,0 +1,2 @@
+// kernel/cache 缓存增量模式 / Cache incremental mode
+// S0.2: 大目录重复处理、增量更新的执行模式基座

@@ -1,0 +1,2 @@
+// kernel/exact 确定性精确模式 / Deterministic exact mode
+// S0.2: 精确哈希去重、精确统计、Schema 校验的执行模式基座

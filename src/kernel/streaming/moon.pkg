@@ -1,0 +1,2 @@
+// kernel/streaming 流式模式 / Streaming mode
+// S0.2: 无界数据、在线清洗、实时过滤的执行模式基座（窗口化）

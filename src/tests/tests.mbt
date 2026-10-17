@@ -435,4 +435,115 @@ test "datair degenerate: empty node id and empty metadata" {
   )
   assert_eq(op.name, "")
   assert_eq(op.param_count(), 0)
+}// === S0.7 dosi 基础设施原型测试 ===
+
+test "dosi root id and sub-package ids" {
+  assert_eq(@dosi.dosi_id(), "dosi")
+  assert_eq(@dosi.builder_id(), "dosi/builder")
+  assert_eq(@dosi.router_id(), "dosi/router")
+}
+
+test "dosi SymbolicEntry and SemanticEntry construction" {
+  let sym = @dosi.SymbolicEntry::new("opcore.clean.x", "clean", "text", ["dep1"])
+  assert_eq(sym.path, "opcore.clean.x")
+  assert_eq(sym.category, "clean")
+  assert_eq(sym.modality, "text")
+  assert_eq(sym.dependencies.length(), 1)
+  let sem = @dosi.SemanticEntry::new("summary", ["p1"], "contract")
+  assert_eq(sem.summary, "summary")
+  assert_eq(sem.params.length(), 1)
+}
+
+test "dosi DOSIIndex empty and add" {
+  let e = @dosi.DOSIIndex::empty()
+  assert_eq(e.size(), 0)
+  let sym = @dosi.SymbolicEntry::new("p", "c", "m", [])
+  let sem = @dosi.SemanticEntry::new("s", [], "c")
+  let entry = @dosi.DOSIEntry::new(sym, sem)
+  let idx = e.add(entry)
+  assert_eq(idx.size(), 1)
+  assert_eq(idx.entries().length(), 1)
+}
+
+test "dosi builder build_opcore_index" {
+  let idx = @builder.build_opcore_index()
+  // S0.7 为 5 个 opcore 算子生成索引条目
+  assert_eq(idx.size(), 5)
+  assert_eq(@builder.builder_id(), "dosi/builder")
+}
+
+test "dosi builder build_from_operator_ir" {
+  let id = @ir_core.IRNodeId::new("op_001")
+  let op = @ir_operator.OperatorIR::new(
+    id,
+    "my_op",
+    [("threshold", "0.9"), ("model", "bge")],
+    @ir_operator.Text,
+    @ir_operator.ApproximateWithSeed(42),
+    @ir_operator.CostModel::simple(),
+    @ir_core.IRMetadata::empty(),
+  )
+  let entry = @builder.build_from_operator_ir(op)
+  assert_eq(entry.symbolic.path, "datair.operator.my_op")
+  assert_eq(entry.symbolic.modality, "text")
+  assert_eq(entry.symbolic.dependencies.length(), 2)
+  assert_eq(entry.semantic.params.length(), 2)
+}
+
+test "dosi builder merge" {
+  let idx1 = @builder.build_opcore_index()
+  let sym = @dosi.SymbolicEntry::new("extra", "custom", "text", [])
+  let sem = @dosi.SemanticEntry::new("s", [], "c")
+  let idx2 = @dosi.DOSIIndex::empty().add(@dosi.DOSIEntry::new(sym, sem))
+  let merged = @builder.merge(idx1, idx2)
+  assert_eq(merged.size(), 6)
+}
+
+test "dosi router lookup_by_path" {
+  let idx = @builder.build_opcore_index()
+  let found = @router.lookup_by_path(idx, "opcore.clean.remove_empty")
+  assert_true(found is Some(_))
+  let not_found = @router.lookup_by_path(idx, "nonexistent")
+  assert_true(not_found is None)
+  assert_eq(@router.router_id(), "dosi/router")
+}
+
+test "dosi router lookup_by_category" {
+  let idx = @builder.build_opcore_index()
+  let clean_ops = @router.lookup_by_category(idx, "clean")
+  assert_eq(clean_ops.length(), 2)
+  let filter_ops = @router.lookup_by_category(idx, "filter")
+  assert_eq(filter_ops.length(), 2)
+  let dedup_ops = @router.lookup_by_category(idx, "dedup")
+  assert_eq(dedup_ops.length(), 1)
+  let empty = @router.lookup_by_category(idx, "nonexistent")
+  assert_eq(empty.length(), 0)
+}
+
+test "dosi router lookup_by_modality" {
+  let idx = @builder.build_opcore_index()
+  let text_ops = @router.lookup_by_modality(idx, "text")
+  // 所有 5 个 opcore 算子都是 text 模态
+  assert_eq(text_ops.length(), 5)
+  let image_ops = @router.lookup_by_modality(idx, "image")
+  assert_eq(image_ops.length(), 0)
+}
+
+test "dosi router lookup_by_prefix" {
+  let idx = @builder.build_opcore_index()
+  let clean_all = @router.lookup_by_prefix(idx, "opcore.clean.")
+  assert_eq(clean_all.length(), 2)
+  let filter_all = @router.lookup_by_prefix(idx, "opcore.filter.")
+  assert_eq(filter_all.length(), 2)
+  let all = @router.lookup_by_prefix(idx, "opcore.")
+  assert_eq(all.length(), 5)
+}
+
+test "dosi degenerate: empty index lookups" {
+  // 退化数据：空索引查询安全返回
+  let e = @dosi.DOSIIndex::empty()
+  assert_true(@router.lookup_by_path(e, "x") is None)
+  assert_eq(@router.lookup_by_category(e, "x").length(), 0)
+  assert_eq(@router.lookup_by_modality(e, "x").length(), 0)
+  assert_eq(@router.lookup_by_prefix(e, "x").length(), 0)
 }

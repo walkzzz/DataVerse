@@ -1,0 +1,5 @@
+// dosi/router 检索路由 / DOSI Router
+// S0.7 填充：按路径/分类/模态精确查询
+import {
+  "dataverse/dosi",
+}

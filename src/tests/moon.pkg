@@ -25,4 +25,7 @@ import {
   "dataverse/datair/ir_core",
   "dataverse/datair/ir_entity",
   "dataverse/datair/ir_operator",
+  "dataverse/dosi",
+  "dataverse/dosi/builder",
+  "dataverse/dosi/router",
 }

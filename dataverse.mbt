@@ -2,14 +2,14 @@
 /// # DataVerse 数据算子库根包 / Root Package
 ///
 /// 对外统一入口 `@dataverse`，重导出所有一级子包公共 API。
-/// S0.1-S0.6: kernel + dataobject + opcore + datatemporal + datair.
+/// S0.1-S0.7: kernel + dataobject + opcore + datatemporal + datair + dosi.
 ///
 /// # Root package of DataVerse
 ///
 /// Unified entry `@dataverse`, re-exports all first-level sub-packages' public API.
-/// S0.1 skeleton + S0.2 kernel + S0.3 dataobject + S0.4 opcore + S0.5 datatemporal + S0.6 datair.
+/// S0.1 skeleton + S0.2 kernel + S0.3 dataobject + S0.4 opcore + S0.5 datatemporal + S0.6 datair + S0.7 dosi.
 pub fn version() -> String {
-  "dataverse 0.1.0-dev (S0.6 datair)"
+  "dataverse 0.1.0-dev (S0.7 dosi)"
 }
 
 pub using @kernel {
@@ -45,7 +45,14 @@ pub using @datair.ir_entity { EntityType, EntityIR, entity_type_name }
 pub using @datair.ir_operator {
   Determinism, IRModality, CostModel, OperatorIR, determinism_name, modality_name,
 }
-pub using @dosi { dosi_id }
+pub using @dosi {
+  dosi_id, builder_id, router_id,
+  SymbolicEntry, SemanticEntry, DOSIEntry, DOSIIndex,
+}
+pub using @dosi.builder { build_opcore_index, build_from_operator_ir, merge }
+pub using @dosi.router {
+  lookup_by_path, lookup_by_category, lookup_by_modality, lookup_by_prefix,
+}
 pub using @agent_kit { agent_kit_id }
 pub using @self_evolve { self_evolve_id }
 pub using @parallel { parallel_id }

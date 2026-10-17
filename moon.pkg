@@ -21,6 +21,8 @@ import {
   "datair/ir_entity",
   "datair/ir_operator",
   "dosi",
+  "dosi/builder",
+  "dosi/router",
   "agent_kit",
   "self_evolve",
   "parallel",

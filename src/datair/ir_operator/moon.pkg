@@ -1,0 +1,5 @@
+// datair/ir_operator 算子 IR / Operator IR
+// S0.6 填充：OperatorIR（原子算子节点：名称、参数、模态、确定性、代价模型）
+import {
+  "dataverse/datair/ir_core",
+}

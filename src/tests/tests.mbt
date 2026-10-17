@@ -317,4 +317,122 @@ test "datatemporal ReplayTrace" {
   assert_eq(@replay.step_count(t), 3)
   let e = @replay.empty_trace("t0")
   assert_eq(@replay.step_count(e), 0)
+}// === S0.6 datair 基础语法定义测试 ===
+
+test "datair root id and ir_kind_count" {
+  assert_eq(@datair.datair_id(), "datair")
+  assert_eq(@datair.ir_core_id(), "datair/ir_core")
+  assert_eq(@datair.ir_entity_id(), "datair/ir_entity")
+  assert_eq(@datair.ir_operator_id(), "datair/ir_operator")
+  // S0.6 落地实体 IR + 算子 IR；流水线 IR 留 Phase 1
+  assert_eq(@datair.ir_kind_count(), 2)
+}
+
+test "ir_core IRNodeId construction and validity" {
+  let id1 = @ir_core.IRNodeId::new("node_001")
+  assert_eq(id1.value, "node_001")
+  assert_true(id1.is_valid())
+  // 退化数据：空串节点 id 无效
+  let id2 = @ir_core.IRNodeId::new("")
+  assert_false(id2.is_valid())
+}
+
+test "ir_core IRMetadata empty and construction" {
+  let e = @ir_core.IRMetadata::empty()
+  assert_true(e.is_empty())
+  assert_eq(e.tag_count(), 0)
+  let m = @ir_core.IRMetadata::new(["clean", "text"], "1.0.0", "src/csv")
+  assert_false(m.is_empty())
+  assert_eq(m.tag_count(), 2)
+}
+
+test "ir_entity EntityType and entity_type_name" {
+  assert_eq(@ir_entity.entity_type_name(@ir_entity.DataObject), "data_object")
+  assert_eq(@ir_entity.entity_type_name(@ir_entity.Chunk), "chunk")
+  assert_eq(@ir_entity.entity_type_name(@ir_entity.Embedding), "embedding")
+  assert_eq(@ir_entity.entity_type_name(@ir_entity.Dataset), "dataset")
+  assert_true(@ir_entity.DataObject != @ir_entity.Chunk)
+}
+
+test "ir_entity EntityIR construction" {
+  let id = @ir_core.IRNodeId::new("ent_001")
+  let m = @ir_core.IRMetadata::new(["text"], "1.0.0", "schema/text_v1")
+  let e = @ir_entity.EntityIR::new(id, @ir_entity.DataObject, "schema/text_v1", 1024, m)
+  assert_eq(e.node_id.value, "ent_001")
+  assert_eq(e.entity_type, @ir_entity.DataObject)
+  assert_eq(e.schema_ref, "schema/text_v1")
+  assert_eq(e.size_hint, 1024)
+  // 简化构造
+  let s = @ir_entity.EntityIR::simple(id, @ir_entity.Chunk, "schema/chunk_v1")
+  assert_eq(s.size_hint, 0)
+  assert_true(s.metadata.is_empty())
+}
+
+test "ir_operator Determinism and determinism_name" {
+  assert_eq(@ir_operator.determinism_name(@ir_operator.Deterministic), "deterministic")
+  assert_eq(
+    @ir_operator.determinism_name(@ir_operator.ApproximateWithSeed(42)),
+    "approximate(seed)",
+  )
+  assert_eq(
+    @ir_operator.determinism_name(@ir_operator.NonDeterministic),
+    "non-deterministic",
+  )
+  assert_true(@ir_operator.Deterministic != @ir_operator.NonDeterministic)
+}
+
+test "ir_operator IRModality and modality_name" {
+  assert_eq(@ir_operator.modality_name(@ir_operator.Text), "text")
+  assert_eq(@ir_operator.modality_name(@ir_operator.Image), "image")
+  assert_eq(@ir_operator.modality_name(@ir_operator.Multi), "multi")
+  assert_true(@ir_operator.Text != @ir_operator.Code)
+}
+
+test "ir_operator CostModel construction" {
+  let c = @ir_operator.CostModel::new("O(n log n)", "O(n)", 0.7)
+  assert_eq(c.time_complexity, "O(n log n)")
+  assert_eq(c.space_complexity, "O(n)")
+  // 浮点比较用行为验证（0.7 在 0.5 之上）
+  assert_true(c.estimated_cost > 0.5)
+  let s = @ir_operator.CostModel::simple()
+  assert_eq(s.time_complexity, "O(n)")
+  assert_eq(s.space_complexity, "O(n)")
+}
+
+test "ir_operator OperatorIR construction" {
+  let id = @ir_core.IRNodeId::new("op_001")
+  let m = @ir_core.IRMetadata::new(["clean"], "1.0.0", "opcore/clean")
+  let cm = @ir_operator.CostModel::new("O(n)", "O(1)", 0.2)
+  let op = @ir_operator.OperatorIR::new(
+    id,
+    "remove_empty",
+    [("min_length", "1")],
+    @ir_operator.Text,
+    @ir_operator.Deterministic,
+    cm,
+    m,
+  )
+  assert_eq(op.name, "remove_empty")
+  assert_eq(op.param_count(), 1)
+  assert_eq(op.modality, @ir_operator.Text)
+  assert_eq(op.determinism, @ir_operator.Deterministic)
+  // 简化构造
+  let s = @ir_operator.OperatorIR::simple(
+    id, "exact_dedup", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  assert_eq(s.param_count(), 0)
+  assert_true(s.metadata.is_empty())
+}
+
+test "datair degenerate: empty node id and empty metadata" {
+  // 退化数据：空节点 id 安全处理（is_valid 返回 false，不抛异常）
+  let id = @ir_core.IRNodeId::new("")
+  assert_false(id.is_valid())
+  let e = @ir_entity.EntityIR::simple(id, @ir_entity.DataObject, "")
+  assert_eq(e.schema_ref, "")
+  let op = @ir_operator.OperatorIR::simple(
+    id, "", @ir_operator.Text, @ir_operator.Deterministic,
+  )
+  assert_eq(op.name, "")
+  assert_eq(op.param_count(), 0)
 }

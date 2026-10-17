@@ -1,5 +1,5 @@
 // tests 跨包测试 / Cross-package tests
-// S0.2-S0.5: kernel + dataobject + opcore + datatemporal
+// S0.2-S0.6: kernel + dataobject + opcore + datatemporal + datair
 import {
   "dataverse/kernel",
   "dataverse/kernel/exact",
@@ -21,4 +21,8 @@ import {
   "dataverse/datatemporal/lineage",
   "dataverse/datatemporal/drift",
   "dataverse/datatemporal/replay",
+  "dataverse/datair",
+  "dataverse/datair/ir_core",
+  "dataverse/datair/ir_entity",
+  "dataverse/datair/ir_operator",
 }

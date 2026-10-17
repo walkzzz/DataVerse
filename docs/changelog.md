@@ -205,6 +205,26 @@
 - API：155 → 189 pub fn（+34），39 → 40 pub type（+1 GlobalStats）
 - `moon check`：0 error 0 warning · `moon test`：86 passed
 
+### S1.2 - learncore 基礎（传统 ML 算子）
+
+**新增 / Added**
+- 6 个子包（`src/learncore/` 下），对标架构 §4.3.5 A（传统 ML）+ D（评估指标）：
+  - `learncore/` 根：ModelSpace enum（ML/DL/SSL/Eval/Adapt/Optim）+ Hyperparams
+  - `regression/`：linear_regression（OLS 闭式解）+ LinearModel + predict_linear
+  - `classify/`：knn_classify（欧氏距离 + 多数投票）
+  - `cluster/`：kmeans（Lloyd 迭代）
+  - `feature/`：standardize（Z-score）+ normalize_minmax
+  - `metrics/`：accuracy + mse + mae + confusion_matrix
+- 14 个新测试（每类算子正常用例 + 退化数据用例）
+
+**修复 / Fixed**
+- `Array::make(n, Array::make(n, 0))` 浅拷贝陷阱：内层 Array 共享同一引用 → 改用循环逐行创建
+
+**统计 / Stats**
+- 测试：86 → 100（+14）
+- API：189 → 207 pub fn（+18），40 → 43 pub type（+3 ModelSpace/LinearModel/Hyperparams）
+- `moon check`：0 error 0 warning · `moon test`：100 passed
+
 ---
 
 > DataVerse Changelog | 2026-10-17

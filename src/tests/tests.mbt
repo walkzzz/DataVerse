@@ -2586,3 +2586,90 @@ test "S2.8 verify: cross-backend equivalence" {
   assert_true(direct.content.length() >= 0)
   assert_eq(@cpu_serial.plan_step_count(plan), 0)
 }
+
+// ============================================================
+// S2.9 learncore DL 扩展层测试 / Extended DL layer tests
+// ============================================================
+
+test "S2.9 conv2d_output_dim basic" {
+  let meta = @dl_layers.make_conv2d(3, 16, 3, 1, 1)
+  let out = @dl_layers.conv2d_output_dim(32, meta)
+  assert_eq(out, 32)
+}
+
+test "S2.9 conv2d_output_dim stride 2" {
+  let meta = @dl_layers.make_conv2d(3, 16, 3, 2, 1)
+  let out = @dl_layers.conv2d_output_dim(32, meta)
+  assert_eq(out, 16)
+}
+
+test "S2.9 conv2d_output_dim no padding" {
+  let meta = @dl_layers.make_conv2d(3, 16, 3, 1, 0)
+  let out = @dl_layers.conv2d_output_dim(32, meta)
+  assert_eq(out, 30)
+}
+
+test "S2.9 conv2d_output_dim degenerate: stride 0" {
+  let meta = @dl_layers.make_conv2d(3, 16, 3, 0, 1)
+  assert_eq(@dl_layers.conv2d_output_dim(32, meta), 0)
+}
+
+test "S2.9 maxpool_output_dim basic" {
+  let meta = @dl_layers.make_maxpool(2, 2)
+  let out = @dl_layers.maxpool_output_dim(32, meta)
+  assert_eq(out, 16)
+}
+
+test "S2.9 maxpool_output_dim degenerate: stride 0" {
+  let meta = @dl_layers.make_maxpool(2, 0)
+  assert_eq(@dl_layers.maxpool_output_dim(32, meta), 0)
+}
+
+test "S2.9 dropout_forward inference" {
+  let input = [1.0, 2.0, 3.0, 4.0]
+  let result = @dl_layers.dropout_forward(input, 0.5, @dl_layers.Inference)
+  assert_eq(result, input)
+}
+
+test "S2.9 dropout_forward training" {
+  let input = [1.0, 2.0, 3.0, 4.0]
+  let result = @dl_layers.dropout_forward(input, 0.5, @dl_layers.Training)
+  assert_eq(result.length(), 4)
+}
+
+test "S2.9 dropout_forward degenerate: rate 0" {
+  let input = [1.0, 2.0, 3.0]
+  let result = @dl_layers.dropout_forward(input, 0.0, @dl_layers.Training)
+  assert_eq(result, input)
+}
+
+test "S2.9 dropout_forward degenerate: rate 1" {
+  let input = [1.0, 2.0, 3.0]
+  let result = @dl_layers.dropout_forward(input, 1.0, @dl_layers.Training)
+  assert_eq(result, input)
+}
+
+test "S2.9 batchnorm_forward basic" {
+  let meta = @dl_layers.make_batchnorm(3, 0.00001)
+  let input = [1.0, 2.0, 3.0]
+  let result = @dl_layers.batchnorm_forward(input, meta)
+  assert_eq(result.length(), 3)
+}
+
+test "S2.9 batchnorm_forward degenerate: empty" {
+  let meta = @dl_layers.make_batchnorm(3, 0.00001)
+  let result = @dl_layers.batchnorm_forward([], meta)
+  assert_eq(result.length(), 0)
+}
+
+test "S2.9 batchnorm_forward zero variance" {
+  let meta = @dl_layers.make_batchnorm(3, 0.00001)
+  let input = [5.0, 5.0, 5.0]
+  let result = @dl_layers.batchnorm_forward(input, meta)
+  assert_eq(result.length(), 3)
+}
+
+test "S2.9 dropout_mode_name" {
+  assert_eq(@dl_layers.dropout_mode_name(@dl_layers.Training), "training")
+  assert_eq(@dl_layers.dropout_mode_name(@dl_layers.Inference), "inference")
+}

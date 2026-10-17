@@ -8,9 +8,9 @@
 ///
 /// Unified entry `@dataverse`, re-exports all first-level sub-packages' public API.
 /// S0.1 skeleton + S0.2 kernel + S0.3 dataobject + S0.4 opcore + S0.5 datatemporal + S0.6 datair + S0.7 dosi.
-/// S2.1-S2.8 Phase 2 全域算子成熟期闭环.
+/// S2.1-S2.8 Phase 2 全域算子成熟期闭环. S2.9 DL 扩展层（Conv2d/MaxPool/Dropout/BatchNorm）.
 pub fn version() -> String {
-  "dataverse 0.1.0-dev (S2.8 Phase 2 complete)"
+  "dataverse 0.1.0-dev (S2.9 DL extension layers)"
 }
 
 pub using @kernel {
@@ -64,6 +64,8 @@ pub using @learncore.feature { feature_id, standardize, normalize_minmax }
 pub using @learncore.metrics { metrics_id, accuracy, mse, mae, confusion_matrix }
 pub using @learncore.dl_layers {
   dl_layers_id, Activation, LinearLayer, make_linear_layer, make_linear_layer_with_weights, linear_forward, activate, activation_forward, activation_name,
+  Conv2dMeta, make_conv2d, conv2d_output_dim, MaxPoolMeta, make_maxpool, maxpool_output_dim,
+  DropoutMode, dropout_forward, dropout_mode_name, BatchNormMeta, make_batchnorm, batchnorm_forward,
 }
 pub using @learncore.dl_losses {
   dl_losses_id, LossKind, mse_loss, cross_entropy_loss, hinge_loss, loss_value, loss_name,

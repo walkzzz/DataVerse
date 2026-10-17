@@ -126,3 +126,161 @@ fn exp(x : Double) -> Double {
 pub fn dl_layers_id() -> String {
   "learncore/dl_layers"
 }
+// ============================================================
+// S2.9 DL 扩展层 / Extended DL Layers
+// ============================================================
+
+/// Conv2d 配置 / Conv2d configuration.
+pub struct Conv2dMeta {
+  in_channels : Int
+  out_channels : Int
+  kernel_size : Int
+  stride : Int
+  padding : Int
+} derive(Debug, Eq)
+
+pub extend Conv2dMeta with Eq::{equal, not_equal}
+pub extend Conv2dMeta with Debug::{to_repr}
+
+/// 构造 Conv2d 配置 / Build Conv2d meta.
+pub fn make_conv2d(in_channels : Int, out_channels : Int, kernel_size : Int, stride : Int, padding : Int) -> Conv2dMeta {
+  { in_channels, out_channels, kernel_size, stride, padding }
+}
+
+/// Conv2d 输出维度 / Conv2d output dimension.
+///
+/// 公式：`(input + 2*padding - kernel) / stride + 1`。
+/// 退化安全：stride <= 0 返回 0。
+pub fn conv2d_output_dim(input_dim : Int, meta : Conv2dMeta) -> Int {
+  if meta.stride <= 0 {
+    0
+  } else {
+    (input_dim + 2 * meta.padding - meta.kernel_size) / meta.stride + 1
+  }
+}
+
+/// MaxPool 配置 / MaxPool configuration.
+pub struct MaxPoolMeta {
+  kernel_size : Int
+  stride : Int
+} derive(Debug, Eq)
+
+pub extend MaxPoolMeta with Eq::{equal, not_equal}
+pub extend MaxPoolMeta with Debug::{to_repr}
+
+/// 构造 MaxPool 配置 / Build MaxPool meta.
+pub fn make_maxpool(kernel_size : Int, stride : Int) -> MaxPoolMeta {
+  { kernel_size, stride }
+}
+
+/// MaxPool 输出维度 / MaxPool output dimension.
+///
+/// 公式：`(input - kernel) / stride + 1`。
+/// 退化安全：stride <= 0 返回 0。
+pub fn maxpool_output_dim(input_dim : Int, meta : MaxPoolMeta) -> Int {
+  if meta.stride <= 0 {
+    0
+  } else {
+    (input_dim - meta.kernel_size) / meta.stride + 1
+  }
+}
+
+/// Dropout 模式 / Dropout mode.
+pub(all) enum DropoutMode {
+  Training
+  Inference
+} derive(Debug, Eq)
+
+pub extend DropoutMode with Eq::{equal, not_equal}
+pub extend DropoutMode with Debug::{to_repr}
+
+/// Dropout 前向传播 / Dropout forward.
+///
+/// 训练模式：确定性模拟（每隔 1/rate 置零），推理模式：原样返回。
+/// 退化安全：rate <= 0 或 rate >= 1 返回原输入。
+pub fn dropout_forward(input : Array[Double], rate : Double, mode : DropoutMode) -> Array[Double] {
+  match mode {
+    Inference => input
+    Training => {
+      if rate <= 0.0 || rate >= 1.0 {
+        input
+      } else {
+        let period = (1.0 / rate).to_int()
+        if period <= 0 {
+          input
+        } else {
+          let result : Array[Double] = []
+          for i in 0..<input.length() {
+            if i % period == 0 {
+              result.push(0.0)
+            } else {
+              result.push(input[i])
+            }
+          }
+          result
+        }
+      }
+    }
+  }
+}
+
+/// BatchNorm 配置 / BatchNorm configuration.
+pub struct BatchNormMeta {
+  num_features : Int
+  epsilon : Double
+  gamma : Array[Double]
+  beta : Array[Double]
+} derive(Debug, Eq)
+
+pub extend BatchNormMeta with Eq::{equal, not_equal}
+pub extend BatchNormMeta with Debug::{to_repr}
+
+/// 构造 BatchNorm 配置（单位变换）/ Build BatchNorm meta (identity).
+pub fn make_batchnorm(num_features : Int, epsilon : Double) -> BatchNormMeta {
+  let g : Array[Double] = []
+  let b : Array[Double] = []
+  for _ in 0..<num_features {
+    g.push(1.0)
+    b.push(0.0)
+  }
+  { num_features, epsilon, gamma: g, beta: b }
+}
+
+/// BatchNorm 前向传播 / BatchNorm forward.
+///
+/// 公式：`gamma * (x - mean) / sqrt(var + epsilon) + beta`。
+/// 退化安全：空输入返回空数组。
+pub fn batchnorm_forward(input : Array[Double], meta : BatchNormMeta) -> Array[Double] {
+  let n = input.length()
+  if n == 0 {
+    []
+  } else {
+    let mut sum = 0.0
+    for i in 0..<n {
+      sum = sum + input[i]
+    }
+    let mean = sum / n.to_double()
+    let mut var_sum = 0.0
+    for i in 0..<n {
+      let diff = input[i] - mean
+      var_sum = var_sum + diff * diff
+    }
+    let variance = var_sum / n.to_double()
+    let std = (variance + meta.epsilon).sqrt()
+    let result : Array[Double] = []
+    for i in 0..<n {
+      let g = if i < meta.gamma.length() { meta.gamma[i] } else { 1.0 }
+      let b = if i < meta.beta.length() { meta.beta[i] } else { 0.0 }
+      result.push(g * (input[i] - mean) / std + b)
+    }
+    result
+  }
+}
+
+/// Dropout 模式名称 / Dropout mode name.
+pub fn dropout_mode_name(mode : DropoutMode) -> String {
+  match mode {
+    Training => "training"
+    Inference => "inference"
+  }
+}

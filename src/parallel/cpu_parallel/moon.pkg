@@ -1,0 +1,6 @@
+// parallel/cpu_parallel CPU 并行执行后端 / CPU Parallel Execution Backend
+// S3.2 填充：分区 + shuffle + gather 契约 + 内存模拟
+import {
+  "dataverse/dataobject",
+
+}

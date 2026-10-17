@@ -53,6 +53,7 @@ import {
   "self_evolve",
   "parallel",
   "parallel/cpu_serial",
+  "parallel/cpu_parallel",
   "io",
   "io/source",
   "io/sink",

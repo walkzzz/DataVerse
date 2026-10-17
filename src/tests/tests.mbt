@@ -3031,3 +3031,138 @@ test "S3.1 sink_stats_uri" {
   let stats = @sink.make_sink_stats(cfg, 500, 8192)
   assert_eq(@sink.sink_stats_uri(stats), "file:///data/output.json?written=500&bytes=8192")
 }
+// ============================================================
+// S3.2 parallel/cpu_parallel 测试 / Parallel execution tests
+// ============================================================
+
+test "S3.2 partition_strategy_name" {
+  assert_eq(@cpu_parallel.partition_strategy_name(@cpu_parallel.ByCount), "by_count")
+  assert_eq(@cpu_parallel.partition_strategy_name(@cpu_parallel.BySize), "by_size")
+  assert_eq(@cpu_parallel.partition_strategy_name(@cpu_parallel.ByKeyHash), "by_key_hash")
+}
+
+test "S3.2 partition_data ByCount basic" {
+  let data = [
+    @dataobject.make_dataobject("a", @dataobject.Text, @schema.empty()),
+    @dataobject.make_dataobject("b", @dataobject.Text, @schema.empty()),
+    @dataobject.make_dataobject("c", @dataobject.Text, @schema.empty()),
+    @dataobject.make_dataobject("d", @dataobject.Text, @schema.empty()),
+  ]
+  let cfg = @cpu_parallel.make_partition_config(@cpu_parallel.ByCount, 2, "")
+  let parts = @cpu_parallel.partition_data(data, cfg)
+  assert_eq(parts.length(), 2)
+  assert_eq(parts[0], 2)
+  assert_eq(parts[1], 2)
+}
+
+test "S3.2 partition_data ByCount uneven" {
+  let data = [
+    @dataobject.make_dataobject("a", @dataobject.Text, @schema.empty()),
+    @dataobject.make_dataobject("b", @dataobject.Text, @schema.empty()),
+    @dataobject.make_dataobject("c", @dataobject.Text, @schema.empty()),
+  ]
+  let cfg = @cpu_parallel.make_partition_config(@cpu_parallel.ByCount, 2, "")
+  let parts = @cpu_parallel.partition_data(data, cfg)
+  assert_eq(parts[0], 2)
+  assert_eq(parts[1], 1)
+}
+
+test "S3.2 partition_data degenerate: zero partitions" {
+  let data = [
+    @dataobject.make_dataobject("a", @dataobject.Text, @schema.empty()),
+  ]
+  let cfg = @cpu_parallel.make_partition_config(@cpu_parallel.ByCount, 0, "")
+  let parts = @cpu_parallel.partition_data(data, cfg)
+  assert_eq(parts.length(), 0)
+}
+
+test "S3.2 partition_data degenerate: empty data" {
+  let cfg = @cpu_parallel.make_partition_config(@cpu_parallel.ByCount, 3, "")
+  let parts = @cpu_parallel.partition_data([], cfg)
+  assert_eq(parts.length(), 3)
+  assert_eq(parts[0], 0)
+}
+
+test "S3.2 partition_data ByKeyHash" {
+  let data = [
+    @dataobject.make_dataobject("a", @dataobject.Text, @schema.empty()),
+    @dataobject.make_dataobject("b", @dataobject.Text, @schema.empty()),
+    @dataobject.make_dataobject("c", @dataobject.Text, @schema.empty()),
+    @dataobject.make_dataobject("d", @dataobject.Text, @schema.empty()),
+  ]
+  let cfg = @cpu_parallel.make_partition_config(@cpu_parallel.ByKeyHash, 2, "id")
+  let parts = @cpu_parallel.partition_data(data, cfg)
+  assert_eq(parts[0], 2)
+  assert_eq(parts[1], 2)
+}
+
+test "S3.2 shuffle_type_name" {
+  assert_eq(@cpu_parallel.shuffle_type_name(@cpu_parallel.HashShuffle), "hash")
+  assert_eq(@cpu_parallel.shuffle_type_name(@cpu_parallel.RangeShuffle), "range")
+  assert_eq(@cpu_parallel.shuffle_type_name(@cpu_parallel.RandomShuffle), "random")
+}
+
+test "S3.2 shuffle_data basic" {
+  let data = [
+    @dataobject.make_dataobject("a", @dataobject.Text, @schema.empty()),
+    @dataobject.make_dataobject("b", @dataobject.Text, @schema.empty()),
+    @dataobject.make_dataobject("c", @dataobject.Text, @schema.empty()),
+    @dataobject.make_dataobject("d", @dataobject.Text, @schema.empty()),
+  ]
+  let cfg = @cpu_parallel.make_shuffle_config(@cpu_parallel.HashShuffle, 2)
+  let shuffled = @cpu_parallel.shuffle_data(data, cfg)
+  assert_eq(shuffled.length(), 2)
+  assert_eq(shuffled[0], 2)
+  assert_eq(shuffled[1], 2)
+}
+
+test "S3.2 shuffle_data degenerate: zero targets" {
+  let data = [
+    @dataobject.make_dataobject("a", @dataobject.Text, @schema.empty()),
+  ]
+  let cfg = @cpu_parallel.make_shuffle_config(@cpu_parallel.HashShuffle, 0)
+  let shuffled = @cpu_parallel.shuffle_data(data, cfg)
+  assert_eq(shuffled.length(), 0)
+}
+
+test "S3.2 gather_mode_name" {
+  assert_eq(@cpu_parallel.gather_mode_name(@cpu_parallel.Concat), "concat")
+  assert_eq(@cpu_parallel.gather_mode_name(@cpu_parallel.MergeSorted), "merge_sorted")
+  assert_eq(@cpu_parallel.gather_mode_name(@cpu_parallel.Union), "union")
+}
+
+test "S3.2 gather_results basic" {
+  let parts = [10, 20, 30]
+  let total = @cpu_parallel.gather_results(parts, @cpu_parallel.Concat)
+  assert_eq(total, 60)
+}
+
+test "S3.2 gather_results empty" {
+  let total = @cpu_parallel.gather_results([], @cpu_parallel.Concat)
+  assert_eq(total, 0)
+}
+
+test "S3.2 compute_parallel_stats basic" {
+  let stats = @cpu_parallel.compute_parallel_stats(100, 4, 4)
+  assert_eq(stats.total_items, 100)
+  assert_eq(stats.partition_count, 4)
+  assert_eq(stats.worker_count, 4)
+  assert_eq(stats.items_per_worker, 25)
+}
+
+test "S3.2 compute_parallel_stats degenerate: zero workers" {
+  let stats = @cpu_parallel.compute_parallel_stats(100, 4, 0)
+  assert_eq(stats.items_per_worker, 0)
+}
+
+test "S3.2 parallel_plan_uri" {
+  let pc = @cpu_parallel.make_partition_config(@cpu_parallel.ByCount, 4, "")
+  let sc = @cpu_parallel.make_shuffle_config(@cpu_parallel.HashShuffle, 4)
+  let plan = @cpu_parallel.make_parallel_plan(pc, 4, sc, @cpu_parallel.Concat)
+  let uri = @cpu_parallel.parallel_plan_uri(plan)
+  assert_eq(uri, "parallel://workers=4;partitions=4;shuffle=hash;gather=concat")
+}
+
+test "S3.2 cpu_parallel_id" {
+  assert_eq(@cpu_parallel.cpu_parallel_id(), "parallel/cpu_parallel")
+}

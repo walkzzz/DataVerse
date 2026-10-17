@@ -8,9 +8,9 @@
 ///
 /// Unified entry `@dataverse`, re-exports all first-level sub-packages' public API.
 /// S0.1 skeleton + S0.2 kernel + S0.3 dataobject + S0.4 opcore + S0.5 datatemporal + S0.6 datair + S0.7 dosi.
-/// S2 闭环 + S3.1 io 数据源/汇适配.
+/// S2 闭环 + S3.1 io + S3.2 并行执行后端.
 pub fn version() -> String {
-  "dataverse 0.1.0-dev (S3.1 io source/sink)"
+  "dataverse 0.1.0-dev (S3.2 parallel backend)"
 }
 
 pub using @kernel {
@@ -151,6 +151,13 @@ pub using @self_evolve { self_evolve_id }
 pub using @parallel { parallel_id }
 pub using @parallel.cpu_serial {
   cpu_serial_id, ExecutionPlan, ExecutionResult, make_plan, execute, empty_plan, plan_step_count, merge_results,
+}
+pub using @parallel.cpu_parallel {
+  cpu_parallel_id, PartitionStrategy, PartitionConfig, ShuffleType, ShuffleConfig, GatherMode, ParallelExecPlan, ParallelStats,
+  make_partition_config, partition_strategy_name, partition_data,
+  shuffle_type_name, make_shuffle_config, shuffle_data,
+  gather_mode_name, gather_results,
+  make_parallel_plan, compute_parallel_stats, parallel_plan_uri,
 }
 pub using @io { io_id }
 pub using @io.source {

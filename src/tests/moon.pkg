@@ -72,6 +72,7 @@ import {
   "dataverse/dosi/batch",
   "dataverse/dosi/versioned",
   "dataverse/parallel/cpu_serial",
+  "dataverse/parallel/cpu_parallel",
   "dataverse/agent_kit/dosi_adapter",
   "dataverse/agent_kit/planner",
   "dataverse/agent_kit/executor",

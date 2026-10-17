@@ -155,8 +155,9 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S2.11 | opcore 语义扩展（停用词过滤 + 改写/合成 + 词频 + 相似度 10 fn） | ✅ | 0bc72c6 |
 | S2.12 | 文档治理（roadmap 重建 + learncore README + 最终验证） | ✅ | — |
 | S3.1 | io 数据源/汇适配（source/sink 契约 + 内存模拟 7 type + 20 fn） | ✅ | 8e0c9bf |
+| S3.2 | parallel/cpu_parallel 分布式执行后端（7 type + 12 fn） | ✅ | 0ce9a46 |
 
-**当前测试**：405 · **当前 API**：420（pub fn）+ 93（pub type）
+**当前测试**：421 · **当前 API**：432（pub fn）+ 100（pub type）
 
 ---
 

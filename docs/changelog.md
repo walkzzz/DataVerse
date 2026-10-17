@@ -439,6 +439,24 @@
 - `moon check`：0 error 0 warning · `moon test`：405 passed
 - commit：`8e0c9bf`
 
+### S3.2 - parallel/cpu_parallel 分布式执行后端
+
+**新增 / Added**
+- `src/parallel/cpu_parallel/`：7 type + 12 fn
+  - PartitionStrategy(ByCount/BySize/ByKeyHash) + PartitionConfig + partition_data
+  - ShuffleType(Hash/Range/Random) + ShuffleConfig + shuffle_data
+  - GatherMode(Concat/MergeSorted/Union) + gather_results
+  - ParallelExecPlan + ParallelStats + make_parallel_plan + compute_parallel_stats + parallel_plan_uri
+- 策略：契约 + 内存模拟
+
+**测试 / Tests**
+- +16：分区 ByCount/ByKeyHash，shuffle，gather，stats，plan URI，degenerate
+- 总计：405 → 421 passed
+
+**统计 / Stats**
+- API：420→432 pub fn + 93→100 pub type
+- commit：`0ce9a46`
+
 ---
 
 > DataVerse Changelog | 2026-10-17

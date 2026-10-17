@@ -45,6 +45,26 @@
 - `moon test`：12 passed 0 failed
 - commit：`c53d213`
 
+### S0.3 - 基础数据层 8 实体结构定义
+
+**新增 / Added**
+- `src/dataobject/dataobject.mbt`：`Modality`(7) + `Lineage` + `QualityCard` + `DataObject` + 11 构造/访问函数
+- `src/dataobject/schema`：`FieldType`(5) + `Field` + `Schema` + 5 函数
+- `src/dataobject/chunk`：`ChunkType`(4) + `Chunk` + 4 函数
+- `src/dataobject/embedding`：`Embedding` + 5 函数
+- `src/dataobject/record_dataset`：`Record` + `Dataset` + 8 函数
+- `src/tests`：11 个 dataobject 测试（实体构造 + 退化安全 + 元数据）
+
+**设计决策 / Decisions**
+- 依赖方向：dataobject → schema（DataObject 引用 Schema）；chunk/embedding/record_dataset 独立避免循环
+- 退化安全：每个实体提供 `empty` / `zero` 构造函数
+- `Lineage` 字段占位为 String，S0.5 datatemporal 填充真实算子图
+
+**验证 / Verified**
+- `moon check`：0 error 0 warning
+- `moon test`：23 passed 0 failed
+- commit：`d50dee2`
+
 ---
 
 > DataVerse Changelog | 2026-10-17

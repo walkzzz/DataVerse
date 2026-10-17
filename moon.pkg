@@ -21,6 +21,7 @@ import {
   "opcore/eval",
   "opcore/lineage_op",
   "opcore/safety",
+  "opcore/plugin",
   "datatemporal",
   "datatemporal/version",
   "datatemporal/lineage",

@@ -3166,3 +3166,122 @@ test "S3.2 parallel_plan_uri" {
 test "S3.2 cpu_parallel_id" {
   assert_eq(@cpu_parallel.cpu_parallel_id(), "parallel/cpu_parallel")
 }
+// ============================================================
+// S3.3 opcore/plugin 插件系统测试 / Plugin system tests
+// ============================================================
+
+test "S3.3 plugin_status_name" {
+  assert_eq(@plugin.plugin_status_name(@plugin.Loaded), "loaded")
+  assert_eq(@plugin.plugin_status_name(@plugin.Active), "active")
+  assert_eq(@plugin.plugin_status_name(@plugin.Disabled), "disabled")
+  assert_eq(@plugin.plugin_status_name(@plugin.Error), "error")
+}
+
+test "S3.3 empty_plugin_registry" {
+  let reg = @plugin.empty_plugin_registry()
+  assert_eq(@plugin.plugin_count(reg), 0)
+}
+
+test "S3.3 register_plugin basic" {
+  let meta = @plugin.make_plugin_meta("my-plugin", "1.0.0", "author", "entry", "desc")
+  let entry = @plugin.make_plugin_entry(meta, @plugin.Loaded, [])
+  let reg = @plugin.register_plugin(@plugin.empty_plugin_registry(), entry)
+  assert_eq(@plugin.plugin_count(reg), 1)
+  assert_eq(@plugin.list_plugins(reg), ["my-plugin"])
+}
+
+test "S3.3 register_plugin no duplicate" {
+  let meta = @plugin.make_plugin_meta("p1", "1.0.0", "a", "e", "d")
+  let entry = @plugin.make_plugin_entry(meta, @plugin.Loaded, [])
+  let reg = @plugin.register_plugin(@plugin.empty_plugin_registry(), entry)
+  let reg2 = @plugin.register_plugin(reg, entry)
+  assert_eq(@plugin.plugin_count(reg2), 1)
+}
+
+test "S3.3 unregister_plugin" {
+  let meta = @plugin.make_plugin_meta("p1", "1.0.0", "a", "e", "d")
+  let entry = @plugin.make_plugin_entry(meta, @plugin.Loaded, [])
+  let reg = @plugin.register_plugin(@plugin.empty_plugin_registry(), entry)
+  let reg2 = @plugin.unregister_plugin(reg, "p1")
+  assert_eq(@plugin.plugin_count(reg2), 0)
+}
+
+test "S3.3 get_plugin_status" {
+  let meta = @plugin.make_plugin_meta("p1", "1.0.0", "a", "e", "d")
+  let entry = @plugin.make_plugin_entry(meta, @plugin.Active, [])
+  let reg = @plugin.register_plugin(@plugin.empty_plugin_registry(), entry)
+  assert_eq(@plugin.get_plugin_status(reg, "p1"), @plugin.Active)
+}
+
+test "S3.3 get_plugin_status not found" {
+  let reg = @plugin.empty_plugin_registry()
+  assert_eq(@plugin.get_plugin_status(reg, "nonexistent"), @plugin.Error)
+}
+
+test "S3.3 enable_plugin" {
+  let meta = @plugin.make_plugin_meta("p1", "1.0.0", "a", "e", "d")
+  let entry = @plugin.make_plugin_entry(meta, @plugin.Disabled, [])
+  let reg = @plugin.register_plugin(@plugin.empty_plugin_registry(), entry)
+  let reg2 = @plugin.enable_plugin(reg, "p1")
+  assert_eq(@plugin.get_plugin_status(reg2, "p1"), @plugin.Active)
+}
+
+test "S3.3 disable_plugin" {
+  let meta = @plugin.make_plugin_meta("p1", "1.0.0", "a", "e", "d")
+  let entry = @plugin.make_plugin_entry(meta, @plugin.Active, [])
+  let reg = @plugin.register_plugin(@plugin.empty_plugin_registry(), entry)
+  let reg2 = @plugin.disable_plugin(reg, "p1")
+  assert_eq(@plugin.get_plugin_status(reg2, "p1"), @plugin.Disabled)
+}
+
+test "S3.3 plugins_by_status" {
+  let m1 = @plugin.make_plugin_meta("p1", "1.0", "a", "e", "d")
+  let m2 = @plugin.make_plugin_meta("p2", "1.0", "a", "e", "d")
+  let e1 = @plugin.make_plugin_entry(m1, @plugin.Active, [])
+  let e2 = @plugin.make_plugin_entry(m2, @plugin.Disabled, [])
+  let reg = @plugin.register_plugin(@plugin.register_plugin(@plugin.empty_plugin_registry(), e1), e2)
+  assert_eq(@plugin.plugins_by_status(reg, @plugin.Active), ["p1"])
+  assert_eq(@plugin.plugins_by_status(reg, @plugin.Disabled), ["p2"])
+}
+
+test "S3.3 check_dependency satisfied" {
+  let m1 = @plugin.make_plugin_meta("base", "1.0", "a", "e", "d")
+  let e1 = @plugin.make_plugin_entry(m1, @plugin.Active, [])
+  let reg = @plugin.register_plugin(@plugin.empty_plugin_registry(), e1)
+  let dep = @plugin.make_plugin_dependency("base", "1.0")
+  assert_true(@plugin.check_dependency(reg, dep))
+}
+
+test "S3.3 check_dependency not satisfied" {
+  let reg = @plugin.empty_plugin_registry()
+  let dep = @plugin.make_plugin_dependency("missing", "1.0")
+  assert_true(!@plugin.check_dependency(reg, dep))
+}
+
+test "S3.3 check_all_dependencies" {
+  let m1 = @plugin.make_plugin_meta("base", "1.0", "a", "e", "d")
+  let e1 = @plugin.make_plugin_entry(m1, @plugin.Active, [])
+  let reg = @plugin.register_plugin(@plugin.empty_plugin_registry(), e1)
+  let dep = @plugin.make_plugin_dependency("base", "1.0")
+  let m2 = @plugin.make_plugin_meta("dependent", "1.0", "a", "e", "d")
+  let e2 = @plugin.make_plugin_entry(m2, @plugin.Loaded, [dep])
+  let reg2 = @plugin.register_plugin(reg, e2)
+  assert_true(@plugin.check_all_dependencies(reg2, "dependent"))
+}
+
+test "S3.3 check_all_dependencies unsatisfied" {
+  let dep = @plugin.make_plugin_dependency("missing", "1.0")
+  let m1 = @plugin.make_plugin_meta("dependent", "1.0", "a", "e", "d")
+  let e1 = @plugin.make_plugin_entry(m1, @plugin.Loaded, [dep])
+  let reg = @plugin.register_plugin(@plugin.empty_plugin_registry(), e1)
+  assert_true(!@plugin.check_all_dependencies(reg, "dependent"))
+}
+
+test "S3.3 plugin_registry_uri" {
+  let reg = @plugin.empty_plugin_registry()
+  assert_eq(@plugin.plugin_registry_uri(reg), "plugin://registry?count=0")
+}
+
+test "S3.3 plugin_id" {
+  assert_eq(@plugin.plugin_id(), "opcore/plugin")
+}

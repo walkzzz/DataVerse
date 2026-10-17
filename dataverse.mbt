@@ -8,9 +8,9 @@
 ///
 /// Unified entry `@dataverse`, re-exports all first-level sub-packages' public API.
 /// S0.1 skeleton + S0.2 kernel + S0.3 dataobject + S0.4 opcore + S0.5 datatemporal + S0.6 datair + S0.7 dosi.
-/// S2 闭环 + S3.1 io + S3.2 并行执行后端.
+/// S2 闭环 + S3.1 io + S3.2 并行 + S3.3 插件系统.
 pub fn version() -> String {
-  "dataverse 0.1.0-dev (S3.2 parallel backend)"
+  "dataverse 0.1.0-dev (S3.3 plugin system)"
 }
 
 pub using @kernel {
@@ -60,6 +60,13 @@ pub using @opcore.semantic {
   rewrite_trim, rewrite_lowercase, rewrite_uppercase,
   synthesize_concat, synthesize_template,
   word_frequency, text_similarity,
+}
+pub using @opcore.plugin {
+  plugin_id, PluginStatus, PluginMeta, PluginDependency, PluginEntry, PluginRegistry,
+  plugin_status_name, make_plugin_meta, make_plugin_dependency, make_plugin_entry,
+  empty_plugin_registry, register_plugin, unregister_plugin, list_plugins,
+  get_plugin_status, enable_plugin, disable_plugin, plugin_count, plugins_by_status,
+  check_dependency, check_all_dependencies, plugin_registry_uri,
 }
 pub using @learncore {
   learncore_id, ModelSpace, model_space_name, Hyperparams, make_hyperparams,

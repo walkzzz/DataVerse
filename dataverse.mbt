@@ -83,6 +83,12 @@ pub using @dosi.builder { build_opcore_index, build_from_operator_ir, merge }
 pub using @dosi.router {
   lookup_by_path, lookup_by_category, lookup_by_modality, lookup_by_prefix,
 }
+pub using @dosi.context_budget {
+  context_budget_id, ContextBudget, make_budget, allocate, is_over_budget, remaining, usage_ratio, compress, with_used,
+}
+pub using @dosi.verifier {
+  verifier_id, VerifyResult, verify_index, check_dependencies, detect_cycles, valid_result,
+}
 pub using @agent_kit { agent_kit_id }
 pub using @self_evolve { self_evolve_id }
 pub using @parallel { parallel_id }

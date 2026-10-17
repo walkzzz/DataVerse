@@ -46,6 +46,8 @@ import {
   "dosi",
   "dosi/builder",
   "dosi/router",
+  "dosi/context_budget",
+  "dosi/verifier",
   "agent_kit",
   "self_evolve",
   "parallel",

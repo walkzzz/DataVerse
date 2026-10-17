@@ -52,5 +52,7 @@ import {
   "dataverse/dosi",
   "dataverse/dosi/builder",
   "dataverse/dosi/router",
+  "dataverse/dosi/context_budget",
+  "dataverse/dosi/verifier",
   "dataverse/parallel/cpu_serial",
 }

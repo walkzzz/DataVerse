@@ -1295,3 +1295,83 @@ test "S1.6 cpu_serial cyclic pipeline degenerate" {
   let plan = @cpu_serial.make_plan(cyclic)
   assert_eq(@cpu_serial.plan_step_count(plan), 0)
 }
+///|
+/// # S1.7 DOSI 完善测试 / DOSI Enhancement Tests
+///
+/// ContextBudget（配额管理）+ Verifier（索引校验）。
+
+test "S1.7 context_budget make and allocate" {
+  let budget = @context_budget.make_budget(10000)
+  assert_eq(budget.total_quota, 10000)
+  assert_eq(budget.used, 0)
+  assert_eq(budget.dosi_quota, 1000)
+  assert_eq(budget.recall_quota, 4000)
+  let b1 = @context_budget.allocate(budget, 3000)
+  assert_eq(b1.used, 3000)
+  assert_eq(@context_budget.remaining(b1), 7000)
+  let ratio = @context_budget.usage_ratio(b1)
+  assert_true(ratio > 0.29 && ratio < 0.31)
+}
+
+test "S1.7 context_budget over budget and compress" {
+  let budget = @context_budget.make_budget(1000)
+  let b1 = @context_budget.allocate(budget, 800)
+  assert_false(@context_budget.is_over_budget(b1))
+  let b2 = @context_budget.allocate(b1, 300)
+  // 超预算：allocate 不变
+  assert_eq(b2.used, 800)
+  // 手动构造超预算
+  let over = @context_budget.with_used(b1, 1200)
+  assert_true(@context_budget.is_over_budget(over))
+  let compressed = @context_budget.compress(over)
+  assert_eq(compressed.used, 800)
+  assert_eq(@context_budget.context_budget_id(), "dosi/context_budget")
+}
+
+test "S1.7 context_budget degenerate: zero quota" {
+  let budget = @context_budget.make_budget(0)
+  assert_eq(@context_budget.remaining(budget), 0)
+  assert_eq(@context_budget.usage_ratio(budget), 0.0)
+}
+
+test "S1.7 verifier valid index" {
+  let sym1 = @dosi.SymbolicEntry::new("opcore/clean", "clean", "text", [])
+  let sem1 = @dosi.SemanticEntry::new("clean ops", [], "in->out")
+  let e1 = @dosi.DOSIEntry::new(sym1, sem1)
+  let sym2 = @dosi.SymbolicEntry::new("opcore/dedup", "dedup", "text", ["opcore/clean"])
+  let sem2 = @dosi.SemanticEntry::new("dedup ops", [], "in->out")
+  let e2 = @dosi.DOSIEntry::new(sym2, sem2)
+  let index = @dosi.DOSIIndex::empty().add(e1).add(e2)
+  let result = @verifier.verify_index(index)
+  assert_true(result.valid)
+  assert_eq(result.issues.length(), 0)
+  assert_true(@verifier.check_dependencies(index))
+}
+
+test "S1.7 verifier missing dependency" {
+  let sym = @dosi.SymbolicEntry::new("opcore/x", "x", "text", ["opcore/nonexistent"])
+  let sem = @dosi.SemanticEntry::new("x", [], "in->out")
+  let e = @dosi.DOSIEntry::new(sym, sem)
+  let index = @dosi.DOSIIndex::empty().add(e)
+  let result = @verifier.verify_index(index)
+  assert_false(result.valid)
+  assert_eq(result.issues.length(), 1)
+}
+
+test "S1.7 verifier detect_cycles" {
+  let sym = @dosi.SymbolicEntry::new("opcore/self", "x", "text", ["opcore/self"])
+  let sem = @dosi.SemanticEntry::new("self dep", [], "in->out")
+  let e = @dosi.DOSIEntry::new(sym, sem)
+  let index = @dosi.DOSIIndex::empty().add(e)
+  let cycles = @verifier.detect_cycles(index)
+  assert_eq(cycles.length(), 1)
+  assert_eq(cycles[0], "opcore/self")
+  assert_eq(@verifier.verifier_id(), "dosi/verifier")
+}
+
+test "S1.7 verifier degenerate: empty index" {
+  let empty = @dosi.DOSIIndex::empty()
+  let result = @verifier.verify_index(empty)
+  assert_true(result.valid)
+  assert_eq(@verifier.detect_cycles(empty).length(), 0)
+}

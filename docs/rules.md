@@ -59,6 +59,18 @@ README 中英文，美化，默认中文；每个子包也要 README.md。
 ### R15 — 规则输出复用 ⭐ 新增
 所有规则输出到本文件 `docs/rules.md`，供 agent 与人类协作者复用。每次新增规则回写。
 
+### R16 — 阶段门禁自动化 ⭐ 新增
+每个 Sprint 交付前必须通过**五手段验证**：AI 辅助审查 + FAKE（假数据/退化数据）+ MOCK（模拟依赖）+ E2E（端到端跨包）+ 形式化证明（spec.mbt / proof_assert）。**全部通过则自动进入下一阶段**，不停顿等待确认。任一手段发现问题则停下修复，修复后重新验证。
+
+**验证矩阵**：
+| 手段 | 当前实现 | 目标 |
+|------|----------|------|
+| AI | moonbit-development-expert skill 辅助审查 | 每个 Sprint 代码审查 |
+| FAKE | 退化数据测试（空/超长/乱码/模态缺失） | 每个 Sprint 补充退化用例 |
+| MOCK | 后续 learncore/recipe 需 mock 外部依赖 | 按需补充 |
+| E2E | tests.mbt 跨包集成测试 | 每个 Sprint 补充跨包用例 |
+| 形式化证明 | spec.mbt / proof_assert（MoonBit 原生支持） | 关键算子补契约 |
+
 ---
 
 ## 二、MoonBit 技术要点 / Technical Notes

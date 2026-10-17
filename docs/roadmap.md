@@ -1,10 +1,10 @@
 # DataVerse Roadmap
 
-> **当前阶段**：Phase 0 地基固化期 ✅ 已闭环  
+> **当前阶段**：Phase 1 对标成熟期  
 > **日期**：2026-10-17  
-> **基线**：架构 §6 Phase 0
+> **基线**：架构 §6 Phase 1
 
-## Phase 0｜地基固化期（0.5–1 年）
+## Phase 0｜地基固化期（0.5–1 年）✅ 已闭环
 
 > 风险等级：✅ 低风险 | 交付性质：核心交付基线，必须完成
 
@@ -24,11 +24,30 @@
 
 ### Phase 0 交付物
 
-- 可运行的基础算子库
-- DataIR 基础语法
-- DOSI 初始索引
-- 算子接口规范文档
-- 退化数据测试用例（空、超长、乱码、模态缺失）
+- 可运行的基础算子库 · DataIR 基础语法 · DOSI 初始索引 · 算子接口规范文档 · 退化数据测试用例
+
+## Phase 1｜对标成熟期（1–2 年）
+
+> 风险等级：✅ 低风险 | 交付性质：核心交付基线，必须完成
+
+**目标**：算子体系可用，洗净线/去重线/质量线可跑，可对标 Data-Juicer 能力
+
+### Sprint 分解
+
+| Sprint | 内容 | 状态 | commit | 依赖 |
+|--------|------|------|--------|------|
+| S1.1 | opcore 补齐 14 类算子（Ingest/Normalize/Quality/Transform/Annotate/Select/Mix/Pack/Eval/Lineage/Safety 11 类） | ⏸ | — | S0.4 |
+| S1.2 | learncore 基礎（传统 ML 算子：回归/分类/聚类/降维 + 评估指标算子） | ⏸ | — | S1.1 |
+| S1.3 | recipe 复合线（cleaning_line / dedup_line / quality_line / balance_line） | ⏸ | — | S1.1 |
+| S1.4 | DataIR 流水线 IR（DAG）+ 基础优化器（融合、重排） | ⏸ | — | S0.6 |
+| S1.5 | datatemporal 深化（版本塔/双向血缘/回放完善） | ⏸ | — | S0.5 |
+| S1.6 | 执行后端 CPU 串行 | ⏸ | — | S1.1 |
+| S1.7 | DOSI 完善（增量索引 + 依赖校验 + ContextBudget） | ⏸ | — | S0.7 |
+| S1.8 | 验证（Data-Juicer 比对 + Agent-Kit 接入 DOSI） | ⏸ | — | S1.3 |
+
+### Phase 1 交付物
+
+- 可试用算子库 + 复合流水线 · 可对标 Data-Juicer · 可产出训练就绪数据集
 
 ## 后续阶段 / Later Phases
 

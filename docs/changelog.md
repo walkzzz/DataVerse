@@ -165,6 +165,20 @@
 - 与 DOSI/DataIR/datatemporal 深度绑定：wayfinder↔DOSI、to-spec↔DataIR、changeset↔血缘
 - 与自演化层协同：grill-me 风险清单 → 自省类调优；wayfinder 召回 → 探索类配方搜索
 
+### 架构补充 - Data-Juicer 对标映射 + R16 阶段门禁自动化 + Phase 1 Sprint 分解
+
+**变更 / Changed**
+- `docs/datajuicer_operators.md` 新增：Data-Juicer v1.5.0 全部 192 算子清单（8 大类）+ 14 类↔8 大类映射 + 对标优先级
+- `ARCHITECTURE.md` §4.3.6 新增：Data-Juicer 对标映射（14 类 ↔ 8 大类映射表 + P0-P3 优先级 + 命名规范）
+- `ARCHITECTURE.md` §10 映射表新增"对标基准"行
+- `docs/rules.md` R16 新增：阶段门禁自动化（AI+FAKE+MOCK+E2E+形式化证明，通过则自动进入下一阶段）
+- `docs/roadmap.md` Phase 1 Sprint 分解（S1.1-S1.8）+ 当前阶段切换到 Phase 1
+
+**设计要点 / Design**
+- DataVerse 14 类算子是 DJ 8 大类的超集（独有 Lineage/Safety/Pack）
+- P0 高频对标 5 算子：text_length_filter, exact_deduplicator, whitespace_normalization_mapper, clean_html_mapper, topk_selector
+- DJ 命名规范：`<功能>_<类型>`，DataVerse 同名实现保持下划线命名便于 recipe 互导
+
 ---
 
 > DataVerse Changelog | 2026-10-17

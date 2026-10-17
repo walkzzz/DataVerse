@@ -389,6 +389,41 @@ Operator (learncore 扩展) {
 
 ---
 
+#### 4.3.6 Data-Juicer 对标映射【本次新增】
+
+> **定位**：Data-Juicer（DJ）v1.5.0 是 DataVerse Phase 1 的核心对标项目（架构 §6 Phase 1 第 7 项）。DJ 共 192 算子（8 大类），对外宣传 200+。完整清单见 [docs/datajuicer_operators.md](./docs/datajuicer_operators.md)。
+>
+> **对标策略**：DataVerse 14 类算子是超集设计，覆盖 DJ 8 大类 + 独有 Lineage/Safety/Pack；Phase 1 优先实现 DJ 高频算子的同名等价实现，验证结果比对校准。
+
+**DataVerse 14 类 ↔ DJ 8 大类映射**
+
+| DataVerse 类 | DJ 大类 | DJ 算子数 | 对标说明 |
+|-------------|---------|-----------|----------|
+| ① Ingest | formatter | 8 | json/csv/tsv/parquet/text_formatter |
+| ② Normalize | mapper（清洗规范化） | ~5 | whitespace/punctuation_normalization, fix_unicode, chinese_convert |
+| ③ Clean | mapper（清洗） | ~15 | clean_email/html/ip/links, remove_bibliography/comments/header/table_text |
+| ④ Dedup | deduplicator | 10 | exact/minhash/simhash/document/image dedup（含 ray 分布式） |
+| ⑤ Filter | filter | 56 | 文本 22 + 图像 10 + 音频 5 + 视频 9 + 多模态 10 |
+| ⑥ Quality | filter（质量）+ mapper（LLM 质量） | ~5 | llm_quality_score, high_quality_paragraph, perplexity, safety_score |
+| ⑦ Transform | mapper（增强+图像+音频+视频） | ~40 | nlpaug, image_*, video_*, audio_* |
+| ⑧ Annotate | mapper（QA/抽取+意图+标注） | ~25 | extract_*, calibrate_*, intent_detection, text_tagging, generate_qa |
+| ⑨ Select | selector | 5 | topk/threshold/balance/sort/stratified |
+| ⑩ Mix | grouper + aggregator | 7 | key_value/naive_grouper, global/list/math/summary_aggregator |
+| ⑪ Pack | formatter（输出）+ pipeline | 3 | sampler_pipeline, histogram, text_chunk |
+| ⑫ Eval | pipeline + aggregator | 4 | global_statistics, histogram_pipeline, summary/math_aggregator |
+| ⑬ Lineage | —（DJ 无） | 0 | DataVerse 独有：datatemporal 版本塔/血缘/回放 |
+| ⑭ Safety | filter（安全）+ mapper（脱敏） | ~5 | toxic_content, image_nsfw, face_blur, clean_email/ip |
+
+**对标优先级（Phase 1 S1.1）**：
+1. **P0 高频对标**：text_length_filter, exact_deduplicator, whitespace_normalization_mapper, clean_html_mapper, topk_selector — 5 个最常用算子优先同名实现
+2. **P1 文本清洗线**：clean_email/ip/links_mapper, remove_comments/header_mapper, fix_unicode_mapper, punctuation_normalization_mapper
+3. **P2 过滤线**：word_num/token_num/alphabetic/special_characters/word_repetition_filter
+4. **P3 多模态**：image_size/aspect_ratio_filter, image_captioning_mapper — Phase 2
+
+**DJ 算子命名规范**：`<功能>_filter` / `<功能>_mapper` / `<功能>_deduplicator` / `<功能>_selector` / `<功能>_formatter` / `<功能>_grouper` / `<功能>_aggregator` / `<功能>_pipeline`。DataVerse 同名实现保持下划线命名，便于 recipe 互导。
+
+---
+
 ### 4.4 datatemporal 数据时空 / 版本 / 血缘模块
 
 > **定位**：对标 GeoVerse 的 spatiotemporal，把"数据的第 4 维"（版本/时间）做成一等维度，管理**数据集 + 数据实体的生命周期**，而非把版本当属性标签。
@@ -1206,6 +1241,7 @@ pub using @pkg { type T, name1, trait Trait1 }
 | Agent 层 | Agent-Kit → GeoIR | Agent-Kit → DataIR（含 Data-Juicer Agent） |
 | Agent 工程技能 | — | Agent-Kit 内置 mattpocock/skills 范式：grill-me / wayfinder / to-spec / docs / changeset（§4.8.1） |
 | 自演化 | 几何猜想、规则发现 | 自省类（规则发现/算子调优/反例生成）+ 探索类（数据/算子配方/参数/协同探索） |
+| 对标基准 | — | Data-Juicer v1.5.0（192 算子，8 大类）— 见 §4.3.6 |
 
 ---
 

@@ -152,8 +152,9 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S2.8 | DOSI 扩充 + Phase 2 验证 + R16 门禁（batch/versioned 2 子包 + 15 spec） | ✅ | b721d50 |
 | S2.9 | learncore DL 扩展层（Conv2d/MaxPool/Dropout/BatchNorm 4 type + 8 fn） | ✅ | bab0566 |
 | S2.10 | opcore 多模态扩展（image flip/rotate + audio mix + video extract_frames 2 type + 9 fn） | ✅ | 31fd406 |
+| S2.11 | opcore 语义扩展（停用词过滤 + 改写/合成 + 词频 + 相似度 10 fn） | ✅ | 0bc72c6 |
 
-**当前测试**：371 · **当前 API**：390（pub fn）+ 86（pub type）
+**当前测试**：387 · **当前 API**：400（pub fn）+ 86（pub type）
 
 ---
 

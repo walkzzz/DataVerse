@@ -392,6 +392,26 @@
 - `moon check`：0 error 0 warning · `moon test`：371 passed
 - commit：`31fd406`
 
+### S2.11 - opcore 语义扩展（停用词过滤 + 改写/合成 + 词频 + 相似度）
+
+**新增 / Added**
+- `src/opcore/semantic/semantic.mbt` 追加 10 fn：
+  - 停用词：`default_stopwords`（57 词）+ `remove_stopwords` + `remove_stopwords_custom`
+  - 改写：`rewrite_trim` + `rewrite_lowercase` + `rewrite_uppercase`
+  - 合成：`synthesize_concat` + `synthesize_template`（`{}` 占位符替换）
+  - 分析：`word_frequency`（词频降序）+ `text_similarity`（Jaccard 词集相似度）
+- 辅助函数：`split_words` + `is_stopword` + `join_strings` + `replace_all`（手动实现）
+- `dataverse.mbt`：重导出 10 fn，version → "S2.11 semantic extension"
+
+**测试 / Tests**
+- +16：停用词过滤，trim/lower/upper，concat/template，词频降序，Jaccard 1.0/0.0/0.5
+- 总计：371 → 387 passed
+
+**统计 / Stats**
+- API：390→400 pub fn + 86 pub type
+- `moon check`：0 error 0 warning · `moon test`：387 passed
+- commit：`0bc72c6`
+
 ---
 
 > DataVerse Changelog | 2026-10-17

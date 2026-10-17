@@ -1118,14 +1118,14 @@ pub using @pkg { type T, name1, trait Trait1 }
 | Sprint | 内容 | 状态 | commit |
 |--------|------|------|--------|
 | S0.1 | 项目骨架 + Roadmap + 根包重导出空骨架 | ✅ | 6ded33c |
-| S0.2 | kernel 四模式执行内核（exact/approx/streaming/cache） | ⏸ | — |
+| S0.2 | kernel 四模式执行内核（exact/approx/streaming/cache） | ✅ | c53d213 |
 | S0.3 | 基础数据层（DataObject/Schema/Chunk/Embedding/Record/Dataset/Lineage/QualityCard） | ⏸ | — |
 | S0.4 | opcore 框架 + 清洗/去重/过滤三类核心算子 | ⏸ | — |
 | S0.5 | datatemporal 数据结构定型（version/lineage/drift/replay） | ⏸ | — |
 | S0.6 | DataIR 基础语法定义（实体 IR + 算子 IR） | ⏸ | — |
 | S0.7 | DOSI 基础设施原型（Builder + Router 初始版本） | ⏸ | — |
 
-**当前测试**：1 · **当前 API**：13
+**当前测试**：12 · **当前 API**：38（pub fn）+ 4（pub type）
 
 ---
 

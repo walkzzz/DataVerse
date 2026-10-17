@@ -24,6 +24,27 @@
 - `moon test`：1 passed
 - commit：`6ded33c`
 
+### S0.2 - kernel 四模式执行内核框架 + 一致性契约
+
+**新增 / Added**
+- `src/kernel/kernel.mbt`：`pub(all) enum ExecMode`（Exact/Approx(Int)/Streaming/Cache）+ `pub(all) enum Consistency`（ByteExact/SeededBound/WindowEquiv/CacheHitEquiv）+ 契约函数 `mode_consistency` / `mode_name` / `mode_from_tag` / `all_mode_tags`
+- `src/kernel/exact`：精确模式标识 + 退化声明 `handles_empty`
+- `src/kernel/approx`：种子管理 `default_seed` / `valid_seed` + 误差界占位
+- `src/kernel/streaming`：窗口抽象 `WindowConfig` / `default_window` / `sliding_window` / `valid_window`
+- `src/kernel/cache`：缓存键 `CacheKey` / `make_key` / `is_hit`
+- `src/tests`：12 个一致性回归测试（四模式契约 + 退化数据 + 子包聚合）
+
+**技术发现 / Discoveries**（MoonBit 0.1.20260920）
+- 同 module 子包引用：非根包需完整 module 前缀 `"dataverse/kernel/exact"`
+- enum 构造器跨包构造需 `pub(all) enum`（`pub enum` 是 readonly）
+- `derive(Show)` 弃用 → `derive(Debug)`；`assert_eq` 需 `Debug` trait
+- `derive(Debug, Eq)` 需显式 `pub extend T with Trait::{method}` 消除 `implicit_impl_as_method` warning
+
+**验证 / Verified**
+- `moon check`：0 error 0 warning
+- `moon test`：12 passed 0 failed
+- commit：`c53d213`
+
 ---
 
 > DataVerse Changelog | 2026-10-17

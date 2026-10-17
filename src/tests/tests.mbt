@@ -103,3 +103,95 @@ test "kernel degenerate: empty content cache key" {
   assert_eq(k.key, "")
   assert_eq(k.fingerprint, "fp:")
 }
+// === S0.3 dataobject 8 实体测试 ===
+
+test "dataobject Modality enum" {
+  let s = @schema.empty()
+  let d1 = @dataobject.make_dataobject("text", @dataobject.Text, s)
+  let d2 = @dataobject.make_dataobject("img", @dataobject.Image, s)
+  assert_eq(d1.modality, @dataobject.Text)
+  assert_eq(d2.modality, @dataobject.Image)
+  assert_true(@dataobject.Text != @dataobject.Image)
+}
+
+test "dataobject Schema construction" {
+  let s = @schema.make([@schema.field("id", @schema.Integer), @schema.field("text", @schema.Text)])
+  assert_eq(@schema.size(s), 2)
+  assert_eq(@schema.size(@schema.empty()), 0)
+}
+
+test "dataobject Chunk construction" {
+  let c = @chunk.make("c1", "hello", @chunk.TextSlice)
+  assert_eq(c.id, "c1")
+  assert_eq(@chunk.length(c), 5)
+  let e = @chunk.empty_chunk("c2", @chunk.TableBlock)
+  assert_eq(@chunk.length(e), 0)
+}
+
+test "dataobject Embedding construction" {
+  let emb = @embedding.make("bge-small", [0.1, 0.2, 0.3])
+  assert_eq(emb.model_id, "bge-small")
+  assert_false(emb.normalized)
+  assert_eq(@embedding.dim(emb), 3)
+  let z = @embedding.zero("test")
+  assert_eq(@embedding.dim(z), 0)
+  assert_true(z.normalized)
+}
+
+test "dataobject Record and Dataset construction" {
+  let r = @record_dataset.make_record("r1", [("name", "Alice"), ("age", "30")])
+  assert_eq(r.id, "r1")
+  assert_eq(@record_dataset.record_field_count(r), 2)
+  let d = @record_dataset.make_dataset([r], "v1")
+  assert_eq(@record_dataset.size(d), 1)
+  assert_eq(d.version, "v1")
+  assert_eq(d.mix_ratio, 1.0)
+}
+
+test "dataobject Dataset with ratio and empty" {
+  let r = @record_dataset.make_record("r1", [])
+  let d = @record_dataset.make_dataset_with_ratio([r], "v2", 0.5)
+  assert_eq(d.mix_ratio, 0.5)
+  let e = @record_dataset.empty_dataset("v0")
+  assert_eq(@record_dataset.size(e), 0)
+}
+
+test "dataobject DataObject construction" {
+  let s = @schema.empty()
+  let d = @dataobject.make_dataobject("hello world", @dataobject.Text, s)
+  assert_eq(@dataobject.content_length(d), 11)
+  assert_false(@dataobject.has_lineage(d))
+}
+
+test "dataobject DataObject with metadata" {
+  let s = @schema.empty()
+  let d = @dataobject.make_dataobject_with_metadata(
+    "data", @dataobject.Table, s, [("source", "csv"), ("rows", "100")]
+  )
+  assert_eq(d.metadata.length(), 2)
+  assert_false(@dataobject.has_lineage(d))
+}
+
+test "dataobject Lineage construction" {
+  let l = @dataobject.make_lineage("op1", "fp_in", "fp_out", "p=1", "env=prod")
+  assert_eq(l.operator_graph, "op1")
+  let e = @dataobject.empty_lineage()
+  assert_eq(e.input_fingerprint, "")
+}
+
+test "dataobject QualityCard construction" {
+  let q = @dataobject.make_quality_card(
+    [("accuracy", 0.95)], [("accuracy", 0.9)], true
+  )
+  assert_true(q.verdict)
+  let p = @dataobject.passing_quality_card()
+  assert_true(p.verdict)
+  assert_eq(p.metrics.length(), 0)
+}
+
+test "dataobject degenerate: empty dataobject" {
+  // 退化数据：空内容安全处理
+  let d = @dataobject.empty_dataobject(@dataobject.Text)
+  assert_eq(@dataobject.content_length(d), 0)
+  assert_false(@dataobject.has_lineage(d))
+}

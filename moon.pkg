@@ -1,6 +1,10 @@
 import {
   "kernel",
   "dataobject",
+  "dataobject/schema",
+  "dataobject/chunk",
+  "dataobject/embedding",
+  "dataobject/record_dataset",
   "opcore",
   "datatemporal",
   "recipe",

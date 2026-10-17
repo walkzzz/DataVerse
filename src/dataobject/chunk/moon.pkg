@@ -1,0 +1,2 @@
+// dataobject/chunk 分块单元 / Chunk unit
+// S0.3: Chunk 基础结构（稳定 ID + 内容 + 类型）

@@ -1,2 +1,6 @@
 // dataobject 一等数据实体 / First-class data entities
-// S0.3 填充：schema/chunk/embedding/record_dataset 四个子包
+// S0.3: DataObject + Lineage + QualityCard + Modality
+// 依赖方向：dataobject -> schema（DataObject 引用 Schema）；chunk/embedding/record_dataset 独立
+import {
+  "dataverse/dataobject/schema",
+}

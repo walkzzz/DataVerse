@@ -1,5 +1,5 @@
 // tests 跨包测试 / Cross-package tests
-// S0.2: kernel + S0.3: dataobject + S0.4: opcore
+// S0.2-S0.5: kernel + dataobject + opcore + datatemporal
 import {
   "dataverse/kernel",
   "dataverse/kernel/exact",
@@ -16,4 +16,9 @@ import {
   "dataverse/opcore/dedup",
   "dataverse/opcore/filter",
   "dataverse/opcore/registry",
+  "dataverse/datatemporal",
+  "dataverse/datatemporal/version",
+  "dataverse/datatemporal/lineage",
+  "dataverse/datatemporal/drift",
+  "dataverse/datatemporal/replay",
 }

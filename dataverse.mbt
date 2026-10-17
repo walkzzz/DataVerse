@@ -2,14 +2,14 @@
 /// # DataVerse 数据算子库根包 / Root Package
 ///
 /// 对外统一入口 `@dataverse`，重导出所有一级子包公共 API。
-/// S0.1 骨架 + S0.2 kernel + S0.3 dataobject + S0.4 opcore 框架 + 三类算子。
+/// S0.1-S0.5: kernel + dataobject + opcore + datatemporal.
 ///
 /// # Root package of DataVerse
 ///
 /// Unified entry `@dataverse`, re-exports all first-level sub-packages' public API.
-/// S0.1 skeleton + S0.2 kernel + S0.3 dataobject + S0.4 opcore framework + 3 operators.
+/// S0.1 skeleton + S0.2 kernel + S0.3 dataobject + S0.4 opcore + S0.5 datatemporal.
 pub fn version() -> String {
-  "dataverse 0.1.0-dev (S0.4 opcore framework + 3 operators)"
+  "dataverse 0.1.0-dev (S0.5 datatemporal)"
 }
 
 pub using @kernel {
@@ -30,6 +30,13 @@ pub using @opcore.clean { clean_id, remove_empty, strip_whitespace }
 pub using @opcore.dedup { dedup_id, exact_dedup, dedup_count }
 pub using @opcore.filter { filter_id, length_filter, non_empty_filter, filter_all }
 pub using @opcore.registry { registry_id, empty as empty_registry, register, lookup, size as registry_size, valid_operator }
+pub using @datatemporal {
+  datatemporal_id, make_fingerprint, empty_fingerprint, matches as fingerprint_matches,
+}
+pub using @datatemporal.version { version_id as dt_version_id, make_version, root_version, empty_tower, append as tower_append, height as tower_height }
+pub using @datatemporal.lineage { lineage_id as dt_lineage_id, make_bi_lineage, make_field_lineage }
+pub using @datatemporal.drift { drift_id, make_drift_report, is_significant }
+pub using @datatemporal.replay { replay_id, make_trace, empty_trace, step_count }
 pub using @datatemporal { datatemporal_id }
 pub using @recipe { recipe_id }
 pub using @datair { datair_id }

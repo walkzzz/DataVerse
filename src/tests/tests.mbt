@@ -280,3 +280,41 @@ test "opcore registry valid_operator" {
   assert_true(@registry.valid_operator(valid))
   assert_false(@registry.valid_operator(invalid))
 }
+// === S0.5 datatemporal 测试 ===
+
+test "datatemporal Fingerprint" {
+  let fp1 = @datatemporal.make_fingerprint("hello")
+  let fp2 = @datatemporal.make_fingerprint("hello")
+  let fp3 = @datatemporal.make_fingerprint("world!")
+  assert_true(@datatemporal.matches(fp1, fp2))
+  assert_false(@datatemporal.matches(fp1, fp3))
+}
+
+test "datatemporal Version and VersionTower" {
+  let v1 = @version.root_version("v1", 1000, "snap1")
+  let v2 = @version.make_version("v2", Some("v1"), 2000, "snap2")
+  assert_eq(v1.parent, None)
+  let tower = @version.append(@version.append(@version.empty_tower(), v1), v2)
+  assert_eq(@version.height(tower), 2)
+}
+
+test "datatemporal BiLineage and FieldLineage" {
+  let bl = @lineage.make_bi_lineage("dedup", ["in1"], ["out1"], "threshold=0.9")
+  assert_eq(bl.operator, "dedup")
+  let fl = @lineage.make_field_lineage("score", ["feat1", "feat2"], "scorer")
+  assert_eq(fl.field_name, "score")
+}
+
+test "datatemporal DriftReport" {
+  let dr = @drift.make_drift_report("accuracy", 0.95, 0.90)
+  // 浮点精度：0.90 - 0.95 ≠ 精确 -0.05，验证 is_significant 行为
+  assert_true(@drift.is_significant(dr, 0.01))
+  assert_false(@drift.is_significant(dr, 0.1))
+}
+
+test "datatemporal ReplayTrace" {
+  let t = @replay.make_trace("t1", ["step1", "step2", "step3"], "fp_end")
+  assert_eq(@replay.step_count(t), 3)
+  let e = @replay.empty_trace("t0")
+  assert_eq(@replay.step_count(e), 0)
+}

@@ -65,6 +65,7 @@ import {
   "dataverse/learncore/hyperparam_search",
   "dataverse/learncore/nlp",
   "dataverse/learncore/timeseries",
+  "dataverse/learncore/reinforcement",
 
   "dataverse/recipe/cleaning_line",
   "dataverse/recipe/dedup_line",

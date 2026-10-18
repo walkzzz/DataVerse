@@ -7500,3 +7500,131 @@ test "backtest basic" {
   let result = @timeseries.backtest(data, forecast_fn, 2)
   assert_true(result >= 0.0)
 }
+
+// S7.6 learncore/reinforcement 测试 / RL tests
+
+test "q_learning_update basic" {
+  let result = @reinforcement.q_learning_update(1.0, 0.5, 2.0, 0.1, 0.9)
+  assert_true(result > 1.0)
+}
+
+test "q_table_step basic" {
+  let q_table = [[1.0, 2.0], [3.0, 4.0]]
+  let result = @reinforcement.q_table_step(q_table, 0, 0, 1.0, 1, 0.1, 0.9)
+  assert_eq(result.length(), 2)
+}
+
+test "q_table_step invalid state" {
+  let q_table = [[1.0, 2.0]]
+  let result = @reinforcement.q_table_step(q_table, 5, 0, 1.0, 0, 0.1, 0.9)
+  assert_eq(result, q_table)
+}
+
+test "epsilon_greedy basic" {
+  let result = @reinforcement.epsilon_greedy([1.0, 3.0, 2.0], 0.0)
+  assert_eq(result, 1)
+}
+
+test "epsilon_greedy empty" {
+  let result = @reinforcement.epsilon_greedy([], 0.5)
+  assert_eq(result, 0)
+}
+
+test "sarsa_update basic" {
+  let result = @reinforcement.sarsa_update(1.0, 0.5, 2.0, 0.1, 0.9)
+  assert_true(result > 1.0)
+}
+
+test "policy_gradient_update basic" {
+  let theta = [1.0, 2.0]
+  let grad = [0.1, 0.2]
+  let result = @reinforcement.policy_gradient_update(theta, grad, 1.0, 0.01)
+  assert_eq(result.length(), 2)
+}
+
+test "advantage basic" {
+  assert_eq(@reinforcement.advantage(5.0, 3.0), 2.0)
+}
+
+test "gae basic" {
+  let rewards = [1.0, 0.5, 0.0]
+  let values = [0.5, 0.3, 0.1]
+  let result = @reinforcement.gae(rewards, values, 0.9, 0.95)
+  assert_eq(result.length(), 3)
+}
+
+test "actor_critic_config basic" {
+  let config = @reinforcement.make_actor_critic_config(0.001, 0.01, 0.99)
+  assert_eq(config.actor_lr, 0.001)
+}
+
+test "critic_update basic" {
+  let config = @reinforcement.make_actor_critic_config(0.001, 0.01, 0.99)
+  let (new_v, delta) = @reinforcement.critic_update(1.0, 0.5, 1.5, config)
+  assert_true(delta > 0.0)
+  assert_true(new_v > 1.0)
+}
+
+test "actor_update basic" {
+  let config = @reinforcement.make_actor_critic_config(0.001, 0.01, 0.99)
+  let theta = [1.0, 2.0]
+  let grad = [0.1, 0.2]
+  let result = @reinforcement.actor_update(theta, grad, 0.5, config)
+  assert_eq(result.length(), 2)
+}
+
+test "experience_replay basic" {
+  let replay = @reinforcement.make_experience_replay(100)
+  assert_eq(@reinforcement.replay_size(replay), 0)
+}
+
+test "add_experience basic" {
+  let replay = @reinforcement.make_experience_replay(100)
+  let replay2 = @reinforcement.add_experience(replay, [1.0, 0.0], 0, 1.0, [0.0, 1.0], false)
+  assert_eq(@reinforcement.replay_size(replay2), 1)
+}
+
+test "add_experience capacity" {
+  let replay = @reinforcement.make_experience_replay(2)
+  let r1 = @reinforcement.add_experience(replay, [1.0], 0, 1.0, [0.0], false)
+  let r2 = @reinforcement.add_experience(r1, [2.0], 0, 1.0, [0.0], false)
+  let r3 = @reinforcement.add_experience(r2, [3.0], 0, 1.0, [0.0], false)
+  assert_eq(@reinforcement.replay_size(r3), 2)
+}
+
+test "soft_update basic" {
+  let target = [1.0, 2.0]
+  let source = [3.0, 4.0]
+  let result = @reinforcement.soft_update(target, source, 0.1)
+  assert_true(result[0] > 1.19 && result[0] < 1.21)
+  assert_true(result[1] > 2.19 && result[1] < 2.21)
+}
+
+test "ppo_clipped_loss basic" {
+  let result = @reinforcement.ppo_clipped_loss(1.5, 1.0, 0.2)
+  assert_true(result >= 0.0)
+}
+
+test "ppo_update basic" {
+  let theta = [1.0, 2.0]
+  let grad = [0.1, 0.2]
+  let result = @reinforcement.ppo_update(theta, grad, 1.0, 1.0, 0.2, 0.001)
+  assert_eq(result.length(), 2)
+}
+
+test "discounted_return basic" {
+  let rewards = [1.0, 1.0, 1.0]
+  let result = @reinforcement.discounted_return(rewards, 0.9)
+  assert_true(result > 2.0)
+}
+
+test "normalize_rewards basic" {
+  let rewards = [1.0, 2.0, 3.0]
+  let result = @reinforcement.normalize_rewards(rewards)
+  assert_eq(result.length(), 3)
+}
+
+test "normalize_rewards empty" {
+  let result = @reinforcement.normalize_rewards([])
+  assert_eq(result.length(), 0)
+}

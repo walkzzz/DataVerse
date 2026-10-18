@@ -6616,6 +6616,12 @@ pub using @learncore.timeseries {
   HoltWintersParams, make_holt_winters_params, holt_winters_forecast, prophet_forecast, kalman_filter_step, kalman_filter,
   is_stationary, is_white_noise, backtest,
 }
+pub using @learncore.reinforcement {
+  reinforcement_id, q_learning_update, q_table_step, epsilon_greedy, sarsa_update, policy_gradient_update, advantage, gae,
+  ActorCriticConfig, make_actor_critic_config, critic_update, actor_update,
+  ExperienceReplay, make_experience_replay, add_experience, replay_size, soft_update, ppo_clipped_loss, ppo_update,
+  discounted_return, normalize_rewards,
+}
 pub using @learncore.cross_validation {
   cross_validation_id, CVSplit, kfold_splits, CVStats, cv_stats, loo_count,
 }

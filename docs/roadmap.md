@@ -130,9 +130,9 @@
 
 | Sprint | 内容 | 状态 | commit |
 |--------|------|------|--------|
-| S6.1 | opcore/transform 扩展（Con/Pick/SetNull/Reclassify/Slice/Lookup） | ⏳ | — |
-| S6.2 | learncore/feature 扩展（CentralFeature/MeanCenter/MedianCenter/StandardDistance/DirectionalDistribution） | ⏳ | — |
-| S6.3 | 零散算子补齐（Split/SimilaritySearch/Forest/GLM/TabulateIntersection/TopoToRaster） | ⏳ | — |
+| S6.1 | opcore/transform 扩展（Con/Pick/SetNull/Reclassify/Slice/Lookup） | ✅ | 423af39 |
+| S6.2 | learncore/feature 扩展（CentralFeature/MeanCenter/MedianCenter/StandardDistance/DirectionalDistribution） | ✅ | e43bdbd |
+| S6.3 | 零散算子补齐（Split/SimilaritySearch/Forest/GLM/TabulateIntersection） | ✅ | aa8ffb2 |
 | S6.4 | R16 门禁 + Phase 6 闭环 | ⏳ | — |
 
 ---

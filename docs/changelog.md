@@ -731,3 +731,18 @@
 ---
 
 > DataVerse Changelog | 2026-10-17 | Phase 3 闭环 + R16 门禁
+## 2026-10-18 Phase 6 Sprint 6.3 闭环
+
+### S6.3 零散算子补齐 / Scattered Operators
+
+- **filter_split**：Split 工具，按分隔符切分 DataObject 内容
+- **cluster_similarity_search**：Similarity Search 工具，k 近邻候选向量搜索
+- **classify_forest**：Forest-based Classification，多数投票模拟随机森林
+- **regression_glm**：Generalized Linear Regression，支持 identity/log 链接
+- **eval_tabulate_intersection**：Tabulate Intersection，交叉分类面积表
+- 测试：+15（865→880）
+- commit：`aa8ffb2`
+
+---
+
+> DataVerse Changelog | 2026-10-18 | Phase 6 Sprint 6.3 闭环

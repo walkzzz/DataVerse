@@ -173,8 +173,11 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S5.2 | opcore/solar 太阳辐射（Area/Point 3 type + 17 fn） | ✅ | 09333e2 |
 | S5.3 | opcore/groundwater 地下水分析（Darcy/ParticleTrack 3 type + 15 fn） | ✅ | 65e462b |
 | S5.4 | R16 门禁 + Phase 5 闭环（spec 51-60, +10 tests） | ✅ | 96d9091 |
+| S6.1 | opcore/transform 扩展（Con/Pick/SetNull/Reclassify/Slice/Lookup +6 fn） | ✅ | 423af39 |
+| S6.2 | learncore/feature 扩展（度量地理分布 +5 fn） | ✅ | e43bdbd |
+| S6.3 | 零散算子补齐（Split/SimilaritySearch/Forest/GLM/TabulateIntersection +5 fn） | ✅ | aa8ffb2 |
 
-**当前测试**：835 · **当前 API**：698（pub fn）+ 153（pub type） · **形式化证明**：60
+**当前测试**：880 · **当前 API**：714（pub fn）+ 153（pub type） · **形式化证明**：60
 
 ---
 

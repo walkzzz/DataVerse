@@ -7101,3 +7101,76 @@ test "tversky_loss empty" {
   let result = @dl_losses.tversky_loss([], [], 0.3, 0.7)
   assert_eq(result, 0.0)
 }
+
+// S7.3 dl_optimizers 扩展测试 / Extended optimizer tests
+
+test "adamw_step basic" {
+  let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.001, [1.0, 2.0, 3.0])
+  let result = @dl_optimizers.adamw_step(state, [0.1, 0.2, 0.3], 0.01)
+  assert_eq(result.length(), 3)
+}
+
+test "radam_step basic" {
+  let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.001, [1.0, 2.0])
+  let result = @dl_optimizers.radam_step(state, [0.1, 0.2])
+  assert_eq(result.length(), 2)
+}
+
+test "adabelief_step basic" {
+  let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.001, [0.5, 0.5])
+  let result = @dl_optimizers.adabelief_step(state, [0.1, 0.1])
+  assert_eq(result.length(), 2)
+}
+
+test "nadam_step basic" {
+  let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.001, [1.0])
+  let result = @dl_optimizers.nadam_step(state, [0.5])
+  assert_eq(result.length(), 1)
+}
+
+test "adamax_step basic" {
+  let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.001, [1.0, 2.0])
+  let result = @dl_optimizers.adamax_step(state, [0.1, 0.2])
+  assert_eq(result.length(), 2)
+}
+
+test "rmsprop_step basic" {
+  let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.01, [1.0, 2.0])
+  let result = @dl_optimizers.rmsprop_step(state, [0.1, 0.2], 0.9)
+  assert_eq(result.length(), 2)
+}
+
+test "adagrad_step basic" {
+  let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.01, [1.0])
+  let result = @dl_optimizers.adagrad_step(state, [0.5])
+  assert_eq(result.length(), 1)
+}
+
+test "asgd_step basic" {
+  let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.01, [1.0, 2.0])
+  let result = @dl_optimizers.asgd_step(state, [0.1, 0.2], 0.0)
+  assert_eq(result.length(), 2)
+}
+
+test "lamb_step basic" {
+  let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.001, [1.0, 2.0, 3.0])
+  let result = @dl_optimizers.lamb_step(state, [0.1, 0.2, 0.3], 0.01)
+  assert_eq(result.length(), 3)
+}
+
+test "lookahead_step basic" {
+  let slow = [1.0, 2.0, 3.0]
+  let fast = [1.5, 2.5, 3.5]
+  let result = @dl_optimizers.lookahead_step(slow, fast, 0.5)
+  assert_eq(result.length(), 3)
+  assert_eq(result[0], 1.25)
+  assert_eq(result[1], 2.25)
+  assert_eq(result[2], 3.25)
+}
+
+test "adamw_step empty gradients" {
+  let state = @dl_optimizers.make_optimizer(@dl_optimizers.Adam, 0.001, [1.0, 2.0])
+  let result = @dl_optimizers.adamw_step(state, [], 0.01)
+  assert_eq(result[0], 1.0)
+  assert_eq(result[1], 2.0)
+}

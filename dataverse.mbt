@@ -6602,6 +6602,7 @@ pub using @learncore.dl_losses {
 }
 pub using @learncore.dl_optimizers {
   dl_optimizers_id, OptimizerKind, OptimizerState, make_optimizer, sgd_step, adam_step, optimizer_step, update_state, optimizer_name,
+  adamw_step, radam_step, adabelief_step, nadam_step, adamax_step, rmsprop_step, adagrad_step, asgd_step, lamb_step, lookahead_step,
 }
 pub using @learncore.cross_validation {
   cross_validation_id, CVSplit, kfold_splits, CVStats, cv_stats, loo_count,

@@ -996,3 +996,85 @@ test "spec: difference length minus 1" {
   let result = @timeseries.difference(data)
   assert_eq(result.length(), data.length() - 1)
 }
+///|
+/// 性质 81：network_id 恒等
+/// network_id() == "opcore/network"
+test "spec: network_id constant" {
+  assert_eq(@network.network_id(), "opcore/network")
+}
+
+///|
+/// 性质 82：shortest_distance 自反性
+/// ∀ graph, node: shortest_distance(graph, node, node) == 0.0
+test "spec: shortest_distance self zero" {
+  let g = @network.build_network_from_edges(5, [(0, 1, 1.0), (1, 2, 2.0), (2, 3, 3.0), (3, 4, 4.0)])
+  assert_eq(@network.shortest_distance(g, 2, 2), 0.0)
+}
+
+///|
+/// 性质 83：connected_components 非负
+/// ∀ graph: len(connected_components(graph)) >= 0
+test "spec: connected_components non-negative" {
+  let g = @network.build_network_from_edges(4, [(0, 1, 1.0), (2, 3, 1.0)])
+  let comps = @network.connected_components(g)
+  assert_true(comps.length() > 0)
+}
+
+///|
+/// 性质 84：topology_id 恒等
+/// topology_id() == "opcore/topology"
+test "spec: topology_id constant" {
+  assert_eq(@topology.topology_id(), "opcore/topology")
+}
+
+///|
+/// 性质 85：polygon_area 非负
+/// ∀ polygon: polygon_area(polygon) >= 0.0
+test "spec: polygon_area non-negative" {
+  let poly = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(4.0, 0.0),
+    @topology.make_topo_point(4.0, 3.0),
+  ])
+  assert_true(@topology.polygon_area(poly) >= 0.0)
+}
+
+///|
+/// 性质 86：terrain_id 恒等
+/// terrain_id() == "opcore/terrain"
+test "spec: terrain_id constant" {
+  assert_eq(@terrain.terrain_id(), "opcore/terrain")
+}
+
+///|
+/// 性质 87：distance3d 对称性
+/// ∀ p1, p2: distance3d(p1, p2) == distance3d(p2, p1)
+test "spec: distance3d symmetric" {
+  let p1 = @analysis3d.make_point3d(1.0, 2.0, 3.0)
+  let p2 = @analysis3d.make_point3d(4.0, 6.0, 8.0)
+  let d12 = @analysis3d.distance3d(p1, p2)
+  let d21 = @analysis3d.distance3d(p2, p1)
+  assert_true(d12 > d21 - 0.001 && d12 < d21 + 0.001)
+}
+
+///|
+/// 性质 88：geocoding_id 恒等
+/// geocoding_id() == "opcore/geocoding"
+test "spec: geocoding_id constant" {
+  assert_eq(@geocoding.geocoding_id(), "opcore/geocoding")
+}
+
+///|
+/// 性质 89：great_circle_distance 自反性
+/// ∀ c: great_circle_distance(c, c) == 0.0
+test "spec: great_circle_distance self zero" {
+  let c = @coord.make_geodetic(116.4, 39.9)
+  assert_eq(@coord.great_circle_distance(c, c), 0.0)
+}
+
+///|
+/// 性质 90：coord_id 恒等
+/// coord_id() == "opcore/coord"
+test "spec: coord_id constant" {
+  assert_eq(@coord.coord_id(), "opcore/coord")
+}

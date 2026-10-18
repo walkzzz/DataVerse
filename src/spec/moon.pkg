@@ -57,4 +57,10 @@ import {
   "dataverse/opcore/filter",
   "dataverse/opcore/eval",
   "dataverse/learncore/classify",
+  "dataverse/opcore/network",
+  "dataverse/opcore/topology",
+  "dataverse/opcore/terrain",
+  "dataverse/opcore/analysis3d",
+  "dataverse/opcore/geocoding",
+  "dataverse/opcore/coord",
 }

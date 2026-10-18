@@ -813,3 +813,51 @@ DataVerse 已完成 ArcGIS Pro 726 工具的 100% 映射，0 待建。
 - 测试: 1071 → 1109（+38）
 - 编译: 0 error 0 warning
 - 对标: ArcGIS Pro Network Analyst 扩展
+
+## Phase 8 Sprint 2-7 (S8.2-S8.7) — 空间分析深化 + Phase 8 闭环
+
+**日期**: 2026-10-18
+
+### S8.2 opcore/topology 拓扑分析 (+25 fn, +34 tests)
+- 8 种拓扑关系: check_equal/disjoint/intersect/touches/contains/within/crosses/overlaps
+- 拓扑验证: validate_overlap/gap/dangling, topology_errors
+- 拓扑编辑: merge_polygons, fix_overlap, simplify_polygon
+- 几何度量: polygon_area, polygon_perimeter
+
+### S8.3 opcore/terrain 地形分析深化 (+18 fn, +22 tests)
+- slope/aspect/hillshade (Horn's method)
+- tpi/roughness/vrm/spi (地形指数)
+- profile/plan/total_curvature (曲率)
+- flow_direction/flow_accumulation (D8 水文)
+- generate_contour, elevation_stats
+
+### S8.4 opcore/analysis3d 三维分析 (+20 fn, +27 tests)
+- distance3d/manhattan3d/chebyshev3d (三维距离)
+- bbox3d/buffer3d (三维包围盒/缓冲)
+- line_of_sight/viewshed3d/skyline (视线/可视域/天际线)
+- volume3d/surface_area3d (体积/表面积)
+- translate3d/scale3d/centroid3d (三维变换)
+
+### S8.5 opcore/geocoding 地理编码 (+15 fn, +23 tests)
+- forward_geocode/batch_forward_geocode (正向地理编码)
+- reverse_geocode (逆向地理编码)
+- address_match_score/address_matches (地址匹配)
+- validate_coord/coord_distance/validate_postal (验证)
+
+### S8.6 opcore/coord 坐标变换 (+20 fn, +29 tests)
+- wgs84_to_web_mercator/web_mercator_to_wgs84 (Web Mercator)
+- wgs84_to_utm/utm_to_wgs84/utm_zone (UTM 投影)
+- apply_affine/identity/translation/scale_affine (仿射变换)
+- great_circle_distance/bearing/destination_point (大圆/方位角)
+- decimal_to_dms/dms_to_decimal (度分秒转换)
+
+### S8.7 R16 门禁 + Phase 8 闭环 (spec 81-90, +10 tests)
+- 10 个形式化性质: network/topology/terrain/analysis3d/geocoding/coord
+
+### Phase 8 闭环统计
+- 源代码: ~34,422 行（src 27,647 + dataverse.mbt 6,775）
+- 测试: 1071 → 1254（+183）
+- 编译: 0 error 0 warning
+- 新增 6 个子包: network/topology/terrain/analysis3d/geocoding/coord
+- 新增 ~117 个公开算子
+- 对标: ArcGIS Pro Network Analyst / Topology / Spatial Analyst / 3D Analyst / Geocoding / Projections

@@ -16,7 +16,7 @@
 | Phase 5 | P2 ArcGIS 工具扩展（neighborhood + solar + groundwater） | ✅ 闭环 |
 | Phase 6 | 待建映射补齐（transform/feature/零散算子） | ✅ 闭环 |
 | Phase 7 | 深度学习算子全集（DL 层/损失/优化器/NLP/时序/RL/集成） | ✅ 闭环 |
-| Phase 8 | 空间分析深化（网络/拓扑/地形/3D/地理编码/坐标变换） | ⏳ 进行中 |
+| Phase 8 | 空间分析深化（网络/拓扑/地形/3D/地理编码/坐标变换） | ✅ 闭环 |
 | Phase 9 | 多模态算子深化（image/audio/video/semantic/点云/遥感） | ⏳ |
 | Phase 10 | 数据基础设施深化（dataobject/datatemporal/datair/dosi/parallel/io） | ⏳ |
 | Phase 11 | Agent/LLM 集成深化（agent_kit/llm/retrieval/prompt） | ⏳ |
@@ -182,12 +182,12 @@
 | Sprint | 内容 | 状态 | commit |
 |--------|------|------|--------|
 | S8.1 | opcore/network 网络分析（ShortestPath/ServiceArea/LocationAllocation/ODCostMatrix +19 fn） | ✅ | 1109 tests |
-| S8.2 | opcore/topology 拓扑分析（Build/Validate/Edit +18 fn） | ⏳ | — |
-| S8.3 | opcore/terrain 地形分析深化（TPI/SPI/VRM/Roughness +15 fn） | ⏳ | — |
-| S8.4 | opcore/analysis3d 三维分析（Viewshed3D/Buffer3D/Distance3D +18 fn） | ⏳ | — |
-| S8.5 | opcore/geocoding 地理编码（Address/Reverse/Match +12 fn） | ⏳ | — |
-| S8.6 | opcore/coord 坐标变换（Projection/Transform/Datum +20 fn） | ⏳ | — |
-| S8.7 | R16 门禁 + Phase 8 闭环（spec 81-90, +10 tests） | ⏳ | — |
+| S8.2 | opcore/topology 拓扑分析（Build/Validate/Edit +25 fn） | ✅ | 1143 tests |
+| S8.3 | opcore/terrain 地形分析深化（TPI/SPI/VRM/Roughness +18 fn） | ✅ | 1165 tests |
+| S8.4 | opcore/analysis3d 三维分析（Viewshed3D/Buffer3D/Distance3D +20 fn） | ✅ | 1192 tests |
+| S8.5 | opcore/geocoding 地理编码（Address/Reverse/Match +15 fn） | ✅ | 1215 tests |
+| S8.6 | opcore/coord 坐标变换（Projection/Transform/Datum +20 fn） | ✅ | 1244 tests |
+| S8.7 | R16 门禁 + Phase 8 闭环（spec 81-90, +10 tests） | ✅ | 1254 tests |
 
 ---
 

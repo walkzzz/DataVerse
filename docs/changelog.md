@@ -4,6 +4,31 @@
 
 ## [0.1.0-dev] - 2026-10-18
 
+### S5.4 - R16 门禁 + Phase 5 闭环
+
+**新增 / Added**
+- 10 个形式化性质（spec 51-60），覆盖 Phase 5 关键算子：
+  - block_mean 常数栅格不变性 / block_count 非负性
+  - line_mean 常数行不变性 / line_count 非负性
+  - neighborhood_cell_count 非负性
+  - solar_altitude 非负性 / solar global = direct + diffuse / solar_duration 范围
+  - darcy_velocity 非负性 / porous_puff 非负性
+
+**统计 / Stats**
+- 测试：825 → 835（+10 spec）
+- 形式化证明：50 → 60（+10）
+- Phase 5 闭环：3 子包，11 type + 65 fn，+111 tests
+
+### Phase 5 总结
+
+| Sprint | 子包 | type+fn | tests | commit |
+|--------|------|---------|-------|--------|
+| S5.1 | opcore/neighborhood | 5+33 | +39 | 14c50cc |
+| S5.2 | opcore/solar | 3+17 | +32 | 09333e2 |
+| S5.3 | opcore/groundwater | 3+15 | +30 | 65e462b |
+| S5.4 | R16 spec 51-60 | 0+0 | +10 | 96d9091 |
+| **合计** | **3 子包** | **11+65** | **+111** | — |
+
 ### S5.3 - opcore/groundwater 地下水分析
 
 **新增 / Added**

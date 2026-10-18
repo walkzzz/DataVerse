@@ -117,15 +117,15 @@
 | S5.1 | opcore/neighborhood 邻域分析（Block/Line/Neighborhood Statistics 5 type + 33 fn） | ✅ | 14c50cc |
 | S5.2 | opcore/solar 太阳辐射（Area/Point Radiation 3 type + 17 fn） | ✅ | 09333e2 |
 | S5.3 | opcore/groundwater 地下水分析（Darcy Flow/Particle Track 3 type + 15 fn） | ✅ | 65e462b |
-| S5.4 | R16 门禁 + Phase 5 闭环 | ⏳ | — |
+| S5.4 | R16 门禁 + Phase 5 闭环（spec 51-60, +10 tests） | ✅ | 96d9091 |
 
 ---
 
 ## 当前统计 / Current Stats
 
-- **测试**：825 passed
+- **测试**：835 passed
 - **API**：698 pub fn + 153 pub type
-- **形式化证明**：50 个 spec 性质
+- **形式化证明**：60 个 spec 性质
 - **编译**：0 error 0 warning
 - **MoonBit**：moon 0.1.20260920
 

@@ -1267,8 +1267,9 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S6.2 | learncore/feature 扩展（度量地理分布 +5 fn） | ✅ | e43bdbd |
 | S6.3 | 零散算子补齐（Split/SimilaritySearch/Forest/GLM/TabulateIntersection +5 fn） | ✅ | aa8ffb2 |
 | S6.4 | R16 门禁 + Phase 6 闭环（spec 61-70, +10 tests） | ✅ | f4c87a3 |
+| S6.5 | 收尾：Split By Attributes + Frequency（726/726 全映射） | ✅ | 0fefa5f |
 
-**当前测试**：890 · **当前 API**：714（pub fn）+ 153（pub type） · **形式化证明**：70
+**当前测试**：900 · **当前 API**：716（pub fn）+ 153（pub type） · **形式化证明**：70 · **ArcGIS 映射**：726/726
 
 ---
 

@@ -134,16 +134,18 @@
 | S6.2 | learncore/feature 扩展（CentralFeature/MeanCenter/MedianCenter/StandardDistance/DirectionalDistribution） | ✅ | e43bdbd |
 | S6.3 | 零散算子补齐（Split/SimilaritySearch/Forest/GLM/TabulateIntersection） | ✅ | aa8ffb2 |
 | S6.4 | R16 门禁 + Phase 6 闭环 | ✅ | f4c87a3 |
+| S6.5 | 收尾：Split By Attributes + Frequency（726/726 全映射） | ✅ | 0fefa5f |
 
 ---
 
 ## 当前统计 / Current Stats
 
-- **测试**：890 passed
-- **API**：714 pub fn + 153 pub type
+- **测试**：900 passed
+- **API**：716 pub fn + 153 pub type
 - **形式化证明**：70 个 spec 性质
 - **编译**：0 error 0 warning
 - **MoonBit**：moon 0.1.20260920
+- **ArcGIS 映射**：726/726 全映射达成
 
 ---
 

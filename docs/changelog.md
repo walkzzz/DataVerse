@@ -779,3 +779,20 @@
 ---
 
 > DataVerse Changelog | 2026-10-18 | Phase 6 闭环
+
+## 2026-10-18 S6.5 收尾 - 726/726 全映射达成
+
+### S6.5 Split By Attributes + Frequency
+
+- **filter_split_by_attributes**：Split By Attributes 工具，按属性列唯一值分组记录
+- **eval_frequency**：Frequency 工具，计算字段值频率
+- 测试：+10（890→900）
+- commit：`0fefa5f`
+
+### 里程碑：ArcGIS Pro 726 工具全映射达成
+
+DataVerse 已完成 ArcGIS Pro 726 工具的 100% 映射，0 待建。
+
+---
+
+> DataVerse Changelog | 2026-10-18 | 726/726 全映射达成

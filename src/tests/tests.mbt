@@ -7174,3 +7174,178 @@ test "adamw_step empty gradients" {
   assert_eq(result[0], 1.0)
   assert_eq(result[1], 2.0)
 }
+
+// S7.4 learncore/nlp 测试 / NLP tests
+
+test "tokenize_whitespace basic" {
+  let result = @nlp.tokenize_whitespace("hello world foo")
+  assert_eq(result.length(), 3)
+  assert_eq(result[0], "hello")
+}
+
+test "tokenize_char basic" {
+  let result = @nlp.tokenize_char("abc")
+  assert_eq(result.length(), 3)
+  assert_eq(result[0], "a")
+  assert_eq(result[2], "c")
+}
+
+test "tokenize_word basic" {
+  let result = @nlp.tokenize_word("Hello World")
+  assert_eq(result.length(), 2)
+  assert_eq(result[0], "hello")
+}
+
+test "tokenize unified interface" {
+  let r1 = @nlp.tokenize(@nlp.Whitespace, "a b c")
+  assert_eq(r1.length(), 3)
+  let r2 = @nlp.tokenize(@nlp.Char, "ab")
+  assert_eq(r2.length(), 2)
+}
+
+test "build_vocab basic" {
+  let tokens = ["the", "cat", "the", "dog"]
+  let vocab = @nlp.build_vocab(tokens)
+  assert_eq(vocab.length(), 3)
+}
+
+test "encode_tokens basic" {
+  let vocab = ["the", "cat", "dog"]
+  let ids = @nlp.encode_tokens(["cat", "the", "dog"], vocab)
+  assert_eq(ids[0], 1)
+  assert_eq(ids[1], 0)
+  assert_eq(ids[2], 2)
+}
+
+test "encode_tokens unknown" {
+  let vocab = ["the", "cat"]
+  let ids = @nlp.encode_tokens(["dog"], vocab)
+  assert_eq(ids[0], -1)
+}
+
+test "decode_ids basic" {
+  let vocab = ["the", "cat", "dog"]
+  let result = @nlp.decode_ids([0, 1, 2], vocab)
+  assert_eq(result[0], "the")
+  assert_eq(result[1], "cat")
+  assert_eq(result[2], "dog")
+}
+
+test "decode_ids out of bounds" {
+  let vocab = ["the"]
+  let result = @nlp.decode_ids([0, 5], vocab)
+  assert_eq(result[1], "<unk>")
+}
+
+test "embedding_lookup basic" {
+  let matrix = [[1.0, 2.0], [3.0, 4.0], [5.0, 6.0]]
+  let result = @nlp.embedding_lookup([0, 2], matrix)
+  assert_eq(result.length(), 2)
+  assert_eq(result[0][0], 1.0)
+  assert_eq(result[1][0], 5.0)
+}
+
+test "positional_encoding basic" {
+  let pe = @nlp.positional_encoding(3, 4)
+  assert_eq(pe.length(), 3)
+  assert_eq(pe[0].length(), 4)
+}
+
+test "bert_config basic" {
+  let config = @nlp.make_bert_config(1000, 128, 6, 8)
+  assert_eq(config.vocab_size, 1000)
+  assert_eq(config.hidden_size, 128)
+}
+
+test "bert_embeddings basic" {
+  let config = @nlp.make_bert_config(10, 4, 2, 2)
+  let matrix = [[1.0, 0.0, 0.0, 0.0], [0.0, 1.0, 0.0, 0.0]]
+  let result = @nlp.bert_embeddings([0, 1], matrix, config)
+  assert_eq(result.length(), 2)
+}
+
+test "bert_pooled_output basic" {
+  let hidden = [[1.0, 2.0], [3.0, 4.0]]
+  let pooled = @nlp.bert_pooled_output(hidden)
+  assert_eq(pooled[0], 1.0)
+  assert_eq(pooled[1], 2.0)
+}
+
+test "bert_forward basic" {
+  let config = @nlp.make_bert_config(10, 4, 2, 2)
+  let matrix = [[1.0, 0.0, 0.0, 0.0], [0.0, 1.0, 0.0, 0.0]]
+  let (hidden, pooled) = @nlp.bert_forward([0, 1], matrix, config)
+  assert_eq(hidden.length(), 2)
+  assert_eq(pooled.length(), 4)
+}
+
+test "gpt_config basic" {
+  let config = @nlp.make_gpt_config(1000, 128, 6, 8)
+  assert_eq(config.vocab_size, 1000)
+}
+
+test "gpt_embeddings basic" {
+  let config = @nlp.make_gpt_config(10, 4, 2, 2)
+  let matrix = [[1.0, 0.0, 0.0, 0.0], [0.0, 1.0, 0.0, 0.0]]
+  let result = @nlp.gpt_embeddings([0, 1], matrix, config)
+  assert_eq(result.length(), 2)
+}
+
+test "gpt_forward basic" {
+  let config = @nlp.make_gpt_config(10, 4, 2, 2)
+  let matrix = [[1.0, 0.0, 0.0, 0.0], [0.0, 1.0, 0.0, 0.0]]
+  let result = @nlp.gpt_forward([0, 1], matrix, config)
+  assert_eq(result.length(), 2)
+}
+
+test "gpt_generate_next basic" {
+  let config = @nlp.make_gpt_config(10, 4, 2, 2)
+  let matrix = [[1.0, 0.0, 0.0, 0.0], [0.0, 1.0, 0.0, 0.0]]
+  let next_id = @nlp.gpt_generate_next([0], matrix, config)
+  assert_true(next_id >= 0)
+}
+
+test "ngrams bigram" {
+  let tokens = ["the", "cat", "sat"]
+  let grams = @nlp.ngrams(tokens, 2)
+  assert_eq(grams.length(), 2)
+  assert_eq(grams[0].length(), 2)
+}
+
+test "ngrams trigram" {
+  let tokens = ["a", "b", "c", "d"]
+  let grams = @nlp.ngrams(tokens, 3)
+  assert_eq(grams.length(), 2)
+}
+
+test "ngrams too large" {
+  let tokens = ["a", "b"]
+  let grams = @nlp.ngrams(tokens, 5)
+  assert_eq(grams.length(), 0)
+}
+
+test "term_frequency basic" {
+  let tokens = ["the", "cat", "the", "dog", "the"]
+  let tf = @nlp.term_frequency(tokens)
+  assert_eq(tf.length(), 3)
+}
+
+test "text_length basic" {
+  assert_eq(@nlp.text_length("hello"), 5)
+  assert_eq(@nlp.text_length(""), 0)
+}
+
+test "text_join basic" {
+  let result = @nlp.text_join(["a", "b", "c"], ", ")
+  assert_eq(result, "a, b, c")
+}
+
+test "text_join empty" {
+  let result = @nlp.text_join([], ",")
+  assert_eq(result, "")
+}
+
+test "text_truncate basic" {
+  assert_eq(@nlp.text_truncate("hello world", 5), "hello")
+  assert_eq(@nlp.text_truncate("hi", 10), "hi")
+}

@@ -6604,6 +6604,11 @@ pub using @learncore.dl_optimizers {
   dl_optimizers_id, OptimizerKind, OptimizerState, make_optimizer, sgd_step, adam_step, optimizer_step, update_state, optimizer_name,
   adamw_step, radam_step, adabelief_step, nadam_step, adamax_step, rmsprop_step, adagrad_step, asgd_step, lamb_step, lookahead_step,
 }
+pub using @learncore.nlp {
+  nlp_id, TokenizerKind, tokenize_whitespace, tokenize_char, tokenize_word, tokenize, build_vocab, encode_tokens, decode_ids,
+  embedding_lookup, positional_encoding, BertConfig, make_bert_config, bert_embeddings, bert_pooled_output, bert_forward,
+  GptConfig, make_gpt_config, gpt_embeddings, gpt_forward, gpt_generate_next, ngrams, term_frequency, text_length, text_join, text_truncate,
+}
 pub using @learncore.cross_validation {
   cross_validation_id, CVSplit, kfold_splits, CVStats, cv_stats, loo_count,
 }

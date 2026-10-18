@@ -42,6 +42,7 @@ import {
   "dataverse/opcore/local_stats",
   "dataverse/opcore/neighborhood",
   "dataverse/opcore/solar",
+  "dataverse/opcore/groundwater",
   "dataverse/datatemporal",
   "dataverse/datatemporal/version",
   "dataverse/datatemporal/lineage",

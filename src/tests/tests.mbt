@@ -6064,3 +6064,198 @@ test "S5.2 solar global = direct + diffuse" {
   let r = @solar.solar_radiation_point(cfg)
   assert_true((r.global_radiation - r.direct_radiation - r.diffuse_radiation).abs() < 0.001)
 }
+
+// ============================================================
+// S5.3 opcore/groundwater 地下水分析测试
+// ============================================================
+
+test "S5.3 make_groundwater_config" {
+  let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.01, 0.005)
+  assert_eq(cfg.porosity, 0.3)
+  assert_eq(cfg.conductivity, 0.001)
+  assert_eq(cfg.gradient_x, 0.01)
+  assert_eq(cfg.gradient_y, 0.005)
+}
+
+test "S5.3 make_groundwater_config boundary" {
+  let cfg = @groundwater.make_groundwater_config(1.5, -0.1, 0.01, 0.005)
+  assert_eq(cfg.porosity, 1.0)
+  assert_eq(cfg.conductivity, 0.0)
+}
+
+test "S5.3 make_groundwater_config negative porosity" {
+  let cfg = @groundwater.make_groundwater_config(-0.5, 0.001, 0.01, 0.005)
+  assert_eq(cfg.porosity, 0.0)
+}
+
+test "S5.3 make_darcy_flow_result" {
+  let r = @groundwater.make_darcy_flow_result(0.001, 0.002, 0.003, 0.01)
+  assert_eq(r.flow_x, 0.001)
+  assert_eq(r.flow_y, 0.002)
+  assert_eq(r.velocity, 0.003)
+  assert_eq(r.head_gradient, 0.01)
+}
+
+test "S5.3 make_particle_track_result" {
+  let r = @groundwater.make_particle_track_result([(0.0, 0.0), (1.0, 1.0)], 1.414, 100.0, 1)
+  assert_eq(r.path.length(), 2)
+  assert_eq(r.total_distance, 1.414)
+  assert_eq(r.total_time, 100.0)
+  assert_eq(r.steps, 1)
+}
+
+test "S5.3 groundwater_head_gradient" {
+  let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.003, 0.004)
+  let g = @groundwater.groundwater_head_gradient(cfg)
+  assert_true((g - 0.005).abs() < 0.0001)
+}
+
+test "S5.3 groundwater_head_gradient zero" {
+  let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.0, 0.0)
+  assert_eq(@groundwater.groundwater_head_gradient(cfg), 0.0)
+}
+
+test "S5.3 darcy_flow basic" {
+  let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.01, 0.0)
+  let r = @groundwater.darcy_flow(cfg)
+  assert_true(r.flow_x < 0.0)
+  assert_eq(r.flow_y, 0.0)
+  assert_true(r.velocity > 0.0)
+}
+
+test "S5.3 darcy_flow zero conductivity" {
+  let cfg = @groundwater.make_groundwater_config(0.3, 0.0, 0.01, 0.0)
+  let r = @groundwater.darcy_flow(cfg)
+  assert_eq(r.flow_x, 0.0)
+  assert_eq(r.flow_y, 0.0)
+  assert_eq(r.velocity, 0.0)
+}
+
+test "S5.3 darcy_velocity basic" {
+  let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.01, 0.0)
+  let v = @groundwater.darcy_velocity(cfg)
+  assert_true(v > 0.0)
+}
+
+test "S5.3 darcy_velocity zero porosity" {
+  let cfg = @groundwater.make_groundwater_config(0.0, 0.001, 0.01, 0.0)
+  assert_eq(@groundwater.darcy_velocity(cfg), 0.0)
+}
+
+test "S5.3 darcy_velocity zero gradient" {
+  let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.0, 0.0)
+  assert_eq(@groundwater.darcy_velocity(cfg), 0.0)
+}
+
+test "S5.3 groundwater_flow_direction" {
+  let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.01, 0.0)
+  let d = @groundwater.groundwater_flow_direction(cfg)
+  assert_true(d >= -180.0 && d <= 180.0)
+}
+
+test "S5.3 groundwater_flow_direction zero" {
+  let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.0, 0.0)
+  assert_eq(@groundwater.groundwater_flow_direction(cfg), 0.0)
+}
+
+test "S5.3 particle_track basic" {
+  let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.01, 0.0)
+  let r = @groundwater.particle_track(cfg, 0.0, 0.0, 1.0, 10)
+  assert_eq(r.path.length(), 11)
+  assert_eq(r.steps, 10)
+  assert_true(r.total_distance > 0.0)
+  assert_true(r.total_time > 0.0)
+}
+
+test "S5.3 particle_track zero steps" {
+  let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.01, 0.0)
+  let r = @groundwater.particle_track(cfg, 0.0, 0.0, 1.0, 0)
+  assert_eq(r.path.length(), 1)
+  assert_eq(r.steps, 0)
+  assert_eq(r.total_distance, 0.0)
+}
+
+test "S5.3 particle_track zero velocity" {
+  let cfg = @groundwater.make_groundwater_config(0.3, 0.0, 0.01, 0.0)
+  let r = @groundwater.particle_track(cfg, 0.0, 0.0, 1.0, 10)
+  assert_eq(r.path.length(), 1)
+  assert_eq(r.steps, 0)
+}
+
+test "S5.3 particle_track negative step" {
+  let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.01, 0.0)
+  let r = @groundwater.particle_track(cfg, 0.0, 0.0, -1.0, 10)
+  assert_eq(r.path.length(), 1)
+  assert_eq(r.steps, 0)
+}
+
+test "S5.3 porous_puff basic" {
+  let c = @groundwater.porous_puff(1.0, 1.0, 0.1, 100.0)
+  assert_true(c > 0.0)
+}
+
+test "S5.3 porous_puff zero distance" {
+  let c = @groundwater.porous_puff(0.0, 1.0, 0.1, 100.0)
+  assert_true(c > 0.0)
+}
+
+test "S5.3 porous_puff zero diffusivity" {
+  assert_eq(@groundwater.porous_puff(1.0, 1.0, 0.0, 100.0), 0.0)
+}
+
+test "S5.3 porous_puff zero time" {
+  assert_eq(@groundwater.porous_puff(1.0, 0.0, 0.1, 100.0), 0.0)
+}
+
+test "S5.3 porous_puff large distance" {
+  let c = @groundwater.porous_puff(100.0, 0.001, 0.1, 100.0)
+  assert_true(c >= 0.0)
+  assert_true(c < 1.0)
+}
+
+test "S5.3 porous_puff_grid basic" {
+  let distances = [[0.0, 1.0, 2.0], [1.0, 0.0, 1.0], [2.0, 1.0, 0.0]]
+  let grid = @groundwater.porous_puff_grid(distances, 1.0, 0.1, 100.0)
+  assert_eq(grid.length(), 3)
+  assert_eq(grid[0].length(), 3)
+}
+
+test "S5.3 porous_puff_grid empty" {
+  let grid = @groundwater.porous_puff_grid([], 1.0, 0.1, 100.0)
+  assert_eq(grid.length(), 0)
+}
+
+test "S5.3 groundwater_stats" {
+  let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.01, 0.005)
+  let (v, g, d) = @groundwater.groundwater_stats(cfg)
+  assert_true(v > 0.0)
+  assert_true(g > 0.0)
+  assert_true(d >= -180.0 && d <= 180.0)
+}
+
+test "S5.3 groundwater_stats zero" {
+  let cfg = @groundwater.make_groundwater_config(0.3, 0.0, 0.0, 0.0)
+  let (v, g, d) = @groundwater.groundwater_stats(cfg)
+  assert_eq(v, 0.0)
+  assert_eq(g, 0.0)
+  assert_eq(d, 0.0)
+}
+
+test "S5.3 groundwater_config_summary" {
+  let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.01, 0.005)
+  let s = @groundwater.groundwater_config_summary(cfg)
+  assert_true(s.length() > 0)
+}
+
+test "S5.3 particle_track_summary" {
+  let r = @groundwater.make_particle_track_result([(0.0, 0.0), (1.0, 1.0)], 1.414, 100.0, 1)
+  let s = @groundwater.particle_track_summary(r)
+  assert_true(s.length() > 0)
+}
+
+test "S5.3 darcy_flow conservation" {
+  let cfg = @groundwater.make_groundwater_config(0.3, 0.001, 0.01, 0.005)
+  let r = @groundwater.darcy_flow(cfg)
+  let expected_v = @groundwater.darcy_velocity(cfg)
+  assert_true((r.velocity - expected_v).abs() < 0.0001)
+}

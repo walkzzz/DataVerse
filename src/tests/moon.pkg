@@ -38,6 +38,8 @@ import {
   "dataverse/opcore/surface",
   "dataverse/opcore/density",
   "dataverse/opcore/distance",
+  "dataverse/opcore/zonal",
+  "dataverse/opcore/local_stats",
   "dataverse/datatemporal",
   "dataverse/datatemporal/version",
   "dataverse/datatemporal/lineage",

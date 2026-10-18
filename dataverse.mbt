@@ -118,6 +118,23 @@ pub using @opcore.distance {
   distance_optimal_path, distance_corridor,
   distance_stats, path_cell_count, path_cost,
 }
+pub using @opcore.zonal {
+  ZonalStat, ZoneResult, ZonalGeometryResult,
+  make_zone_result, make_zonal_geometry_result, zonal_stat_name,
+  zonal_mean, zonal_sum, zonal_min, zonal_max, zonal_range,
+  zonal_count, zonal_std, zonal_majority, zonal_minority, zonal_median,
+  zonal_statistics, zonal_geometry, zonal_geometry_area,
+  zonal_geometry_perimeter, zonal_geometry_thickness,
+  zonal_fill, zonal_stats_all,
+}
+pub using @opcore.local_stats {
+  FocalStat, NeighborhoodShape, FocalResult,
+  make_focal_result, focal_stat_name, neighborhood_shape_name,
+  focal_mean, focal_sum, focal_min, focal_max, focal_range,
+  focal_std, focal_count, focal_majority, focal_minority, focal_median,
+  focal_statistics, focal_filter, focal_filter_mean, focal_results_grid,
+  local_add, local_subtract, local_multiply, local_add_scalar,
+}
 pub using @learncore {
   learncore_id, ModelSpace, model_space_name, Hyperparams, make_hyperparams,
 }

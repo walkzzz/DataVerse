@@ -28,6 +28,8 @@ import {
   "opcore/surface",
   "opcore/density",
   "opcore/distance",
+  "opcore/zonal",
+  "opcore/local_stats",
   "datatemporal",
   "datatemporal/version",
   "datatemporal/lineage",

@@ -5211,3 +5211,392 @@ test "S4.7 IDW higher power favors closer point" {
   let r_high = @interpolation.interpolation_idw(samples, target, 10.0)
   assert_true(r_high < r_low)
 }
+
+// ============================================================
+// S4.8 opcore/zonal 区域分析测试
+// ============================================================
+
+test "S4.8 zonal ZonalStat name" {
+  assert_eq(@zonal.zonal_stat_name(@zonal.ZonalMean), "mean")
+  assert_eq(@zonal.zonal_stat_name(@zonal.ZonalSum), "sum")
+  assert_eq(@zonal.zonal_stat_name(@zonal.ZonalMin), "min")
+  assert_eq(@zonal.zonal_stat_name(@zonal.ZonalMax), "max")
+  assert_eq(@zonal.zonal_stat_name(@zonal.ZonalRange), "range")
+  assert_eq(@zonal.zonal_stat_name(@zonal.ZonalCount), "count")
+  assert_eq(@zonal.zonal_stat_name(@zonal.ZonalStd), "std")
+  assert_eq(@zonal.zonal_stat_name(@zonal.ZonalMajority), "majority")
+  assert_eq(@zonal.zonal_stat_name(@zonal.ZonalMinority), "minority")
+  assert_eq(@zonal.zonal_stat_name(@zonal.ZonalMedian), "median")
+}
+
+test "S4.8 zonal make_zone_result" {
+  let r = @zonal.make_zone_result(1, 5.0, 3)
+  assert_eq(r.zone_id, 1)
+  assert_eq(r.stat_value, 5.0)
+  assert_eq(r.cell_count, 3)
+}
+
+test "S4.8 zonal make_zonal_geometry_result" {
+  let r = @zonal.make_zonal_geometry_result(2, 10.0, 8.0, 1.25, 3.0, 4.0)
+  assert_eq(r.zone_id, 2)
+  assert_eq(r.area, 10.0)
+  assert_eq(r.perimeter, 8.0)
+  assert_eq(r.thickness, 1.25)
+  assert_eq(r.centroid_x, 3.0)
+  assert_eq(r.centroid_y, 4.0)
+}
+
+test "S4.8 zonal_mean basic" {
+  let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
+  let m = @zonal.zonal_mean(value, zone, 1)
+  assert_true((m - 2.5).abs() < 0.0001)
+}
+
+test "S4.8 zonal_mean empty zone" {
+  let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
+  assert_eq(@zonal.zonal_mean(value, zone, 99), 0.0)
+}
+
+test "S4.8 zonal_sum basic" {
+  let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
+  assert_eq(@zonal.zonal_sum(value, zone, 1), 10.0)
+}
+
+test "S4.8 zonal_min basic" {
+  let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
+  assert_eq(@zonal.zonal_min(value, zone, 1), 1.0)
+}
+
+test "S4.8 zonal_max basic" {
+  let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
+  assert_eq(@zonal.zonal_max(value, zone, 1), 4.0)
+}
+
+test "S4.8 zonal_range basic" {
+  let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
+  assert_eq(@zonal.zonal_range(value, zone, 1), 3.0)
+}
+
+test "S4.8 zonal_count basic" {
+  let zone = @hydrology.make_raster([[1.0, 1.0], [2.0, 1.0]])
+  assert_eq(@zonal.zonal_count(zone, 1), 3)
+  assert_eq(@zonal.zonal_count(zone, 2), 1)
+  assert_eq(@zonal.zonal_count(zone, 99), 0)
+}
+
+test "S4.8 zonal_std basic" {
+  let value = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
+  let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
+  assert_eq(@zonal.zonal_std(value, zone, 1), 0.0)
+}
+
+test "S4.8 zonal_majority basic" {
+  let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
+  assert_eq(@zonal.zonal_majority(value, zone, 1), 1.0)
+}
+
+test "S4.8 zonal_minority basic" {
+  let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
+  assert_eq(@zonal.zonal_minority(value, zone, 1), 4.0)
+}
+
+test "S4.8 zonal_median basic" {
+  let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
+  assert_eq(@zonal.zonal_median(value, zone, 1), 3.0)
+}
+
+test "S4.8 zonal_statistics generic" {
+  let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
+  assert_true((@zonal.zonal_statistics(value, zone, 1, @zonal.ZonalMean) - 2.5).abs() < 0.0001)
+  assert_eq(@zonal.zonal_statistics(value, zone, 1, @zonal.ZonalSum), 10.0)
+  assert_eq(@zonal.zonal_statistics(value, zone, 1, @zonal.ZonalMin), 1.0)
+  assert_eq(@zonal.zonal_statistics(value, zone, 1, @zonal.ZonalMax), 4.0)
+  assert_eq(@zonal.zonal_statistics(value, zone, 1, @zonal.ZonalCount), 4.0)
+}
+
+test "S4.8 zonal_statistics empty zone" {
+  let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
+  assert_eq(@zonal.zonal_statistics(value, zone, 99, @zonal.ZonalMean), 0.0)
+}
+
+test "S4.8 zonal_geometry basic" {
+  let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
+  let g = @zonal.zonal_geometry(zone, 1, 1.0)
+  assert_eq(g.zone_id, 1)
+  assert_eq(g.area, 4.0)
+  assert_true(g.perimeter > 0.0)
+  assert_true(g.thickness > 0.0)
+}
+
+test "S4.8 zonal_geometry empty zone" {
+  let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
+  let g = @zonal.zonal_geometry(zone, 99, 1.0)
+  assert_eq(g.area, 0.0)
+  assert_eq(g.perimeter, 0.0)
+  assert_eq(g.thickness, 0.0)
+}
+
+test "S4.8 zonal_geometry_area" {
+  let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
+  assert_eq(@zonal.zonal_geometry_area(zone, 1, 1.0), 4.0)
+  assert_eq(@zonal.zonal_geometry_area(zone, 1, 2.0), 16.0)
+}
+
+test "S4.8 zonal_geometry_perimeter" {
+  let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
+  let p = @zonal.zonal_geometry_perimeter(zone, 1, 1.0)
+  assert_true(p > 0.0)
+}
+
+test "S4.8 zonal_geometry_thickness" {
+  let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
+  let t = @zonal.zonal_geometry_thickness(zone, 1, 1.0)
+  assert_true(t > 0.0)
+}
+
+test "S4.8 zonal_fill basic" {
+  let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let zone = @hydrology.make_raster([[1.0, 0.0], [0.0, 1.0]])
+  let filled = @zonal.zonal_fill(value, zone, 1, 9.0)
+  assert_eq(@hydrology.raster_get(filled, 0, 0), 9.0)
+  assert_eq(@hydrology.raster_get(filled, 0, 1), 2.0)
+  assert_eq(@hydrology.raster_get(filled, 1, 0), 3.0)
+  assert_eq(@hydrology.raster_get(filled, 1, 1), 9.0)
+}
+
+test "S4.8 zonal_fill no matching zone" {
+  let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
+  let filled = @zonal.zonal_fill(value, zone, 99, 9.0)
+  assert_eq(@hydrology.raster_get(filled, 0, 0), 1.0)
+  assert_eq(@hydrology.raster_get(filled, 1, 1), 4.0)
+}
+
+test "S4.8 zonal_stats_all basic" {
+  let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let zone = @hydrology.make_raster([[1.0, 1.0], [2.0, 2.0]])
+  let results = @zonal.zonal_stats_all(value, zone, @zonal.ZonalMean)
+  assert_eq(results.length(), 2)
+}
+
+test "S4.8 zonal_stats_all single zone" {
+  let value = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let zone = @hydrology.make_raster([[1.0, 1.0], [1.0, 1.0]])
+  let results = @zonal.zonal_stats_all(value, zone, @zonal.ZonalSum)
+  assert_eq(results.length(), 1)
+  assert_eq(results[0].stat_value, 10.0)
+  assert_eq(results[0].cell_count, 4)
+}
+
+test "S4.8 zonal multi-zone mean" {
+  let value = @hydrology.make_raster([[10.0, 20.0], [30.0, 40.0]])
+  let zone = @hydrology.make_raster([[1.0, 1.0], [2.0, 2.0]])
+  let m1 = @zonal.zonal_mean(value, zone, 1)
+  let m2 = @zonal.zonal_mean(value, zone, 2)
+  assert_true((m1 - 15.0).abs() < 0.0001)
+  assert_true((m2 - 35.0).abs() < 0.0001)
+}
+
+// ============================================================
+// S4.8 opcore/local_stats 局部分析测试
+// ============================================================
+
+test "S4.8 local FocalStat name" {
+  assert_eq(@local_stats.focal_stat_name(@local_stats.FocalMean), "mean")
+  assert_eq(@local_stats.focal_stat_name(@local_stats.FocalSum), "sum")
+  assert_eq(@local_stats.focal_stat_name(@local_stats.FocalMin), "min")
+  assert_eq(@local_stats.focal_stat_name(@local_stats.FocalMax), "max")
+  assert_eq(@local_stats.focal_stat_name(@local_stats.FocalRange), "range")
+  assert_eq(@local_stats.focal_stat_name(@local_stats.FocalStd), "std")
+  assert_eq(@local_stats.focal_stat_name(@local_stats.FocalCount), "count")
+  assert_eq(@local_stats.focal_stat_name(@local_stats.FocalMajority), "majority")
+  assert_eq(@local_stats.focal_stat_name(@local_stats.FocalMinority), "minority")
+  assert_eq(@local_stats.focal_stat_name(@local_stats.FocalMedian), "median")
+}
+
+test "S4.8 local NeighborhoodShape name" {
+  assert_eq(@local_stats.neighborhood_shape_name(@local_stats.NRectangle), "rectangle")
+  assert_eq(@local_stats.neighborhood_shape_name(@local_stats.NCircle), "circle")
+  assert_eq(@local_stats.neighborhood_shape_name(@local_stats.NAnnulus), "annulus")
+  assert_eq(@local_stats.neighborhood_shape_name(@local_stats.NWedge), "wedge")
+}
+
+test "S4.8 local make_focal_result" {
+  let r = @local_stats.make_focal_result(5.0, 1, 2, @local_stats.FocalMean)
+  assert_eq(r.value, 5.0)
+  assert_eq(r.row, 1)
+  assert_eq(r.col, 2)
+  assert_eq(r.stat, @local_stats.FocalMean)
+}
+
+test "S4.8 focal_mean radius 0" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  assert_eq(@local_stats.focal_mean(r, 0, 0, 0), 1.0)
+  assert_eq(@local_stats.focal_mean(r, 1, 1, 0), 4.0)
+}
+
+test "S4.8 focal_mean radius 1 center" {
+  let r = @hydrology.make_raster([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0], [7.0, 8.0, 9.0]])
+  let m = @local_stats.focal_mean(r, 1, 1, 1)
+  assert_true((m - 5.0).abs() < 0.0001)
+}
+
+test "S4.8 focal_mean corner" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let m = @local_stats.focal_mean(r, 0, 0, 1)
+  assert_true((m - 2.5).abs() < 0.0001)
+}
+
+test "S4.8 focal_sum radius 0" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  assert_eq(@local_stats.focal_sum(r, 0, 0, 0), 1.0)
+}
+
+test "S4.8 focal_sum radius 1" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let s = @local_stats.focal_sum(r, 0, 0, 1)
+  assert_eq(s, 10.0)
+}
+
+test "S4.8 focal_min radius 1" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  assert_eq(@local_stats.focal_min(r, 0, 0, 1), 1.0)
+}
+
+test "S4.8 focal_max radius 1" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  assert_eq(@local_stats.focal_max(r, 0, 0, 1), 4.0)
+}
+
+test "S4.8 focal_range radius 1" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  assert_eq(@local_stats.focal_range(r, 0, 0, 1), 3.0)
+}
+
+test "S4.8 focal_count radius 0" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  assert_eq(@local_stats.focal_count(r, 0, 0, 0), 1)
+}
+
+test "S4.8 focal_count radius 1 corner" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  assert_eq(@local_stats.focal_count(r, 0, 0, 1), 4)
+}
+
+test "S4.8 focal_count radius 1 center" {
+  let r = @hydrology.make_raster([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0], [7.0, 8.0, 9.0]])
+  assert_eq(@local_stats.focal_count(r, 1, 1, 1), 9)
+}
+
+test "S4.8 focal_std constant" {
+  let r = @hydrology.make_raster([[5.0, 5.0], [5.0, 5.0]])
+  assert_eq(@local_stats.focal_std(r, 0, 0, 1), 0.0)
+}
+
+test "S4.8 focal_majority radius 0" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  assert_eq(@local_stats.focal_majority(r, 0, 0, 0), 1.0)
+}
+
+test "S4.8 focal_minority radius 0" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  assert_eq(@local_stats.focal_minority(r, 0, 0, 0), 1.0)
+}
+
+test "S4.8 focal_median radius 1" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let m = @local_stats.focal_median(r, 0, 0, 1)
+  assert_true(m >= 1.0 && m <= 4.0)
+}
+
+test "S4.8 focal_statistics generic" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  assert_eq(@local_stats.focal_statistics(r, 0, 0, 0, @local_stats.FocalMean), 1.0)
+  assert_eq(@local_stats.focal_statistics(r, 0, 0, 0, @local_stats.FocalSum), 1.0)
+  assert_eq(@local_stats.focal_statistics(r, 0, 0, 0, @local_stats.FocalCount), 1.0)
+}
+
+test "S4.8 focal_filter mean" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let filtered = @local_stats.focal_filter(r, 1, @local_stats.FocalMean)
+  assert_eq(@hydrology.raster_rows(filtered), 2)
+  assert_eq(@hydrology.raster_cols(filtered), 2)
+}
+
+test "S4.8 focal_filter_mean" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let filtered = @local_stats.focal_filter_mean(r, 0)
+  assert_eq(@hydrology.raster_get(filtered, 0, 0), 1.0)
+  assert_eq(@hydrology.raster_get(filtered, 1, 1), 4.0)
+}
+
+test "S4.8 focal_results_grid" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let results = @local_stats.focal_results_grid(r, 0, @local_stats.FocalMean)
+  assert_eq(results.length(), 2)
+  assert_eq(results[0].length(), 2)
+  assert_eq(results[0][0].value, 1.0)
+  assert_eq(results[0][0].row, 0)
+  assert_eq(results[0][0].col, 0)
+}
+
+test "S4.8 local_add basic" {
+  let a = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let b = @hydrology.make_raster([[10.0, 20.0], [30.0, 40.0]])
+  let c = @local_stats.local_add(a, b)
+  assert_eq(@hydrology.raster_get(c, 0, 0), 11.0)
+  assert_eq(@hydrology.raster_get(c, 1, 1), 44.0)
+}
+
+test "S4.8 local_add mismatched" {
+  let a = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let b = @hydrology.make_raster([[10.0, 20.0, 30.0]])
+  let c = @local_stats.local_add(a, b)
+  assert_eq(@hydrology.raster_rows(c), 0)
+}
+
+test "S4.8 local_subtract basic" {
+  let a = @hydrology.make_raster([[10.0, 20.0], [30.0, 40.0]])
+  let b = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let c = @local_stats.local_subtract(a, b)
+  assert_eq(@hydrology.raster_get(c, 0, 0), 9.0)
+  assert_eq(@hydrology.raster_get(c, 1, 1), 36.0)
+}
+
+test "S4.8 local_multiply basic" {
+  let a = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let b = @hydrology.make_raster([[10.0, 20.0], [30.0, 40.0]])
+  let c = @local_stats.local_multiply(a, b)
+  assert_eq(@hydrology.raster_get(c, 0, 0), 10.0)
+  assert_eq(@hydrology.raster_get(c, 1, 1), 160.0)
+}
+
+test "S4.8 local_add_scalar basic" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let c = @local_stats.local_add_scalar(r, 10.0)
+  assert_eq(@hydrology.raster_get(c, 0, 0), 11.0)
+  assert_eq(@hydrology.raster_get(c, 1, 1), 14.0)
+}
+
+test "S4.8 local_add_scalar zero" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let c = @local_stats.local_add_scalar(r, 0.0)
+  assert_eq(@hydrology.raster_get(c, 0, 0), 1.0)
+}
+
+test "S4.8 focal edge out of bounds" {
+  let r = @hydrology.make_raster([[1.0]])
+  assert_eq(@local_stats.focal_mean(r, 0, 0, 5), 1.0)
+  assert_eq(@local_stats.focal_count(r, 0, 0, 5), 1)
+}

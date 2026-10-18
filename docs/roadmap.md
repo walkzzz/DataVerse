@@ -115,7 +115,7 @@
 | Sprint | 内容 | 状态 | commit |
 |--------|------|------|--------|
 | S5.1 | opcore/neighborhood 邻域分析（Block/Line/Neighborhood Statistics 5 type + 33 fn） | ✅ | 14c50cc |
-| S5.2 | opcore/solar 太阳辐射（Area/Point Radiation） | ⏳ | — |
+| S5.2 | opcore/solar 太阳辐射（Area/Point Radiation 3 type + 17 fn） | ✅ | 09333e2 |
 | S5.3 | opcore/groundwater 地下水分析（Darcy Flow/Particle Track） | ⏳ | — |
 | S5.4 | R16 门禁 + Phase 5 闭环 | ⏳ | — |
 
@@ -123,8 +123,8 @@
 
 ## 当前统计 / Current Stats
 
-- **测试**：763 passed
-- **API**：666 pub fn + 147 pub type
+- **测试**：795 passed
+- **API**：683 pub fn + 150 pub type
 - **形式化证明**：50 个 spec 性质
 - **编译**：0 error 0 warning
 - **MoonBit**：moon 0.1.20260920

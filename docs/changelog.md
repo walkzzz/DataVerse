@@ -4,6 +4,19 @@
 
 ## [0.1.0-dev] - 2026-10-18
 
+### S5.2 - opcore/solar 太阳辐射
+
+**新增 / Added**
+- `src/opcore/solar/`：太阳辐射算子包（3 type + 17 fn）
+  - 类型：`SolarConfig` / `SolarResult` / `SolarAreaResult`
+  - 算子：`solar_declination` / `solar_altitude` / `solar_azimuth` / `solar_direct_radiation` / `solar_diffuse_radiation` / `solar_global_radiation` / `solar_duration` / `solar_radiation_point` / `solar_radiation_area` / `solar_radiation_stats` 等
+  - 对标 ArcGIS Pro: Solar Radiation (Area/Point)
+- 32 个跨包测试（S5.2 系列）
+
+**统计 / Stats**
+- 测试：763 → 795（+32）
+- API：666 fn + 147 type → 683 fn + 150 type（+17 fn + 3 type）
+
 ### S5.1 - opcore/neighborhood 邻域分析
 
 **新增 / Added**

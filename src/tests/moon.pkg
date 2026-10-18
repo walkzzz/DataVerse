@@ -35,6 +35,7 @@ import {
   "dataverse/opcore/proximity",
   "dataverse/opcore/overlay",
   "dataverse/opcore/hydrology",
+  "dataverse/opcore/surface",
   "dataverse/datatemporal",
   "dataverse/datatemporal/version",
   "dataverse/datatemporal/lineage",

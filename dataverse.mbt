@@ -92,6 +92,16 @@ pub using @opcore.hydrology {
   hydrology_stream_cells, hydrology_stream_order, hydrology_flow_length,
   hydrology_stats, hydrology_snap_pour,
 }
+pub using @opcore.surface {
+  AspectDirection, ContourLine, SurfaceResult,
+  make_surface_result, slope_result, aspect_result,
+  surface_slope, surface_slope_percent, surface_slope_grid,
+  surface_aspect, surface_aspect_direction, surface_aspect_grid,
+  surface_hillshade, surface_hillshade_grid,
+  surface_contour, surface_contour_count,
+  surface_curvature, surface_curvature_grid,
+  surface_viewshed, surface_viewshed_stats, surface_stats,
+}
 pub using @learncore {
   learncore_id, ModelSpace, model_space_name, Hyperparams, make_hyperparams,
 }

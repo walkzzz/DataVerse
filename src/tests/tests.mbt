@@ -4324,3 +4324,256 @@ test "S4.3 hydrology_snap_pour_out_of_bounds" {
   assert_eq(r, 5)
   assert_eq(c, 5)
 }
+// ============================================================
+// S4.4 opcore/surface 表面分析测试
+// ============================================================
+
+test "S4.4 surface_slope_flat" {
+  let r = @hydrology.make_raster([
+    [5.0, 5.0, 5.0],
+    [5.0, 5.0, 5.0],
+    [5.0, 5.0, 5.0],
+  ])
+  let slope = @surface.surface_slope(r, 1, 1, 1.0)
+  assert_true(slope < 0.01)
+}
+
+test "S4.4 surface_slope_inclined" {
+  let r = @hydrology.make_raster([
+    [9.0, 9.0, 9.0],
+    [5.0, 5.0, 5.0],
+    [1.0, 1.0, 1.0],
+  ])
+  let slope = @surface.surface_slope(r, 1, 1, 1.0)
+  assert_true(slope > 0.0)
+}
+
+test "S4.4 surface_slope_zero_cell_size" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  assert_eq(@surface.surface_slope(r, 0, 0, 0.0), 0.0)
+}
+
+test "S4.4 surface_slope_percent" {
+  let r = @hydrology.make_raster([
+    [9.0, 9.0, 9.0],
+    [5.0, 5.0, 5.0],
+    [1.0, 1.0, 1.0],
+  ])
+  let pct = @surface.surface_slope_percent(r, 1, 1, 1.0)
+  assert_true(pct > 0.0)
+}
+
+test "S4.4 surface_slope_grid" {
+  let r = @hydrology.make_raster([
+    [1.0, 2.0, 3.0],
+    [4.0, 5.0, 6.0],
+    [7.0, 8.0, 9.0],
+  ])
+  let grid = @surface.surface_slope_grid(r, 1.0)
+  assert_eq(grid.length(), 3)
+  assert_eq(grid[0].length(), 3)
+}
+
+test "S4.4 surface_aspect_flat" {
+  let r = @hydrology.make_raster([
+    [5.0, 5.0, 5.0],
+    [5.0, 5.0, 5.0],
+    [5.0, 5.0, 5.0],
+  ])
+  let aspect = @surface.surface_aspect(r, 1, 1, 1.0)
+  assert_eq(aspect, -1.0)
+}
+
+test "S4.4 surface_aspect_inclined" {
+  let r = @hydrology.make_raster([
+    [9.0, 9.0, 9.0],
+    [5.0, 5.0, 5.0],
+    [1.0, 1.0, 1.0],
+  ])
+  let aspect = @surface.surface_aspect(r, 1, 1, 1.0)
+  assert_true(aspect >= 0.0)
+}
+
+test "S4.4 surface_aspect_direction" {
+  let r = @hydrology.make_raster([
+    [5.0, 5.0, 5.0],
+    [5.0, 5.0, 5.0],
+    [5.0, 5.0, 5.0],
+  ])
+  let dir = @surface.surface_aspect_direction(r, 1, 1, 1.0)
+  assert_eq(dir, @surface.AspectDirection::Flat)
+}
+
+test "S4.4 surface_aspect_grid" {
+  let r = @hydrology.make_raster([
+    [1.0, 2.0, 3.0],
+    [4.0, 5.0, 6.0],
+    [7.0, 8.0, 9.0],
+  ])
+  let grid = @surface.surface_aspect_grid(r, 1.0)
+  assert_eq(grid.length(), 3)
+}
+
+test "S4.4 surface_hillshade" {
+  let r = @hydrology.make_raster([
+    [9.0, 9.0, 9.0],
+    [5.0, 5.0, 5.0],
+    [1.0, 1.0, 1.0],
+  ])
+  let shade = @surface.surface_hillshade(r, 1, 1, 1.0, 315.0, 45.0)
+  assert_true(shade >= 0 && shade <= 255)
+}
+
+test "S4.4 surface_hillshade_flat" {
+  let r = @hydrology.make_raster([
+    [5.0, 5.0, 5.0],
+    [5.0, 5.0, 5.0],
+    [5.0, 5.0, 5.0],
+  ])
+  let shade = @surface.surface_hillshade(r, 1, 1, 1.0, 315.0, 45.0)
+  assert_true(shade > 0)
+}
+
+test "S4.4 surface_hillshade_grid" {
+  let r = @hydrology.make_raster([
+    [1.0, 2.0, 3.0],
+    [4.0, 5.0, 6.0],
+    [7.0, 8.0, 9.0],
+  ])
+  let grid = @surface.surface_hillshade_grid(r, 1.0, 315.0, 45.0)
+  assert_eq(grid.length(), 3)
+  assert_eq(grid[0].length(), 3)
+}
+
+test "S4.4 surface_contour" {
+  let r = @hydrology.make_raster([
+    [1.0, 2.0, 3.0],
+    [4.0, 5.0, 6.0],
+    [7.0, 8.0, 9.0],
+  ])
+  let contours = @surface.surface_contour(r, 2.0)
+  assert_true(contours.length() > 0)
+}
+
+test "S4.4 surface_contour_empty" {
+  let r = @hydrology.empty_raster()
+  assert_eq(@surface.surface_contour(r, 1.0).length(), 0)
+}
+
+test "S4.4 surface_contour_zero_interval" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  assert_eq(@surface.surface_contour(r, 0.0).length(), 0)
+}
+
+test "S4.4 surface_contour_count" {
+  let r = @hydrology.make_raster([
+    [1.0, 2.0, 3.0],
+    [4.0, 5.0, 6.0],
+    [7.0, 8.0, 9.0],
+  ])
+  let count = @surface.surface_contour_count(r, 2.0)
+  assert_true(count > 0)
+}
+
+test "S4.4 surface_curvature" {
+  let r = @hydrology.make_raster([
+    [1.0, 2.0, 3.0],
+    [4.0, 5.0, 6.0],
+    [7.0, 8.0, 9.0],
+  ])
+  let curv = @surface.surface_curvature(r, 1, 1, 1.0)
+  assert_true(curv >= -100.0 && curv <= 100.0)
+}
+
+test "S4.4 surface_curvature_flat" {
+  let r = @hydrology.make_raster([
+    [5.0, 5.0, 5.0],
+    [5.0, 5.0, 5.0],
+    [5.0, 5.0, 5.0],
+  ])
+  assert_eq(@surface.surface_curvature(r, 1, 1, 1.0), 0.0)
+}
+
+test "S4.4 surface_curvature_grid" {
+  let r = @hydrology.make_raster([
+    [1.0, 2.0, 3.0],
+    [4.0, 5.0, 6.0],
+    [7.0, 8.0, 9.0],
+  ])
+  let grid = @surface.surface_curvature_grid(r, 1.0)
+  assert_eq(grid.length(), 3)
+}
+
+test "S4.4 surface_viewshed" {
+  let r = @hydrology.make_raster([
+    [1.0, 1.0, 1.0],
+    [1.0, 5.0, 1.0],
+    [1.0, 1.0, 1.0],
+  ])
+  let visible = @surface.surface_viewshed(r, 1, 1, 5)
+  assert_true(visible.length() >= 1)
+}
+
+test "S4.4 surface_viewshed_out_of_bounds" {
+  let r = @hydrology.make_raster([[1.0]])
+  assert_eq(@surface.surface_viewshed(r, 5, 5, 10).length(), 0)
+}
+
+test "S4.4 surface_viewshed_stats" {
+  let r = @hydrology.make_raster([
+    [1.0, 1.0, 1.0],
+    [1.0, 5.0, 1.0],
+    [1.0, 1.0, 1.0],
+  ])
+  let (visible, total) = @surface.surface_viewshed_stats(r, 1, 1, 5)
+  assert_true(visible >= 1)
+  assert_eq(total, 9)
+}
+
+test "S4.4 surface_stats" {
+  let r = @hydrology.make_raster([
+    [1.0, 2.0, 3.0],
+    [4.0, 5.0, 6.0],
+    [7.0, 8.0, 9.0],
+  ])
+  let (avg_slope, _) = @surface.surface_stats(r, 1.0)
+  assert_true(avg_slope >= 0.0)
+}
+
+test "S4.4 surface_stats_empty" {
+  let r = @hydrology.empty_raster()
+  let (avg_slope, avg_aspect) = @surface.surface_stats(r, 1.0)
+  assert_eq(avg_slope, 0.0)
+  assert_eq(avg_aspect, 0.0)
+}
+
+test "S4.4 make_surface_result" {
+  let sr = @surface.make_surface_result("slope", 45.0, 1, 2)
+  assert_eq(sr.kind, "slope")
+  assert_eq(sr.value, 45.0)
+  assert_eq(sr.row, 1)
+  assert_eq(sr.col, 2)
+}
+
+test "S4.4 slope_result" {
+  let r = @hydrology.make_raster([
+    [9.0, 9.0, 9.0],
+    [5.0, 5.0, 5.0],
+    [1.0, 1.0, 1.0],
+  ])
+  let sr = @surface.slope_result(r, 1, 1, 1.0)
+  assert_eq(sr.kind, "slope")
+  assert_eq(sr.row, 1)
+  assert_eq(sr.col, 1)
+}
+
+test "S4.4 aspect_result" {
+  let r = @hydrology.make_raster([
+    [9.0, 9.0, 9.0],
+    [5.0, 5.0, 5.0],
+    [1.0, 1.0, 1.0],
+  ])
+  let sr = @surface.aspect_result(r, 1, 1, 1.0)
+  assert_eq(sr.kind, "aspect")
+  assert_eq(sr.row, 1)
+}

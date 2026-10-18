@@ -139,12 +139,12 @@
 
 ## 当前统计 / Current Stats
 
-- **测试**：835 passed
-- **API**：698 pub fn + 153 pub type
-- **形式化证明**：60 个 spec 性质
+- **测试**：890 passed
+- **API**：714 pub fn + 153 pub type
+- **形式化证明**：70 个 spec 性质
 - **编译**：0 error 0 warning
 - **MoonBit**：moon 0.1.20260920
 
 ---
 
-> DataVerse Roadmap | 2026-10-18 | Phase 4 启动 S4.1 闭环
+> DataVerse Roadmap | 2026-10-18 | Phase 6 闭环

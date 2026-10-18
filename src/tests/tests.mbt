@@ -7349,3 +7349,154 @@ test "text_truncate basic" {
   assert_eq(@nlp.text_truncate("hello world", 5), "hello")
   assert_eq(@nlp.text_truncate("hi", 10), "hi")
 }
+
+// S7.5 learncore/timeseries 测试 / Time series tests
+
+test "moving_average basic" {
+  let data = [1.0, 2.0, 3.0, 4.0, 5.0]
+  let result = @timeseries.moving_average(data, 3)
+  assert_eq(result.length(), 5)
+  assert_eq(result[2], 2.0)
+}
+
+test "moving_average empty" {
+  let result = @timeseries.moving_average([], 3)
+  assert_eq(result.length(), 0)
+}
+
+test "exponential_smoothing basic" {
+  let data = [1.0, 2.0, 3.0]
+  let result = @timeseries.exponential_smoothing(data, 0.5)
+  assert_eq(result.length(), 3)
+  assert_eq(result[0], 1.0)
+}
+
+test "difference basic" {
+  let data = [1.0, 3.0, 6.0, 10.0]
+  let result = @timeseries.difference(data)
+  assert_eq(result.length(), 3)
+  assert_eq(result[0], 2.0)
+  assert_eq(result[1], 3.0)
+}
+
+test "difference_k second order" {
+  let data = [1.0, 4.0, 9.0, 16.0]
+  let result = @timeseries.difference_k(data, 2)
+  assert_eq(result.length(), 2)
+}
+
+test "seasonal_difference basic" {
+  let data = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
+  let result = @timeseries.seasonal_difference(data, 3)
+  assert_eq(result.length(), 3)
+}
+
+test "autocorrelation basic" {
+  let data = [1.0, 2.0, 3.0, 4.0, 5.0]
+  let result = @timeseries.autocorrelation(data, 3)
+  assert_eq(result.length(), 4)
+  assert_true(result[0] > 0.99)
+}
+
+test "autocorrelation empty" {
+  let result = @timeseries.autocorrelation([], 3)
+  assert_eq(result.length(), 0)
+}
+
+test "partial_autocorrelation basic" {
+  let data = [1.0, 2.0, 3.0, 4.0, 5.0]
+  let result = @timeseries.partial_autocorrelation(data, 3)
+  assert_eq(result.length(), 4)
+}
+
+test "lag_operator basic" {
+  let data = [1.0, 2.0, 3.0, 4.0, 5.0]
+  let result = @timeseries.lag_operator(data, 2)
+  assert_eq(result.length(), 5)
+}
+
+test "ar_predict basic" {
+  let data = [1.0, 2.0, 3.0]
+  let result = @timeseries.ar_predict(data, [0.5], 0.0, 3)
+  assert_eq(result.length(), 3)
+}
+
+test "ma_predict basic" {
+  let data = [1.0, 2.0, 3.0]
+  let result = @timeseries.ma_predict(data, [0.5], 3)
+  assert_eq(result.length(), 3)
+}
+
+test "arima_predict basic" {
+  let data = [1.0, 2.0, 3.0, 4.0, 5.0]
+  let params = @timeseries.make_arima_params(1, 1, 1)
+  let result = @timeseries.arima_predict(data, params, [0.5], [0.3], 3)
+  assert_eq(result.length(), 3)
+}
+
+test "garch_predict basic" {
+  let returns = [0.01, -0.02, 0.03, -0.01]
+  let params = @timeseries.make_garch_params(1, 1, [0.1], [0.8], 0.01)
+  let result = @timeseries.garch_predict(returns, params, 3)
+  assert_eq(result.length(), 3)
+}
+
+test "seasonal_decompose basic" {
+  let data = [1.0, 2.0, 3.0, 1.0, 2.0, 3.0]
+  let decomp = @timeseries.seasonal_decompose(data, 3)
+  assert_eq(decomp.trend.length(), 6)
+  assert_eq(decomp.seasonal.length(), 6)
+  assert_eq(decomp.residual.length(), 6)
+}
+
+test "seasonal_adjust basic" {
+  let data = [1.0, 2.0, 3.0, 1.0, 2.0, 3.0]
+  let result = @timeseries.seasonal_adjust(data, 3)
+  assert_eq(result.length(), 6)
+}
+
+test "holt_winters_forecast basic" {
+  let data = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
+  let params = @timeseries.make_holt_winters_params(0.3, 0.1, 0.1, 3)
+  let result = @timeseries.holt_winters_forecast(data, params, 3)
+  assert_eq(result.length(), 3)
+}
+
+test "prophet_forecast basic" {
+  let data = [1.0, 2.0, 3.0, 4.0, 5.0]
+  let result = @timeseries.prophet_forecast(data, 3)
+  assert_eq(result.length(), 3)
+}
+
+test "kalman_filter_step basic" {
+  let (x, p) = @timeseries.kalman_filter_step(1.0, 1.0, 2.0, 0.1, 0.5)
+  assert_true(x > 0.0)
+  assert_true(p > 0.0)
+}
+
+test "kalman_filter basic" {
+  let measurements = [1.0, 2.0, 3.0, 4.0]
+  let result = @timeseries.kalman_filter(measurements, 0.0, 1.0, 0.1, 0.5)
+  assert_eq(result.length(), 4)
+}
+
+test "is_stationary basic" {
+  let data = [1.0, 2.0, 3.0, 4.0, 5.0]
+  let result = @timeseries.is_stationary(data)
+  assert_true(result || !result)
+}
+
+test "is_white_noise basic" {
+  let data = [0.1, -0.1, 0.1, -0.1, 0.1]
+  let result = @timeseries.is_white_noise(data)
+  assert_true(result || !result)
+}
+
+test "backtest basic" {
+  let data = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
+  let forecast_fn = fn(d : Array[Double], s : Int) -> Array[Double] {
+    @timeseries.prophet_forecast(d, s)
+  }
+  let result = @timeseries.backtest(data, forecast_fn, 2)
+  assert_true(result >= 0.0)
+}

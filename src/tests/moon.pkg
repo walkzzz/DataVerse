@@ -64,6 +64,7 @@ import {
   "dataverse/learncore/cross_validation",
   "dataverse/learncore/hyperparam_search",
   "dataverse/learncore/nlp",
+  "dataverse/learncore/timeseries",
 
   "dataverse/recipe/cleaning_line",
   "dataverse/recipe/dedup_line",

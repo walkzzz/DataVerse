@@ -6609,6 +6609,13 @@ pub using @learncore.nlp {
   embedding_lookup, positional_encoding, BertConfig, make_bert_config, bert_embeddings, bert_pooled_output, bert_forward,
   GptConfig, make_gpt_config, gpt_embeddings, gpt_forward, gpt_generate_next, ngrams, term_frequency, text_length, text_join, text_truncate,
 }
+pub using @learncore.timeseries {
+  timeseries_id, moving_average, exponential_smoothing, difference, difference_k, seasonal_difference,
+  autocorrelation, partial_autocorrelation, lag_operator, ArimaParams, make_arima_params, ar_predict, ma_predict, arima_predict,
+  GarchParams, make_garch_params, garch_predict, SeasonalDecomposeResult, seasonal_decompose, seasonal_adjust,
+  HoltWintersParams, make_holt_winters_params, holt_winters_forecast, prophet_forecast, kalman_filter_step, kalman_filter,
+  is_stationary, is_white_noise, backtest,
+}
 pub using @learncore.cross_validation {
   cross_validation_id, CVSplit, kfold_splits, CVStats, cv_stats, loo_count,
 }

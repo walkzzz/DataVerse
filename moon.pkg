@@ -22,6 +22,7 @@ import {
   "opcore/lineage_op",
   "opcore/safety",
   "opcore/plugin",
+  "opcore/proximity",
   "datatemporal",
   "datatemporal/version",
   "datatemporal/lineage",

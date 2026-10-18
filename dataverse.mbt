@@ -68,6 +68,14 @@ pub using @opcore.plugin {
   get_plugin_status, enable_plugin, disable_plugin, plugin_count, plugins_by_status,
   check_dependency, check_all_dependencies, plugin_registry_uri,
 }
+pub using @opcore.proximity {
+  Point, GeometryKind, BufferResult, ProximityPair, NearResult,
+  make_point, make_buffer_result, euclidean_distance, manhattan_distance,
+  distances_to_all, point_distance_matrix, buffer_area, buffer_perimeter,
+  buffer_point, multi_ring_buffer, nearest_point, near_table,
+  all_proximity_pairs, thiessen_polygons, bounding_box, polygon_neighbors,
+  points_from_dataobject, buffer_stats,
+}
 pub using @learncore {
   learncore_id, ModelSpace, model_space_name, Hyperparams, make_hyperparams,
 }

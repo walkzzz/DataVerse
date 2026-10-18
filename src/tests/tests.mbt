@@ -3479,3 +3479,272 @@ test "S3.5 doc_index_stats" {
 test "S3.5 docgen_id" {
   assert_eq(@docgen.docgen_id(), "governance/docgen")
 }
+// ============================================================
+// S4.1 opcore/proximity 邻近分析测试
+// ============================================================
+
+test "S4.1 make_point" {
+  let p = @proximity.make_point(3.0, 4.0)
+  assert_eq(p.x, 3.0)
+  assert_eq(p.y, 4.0)
+}
+
+test "S4.1 euclidean_distance" {
+  let a = @proximity.make_point(0.0, 0.0)
+  let b = @proximity.make_point(3.0, 4.0)
+  let d = @proximity.euclidean_distance(a, b)
+  assert_true(d > 4.99 && d < 5.01)
+}
+
+test "S4.1 euclidean_distance_same_point" {
+  let p = @proximity.make_point(1.0, 2.0)
+  assert_eq(@proximity.euclidean_distance(p, p), 0.0)
+}
+
+test "S4.1 manhattan_distance" {
+  let a = @proximity.make_point(0.0, 0.0)
+  let b = @proximity.make_point(3.0, 4.0)
+  assert_eq(@proximity.manhattan_distance(a, b), 7.0)
+}
+
+test "S4.1 buffer_area" {
+  let area = @proximity.buffer_area(2.0)
+  assert_true(area > 12.56 && area < 12.57)
+}
+
+test "S4.1 buffer_perimeter" {
+  let peri = @proximity.buffer_perimeter(2.0)
+  assert_true(peri > 12.56 && peri < 12.57)
+}
+
+test "S4.1 buffer_area_negative" {
+  assert_eq(@proximity.buffer_area(-1.0), 0.0)
+}
+
+test "S4.1 buffer_point" {
+  let c = @proximity.make_point(0.0, 0.0)
+  let buf = @proximity.buffer_point(c, 5.0)
+  assert_eq(buf.radius, 5.0)
+  assert_true(buf.area > 78.0 && buf.area < 79.0)
+}
+
+test "S4.1 buffer_point_negative_radius" {
+  let c = @proximity.make_point(0.0, 0.0)
+  let buf = @proximity.buffer_point(c, -5.0)
+  assert_eq(buf.radius, 0.0)
+  assert_eq(buf.area, 0.0)
+}
+
+test "S4.1 multi_ring_buffer" {
+  let c = @proximity.make_point(0.0, 0.0)
+  let rings = @proximity.multi_ring_buffer(c, [3.0, 1.0, 2.0])
+  assert_eq(rings.length(), 3)
+  assert_eq(rings[0].radius, 1.0)
+  assert_eq(rings[1].radius, 2.0)
+  assert_eq(rings[2].radius, 3.0)
+}
+
+test "S4.1 multi_ring_buffer_empty" {
+  let c = @proximity.make_point(0.0, 0.0)
+  assert_eq(@proximity.multi_ring_buffer(c, []).length(), 0)
+}
+
+test "S4.1 nearest_point" {
+  let target = @proximity.make_point(0.0, 0.0)
+  let candidates = [
+    @proximity.make_point(5.0, 0.0),
+    @proximity.make_point(1.0, 0.0),
+    @proximity.make_point(3.0, 0.0),
+  ]
+  let result = @proximity.nearest_point(target, candidates)
+  assert_true(result is Some(_))
+  match result {
+    Some(r) => {
+      assert_eq(r.nearest_idx, 1)
+      assert_true(r.distance > 0.99 && r.distance < 1.01)
+    }
+    None => assert_true(false)
+  }
+}
+
+test "S4.1 nearest_point_empty" {
+  let target = @proximity.make_point(0.0, 0.0)
+  assert_true(@proximity.nearest_point(target, []) is None)
+}
+
+test "S4.1 near_table" {
+  let target = @proximity.make_point(0.0, 0.0)
+  let candidates = [
+    @proximity.make_point(5.0, 0.0),
+    @proximity.make_point(1.0, 0.0),
+    @proximity.make_point(3.0, 0.0),
+  ]
+  let table = @proximity.near_table(0, target, candidates, 2)
+  assert_eq(table.length(), 2)
+  assert_eq(table[0].to_idx, 1)
+  assert_eq(table[1].to_idx, 2)
+}
+
+test "S4.1 near_table_k_zero" {
+  let target = @proximity.make_point(0.0, 0.0)
+  let candidates = [@proximity.make_point(1.0, 0.0)]
+  assert_eq(@proximity.near_table(0, target, candidates, 0).length(), 0)
+}
+
+test "S4.1 point_distance_matrix" {
+  let points = [
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(3.0, 0.0),
+    @proximity.make_point(0.0, 4.0),
+  ]
+  let matrix = @proximity.point_distance_matrix(points)
+  assert_eq(matrix.length(), 3)
+  assert_eq(matrix[0][0], 0.0)
+  assert_true(matrix[0][1] > 2.99 && matrix[0][1] < 3.01)
+  assert_true(matrix[0][2] > 3.99 && matrix[0][2] < 4.01)
+}
+
+test "S4.1 point_distance_matrix_empty" {
+  assert_eq(@proximity.point_distance_matrix([]).length(), 0)
+}
+
+test "S4.1 all_proximity_pairs" {
+  let points = [
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(1.0, 0.0),
+    @proximity.make_point(3.0, 0.0),
+  ]
+  let pairs = @proximity.all_proximity_pairs(points)
+  assert_eq(pairs.length(), 3)
+  assert_true(pairs[0].distance <= pairs[1].distance)
+}
+
+test "S4.1 all_proximity_pairs_single" {
+  let points = [@proximity.make_point(0.0, 0.0)]
+  assert_eq(@proximity.all_proximity_pairs(points).length(), 0)
+}
+
+test "S4.1 bounding_box" {
+  let points = [
+    @proximity.make_point(1.0, 2.0),
+    @proximity.make_point(5.0, 8.0),
+    @proximity.make_point(3.0, 1.0),
+  ]
+  let (min_p, max_p) = @proximity.bounding_box(points)
+  assert_eq(min_p.x, 1.0)
+  assert_eq(min_p.y, 1.0)
+  assert_eq(max_p.x, 5.0)
+  assert_eq(max_p.y, 8.0)
+}
+
+test "S4.1 bounding_box_empty" {
+  let (min_p, max_p) = @proximity.bounding_box([])
+  assert_eq(min_p.x, 0.0)
+  assert_eq(max_p.x, 0.0)
+}
+
+test "S4.1 thiessen_polygons" {
+  let points = [
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(4.0, 0.0),
+    @proximity.make_point(0.0, 4.0),
+    @proximity.make_point(4.0, 4.0),
+  ]
+  let cells = @proximity.thiessen_polygons(points)
+  assert_eq(cells.length(), 4)
+  let (_, area) = cells[0]
+  assert_true(area > 3.99 && area < 4.01)
+}
+
+test "S4.1 thiessen_polygons_empty" {
+  assert_eq(@proximity.thiessen_polygons([]).length(), 0)
+}
+
+test "S4.1 thiessen_polygons_single" {
+  let points = [@proximity.make_point(1.0, 2.0)]
+  let cells = @proximity.thiessen_polygons(points)
+  assert_eq(cells.length(), 1)
+  let (_, area) = cells[0]
+  assert_eq(area, 0.0)
+}
+
+test "S4.1 polygon_neighbors" {
+  let poly1 = [
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(2.0, 0.0),
+    @proximity.make_point(2.0, 2.0),
+    @proximity.make_point(0.0, 2.0),
+  ]
+  let poly2 = [
+    @proximity.make_point(3.0, 0.0),
+    @proximity.make_point(5.0, 0.0),
+    @proximity.make_point(5.0, 2.0),
+    @proximity.make_point(3.0, 2.0),
+  ]
+  let poly3 = [
+    @proximity.make_point(10.0, 10.0),
+    @proximity.make_point(12.0, 10.0),
+    @proximity.make_point(12.0, 12.0),
+    @proximity.make_point(10.0, 12.0),
+  ]
+  let neighbors = @proximity.polygon_neighbors([poly1, poly2, poly3], 1.0)
+  assert_true(neighbors.length() >= 1)
+  let (a, b) = neighbors[0]
+  assert_eq(a, 0)
+  assert_eq(b, 1)
+}
+
+test "S4.1 polygon_neighbors_empty" {
+  assert_eq(@proximity.polygon_neighbors([], 1.0).length(), 0)
+}
+
+test "S4.1 distances_to_all" {
+  let target = @proximity.make_point(0.0, 0.0)
+  let candidates = [
+    @proximity.make_point(1.0, 0.0),
+    @proximity.make_point(0.0, 2.0),
+  ]
+  let dists = @proximity.distances_to_all(target, candidates)
+  assert_eq(dists.length(), 2)
+  assert_true(dists[0] > 0.99 && dists[0] < 1.01)
+  assert_true(dists[1] > 1.99 && dists[1] < 2.01)
+}
+
+test "S4.1 buffer_stats" {
+  let points = [
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(1.0, 0.0),
+    @proximity.make_point(2.0, 0.0),
+  ]
+  let (area, peri) = @proximity.buffer_stats(points, 2.0)
+  let single_area = @proximity.buffer_area(2.0)
+  assert_true(area > single_area * 2.99 && area < single_area * 3.01)
+  assert_true(peri > 0.0)
+}
+
+test "S4.1 buffer_stats_empty" {
+  let (area, peri) = @proximity.buffer_stats([], 2.0)
+  assert_eq(area, 0.0)
+  assert_eq(peri, 0.0)
+}
+
+test "S4.1 points_from_dataobject" {
+  let d = @dataobject.make_dataobject("0,0;3,4;1,1", @dataobject.Modality::Text, @schema.empty())
+  let points = @proximity.points_from_dataobject(d)
+  assert_eq(points.length(), 3)
+  assert_eq(points[0].x, 0.0)
+  assert_eq(points[1].x, 3.0)
+  assert_eq(points[1].y, 4.0)
+}
+
+test "S4.1 points_from_dataobject_empty" {
+  let d = @dataobject.empty_dataobject(@dataobject.Modality::Text)
+  assert_eq(@proximity.points_from_dataobject(d).length(), 0)
+}
+
+test "S4.1 make_buffer_result" {
+  let c = @proximity.make_point(1.0, 2.0)
+  let buf = @proximity.make_buffer_result(c, 3.0)
+  assert_eq(buf.radius, 3.0)
+  assert_true(buf.area > 28.0 && buf.area < 29.0)
+}

@@ -32,6 +32,7 @@ import {
   "dataverse/opcore/video",
   "dataverse/opcore/semantic",
   "dataverse/opcore/plugin",
+  "dataverse/opcore/proximity",
   "dataverse/datatemporal",
   "dataverse/datatemporal/version",
   "dataverse/datatemporal/lineage",

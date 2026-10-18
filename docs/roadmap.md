@@ -90,14 +90,32 @@
 
 ---
 
+## Phase 4：ArcGIS Pro 算子对标期 / ArcGIS Pro Alignment
+
+> ArcGIS Pro 726 工具映射 → DataVerse 算子实现。详见 `docs/arcgis_operator_mapping.md`。
+
+| Sprint | 内容 | 状态 | commit |
+|--------|------|------|--------|
+| S4.1 | opcore/proximity 邻近分析（Buffer/Thiessen/Near/PointDistance 5 type + 18 fn） | ✅ | c9b703e |
+| S4.2 | opcore/overlay 叠加分析（Intersect/Union/Erase） | ⏳ | — |
+| S4.3 | opcore/hydrology 水文分析（Fill/Flow/Watershed） | ⏳ | — |
+| S4.4 | opcore/surface 表面分析（Slope/Aspect/Hillshade/Contour） | ⏳ | — |
+| S4.5 | opcore/density 密度分析（Kernel/Point/Line Density） | ⏳ | — |
+| S4.6 | opcore/distance 距离分析（Euclidean/Cost/Path） | ⏳ | — |
+| S4.7 | learncore/interpolation 插值分析（IDW/Kriging/Spline） | ⏳ | — |
+| S4.8 | opcore/zonal 区域分析 + opcore/local_stats 局部分析 | ⏳ | — |
+| S4.9 | R16 门禁 + Phase 4 闭环 | ⏳ | — |
+
+---
+
 ## 当前统计 / Current Stats
 
-- **测试**：471 passed
-- **API**：475 pub fn + 113 pub type
+- **测试**：503 passed
+- **API**：493 pub fn + 118 pub type
 - **形式化证明**：40 个 spec 性质
 - **编译**：0 error 0 warning
 - **MoonBit**：moon 0.1.20260920
 
 ---
 
-> DataVerse Roadmap | 2026-10-17 | Phase 3 闭环 + R16 门禁
+> DataVerse Roadmap | 2026-10-18 | Phase 4 启动 S4.1 闭环

@@ -2,6 +2,22 @@
 
 所有显著变更记录于此。格式参考 [Keep a Changelog](https://keepachangelog.com/)。
 
+## [0.1.0-dev] - 2026-10-18
+
+### S4.1 - opcore/proximity 邻近分析
+
+**新增 / Added**
+- `src/opcore/proximity/`：邻近分析算子包（5 type + 18 fn）
+  - 类型：`Point` / `GeometryKind` / `BufferResult` / `ProximityPair` / `NearResult`
+  - 算子：`euclidean_distance` / `manhattan_distance` / `buffer_point` / `multi_ring_buffer` / `nearest_point` / `near_table` / `point_distance_matrix` / `thiessen_polygons` / `polygon_neighbors` / `bounding_box` / `points_from_dataobject` / `buffer_stats` 等
+  - 对标 ArcGIS Pro: Buffer / Multiple Ring Buffer / Thiessen Polygons / Near / Point Distance / Polygon Neighbors
+- 32 个跨包测试（S4.1 系列）
+- `docs/arcgis_operator_mapping.md`：ArcGIS Pro 726 工具 → DataVerse 映射文档
+
+**统计 / Stats**
+- 测试：471 → 503（+32）
+- API：475 fn + 113 type → 493 fn + 118 type（+18 fn + 5 type）
+
 ## [0.1.0-dev] - 2026-10-17
 
 ### S0.1 - 项目骨架 + Roadmap + 根包重导出空骨架

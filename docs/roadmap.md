@@ -97,7 +97,7 @@
 | Sprint | 内容 | 状态 | commit |
 |--------|------|------|--------|
 | S4.1 | opcore/proximity 邻近分析（Buffer/Thiessen/Near/PointDistance 5 type + 18 fn） | ✅ | c9b703e |
-| S4.2 | opcore/overlay 叠加分析（Intersect/Union/Erase） | ⏳ | — |
+| S4.2 | opcore/overlay 叠加分析（Intersect/Union/Erase/Identity/SymDiff 3 type + 18 fn） | ✅ | a8a8114 |
 | S4.3 | opcore/hydrology 水文分析（Fill/Flow/Watershed） | ⏳ | — |
 | S4.4 | opcore/surface 表面分析（Slope/Aspect/Hillshade/Contour） | ⏳ | — |
 | S4.5 | opcore/density 密度分析（Kernel/Point/Line Density） | ⏳ | — |
@@ -110,8 +110,8 @@
 
 ## 当前统计 / Current Stats
 
-- **测试**：503 passed
-- **API**：493 pub fn + 118 pub type
+- **测试**：529 passed
+- **API**：511 pub fn + 121 pub type
 - **形式化证明**：40 个 spec 性质
 - **编译**：0 error 0 warning
 - **MoonBit**：moon 0.1.20260920

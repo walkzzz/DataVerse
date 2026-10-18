@@ -4,6 +4,19 @@
 
 ## [0.1.0-dev] - 2026-10-18
 
+### S4.2 - opcore/overlay 叠加分析
+
+**新增 / Added**
+- `src/opcore/overlay/`：叠加分析算子包（3 type + 18 fn）
+  - 类型：`Polygon` / `OverlayKind` / `OverlayResult`
+  - 算子：`polygon_area`（鞋带公式）/ `polygon_perimeter` / `bbox_overlap` / `bbox_contains` / `overlay_intersect` / `overlay_union` / `overlay_erase` / `overlay_identity` / `overlay_sym_diff` / `overlay_update` / `overlay_spatial_join` / `batch_intersections` 等
+  - 对标 ArcGIS Pro: Intersect / Union / Erase / Identity / Symmetrical Difference / Spatial Join / Update
+- 26 个跨包测试（S4.2 系列）
+
+**统计 / Stats**
+- 测试：503 → 529（+26）
+- API：493 fn + 118 type → 511 fn + 121 type（+18 fn + 3 type）
+
 ### S4.1 - opcore/proximity 邻近分析
 
 **新增 / Added**

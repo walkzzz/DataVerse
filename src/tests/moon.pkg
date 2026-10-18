@@ -99,4 +99,5 @@ import {
   "dataverse/io/sink",
   "dataverse/governance/benchmark",
   "dataverse/governance/docgen",
+  "dataverse/opcore/topology",
 }

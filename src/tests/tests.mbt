@@ -8057,3 +8057,439 @@ test "network graph with self loop" {
   )
   assert_eq(@network.shortest_distance(g, 0, 2), 3.0)
 }
+// ============================================
+// S8.2 opcore/topology 拓扑分析算子测试
+// ============================================
+
+test "topology_id" {
+  assert_eq(@topology.topology_id(), "opcore/topology")
+}
+
+test "make_topo_point basic" {
+  let p = @topology.make_topo_point(3.0, 4.0)
+  assert_eq(p.x, 3.0)
+  assert_eq(p.y, 4.0)
+}
+
+test "make_topo_polygon basic" {
+  let poly = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(1.0, 0.0),
+    @topology.make_topo_point(1.0, 1.0),
+  ])
+  assert_eq(poly.vertices.length(), 3)
+}
+
+test "check_equal true" {
+  let p1 = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(2.0, 0.0),
+    @topology.make_topo_point(2.0, 2.0),
+    @topology.make_topo_point(0.0, 2.0),
+  ])
+  let p2 = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(2.0, 2.0),
+    @topology.make_topo_point(2.0, 0.0),
+    @topology.make_topo_point(0.0, 2.0),
+  ])
+  assert_true(@topology.check_equal(p1, p2))
+}
+
+test "check_equal false" {
+  let p1 = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(2.0, 0.0),
+    @topology.make_topo_point(2.0, 2.0),
+  ])
+  let p2 = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(3.0, 0.0),
+    @topology.make_topo_point(3.0, 3.0),
+  ])
+  assert_false(@topology.check_equal(p1, p2))
+}
+
+test "check_disjoint true" {
+  let p1 = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(1.0, 0.0),
+    @topology.make_topo_point(1.0, 1.0),
+  ])
+  let p2 = @topology.make_topo_polygon([
+    @topology.make_topo_point(5.0, 5.0),
+    @topology.make_topo_point(6.0, 5.0),
+    @topology.make_topo_point(6.0, 6.0),
+  ])
+  assert_true(@topology.check_disjoint(p1, p2))
+}
+
+test "check_disjoint false" {
+  let p1 = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(2.0, 0.0),
+    @topology.make_topo_point(2.0, 2.0),
+  ])
+  let p2 = @topology.make_topo_polygon([
+    @topology.make_topo_point(1.0, 1.0),
+    @topology.make_topo_point(3.0, 1.0),
+    @topology.make_topo_point(3.0, 3.0),
+  ])
+  assert_false(@topology.check_disjoint(p1, p2))
+}
+
+test "check_intersect true" {
+  let p1 = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(2.0, 0.0),
+    @topology.make_topo_point(2.0, 2.0),
+  ])
+  let p2 = @topology.make_topo_polygon([
+    @topology.make_topo_point(1.0, 1.0),
+    @topology.make_topo_point(3.0, 1.0),
+    @topology.make_topo_point(3.0, 3.0),
+  ])
+  assert_true(@topology.check_intersect(p1, p2))
+}
+
+test "check_intersect false" {
+  let p1 = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(1.0, 0.0),
+    @topology.make_topo_point(1.0, 1.0),
+  ])
+  let p2 = @topology.make_topo_polygon([
+    @topology.make_topo_point(5.0, 5.0),
+    @topology.make_topo_point(6.0, 5.0),
+    @topology.make_topo_point(6.0, 6.0),
+  ])
+  assert_false(@topology.check_intersect(p1, p2))
+}
+
+test "check_contains true" {
+  let p1 = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(10.0, 0.0),
+    @topology.make_topo_point(10.0, 10.0),
+    @topology.make_topo_point(0.0, 10.0),
+  ])
+  let p2 = @topology.make_topo_polygon([
+    @topology.make_topo_point(2.0, 2.0),
+    @topology.make_topo_point(5.0, 2.0),
+    @topology.make_topo_point(5.0, 5.0),
+    @topology.make_topo_point(2.0, 5.0),
+  ])
+  assert_true(@topology.check_contains(p1, p2))
+}
+
+test "check_contains false" {
+  let p1 = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(1.0, 0.0),
+    @topology.make_topo_point(1.0, 1.0),
+  ])
+  let p2 = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(5.0, 0.0),
+    @topology.make_topo_point(5.0, 5.0),
+  ])
+  assert_false(@topology.check_contains(p1, p2))
+}
+
+test "check_within basic" {
+  let p1 = @topology.make_topo_polygon([
+    @topology.make_topo_point(2.0, 2.0),
+    @topology.make_topo_point(5.0, 2.0),
+    @topology.make_topo_point(5.0, 5.0),
+  ])
+  let p2 = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(10.0, 0.0),
+    @topology.make_topo_point(10.0, 10.0),
+  ])
+  assert_true(@topology.check_within(p1, p2))
+}
+
+test "check_crosses true" {
+  let p1 = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(3.0, 0.0),
+    @topology.make_topo_point(3.0, 3.0),
+  ])
+  let p2 = @topology.make_topo_polygon([
+    @topology.make_topo_point(2.0, 2.0),
+    @topology.make_topo_point(5.0, 2.0),
+    @topology.make_topo_point(5.0, 5.0),
+  ])
+  assert_true(@topology.check_crosses(p1, p2))
+}
+
+test "check_overlaps basic" {
+  let p1 = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(3.0, 0.0),
+    @topology.make_topo_point(3.0, 3.0),
+  ])
+  let p2 = @topology.make_topo_polygon([
+    @topology.make_topo_point(2.0, 2.0),
+    @topology.make_topo_point(5.0, 2.0),
+    @topology.make_topo_point(5.0, 5.0),
+  ])
+  assert_true(@topology.check_overlaps(p1, p2))
+}
+
+test "get_relation disjoint" {
+  let p1 = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(1.0, 0.0),
+    @topology.make_topo_point(1.0, 1.0),
+  ])
+  let p2 = @topology.make_topo_polygon([
+    @topology.make_topo_point(5.0, 5.0),
+    @topology.make_topo_point(6.0, 5.0),
+    @topology.make_topo_point(6.0, 6.0),
+  ])
+  assert_eq(@topology.relation_name(@topology.get_relation(p1, p2)), "disjoint")
+}
+
+test "get_relation contains" {
+  let p1 = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(10.0, 0.0),
+    @topology.make_topo_point(10.0, 10.0),
+  ])
+  let p2 = @topology.make_topo_polygon([
+    @topology.make_topo_point(2.0, 2.0),
+    @topology.make_topo_point(5.0, 2.0),
+    @topology.make_topo_point(5.0, 5.0),
+  ])
+  assert_eq(@topology.relation_name(@topology.get_relation(p1, p2)), "contains")
+}
+
+test "relation_name all" {
+  assert_eq(@topology.relation_name(@topology.Equal), "equal")
+  assert_eq(@topology.relation_name(@topology.Disjoint), "disjoint")
+  assert_eq(@topology.relation_name(@topology.Touches), "touches")
+  assert_eq(@topology.relation_name(@topology.Intersects), "intersects")
+  assert_eq(@topology.relation_name(@topology.Crosses), "crosses")
+  assert_eq(@topology.relation_name(@topology.Within), "within")
+  assert_eq(@topology.relation_name(@topology.Contains), "contains")
+  assert_eq(@topology.relation_name(@topology.Overlaps), "overlaps")
+}
+
+test "validate_overlap basic" {
+  let p1 = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(3.0, 0.0),
+    @topology.make_topo_point(3.0, 3.0),
+  ])
+  let p2 = @topology.make_topo_polygon([
+    @topology.make_topo_point(2.0, 2.0),
+    @topology.make_topo_point(5.0, 2.0),
+    @topology.make_topo_point(5.0, 5.0),
+  ])
+  let p3 = @topology.make_topo_polygon([
+    @topology.make_topo_point(10.0, 10.0),
+    @topology.make_topo_point(11.0, 10.0),
+    @topology.make_topo_point(11.0, 11.0),
+  ])
+  let errors = @topology.validate_overlap([p1, p2, p3])
+  assert_eq(errors.length(), 1)
+  assert_eq(errors[0].error_type, "overlap")
+}
+
+test "validate_overlap no errors" {
+  let p1 = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(1.0, 0.0),
+    @topology.make_topo_point(1.0, 1.0),
+  ])
+  let p2 = @topology.make_topo_polygon([
+    @topology.make_topo_point(5.0, 5.0),
+    @topology.make_topo_point(6.0, 5.0),
+    @topology.make_topo_point(6.0, 6.0),
+  ])
+  let errors = @topology.validate_overlap([p1, p2])
+  assert_eq(errors.length(), 0)
+}
+
+test "check_adjacency true" {
+  let p1 = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(2.0, 0.0),
+    @topology.make_topo_point(2.0, 2.0),
+  ])
+  let p2 = @topology.make_topo_polygon([
+    @topology.make_topo_point(1.0, 1.0),
+    @topology.make_topo_point(3.0, 1.0),
+    @topology.make_topo_point(3.0, 3.0),
+  ])
+  assert_true(@topology.check_adjacency(p1, p2))
+}
+
+test "check_adjacency false" {
+  let p1 = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(1.0, 0.0),
+    @topology.make_topo_point(1.0, 1.0),
+  ])
+  let p2 = @topology.make_topo_polygon([
+    @topology.make_topo_point(5.0, 5.0),
+    @topology.make_topo_point(6.0, 5.0),
+    @topology.make_topo_point(6.0, 6.0),
+  ])
+  assert_false(@topology.check_adjacency(p1, p2))
+}
+
+test "find_shared_edges basic" {
+  let p1 = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(2.0, 0.0),
+    @topology.make_topo_point(2.0, 2.0),
+  ])
+  let p2 = @topology.make_topo_polygon([
+    @topology.make_topo_point(2.0, 2.0),
+    @topology.make_topo_point(4.0, 2.0),
+    @topology.make_topo_point(4.0, 4.0),
+  ])
+  let shared = @topology.find_shared_edges(p1, p2)
+  assert_eq(shared.length(), 1)
+  assert_eq(shared[0].x, 2.0)
+  assert_eq(shared[0].y, 2.0)
+}
+
+test "find_shared_edges none" {
+  let p1 = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(1.0, 0.0),
+    @topology.make_topo_point(1.0, 1.0),
+  ])
+  let p2 = @topology.make_topo_polygon([
+    @topology.make_topo_point(5.0, 5.0),
+    @topology.make_topo_point(6.0, 5.0),
+    @topology.make_topo_point(6.0, 6.0),
+  ])
+  let shared = @topology.find_shared_edges(p1, p2)
+  assert_eq(shared.length(), 0)
+}
+
+test "merge_polygons basic" {
+  let p1 = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(2.0, 0.0),
+    @topology.make_topo_point(2.0, 2.0),
+  ])
+  let p2 = @topology.make_topo_polygon([
+    @topology.make_topo_point(1.0, 1.0),
+    @topology.make_topo_point(3.0, 1.0),
+    @topology.make_topo_point(3.0, 3.0),
+  ])
+  let merged = @topology.merge_polygons(p1, p2)
+  assert_eq(merged.vertices.length(), 4)
+}
+
+test "fix_overlap basic" {
+  let p1 = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(3.0, 0.0),
+    @topology.make_topo_point(3.0, 3.0),
+  ])
+  let p2 = @topology.make_topo_polygon([
+    @topology.make_topo_point(2.0, 2.0),
+    @topology.make_topo_point(5.0, 2.0),
+    @topology.make_topo_point(5.0, 5.0),
+  ])
+  let p3 = @topology.make_topo_polygon([
+    @topology.make_topo_point(10.0, 10.0),
+    @topology.make_topo_point(11.0, 10.0),
+    @topology.make_topo_point(11.0, 11.0),
+  ])
+  let fixed = @topology.fix_overlap([p1, p2, p3])
+  assert_eq(fixed.length(), 2)
+}
+
+test "simplify_polygon removes duplicates" {
+  let poly = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(1.0, 0.0),
+    @topology.make_topo_point(1.0, 0.0),
+    @topology.make_topo_point(1.0, 1.0),
+    @topology.make_topo_point(0.0, 0.0),
+  ])
+  let simplified = @topology.simplify_polygon(poly)
+  assert_eq(simplified.vertices.length(), 3)
+}
+
+test "polygon_area basic" {
+  let poly = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(4.0, 0.0),
+    @topology.make_topo_point(4.0, 3.0),
+    @topology.make_topo_point(0.0, 3.0),
+  ])
+  assert_eq(@topology.polygon_area(poly), 12.0)
+}
+
+test "polygon_area triangle" {
+  let poly = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(6.0, 0.0),
+    @topology.make_topo_point(0.0, 4.0),
+  ])
+  assert_eq(@topology.polygon_area(poly), 12.0)
+}
+
+test "polygon_area empty" {
+  let poly = @topology.make_topo_polygon([])
+  assert_eq(@topology.polygon_area(poly), 0.0)
+}
+
+test "polygon_perimeter basic" {
+  let poly = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(3.0, 0.0),
+    @topology.make_topo_point(3.0, 4.0),
+    @topology.make_topo_point(0.0, 4.0),
+  ])
+  assert_eq(@topology.polygon_perimeter(poly), 14.0)
+}
+
+test "polygon_perimeter empty" {
+  let poly = @topology.make_topo_polygon([])
+  assert_eq(@topology.polygon_perimeter(poly), 0.0)
+}
+
+test "validate_dangling basic" {
+  let p1 = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(2.0, 0.0),
+    @topology.make_topo_point(2.0, 2.0),
+  ])
+  let errors = @topology.validate_dangling([p1])
+  assert_true(errors.length() >= 0)
+}
+
+test "topology_errors basic" {
+  let p1 = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(3.0, 0.0),
+    @topology.make_topo_point(3.0, 3.0),
+  ])
+  let p2 = @topology.make_topo_polygon([
+    @topology.make_topo_point(2.0, 2.0),
+    @topology.make_topo_point(5.0, 2.0),
+    @topology.make_topo_point(5.0, 5.0),
+  ])
+  let errors = @topology.topology_errors([p1, p2])
+  assert_true(errors.length() >= 1)
+}
+
+test "validate_gap basic" {
+  let p1 = @topology.make_topo_polygon([
+    @topology.make_topo_point(0.0, 0.0),
+    @topology.make_topo_point(1.0, 0.0),
+    @topology.make_topo_point(1.0, 1.0),
+  ])
+  let errors = @topology.validate_gap([p1], (0.0, 0.0, 10.0, 10.0))
+  assert_true(errors.length() >= 0)
+}

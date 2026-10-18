@@ -796,3 +796,20 @@ DataVerse 已完成 ArcGIS Pro 726 工具的 100% 映射，0 待建。
 ---
 
 > DataVerse Changelog | 2026-10-18 | 726/726 全映射达成
+
+## Phase 8 Sprint 1 (S8.1) — opcore/network 网络分析算子
+
+**日期**: 2026-10-18  
+**commit**: `2663de3`
+
+### 新增
+- 新建 `src/opcore/network/` 子包（433 行）
+- 19 个公开算子: dijkstra_shortest_path, shortest_distance, shortest_path_nodes, service_area, multi_source_service_area, od_cost_matrix, closest_facility, route_plan, route_cost, location_allocation, build_network_from_edges, network_node_count, network_edge_count, connected_components, is_connected, nearest_neighbor_tsp, make_network_graph, make_edge, network_id
+- dataverse.mbt 添加 network 重导出块
+- 38 个新测试
+
+### 统计
+- 源代码: ~31,514 行（src 24,777 + dataverse.mbt 6,737）
+- 测试: 1071 → 1109（+38）
+- 编译: 0 error 0 warning
+- 对标: ArcGIS Pro Network Analyst 扩展

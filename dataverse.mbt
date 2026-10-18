@@ -6735,3 +6735,12 @@ pub using @governance { governance_id }pub using @governance.benchmark {
   network_node_count, network_edge_count, connected_components, is_connected,
   nearest_neighbor_tsp, network_id,
 }
+pub using @opcore.topology {
+  TopoPoint, TopoPolygon, TopologyError, TopoRelation,
+  Equal, Disjoint, Touches, Intersects, Crosses, Within, Contains, Overlaps,
+  make_topo_point, make_topo_polygon, check_equal, check_disjoint, check_intersect,
+  check_touches, check_contains, check_within, check_crosses, check_overlaps,
+  get_relation, relation_name, validate_overlap, check_adjacency, find_shared_edges,
+  validate_gap, validate_dangling, topology_errors, merge_polygons, fix_overlap,
+  simplify_polygon, polygon_area, polygon_perimeter, topology_id,
+}

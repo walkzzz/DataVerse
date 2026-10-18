@@ -171,7 +171,7 @@
 | S7.5 | learncore/timeseries 新子包（ARIMA/GARCH/Prophet/SeasonalDecompose +20 fn） | ⏳ | — |
 | S7.6 | learncore/reinforcement 新子包（Q-Learning/PolicyGradient/ActorCritic +18 fn） | ⏳ | — |
 | S7.7 | learncore/ensemble 新子包（Bagging/Boosting/Stacking/Voting +15 fn） | ⏳ | — |
-| S7.8 | R16 门禁 + Phase 7 闭环（spec 71-80, +10 tests） | ⏳ | — |
+| S7.8 | R16 门禁 + Phase 7 闭环（spec 71-80, +10 tests） | ✅ | 1071 tests |
 
 ---
 
@@ -181,7 +181,7 @@
 
 | Sprint | 内容 | 状态 | commit |
 |--------|------|------|--------|
-| S8.1 | opcore/network 网络分析（ShortestPath/ServiceArea/LocationAllocation/ODCostMatrix +25 fn） | ⏳ | — |
+| S8.1 | opcore/network 网络分析（ShortestPath/ServiceArea/LocationAllocation/ODCostMatrix +19 fn） | ✅ | 1109 tests |
 | S8.2 | opcore/topology 拓扑分析（Build/Validate/Edit +18 fn） | ⏳ | — |
 | S8.3 | opcore/terrain 地形分析深化（TPI/SPI/VRM/Roughness +15 fn） | ⏳ | — |
 | S8.4 | opcore/analysis3d 三维分析（Viewshed3D/Buffer3D/Distance3D +18 fn） | ⏳ | — |

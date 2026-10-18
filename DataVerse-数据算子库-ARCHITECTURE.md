@@ -1250,10 +1250,11 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S4.1 | opcore/proximity 邻近分析（Buffer/Thiessen/Near/PointDistance 5 type + 18 fn） | ✅ | c9b703e |
 | S4.2 | opcore/overlay 叠加分析（Intersect/Union/Erase/Identity/SymDiff 3 type + 18 fn） | ✅ | a8a8114 |
 | S4.3 | opcore/hydrology 水文分析（Fill/Flow/Watershed/Basin 4 type + 16 fn） | ✅ | 7ce271c |
+| S4.4 | opcore/surface 表面分析（Slope/Aspect/Hillshade/Contour/Viewshed 3 type + 18 fn） | ✅ | 06cd39c |
 
 > **Phase 4 ArcGIS Pro 对标**：详见 `docs/arcgis_operator_mapping.md`（726 工具映射）
 
-**当前测试**：549 · **当前 API**：527（pub fn）+ 125（pub type） · **形式化证明**：40
+**当前测试**：576 · **当前 API**：545（pub fn）+ 128（pub type） · **形式化证明**：40
 
 ---
 

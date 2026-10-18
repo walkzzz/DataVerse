@@ -4,6 +4,19 @@
 
 ## [0.1.0-dev] - 2026-10-18
 
+### S4.4 - opcore/surface 表面分析
+
+**新增 / Added**
+- `src/opcore/surface/`：表面分析算子包（3 type + 18 fn）
+  - 类型：`AspectDirection` / `ContourLine` / `SurfaceResult`
+  - 算子：`surface_slope`（Horn's method）/ `surface_aspect` / `surface_hillshade` / `surface_contour` / `surface_curvature` / `surface_viewshed` / `surface_stats` 等
+  - 对标 ArcGIS Pro: Slope / Aspect / Hillshade / Contour / Curvature / Viewshed
+- 27 个跨包测试（S4.4 系列）
+
+**统计 / Stats**
+- 测试：549 → 576（+27）
+- API：527 fn + 125 type → 545 fn + 128 type（+18 fn + 3 type）
+
 ### S4.3 - opcore/hydrology 水文分析
 
 **新增 / Added**

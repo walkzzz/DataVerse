@@ -40,6 +40,7 @@ import {
   "dataverse/opcore/distance",
   "dataverse/opcore/zonal",
   "dataverse/opcore/local_stats",
+  "dataverse/opcore/neighborhood",
   "dataverse/datatemporal",
   "dataverse/datatemporal/version",
   "dataverse/datatemporal/lineage",

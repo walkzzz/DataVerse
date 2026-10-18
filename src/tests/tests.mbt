@@ -5600,3 +5600,252 @@ test "S4.8 focal edge out of bounds" {
   assert_eq(@local_stats.focal_mean(r, 0, 0, 5), 1.0)
   assert_eq(@local_stats.focal_count(r, 0, 0, 5), 1)
 }
+
+// ============================================================
+// S5.1 opcore/neighborhood 邻域分析测试
+// ============================================================
+
+test "S5.1 BlockStat name" {
+  assert_eq(@neighborhood.block_stat_name(@neighborhood.BlockMean), "mean")
+  assert_eq(@neighborhood.block_stat_name(@neighborhood.BlockSum), "sum")
+  assert_eq(@neighborhood.block_stat_name(@neighborhood.BlockMin), "min")
+  assert_eq(@neighborhood.block_stat_name(@neighborhood.BlockMax), "max")
+  assert_eq(@neighborhood.block_stat_name(@neighborhood.BlockRange), "range")
+  assert_eq(@neighborhood.block_stat_name(@neighborhood.BlockCount), "count")
+  assert_eq(@neighborhood.block_stat_name(@neighborhood.BlockStd), "std")
+  assert_eq(@neighborhood.block_stat_name(@neighborhood.BlockMajority), "majority")
+  assert_eq(@neighborhood.block_stat_name(@neighborhood.BlockMinority), "minority")
+  assert_eq(@neighborhood.block_stat_name(@neighborhood.BlockMedian), "median")
+}
+
+test "S5.1 LineStat name" {
+  assert_eq(@neighborhood.line_stat_name(@neighborhood.LineMean), "mean")
+  assert_eq(@neighborhood.line_stat_name(@neighborhood.LineSum), "sum")
+  assert_eq(@neighborhood.line_stat_name(@neighborhood.LineMin), "min")
+  assert_eq(@neighborhood.line_stat_name(@neighborhood.LineMax), "max")
+  assert_eq(@neighborhood.line_stat_name(@neighborhood.LineCount), "count")
+  assert_eq(@neighborhood.line_stat_name(@neighborhood.LineRange), "range")
+  assert_eq(@neighborhood.line_stat_name(@neighborhood.LineStd), "std")
+}
+
+test "S5.1 NeighborhoodKind name" {
+  assert_eq(@neighborhood.neighborhood_kind_name(@neighborhood.NHRectangle), "rectangle")
+  assert_eq(@neighborhood.neighborhood_kind_name(@neighborhood.NHCircle), "circle")
+  assert_eq(@neighborhood.neighborhood_kind_name(@neighborhood.NHAnnulus), "annulus")
+  assert_eq(@neighborhood.neighborhood_kind_name(@neighborhood.NHWedge), "wedge")
+  assert_eq(@neighborhood.neighborhood_kind_name(@neighborhood.NHRing), "ring")
+}
+
+test "S5.1 make_neighborhood_config" {
+  let cfg = @neighborhood.make_neighborhood_config(@neighborhood.NHRectangle, 3, 0)
+  assert_eq(cfg.radius1, 3)
+  assert_eq(cfg.radius2, 0)
+}
+
+test "S5.1 make_block_result" {
+  let r = @neighborhood.make_block_result(5.0, 1, 2)
+  assert_eq(r.value, 5.0)
+  assert_eq(r.block_row, 1)
+  assert_eq(r.block_col, 2)
+}
+
+test "S5.1 block_mean basic" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let m = @neighborhood.block_mean(r, 0, 0, 2)
+  assert_true((m - 2.5).abs() < 0.0001)
+}
+
+test "S5.1 block_mean single cell" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  assert_eq(@neighborhood.block_mean(r, 0, 0, 1), 1.0)
+  assert_eq(@neighborhood.block_mean(r, 0, 1, 1), 2.0)
+}
+
+test "S5.1 block_sum basic" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  assert_eq(@neighborhood.block_sum(r, 0, 0, 2), 10.0)
+}
+
+test "S5.1 block_min basic" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  assert_eq(@neighborhood.block_min(r, 0, 0, 2), 1.0)
+}
+
+test "S5.1 block_max basic" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  assert_eq(@neighborhood.block_max(r, 0, 0, 2), 4.0)
+}
+
+test "S5.1 block_range basic" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  assert_eq(@neighborhood.block_range(r, 0, 0, 2), 3.0)
+}
+
+test "S5.1 block_count basic" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  assert_eq(@neighborhood.block_count(r, 0, 0, 2), 4)
+  assert_eq(@neighborhood.block_count(r, 0, 0, 1), 1)
+}
+
+test "S5.1 block_std constant" {
+  let r = @hydrology.make_raster([[5.0, 5.0], [5.0, 5.0]])
+  assert_eq(@neighborhood.block_std(r, 0, 0, 2), 0.0)
+}
+
+test "S5.1 block_majority basic" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  assert_eq(@neighborhood.block_majority(r, 0, 0, 2), 1.0)
+}
+
+test "S5.1 block_minority basic" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  assert_eq(@neighborhood.block_minority(r, 0, 0, 2), 4.0)
+}
+
+test "S5.1 block_median basic" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  assert_eq(@neighborhood.block_median(r, 0, 0, 2), 3.0)
+}
+
+test "S5.1 block_statistics generic" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  assert_true((@neighborhood.block_statistics(r, 0, 0, 2, @neighborhood.BlockMean) - 2.5).abs() < 0.0001)
+  assert_eq(@neighborhood.block_statistics(r, 0, 0, 2, @neighborhood.BlockSum), 10.0)
+  assert_eq(@neighborhood.block_statistics(r, 0, 0, 2, @neighborhood.BlockCount), 4.0)
+}
+
+test "S5.1 block_statistics_grid" {
+  let r = @hydrology.make_raster([[1.0, 2.0, 3.0, 4.0], [5.0, 6.0, 7.0, 8.0], [9.0, 10.0, 11.0, 12.0], [13.0, 14.0, 15.0, 16.0]])
+  let g = @neighborhood.block_statistics_grid(r, 2, @neighborhood.BlockMean)
+  assert_eq(@hydrology.raster_rows(g), 2)
+  assert_eq(@hydrology.raster_cols(g), 2)
+}
+
+test "S5.1 block_statistics_grid empty" {
+  let r = @hydrology.make_raster([])
+  let g = @neighborhood.block_statistics_grid(r, 2, @neighborhood.BlockMean)
+  assert_eq(@hydrology.raster_rows(g), 0)
+}
+
+test "S5.1 block_statistics_grid zero block_size" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let g = @neighborhood.block_statistics_grid(r, 0, @neighborhood.BlockMean)
+  assert_eq(@hydrology.raster_rows(g), 0)
+}
+
+test "S5.1 line_mean basic" {
+  let r = @hydrology.make_raster([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
+  let m = @neighborhood.line_mean(r, 0)
+  assert_true((m - 2.0).abs() < 0.0001)
+}
+
+test "S5.1 line_sum basic" {
+  let r = @hydrology.make_raster([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
+  assert_eq(@neighborhood.line_sum(r, 0), 6.0)
+  assert_eq(@neighborhood.line_sum(r, 1), 15.0)
+}
+
+test "S5.1 line_min basic" {
+  let r = @hydrology.make_raster([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
+  assert_eq(@neighborhood.line_min(r, 0), 1.0)
+  assert_eq(@neighborhood.line_min(r, 1), 4.0)
+}
+
+test "S5.1 line_max basic" {
+  let r = @hydrology.make_raster([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
+  assert_eq(@neighborhood.line_max(r, 0), 3.0)
+  assert_eq(@neighborhood.line_max(r, 1), 6.0)
+}
+
+test "S5.1 line_count basic" {
+  let r = @hydrology.make_raster([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
+  assert_eq(@neighborhood.line_count(r, 0), 3)
+}
+
+test "S5.1 line_range basic" {
+  let r = @hydrology.make_raster([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
+  assert_eq(@neighborhood.line_range(r, 0), 2.0)
+}
+
+test "S5.1 line_std constant" {
+  let r = @hydrology.make_raster([[5.0, 5.0, 5.0]])
+  assert_eq(@neighborhood.line_std(r, 0), 0.0)
+}
+
+test "S5.1 line_statistics generic" {
+  let r = @hydrology.make_raster([[1.0, 2.0, 3.0]])
+  assert_true((@neighborhood.line_statistics(r, 0, @neighborhood.LineMean) - 2.0).abs() < 0.0001)
+  assert_eq(@neighborhood.line_statistics(r, 0, @neighborhood.LineSum), 6.0)
+  assert_eq(@neighborhood.line_statistics(r, 0, @neighborhood.LineCount), 3.0)
+}
+
+test "S5.1 line_statistics_col basic" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0], [5.0, 6.0]])
+  assert_true((@neighborhood.line_statistics_col(r, 0, @neighborhood.LineMean) - 3.0).abs() < 0.0001)
+  assert_eq(@neighborhood.line_statistics_col(r, 0, @neighborhood.LineSum), 9.0)
+  assert_eq(@neighborhood.line_statistics_col(r, 0, @neighborhood.LineCount), 3.0)
+}
+
+test "S5.1 neighborhood_cells rectangle" {
+  let cfg = @neighborhood.make_neighborhood_config(@neighborhood.NHRectangle, 1, 0)
+  let cells = @neighborhood.neighborhood_cells(cfg)
+  assert_eq(cells.length(), 9)
+}
+
+test "S5.1 neighborhood_cells circle" {
+  let cfg = @neighborhood.make_neighborhood_config(@neighborhood.NHCircle, 1, 0)
+  let cells = @neighborhood.neighborhood_cells(cfg)
+  assert_eq(cells.length(), 5)
+}
+
+test "S5.1 neighborhood_cells zero radius" {
+  let cfg = @neighborhood.make_neighborhood_config(@neighborhood.NHRectangle, 0, 0)
+  let cells = @neighborhood.neighborhood_cells(cfg)
+  assert_eq(cells.length(), 1)
+}
+
+test "S5.1 neighborhood_cell_count" {
+  let cfg = @neighborhood.make_neighborhood_config(@neighborhood.NHRectangle, 2, 0)
+  assert_eq(@neighborhood.neighborhood_cell_count(cfg), 25)
+}
+
+test "S5.1 neighborhood_expand basic" {
+  let r = @hydrology.make_raster([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0], [7.0, 8.0, 9.0]])
+  let cfg = @neighborhood.make_neighborhood_config(@neighborhood.NHRectangle, 1, 0)
+  let vals = @neighborhood.neighborhood_expand(r, 1, 1, cfg)
+  assert_eq(vals.length(), 9)
+}
+
+test "S5.1 neighborhood_expand corner" {
+  let r = @hydrology.make_raster([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0], [7.0, 8.0, 9.0]])
+  let cfg = @neighborhood.make_neighborhood_config(@neighborhood.NHRectangle, 1, 0)
+  let vals = @neighborhood.neighborhood_expand(r, 0, 0, cfg)
+  assert_eq(vals.length(), 4)
+}
+
+test "S5.1 block_results_grid" {
+  let r = @hydrology.make_raster([[1.0, 2.0, 3.0, 4.0], [5.0, 6.0, 7.0, 8.0], [9.0, 10.0, 11.0, 12.0], [13.0, 14.0, 15.0, 16.0]])
+  let results = @neighborhood.block_results_grid(r, 2, @neighborhood.BlockMean)
+  assert_eq(results.length(), 2)
+  assert_eq(results[0].length(), 2)
+  assert_eq(results[0][0].block_row, 0)
+  assert_eq(results[0][0].block_col, 0)
+}
+
+test "S5.1 block_results_grid empty" {
+  let r = @hydrology.make_raster([])
+  let results = @neighborhood.block_results_grid(r, 2, @neighborhood.BlockMean)
+  assert_eq(results.length(), 0)
+}
+
+test "S5.1 neighborhood_cells annulus" {
+  let cfg = @neighborhood.make_neighborhood_config(@neighborhood.NHAnnulus, 2, 1)
+  let cells = @neighborhood.neighborhood_cells(cfg)
+  assert_true(cells.length() > 0)
+}
+
+test "S5.1 neighborhood_cells ring" {
+  let cfg = @neighborhood.make_neighborhood_config(@neighborhood.NHRing, 1, 0)
+  let cells = @neighborhood.neighborhood_cells(cfg)
+  assert_eq(cells.length(), 4)
+}

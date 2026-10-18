@@ -108,6 +108,19 @@
 
 ---
 
+## Phase 5：P2 ArcGIS 工具扩展 / P2 ArcGIS Tool Extension
+
+> ArcGIS Pro P2 优先级工具：邻域分析 + 太阳辐射 + 地下水分析。
+
+| Sprint | 内容 | 状态 | commit |
+|--------|------|------|--------|
+| S5.1 | opcore/neighborhood 邻域分析（Block/Line/Neighborhood Statistics） | ⏳ | — |
+| S5.2 | opcore/solar 太阳辐射（Area/Point Radiation） | ⏳ | — |
+| S5.3 | opcore/groundwater 地下水分析（Darcy Flow/Particle Track） | ⏳ | — |
+| S5.4 | R16 门禁 + Phase 5 闭环 | ⏳ | — |
+
+---
+
 ## 当前统计 / Current Stats
 
 - **测试**：724 passed

@@ -30,6 +30,7 @@ import {
   "opcore/distance",
   "opcore/zonal",
   "opcore/local_stats",
+  "opcore/neighborhood",
   "datatemporal",
   "datatemporal/version",
   "datatemporal/lineage",

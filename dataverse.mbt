@@ -128,12 +128,100 @@ pub using @opcore.zonal {
   zonal_fill, zonal_stats_all,
 }
 pub using @opcore.local_stats {
+pub using @opcore.neighborhood {
+  BlockStat, LineStat, NeighborhoodKind, NeighborhoodConfig, BlockResult,
+  make_neighborhood_config, make_block_result,
+  block_stat_name, line_stat_name, neighborhood_kind_name,
+  block_mean, block_sum, block_min, block_max, block_range,
+  block_count, block_std, block_majority, block_minority, block_median,
+  block_statistics, block_statistics_grid, block_results_grid,
+  line_mean, line_sum, line_min, line_max, line_count, line_range, line_std,
+  line_statistics, line_statistics_col,
+  neighborhood_cells, neighborhood_cell_count, neighborhood_expand,
+}
   FocalStat, NeighborhoodShape, FocalResult,
+pub using @opcore.neighborhood {
+  BlockStat, LineStat, NeighborhoodKind, NeighborhoodConfig, BlockResult,
+  make_neighborhood_config, make_block_result,
+  block_stat_name, line_stat_name, neighborhood_kind_name,
+  block_mean, block_sum, block_min, block_max, block_range,
+  block_count, block_std, block_majority, block_minority, block_median,
+  block_statistics, block_statistics_grid, block_results_grid,
+  line_mean, line_sum, line_min, line_max, line_count, line_range, line_std,
+  line_statistics, line_statistics_col,
+  neighborhood_cells, neighborhood_cell_count, neighborhood_expand,
+}
   make_focal_result, focal_stat_name, neighborhood_shape_name,
+pub using @opcore.neighborhood {
+  BlockStat, LineStat, NeighborhoodKind, NeighborhoodConfig, BlockResult,
+  make_neighborhood_config, make_block_result,
+  block_stat_name, line_stat_name, neighborhood_kind_name,
+  block_mean, block_sum, block_min, block_max, block_range,
+  block_count, block_std, block_majority, block_minority, block_median,
+  block_statistics, block_statistics_grid, block_results_grid,
+  line_mean, line_sum, line_min, line_max, line_count, line_range, line_std,
+  line_statistics, line_statistics_col,
+  neighborhood_cells, neighborhood_cell_count, neighborhood_expand,
+}
   focal_mean, focal_sum, focal_min, focal_max, focal_range,
+pub using @opcore.neighborhood {
+  BlockStat, LineStat, NeighborhoodKind, NeighborhoodConfig, BlockResult,
+  make_neighborhood_config, make_block_result,
+  block_stat_name, line_stat_name, neighborhood_kind_name,
+  block_mean, block_sum, block_min, block_max, block_range,
+  block_count, block_std, block_majority, block_minority, block_median,
+  block_statistics, block_statistics_grid, block_results_grid,
+  line_mean, line_sum, line_min, line_max, line_count, line_range, line_std,
+  line_statistics, line_statistics_col,
+  neighborhood_cells, neighborhood_cell_count, neighborhood_expand,
+}
   focal_std, focal_count, focal_majority, focal_minority, focal_median,
+pub using @opcore.neighborhood {
+  BlockStat, LineStat, NeighborhoodKind, NeighborhoodConfig, BlockResult,
+  make_neighborhood_config, make_block_result,
+  block_stat_name, line_stat_name, neighborhood_kind_name,
+  block_mean, block_sum, block_min, block_max, block_range,
+  block_count, block_std, block_majority, block_minority, block_median,
+  block_statistics, block_statistics_grid, block_results_grid,
+  line_mean, line_sum, line_min, line_max, line_count, line_range, line_std,
+  line_statistics, line_statistics_col,
+  neighborhood_cells, neighborhood_cell_count, neighborhood_expand,
+}
   focal_statistics, focal_filter, focal_filter_mean, focal_results_grid,
+pub using @opcore.neighborhood {
+  BlockStat, LineStat, NeighborhoodKind, NeighborhoodConfig, BlockResult,
+  make_neighborhood_config, make_block_result,
+  block_stat_name, line_stat_name, neighborhood_kind_name,
+  block_mean, block_sum, block_min, block_max, block_range,
+  block_count, block_std, block_majority, block_minority, block_median,
+  block_statistics, block_statistics_grid, block_results_grid,
+  line_mean, line_sum, line_min, line_max, line_count, line_range, line_std,
+  line_statistics, line_statistics_col,
+  neighborhood_cells, neighborhood_cell_count, neighborhood_expand,
+}
   local_add, local_subtract, local_multiply, local_add_scalar,
+pub using @opcore.neighborhood {
+  BlockStat, LineStat, NeighborhoodKind, NeighborhoodConfig, BlockResult,
+  make_neighborhood_config, make_block_result,
+  block_stat_name, line_stat_name, neighborhood_kind_name,
+  block_mean, block_sum, block_min, block_max, block_range,
+  block_count, block_std, block_majority, block_minority, block_median,
+  block_statistics, block_statistics_grid, block_results_grid,
+  line_mean, line_sum, line_min, line_max, line_count, line_range, line_std,
+  line_statistics, line_statistics_col,
+  neighborhood_cells, neighborhood_cell_count, neighborhood_expand,
+}
+}
+pub using @opcore.neighborhood {
+  BlockStat, LineStat, NeighborhoodKind, NeighborhoodConfig, BlockResult,
+  make_neighborhood_config, make_block_result,
+  block_stat_name, line_stat_name, neighborhood_kind_name,
+  block_mean, block_sum, block_min, block_max, block_range,
+  block_count, block_std, block_majority, block_minority, block_median,
+  block_statistics, block_statistics_grid, block_results_grid,
+  line_mean, line_sum, line_min, line_max, line_count, line_range, line_std,
+  line_statistics, line_statistics_col,
+  neighborhood_cells, neighborhood_cell_count, neighborhood_expand,
 }
 pub using @learncore {
   learncore_id, ModelSpace, model_space_name, Hyperparams, make_hyperparams,

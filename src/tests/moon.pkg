@@ -104,4 +104,6 @@ import {
   "dataverse/opcore/analysis3d",
   "dataverse/opcore/geocoding",
   "dataverse/opcore/coord",
+  "dataverse/opcore/pointcloud",
+  "dataverse/opcore/remotesensing",
 }

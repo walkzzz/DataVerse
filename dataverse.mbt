@@ -6777,3 +6777,28 @@ pub using @opcore.coord {
   great_circle_distance, bearing, destination_point,
   decimal_to_dms, dms_to_decimal, coord_id,
 }
+pub using @opcore.audio {
+  AudioSignal, make_audio_signal, signal_length, signal_duration, signal_energy,
+  signal_rms, zero_crossing_rate, normalize_signal, is_silent, concat_signals,
+  decimate_signal, magnitude_spectrum, frame_signal, snr_db,
+}
+pub using @opcore.video {
+  FrameSequence, make_frame_sequence, frame_count_seq, video_duration_sec,
+  frame_difference, motion_intensity, extract_keyframes, frame_average, video_stability,
+}
+pub using @opcore.semantic {
+  Embedding, make_embedding, embedding_dim, cosine_similarity, embedding_distance,
+  dot_product, normalize_embedding, knn_search, centroid_embedding,
+  classify_text, term_frequency_vector,
+}
+pub using @opcore.pointcloud {
+  PointCloud, make_point_cloud, pointcloud_size, pointcloud_centroid, pointcloud_bbox,
+  elevation_filter, voxel_downsample, radius_outlier_removal,
+  pointcloud_translate, pointcloud_scale, average_spacing, elevation_stats,
+  point_density, pointcloud_id,
+}
+pub using @opcore.remotesensing {
+  MultiBandImage, make_multiband, band_count, ndvi, evi, savi, ndwi, mndwi, ndbi,
+  band_subtract, band_ratio, threshold_classify, supervised_classify, band_stats,
+  remotesensing_id,
+}

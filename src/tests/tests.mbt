@@ -9314,3 +9314,368 @@ test "rgb_to_gray basic" {
   assert_true(result.pixels[1] > 140.0 && result.pixels[1] < 160.0)
   assert_true(result.pixels[2] > 20.0 && result.pixels[2] < 40.0)
 }
+// ============================================
+// S9.2 opcore/audio 音频处理深化测试
+// ============================================
+
+test "make_audio_signal basic" {
+  let sig = @audio.make_audio_signal([0.5, 0.3, 0.8, 0.1], 16000)
+  assert_eq(@audio.signal_length(sig), 4)
+  assert_eq(sig.sample_rate, 16000)
+}
+
+test "signal_duration basic" {
+  let sig = @audio.make_audio_signal([0.0, 0.0, 0.0, 0.0], 16000)
+  assert_eq(@audio.signal_duration(sig), 0.00025)
+}
+
+test "signal_energy basic" {
+  let sig = @audio.make_audio_signal([3.0, 4.0], 16000)
+  assert_eq(@audio.signal_energy(sig), 25.0)
+}
+
+test "signal_rms basic" {
+  let sig = @audio.make_audio_signal([3.0, 4.0], 16000)
+  assert_eq(@audio.signal_rms(sig), 3.5355339059327378)
+}
+
+test "zero_crossing_rate basic" {
+  let sig = @audio.make_audio_signal([1.0, -1.0, 1.0, -1.0], 16000)
+  let zcr = @audio.zero_crossing_rate(sig)
+  assert_true(zcr > 0.5)
+}
+
+test "normalize_signal basic" {
+  let sig = @audio.make_audio_signal([0.5, -1.0, 0.25], 16000)
+  let norm = @audio.normalize_signal(sig)
+  assert_eq(norm.samples[1], -1.0)
+}
+
+test "is_silent true" {
+  let sig = @audio.make_audio_signal([0.001, 0.002, 0.001], 16000)
+  assert_true(@audio.is_silent(sig, 0.01))
+}
+
+test "is_silent false" {
+  let sig = @audio.make_audio_signal([0.5, 0.8, 0.6], 16000)
+  assert_false(@audio.is_silent(sig, 0.01))
+}
+
+test "concat_signals basic" {
+  let sig1 = @audio.make_audio_signal([1.0, 2.0], 16000)
+  let sig2 = @audio.make_audio_signal([3.0, 4.0], 16000)
+  let result = @audio.concat_signals(sig1, sig2)
+  assert_eq(result.samples.length(), 4)
+}
+
+test "decimate_signal basic" {
+  let sig = @audio.make_audio_signal([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], 16000)
+  let result = @audio.decimate_signal(sig, 2)
+  assert_eq(result.samples.length(), 3)
+  assert_eq(result.sample_rate, 8000)
+}
+
+test "magnitude_spectrum basic" {
+  let sig = @audio.make_audio_signal([1.0, 0.0, -1.0, 0.0], 4)
+  let spectrum = @audio.magnitude_spectrum(sig, 4)
+  assert_eq(spectrum.length(), 4)
+}
+
+test "frame_signal basic" {
+  let sig = @audio.make_audio_signal([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], 16000)
+  let frames = @audio.frame_signal(sig, 3, 2)
+  assert_eq(frames.length(), 2)
+}
+
+test "snr_db basic" {
+  let signal = @audio.make_audio_signal([1.0, 1.0, 1.0], 16000)
+  let noise = @audio.make_audio_signal([0.1, 0.1, 0.1], 16000)
+  let snr = @audio.snr_db(signal, noise)
+  assert_true(snr > 0.0)
+}
+
+// ============================================
+// S9.3 opcore/video 视频处理深化测试
+// ============================================
+
+test "make_frame_sequence basic" {
+  let frames = [@image.make_gray_image(2, 2, [0.0, 0.0, 0.0, 0.0])]
+  let seq = @video.make_frame_sequence(frames, 30)
+  assert_eq(@video.frame_count_seq(seq), 1)
+}
+
+test "video_duration_sec basic" {
+  let frames = [@image.make_gray_image(2, 2, [0.0, 0.0, 0.0, 0.0]), @image.make_gray_image(2, 2, [0.0, 0.0, 0.0, 0.0])]
+  let seq = @video.make_frame_sequence(frames, 30)
+  assert_true(@video.video_duration_sec(seq) > 0.06 && @video.video_duration_sec(seq) < 0.07)
+}
+
+test "frame_difference basic" {
+  let f1 = @image.make_gray_image(2, 1, [100.0, 200.0])
+  let f2 = @image.make_gray_image(2, 1, [150.0, 180.0])
+  let seq = @video.make_frame_sequence([f1, f2], 30)
+  let diffs = @video.frame_difference(seq)
+  assert_eq(diffs.length(), 1)
+  assert_eq(diffs[0].pixels[0], 50.0)
+  assert_eq(diffs[0].pixels[1], 20.0)
+}
+
+test "motion_intensity basic" {
+  let f1 = @image.make_gray_image(2, 1, [0.0, 0.0])
+  let f2 = @image.make_gray_image(2, 1, [100.0, 100.0])
+  let seq = @video.make_frame_sequence([f1, f2], 30)
+  let mi = @video.motion_intensity(seq)
+  assert_eq(mi, 100.0)
+}
+
+test "extract_keyframes basic" {
+  let f1 = @image.make_gray_image(2, 1, [0.0, 0.0])
+  let f2 = @image.make_gray_image(2, 1, [100.0, 100.0])
+  let f3 = @image.make_gray_image(2, 1, [0.0, 0.0])
+  let seq = @video.make_frame_sequence([f1, f2, f3], 30)
+  let kf = @video.extract_keyframes(seq, 1)
+  assert_eq(kf.length(), 1)
+}
+
+test "frame_average basic" {
+  let f1 = @image.make_gray_image(2, 1, [0.0, 100.0])
+  let f2 = @image.make_gray_image(2, 1, [100.0, 200.0])
+  let seq = @video.make_frame_sequence([f1, f2], 30)
+  let avg = @video.frame_average(seq)
+  assert_eq(avg.pixels[0], 50.0)
+  assert_eq(avg.pixels[1], 150.0)
+}
+
+test "video_stability basic" {
+  let f1 = @image.make_gray_image(2, 1, [0.0, 0.0])
+  let f2 = @image.make_gray_image(2, 1, [0.0, 0.0])
+  let seq = @video.make_frame_sequence([f1, f2], 30)
+  assert_eq(@video.video_stability(seq), 1.0)
+}
+
+// ============================================
+// S9.4 opcore/semantic 语义分析深化测试
+// ============================================
+
+test "make_embedding basic" {
+  let emb = @semantic.make_embedding([1.0, 2.0, 3.0])
+  assert_eq(@semantic.embedding_dim(emb), 3)
+}
+
+test "cosine_similarity identical" {
+  let emb = @semantic.make_embedding([1.0, 2.0, 3.0])
+  let sim = @semantic.cosine_similarity(emb, emb)
+  assert_true(sim > 0.99)
+}
+
+test "cosine_similarity orthogonal" {
+  let emb1 = @semantic.make_embedding([1.0, 0.0])
+  let emb2 = @semantic.make_embedding([0.0, 1.0])
+  assert_eq(@semantic.cosine_similarity(emb1, emb2), 0.0)
+}
+
+test "embedding_distance basic" {
+  let emb1 = @semantic.make_embedding([0.0, 0.0])
+  let emb2 = @semantic.make_embedding([3.0, 4.0])
+  assert_eq(@semantic.embedding_distance(emb1, emb2), 5.0)
+}
+
+test "dot_product basic" {
+  let emb1 = @semantic.make_embedding([1.0, 2.0, 3.0])
+  let emb2 = @semantic.make_embedding([4.0, 5.0, 6.0])
+  assert_eq(@semantic.dot_product(emb1, emb2), 32.0)
+}
+
+test "normalize_embedding basic" {
+  let emb = @semantic.make_embedding([3.0, 4.0])
+  let norm = @semantic.normalize_embedding(emb)
+  assert_true(norm.vector[0] > 0.59 && norm.vector[0] < 0.61)
+  assert_true(norm.vector[1] > 0.79 && norm.vector[1] < 0.81)
+}
+
+test "knn_search basic" {
+  let query = @semantic.make_embedding([1.0, 0.0])
+  let db = [@semantic.make_embedding([1.0, 0.0]), @semantic.make_embedding([0.0, 1.0]), @semantic.make_embedding([0.7, 0.7])]
+  let result = @semantic.knn_search(query, db, 2)
+  assert_eq(result.length(), 2)
+  assert_eq(result[0].0, 0)
+}
+
+test "centroid_embedding basic" {
+  let embs = [@semantic.make_embedding([0.0, 0.0]), @semantic.make_embedding([4.0, 6.0])]
+  let centroid = @semantic.centroid_embedding(embs)
+  assert_eq(centroid.vector[0], 2.0)
+  assert_eq(centroid.vector[1], 3.0)
+}
+
+test "classify_text basic" {
+  let query = @semantic.make_embedding([1.0, 0.0])
+  let centroids = [("A", @semantic.make_embedding([1.0, 0.0])), ("B", @semantic.make_embedding([0.0, 1.0]))]
+  assert_eq(@semantic.classify_text(query, centroids), "A")
+}
+
+test "term_frequency_vector basic" {
+  let tokens = ["hello", "world", "hello"]
+  let vocab = ["hello", "world", "foo"]
+  let tf = @semantic.term_frequency_vector(tokens, vocab)
+  assert_eq(tf.vector[0], 2.0)
+  assert_eq(tf.vector[1], 1.0)
+  assert_eq(tf.vector[2], 0.0)
+}
+
+// ============================================
+// S9.5 opcore/pointcloud 点云处理测试
+// ============================================
+
+test "pointcloud_id" {
+  assert_eq(@pointcloud.pointcloud_id(), "opcore/pointcloud")
+}
+
+test "make_point_cloud basic" {
+  let cloud = @pointcloud.make_point_cloud([(0.0, 0.0, 0.0), (1.0, 1.0, 1.0)])
+  assert_eq(@pointcloud.pointcloud_size(cloud), 2)
+}
+
+test "pointcloud_centroid basic" {
+  let cloud = @pointcloud.make_point_cloud([(0.0, 0.0, 0.0), (2.0, 4.0, 6.0)])
+  let (cx, cy, cz) = @pointcloud.pointcloud_centroid(cloud)
+  assert_eq(cx, 1.0)
+  assert_eq(cy, 2.0)
+  assert_eq(cz, 3.0)
+}
+
+test "pointcloud_bbox basic" {
+  let cloud = @pointcloud.make_point_cloud([(0.0, 0.0, 0.0), (2.0, 4.0, 6.0)])
+  let ((min_x, min_y, min_z), (max_x, max_y, max_z)) = @pointcloud.pointcloud_bbox(cloud)
+  assert_eq(min_x, 0.0)
+  assert_eq(max_x, 2.0)
+  assert_eq(max_z, 6.0)
+}
+
+test "elevation_filter basic" {
+  let cloud = @pointcloud.make_point_cloud([(0.0, 0.0, 1.0), (1.0, 0.0, 5.0), (2.0, 0.0, 10.0)])
+  let filtered = @pointcloud.elevation_filter(cloud, 0.0, 6.0)
+  assert_eq(@pointcloud.pointcloud_size(filtered), 2)
+}
+
+test "voxel_downsample basic" {
+  let cloud = @pointcloud.make_point_cloud([(0.0, 0.0, 0.0), (0.5, 0.5, 0.5), (2.0, 2.0, 2.0)])
+  let downsampled = @pointcloud.voxel_downsample(cloud, 1.0)
+  assert_eq(@pointcloud.pointcloud_size(downsampled), 2)
+}
+
+test "pointcloud_translate basic" {
+  let cloud = @pointcloud.make_point_cloud([(0.0, 0.0, 0.0)])
+  let translated = @pointcloud.pointcloud_translate(cloud, 1.0, 2.0, 3.0)
+  let (x, y, z) = translated.points[0]
+  assert_eq(x, 1.0)
+  assert_eq(y, 2.0)
+  assert_eq(z, 3.0)
+}
+
+test "pointcloud_scale basic" {
+  let cloud = @pointcloud.make_point_cloud([(1.0, 2.0, 3.0)])
+  let scaled = @pointcloud.pointcloud_scale(cloud, 2.0, 3.0, 4.0)
+  let (x, y, z) = scaled.points[0]
+  assert_eq(x, 2.0)
+  assert_eq(y, 6.0)
+  assert_eq(z, 12.0)
+}
+
+test "pointcloud_elevation_stats basic" {
+  let cloud = @pointcloud.make_point_cloud([(0.0, 0.0, 1.0), (0.0, 0.0, 5.0), (0.0, 0.0, 3.0)])
+  let (min_z, max_z, mean_z) = @pointcloud.elevation_stats(cloud)
+  assert_eq(min_z, 1.0)
+  assert_eq(max_z, 5.0)
+  assert_eq(mean_z, 3.0)
+}
+
+test "point_density basic" {
+  let cloud = @pointcloud.make_point_cloud([(0.0, 0.0, 0.0), (1.0, 1.0, 1.0)])
+  let density = @pointcloud.point_density(cloud)
+  assert_eq(density, 2.0)
+}
+
+// ============================================
+// S9.6 opcore/remotesensing 遥感分析测试
+// ============================================
+
+test "remotesensing_id" {
+  assert_eq(@remotesensing.remotesensing_id(), "opcore/remotesensing")
+}
+
+test "make_multiband basic" {
+  let img = @remotesensing.make_multiband(2, 2, [[100.0, 200.0, 150.0, 250.0], [50.0, 60.0, 70.0, 80.0]])
+  assert_eq(@remotesensing.band_count(img), 2)
+}
+
+test "ndvi basic" {
+  let nir = [100.0, 200.0, 150.0, 250.0]
+  let red = [50.0, 100.0, 100.0, 50.0]
+  let img = @remotesensing.make_multiband(2, 2, [nir, red])
+  let result = @remotesensing.ndvi(img, 0, 1)
+  assert_eq(result.length(), 4)
+  assert_true(result[0] > 0.3 && result[0] < 0.4)
+}
+
+test "ndwi basic" {
+  let green = [100.0, 200.0]
+  let nir = [50.0, 100.0]
+  let img = @remotesensing.make_multiband(2, 1, [green, nir])
+  let result = @remotesensing.ndwi(img, 0, 1)
+  assert_eq(result.length(), 2)
+  assert_true(result[0] > 0.3)
+}
+
+test "ndbi basic" {
+  let swir = [100.0, 200.0]
+  let nir = [50.0, 100.0]
+  let img = @remotesensing.make_multiband(2, 1, [swir, nir])
+  let result = @remotesensing.ndbi(img, 0, 1)
+  assert_eq(result.length(), 2)
+}
+
+test "band_subtract basic" {
+  let b1 = [100.0, 200.0]
+  let b2 = [50.0, 100.0]
+  let img = @remotesensing.make_multiband(2, 1, [b1, b2])
+  let result = @remotesensing.band_subtract(img, 0, 1)
+  assert_eq(result[0], 50.0)
+  assert_eq(result[1], 100.0)
+}
+
+test "band_ratio basic" {
+  let b1 = [100.0, 200.0]
+  let b2 = [50.0, 100.0]
+  let img = @remotesensing.make_multiband(2, 1, [b1, b2])
+  let result = @remotesensing.band_ratio(img, 0, 1)
+  assert_eq(result[0], 2.0)
+  assert_eq(result[1], 2.0)
+}
+
+test "threshold_classify basic" {
+  let values = [0.1, 0.3, 0.5, 0.7, 0.9]
+  let thresholds = [0.4, 0.8]
+  let result = @remotesensing.threshold_classify(values, thresholds)
+  assert_eq(result[0], 0)
+  assert_eq(result[2], 1)
+  assert_eq(result[4], 2)
+}
+
+test "supervised_classify basic" {
+  let values = [0.1, 0.5, 0.9]
+  let class_means = [(1, 0.0), (2, 1.0)]
+  let result = @remotesensing.supervised_classify(values, class_means)
+  assert_eq(result[0], 1)
+  assert_eq(result[2], 2)
+}
+
+test "band_stats basic" {
+  let band = [10.0, 20.0, 30.0, 40.0]
+  let img = @remotesensing.make_multiband(2, 2, [band])
+  let (min_v, max_v, mean_v, std_v) = @remotesensing.band_stats(img, 0)
+  assert_eq(min_v, 10.0)
+  assert_eq(max_v, 40.0)
+  assert_eq(mean_v, 25.0)
+  assert_true(std_v > 0.0)
+}

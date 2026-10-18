@@ -9165,3 +9165,152 @@ test "dms round trip" {
   let result = @coord.dms_to_decimal(deg, min, sec)
   assert_true(result > 116.0 && result < 117.0)
 }
+// ============================================
+// S9.1 opcore/image 图像处理深化测试
+// ============================================
+
+test "make_gray_image basic" {
+  let img = @image.make_gray_image(3, 2, [0.0, 100.0, 200.0, 50.0, 150.0, 250.0])
+  assert_eq(img.width, 3)
+  assert_eq(img.height, 2)
+  assert_eq(img.pixels.length(), 6)
+}
+
+test "image_min basic" {
+  let img = @image.make_gray_image(3, 2, [0.0, 100.0, 200.0, 50.0, 150.0, 250.0])
+  assert_eq(@image.image_min(img), 0.0)
+}
+
+test "image_max basic" {
+  let img = @image.make_gray_image(3, 2, [0.0, 100.0, 200.0, 50.0, 150.0, 250.0])
+  assert_eq(@image.image_max(img), 250.0)
+}
+
+test "image_mean basic" {
+  let img = @image.make_gray_image(2, 2, [0.0, 100.0, 200.0, 300.0])
+  assert_eq(@image.image_mean(img), 150.0)
+}
+
+test "image_mean empty" {
+  let img = @image.make_gray_image(0, 0, [])
+  assert_eq(@image.image_mean(img), 0.0)
+}
+
+test "image_std basic" {
+  let img = @image.make_gray_image(2, 2, [100.0, 100.0, 100.0, 100.0])
+  assert_eq(@image.image_std(img), 0.0)
+}
+
+test "image_std varied" {
+  let img = @image.make_gray_image(2, 2, [0.0, 100.0, 200.0, 300.0])
+  assert_true(@image.image_std(img) > 0.0)
+}
+
+test "adjust_brightness basic" {
+  let img = @image.make_gray_image(2, 1, [100.0, 200.0])
+  let result = @image.adjust_brightness(img, 50.0)
+  assert_eq(result.pixels[0], 150.0)
+  assert_eq(result.pixels[1], 250.0)
+}
+
+test "adjust_brightness clamp" {
+  let img = @image.make_gray_image(2, 1, [200.0, 100.0])
+  let result = @image.adjust_brightness(img, 100.0)
+  assert_eq(result.pixels[0], 255.0)
+  assert_eq(result.pixels[1], 200.0)
+}
+
+test "adjust_contrast basic" {
+  let img = @image.make_gray_image(2, 1, [100.0, 200.0])
+  let result = @image.adjust_contrast(img, 1.0)
+  assert_true(result.pixels[0] > 99.0 && result.pixels[0] < 101.0)
+}
+
+test "gamma_correction basic" {
+  let img = @image.make_gray_image(2, 1, [0.0, 255.0])
+  let result = @image.gamma_correction(img, 2.0)
+  assert_eq(result.pixels[0], 0.0)
+  assert_eq(result.pixels[1], 255.0)
+}
+
+test "threshold basic" {
+  let img = @image.make_gray_image(4, 1, [50.0, 100.0, 150.0, 200.0])
+  let result = @image.threshold(img, 125.0)
+  assert_eq(result.pixels[0], 0.0)
+  assert_eq(result.pixels[1], 0.0)
+  assert_eq(result.pixels[2], 255.0)
+  assert_eq(result.pixels[3], 255.0)
+}
+
+test "histogram basic" {
+  let img = @image.make_gray_image(4, 1, [0.0, 100.0, 100.0, 200.0])
+  let hist = @image.histogram(img)
+  assert_eq(hist.length(), 256)
+  assert_eq(hist[0], 1)
+  assert_eq(hist[100], 2)
+  assert_eq(hist[200], 1)
+}
+
+test "mean_filter basic" {
+  let img = @image.make_gray_image(3, 3, [0.0, 0.0, 0.0, 0.0, 255.0, 0.0, 0.0, 0.0, 0.0])
+  let result = @image.mean_filter(img)
+  assert_eq(result.pixels.length(), 9)
+  assert_true(result.pixels[4] > 0.0)
+}
+
+test "median_filter basic" {
+  let img = @image.make_gray_image(3, 3, [0.0, 0.0, 0.0, 0.0, 255.0, 0.0, 0.0, 0.0, 0.0])
+  let result = @image.median_filter(img)
+  assert_eq(result.pixels.length(), 9)
+  assert_eq(result.pixels[4], 0.0)
+}
+
+test "sobel_x basic" {
+  let img = @image.make_gray_image(3, 3, [0.0, 0.0, 0.0, 100.0, 100.0, 100.0, 200.0, 200.0, 200.0])
+  let result = @image.sobel_x(img)
+  assert_eq(result.pixels.length(), 9)
+}
+
+test "sobel_y basic" {
+  let img = @image.make_gray_image(3, 3, [0.0, 100.0, 200.0, 0.0, 100.0, 200.0, 0.0, 100.0, 200.0])
+  let result = @image.sobel_y(img)
+  assert_eq(result.pixels.length(), 9)
+}
+
+test "edge_magnitude basic" {
+  let img = @image.make_gray_image(3, 3, [0.0, 0.0, 0.0, 0.0, 255.0, 0.0, 0.0, 0.0, 0.0])
+  let result = @image.edge_magnitude(img)
+  assert_eq(result.pixels.length(), 9)
+  assert_true(result.pixels[4] >= 0.0)
+}
+
+test "downsample basic" {
+  let img = @image.make_gray_image(4, 4, [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0])
+  let result = @image.downsample(img)
+  assert_eq(result.width, 2)
+  assert_eq(result.height, 2)
+  assert_eq(result.pixels[0], 0.0)
+  assert_eq(result.pixels[1], 2.0)
+}
+
+test "dilate basic" {
+  let img = @image.make_gray_image(3, 3, [0.0, 0.0, 0.0, 0.0, 255.0, 0.0, 0.0, 0.0, 0.0])
+  let result = @image.dilate(img)
+  assert_true(result.pixels[0] > 0.0)
+  assert_eq(result.pixels[4], 255.0)
+}
+
+test "erode basic" {
+  let img = @image.make_gray_image(3, 3, [255.0, 255.0, 255.0, 255.0, 100.0, 255.0, 255.0, 255.0, 255.0])
+  let result = @image.erode(img)
+  assert_true(result.pixels[4] < 255.0)
+}
+
+test "rgb_to_gray basic" {
+  let rgb = [(255.0, 0.0, 0.0), (0.0, 255.0, 0.0), (0.0, 0.0, 255.0)]
+  let result = @image.rgb_to_gray(3, 1, rgb)
+  assert_eq(result.pixels.length(), 3)
+  assert_true(result.pixels[0] > 70.0 && result.pixels[0] < 80.0)
+  assert_true(result.pixels[1] > 140.0 && result.pixels[1] < 160.0)
+  assert_true(result.pixels[2] > 20.0 && result.pixels[2] < 40.0)
+}

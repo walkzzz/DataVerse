@@ -51,6 +51,10 @@ pub using @opcore.safety { safety_id, mask_digits, mask_email }
 pub using @opcore.image {
   image_id, ImageMeta, make_image_meta, empty_image_meta, image_size, aspect_ratio, aspect_ratio_filter, image_resize, image_crop, image_to_dataobject,
   FlipAxis, RotateAngle, image_flip, image_rotate, flip_axis_name, rotate_angle_name,
+  GrayImage, make_gray_image, image_min, image_max, image_mean, image_std,
+  adjust_brightness, adjust_contrast, gamma_correction, threshold, histogram,
+  mean_filter, median_filter, sobel_x, sobel_y, edge_magnitude, downsample,
+  dilate, erode, rgb_to_gray,
 }
 pub using @opcore.audio {
   audio_id, AudioMeta, make_audio_meta, empty_audio_meta, audio_duration, sample_rate_filter, audio_segment, audio_to_dataobject,

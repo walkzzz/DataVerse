@@ -6622,6 +6622,11 @@ pub using @learncore.reinforcement {
   ExperienceReplay, make_experience_replay, add_experience, replay_size, soft_update, ppo_clipped_loss, ppo_update,
   discounted_return, normalize_rewards,
 }
+pub using @learncore.ensemble {
+  ensemble_id, hard_voting, soft_voting, weighted_voting, bootstrap_sample, bagging_predict,
+  adaboost_update_weights, adaboost_alpha, adaboost_error_rate, gradient_boosting_update, compute_residuals,
+  stacking_predict, random_forest_predict, random_forest_classify, aggregate_feature_importance,
+}
 pub using @learncore.cross_validation {
   cross_validation_id, CVSplit, kfold_splits, CVStats, cv_stats, loo_count,
 }

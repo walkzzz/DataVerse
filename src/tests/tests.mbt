@@ -7628,3 +7628,118 @@ test "normalize_rewards empty" {
   let result = @reinforcement.normalize_rewards([])
   assert_eq(result.length(), 0)
 }
+
+// S7.7 learncore/ensemble 测试 / Ensemble tests
+
+test "hard_voting basic" {
+  let preds = [[0, 1, 0], [0, 1, 1], [1, 1, 0]]
+  let result = @ensemble.hard_voting(preds)
+  assert_eq(result.length(), 3)
+  assert_eq(result[1], 1)
+}
+
+test "hard_voting empty" {
+  let result = @ensemble.hard_voting([])
+  assert_eq(result.length(), 0)
+}
+
+test "soft_voting basic" {
+  let probs = [[[0.7, 0.3], [0.4, 0.6]], [[0.6, 0.4], [0.5, 0.5]]]
+  let result = @ensemble.soft_voting(probs)
+  assert_eq(result.length(), 2)
+}
+
+test "weighted_voting basic" {
+  let preds = [[0, 1], [1, 1]]
+  let weights = [0.3, 0.7]
+  let result = @ensemble.weighted_voting(preds, weights)
+  assert_eq(result.length(), 2)
+}
+
+test "bootstrap_sample basic" {
+  let data = [1.0, 2.0, 3.0, 4.0, 5.0]
+  let result = @ensemble.bootstrap_sample(data, 10)
+  assert_eq(result.length(), 10)
+}
+
+test "bootstrap_sample empty" {
+  let result = @ensemble.bootstrap_sample([], 5)
+  assert_eq(result.length(), 0)
+}
+
+test "bagging_predict basic" {
+  let preds = [[1.0, 2.0, 3.0], [3.0, 4.0, 5.0]]
+  let result = @ensemble.bagging_predict(preds)
+  assert_eq(result.length(), 3)
+  assert_eq(result[0], 2.0)
+}
+
+test "adaboost_update_weights basic" {
+  let weights = [0.25, 0.25, 0.25, 0.25]
+  let preds = [0, 1, 0, 1]
+  let labels = [0, 1, 1, 1]
+  let result = @ensemble.adaboost_update_weights(weights, preds, labels, 0.5)
+  assert_eq(result.length(), 4)
+}
+
+test "adaboost_alpha basic" {
+  let result = @ensemble.adaboost_alpha(0.3)
+  assert_true(result > 0.0)
+}
+
+test "adaboost_alpha edge cases" {
+  assert_eq(@ensemble.adaboost_alpha(0.0), 0.0)
+  assert_eq(@ensemble.adaboost_alpha(1.0), 0.0)
+}
+
+test "adaboost_error_rate basic" {
+  let weights = [0.5, 0.5]
+  let preds = [0, 1]
+  let labels = [0, 0]
+  let result = @ensemble.adaboost_error_rate(weights, preds, labels)
+  assert_eq(result, 0.5)
+}
+
+test "gradient_boosting_update basic" {
+  let current = [1.0, 2.0, 3.0]
+  let base = [0.1, 0.2, 0.3]
+  let result = @ensemble.gradient_boosting_update(current, base, 0.1)
+  assert_eq(result.length(), 3)
+  assert_eq(result[0], 1.01)
+}
+
+test "compute_residuals basic" {
+  let labels = [3.0, 5.0, 7.0]
+  let preds = [2.0, 4.0, 6.0]
+  let result = @ensemble.compute_residuals(labels, preds)
+  assert_eq(result[0], 1.0)
+  assert_eq(result[1], 1.0)
+  assert_eq(result[2], 1.0)
+}
+
+test "stacking_predict basic" {
+  let base_preds = [[1.0, 2.0], [3.0, 4.0]]
+  let meta_weights = [0.6, 0.4]
+  let result = @ensemble.stacking_predict(base_preds, meta_weights)
+  assert_eq(result.length(), 2)
+}
+
+test "random_forest_predict basic" {
+  let preds = [[1.0, 2.0], [3.0, 4.0]]
+  let result = @ensemble.random_forest_predict(preds)
+  assert_eq(result[0], 2.0)
+}
+
+test "random_forest_classify basic" {
+  let preds = [[0, 1], [0, 1], [1, 1]]
+  let result = @ensemble.random_forest_classify(preds)
+  assert_eq(result[0], 0)
+  assert_eq(result[1], 1)
+}
+
+test "aggregate_feature_importance basic" {
+  let importances = [[0.3, 0.5, 0.2], [0.4, 0.4, 0.2]]
+  let result = @ensemble.aggregate_feature_importance(importances)
+  assert_eq(result.length(), 3)
+  assert_eq(result[0], 0.35)
+}

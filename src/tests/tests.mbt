@@ -6384,3 +6384,141 @@ test "S6.1 transform_lookup empty table" {
   assert_eq(@hydrology.raster_get(result, 0, 0), 0.0)
   assert_eq(@hydrology.raster_get(result, 0, 1), 0.0)
 }
+
+// ============================================================
+// S6.2 learncore/feature 度量地理分布测试
+// ============================================================
+
+test "S6.2 feature_central_feature empty" {
+  let (p, d) = @feature.feature_central_feature([])
+  assert_eq(p.x, 0.0)
+  assert_eq(p.y, 0.0)
+  assert_eq(d, 0.0)
+}
+
+test "S6.2 feature_central_feature single" {
+  let pts = [@proximity.make_point(3.0, 4.0)]
+  let (p, d) = @feature.feature_central_feature(pts)
+  assert_eq(p.x, 3.0)
+  assert_eq(p.y, 4.0)
+  assert_eq(d, 0.0)
+}
+
+test "S6.2 feature_central_feature basic" {
+  let pts = [
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(10.0, 0.0),
+    @proximity.make_point(5.0, 0.0),
+  ]
+  let (p, _) = @feature.feature_central_feature(pts)
+  assert_eq(p.x, 5.0)
+}
+
+test "S6.2 feature_mean_center empty" {
+  let p = @feature.feature_mean_center([])
+  assert_eq(p.x, 0.0)
+  assert_eq(p.y, 0.0)
+}
+
+test "S6.2 feature_mean_center basic" {
+  let pts = [
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(10.0, 0.0),
+    @proximity.make_point(0.0, 10.0),
+    @proximity.make_point(10.0, 10.0),
+  ]
+  let p = @feature.feature_mean_center(pts)
+  assert_true((p.x - 5.0).abs() < 0.0001)
+  assert_true((p.y - 5.0).abs() < 0.0001)
+}
+
+test "S6.2 feature_mean_center single" {
+  let pts = [@proximity.make_point(7.0, 3.0)]
+  let p = @feature.feature_mean_center(pts)
+  assert_eq(p.x, 7.0)
+  assert_eq(p.y, 3.0)
+}
+
+test "S6.2 feature_median_center empty" {
+  let p = @feature.feature_median_center([])
+  assert_eq(p.x, 0.0)
+  assert_eq(p.y, 0.0)
+}
+
+test "S6.2 feature_median_center odd" {
+  let pts = [
+    @proximity.make_point(1.0, 10.0),
+    @proximity.make_point(3.0, 20.0),
+    @proximity.make_point(5.0, 30.0),
+  ]
+  let p = @feature.feature_median_center(pts)
+  assert_eq(p.x, 3.0)
+  assert_eq(p.y, 20.0)
+}
+
+test "S6.2 feature_median_center even" {
+  let pts = [
+    @proximity.make_point(1.0, 10.0),
+    @proximity.make_point(3.0, 20.0),
+    @proximity.make_point(5.0, 30.0),
+    @proximity.make_point(7.0, 40.0),
+  ]
+  let p = @feature.feature_median_center(pts)
+  assert_true((p.x - 4.0).abs() < 0.0001)
+  assert_true((p.y - 25.0).abs() < 0.0001)
+}
+
+test "S6.2 feature_standard_distance empty" {
+  assert_eq(@feature.feature_standard_distance([]), 0.0)
+}
+
+test "S6.2 feature_standard_distance single" {
+  let pts = [@proximity.make_point(5.0, 5.0)]
+  assert_eq(@feature.feature_standard_distance(pts), 0.0)
+}
+
+test "S6.2 feature_standard_distance basic" {
+  let pts = [
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(10.0, 0.0),
+    @proximity.make_point(0.0, 10.0),
+    @proximity.make_point(10.0, 10.0),
+  ]
+  let sd = @feature.feature_standard_distance(pts)
+  assert_true(sd > 0.0)
+}
+
+test "S6.2 feature_directional_distribution empty" {
+  let (cx, cy, major, minor, rot) = @feature.feature_directional_distribution([])
+  assert_eq(cx, 0.0)
+  assert_eq(cy, 0.0)
+  assert_eq(major, 0.0)
+  assert_eq(minor, 0.0)
+  assert_eq(rot, 0.0)
+}
+
+test "S6.2 feature_directional_distribution basic" {
+  let pts = [
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(10.0, 0.0),
+    @proximity.make_point(0.0, 10.0),
+    @proximity.make_point(10.0, 10.0),
+  ]
+  let (cx, cy, major, minor, _) = @feature.feature_directional_distribution(pts)
+  assert_true((cx - 5.0).abs() < 0.0001)
+  assert_true((cy - 5.0).abs() < 0.0001)
+  assert_true(major >= 0.0)
+  assert_true(minor >= 0.0)
+  assert_true(major >= minor)
+}
+
+test "S6.2 feature_directional_distribution line" {
+  let pts = [
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(10.0, 0.0),
+    @proximity.make_point(20.0, 0.0),
+  ]
+  let (_, _, major, minor, _) = @feature.feature_directional_distribution(pts)
+  assert_true(major > 0.0)
+  assert_true(minor >= 0.0)
+}

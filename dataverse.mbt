@@ -6565,7 +6565,7 @@ pub using @learncore {
 pub using @learncore.regression { regression_id, LinearModel, linear_regression, predict_linear }
 pub using @learncore.classify { classify_id, knn_classify }
 pub using @learncore.cluster { cluster_id, kmeans }
-pub using @learncore.feature { feature_id, standardize, normalize_minmax }
+pub using @learncore.feature { feature_id, standardize, normalize_minmax, feature_central_feature, feature_mean_center, feature_median_center, feature_standard_distance, feature_directional_distribution }
 pub using @learncore.metrics { metrics_id, accuracy, mse, mae, confusion_matrix }
 pub using @learncore.interpolation {
   InterpolationMethod, SamplePoint, InterpolationResult,

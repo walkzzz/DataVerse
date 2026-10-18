@@ -4,6 +4,19 @@
 
 ## [0.1.0-dev] - 2026-10-18
 
+### S4.3 - opcore/hydrology 水文分析
+
+**新增 / Added**
+- `src/opcore/hydrology/`：水文分析算子包（4 type + 16 fn）
+  - 类型：`RasterGrid` / `FlowDirResult` / `FlowAccumResult` / `HydrologyResult`
+  - 算子：`hydrology_find_sinks` / `hydrology_fill` / `hydrology_flow_direction`（D8）/ `hydrology_flow_accumulation` / `hydrology_watershed`（BFS）/ `hydrology_basin` / `hydrology_stream_cells` / `hydrology_stream_order` / `hydrology_flow_length` / `hydrology_stats` / `hydrology_snap_pour` 等
+  - 对标 ArcGIS Pro: Fill / Flow Direction / Flow Accumulation / Watershed / Basin / Stream Order / Flow Length / Snap Pour Point
+- 20 个跨包测试（S4.3 系列）
+
+**统计 / Stats**
+- 测试：529 → 549（+20）
+- API：511 fn + 121 type → 527 fn + 125 type（+16 fn + 4 type）
+
 ### S4.2 - opcore/overlay 叠加分析
 
 **新增 / Added**

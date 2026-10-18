@@ -31,6 +31,7 @@ import {
   "opcore/zonal",
   "opcore/local_stats",
   "opcore/neighborhood",
+  "opcore/solar",
   "datatemporal",
   "datatemporal/version",
   "datatemporal/lineage",

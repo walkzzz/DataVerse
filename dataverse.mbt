@@ -129,99 +129,803 @@ pub using @opcore.zonal {
 }
 pub using @opcore.local_stats {
 pub using @opcore.neighborhood {
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   BlockStat, LineStat, NeighborhoodKind, NeighborhoodConfig, BlockResult,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   make_neighborhood_config, make_block_result,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_stat_name, line_stat_name, neighborhood_kind_name,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_mean, block_sum, block_min, block_max, block_range,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_count, block_std, block_majority, block_minority, block_median,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_statistics, block_statistics_grid, block_results_grid,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   line_mean, line_sum, line_min, line_max, line_count, line_range, line_std,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   line_statistics, line_statistics_col,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   neighborhood_cells, neighborhood_cell_count, neighborhood_expand,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
+}
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
 }
   FocalStat, NeighborhoodShape, FocalResult,
 pub using @opcore.neighborhood {
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   BlockStat, LineStat, NeighborhoodKind, NeighborhoodConfig, BlockResult,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   make_neighborhood_config, make_block_result,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_stat_name, line_stat_name, neighborhood_kind_name,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_mean, block_sum, block_min, block_max, block_range,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_count, block_std, block_majority, block_minority, block_median,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_statistics, block_statistics_grid, block_results_grid,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   line_mean, line_sum, line_min, line_max, line_count, line_range, line_std,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   line_statistics, line_statistics_col,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   neighborhood_cells, neighborhood_cell_count, neighborhood_expand,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
+}
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
 }
   make_focal_result, focal_stat_name, neighborhood_shape_name,
 pub using @opcore.neighborhood {
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   BlockStat, LineStat, NeighborhoodKind, NeighborhoodConfig, BlockResult,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   make_neighborhood_config, make_block_result,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_stat_name, line_stat_name, neighborhood_kind_name,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_mean, block_sum, block_min, block_max, block_range,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_count, block_std, block_majority, block_minority, block_median,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_statistics, block_statistics_grid, block_results_grid,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   line_mean, line_sum, line_min, line_max, line_count, line_range, line_std,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   line_statistics, line_statistics_col,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   neighborhood_cells, neighborhood_cell_count, neighborhood_expand,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
+}
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
 }
   focal_mean, focal_sum, focal_min, focal_max, focal_range,
 pub using @opcore.neighborhood {
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   BlockStat, LineStat, NeighborhoodKind, NeighborhoodConfig, BlockResult,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   make_neighborhood_config, make_block_result,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_stat_name, line_stat_name, neighborhood_kind_name,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_mean, block_sum, block_min, block_max, block_range,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_count, block_std, block_majority, block_minority, block_median,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_statistics, block_statistics_grid, block_results_grid,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   line_mean, line_sum, line_min, line_max, line_count, line_range, line_std,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   line_statistics, line_statistics_col,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   neighborhood_cells, neighborhood_cell_count, neighborhood_expand,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
+}
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
 }
   focal_std, focal_count, focal_majority, focal_minority, focal_median,
 pub using @opcore.neighborhood {
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   BlockStat, LineStat, NeighborhoodKind, NeighborhoodConfig, BlockResult,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   make_neighborhood_config, make_block_result,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_stat_name, line_stat_name, neighborhood_kind_name,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_mean, block_sum, block_min, block_max, block_range,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_count, block_std, block_majority, block_minority, block_median,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_statistics, block_statistics_grid, block_results_grid,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   line_mean, line_sum, line_min, line_max, line_count, line_range, line_std,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   line_statistics, line_statistics_col,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   neighborhood_cells, neighborhood_cell_count, neighborhood_expand,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
+}
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
 }
   focal_statistics, focal_filter, focal_filter_mean, focal_results_grid,
 pub using @opcore.neighborhood {
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   BlockStat, LineStat, NeighborhoodKind, NeighborhoodConfig, BlockResult,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   make_neighborhood_config, make_block_result,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_stat_name, line_stat_name, neighborhood_kind_name,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_mean, block_sum, block_min, block_max, block_range,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_count, block_std, block_majority, block_minority, block_median,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_statistics, block_statistics_grid, block_results_grid,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   line_mean, line_sum, line_min, line_max, line_count, line_range, line_std,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   line_statistics, line_statistics_col,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   neighborhood_cells, neighborhood_cell_count, neighborhood_expand,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
+}
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
 }
   local_add, local_subtract, local_multiply, local_add_scalar,
 pub using @opcore.neighborhood {
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   BlockStat, LineStat, NeighborhoodKind, NeighborhoodConfig, BlockResult,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   make_neighborhood_config, make_block_result,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_stat_name, line_stat_name, neighborhood_kind_name,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_mean, block_sum, block_min, block_max, block_range,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_count, block_std, block_majority, block_minority, block_median,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_statistics, block_statistics_grid, block_results_grid,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   line_mean, line_sum, line_min, line_max, line_count, line_range, line_std,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   line_statistics, line_statistics_col,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   neighborhood_cells, neighborhood_cell_count, neighborhood_expand,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
+}
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
 }
 }
 pub using @opcore.neighborhood {
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   BlockStat, LineStat, NeighborhoodKind, NeighborhoodConfig, BlockResult,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   make_neighborhood_config, make_block_result,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_stat_name, line_stat_name, neighborhood_kind_name,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_mean, block_sum, block_min, block_max, block_range,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_count, block_std, block_majority, block_minority, block_median,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   block_statistics, block_statistics_grid, block_results_grid,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   line_mean, line_sum, line_min, line_max, line_count, line_range, line_std,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   line_statistics, line_statistics_col,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
   neighborhood_cells, neighborhood_cell_count, neighborhood_expand,
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
+}
+}
+pub using @opcore.solar {
+  SolarConfig, SolarResult, SolarAreaResult,
+  make_solar_config, make_solar_result, make_solar_area_result,
+  solar_declination, solar_hour_angle, solar_altitude, solar_azimuth,
+  solar_direct_radiation, solar_diffuse_radiation, solar_global_radiation,
+  solar_duration, solar_radiation_point, solar_radiation_area,
+  solar_radiation_stats, solar_result_summary,
 }
 pub using @learncore {
   learncore_id, ModelSpace, model_space_name, Hyperparams, make_hyperparams,

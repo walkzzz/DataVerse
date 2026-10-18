@@ -5849,3 +5849,218 @@ test "S5.1 neighborhood_cells ring" {
   let cells = @neighborhood.neighborhood_cells(cfg)
   assert_eq(cells.length(), 4)
 }
+
+// ============================================================
+// S5.2 opcore/solar 太阳辐射测试
+// ============================================================
+
+test "S5.2 make_solar_config" {
+  let cfg = @solar.make_solar_config(40.0, 116.0, 180, 12.0, 0.3)
+  assert_eq(cfg.latitude, 40.0)
+  assert_eq(cfg.longitude, 116.0)
+  assert_eq(cfg.day_of_year, 180)
+  assert_eq(cfg.hour, 12.0)
+  assert_eq(cfg.diffuse_ratio, 0.3)
+}
+
+test "S5.2 make_solar_config boundary" {
+  let cfg = @solar.make_solar_config(40.0, 116.0, 0, 25.0, 1.5)
+  assert_eq(cfg.day_of_year, 1)
+  assert_eq(cfg.hour, 24.0)
+  assert_eq(cfg.diffuse_ratio, 1.0)
+}
+
+test "S5.2 make_solar_config negative" {
+  let cfg = @solar.make_solar_config(40.0, 116.0, 400, -1.0, -0.5)
+  assert_eq(cfg.day_of_year, 365)
+  assert_eq(cfg.hour, 0.0)
+  assert_eq(cfg.diffuse_ratio, 0.0)
+}
+
+test "S5.2 make_solar_result" {
+  let r = @solar.make_solar_result(800.0, 560.0, 240.0, 12.0, 60.0, 180.0)
+  assert_eq(r.global_radiation, 800.0)
+  assert_eq(r.direct_radiation, 560.0)
+  assert_eq(r.diffuse_radiation, 240.0)
+  assert_eq(r.duration, 12.0)
+  assert_eq(r.altitude, 60.0)
+  assert_eq(r.azimuth, 180.0)
+}
+
+test "S5.2 make_solar_area_result" {
+  let r = @solar.make_solar_result(800.0, 560.0, 240.0, 12.0, 60.0, 180.0)
+  let ar = @solar.make_solar_area_result(1, 2, r)
+  assert_eq(ar.cell_row, 1)
+  assert_eq(ar.cell_col, 2)
+  assert_eq(ar.result.global_radiation, 800.0)
+}
+
+test "S5.2 solar_declination" {
+  let d1 = @solar.solar_declination(80)
+  let d2 = @solar.solar_declination(355)
+  assert_true(d1 >= -23.45 && d1 <= 23.45)
+  assert_true(d2 >= -23.45 && d2 <= 23.45)
+}
+
+test "S5.2 solar_declination equinox" {
+  let d = @solar.solar_declination(80)
+  assert_true(d.abs() < 5.0)
+}
+
+test "S5.2 solar_hour_angle" {
+  assert_eq(@solar.solar_hour_angle(12.0), 0.0)
+  assert_true(@solar.solar_hour_angle(6.0) < 0.0)
+  assert_true(@solar.solar_hour_angle(18.0) > 0.0)
+}
+
+test "S5.2 solar_altitude noon" {
+  let alt = @solar.solar_altitude(40.0, 180, 12.0)
+  assert_true(alt > 0.0)
+  assert_true(alt <= 90.0)
+}
+
+test "S5.2 solar_altitude midnight" {
+  let alt = @solar.solar_altitude(40.0, 180, 0.0)
+  assert_eq(alt, 0.0)
+}
+
+test "S5.2 solar_altitude non_negative" {
+  let alt1 = @solar.solar_altitude(40.0, 180, 6.0)
+  let alt2 = @solar.solar_altitude(40.0, 180, 18.0)
+  assert_true(alt1 >= 0.0)
+  assert_true(alt2 >= 0.0)
+}
+
+test "S5.2 solar_azimuth noon" {
+  let az = @solar.solar_azimuth(40.0, 180, 12.0)
+  assert_true(az > 150.0 && az < 210.0)
+}
+
+test "S5.2 solar_azimuth morning negative" {
+  let az = @solar.solar_azimuth(40.0, 180, 8.0)
+  assert_true(az < 0.0)
+}
+
+test "S5.2 solar_azimuth afternoon positive" {
+  let az = @solar.solar_azimuth(40.0, 180, 16.0)
+  assert_true(az > 0.0)
+}
+
+test "S5.2 solar_direct_radiation" {
+  let r = @solar.solar_direct_radiation(60.0, 0.3)
+  assert_true(r > 0.0)
+}
+
+test "S5.2 solar_direct_radiation zero altitude" {
+  assert_eq(@solar.solar_direct_radiation(0.0, 0.3), 0.0)
+}
+
+test "S5.2 solar_direct_radiation full direct" {
+  let r = @solar.solar_direct_radiation(90.0, 0.0)
+  assert_true((r - 1000.0).abs() < 1.0)
+}
+
+test "S5.2 solar_diffuse_radiation" {
+  let r = @solar.solar_diffuse_radiation(60.0, 0.3)
+  assert_true(r > 0.0)
+}
+
+test "S5.2 solar_diffuse_radiation zero altitude" {
+  assert_eq(@solar.solar_diffuse_radiation(0.0, 0.3), 0.0)
+}
+
+test "S5.2 solar_global_radiation" {
+  let g = @solar.solar_global_radiation(60.0, 0.3)
+  let d = @solar.solar_direct_radiation(60.0, 0.3)
+  let diff = @solar.solar_diffuse_radiation(60.0, 0.3)
+  assert_true((g - d - diff).abs() < 0.001)
+}
+
+test "S5.2 solar_duration" {
+  let dur = @solar.solar_duration(40.0, 180)
+  assert_true(dur > 0.0)
+  assert_true(dur <= 24.0)
+}
+
+test "S5.2 solar_duration winter" {
+  let dur = @solar.solar_duration(40.0, 355)
+  assert_true(dur > 0.0)
+  assert_true(dur <= 24.0)
+}
+
+test "S5.2 solar_radiation_point noon" {
+  let cfg = @solar.make_solar_config(40.0, 116.0, 180, 12.0, 0.3)
+  let r = @solar.solar_radiation_point(cfg)
+  assert_true(r.global_radiation > 0.0)
+  assert_true(r.direct_radiation > 0.0)
+  assert_true(r.diffuse_radiation > 0.0)
+  assert_true(r.altitude > 0.0)
+}
+
+test "S5.2 solar_radiation_point midnight" {
+  let cfg = @solar.make_solar_config(40.0, 116.0, 180, 0.0, 0.3)
+  let r = @solar.solar_radiation_point(cfg)
+  assert_eq(r.global_radiation, 0.0)
+  assert_eq(r.direct_radiation, 0.0)
+  assert_eq(r.diffuse_radiation, 0.0)
+  assert_eq(r.altitude, 0.0)
+}
+
+test "S5.2 solar_radiation_point full direct" {
+  let cfg = @solar.make_solar_config(0.0, 0.0, 80, 12.0, 0.0)
+  let r = @solar.solar_radiation_point(cfg)
+  assert_true(r.direct_radiation > r.diffuse_radiation)
+}
+
+test "S5.2 solar_radiation_point full diffuse" {
+  let cfg = @solar.make_solar_config(0.0, 0.0, 80, 12.0, 1.0)
+  let r = @solar.solar_radiation_point(cfg)
+  assert_eq(r.direct_radiation, 0.0)
+  assert_true(r.diffuse_radiation > 0.0)
+}
+
+test "S5.2 solar_radiation_area" {
+  let dem = @hydrology.make_raster([[100.0, 200.0], [150.0, 250.0]])
+  let cfg = @solar.make_solar_config(40.0, 116.0, 180, 12.0, 0.3)
+  let results = @solar.solar_radiation_area(dem, cfg)
+  assert_eq(results.length(), 2)
+  assert_eq(results[0].length(), 2)
+}
+
+test "S5.2 solar_radiation_area empty" {
+  let dem = @hydrology.make_raster([])
+  let cfg = @solar.make_solar_config(40.0, 116.0, 180, 12.0, 0.3)
+  let results = @solar.solar_radiation_area(dem, cfg)
+  assert_eq(results.length(), 0)
+}
+
+test "S5.2 solar_radiation_stats" {
+  let dem = @hydrology.make_raster([[100.0, 200.0], [150.0, 250.0]])
+  let cfg = @solar.make_solar_config(40.0, 116.0, 180, 12.0, 0.3)
+  let results = @solar.solar_radiation_area(dem, cfg)
+  let (g, d, diff, n) = @solar.solar_radiation_stats(results)
+  assert_true(g > 0.0)
+  assert_true(d > 0.0)
+  assert_true(diff > 0.0)
+  assert_eq(n, 4)
+}
+
+test "S5.2 solar_radiation_stats empty" {
+  let (g, d, diff, n) = @solar.solar_radiation_stats([])
+  assert_eq(g, 0.0)
+  assert_eq(d, 0.0)
+  assert_eq(diff, 0.0)
+  assert_eq(n, 0)
+}
+
+test "S5.2 solar_result_summary" {
+  let r = @solar.make_solar_result(800.0, 560.0, 240.0, 12.0, 60.0, 180.0)
+  let s = @solar.solar_result_summary(r)
+  assert_true(s.length() > 0)
+}
+
+test "S5.2 solar global = direct + diffuse" {
+  let cfg = @solar.make_solar_config(35.0, 120.0, 172, 14.0, 0.25)
+  let r = @solar.solar_radiation_point(cfg)
+  assert_true((r.global_radiation - r.direct_radiation - r.diffuse_radiation).abs() < 0.001)
+}

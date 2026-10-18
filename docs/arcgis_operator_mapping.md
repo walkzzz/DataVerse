@@ -44,10 +44,10 @@
 #### 提取分析 → opcore/filter + opcore/select
 - Clip → filter_by_range（部分对标）
 - Select → select_by_predicate
-- Split → 待建
+- Split → filter_split
 - Split By Attributes → 待建
 
-#### 叠加分析 → opcore/overlay（待建）
+#### 叠加分析 → opcore/overlay
 - Erase → overlay_erase
 - Identity → overlay_identity
 - Intersect → overlay_intersect
@@ -56,7 +56,7 @@
 - Update → overlay_update
 - Symmetrical Difference → overlay_sym_diff
 
-#### 邻近分析 → opcore/proximity（待建）
+#### 邻近分析 → opcore/proximity
 - Buffer → proximity_buffer
 - Create Thiessen Polygons → proximity_thiessen
 - Generate Near Table → proximity_near_table
@@ -68,44 +68,44 @@
 #### 统计分析 → opcore/eval
 - Frequency → eval_frequency（待建）
 - Summary Statistics → eval_summary_stats（部分对标）
-- Tabulate Intersection → eval_tabulate_intersection（待建）
+- Tabulate Intersection → eval_tabulate_intersection
 
-#### 度量地理分布 → learncore/feature（扩展）
-- Central Feature → feature_central_feature（待建）
-- Mean Center → feature_mean_center（待建）
-- Median Center → feature_median_center（待建）
-- Standard Distance → feature_standard_distance（待建）
-- Directional Distribution → feature_directional_distribution（待建）
+#### 度量地理分布 → learncore/feature
+- Central Feature → feature_central_feature
+- Mean Center → feature_mean_center
+- Median Center → feature_median_center
+- Standard Distance → feature_standard_distance
+- Directional Distribution → feature_directional_distribution
 
 #### 聚类分布制图 → learncore/cluster
 - Density-based Clustering → cluster_density_based（部分对标）
-- Similarity Search → cluster_similarity_search（待建）
+- Similarity Search → cluster_similarity_search
 
 #### 建模空间关系 → learncore/classify + learncore/regression
-- Forest-based Classification and Regression → classify_forest（待建）
-- Generalized Linear Regression → regression_glm（待建）
+- Forest-based Classification and Regression → classify_forest
+- Generalized Linear Regression → regression_glm
 
 ### 栅格分析（497 工具）
 
 #### 条件分析 → opcore/transform
-- Con → transform_conditional（待建）
-- Pick → transform_pick（待建）
-- Set Null → transform_set_null（待建）
+- Con → transform_conditional
+- Pick → transform_pick
+- Set Null → transform_set_null
 
-#### 密度分析 → opcore/density（待建）
+#### 密度分析 → opcore/density
 - Kernel Density → density_kernel
 - Line Density → density_line
 - Point Density → density_point
 - Space Time Kernel Density → density_space_time_kernel
 
-#### 距离分析 → opcore/distance（待建）
+#### 距离分析 → opcore/distance
 - Distance Accumulation → distance_accumulation
 - Cost Distance → distance_cost
 - Euclidean Distance → distance_euclidean
 - Optimal Path As Line → distance_optimal_path
 - Corridor → distance_corridor
 
-#### 水文分析 → opcore/hydrology（待建）
+#### 水文分析 → opcore/hydrology
 - Fill → hydrology_fill
 - Flow Direction → hydrology_flow_direction
 - Flow Accumulation → hydrology_flow_accumulation
@@ -117,14 +117,14 @@
 - Basin → hydrology_basin
 - Flow Length → hydrology_flow_length
 
-#### 插值分析 → learncore/interpolation（待建）
+#### 插值分析 → learncore/interpolation
 - IDW → interpolation_idw
 - Kriging → interpolation_kriging
 - Spline → interpolation_spline
 - Natural Neighbor → interpolation_natural_neighbor
 - Topo To Raster → interpolation_topo_to_raster
 
-#### 表面分析 → opcore/surface（待建）
+#### 表面分析 → opcore/surface
 - Slope → surface_slope
 - Aspect → surface_aspect
 - Hillshade → surface_hillshade
@@ -132,20 +132,20 @@
 - Curvature → surface_curvature
 - Viewshed → surface_viewshed
 
-#### 区域分析 → opcore/zonal（待建）
+#### 区域分析 → opcore/zonal
 - Zonal Statistics → zonal_statistics
 - Zonal Geometry → zonal_geometry
 - Tabulate Area → zonal_tabulate_area
 
-#### 局部分析 → opcore/local_stats（待建）
+#### 局部分析 → opcore/local_stats
 - Local Statistics → local_stats
 - Focal Statistics → focal_stats
 - Block Statistics → block_stats
 
 #### 重分类 → opcore/transform
-- Reclassify → transform_reclassify（待建）
-- Slice → transform_slice（待建）
-- Lookup → transform_lookup（待建）
+- Reclassify → transform_reclassify
+- Slice → transform_slice
+- Lookup → transform_lookup
 
 ## 四、Phase 4 Sprint 规划 / Phase 4 Sprint Planning
 

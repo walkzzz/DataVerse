@@ -4,6 +4,23 @@
 
 ## [0.1.0-dev] - 2026-10-18
 
+### S4.8 - opcore/zonal + opcore/local_stats 区域/局部分析
+
+**新增 / Added**
+- `src/opcore/zonal/`：区域分析算子包（3 type + 22 fn）
+  - 类型：`ZonalStat` / `ZoneResult` / `ZonalGeometryResult`
+  - 算子：`zonal_mean` / `zonal_sum` / `zonal_min` / `zonal_max` / `zonal_range` / `zonal_count` / `zonal_std` / `zonal_majority` / `zonal_minority` / `zonal_median` / `zonal_statistics` / `zonal_geometry` / `zonal_fill` / `zonal_stats_all` 等
+  - 对标 ArcGIS Pro: Zonal Statistics / Zonal Geometry / Zonal Fill
+- `src/opcore/local_stats/`：局部分析算子包（3 type + 22 fn）
+  - 类型：`FocalStat` / `NeighborhoodShape` / `FocalResult`
+  - 算子：`focal_mean` / `focal_sum` / `focal_min` / `focal_max` / `focal_range` / `focal_std` / `focal_count` / `focal_majority` / `focal_minority` / `focal_median` / `focal_statistics` / `focal_filter` / `focal_results_grid` / `local_add` / `local_subtract` / `local_multiply` / `local_add_scalar` 等
+  - 对标 ArcGIS Pro: Local Statistics / Focal Statistics
+- 55 个跨包测试（S4.8 系列）
+
+**统计 / Stats**
+- 测试：659 → 714（+55）
+- API：589 fn + 136 type → 633 fn + 142 type（+44 fn + 6 type）
+
 ### S4.7 - learncore/interpolation 插值分析
 
 **新增 / Added**

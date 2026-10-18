@@ -166,8 +166,9 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S4.5 | opcore/density 密度分析（Kernel/Point/Line Density 2 type + 13 fn） | ✅ | 6b3c039 |
 | S4.6 | opcore/distance 距离分析（Euclidean/Cost/Path/Corridor 3 type + 13 fn） | ✅ | 55844b7 |
 | S4.7 | learncore/interpolation 插值分析（IDW/Kriging/Spline/NaturalNeighbor 3 type + 18 fn） | ✅ | ec23ad0 |
+| S4.8 | opcore/zonal 区域分析 + opcore/local_stats 局部分析（6 type + 44 fn） | ✅ | 366cb56 |
 
-**当前测试**：659 · **当前 API**：589（pub fn）+ 136（pub type） · **形式化证明**：40
+**当前测试**：714 · **当前 API**：633（pub fn）+ 142（pub type） · **形式化证明**：40
 
 ---
 

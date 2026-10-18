@@ -8839,3 +8839,137 @@ test "bbox3d_contains false" {
   let p = @analysis3d.make_point3d(15.0, 5.0, 5.0)
   assert_false(@analysis3d.bbox3d_contains(bbox, p))
 }
+// ============================================
+// S8.5 opcore/geocoding 地理编码算子测试
+// ============================================
+
+test "geocoding_id" {
+  assert_eq(@geocoding.geocoding_id(), "opcore/geocoding")
+}
+
+test "make_geo_coord basic" {
+  let c = @geocoding.make_geo_coord(116.4, 39.9)
+  assert_eq(c.lon, 116.4)
+  assert_eq(c.lat, 39.9)
+}
+
+test "make_address basic" {
+  let a = @geocoding.make_address("123 Main St", "Beijing", "BJ", "100000", "CN")
+  assert_eq(a.street, "123 Main St")
+  assert_eq(a.city, "Beijing")
+  assert_eq(a.country, "CN")
+}
+
+test "standardize_address basic" {
+  let a = @geocoding.make_address("123 Main St", "Beijing", "BJ", "100000", "CN")
+  let s = @geocoding.standardize_address(a)
+  assert_eq(s.street, "123 Main St")
+  assert_eq(s.city, "Beijing")
+}
+
+test "address_to_string basic" {
+  let a = @geocoding.make_address("123 Main St", "Beijing", "BJ", "100000", "CN")
+  let s = @geocoding.address_to_string(a)
+  assert_eq(s, "123 Main St, Beijing, BJ 100000, CN")
+}
+
+test "forward_geocode basic" {
+  let a = @geocoding.make_address("123 Main St", "Beijing", "BJ", "100000", "CN")
+  let result = @geocoding.forward_geocode(a)
+  assert_true(result.score > 0.0)
+  assert_true(result.coord.lon >= -180.0 && result.coord.lon <= 180.0)
+}
+
+test "batch_forward_geocode basic" {
+  let a1 = @geocoding.make_address("123 Main St", "Beijing", "BJ", "100000", "CN")
+  let a2 = @geocoding.make_address("456 Oak Ave", "Shanghai", "SH", "200000", "CN")
+  let results = @geocoding.batch_forward_geocode([a1, a2])
+  assert_eq(results.length(), 2)
+}
+
+test "reverse_geocode basic" {
+  let c = @geocoding.make_geo_coord(116.4, 39.9)
+  let result = @geocoding.reverse_geocode(c)
+  assert_eq(result.coord.lon, 116.4)
+  assert_eq(result.coord.lat, 39.9)
+  assert_true(result.score > 0.0)
+}
+
+test "address_match_score identical" {
+  let a1 = @geocoding.make_address("123 Main St", "Beijing", "BJ", "100000", "CN")
+  let a2 = @geocoding.make_address("123 Main St", "Beijing", "BJ", "100000", "CN")
+  assert_eq(@geocoding.address_match_score(a1, a2), 1.0)
+}
+
+test "address_match_score different" {
+  let a1 = @geocoding.make_address("123 Main St", "Beijing", "BJ", "100000", "CN")
+  let a2 = @geocoding.make_address("456 Oak Ave", "Shanghai", "SH", "200000", "US")
+  assert_eq(@geocoding.address_match_score(a1, a2), 0.0)
+}
+
+test "address_match_score partial" {
+  let a1 = @geocoding.make_address("123 Main St", "Beijing", "BJ", "100000", "CN")
+  let a2 = @geocoding.make_address("456 Oak Ave", "Beijing", "BJ", "100000", "CN")
+  let score = @geocoding.address_match_score(a1, a2)
+  assert_true(score > 0.5 && score < 1.0)
+}
+
+test "address_matches true" {
+  let a1 = @geocoding.make_address("123 Main St", "Beijing", "BJ", "100000", "CN")
+  let a2 = @geocoding.make_address("123 Main St", "Beijing", "BJ", "100000", "CN")
+  assert_true(@geocoding.address_matches(a1, a2, 0.9))
+}
+
+test "address_matches false" {
+  let a1 = @geocoding.make_address("123 Main St", "Beijing", "BJ", "100000", "CN")
+  let a2 = @geocoding.make_address("456 Oak Ave", "Shanghai", "SH", "200000", "US")
+  assert_false(@geocoding.address_matches(a1, a2, 0.5))
+}
+
+test "validate_coord valid" {
+  let c = @geocoding.make_geo_coord(116.4, 39.9)
+  assert_true(@geocoding.validate_coord(c))
+}
+
+test "validate_coord invalid lon" {
+  let c = @geocoding.make_geo_coord(200.0, 39.9)
+  assert_false(@geocoding.validate_coord(c))
+}
+
+test "validate_coord invalid lat" {
+  let c = @geocoding.make_geo_coord(116.4, -100.0)
+  assert_false(@geocoding.validate_coord(c))
+}
+
+test "coord_distance basic" {
+  let c1 = @geocoding.make_geo_coord(0.0, 0.0)
+  let c2 = @geocoding.make_geo_coord(0.0, 1.0)
+  let d = @geocoding.coord_distance(c1, c2)
+  assert_true(d > 100000.0 && d < 120000.0)
+}
+
+test "coord_distance same point" {
+  let c = @geocoding.make_geo_coord(116.4, 39.9)
+  assert_eq(@geocoding.coord_distance(c, c), 0.0)
+}
+
+test "validate_postal US valid" {
+  assert_true(@geocoding.validate_postal("12345", "US"))
+  assert_true(@geocoding.validate_postal("12345-6789", "US"))
+}
+
+test "validate_postal US invalid" {
+  assert_false(@geocoding.validate_postal("123", "US"))
+}
+
+test "validate_postal CN valid" {
+  assert_true(@geocoding.validate_postal("100000", "CN"))
+}
+
+test "validate_postal CN invalid" {
+  assert_false(@geocoding.validate_postal("10000", "CN"))
+}
+
+test "validate_postal UK valid" {
+  assert_true(@geocoding.validate_postal("SW1A1AA", "UK"))
+}

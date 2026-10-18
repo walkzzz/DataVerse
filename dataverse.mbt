@@ -6757,3 +6757,10 @@ pub using @opcore.analysis3d {
   line_of_sight, viewshed3d, skyline, volume3d, surface_area3d,
   translate3d, scale3d, centroid3d, bbox3d_intersects, bbox3d_contains, analysis3d_id,
 }
+pub using @opcore.geocoding {
+  GeoCoord, Address, GeocodeResult,
+  make_geo_coord, make_address, standardize_address, address_to_string,
+  forward_geocode, batch_forward_geocode, reverse_geocode,
+  address_match_score, address_matches, validate_coord, coord_distance,
+  validate_postal, geocoding_id,
+}

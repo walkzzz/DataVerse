@@ -6959,3 +6959,145 @@ test "conv_transpose2d_output_dim basic" {
   let out = @dl_layers.conv_transpose2d_output_dim(3, 3, 2, 1, 0)
   assert_eq(out, 5)
 }
+
+// S7.2 dl_losses 扩展测试 / Extended loss functions tests
+
+test "contrastive_loss same class" {
+  let e1 = [1.0, 0.0]
+  let e2 = [1.0, 0.0]
+  let result = @dl_losses.contrastive_loss(e1, e2, 0.0, 1.0)
+  assert_eq(result, 0.0)
+}
+
+test "contrastive_loss diff class" {
+  let e1 = [0.0, 0.0]
+  let e2 = [1.0, 0.0]
+  let result = @dl_losses.contrastive_loss(e1, e2, 1.0, 1.0)
+  assert_true(result >= 0.0)
+}
+
+test "triplet_loss basic" {
+  let a = [0.0, 0.0]
+  let p = [0.1, 0.0]
+  let n = [1.0, 0.0]
+  let result = @dl_losses.triplet_loss(a, p, n, 0.5)
+  assert_true(result >= 0.0)
+}
+
+test "triplet_loss zero when satisfied" {
+  let a = [0.0, 0.0]
+  let p = [0.0, 0.0]
+  let n = [10.0, 0.0]
+  let result = @dl_losses.triplet_loss(a, p, n, 0.5)
+  assert_eq(result, 0.0)
+}
+
+test "focal_loss basic" {
+  let result = @dl_losses.focal_loss([0.9, 0.1], [1.0, 0.0], 0.25, 2.0)
+  assert_true(result >= 0.0)
+}
+
+test "focal_loss empty" {
+  let result = @dl_losses.focal_loss([], [], 0.25, 2.0)
+  assert_eq(result, 0.0)
+}
+
+test "label_smoothing_loss basic" {
+  let result = @dl_losses.label_smoothing_loss([2.0, 1.0, 0.0], 0, 0.1)
+  assert_true(result >= 0.0)
+}
+
+test "label_smoothing_loss invalid target" {
+  let result = @dl_losses.label_smoothing_loss([1.0, 2.0], 5, 0.1)
+  assert_eq(result, 0.0)
+}
+
+test "kl_div_loss basic" {
+  let result = @dl_losses.kl_div_loss([0.5, 0.5], [0.5, 0.5])
+  assert_true(result >= -0.0001 && result <= 0.0001)
+}
+
+test "kl_div_loss empty" {
+  let result = @dl_losses.kl_div_loss([], [])
+  assert_eq(result, 0.0)
+}
+
+test "huber_loss small error" {
+  let result = @dl_losses.huber_loss([1.0, 2.0], [1.1, 2.1], 1.0)
+  assert_true(result >= 0.0)
+}
+
+test "huber_loss large error" {
+  let result = @dl_losses.huber_loss([0.0], [10.0], 1.0)
+  assert_true(result >= 0.0)
+}
+
+test "smooth_l1_loss basic" {
+  let result = @dl_losses.smooth_l1_loss([1.0, 2.0], [1.5, 1.5], 1.0)
+  assert_true(result >= 0.0)
+}
+
+test "cosine_embedding_loss similar" {
+  let result = @dl_losses.cosine_embedding_loss([1.0, 0.0], [1.0, 0.0], 1.0, 0.0)
+  assert_true(result >= -0.0001 && result <= 0.0001)
+}
+
+test "cosine_embedding_loss dissimilar" {
+  let result = @dl_losses.cosine_embedding_loss([1.0, 0.0], [0.0, 1.0], -1.0, 0.5)
+  assert_true(result >= 0.0)
+}
+
+test "margin_ranking_loss basic" {
+  let result = @dl_losses.margin_ranking_loss(1.0, 2.0, 1.0, 1.0)
+  assert_true(result >= 0.0)
+}
+
+test "soft_margin_loss basic" {
+  let result = @dl_losses.soft_margin_loss(1.0, 1.0)
+  assert_true(result >= 0.0)
+}
+
+test "nll_loss basic" {
+  let result = @dl_losses.nll_loss([-0.5, -1.0, -2.0], 0)
+  assert_eq(result, 0.5)
+}
+
+test "nll_loss invalid target" {
+  let result = @dl_losses.nll_loss([-0.5], 5)
+  assert_eq(result, 0.0)
+}
+
+test "bce_loss basic" {
+  let result = @dl_losses.bce_loss([0.9, 0.1], [1.0, 0.0])
+  assert_true(result >= 0.0)
+}
+
+test "bce_loss empty" {
+  let result = @dl_losses.bce_loss([], [])
+  assert_eq(result, 0.0)
+}
+
+test "log_cosh_loss basic" {
+  let result = @dl_losses.log_cosh_loss([1.0, 2.0], [1.0, 2.0])
+  assert_true(result >= -0.0001 && result <= 0.0001)
+}
+
+test "dice_loss perfect" {
+  let result = @dl_losses.dice_loss([1.0, 0.0, 1.0], [1.0, 0.0, 1.0])
+  assert_true(result >= -0.0001 && result <= 0.0001)
+}
+
+test "dice_loss empty" {
+  let result = @dl_losses.dice_loss([], [])
+  assert_eq(result, 0.0)
+}
+
+test "tversky_loss basic" {
+  let result = @dl_losses.tversky_loss([0.9, 0.1], [1.0, 0.0], 0.3, 0.7)
+  assert_true(result >= 0.0)
+}
+
+test "tversky_loss empty" {
+  let result = @dl_losses.tversky_loss([], [], 0.3, 0.7)
+  assert_eq(result, 0.0)
+}

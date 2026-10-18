@@ -6598,6 +6598,7 @@ pub using @learncore.dl_layers {
 }
 pub using @learncore.dl_losses {
   dl_losses_id, LossKind, mse_loss, cross_entropy_loss, hinge_loss, loss_value, loss_name,
+  contrastive_loss, triplet_loss, focal_loss, label_smoothing_loss, kl_div_loss, huber_loss, smooth_l1_loss, cosine_embedding_loss, margin_ranking_loss, soft_margin_loss, nll_loss, bce_loss, log_cosh_loss, dice_loss, tversky_loss,
 }
 pub using @learncore.dl_optimizers {
   dl_optimizers_id, OptimizerKind, OptimizerState, make_optimizer, sgd_step, adam_step, optimizer_step, update_state, optimizer_name,

@@ -15,8 +15,8 @@
 | Phase 4 | ArcGIS Pro 算子对标期（P0-P1 工具 + R16 门禁） | ✅ 闭环 |
 | Phase 5 | P2 ArcGIS 工具扩展（neighborhood + solar + groundwater） | ✅ 闭环 |
 | Phase 6 | 待建映射补齐（transform/feature/零散算子） | ✅ 闭环 |
-| Phase 7 | 深度学习算子全集（DL 层/损失/优化器/NLP/时序/RL/集成） | ⏳ 进行中 |
-| Phase 8 | 空间分析深化（网络/拓扑/地形/3D/地理编码/坐标变换） | ⏳ |
+| Phase 7 | 深度学习算子全集（DL 层/损失/优化器/NLP/时序/RL/集成） | ✅ 闭环 |
+| Phase 8 | 空间分析深化（网络/拓扑/地形/3D/地理编码/坐标变换） | ⏳ 进行中 |
 | Phase 9 | 多模态算子深化（image/audio/video/semantic/点云/遥感） | ⏳ |
 | Phase 10 | 数据基础设施深化（dataobject/datatemporal/datair/dosi/parallel/io） | ⏳ |
 | Phase 11 | Agent/LLM 集成深化（agent_kit/llm/retrieval/prompt） | ⏳ |

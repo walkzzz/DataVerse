@@ -1078,3 +1078,76 @@ test "spec: great_circle_distance self zero" {
 test "spec: coord_id constant" {
   assert_eq(@coord.coord_id(), "opcore/coord")
 }
+
+///|
+/// 性质 91：pointcloud_id 恒等
+test "spec: pointcloud_id constant" {
+  assert_eq(@pointcloud.pointcloud_id(), "opcore/pointcloud")
+}
+
+///|
+/// 性质 92：pointcloud_size 非负
+test "spec: pointcloud_size non-negative" {
+  let cloud = @pointcloud.make_point_cloud([(0.0, 0.0, 0.0), (1.0, 1.0, 1.0)])
+  assert_true(@pointcloud.pointcloud_size(cloud) >= 0)
+}
+
+///|
+/// 性质 93：remotesensing_id 恒等
+test "spec: remotesensing_id constant" {
+  assert_eq(@remotesensing.remotesensing_id(), "opcore/remotesensing")
+}
+
+///|
+/// 性质 94：cosine_similarity 自反性
+test "spec: cosine_similarity self one" {
+  let emb = @semantic.make_embedding([1.0, 2.0, 3.0])
+  let sim = @semantic.cosine_similarity(emb, emb)
+  assert_true(sim > 0.99)
+}
+
+///|
+/// 性质 95：embedding_distance 自反性
+test "spec: embedding_distance self zero" {
+  let emb = @semantic.make_embedding([1.0, 2.0, 3.0])
+  assert_eq(@semantic.embedding_distance(emb, emb), 0.0)
+}
+
+///|
+/// 性质 96：signal_energy 非负
+test "spec: signal_energy non-negative" {
+  let sig = @audio.make_audio_signal([0.5, -0.3, 0.8], 16000)
+  assert_true(@audio.signal_energy(sig) >= 0.0)
+}
+
+///|
+/// 性质 97：signal_rms 非负
+test "spec: signal_rms non-negative" {
+  let sig = @audio.make_audio_signal([0.5, -0.3, 0.8], 16000)
+  assert_true(@audio.signal_rms(sig) >= 0.0)
+}
+
+///|
+/// 性质 98：normalize_signal 保持长度
+test "spec: normalize_signal preserves length" {
+  let sig = @audio.make_audio_signal([0.5, -0.3, 0.8, 0.1], 16000)
+  let norm = @audio.normalize_signal(sig)
+  assert_eq(norm.samples.length(), sig.samples.length())
+}
+
+///|
+/// 性质 99：image_mean 等于均值
+test "spec: image_mean correct" {
+  let img = @image.make_gray_image(2, 2, [10.0, 20.0, 30.0, 40.0])
+  assert_eq(@image.image_mean(img), 25.0)
+}
+
+///|
+/// 性质 100：threshold 二值化
+test "spec: threshold binary output" {
+  let img = @image.make_gray_image(3, 1, [50.0, 100.0, 200.0])
+  let result = @image.threshold(img, 100.0)
+  for i in 0..<result.pixels.length() {
+    assert_true(result.pixels[i] == 0.0 || result.pixels[i] == 255.0)
+  }
+}

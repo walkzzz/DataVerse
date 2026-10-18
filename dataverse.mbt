@@ -84,6 +84,14 @@ pub using @opcore.overlay {
   overlay_spatial_join, batch_intersections, polygon_from_dataobject,
   overlay_result_summary,
 }
+pub using @opcore.hydrology {
+  RasterGrid, FlowDirResult, FlowAccumResult, HydrologyResult,
+  make_raster, empty_raster, raster_rows, raster_cols, raster_get,
+  hydrology_find_sinks, hydrology_fill, hydrology_flow_direction,
+  hydrology_flow_accumulation, hydrology_watershed, hydrology_basin,
+  hydrology_stream_cells, hydrology_stream_order, hydrology_flow_length,
+  hydrology_stats, hydrology_snap_pour,
+}
 pub using @learncore {
   learncore_id, ModelSpace, model_space_name, Hyperparams, make_hyperparams,
 }

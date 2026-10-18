@@ -4130,3 +4130,197 @@ test "S4.2 overlay_result_summary" {
   assert_true(summary.contains("kind=intersect"))
   assert_true(summary.contains("overlap=true"))
 }
+// ============================================================
+// S4.3 opcore/hydrology 水文分析测试
+// ============================================================
+
+test "S4.3 make_raster" {
+  let r = @hydrology.make_raster([
+    [1.0, 2.0, 3.0],
+    [4.0, 5.0, 6.0],
+  ])
+  assert_eq(@hydrology.raster_rows(r), 2)
+  assert_eq(@hydrology.raster_cols(r), 3)
+}
+
+test "S4.3 empty_raster" {
+  let r = @hydrology.empty_raster()
+  assert_eq(@hydrology.raster_rows(r), 0)
+  assert_eq(@hydrology.raster_cols(r), 0)
+}
+
+test "S4.3 raster_get" {
+  let r = @hydrology.make_raster([
+    [1.0, 2.0],
+    [3.0, 4.0],
+  ])
+  assert_eq(@hydrology.raster_get(r, 0, 0), 1.0)
+  assert_eq(@hydrology.raster_get(r, 1, 1), 4.0)
+}
+
+test "S4.3 raster_get_out_of_bounds" {
+  let r = @hydrology.make_raster([[1.0]])
+  assert_eq(@hydrology.raster_get(r, 5, 5), 0.0)
+}
+
+test "S4.3 hydrology_find_sinks" {
+  let r = @hydrology.make_raster([
+    [3.0, 3.0, 3.0],
+    [3.0, 1.0, 3.0],
+    [3.0, 3.0, 3.0],
+  ])
+  let sinks = @hydrology.hydrology_find_sinks(r)
+  assert_eq(sinks.length(), 1)
+  let (sr, sc) = sinks[0]
+  assert_eq(sr, 1)
+  assert_eq(sc, 1)
+}
+
+test "S4.3 hydrology_find_sinks_none" {
+  let r = @hydrology.make_raster([
+    [5.0, 5.0, 5.0],
+    [5.0, 5.0, 5.0],
+    [5.0, 5.0, 5.0],
+  ])
+  assert_eq(@hydrology.hydrology_find_sinks(r).length(), 0)
+}
+
+test "S4.3 hydrology_fill" {
+  let r = @hydrology.make_raster([
+    [3.0, 3.0, 3.0],
+    [3.0, 1.0, 3.0],
+    [3.0, 3.0, 3.0],
+  ])
+  let filled = @hydrology.hydrology_fill(r)
+  assert_true(@hydrology.raster_get(filled, 1, 1) >= 3.0)
+}
+
+test "S4.3 hydrology_flow_direction" {
+  let r = @hydrology.make_raster([
+    [3.0, 3.0, 3.0],
+    [3.0, 1.0, 3.0],
+    [3.0, 3.0, 3.0],
+  ])
+  let flow = @hydrology.hydrology_flow_direction(r)
+  assert_eq(flow.rows, 3)
+  assert_eq(flow.cols, 3)
+}
+
+test "S4.3 hydrology_flow_accumulation" {
+  let r = @hydrology.make_raster([
+    [3.0, 2.0, 3.0],
+    [2.0, 1.0, 2.0],
+    [3.0, 2.0, 3.0],
+  ])
+  let flow = @hydrology.hydrology_flow_direction(r)
+  let accum = @hydrology.hydrology_flow_accumulation(flow)
+  assert_eq(accum.rows, 3)
+  assert_eq(accum.cols, 3)
+}
+
+test "S4.3 hydrology_watershed" {
+  let r = @hydrology.make_raster([
+    [3.0, 2.0, 3.0],
+    [2.0, 1.0, 2.0],
+    [3.0, 2.0, 3.0],
+  ])
+  let flow = @hydrology.hydrology_flow_direction(r)
+  let ws = @hydrology.hydrology_watershed(flow, 1, 1)
+  assert_true(ws.length() >= 1)
+}
+
+test "S4.3 hydrology_watershed_out_of_bounds" {
+  let flow = @hydrology.FlowDirResult::{ directions: [[0]], rows: 1, cols: 1 }
+  assert_eq(@hydrology.hydrology_watershed(flow, 5, 5).length(), 0)
+}
+
+test "S4.3 hydrology_basin" {
+  let r = @hydrology.make_raster([
+    [3.0, 2.0, 3.0],
+    [2.0, 1.0, 2.0],
+    [3.0, 2.0, 3.0],
+  ])
+  let flow = @hydrology.hydrology_flow_direction(r)
+  let basin = @hydrology.hydrology_basin(flow, 1, 1)
+  assert_eq(basin.kind, "basin")
+  assert_true(basin.count >= 1)
+}
+
+test "S4.3 hydrology_stream_cells" {
+  let accum = @hydrology.FlowAccumResult::{
+    accumulation: [[1, 5], [3, 8]],
+    rows: 2,
+    cols: 2,
+  }
+  let streams = @hydrology.hydrology_stream_cells(accum, 4)
+  assert_eq(streams.length(), 2)
+}
+
+test "S4.3 hydrology_stream_order" {
+  let accum = @hydrology.FlowAccumResult::{
+    accumulation: [[1, 5], [3, 8]],
+    rows: 2,
+    cols: 2,
+  }
+  let order = @hydrology.hydrology_stream_order(accum, 4)
+  assert_eq(order.length(), 2)
+  let (_, _, val) = order[1]
+  assert_eq(val, 8)
+}
+
+test "S4.3 hydrology_flow_length" {
+  let r = @hydrology.make_raster([
+    [5.0, 4.0, 3.0],
+    [4.0, 3.0, 2.0],
+    [3.0, 2.0, 1.0],
+  ])
+  let flow = @hydrology.hydrology_flow_direction(r)
+  let len = @hydrology.hydrology_flow_length(flow, 0, 0)
+  assert_true(len >= 0)
+}
+
+test "S4.3 hydrology_flow_length_out_of_bounds" {
+  let flow = @hydrology.FlowDirResult::{ directions: [[0]], rows: 1, cols: 1 }
+  assert_eq(@hydrology.hydrology_flow_length(flow, 5, 5), 0)
+}
+
+test "S4.3 hydrology_stats" {
+  let r = @hydrology.make_raster([
+    [1.0, 2.0, 3.0],
+    [4.0, 5.0, 6.0],
+  ])
+  let (min_v, max_v, avg) = @hydrology.hydrology_stats(r)
+  assert_eq(min_v, 1.0)
+  assert_eq(max_v, 6.0)
+  assert_true(avg > 3.49 && avg < 3.51)
+}
+
+test "S4.3 hydrology_stats_empty" {
+  let r = @hydrology.empty_raster()
+  let (min_v, max_v, avg) = @hydrology.hydrology_stats(r)
+  assert_eq(min_v, 0.0)
+  assert_eq(max_v, 0.0)
+  assert_eq(avg, 0.0)
+}
+
+test "S4.3 hydrology_snap_pour" {
+  let accum = @hydrology.FlowAccumResult::{
+    accumulation: [[1, 2], [3, 8]],
+    rows: 2,
+    cols: 2,
+  }
+  let (r, c) = @hydrology.hydrology_snap_pour(accum, 0, 0, 1)
+  assert_eq(r, 1)
+  assert_eq(c, 1)
+}
+
+test "S4.3 hydrology_snap_pour_out_of_bounds" {
+  let accum = @hydrology.FlowAccumResult::{
+    accumulation: [[1]],
+    rows: 1,
+    cols: 1,
+  }
+  let (r, c) = @hydrology.hydrology_snap_pour(accum, 5, 5, 1)
+  assert_eq(r, 5)
+  assert_eq(c, 5)
+}

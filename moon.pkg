@@ -24,6 +24,7 @@ import {
   "opcore/plugin",
   "opcore/proximity",
   "opcore/overlay",
+  "opcore/hydrology",
   "datatemporal",
   "datatemporal/version",
   "datatemporal/lineage",

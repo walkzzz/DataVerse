@@ -87,3 +87,33 @@ fn squared_dist(a : Array[Double], b : Array[Double]) -> Double {
 pub fn cluster_id() -> String {
   "learncore/cluster"
 }
+/// 相似度搜索 / Similarity Search.
+///
+/// 对标 ArcGIS Pro Similarity Search 工具。
+/// 找到与目标向量最相似的 k 个候选向量（欧氏距离）。
+/// 退化安全：空候选集返回空数组。
+pub fn cluster_similarity_search(target : Array[Double], candidates : Array[Array[Double]], k : Int) -> Array[Int] {
+  let n = candidates.length()
+  if n == 0 || k <= 0 {
+    []
+  } else {
+    let dists : Array[(Int, Double)] = []
+    for i in 0..<n {
+      let mut d = 0.0
+      let c = candidates[i]
+      let m = if target.length() < c.length() { target.length() } else { c.length() }
+      for j in 0..<m {
+        let diff = target[j] - c[j]
+        d = d + diff * diff
+      }
+      dists.push((i, d))
+    }
+    dists.sort_by(fn(a, b) { if a.1 < b.1 { -1 } else if a.1 > b.1 { 1 } else { 0 } })
+    let result : Array[Int] = []
+    let kk = if k < n { k } else { n }
+    for i in 0..<kk {
+      result.push(dists[i].0)
+    }
+    result
+  }
+}

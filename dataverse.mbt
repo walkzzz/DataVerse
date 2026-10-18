@@ -29,7 +29,9 @@ pub using @opcore {
 }
 pub using @opcore.clean { clean_id, remove_empty, strip_whitespace }
 pub using @opcore.dedup { dedup_id, exact_dedup, dedup_count }
-pub using @opcore.filter { filter_id, length_filter, non_empty_filter, filter_all }
+pub using @opcore.filter {
+  filter_id, length_filter, non_empty_filter, filter_all, filter_split
+}
 pub using @opcore.registry { registry_id, empty as empty_registry, register, lookup, size as registry_size, valid_operator }
 pub using @opcore.ingest { ingest_id, text_formatter, json_formatter, csv_formatter }
 pub using @opcore.normalize { normalize_id, whitespace_normalization, punctuation_normalization }
@@ -39,7 +41,9 @@ pub using @opcore.annotate { annotate_id, tag_by_length, tag_modality }
 pub using @opcore.select { select_id, topk_by_length, threshold_by_length }
 pub using @opcore.mix { mix_id, group_by_modality, interleave }
 pub using @opcore.pack { pack_id, text_chunk }
-pub using @opcore.eval { eval_id, GlobalStats, global_statistics }
+pub using @opcore.eval {
+  eval_id, GlobalStats, global_statistics, eval_tabulate_intersection
+}
 pub using @opcore.lineage_op { lineage_op_id, attach_lineage, make_op_lineage }
 pub using @opcore.safety { safety_id, mask_digits, mask_email }
 pub using @opcore.image {
@@ -6562,9 +6566,11 @@ pub using @opcore.groundwater {
 pub using @learncore {
   learncore_id, ModelSpace, model_space_name, Hyperparams, make_hyperparams,
 }
-pub using @learncore.regression { regression_id, LinearModel, linear_regression, predict_linear }
-pub using @learncore.classify { classify_id, knn_classify }
-pub using @learncore.cluster { cluster_id, kmeans }
+pub using @learncore.regression {
+  regression_id, LinearModel, linear_regression, predict_linear, regression_glm
+}
+pub using @learncore.classify { classify_id, knn_classify, classify_forest }
+pub using @learncore.cluster { cluster_id, kmeans, cluster_similarity_search }
 pub using @learncore.feature { feature_id, standardize, normalize_minmax, feature_central_feature, feature_mean_center, feature_median_center, feature_standard_distance, feature_directional_distribution }
 pub using @learncore.metrics { metrics_id, accuracy, mse, mae, confusion_matrix }
 pub using @learncore.interpolation {

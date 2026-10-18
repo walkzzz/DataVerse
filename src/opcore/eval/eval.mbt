@@ -44,3 +44,31 @@ pub fn global_statistics(
 pub fn eval_id() -> String {
   "opcore/eval"
 }
+/// 交叉制表 / Tabulate Intersection.
+///
+/// 对标 ArcGIS Pro Tabulate Intersection 工具。
+/// 计算两个分类栅格的交叉面积表。
+/// 退化安全：空输入返回空数组。
+pub fn eval_tabulate_intersection(zone1 : Array[Int], zone2 : Array[Int]) -> Array[(Int, Int, Int)] {
+  let n = zone1.length()
+  if n == 0 || zone2.length() != n {
+    []
+  } else {
+    let result : Array[(Int, Int, Int)] = []
+    for i in 0..<n {
+      let z1 = zone1[i]
+      let z2 = zone2[i]
+      let mut found = false
+      for idx in 0..<result.length() {
+        if result[idx].0 == z1 && result[idx].1 == z2 {
+          result[idx] = (z1, z2, result[idx].2 + 1)
+          found = true
+        }
+      }
+      if !found {
+        result.push((z1, z2, 1))
+      }
+    }
+    result
+  }
+}

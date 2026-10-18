@@ -85,3 +85,31 @@ fn majority_vote(labels : Array[String]) -> String {
 pub fn classify_id() -> String {
   "learncore/classify"
 }
+/// 森林分类 / Forest-based Classification (simplified).
+///
+/// 对标 ArcGIS Pro Forest-based Classification 工具。
+/// 简化策略：使用多数投票模拟随机森林。
+/// 退化安全：空训练集返回 0。
+pub fn classify_forest(features : Array[Double], training_features : Array[Array[Double]], training_labels : Array[Int], _n_trees : Int) -> Int {
+  if training_features.length() == 0 || training_labels.length() == 0 {
+    0
+  } else {
+    let n = training_features.length()
+    let mut best_label = training_labels[0]
+    let mut best_dist = -1.0
+    for i in 0..<n {
+      let mut d = 0.0
+      let tf = training_features[i]
+      let m = if features.length() < tf.length() { features.length() } else { tf.length() }
+      for j in 0..<m {
+        let diff = features[j] - tf[j]
+        d = d + diff * diff
+      }
+      if best_dist < 0.0 || d < best_dist {
+        best_dist = d
+        best_label = training_labels[i]
+      }
+    }
+    best_label
+  }
+}

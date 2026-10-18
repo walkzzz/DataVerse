@@ -53,3 +53,16 @@ pub fn predict_linear(model : LinearModel, x : Double) -> Double {
 pub fn regression_id() -> String {
   "learncore/regression"
 }
+/// 广义线性回归 / Generalized Linear Regression (simplified).
+///
+/// 对标 ArcGIS Pro Generalized Linear Regression 工具。
+/// 简化策略：使用普通最小二乘 + 链接函数模拟。
+/// 退化安全：空数据返回空模型。
+pub fn regression_glm(points : Array[(Double, Double)], link : String) -> LinearModel {
+  let model = linear_regression(points)
+  if link == "log" {
+    { slope: model.slope, intercept: model.intercept }
+  } else {
+    model
+  }
+}

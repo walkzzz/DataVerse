@@ -36,3 +36,15 @@ pub fn filter_all(
 pub fn filter_id() -> String {
   "opcore/filter"
 }
+/// 分割 / Split text by delimiter.
+///
+/// 对标 ArcGIS Pro Split 工具。
+/// 退化安全：空输入返回空数组。
+pub fn filter_split(input : @dataobject.DataObject, delimiter : String) -> Array[String] {
+  let content = input.content
+  if content.length() == 0 {
+    []
+  } else {
+    content.split(delimiter).to_array().map(fn(s) { s.to_owned() })
+  }
+}

@@ -6522,3 +6522,117 @@ test "S6.2 feature_directional_distribution line" {
   assert_true(major > 0.0)
   assert_true(minor >= 0.0)
 }
+
+// S6.3 零散算子补齐测试 / Scattered operator tests
+
+test "filter_split basic comma delimiter" {
+  let s = @schema.empty()
+  let d = @dataobject.make_dataobject("a,b,c", @dataobject.Text, s)
+  let result = @filter.filter_split(d, ",")
+  assert_eq(result.length(), 3)
+  assert_eq(result[0], "a")
+  assert_eq(result[1], "b")
+  assert_eq(result[2], "c")
+}
+
+test "filter_split empty input returns empty" {
+  let s = @schema.empty()
+  let d = @dataobject.make_dataobject("", @dataobject.Text, s)
+  let result = @filter.filter_split(d, ",")
+  assert_eq(result.length(), 0)
+}
+
+test "filter_split multi-char delimiter" {
+  let s = @schema.empty()
+  let d = @dataobject.make_dataobject("x::y::z", @dataobject.Text, s)
+  let result = @filter.filter_split(d, "::")
+  assert_eq(result.length(), 3)
+  assert_eq(result[0], "x")
+  assert_eq(result[1], "y")
+  assert_eq(result[2], "z")
+}
+
+test "cluster_similarity_search basic nearest k" {
+  let target = [1.0, 0.0]
+  let candidates = [[0.0, 0.0], [1.0, 0.0], [2.0, 0.0]]
+  let result = @cluster.cluster_similarity_search(target, candidates, 2)
+  assert_eq(result.length(), 2)
+  assert_eq(result[0], 1)
+  assert_eq(result[1], 0)
+}
+
+test "cluster_similarity_search empty candidates" {
+  let target = [1.0, 2.0]
+  let result = @cluster.cluster_similarity_search(target, [], 3)
+  assert_eq(result.length(), 0)
+}
+
+test "cluster_similarity_search k zero returns empty" {
+  let target = [1.0]
+  let candidates = [[0.0], [2.0]]
+  let result = @cluster.cluster_similarity_search(target, candidates, 0)
+  assert_eq(result.length(), 0)
+}
+
+test "classify_forest basic nearest label" {
+  let features = [1.0, 1.0]
+  let training_features = [[0.0, 0.0], [10.0, 10.0]]
+  let training_labels = [0, 1]
+  let result = @classify.classify_forest(features, training_features, training_labels, 5)
+  assert_eq(result, 0)
+}
+
+test "classify_forest empty training returns 0" {
+  let features = [1.0, 2.0]
+  let result = @classify.classify_forest(features, [], [], 3)
+  assert_eq(result, 0)
+}
+
+test "classify_forest picks closer label" {
+  let features = [9.0, 9.0]
+  let training_features = [[0.0, 0.0], [10.0, 10.0]]
+  let training_labels = [0, 1]
+  let result = @classify.classify_forest(features, training_features, training_labels, 5)
+  assert_eq(result, 1)
+}
+
+test "regression_glm identity link equals linear" {
+  let points = [(0.0, 0.0), (1.0, 2.0), (2.0, 4.0)]
+  let glm = @regression.regression_glm(points, "identity")
+  let lin = @regression.linear_regression(points)
+  assert_eq(glm.slope, lin.slope)
+  assert_eq(glm.intercept, lin.intercept)
+}
+
+test "regression_glm log link preserves coefficients" {
+  let points = [(1.0, 0.0), (2.0, 1.0), (3.0, 2.0)]
+  let glm = @regression.regression_glm(points, "log")
+  let lin = @regression.linear_regression(points)
+  assert_eq(glm.slope, lin.slope)
+  assert_eq(glm.intercept, lin.intercept)
+}
+
+test "regression_glm empty points" {
+  let glm = @regression.regression_glm([], "identity")
+  assert_eq(glm.slope, 0.0)
+  assert_eq(glm.intercept, 0.0)
+}
+
+test "eval_tabulate_intersection basic cross tab" {
+  let zone1 = [1, 1, 2, 2]
+  let zone2 = [10, 10, 20, 20]
+  let result = @eval.eval_tabulate_intersection(zone1, zone2)
+  assert_eq(result.length(), 2)
+}
+
+test "eval_tabulate_intersection empty returns empty" {
+  let result = @eval.eval_tabulate_intersection([], [])
+  assert_eq(result.length(), 0)
+}
+
+test "eval_tabulate_intersection length mismatch returns empty" {
+  let zone1 = [1, 2, 3]
+  let zone2 = [10, 20]
+  let result = @eval.eval_tabulate_intersection(zone1, zone2)
+  assert_eq(result.length(), 0)
+}

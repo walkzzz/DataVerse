@@ -4,6 +4,19 @@
 
 ## [0.1.0-dev] - 2026-10-18
 
+### S4.5 - opcore/density 密度分析
+
+**新增 / Added**
+- `src/opcore/density/`：密度分析算子包（2 type + 13 fn）
+  - 类型：`DensityMethod` / `DensityResult`
+  - 算子：`quadratic_kernel` / `gaussian_kernel` / `density_kernel_at` / `density_kernel_grid` / `density_point_count_at` / `density_point_at` / `density_point_grid` / `density_line_at` / `density_line_grid` / `density_stats` / `density_kernel_results` 等
+  - 对标 ArcGIS Pro: Kernel Density / Point Density / Line Density
+- 25 个跨包测试（S4.5 系列）
+
+**统计 / Stats**
+- 测试：576 → 601（+25）
+- API：545 fn + 128 type → 558 fn + 130 type（+13 fn + 2 type）
+
 ### S4.4 - opcore/surface 表面分析
 
 **新增 / Added**

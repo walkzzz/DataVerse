@@ -3748,3 +3748,385 @@ test "S4.1 make_buffer_result" {
   assert_eq(buf.radius, 3.0)
   assert_true(buf.area > 28.0 && buf.area < 29.0)
 }
+// ============================================================
+// S4.2 opcore/overlay 叠加分析测试
+// ============================================================
+
+test "S4.2 make_polygon" {
+  let p = @overlay.make_polygon([
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(1.0, 0.0),
+    @proximity.make_point(1.0, 1.0),
+    @proximity.make_point(0.0, 1.0),
+  ])
+  assert_eq(@overlay.vertex_count(p), 4)
+}
+
+test "S4.2 empty_polygon" {
+  let p = @overlay.empty_polygon()
+  assert_eq(@overlay.vertex_count(p), 0)
+  assert_eq(@overlay.polygon_area(p), 0.0)
+}
+
+test "S4.2 polygon_area_square" {
+  let sq = @overlay.make_polygon([
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(4.0, 0.0),
+    @proximity.make_point(4.0, 4.0),
+    @proximity.make_point(0.0, 4.0),
+  ])
+  let area = @overlay.polygon_area(sq)
+  assert_true(area > 15.99 && area < 16.01)
+}
+
+test "S4.2 polygon_area_triangle" {
+  let tri = @overlay.make_polygon([
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(6.0, 0.0),
+    @proximity.make_point(0.0, 6.0),
+  ])
+  let area = @overlay.polygon_area(tri)
+  assert_true(area > 17.99 && area < 18.01)
+}
+
+test "S4.2 polygon_area_degenerate" {
+  let line = @overlay.make_polygon([
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(1.0, 1.0),
+  ])
+  assert_eq(@overlay.polygon_area(line), 0.0)
+}
+
+test "S4.2 polygon_perimeter" {
+  let sq = @overlay.make_polygon([
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(3.0, 0.0),
+    @proximity.make_point(3.0, 3.0),
+    @proximity.make_point(0.0, 3.0),
+  ])
+  let peri = @overlay.polygon_perimeter(sq)
+  assert_true(peri > 11.99 && peri < 12.01)
+}
+
+test "S4.2 polygon_bbox" {
+  let poly = @overlay.make_polygon([
+    @proximity.make_point(1.0, 2.0),
+    @proximity.make_point(5.0, 3.0),
+    @proximity.make_point(3.0, 8.0),
+  ])
+  let (min_p, max_p) = @overlay.polygon_bbox(poly)
+  assert_eq(min_p.x, 1.0)
+  assert_eq(min_p.y, 2.0)
+  assert_eq(max_p.x, 5.0)
+  assert_eq(max_p.y, 8.0)
+}
+
+test "S4.2 bbox_overlap_true" {
+  let a = @overlay.make_polygon([
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(4.0, 0.0),
+    @proximity.make_point(4.0, 4.0),
+    @proximity.make_point(0.0, 4.0),
+  ])
+  let b = @overlay.make_polygon([
+    @proximity.make_point(2.0, 2.0),
+    @proximity.make_point(6.0, 2.0),
+    @proximity.make_point(6.0, 6.0),
+    @proximity.make_point(2.0, 6.0),
+  ])
+  assert_true(@overlay.bbox_overlap(a, b))
+}
+
+test "S4.2 bbox_overlap_false" {
+  let a = @overlay.make_polygon([
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(2.0, 0.0),
+    @proximity.make_point(2.0, 2.0),
+    @proximity.make_point(0.0, 2.0),
+  ])
+  let b = @overlay.make_polygon([
+    @proximity.make_point(5.0, 5.0),
+    @proximity.make_point(7.0, 5.0),
+    @proximity.make_point(7.0, 7.0),
+    @proximity.make_point(5.0, 7.0),
+  ])
+  assert_true(!(@overlay.bbox_overlap(a, b)))
+}
+
+test "S4.2 bbox_overlap_empty" {
+  let a = @overlay.empty_polygon()
+  let b = @overlay.make_polygon([
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(1.0, 0.0),
+    @proximity.make_point(1.0, 1.0),
+    @proximity.make_point(0.0, 1.0),
+  ])
+  assert_true(!(@overlay.bbox_overlap(a, b)))
+}
+
+test "S4.2 bbox_contains" {
+  let outer = @overlay.make_polygon([
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(10.0, 0.0),
+    @proximity.make_point(10.0, 10.0),
+    @proximity.make_point(0.0, 10.0),
+  ])
+  let inner = @overlay.make_polygon([
+    @proximity.make_point(2.0, 2.0),
+    @proximity.make_point(5.0, 2.0),
+    @proximity.make_point(5.0, 5.0),
+    @proximity.make_point(2.0, 5.0),
+  ])
+  assert_true(@overlay.bbox_contains(outer, inner))
+  assert_true(!(@overlay.bbox_contains(inner, outer)))
+}
+
+test "S4.2 overlay_intersect_overlap" {
+  let a = @overlay.make_polygon([
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(4.0, 0.0),
+    @proximity.make_point(4.0, 4.0),
+    @proximity.make_point(0.0, 4.0),
+  ])
+  let b = @overlay.make_polygon([
+    @proximity.make_point(2.0, 2.0),
+    @proximity.make_point(6.0, 2.0),
+    @proximity.make_point(6.0, 6.0),
+    @proximity.make_point(2.0, 6.0),
+  ])
+  let result = @overlay.overlay_intersect(a, b)
+  assert_true(result.has_overlap)
+  assert_true(result.area > 0.0)
+}
+
+test "S4.2 overlay_intersect_no_overlap" {
+  let a = @overlay.make_polygon([
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(2.0, 0.0),
+    @proximity.make_point(2.0, 2.0),
+    @proximity.make_point(0.0, 2.0),
+  ])
+  let b = @overlay.make_polygon([
+    @proximity.make_point(5.0, 5.0),
+    @proximity.make_point(7.0, 5.0),
+    @proximity.make_point(7.0, 7.0),
+    @proximity.make_point(5.0, 7.0),
+  ])
+  let result = @overlay.overlay_intersect(a, b)
+  assert_true(!(result.has_overlap))
+  assert_eq(result.area, 0.0)
+}
+
+test "S4.2 overlay_union" {
+  let a = @overlay.make_polygon([
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(4.0, 0.0),
+    @proximity.make_point(4.0, 4.0),
+    @proximity.make_point(0.0, 4.0),
+  ])
+  let b = @overlay.make_polygon([
+    @proximity.make_point(2.0, 2.0),
+    @proximity.make_point(6.0, 2.0),
+    @proximity.make_point(6.0, 6.0),
+    @proximity.make_point(2.0, 6.0),
+  ])
+  let result = @overlay.overlay_union(a, b)
+  assert_true(result.area > 0.0)
+  assert_eq(result.source_count, 2)
+}
+
+test "S4.2 overlay_union_disjoint" {
+  let a = @overlay.make_polygon([
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(2.0, 0.0),
+    @proximity.make_point(2.0, 2.0),
+    @proximity.make_point(0.0, 2.0),
+  ])
+  let b = @overlay.make_polygon([
+    @proximity.make_point(5.0, 5.0),
+    @proximity.make_point(7.0, 5.0),
+    @proximity.make_point(7.0, 7.0),
+    @proximity.make_point(5.0, 7.0),
+  ])
+  let result = @overlay.overlay_union(a, b)
+  assert_eq(result.result_count, 2)
+}
+
+test "S4.2 overlay_erase" {
+  let a = @overlay.make_polygon([
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(4.0, 0.0),
+    @proximity.make_point(4.0, 4.0),
+    @proximity.make_point(0.0, 4.0),
+  ])
+  let b = @overlay.make_polygon([
+    @proximity.make_point(2.0, 2.0),
+    @proximity.make_point(6.0, 2.0),
+    @proximity.make_point(6.0, 6.0),
+    @proximity.make_point(2.0, 6.0),
+  ])
+  let result = @overlay.overlay_erase(a, b)
+  assert_true(result.area > 0.0)
+  assert_eq(result.source_count, 2)
+}
+
+test "S4.2 overlay_erase_disjoint" {
+  let a = @overlay.make_polygon([
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(4.0, 0.0),
+    @proximity.make_point(4.0, 4.0),
+    @proximity.make_point(0.0, 4.0),
+  ])
+  let b = @overlay.make_polygon([
+    @proximity.make_point(10.0, 10.0),
+    @proximity.make_point(12.0, 10.0),
+    @proximity.make_point(12.0, 12.0),
+    @proximity.make_point(10.0, 12.0),
+  ])
+  let result = @overlay.overlay_erase(a, b)
+  assert_true(result.area > 15.0)
+}
+
+test "S4.2 overlay_identity" {
+  let a = @overlay.make_polygon([
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(4.0, 0.0),
+    @proximity.make_point(4.0, 4.0),
+    @proximity.make_point(0.0, 4.0),
+  ])
+  let b = @overlay.make_polygon([
+    @proximity.make_point(2.0, 2.0),
+    @proximity.make_point(6.0, 2.0),
+    @proximity.make_point(6.0, 6.0),
+    @proximity.make_point(2.0, 6.0),
+  ])
+  let result = @overlay.overlay_identity(a, b)
+  assert_true(result.area > 15.0)
+}
+
+test "S4.2 overlay_sym_diff" {
+  let a = @overlay.make_polygon([
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(4.0, 0.0),
+    @proximity.make_point(4.0, 4.0),
+    @proximity.make_point(0.0, 4.0),
+  ])
+  let b = @overlay.make_polygon([
+    @proximity.make_point(2.0, 2.0),
+    @proximity.make_point(6.0, 2.0),
+    @proximity.make_point(6.0, 6.0),
+    @proximity.make_point(2.0, 6.0),
+  ])
+  let result = @overlay.overlay_sym_diff(a, b)
+  assert_true(result.area >= 0.0)
+}
+
+test "S4.2 overlay_update" {
+  let a = @overlay.make_polygon([
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(4.0, 0.0),
+    @proximity.make_point(4.0, 4.0),
+    @proximity.make_point(0.0, 4.0),
+  ])
+  let b = @overlay.make_polygon([
+    @proximity.make_point(2.0, 2.0),
+    @proximity.make_point(6.0, 2.0),
+    @proximity.make_point(6.0, 6.0),
+    @proximity.make_point(2.0, 6.0),
+  ])
+  let result = @overlay.overlay_update(a, b)
+  assert_true(result.area > 0.0)
+}
+
+test "S4.2 overlay_spatial_join" {
+  let polys_a = [
+    @overlay.make_polygon([
+      @proximity.make_point(0.0, 0.0),
+      @proximity.make_point(2.0, 0.0),
+      @proximity.make_point(2.0, 2.0),
+      @proximity.make_point(0.0, 2.0),
+    ]),
+    @overlay.make_polygon([
+      @proximity.make_point(10.0, 10.0),
+      @proximity.make_point(12.0, 10.0),
+      @proximity.make_point(12.0, 12.0),
+      @proximity.make_point(10.0, 12.0),
+    ]),
+  ]
+  let polys_b = [
+    @overlay.make_polygon([
+      @proximity.make_point(1.0, 1.0),
+      @proximity.make_point(3.0, 1.0),
+      @proximity.make_point(3.0, 3.0),
+      @proximity.make_point(1.0, 3.0),
+    ]),
+  ]
+  let joins = @overlay.overlay_spatial_join(polys_a, polys_b)
+  assert_eq(joins.length(), 1)
+  let (i, j) = joins[0]
+  assert_eq(i, 0)
+  assert_eq(j, 0)
+}
+
+test "S4.2 overlay_spatial_join_empty" {
+  assert_eq(@overlay.overlay_spatial_join([], []).length(), 0)
+}
+
+test "S4.2 batch_intersections" {
+  let polys = [
+    @overlay.make_polygon([
+      @proximity.make_point(0.0, 0.0),
+      @proximity.make_point(2.0, 0.0),
+      @proximity.make_point(2.0, 2.0),
+      @proximity.make_point(0.0, 2.0),
+    ]),
+    @overlay.make_polygon([
+      @proximity.make_point(1.0, 1.0),
+      @proximity.make_point(3.0, 1.0),
+      @proximity.make_point(3.0, 3.0),
+      @proximity.make_point(1.0, 3.0),
+    ]),
+    @overlay.make_polygon([
+      @proximity.make_point(10.0, 10.0),
+      @proximity.make_point(12.0, 10.0),
+      @proximity.make_point(12.0, 12.0),
+      @proximity.make_point(10.0, 12.0),
+    ]),
+  ]
+  let pairs = @overlay.batch_intersections(polys)
+  assert_eq(pairs.length(), 1)
+  let (a, b) = pairs[0]
+  assert_eq(a, 0)
+  assert_eq(b, 1)
+}
+
+test "S4.2 batch_intersections_empty" {
+  assert_eq(@overlay.batch_intersections([]).length(), 0)
+}
+
+test "S4.2 polygon_from_dataobject" {
+  let d = @dataobject.make_dataobject("0,0;4,0;4,4;0,4", @dataobject.Modality::Text, @schema.empty())
+  let poly = @overlay.polygon_from_dataobject(d)
+  assert_eq(@overlay.vertex_count(poly), 4)
+  let area = @overlay.polygon_area(poly)
+  assert_true(area > 15.99 && area < 16.01)
+}
+
+test "S4.2 overlay_result_summary" {
+  let a = @overlay.make_polygon([
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(4.0, 0.0),
+    @proximity.make_point(4.0, 4.0),
+    @proximity.make_point(0.0, 4.0),
+  ])
+  let b = @overlay.make_polygon([
+    @proximity.make_point(2.0, 2.0),
+    @proximity.make_point(6.0, 2.0),
+    @proximity.make_point(6.0, 6.0),
+    @proximity.make_point(2.0, 6.0),
+  ])
+  let result = @overlay.overlay_intersect(a, b)
+  let summary = @overlay.overlay_result_summary(result)
+  assert_true(summary.contains("kind=intersect"))
+  assert_true(summary.contains("overlap=true"))
+}

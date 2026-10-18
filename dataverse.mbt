@@ -76,6 +76,14 @@ pub using @opcore.proximity {
   all_proximity_pairs, thiessen_polygons, bounding_box, polygon_neighbors,
   points_from_dataobject, buffer_stats,
 }
+pub using @opcore.overlay {
+  Polygon, OverlayKind, OverlayResult,
+  make_polygon, empty_polygon, vertex_count, polygon_area, polygon_perimeter,
+  polygon_bbox, bbox_overlap, bbox_contains, overlay_intersect, overlay_union,
+  overlay_erase, overlay_identity, overlay_sym_diff, overlay_update,
+  overlay_spatial_join, batch_intersections, polygon_from_dataobject,
+  overlay_result_summary,
+}
 pub using @learncore {
   learncore_id, ModelSpace, model_space_name, Hyperparams, make_hyperparams,
 }

@@ -1,0 +1,7 @@
+// opcore/overlay 叠加分析 / Overlay Analysis
+// S4.2：Intersect / Union / Erase / Identity / SymDiff（契约 + 模拟实现）
+import {
+  "dataverse/dataobject",
+  "dataverse/opcore/proximity",
+
+}

@@ -1,0 +1,6 @@
+// opcore/density 密度分析 / Density Analysis
+// S4.5：Kernel / Point / Line Density（契约 + 模拟实现）
+import {
+  "dataverse/opcore/proximity",
+
+}

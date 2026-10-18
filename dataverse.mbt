@@ -102,6 +102,14 @@ pub using @opcore.surface {
   surface_curvature, surface_curvature_grid,
   surface_viewshed, surface_viewshed_stats, surface_stats,
 }
+pub using @opcore.density {
+  DensityMethod, DensityResult,
+  quadratic_kernel, gaussian_kernel,
+  density_kernel_at, density_kernel_grid,
+  density_point_count_at, density_point_at, density_point_grid,
+  density_line_at, density_line_grid,
+  density_stats, make_density_result, density_kernel_results, density_method_name,
+}
 pub using @learncore {
   learncore_id, ModelSpace, model_space_name, Hyperparams, make_hyperparams,
 }

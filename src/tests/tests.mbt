@@ -4577,3 +4577,181 @@ test "S4.4 aspect_result" {
   assert_eq(sr.kind, "aspect")
   assert_eq(sr.row, 1)
 }
+// ============================================================
+// S4.5 opcore/density 密度分析测试
+// ============================================================
+
+test "S4.5 quadratic_kernel" {
+  let k = @density.quadratic_kernel(0.0, 2.0)
+  assert_true(k > 0.0)
+}
+
+test "S4.5 quadratic_kernel_at_radius" {
+  let k = @density.quadratic_kernel(2.0, 2.0)
+  assert_eq(k, 0.0)
+}
+
+test "S4.5 quadratic_kernel_beyond_radius" {
+  let k = @density.quadratic_kernel(3.0, 2.0)
+  assert_eq(k, 0.0)
+}
+
+test "S4.5 quadratic_kernel_zero_radius" {
+  assert_eq(@density.quadratic_kernel(0.0, 0.0), 0.0)
+}
+
+test "S4.5 gaussian_kernel" {
+  let k = @density.gaussian_kernel(0.0, 1.0)
+  assert_true(k > 0.0)
+}
+
+test "S4.5 density_kernel_at" {
+  let points = [
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(1.0, 0.0),
+    @proximity.make_point(0.0, 1.0),
+  ]
+  let center = @proximity.make_point(0.5, 0.5)
+  let d = @density.density_kernel_at(points, center, 2.0)
+  assert_true(d > 0.0)
+}
+
+test "S4.5 density_kernel_at_empty" {
+  let center = @proximity.make_point(0.0, 0.0)
+  assert_eq(@density.density_kernel_at([], center, 2.0), 0.0)
+}
+
+test "S4.5 density_kernel_at_zero_radius" {
+  let points = [@proximity.make_point(0.0, 0.0)]
+  let center = @proximity.make_point(0.0, 0.0)
+  assert_eq(@density.density_kernel_at(points, center, 0.0), 0.0)
+}
+
+test "S4.5 density_kernel_grid" {
+  let points = [
+    @proximity.make_point(1.0, 1.0),
+    @proximity.make_point(3.0, 3.0),
+  ]
+  let extent = (@proximity.make_point(0.0, 0.0), @proximity.make_point(4.0, 4.0))
+  let grid = @density.density_kernel_grid(points, 2.0, 1.0, extent)
+  assert_eq(grid.length(), 5)
+  assert_eq(grid[0].length(), 5)
+}
+
+test "S4.5 density_kernel_grid_empty" {
+  let extent = (@proximity.make_point(0.0, 0.0), @proximity.make_point(4.0, 4.0))
+  assert_eq(@density.density_kernel_grid([], 2.0, 1.0, extent).length(), 0)
+}
+
+test "S4.5 density_point_count_at" {
+  let points = [
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(1.0, 0.0),
+    @proximity.make_point(5.0, 5.0),
+  ]
+  let center = @proximity.make_point(0.0, 0.0)
+  assert_eq(@density.density_point_count_at(points, center, 2.0), 2)
+}
+
+test "S4.5 density_point_count_at_empty" {
+  let center = @proximity.make_point(0.0, 0.0)
+  assert_eq(@density.density_point_count_at([], center, 2.0), 0)
+}
+
+test "S4.5 density_point_at" {
+  let points = [
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(1.0, 0.0),
+  ]
+  let center = @proximity.make_point(0.0, 0.0)
+  let d = @density.density_point_at(points, center, 2.0)
+  assert_true(d > 0.0)
+}
+
+test "S4.5 density_point_at_zero_radius" {
+  let points = [@proximity.make_point(0.0, 0.0)]
+  let center = @proximity.make_point(0.0, 0.0)
+  assert_eq(@density.density_point_at(points, center, 0.0), 0.0)
+}
+
+test "S4.5 density_point_grid" {
+  let points = [
+    @proximity.make_point(1.0, 1.0),
+    @proximity.make_point(3.0, 3.0),
+  ]
+  let extent = (@proximity.make_point(0.0, 0.0), @proximity.make_point(4.0, 4.0))
+  let grid = @density.density_point_grid(points, 2.0, 1.0, extent)
+  assert_eq(grid.length(), 5)
+}
+
+test "S4.5 density_line_at" {
+  let lines = [
+    [@proximity.make_point(0.0, 0.0), @proximity.make_point(2.0, 0.0)],
+    [@proximity.make_point(0.0, 2.0), @proximity.make_point(2.0, 2.0)],
+  ]
+  let center = @proximity.make_point(1.0, 1.0)
+  let d = @density.density_line_at(lines, center, 3.0)
+  assert_true(d > 0.0)
+}
+
+test "S4.5 density_line_at_empty" {
+  let center = @proximity.make_point(0.0, 0.0)
+  assert_eq(@density.density_line_at([], center, 2.0), 0.0)
+}
+
+test "S4.5 density_line_at_zero_radius" {
+  let lines = [[@proximity.make_point(0.0, 0.0), @proximity.make_point(1.0, 0.0)]]
+  let center = @proximity.make_point(0.0, 0.0)
+  assert_eq(@density.density_line_at(lines, center, 0.0), 0.0)
+}
+
+test "S4.5 density_line_grid" {
+  let lines = [
+    [@proximity.make_point(0.0, 0.0), @proximity.make_point(4.0, 0.0)],
+  ]
+  let extent = (@proximity.make_point(0.0, 0.0), @proximity.make_point(4.0, 4.0))
+  let grid = @density.density_line_grid(lines, 3.0, 1.0, extent)
+  assert_eq(grid.length(), 5)
+}
+
+test "S4.5 density_stats" {
+  let grid = [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
+  let (min_v, max_v, avg) = @density.density_stats(grid)
+  assert_eq(min_v, 1.0)
+  assert_eq(max_v, 6.0)
+  assert_true(avg > 3.49 && avg < 3.51)
+}
+
+test "S4.5 density_stats_empty" {
+  let (min_v, max_v, avg) = @density.density_stats([])
+  assert_eq(min_v, 0.0)
+  assert_eq(max_v, 0.0)
+  assert_eq(avg, 0.0)
+}
+
+test "S4.5 make_density_result" {
+  let r = @density.make_density_result(1.0, 2.0, 0.5)
+  assert_eq(r.x, 1.0)
+  assert_eq(r.y, 2.0)
+  assert_eq(r.value, 0.5)
+}
+
+test "S4.5 density_kernel_results" {
+  let points = [
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(1.0, 0.0),
+  ]
+  let results = @density.density_kernel_results(points, 2.0)
+  assert_eq(results.length(), 2)
+  assert_true(results[0].value > 0.0)
+}
+
+test "S4.5 density_kernel_results_empty" {
+  assert_eq(@density.density_kernel_results([], 2.0).length(), 0)
+}
+
+test "S4.5 density_method_name" {
+  assert_eq(@density.density_method_name(@density.DensityMethod::KernelDensity), "kernel")
+  assert_eq(@density.density_method_name(@density.DensityMethod::PointDensity), "point")
+  assert_eq(@density.density_method_name(@density.DensityMethod::LineDensity), "line")
+}

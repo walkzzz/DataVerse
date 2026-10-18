@@ -36,6 +36,7 @@ import {
   "dataverse/opcore/overlay",
   "dataverse/opcore/hydrology",
   "dataverse/opcore/surface",
+  "dataverse/opcore/density",
   "dataverse/datatemporal",
   "dataverse/datatemporal/version",
   "dataverse/datatemporal/lineage",

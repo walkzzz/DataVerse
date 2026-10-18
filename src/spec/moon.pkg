@@ -39,4 +39,14 @@ import {
   "dataverse/governance/benchmark",
   "dataverse/governance/docgen",
   "dataverse/datair/ir_fusion",
+
+  "dataverse/opcore/proximity",
+  "dataverse/opcore/overlay",
+  "dataverse/opcore/hydrology",
+  "dataverse/opcore/surface",
+  "dataverse/opcore/density",
+
+  "dataverse/learncore/interpolation",
+  "dataverse/opcore/zonal",
+  "dataverse/opcore/local_stats",
 }

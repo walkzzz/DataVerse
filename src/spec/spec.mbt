@@ -553,3 +553,107 @@ test "spec: add_doc_entry monotone" {
   let index2 = @docgen.add_doc_entry(index, entry)
   assert_true(index2.total_api > index.total_api)
 }
+
+// ============================================================
+// Phase 4 形式化性质（41-50）
+// R16 门禁：验证 Phase 4 关键算子的数学性质
+// ============================================================
+
+///|
+/// 性质 41：euclidean_distance 对称性
+/// d(a, b) == d(b, a)
+test "spec: euclidean_distance symmetric" {
+  let a = @proximity.make_point(1.0, 2.0)
+  let b = @proximity.make_point(3.0, 5.0)
+  let d1 = @proximity.euclidean_distance(a, b)
+  let d2 = @proximity.euclidean_distance(b, a)
+  assert_true((d1 - d2).abs() < 0.0001)
+}
+
+///|
+/// 性质 42：euclidean_distance 自反性
+/// d(a, a) == 0
+test "spec: euclidean_distance reflexive" {
+  let a = @proximity.make_point(3.5, 7.2)
+  assert_eq(@proximity.euclidean_distance(a, a), 0.0)
+}
+
+///|
+/// 性质 43：euclidean_distance 三角不等式
+/// d(a, c) <= d(a, b) + d(b, c)
+test "spec: euclidean_distance triangle_inequality" {
+  let a = @proximity.make_point(0.0, 0.0)
+  let b = @proximity.make_point(1.0, 1.0)
+  let c = @proximity.make_point(3.0, 4.0)
+  let d_ac = @proximity.euclidean_distance(a, c)
+  let d_ab = @proximity.euclidean_distance(a, b)
+  let d_bc = @proximity.euclidean_distance(b, c)
+  assert_true(d_ac <= d_ab + d_bc + 0.0001)
+}
+
+///|
+/// 性质 44：polygon_area 非负性
+/// area(polygon) >= 0
+test "spec: polygon_area non_negative" {
+  let poly = @overlay.make_polygon([@proximity.make_point(0.0, 0.0), @proximity.make_point(4.0, 0.0), @proximity.make_point(4.0, 3.0), @proximity.make_point(0.0, 3.0)])
+  assert_true(@overlay.polygon_area(poly) >= 0.0)
+}
+
+///|
+/// 性质 45：polygon_perimeter 非负性
+/// perimeter(polygon) >= 0
+test "spec: polygon_perimeter non_negative" {
+  let poly = @overlay.make_polygon([@proximity.make_point(0.0, 0.0), @proximity.make_point(4.0, 0.0), @proximity.make_point(4.0, 3.0)])
+  assert_true(@overlay.polygon_perimeter(poly) >= 0.0)
+}
+
+///|
+/// 性质 46：surface_slope 非负性
+/// slope >= 0 (degrees)
+test "spec: surface_slope non_negative" {
+  let raster = @hydrology.make_raster([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0], [7.0, 8.0, 9.0]])
+  let slope = @surface.surface_slope(raster, 1, 1, 1.0)
+  assert_true(slope >= 0.0)
+}
+
+///|
+/// 性质 47：density_kernel_at 非负性
+/// kernel(distance) >= 0
+test "spec: density_kernel_at non_negative" {
+  let k1 = @density.quadratic_kernel(0.5, 1.0)
+  let k2 = @density.gaussian_kernel(0.5, 1.0)
+  assert_true(k1 >= 0.0)
+  assert_true(k2 >= 0.0)
+}
+
+///|
+/// 性质 48：interpolation_idw 重合点返回采样值
+/// IDW at sample location == sample value
+test "spec: interpolation_idw coincident_returns_sample" {
+  let samples = [
+    @interpolation.make_sample_point(0.0, 0.0, 5.0),
+    @interpolation.make_sample_point(2.0, 0.0, 10.0),
+  ]
+  let target = @proximity.make_point(2.0, 0.0)
+  let result = @interpolation.interpolation_idw(samples, target, 2.0)
+  assert_true((result - 10.0).abs() < 0.0001)
+}
+
+///|
+/// 性质 49：zonal_count 非负性
+/// zonal_count(zone) >= 0
+test "spec: zonal_count non_negative" {
+  let zone = @hydrology.make_raster([[1.0, 1.0], [2.0, 1.0]])
+  assert_true(@zonal.zonal_count(zone, 1) >= 0)
+  assert_true(@zonal.zonal_count(zone, 2) >= 0)
+  assert_true(@zonal.zonal_count(zone, 99) >= 0)
+}
+
+///|
+/// 性质 50：focal_mean 常数栅格不变性
+/// focal_mean(constant_raster, r, c, radius) == constant
+test "spec: focal_mean constant_invariant" {
+  let raster = @hydrology.make_raster([[7.0, 7.0, 7.0], [7.0, 7.0, 7.0], [7.0, 7.0, 7.0]])
+  let m = @local_stats.focal_mean(raster, 1, 1, 1)
+  assert_true((m - 7.0).abs() < 0.0001)
+}

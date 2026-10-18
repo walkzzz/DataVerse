@@ -30,7 +30,8 @@ pub using @opcore {
 pub using @opcore.clean { clean_id, remove_empty, strip_whitespace }
 pub using @opcore.dedup { dedup_id, exact_dedup, dedup_count }
 pub using @opcore.filter {
-  filter_id, length_filter, non_empty_filter, filter_all, filter_split
+  filter_id, length_filter, non_empty_filter, filter_all, filter_split,
+  filter_split_by_attributes
 }
 pub using @opcore.registry { registry_id, empty as empty_registry, register, lookup, size as registry_size, valid_operator }
 pub using @opcore.ingest { ingest_id, text_formatter, json_formatter, csv_formatter }
@@ -42,7 +43,8 @@ pub using @opcore.select { select_id, topk_by_length, threshold_by_length }
 pub using @opcore.mix { mix_id, group_by_modality, interleave }
 pub using @opcore.pack { pack_id, text_chunk }
 pub using @opcore.eval {
-  eval_id, GlobalStats, global_statistics, eval_tabulate_intersection
+  eval_id, GlobalStats, global_statistics, eval_tabulate_intersection,
+  eval_frequency
 }
 pub using @opcore.lineage_op { lineage_op_id, attach_lineage, make_op_lineage }
 pub using @opcore.safety { safety_id, mask_digits, mask_email }

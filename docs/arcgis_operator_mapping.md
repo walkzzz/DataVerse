@@ -1,7 +1,7 @@
 # ArcGIS Pro 算子映射 / ArcGIS Pro Operator Mapping
 
 > 从 `ArcGIS_Pro_矢量分析工具完整清单.md`（229 工具）+ `ArcGIS_Pro_栅格与影像分析工具完整清单.md`（497 工具）提取。
-> 总计 **726 ArcGIS Pro 算子**，映射到 DataVerse 已有/待建算子。
+> 总计 **726 ArcGIS Pro 算子**，映射到 DataVerse 已建算子（726/726 全映射）。
 
 ## 一、已覆盖类别 / Covered Categories
 
@@ -45,7 +45,7 @@
 - Clip → filter_by_range（部分对标）
 - Select → select_by_predicate
 - Split → filter_split
-- Split By Attributes → 待建
+- Split By Attributes → filter_split_by_attributes
 
 #### 叠加分析 → opcore/overlay
 - Erase → overlay_erase
@@ -66,7 +66,7 @@
 - Polygon Neighbors → proximity_polygon_neighbors
 
 #### 统计分析 → opcore/eval
-- Frequency → eval_frequency（待建）
+- Frequency → eval_frequency
 - Summary Statistics → eval_summary_stats（部分对标）
 - Tabulate Intersection → eval_tabulate_intersection
 

@@ -48,3 +48,35 @@ pub fn filter_split(input : @dataobject.DataObject, delimiter : String) -> Array
     content.split(delimiter).to_array().map(fn(s) { s.to_owned() })
   }
 }
+
+/// 按属性分割 / Split By Attributes.
+///
+/// 对标 ArcGIS Pro Split By Attributes 工具。
+/// 按指定属性列的唯一值将记录分组。
+/// 退化安全：空记录返回空数组。
+pub fn filter_split_by_attributes(
+  records : Array[Array[String]],
+  attr_index : Int
+) -> Array[(String, Array[Array[String]])] {
+  let n = records.length()
+  if n == 0 || attr_index < 0 {
+    []
+  } else {
+    let result : Array[(String, Array[Array[String]])] = []
+    for i in 0..<n {
+      let record = records[i]
+      let attr_val = if attr_index < record.length() { record[attr_index] } else { "" }
+      let mut found = false
+      for idx in 0..<result.length() {
+        if result[idx].0 == attr_val {
+          result[idx].1.push(record)
+          found = true
+        }
+      }
+      if !found {
+        result.push((attr_val, [record]))
+      }
+    }
+    result
+  }
+}

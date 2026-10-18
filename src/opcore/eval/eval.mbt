@@ -72,3 +72,31 @@ pub fn eval_tabulate_intersection(zone1 : Array[Int], zone2 : Array[Int]) -> Arr
     result
   }
 }
+
+/// 频率统计 / Frequency.
+///
+/// 对标 ArcGIS Pro Frequency 工具。
+/// 计算字段中每个唯一值的出现频率。
+/// 退化安全：空输入返回空数组。
+pub fn eval_frequency(values : Array[Int]) -> Array[(Int, Int)] {
+  let n = values.length()
+  if n == 0 {
+    []
+  } else {
+    let result : Array[(Int, Int)] = []
+    for i in 0..<n {
+      let v = values[i]
+      let mut found = false
+      for idx in 0..<result.length() {
+        if result[idx].0 == v {
+          result[idx] = (v, result[idx].1 + 1)
+          found = true
+        }
+      }
+      if !found {
+        result.push((v, 1))
+      }
+    }
+    result
+  }
+}

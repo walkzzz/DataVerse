@@ -6636,3 +6636,74 @@ test "eval_tabulate_intersection length mismatch returns empty" {
   let result = @eval.eval_tabulate_intersection(zone1, zone2)
   assert_eq(result.length(), 0)
 }
+
+// S6.5 收尾：Split By Attributes + Frequency 测试
+
+test "filter_split_by_attributes basic grouping" {
+  let records = [
+    ["A", "10"],
+    ["B", "20"],
+    ["A", "30"],
+    ["B", "40"],
+  ]
+  let result = @filter.filter_split_by_attributes(records, 0)
+  assert_eq(result.length(), 2)
+}
+
+test "filter_split_by_attributes empty records" {
+  let result = @filter.filter_split_by_attributes([], 0)
+  assert_eq(result.length(), 0)
+}
+
+test "filter_split_by_attributes negative index" {
+  let records = [["A", "10"]]
+  let result = @filter.filter_split_by_attributes(records, -1)
+  assert_eq(result.length(), 0)
+}
+
+test "filter_split_by_attributes single group" {
+  let records = [["X", "1"], ["X", "2"], ["X", "3"]]
+  let result = @filter.filter_split_by_attributes(records, 0)
+  assert_eq(result.length(), 1)
+  assert_eq(result[0].0, "X")
+  assert_eq(result[0].1.length(), 3)
+}
+
+test "filter_split_by_attributes out of bounds attr" {
+  let records = [["A"], ["B"]]
+  let result = @filter.filter_split_by_attributes(records, 5)
+  assert_eq(result.length(), 1)
+  assert_eq(result[0].0, "")
+}
+
+test "eval_frequency basic count" {
+  let values = [1, 2, 1, 3, 1, 2]
+  let result = @eval.eval_frequency(values)
+  assert_eq(result.length(), 3)
+}
+
+test "eval_frequency empty returns empty" {
+  let result = @eval.eval_frequency([])
+  assert_eq(result.length(), 0)
+}
+
+test "eval_frequency all same value" {
+  let values = [5, 5, 5, 5]
+  let result = @eval.eval_frequency(values)
+  assert_eq(result.length(), 1)
+  assert_eq(result[0].0, 5)
+  assert_eq(result[0].1, 4)
+}
+
+test "eval_frequency all unique" {
+  let values = [1, 2, 3, 4]
+  let result = @eval.eval_frequency(values)
+  assert_eq(result.length(), 4)
+}
+
+test "eval_frequency single value" {
+  let result = @eval.eval_frequency([42])
+  assert_eq(result.length(), 1)
+  assert_eq(result[0].0, 42)
+  assert_eq(result[0].1, 1)
+}

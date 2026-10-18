@@ -896,3 +896,103 @@ test "spec: eval_tabulate_intersection total_count_conserved" {
   }
   assert_eq(total, 5)
 }
+
+///|
+/// 性质 71：softmax 和为 1
+/// ∀ x: sum(softmax(x)) ≈ 1
+test "spec: softmax sums to 1" {
+  let result = @dl_layers.softmax([1.0, 2.0, 3.0, 4.0])
+  let mut sum = 0.0
+  for i in 0..<result.length() {
+    sum = sum + result[i]
+  }
+  assert_true(sum > 0.99 && sum < 1.01)
+}
+
+///|
+/// 性质 72：layernorm 零均值
+/// ∀ x: mean(layernorm(x)) ≈ 0
+test "spec: layernorm zero mean" {
+  let meta = @dl_layers.make_layernorm(5, 0.00001)
+  let result = @dl_layers.layernorm_forward([1.0, 2.0, 3.0, 4.0, 5.0], meta)
+  let mut sum = 0.0
+  for i in 0..<result.length() {
+    sum = sum + result[i]
+  }
+  let mean = sum / result.length().to_double()
+  assert_true(mean > -0.01 && mean < 0.01)
+}
+
+///|
+/// 性质 73：groupnorm 保持长度
+/// ∀ x: len(groupnorm(x)) == len(x)
+test "spec: groupnorm preserves length" {
+  let meta = @dl_layers.make_groupnorm(2, 4, 0.00001)
+  let input = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
+  let result = @dl_layers.groupnorm_forward(input, meta)
+  assert_eq(result.length(), input.length())
+}
+
+///|
+/// 性质 74：attention 输出维度等于值维度
+/// ∀ Q, K, V: len(attention(Q, K, V)) == len(V[0])
+test "spec: attention output dimension" {
+  let q = [1.0, 0.0]
+  let k = [[1.0, 0.0], [0.0, 1.0]]
+  let v = [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
+  let result = @dl_layers.attention_scaled_dot_product(q, k, v)
+  assert_eq(result.length(), v[0].length())
+}
+
+///|
+/// 性质 75：rnn_step 保持 hidden_size
+/// ∀ input, hidden: len(rnn_step(input, hidden, meta)) == meta.hidden_size
+test "spec: rnn_step preserves hidden size" {
+  let meta = @dl_layers.make_rnn(3, 5)
+  let result = @dl_layers.rnn_step([1.0, 2.0, 3.0], [0.0, 0.0, 0.0, 0.0, 0.0], meta)
+  assert_eq(result.length(), 5)
+}
+
+///|
+/// 性质 76：lstm_step 保持 hidden_size
+test "spec: lstm_step preserves hidden size" {
+  let meta = @dl_layers.make_lstm(3, 4)
+  let (h, c) = @dl_layers.lstm_step([1.0, 2.0, 3.0], [0.0, 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, 0.0], meta)
+  assert_eq(h.length(), 4)
+  assert_eq(c.length(), 4)
+}
+
+///|
+/// 性质 77：gru_step 保持 hidden_size
+test "spec: gru_step preserves hidden size" {
+  let meta = @dl_layers.make_gru(3, 4)
+  let result = @dl_layers.gru_step([1.0, 2.0, 3.0], [0.0, 0.0, 0.0, 0.0], meta)
+  assert_eq(result.length(), 4)
+}
+
+///|
+/// 性质 78：moving_average 保持长度
+/// ∀ data: len(moving_average(data, w)) == len(data)
+test "spec: moving_average preserves length" {
+  let data = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0]
+  let result = @timeseries.moving_average(data, 3)
+  assert_eq(result.length(), data.length())
+}
+
+///|
+/// 性质 79：kalman_filter 保持长度
+/// ∀ measurements: len(kalman_filter(measurements, ...)) == len(measurements)
+test "spec: kalman_filter preserves length" {
+  let measurements = [1.0, 2.0, 3.0, 4.0, 5.0]
+  let result = @timeseries.kalman_filter(measurements, 0.0, 1.0, 0.1, 0.5)
+  assert_eq(result.length(), measurements.length())
+}
+
+///|
+/// 性质 80：difference 长度减 1
+/// ∀ data (len > 0): len(difference(data)) == len(data) - 1
+test "spec: difference length minus 1" {
+  let data = [1.0, 3.0, 6.0, 10.0, 15.0]
+  let result = @timeseries.difference(data)
+  assert_eq(result.length(), data.length() - 1)
+}

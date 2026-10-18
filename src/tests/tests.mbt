@@ -7743,3 +7743,317 @@ test "aggregate_feature_importance basic" {
   assert_eq(result.length(), 3)
   assert_eq(result[0], 0.35)
 }
+// ============================================
+// S8.1 opcore/network 网络分析算子测试
+// ============================================
+
+test "network_id" {
+  assert_eq(@network.network_id(), "opcore/network")
+}
+
+test "make_edge basic" {
+  let e = @network.make_edge(0, 1, 5.0)
+  assert_true(e.from_node == 0)
+  assert_true(e.to_node == 1)
+  assert_true(e.weight == 5.0)
+}
+
+test "make_network_graph basic" {
+  let edges = [@network.make_edge(0, 1, 1.0), @network.make_edge(1, 2, 2.0)]
+  let g = @network.make_network_graph(3, edges)
+  assert_eq(@network.network_node_count(g), 3)
+  assert_eq(@network.network_edge_count(g), 2)
+}
+
+test "build_network_from_edges basic" {
+  let edge_list = [(0, 1, 1.0), (1, 2, 2.0), (2, 3, 3.0)]
+  let g = @network.build_network_from_edges(4, edge_list)
+  assert_eq(@network.network_node_count(g), 4)
+  assert_eq(@network.network_edge_count(g), 3)
+}
+
+test "network_node_count and edge_count" {
+  let g = @network.build_network_from_edges(5, [(0, 1, 1.0), (1, 2, 1.0)])
+  assert_eq(@network.network_node_count(g), 5)
+  assert_eq(@network.network_edge_count(g), 2)
+}
+
+test "dijkstra_shortest_path basic" {
+  let g = @network.build_network_from_edges(
+    4,
+    [(0, 1, 1.0), (1, 2, 1.0), (0, 2, 4.0), (2, 3, 1.0)],
+  )
+  let dist = @network.dijkstra_shortest_path(g, 0)
+  assert_eq(dist.length(), 4)
+  assert_eq(dist[0], 0.0)
+  assert_eq(dist[1], 1.0)
+  assert_eq(dist[2], 2.0)
+  assert_eq(dist[3], 3.0)
+}
+
+test "dijkstra_shortest_path single node" {
+  let g = @network.build_network_from_edges(1, [])
+  let dist = @network.dijkstra_shortest_path(g, 0)
+  assert_eq(dist.length(), 1)
+  assert_eq(dist[0], 0.0)
+}
+
+test "dijkstra_shortest_path empty graph" {
+  let g = @network.build_network_from_edges(0, [])
+  let dist = @network.dijkstra_shortest_path(g, 0)
+  assert_eq(dist.length(), 0)
+}
+
+test "dijkstra_shortest_path invalid source" {
+  let g = @network.build_network_from_edges(3, [(0, 1, 1.0)])
+  let dist = @network.dijkstra_shortest_path(g, 5)
+  assert_eq(dist.length(), 0)
+}
+
+test "shortest_distance basic" {
+  let g = @network.build_network_from_edges(
+    4,
+    [(0, 1, 1.0), (1, 2, 1.0), (0, 2, 4.0), (2, 3, 1.0)],
+  )
+  assert_eq(@network.shortest_distance(g, 0, 0), 0.0)
+  assert_eq(@network.shortest_distance(g, 0, 1), 1.0)
+  assert_eq(@network.shortest_distance(g, 0, 2), 2.0)
+  assert_eq(@network.shortest_distance(g, 0, 3), 3.0)
+}
+
+test "shortest_distance unreachable" {
+  let g = @network.build_network_from_edges(3, [(0, 1, 1.0)])
+  let d = @network.shortest_distance(g, 0, 2)
+  assert_true(d > 100000000000000.0)
+}
+
+test "shortest_distance invalid target" {
+  let g = @network.build_network_from_edges(3, [(0, 1, 1.0)])
+  let d = @network.shortest_distance(g, 0, 10)
+  assert_true(d > 100000000000000.0)
+}
+
+test "shortest_path_nodes basic" {
+  let g = @network.build_network_from_edges(
+    4,
+    [(0, 1, 1.0), (1, 2, 1.0), (2, 3, 1.0)],
+  )
+  let path = @network.shortest_path_nodes(g, 0, 3)
+  assert_eq(path.length(), 4)
+  assert_eq(path[0], 0)
+  assert_eq(path[1], 1)
+  assert_eq(path[2], 2)
+  assert_eq(path[3], 3)
+}
+
+test "shortest_path_nodes same node" {
+  let g = @network.build_network_from_edges(3, [(0, 1, 1.0)])
+  let path = @network.shortest_path_nodes(g, 0, 0)
+  assert_eq(path.length(), 1)
+  assert_eq(path[0], 0)
+}
+
+test "shortest_path_nodes invalid" {
+  let g = @network.build_network_from_edges(3, [(0, 1, 1.0)])
+  let path = @network.shortest_path_nodes(g, 0, 10)
+  assert_eq(path.length(), 0)
+}
+
+test "service_area basic" {
+  let g = @network.build_network_from_edges(
+    5,
+    [(0, 1, 1.0), (1, 2, 1.0), (0, 3, 3.0), (3, 4, 1.0)],
+  )
+  let sa = @network.service_area(g, 0, 2.0)
+  assert_true(sa.contains(0))
+  assert_true(sa.contains(1))
+  assert_true(sa.contains(2))
+  assert_false(sa.contains(3))
+}
+
+test "service_area zero cost" {
+  let g = @network.build_network_from_edges(3, [(0, 1, 1.0)])
+  let sa = @network.service_area(g, 0, 0.0)
+  assert_eq(sa.length(), 1)
+  assert_eq(sa[0], 0)
+}
+
+test "multi_source_service_area basic" {
+  let g = @network.build_network_from_edges(
+    5,
+    [(0, 1, 1.0), (1, 2, 1.0), (3, 4, 1.0)],
+  )
+  let sa = @network.multi_source_service_area(g, [0, 3], 1.0)
+  assert_true(sa.contains(0))
+  assert_true(sa.contains(1))
+  assert_true(sa.contains(3))
+  assert_true(sa.contains(4))
+  assert_false(sa.contains(2))
+}
+
+test "od_cost_matrix basic" {
+  let g = @network.build_network_from_edges(
+    4,
+    [(0, 1, 1.0), (1, 2, 1.0), (2, 3, 1.0)],
+  )
+  let matrix = @network.od_cost_matrix(g, [0, 1], [2, 3])
+  assert_eq(matrix.length(), 2)
+  assert_eq(matrix[0][0], 2.0)
+  assert_eq(matrix[0][1], 3.0)
+  assert_eq(matrix[1][0], 1.0)
+  assert_eq(matrix[1][1], 2.0)
+}
+
+test "od_cost_matrix empty" {
+  let g = @network.build_network_from_edges(3, [])
+  let matrix = @network.od_cost_matrix(g, [], [])
+  assert_eq(matrix.length(), 0)
+}
+
+test "closest_facility basic" {
+  let g = @network.build_network_from_edges(
+    5,
+    [
+      (0, 1, 1.0), (1, 0, 1.0), (1, 2, 1.0), (2, 1, 1.0), (0, 3, 5.0), (3, 0, 5.0),
+      (3, 4, 1.0), (4, 3, 1.0),
+    ],
+  )
+  let (facility, dist) = @network.closest_facility(g, 2, [3, 0])
+  assert_eq(facility, 0)
+  assert_eq(dist, 2.0)
+}
+
+test "closest_facility no facilities" {
+  let g = @network.build_network_from_edges(3, [(0, 1, 1.0)])
+  let (facility, _) = @network.closest_facility(g, 0, [])
+  assert_eq(facility, -1)
+}
+
+test "route_plan basic" {
+  let g = @network.build_network_from_edges(
+    4,
+    [(0, 1, 1.0), (1, 2, 1.0), (2, 3, 1.0)],
+  )
+  let route = @network.route_plan(g, [0, 2, 3])
+  assert_true(route.length() >= 3)
+  assert_eq(route[0], 0)
+  assert_eq(route[route.length() - 1], 3)
+}
+
+test "route_plan single waypoint" {
+  let g = @network.build_network_from_edges(3, [(0, 1, 1.0)])
+  let route = @network.route_plan(g, [1])
+  assert_eq(route.length(), 1)
+  assert_eq(route[0], 1)
+}
+
+test "route_cost basic" {
+  let g = @network.build_network_from_edges(
+    4,
+    [(0, 1, 1.0), (1, 2, 1.0), (2, 3, 1.0)],
+  )
+  let cost = @network.route_cost(g, [0, 2, 3])
+  assert_eq(cost, 3.0)
+}
+
+test "route_cost single waypoint" {
+  let g = @network.build_network_from_edges(3, [(0, 1, 1.0)])
+  let cost = @network.route_cost(g, [0])
+  assert_eq(cost, 0.0)
+}
+
+test "location_allocation basic" {
+  let g = @network.build_network_from_edges(
+    6,
+    [(0, 1, 1.0), (1, 2, 1.0), (3, 4, 1.0), (4, 5, 1.0)],
+  )
+  let chosen = @network.location_allocation(g, [0, 1, 2], [3, 4], 1)
+  assert_eq(chosen.length(), 1)
+}
+
+test "location_allocation zero facilities" {
+  let g = @network.build_network_from_edges(3, [(0, 1, 1.0)])
+  let chosen = @network.location_allocation(g, [0, 1], [2], 0)
+  assert_eq(chosen.length(), 0)
+}
+
+test "connected_components basic" {
+  let g = @network.build_network_from_edges(
+    6,
+    [(0, 1, 1.0), (1, 2, 1.0), (3, 4, 1.0)],
+  )
+  let comps = @network.connected_components(g)
+  assert_eq(comps.length(), 3)
+}
+
+test "connected_components fully connected" {
+  let g = @network.build_network_from_edges(
+    4,
+    [(0, 1, 1.0), (1, 2, 1.0), (2, 3, 1.0)],
+  )
+  let comps = @network.connected_components(g)
+  assert_eq(comps.length(), 1)
+  assert_eq(comps[0].length(), 4)
+}
+
+test "connected_components empty" {
+  let g = @network.build_network_from_edges(0, [])
+  let comps = @network.connected_components(g)
+  assert_eq(comps.length(), 0)
+}
+
+test "is_connected true" {
+  let g = @network.build_network_from_edges(
+    4,
+    [(0, 1, 1.0), (1, 2, 1.0), (2, 3, 1.0)],
+  )
+  assert_true(@network.is_connected(g))
+}
+
+test "is_connected false" {
+  let g = @network.build_network_from_edges(
+    4,
+    [(0, 1, 1.0), (2, 3, 1.0)],
+  )
+  assert_false(@network.is_connected(g))
+}
+
+test "nearest_neighbor_tsp basic" {
+  let g = @network.build_network_from_edges(
+    4,
+    [(0, 1, 1.0), (1, 2, 1.0), (2, 3, 1.0), (3, 0, 1.0)],
+  )
+  let path = @network.nearest_neighbor_tsp(g, 0)
+  assert_eq(path.length(), 4)
+  assert_eq(path[0], 0)
+}
+
+test "nearest_neighbor_tsp single node" {
+  let g = @network.build_network_from_edges(1, [])
+  let path = @network.nearest_neighbor_tsp(g, 0)
+  assert_eq(path.length(), 1)
+  assert_eq(path[0], 0)
+}
+
+test "nearest_neighbor_tsp invalid start" {
+  let g = @network.build_network_from_edges(3, [(0, 1, 1.0)])
+  let path = @network.nearest_neighbor_tsp(g, 5)
+  assert_eq(path.length(), 0)
+}
+
+test "dijkstra directed graph" {
+  let g = @network.build_network_from_edges(
+    3,
+    [(0, 1, 5.0), (1, 2, 3.0), (0, 2, 10.0)],
+  )
+  assert_eq(@network.shortest_distance(g, 0, 2), 8.0)
+  assert_eq(@network.shortest_distance(g, 1, 2), 3.0)
+}
+
+test "network graph with self loop" {
+  let g = @network.build_network_from_edges(
+    3,
+    [(0, 0, 1.0), (0, 1, 2.0), (1, 2, 1.0)],
+  )
+  assert_eq(@network.shortest_distance(g, 0, 2), 3.0)
+}

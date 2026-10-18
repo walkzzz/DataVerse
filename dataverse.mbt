@@ -6727,4 +6727,11 @@ pub using @governance { governance_id }pub using @governance.benchmark {
   docgen_id, DocEntry, DocIndex, make_doc_entry, empty_doc_index, add_doc_entry,
   generate_dataverse_doc_index, doc_entry_to_markdown, doc_index_to_markdown,
   doc_entry_to_html, doc_index_to_html, doc_index_stats,
+}pub using @opcore.network {
+  NetworkEdge, NetworkGraph,
+  make_network_graph, make_edge, dijkstra_shortest_path, shortest_distance, shortest_path_nodes,
+  service_area, multi_source_service_area, od_cost_matrix, closest_facility,
+  route_plan, route_cost, location_allocation, build_network_from_edges,
+  network_node_count, network_edge_count, connected_components, is_connected,
+  nearest_neighbor_tsp, network_id,
 }

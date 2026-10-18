@@ -126,6 +126,16 @@ pub using @learncore.classify { classify_id, knn_classify }
 pub using @learncore.cluster { cluster_id, kmeans }
 pub using @learncore.feature { feature_id, standardize, normalize_minmax }
 pub using @learncore.metrics { metrics_id, accuracy, mse, mae, confusion_matrix }
+pub using @learncore.interpolation {
+  InterpolationMethod, SamplePoint, InterpolationResult,
+  make_sample_point, make_interpolation_result, interpolation_method_name,
+  interpolation_idw, interpolation_idw_grid,
+  interpolation_kriging, interpolation_kriging_grid,
+  interpolation_spline, interpolation_spline_grid,
+  interpolation_natural_neighbor, interpolation_natural_neighbor_grid,
+  interpolate, interpolate_grid,
+  interpolation_idw_results, interpolation_stats,
+}
 pub using @learncore.dl_layers {
   dl_layers_id, Activation, LinearLayer, make_linear_layer, make_linear_layer_with_weights, linear_forward, activate, activation_forward, activation_name,
   Conv2dMeta, make_conv2d, conv2d_output_dim, MaxPoolMeta, make_maxpool, maxpool_output_dim,

@@ -39,6 +39,7 @@ import {
   "learncore/cluster",
   "learncore/feature",
   "learncore/metrics",
+  "learncore/interpolation",
   "recipe",
   "recipe/cleaning_line",
   "recipe/dedup_line",

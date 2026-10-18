@@ -52,6 +52,7 @@ import {
   "dataverse/learncore/cluster",
   "dataverse/learncore/feature",
   "dataverse/learncore/metrics",
+  "dataverse/learncore/interpolation",
   "dataverse/learncore/dl_layers",
   "dataverse/learncore/dl_losses",
   "dataverse/learncore/dl_optimizers",

@@ -4917,3 +4917,297 @@ test "S4.6 path_cost" {
   let path = @distance.make_path_result([(0, 0), (1, 1)], 7.5)
   assert_eq(@distance.path_cost(path), 7.5)
 }
+
+// ============================================================
+// S4.7 learncore/interpolation 插值分析测试
+// ============================================================
+
+test "S4.7 InterpolationMethod name" {
+  assert_eq(@interpolation.interpolation_method_name(@interpolation.IDW), "idw")
+  assert_eq(@interpolation.interpolation_method_name(@interpolation.Kriging), "kriging")
+  assert_eq(@interpolation.interpolation_method_name(@interpolation.Spline), "spline")
+  assert_eq(@interpolation.interpolation_method_name(@interpolation.NaturalNeighbor), "natural_neighbor")
+}
+
+test "S4.7 make_sample_point" {
+  let p = @interpolation.make_sample_point(1.0, 2.0, 3.0)
+  assert_eq(p.x, 1.0)
+  assert_eq(p.y, 2.0)
+  assert_eq(p.value, 3.0)
+}
+
+test "S4.7 make_interpolation_result" {
+  let r = @interpolation.make_interpolation_result(1.0, 2.0, 3.0, @interpolation.IDW)
+  assert_eq(r.x, 1.0)
+  assert_eq(r.y, 2.0)
+  assert_eq(r.value, 3.0)
+  assert_eq(r.interp_method, @interpolation.IDW)
+}
+
+test "S4.7 IDW empty samples returns 0" {
+  let target = @proximity.make_point(0.0, 0.0)
+  assert_eq(@interpolation.interpolation_idw([], target, 2.0), 0.0)
+}
+
+test "S4.7 IDW coincident point returns sample value" {
+  let samples = [@interpolation.make_sample_point(0.0, 0.0, 5.0)]
+  let target = @proximity.make_point(0.0, 0.0)
+  assert_eq(@interpolation.interpolation_idw(samples, target, 2.0), 5.0)
+}
+
+test "S4.7 IDW single sample" {
+  let samples = [@interpolation.make_sample_point(1.0, 0.0, 10.0)]
+  let target = @proximity.make_point(0.0, 0.0)
+  let result = @interpolation.interpolation_idw(samples, target, 2.0)
+  assert_true((result - 10.0).abs() < 0.0001)
+}
+
+test "S4.7 IDW two samples weighted average" {
+  let samples = [
+    @interpolation.make_sample_point(0.0, 0.0, 0.0),
+    @interpolation.make_sample_point(2.0, 0.0, 10.0),
+  ]
+  let target = @proximity.make_point(1.0, 0.0)
+  let result = @interpolation.interpolation_idw(samples, target, 2.0)
+  assert_true((result - 5.0).abs() < 0.0001)
+}
+
+test "S4.7 IDW power=1 closer sample dominates" {
+  let samples = [
+    @interpolation.make_sample_point(0.0, 0.0, 0.0),
+    @interpolation.make_sample_point(10.0, 0.0, 100.0),
+  ]
+  let target = @proximity.make_point(1.0, 0.0)
+  let result = @interpolation.interpolation_idw(samples, target, 1.0)
+  assert_true(result < 50.0)
+}
+
+test "S4.7 IDW negative power defaults to 2" {
+  let samples = [
+    @interpolation.make_sample_point(0.0, 0.0, 0.0),
+    @interpolation.make_sample_point(2.0, 0.0, 10.0),
+  ]
+  let target = @proximity.make_point(1.0, 0.0)
+  let result = @interpolation.interpolation_idw(samples, target, -1.0)
+  assert_true((result - 5.0).abs() < 0.0001)
+}
+
+test "S4.7 IDW grid empty samples" {
+  let extent = (@proximity.make_point(0.0, 0.0), @proximity.make_point(2.0, 2.0))
+  let grid = @interpolation.interpolation_idw_grid([], 2.0, 1.0, extent)
+  assert_eq(grid.length(), 0)
+}
+
+test "S4.7 IDW grid non-empty" {
+  let samples = [
+    @interpolation.make_sample_point(0.0, 0.0, 0.0),
+    @interpolation.make_sample_point(2.0, 2.0, 10.0),
+  ]
+  let extent = (@proximity.make_point(0.0, 0.0), @proximity.make_point(2.0, 2.0))
+  let grid = @interpolation.interpolation_idw_grid(samples, 2.0, 1.0, extent)
+  assert_eq(grid.length(), 3)
+  assert_eq(grid[0].length(), 3)
+}
+
+test "S4.7 IDW grid zero cell_size" {
+  let samples = [@interpolation.make_sample_point(0.0, 0.0, 1.0)]
+  let extent = (@proximity.make_point(0.0, 0.0), @proximity.make_point(2.0, 2.0))
+  let grid = @interpolation.interpolation_idw_grid(samples, 2.0, 0.0, extent)
+  assert_eq(grid.length(), 0)
+}
+
+test "S4.7 Kriging empty samples" {
+  let target = @proximity.make_point(0.0, 0.0)
+  assert_eq(@interpolation.interpolation_kriging([], target), 0.0)
+}
+
+test "S4.7 Kriging coincident" {
+  let samples = [@interpolation.make_sample_point(1.0, 1.0, 7.0)]
+  let target = @proximity.make_point(1.0, 1.0)
+  assert_eq(@interpolation.interpolation_kriging(samples, target), 7.0)
+}
+
+test "S4.7 Kriging grid" {
+  let samples = [
+    @interpolation.make_sample_point(0.0, 0.0, 0.0),
+    @interpolation.make_sample_point(1.0, 1.0, 5.0),
+  ]
+  let extent = (@proximity.make_point(0.0, 0.0), @proximity.make_point(1.0, 1.0))
+  let grid = @interpolation.interpolation_kriging_grid(samples, 1.0, extent)
+  assert_eq(grid.length(), 2)
+  assert_eq(grid[0].length(), 2)
+}
+
+test "S4.7 Spline empty samples" {
+  let target = @proximity.make_point(0.0, 0.0)
+  assert_eq(@interpolation.interpolation_spline([], target), 0.0)
+}
+
+test "S4.7 Spline coincident" {
+  let samples = [@interpolation.make_sample_point(0.0, 0.0, 3.0)]
+  let target = @proximity.make_point(0.0, 0.0)
+  assert_eq(@interpolation.interpolation_spline(samples, target), 3.0)
+}
+
+test "S4.7 Spline grid" {
+  let samples = [@interpolation.make_sample_point(0.0, 0.0, 1.0)]
+  let extent = (@proximity.make_point(0.0, 0.0), @proximity.make_point(1.0, 1.0))
+  let grid = @interpolation.interpolation_spline_grid(samples, 1.0, extent)
+  assert_eq(grid.length(), 2)
+}
+
+test "S4.7 NaturalNeighbor empty samples" {
+  let target = @proximity.make_point(0.0, 0.0)
+  assert_eq(@interpolation.interpolation_natural_neighbor([], target), 0.0)
+}
+
+test "S4.7 NaturalNeighbor coincident" {
+  let samples = [@interpolation.make_sample_point(2.0, 2.0, 9.0)]
+  let target = @proximity.make_point(2.0, 2.0)
+  assert_eq(@interpolation.interpolation_natural_neighbor(samples, target), 9.0)
+}
+
+test "S4.7 NaturalNeighbor grid" {
+  let samples = [@interpolation.make_sample_point(0.0, 0.0, 1.0)]
+  let extent = (@proximity.make_point(0.0, 0.0), @proximity.make_point(1.0, 1.0))
+  let grid = @interpolation.interpolation_natural_neighbor_grid(samples, 1.0, extent)
+  assert_eq(grid.length(), 2)
+}
+
+test "S4.7 interpolate by method IDW" {
+  let samples = [
+    @interpolation.make_sample_point(0.0, 0.0, 0.0),
+    @interpolation.make_sample_point(2.0, 0.0, 10.0),
+  ]
+  let target = @proximity.make_point(1.0, 0.0)
+  let r1 = @interpolation.interpolate(samples, target, @interpolation.IDW)
+  let r2 = @interpolation.interpolation_idw(samples, target, 2.0)
+  assert_true((r1 - r2).abs() < 0.0001)
+}
+
+test "S4.7 interpolate by method Kriging" {
+  let samples = [@interpolation.make_sample_point(0.0, 0.0, 5.0)]
+  let target = @proximity.make_point(1.0, 0.0)
+  let r1 = @interpolation.interpolate(samples, target, @interpolation.Kriging)
+  let r2 = @interpolation.interpolation_kriging(samples, target)
+  assert_true((r1 - r2).abs() < 0.0001)
+}
+
+test "S4.7 interpolate by method Spline" {
+  let samples = [@interpolation.make_sample_point(0.0, 0.0, 5.0)]
+  let target = @proximity.make_point(1.0, 0.0)
+  let r1 = @interpolation.interpolate(samples, target, @interpolation.Spline)
+  let r2 = @interpolation.interpolation_spline(samples, target)
+  assert_true((r1 - r2).abs() < 0.0001)
+}
+
+test "S4.7 interpolate by method NaturalNeighbor" {
+  let samples = [@interpolation.make_sample_point(0.0, 0.0, 5.0)]
+  let target = @proximity.make_point(1.0, 0.0)
+  let r1 = @interpolation.interpolate(samples, target, @interpolation.NaturalNeighbor)
+  let r2 = @interpolation.interpolation_natural_neighbor(samples, target)
+  assert_true((r1 - r2).abs() < 0.0001)
+}
+
+test "S4.7 interpolate empty samples" {
+  let target = @proximity.make_point(0.0, 0.0)
+  assert_eq(@interpolation.interpolate([], target, @interpolation.IDW), 0.0)
+  assert_eq(@interpolation.interpolate([], target, @interpolation.Kriging), 0.0)
+  assert_eq(@interpolation.interpolate([], target, @interpolation.Spline), 0.0)
+  assert_eq(@interpolation.interpolate([], target, @interpolation.NaturalNeighbor), 0.0)
+}
+
+test "S4.7 interpolate_grid by method" {
+  let samples = [@interpolation.make_sample_point(0.0, 0.0, 1.0)]
+  let extent = (@proximity.make_point(0.0, 0.0), @proximity.make_point(1.0, 1.0))
+  let g1 = @interpolation.interpolate_grid(samples, @interpolation.IDW, 1.0, extent)
+  let g2 = @interpolation.interpolate_grid(samples, @interpolation.Kriging, 1.0, extent)
+  let g3 = @interpolation.interpolate_grid(samples, @interpolation.Spline, 1.0, extent)
+  let g4 = @interpolation.interpolate_grid(samples, @interpolation.NaturalNeighbor, 1.0, extent)
+  assert_eq(g1.length(), 2)
+  assert_eq(g2.length(), 2)
+  assert_eq(g3.length(), 2)
+  assert_eq(g4.length(), 2)
+}
+
+test "S4.7 interpolate_grid empty samples" {
+  let extent = (@proximity.make_point(0.0, 0.0), @proximity.make_point(1.0, 1.0))
+  let grid = @interpolation.interpolate_grid([], @interpolation.IDW, 1.0, extent)
+  assert_eq(grid.length(), 0)
+}
+
+test "S4.7 IDW results empty" {
+  let results = @interpolation.interpolation_idw_results([], 2.0)
+  assert_eq(results.length(), 0)
+}
+
+test "S4.7 IDW results non-empty" {
+  let samples = [
+    @interpolation.make_sample_point(0.0, 0.0, 5.0),
+    @interpolation.make_sample_point(1.0, 0.0, 10.0),
+  ]
+  let results = @interpolation.interpolation_idw_results(samples, 2.0)
+  assert_eq(results.length(), 2)
+  assert_eq(results[0].x, 0.0)
+  assert_eq(results[0].y, 0.0)
+  assert_eq(results[0].interp_method, @interpolation.IDW)
+}
+
+test "S4.7 IDW results coincident returns exact value" {
+  let samples = [@interpolation.make_sample_point(0.0, 0.0, 5.0)]
+  let results = @interpolation.interpolation_idw_results(samples, 2.0)
+  assert_eq(results.length(), 1)
+  assert_true((results[0].value - 5.0).abs() < 0.0001)
+}
+
+test "S4.7 interpolation stats empty grid" {
+  let (min_v, max_v, avg) = @interpolation.interpolation_stats([])
+  assert_eq(min_v, 0.0)
+  assert_eq(max_v, 0.0)
+  assert_eq(avg, 0.0)
+}
+
+test "S4.7 interpolation stats non-empty grid" {
+  let grid = [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
+  let (min_v, max_v, avg) = @interpolation.interpolation_stats(grid)
+  assert_eq(min_v, 1.0)
+  assert_eq(max_v, 6.0)
+  assert_true((avg - 3.5).abs() < 0.0001)
+}
+
+test "S4.7 interpolation stats single cell" {
+  let grid = [[7.0]]
+  let (min_v, max_v, avg) = @interpolation.interpolation_stats(grid)
+  assert_eq(min_v, 7.0)
+  assert_eq(max_v, 7.0)
+  assert_eq(avg, 7.0)
+}
+
+test "S4.7 interpolation stats ragged grid" {
+  let grid = [[1.0, 2.0], [3.0]]
+  let (min_v, max_v, avg) = @interpolation.interpolation_stats(grid)
+  assert_eq(min_v, 1.0)
+  assert_eq(max_v, 3.0)
+  assert_true((avg - 2.0).abs() < 0.0001)
+}
+
+test "S4.7 IDW symmetry: equidistant samples average" {
+  let samples = [
+    @interpolation.make_sample_point(1.0, 0.0, 10.0),
+    @interpolation.make_sample_point(-1.0, 0.0, 20.0),
+  ]
+  let target = @proximity.make_point(0.0, 0.0)
+  let result = @interpolation.interpolation_idw(samples, target, 2.0)
+  assert_true((result - 15.0).abs() < 0.0001)
+}
+
+test "S4.7 IDW higher power favors closer point" {
+  let samples = [
+    @interpolation.make_sample_point(1.0, 0.0, 0.0),
+    @interpolation.make_sample_point(3.0, 0.0, 100.0),
+  ]
+  let target = @proximity.make_point(0.0, 0.0)
+  let r_low = @interpolation.interpolation_idw(samples, target, 1.0)
+  let r_high = @interpolation.interpolation_idw(samples, target, 10.0)
+  assert_true(r_high < r_low)
+}

@@ -6744,3 +6744,9 @@ pub using @opcore.topology {
   validate_gap, validate_dangling, topology_errors, merge_polygons, fix_overlap,
   simplify_polygon, polygon_area, polygon_perimeter, topology_id,
 }
+pub using @opcore.terrain {
+  DEM,
+  make_dem, dem_rows, dem_cols, slope, aspect, hillshade,
+  tpi, roughness, vrm, spi, profile_curvature, plan_curvature, total_curvature,
+  flow_direction, flow_accumulation, generate_contour, elevation_stats, terrain_id,
+}

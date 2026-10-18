@@ -8493,3 +8493,142 @@ test "validate_gap basic" {
   let errors = @topology.validate_gap([p1], (0.0, 0.0, 10.0, 10.0))
   assert_true(errors.length() >= 0)
 }
+// ============================================
+// S8.3 opcore/terrain 地形分析算子测试
+// ============================================
+
+test "terrain_id" {
+  assert_eq(@terrain.terrain_id(), "opcore/terrain")
+}
+
+test "make_dem basic" {
+  let dem = @terrain.make_dem([[100.0, 110.0, 120.0], [90.0, 100.0, 110.0], [80.0, 90.0, 100.0]], 10.0)
+  assert_eq(@terrain.dem_rows(dem), 3)
+  assert_eq(@terrain.dem_cols(dem), 3)
+}
+
+test "dem_rows and cols empty" {
+  let dem = @terrain.make_dem([], 1.0)
+  assert_eq(@terrain.dem_rows(dem), 0)
+  assert_eq(@terrain.dem_cols(dem), 0)
+}
+
+test "slope basic" {
+  let dem = @terrain.make_dem([[100.0, 101.0, 102.0], [99.0, 100.0, 101.0], [98.0, 99.0, 100.0]], 10.0)
+  let s = @terrain.slope(dem, 1, 1)
+  assert_true(s >= 0.0)
+}
+
+test "slope flat" {
+  let dem = @terrain.make_dem([[50.0, 50.0, 50.0], [50.0, 50.0, 50.0], [50.0, 50.0, 50.0]], 10.0)
+  let s = @terrain.slope(dem, 1, 1)
+  assert_true(s < 0.001)
+}
+
+test "aspect flat" {
+  let dem = @terrain.make_dem([[50.0, 50.0, 50.0], [50.0, 50.0, 50.0], [50.0, 50.0, 50.0]], 10.0)
+  let a = @terrain.aspect(dem, 1, 1)
+  assert_true(a >= 0.0)
+  assert_true(a < 360.0)
+}
+
+test "hillshade basic" {
+  let dem = @terrain.make_dem([[100.0, 110.0, 120.0], [90.0, 100.0, 110.0], [80.0, 90.0, 100.0]], 10.0)
+  let hs = @terrain.hillshade(dem, 1, 1, 315.0, 45.0)
+  assert_true(hs >= 0.0)
+  assert_true(hs <= 255.0)
+}
+
+test "tpi basic" {
+  let dem = @terrain.make_dem([[100.0, 110.0, 120.0], [90.0, 100.0, 110.0], [80.0, 90.0, 100.0]], 10.0)
+  let t = @terrain.tpi(dem, 1, 1)
+  assert_true(t > -1000.0 && t < 1000.0)
+}
+
+test "tpi flat" {
+  let dem = @terrain.make_dem([[50.0, 50.0, 50.0], [50.0, 50.0, 50.0], [50.0, 50.0, 50.0]], 10.0)
+  let t = @terrain.tpi(dem, 1, 1)
+  assert_true(t < 0.001 && t > -0.001)
+}
+
+test "roughness flat" {
+  let dem = @terrain.make_dem([[50.0, 50.0, 50.0], [50.0, 50.0, 50.0], [50.0, 50.0, 50.0]], 10.0)
+  let r = @terrain.roughness(dem, 1, 1)
+  assert_true(r < 0.001)
+}
+
+test "roughness varied" {
+  let dem = @terrain.make_dem([[100.0, 110.0, 120.0], [90.0, 100.0, 110.0], [80.0, 90.0, 100.0]], 10.0)
+  let r = @terrain.roughness(dem, 1, 1)
+  assert_true(r > 0.0)
+}
+
+test "vrm basic" {
+  let dem = @terrain.make_dem([[100.0, 110.0, 120.0], [90.0, 100.0, 110.0], [80.0, 90.0, 100.0]], 10.0)
+  let v = @terrain.vrm(dem, 1, 1)
+  assert_true(v >= -1.0 && v <= 1.0)
+}
+
+test "spi basic" {
+  let dem = @terrain.make_dem([[100.0, 110.0, 120.0], [90.0, 100.0, 110.0], [80.0, 90.0, 100.0]], 10.0)
+  let s = @terrain.spi(dem, 1, 1, 10.0)
+  assert_true(s >= 0.0)
+}
+
+test "profile_curvature basic" {
+  let dem = @terrain.make_dem([[100.0, 110.0, 120.0], [90.0, 100.0, 110.0], [80.0, 90.0, 100.0]], 10.0)
+  let c = @terrain.profile_curvature(dem, 1, 1)
+  assert_true(c > -1000.0 && c < 1000.0)
+}
+
+test "plan_curvature basic" {
+  let dem = @terrain.make_dem([[100.0, 110.0, 120.0], [90.0, 100.0, 110.0], [80.0, 90.0, 100.0]], 10.0)
+  let c = @terrain.plan_curvature(dem, 1, 1)
+  assert_true(c > -1000.0 && c < 1000.0)
+}
+
+test "total_curvature basic" {
+  let dem = @terrain.make_dem([[100.0, 110.0, 120.0], [90.0, 100.0, 110.0], [80.0, 90.0, 100.0]], 10.0)
+  let c = @terrain.total_curvature(dem, 1, 1)
+  assert_true(c >= 0.0)
+}
+
+test "flow_direction basic" {
+  let dem = @terrain.make_dem([[100.0, 100.0, 100.0], [100.0, 100.0, 100.0], [90.0, 90.0, 90.0]], 10.0)
+  let dir = @terrain.flow_direction(dem, 1, 1)
+  assert_true(dir >= -1 && dir < 8)
+}
+
+test "flow_accumulation basic" {
+  let dem = @terrain.make_dem([[100.0, 100.0, 100.0], [100.0, 100.0, 100.0], [90.0, 90.0, 90.0]], 10.0)
+  let acc = @terrain.flow_accumulation(dem, 2, 1)
+  assert_true(acc >= 1.0)
+}
+
+test "generate_contour basic" {
+  let dem = @terrain.make_dem([[90.0, 100.0, 110.0], [90.0, 100.0, 110.0], [90.0, 100.0, 110.0]], 10.0)
+  let contour = @terrain.generate_contour(dem, 100.0, 0.01)
+  assert_true(contour.length() > 0)
+}
+
+test "generate_contour none" {
+  let dem = @terrain.make_dem([[10.0, 10.0, 10.0], [10.0, 10.0, 10.0], [10.0, 10.0, 10.0]], 10.0)
+  let contour = @terrain.generate_contour(dem, 100.0, 0.01)
+  assert_eq(contour.length(), 0)
+}
+
+test "elevation_stats basic" {
+  let dem = @terrain.make_dem([[100.0, 200.0], [150.0, 175.0]], 10.0)
+  let (min_e, max_e, mean, range) = @terrain.elevation_stats(dem)
+  assert_eq(min_e, 100.0)
+  assert_eq(max_e, 200.0)
+  assert_true(mean > 150.0 && mean < 160.0)
+  assert_eq(range, 100.0)
+}
+
+test "elevation_stats empty" {
+  let dem = @terrain.make_dem([], 1.0)
+  let (min_e, _max_e, _mean, range) = @terrain.elevation_stats(dem)
+  assert_eq(min_e, 0.0)
+  assert_eq(range, 0.0)
+}

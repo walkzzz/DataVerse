@@ -27,6 +27,7 @@ import {
   "opcore/hydrology",
   "opcore/surface",
   "opcore/density",
+  "opcore/distance",
   "datatemporal",
   "datatemporal/version",
   "datatemporal/lineage",

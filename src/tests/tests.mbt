@@ -4755,3 +4755,165 @@ test "S4.5 density_method_name" {
   assert_eq(@density.density_method_name(@density.DensityMethod::PointDensity), "point")
   assert_eq(@density.density_method_name(@density.DensityMethod::LineDensity), "line")
 }
+// ============================================================
+// S4.6 opcore/distance 距离分析测试
+// ============================================================
+
+test "S4.6 make_cost_surface" {
+  let cs = @distance.make_cost_surface([
+    [1.0, 2.0],
+    [3.0, 4.0],
+  ])
+  assert_eq(cs.rows, 2)
+  assert_eq(cs.cols, 2)
+}
+
+test "S4.6 cost_get" {
+  let cs = @distance.make_cost_surface([
+    [1.0, 2.0],
+    [3.0, 4.0],
+  ])
+  assert_eq(@distance.cost_get(cs, 0, 0), 1.0)
+  assert_eq(@distance.cost_get(cs, 1, 1), 4.0)
+}
+
+test "S4.6 cost_get_out_of_bounds" {
+  let cs = @distance.make_cost_surface([[1.0]])
+  assert_eq(@distance.cost_get(cs, 5, 5), 1.0)
+}
+
+test "S4.6 cost_get_zero_cost" {
+  let cs = @distance.make_cost_surface([[0.0]])
+  assert_eq(@distance.cost_get(cs, 0, 0), 1.0)
+}
+
+test "S4.6 distance_euclidean_grid" {
+  let result = @distance.distance_euclidean_grid([(0, 0)], 3, 3, 1.0)
+  assert_eq(result.rows, 3)
+  assert_eq(result.cols, 3)
+  assert_eq(result.grid[0][0], 0.0)
+  assert_true(result.grid[2][2] > 2.8 && result.grid[2][2] < 2.9)
+}
+
+test "S4.6 distance_euclidean_grid_empty_sources" {
+  let result = @distance.distance_euclidean_grid([], 2, 2, 1.0)
+  assert_eq(result.grid[0][0], 0.0)
+}
+
+test "S4.6 distance_euclidean_allocation" {
+  let alloc = @distance.distance_euclidean_allocation([(0, 0), (2, 2)], 3, 3)
+  assert_eq(alloc[0][0], 0)
+  assert_eq(alloc[2][2], 1)
+}
+
+test "S4.6 distance_euclidean_allocation_empty" {
+  let alloc = @distance.distance_euclidean_allocation([], 2, 2)
+  assert_eq(alloc[0][0], -1)
+}
+
+test "S4.6 distance_cost" {
+  let cs = @distance.make_cost_surface([
+    [1.0, 1.0, 1.0],
+    [1.0, 1.0, 1.0],
+    [1.0, 1.0, 1.0],
+  ])
+  let result = @distance.distance_cost([(0, 0)], cs, 1.0)
+  assert_eq(result.rows, 3)
+  assert_eq(result.grid[0][0], 0.0)
+  assert_true(result.grid[2][2] > 0.0)
+}
+
+test "S4.6 distance_cost_empty_sources" {
+  let cs = @distance.make_cost_surface([[1.0, 1.0], [1.0, 1.0]])
+  let result = @distance.distance_cost([], cs, 1.0)
+  assert_eq(result.grid[0][0], 0.0)
+}
+
+test "S4.6 distance_cost_allocation" {
+  let cs = @distance.make_cost_surface([
+    [1.0, 1.0, 1.0],
+    [1.0, 1.0, 1.0],
+    [1.0, 1.0, 1.0],
+  ])
+  let alloc = @distance.distance_cost_allocation([(0, 0), (2, 2)], cs, 1.0)
+  assert_eq(alloc[0][0], 0)
+  assert_eq(alloc[2][2], 1)
+}
+
+test "S4.6 distance_back_link" {
+  let cs = @distance.make_cost_surface([
+    [1.0, 1.0, 1.0],
+    [1.0, 1.0, 1.0],
+    [1.0, 1.0, 1.0],
+  ])
+  let links = @distance.distance_back_link([(0, 0)], cs, 1.0)
+  assert_eq(links.length(), 3)
+  let (r, c) = links[0][0]
+  assert_eq(r, 0)
+  assert_eq(c, 0)
+}
+
+test "S4.6 distance_optimal_path" {
+  let cs = @distance.make_cost_surface([
+    [1.0, 1.0, 1.0],
+    [1.0, 1.0, 1.0],
+    [1.0, 1.0, 1.0],
+  ])
+  let path = @distance.distance_optimal_path(cs, (0, 0), (2, 2))
+  assert_true(path.length >= 1)
+  assert_true(path.total_cost >= 0.0)
+}
+
+test "S4.6 distance_optimal_path_same_point" {
+  let cs = @distance.make_cost_surface([[1.0]])
+  let path = @distance.distance_optimal_path(cs, (0, 0), (0, 0))
+  assert_eq(path.length, 1)
+}
+
+test "S4.6 distance_optimal_path_out_of_bounds" {
+  let cs = @distance.make_cost_surface([[1.0]])
+  let path = @distance.distance_optimal_path(cs, (5, 5), (0, 0))
+  assert_eq(path.length, 0)
+}
+
+test "S4.6 distance_corridor" {
+  let cs = @distance.make_cost_surface([
+    [1.0, 1.0, 1.0],
+    [1.0, 1.0, 1.0],
+    [1.0, 1.0, 1.0],
+  ])
+  let corridor = @distance.distance_corridor(cs, (0, 0), (2, 2), 10.0)
+  assert_true(corridor.length() >= 1)
+}
+
+test "S4.6 distance_stats" {
+  let result = @distance.distance_euclidean_grid([(0, 0)], 3, 3, 1.0)
+  let (min_v, max_v, avg) = @distance.distance_stats(result)
+  assert_eq(min_v, 0.0)
+  assert_true(max_v > 0.0)
+  assert_true(avg > 0.0)
+}
+
+test "S4.6 distance_stats_empty" {
+  let result = @distance.DistanceResult::{ grid: [], rows: 0, cols: 0 }
+  let (min_v, max_v, avg) = @distance.distance_stats(result)
+  assert_eq(min_v, 0.0)
+  assert_eq(max_v, 0.0)
+  assert_eq(avg, 0.0)
+}
+
+test "S4.6 make_path_result" {
+  let path = @distance.make_path_result([(0, 0), (1, 1)], 5.0)
+  assert_eq(path.length, 2)
+  assert_eq(path.total_cost, 5.0)
+}
+
+test "S4.6 path_cell_count" {
+  let path = @distance.make_path_result([(0, 0), (1, 1), (2, 2)], 10.0)
+  assert_eq(@distance.path_cell_count(path), 3)
+}
+
+test "S4.6 path_cost" {
+  let path = @distance.make_path_result([(0, 0), (1, 1)], 7.5)
+  assert_eq(@distance.path_cost(path), 7.5)
+}

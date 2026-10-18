@@ -110,6 +110,14 @@ pub using @opcore.density {
   density_line_at, density_line_grid,
   density_stats, make_density_result, density_kernel_results, density_method_name,
 }
+pub using @opcore.distance {
+  DistanceResult, CostSurface, PathResult,
+  make_cost_surface, cost_get, make_path_result,
+  distance_euclidean_grid, distance_euclidean_allocation,
+  distance_cost, distance_cost_allocation, distance_back_link,
+  distance_optimal_path, distance_corridor,
+  distance_stats, path_cell_count, path_cost,
+}
 pub using @learncore {
   learncore_id, ModelSpace, model_space_name, Hyperparams, make_hyperparams,
 }

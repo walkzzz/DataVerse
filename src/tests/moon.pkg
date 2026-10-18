@@ -101,4 +101,5 @@ import {
   "dataverse/governance/docgen",
   "dataverse/opcore/topology",
   "dataverse/opcore/terrain",
+  "dataverse/opcore/analysis3d",
 }

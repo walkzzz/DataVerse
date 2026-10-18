@@ -8632,3 +8632,210 @@ test "elevation_stats empty" {
   assert_eq(min_e, 0.0)
   assert_eq(range, 0.0)
 }
+// ============================================
+// S8.4 opcore/analysis3d 三维分析算子测试
+// ============================================
+
+test "analysis3d_id" {
+  assert_eq(@analysis3d.analysis3d_id(), "opcore/analysis3d")
+}
+
+test "make_point3d basic" {
+  let p = @analysis3d.make_point3d(1.0, 2.0, 3.0)
+  assert_eq(p.x, 1.0)
+  assert_eq(p.y, 2.0)
+  assert_eq(p.z, 3.0)
+}
+
+test "distance3d basic" {
+  let p1 = @analysis3d.make_point3d(0.0, 0.0, 0.0)
+  let p2 = @analysis3d.make_point3d(3.0, 4.0, 0.0)
+  assert_eq(@analysis3d.distance3d(p1, p2), 5.0)
+}
+
+test "distance3d 3d" {
+  let p1 = @analysis3d.make_point3d(0.0, 0.0, 0.0)
+  let p2 = @analysis3d.make_point3d(1.0, 2.0, 2.0)
+  assert_eq(@analysis3d.distance3d(p1, p2), 3.0)
+}
+
+test "distance3d same point" {
+  let p = @analysis3d.make_point3d(5.0, 5.0, 5.0)
+  assert_eq(@analysis3d.distance3d(p, p), 0.0)
+}
+
+test "manhattan3d basic" {
+  let p1 = @analysis3d.make_point3d(0.0, 0.0, 0.0)
+  let p2 = @analysis3d.make_point3d(3.0, 4.0, 5.0)
+  assert_eq(@analysis3d.manhattan3d(p1, p2), 12.0)
+}
+
+test "chebyshev3d basic" {
+  let p1 = @analysis3d.make_point3d(0.0, 0.0, 0.0)
+  let p2 = @analysis3d.make_point3d(3.0, 7.0, 5.0)
+  assert_eq(@analysis3d.chebyshev3d(p1, p2), 7.0)
+}
+
+test "bbox3d basic" {
+  let points = [
+    @analysis3d.make_point3d(0.0, 0.0, 0.0),
+    @analysis3d.make_point3d(2.0, 4.0, 6.0),
+    @analysis3d.make_point3d(1.0, 1.0, 1.0),
+  ]
+  let bbox = @analysis3d.bbox3d(points)
+  assert_eq(bbox.min_x, 0.0)
+  assert_eq(bbox.max_x, 2.0)
+  assert_eq(bbox.min_y, 0.0)
+  assert_eq(bbox.max_y, 4.0)
+  assert_eq(bbox.min_z, 0.0)
+  assert_eq(bbox.max_z, 6.0)
+}
+
+test "bbox3d empty" {
+  let bbox = @analysis3d.bbox3d([])
+  assert_eq(bbox.min_x, 0.0)
+  assert_eq(bbox.max_x, 0.0)
+}
+
+test "bbox3d_volume basic" {
+  let bbox = @analysis3d.make_bbox3d(0.0, 0.0, 0.0, 3.0, 4.0, 5.0)
+  assert_eq(@analysis3d.bbox3d_volume(bbox), 60.0)
+}
+
+test "bbox3d_center basic" {
+  let bbox = @analysis3d.make_bbox3d(0.0, 0.0, 0.0, 4.0, 6.0, 8.0)
+  let c = @analysis3d.bbox3d_center(bbox)
+  assert_eq(c.x, 2.0)
+  assert_eq(c.y, 3.0)
+  assert_eq(c.z, 4.0)
+}
+
+test "buffer3d basic" {
+  let p = @analysis3d.make_point3d(5.0, 5.0, 5.0)
+  let buf = @analysis3d.buffer3d(p, 2.0)
+  assert_eq(buf.min_x, 3.0)
+  assert_eq(buf.max_x, 7.0)
+  assert_eq(buf.min_z, 3.0)
+  assert_eq(buf.max_z, 7.0)
+}
+
+test "line_of_sight no obstacles" {
+  let obs = @analysis3d.make_point3d(0.0, 0.0, 1.0)
+  let tgt = @analysis3d.make_point3d(10.0, 0.0, 1.0)
+  assert_true(@analysis3d.line_of_sight(obs, tgt, []))
+}
+
+test "line_of_sight blocked" {
+  let obs = @analysis3d.make_point3d(0.0, 0.0, 1.0)
+  let tgt = @analysis3d.make_point3d(10.0, 0.0, 1.0)
+  let obstacle = @analysis3d.make_point3d(5.0, 0.0, 5.0)
+  assert_false(@analysis3d.line_of_sight(obs, tgt, [obstacle]))
+}
+
+test "line_of_sight not blocked" {
+  let obs = @analysis3d.make_point3d(0.0, 0.0, 1.0)
+  let tgt = @analysis3d.make_point3d(10.0, 0.0, 1.0)
+  let obstacle = @analysis3d.make_point3d(5.0, 0.0, 0.5)
+  assert_true(@analysis3d.line_of_sight(obs, tgt, [obstacle]))
+}
+
+test "viewshed3d basic" {
+  let obs = @analysis3d.make_point3d(0.0, 0.0, 5.0)
+  let targets = [
+    @analysis3d.make_point3d(5.0, 0.0, 1.0),
+    @analysis3d.make_point3d(0.0, 5.0, 1.0),
+  ]
+  let visible = @analysis3d.viewshed3d(obs, targets, [])
+  assert_eq(visible, 2)
+}
+
+test "skyline basic" {
+  let obs = @analysis3d.make_point3d(0.0, 0.0, 0.0)
+  let points = [
+    @analysis3d.make_point3d(10.0, 0.0, 5.0),
+    @analysis3d.make_point3d(0.0, 10.0, 8.0),
+  ]
+  let sky = @analysis3d.skyline(obs, points, 8)
+  assert_eq(sky.length(), 8)
+}
+
+test "volume3d basic" {
+  let points = [
+    @analysis3d.make_point3d(0.0, 0.0, 0.0),
+    @analysis3d.make_point3d(3.0, 0.0, 0.0),
+    @analysis3d.make_point3d(3.0, 4.0, 0.0),
+    @analysis3d.make_point3d(0.0, 0.0, 5.0),
+  ]
+  assert_eq(@analysis3d.volume3d(points), 60.0)
+}
+
+test "surface_area3d basic" {
+  let points = [
+    @analysis3d.make_point3d(0.0, 0.0, 0.0),
+    @analysis3d.make_point3d(3.0, 0.0, 0.0),
+    @analysis3d.make_point3d(3.0, 4.0, 0.0),
+    @analysis3d.make_point3d(0.0, 0.0, 5.0),
+  ]
+  let sa = @analysis3d.surface_area3d(points)
+  assert_true(sa > 0.0)
+}
+
+test "translate3d basic" {
+  let p = @analysis3d.make_point3d(1.0, 2.0, 3.0)
+  let t = @analysis3d.translate3d(p, 10.0, 20.0, 30.0)
+  assert_eq(t.x, 11.0)
+  assert_eq(t.y, 22.0)
+  assert_eq(t.z, 33.0)
+}
+
+test "scale3d basic" {
+  let p = @analysis3d.make_point3d(2.0, 3.0, 4.0)
+  let s = @analysis3d.scale3d(p, 2.0, 3.0, 0.5)
+  assert_eq(s.x, 4.0)
+  assert_eq(s.y, 9.0)
+  assert_eq(s.z, 2.0)
+}
+
+test "centroid3d basic" {
+  let points = [
+    @analysis3d.make_point3d(0.0, 0.0, 0.0),
+    @analysis3d.make_point3d(6.0, 0.0, 0.0),
+    @analysis3d.make_point3d(0.0, 6.0, 0.0),
+    @analysis3d.make_point3d(0.0, 0.0, 6.0),
+  ]
+  let c = @analysis3d.centroid3d(points)
+  assert_eq(c.x, 1.5)
+  assert_eq(c.y, 1.5)
+  assert_eq(c.z, 1.5)
+}
+
+test "centroid3d empty" {
+  let c = @analysis3d.centroid3d([])
+  assert_eq(c.x, 0.0)
+  assert_eq(c.y, 0.0)
+  assert_eq(c.z, 0.0)
+}
+
+test "bbox3d_intersects true" {
+  let b1 = @analysis3d.make_bbox3d(0.0, 0.0, 0.0, 3.0, 3.0, 3.0)
+  let b2 = @analysis3d.make_bbox3d(2.0, 2.0, 2.0, 5.0, 5.0, 5.0)
+  assert_true(@analysis3d.bbox3d_intersects(b1, b2))
+}
+
+test "bbox3d_intersects false" {
+  let b1 = @analysis3d.make_bbox3d(0.0, 0.0, 0.0, 1.0, 1.0, 1.0)
+  let b2 = @analysis3d.make_bbox3d(5.0, 5.0, 5.0, 6.0, 6.0, 6.0)
+  assert_false(@analysis3d.bbox3d_intersects(b1, b2))
+}
+
+test "bbox3d_contains true" {
+  let bbox = @analysis3d.make_bbox3d(0.0, 0.0, 0.0, 10.0, 10.0, 10.0)
+  let p = @analysis3d.make_point3d(5.0, 5.0, 5.0)
+  assert_true(@analysis3d.bbox3d_contains(bbox, p))
+}
+
+test "bbox3d_contains false" {
+  let bbox = @analysis3d.make_bbox3d(0.0, 0.0, 0.0, 10.0, 10.0, 10.0)
+  let p = @analysis3d.make_point3d(15.0, 5.0, 5.0)
+  assert_false(@analysis3d.bbox3d_contains(bbox, p))
+}

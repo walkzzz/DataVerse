@@ -6750,3 +6750,10 @@ pub using @opcore.terrain {
   tpi, roughness, vrm, spi, profile_curvature, plan_curvature, total_curvature,
   flow_direction, flow_accumulation, generate_contour, elevation_stats, terrain_id,
 }
+pub using @opcore.analysis3d {
+  Point3D, BBox3D,
+  make_point3d, make_bbox3d, distance3d, manhattan3d, chebyshev3d,
+  bbox3d, bbox3d_volume, bbox3d_center, buffer3d,
+  line_of_sight, viewshed3d, skyline, volume3d, surface_area3d,
+  translate3d, scale3d, centroid3d, bbox3d_intersects, bbox3d_contains, analysis3d_id,
+}

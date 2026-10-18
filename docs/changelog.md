@@ -4,6 +4,19 @@
 
 ## [0.1.0-dev] - 2026-10-18
 
+### S5.3 - opcore/groundwater 地下水分析
+
+**新增 / Added**
+- `src/opcore/groundwater/`：地下水分析算子包（3 type + 15 fn）
+  - 类型：`GroundwaterConfig` / `DarcyFlowResult` / `ParticleTrackResult`
+  - 算子：`darcy_flow` / `darcy_velocity` / `groundwater_head_gradient` / `groundwater_flow_direction` / `particle_track` / `porous_puff` / `porous_puff_grid` / `groundwater_stats` 等
+  - 对标 ArcGIS Pro: Darcy Flow / Particle Track / Porous Puff
+- 30 个跨包测试（S5.3 系列）
+
+**统计 / Stats**
+- 测试：795 → 825（+30）
+- API：683 fn + 150 type → 698 fn + 153 type（+15 fn + 3 type）
+
 ### S5.2 - opcore/solar 太阳辐射
 
 **新增 / Added**

@@ -657,3 +657,112 @@ test "spec: focal_mean constant_invariant" {
   let m = @local_stats.focal_mean(raster, 1, 1, 1)
   assert_true((m - 7.0).abs() < 0.0001)
 }
+
+// ============================================================
+// Phase 5 形式化性质（51-60）
+// R16 门禁：验证 Phase 5 关键算子的数学性质
+// ============================================================
+
+///|
+/// 性质 51：block_mean 常数栅格不变性
+/// block_mean(constant_raster) == constant
+test "spec: block_mean constant_invariant" {
+  let r = @hydrology.make_raster([[7.0, 7.0, 7.0], [7.0, 7.0, 7.0], [7.0, 7.0, 7.0]])
+  let m = @neighborhood.block_mean(r, 0, 0, 2)
+  assert_true((m - 7.0).abs() < 0.0001)
+}
+
+///|
+/// 性质 52：block_count 非负性
+/// block_count >= 0
+test "spec: block_count non_negative" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  assert_true(@neighborhood.block_count(r, 0, 0, 2) >= 0)
+  assert_true(@neighborhood.block_count(r, 0, 0, 1) >= 0)
+}
+
+///|
+/// 性质 53：line_mean 常数行不变性
+/// line_mean(constant_row) == constant
+test "spec: line_mean constant_invariant" {
+  let r = @hydrology.make_raster([[5.0, 5.0, 5.0, 5.0]])
+  let m = @neighborhood.line_mean(r, 0)
+  assert_true((m - 5.0).abs() < 0.0001)
+}
+
+///|
+/// 性质 54：line_count 非负性
+/// line_count >= 0
+test "spec: line_count non_negative" {
+  let r = @hydrology.make_raster([[1.0, 2.0, 3.0]])
+  assert_true(@neighborhood.line_count(r, 0) >= 0)
+}
+
+///|
+/// 性质 55：neighborhood_cell_count 非负性
+/// neighborhood_cell_count >= 0
+test "spec: neighborhood_cell_count non_negative" {
+  let cfg1 = @neighborhood.make_neighborhood_config(@neighborhood.NHRectangle, 2, 0)
+  let cfg2 = @neighborhood.make_neighborhood_config(@neighborhood.NHCircle, 1, 0)
+  let cfg3 = @neighborhood.make_neighborhood_config(@neighborhood.NHAnnulus, 3, 1)
+  assert_true(@neighborhood.neighborhood_cell_count(cfg1) >= 0)
+  assert_true(@neighborhood.neighborhood_cell_count(cfg2) >= 0)
+  assert_true(@neighborhood.neighborhood_cell_count(cfg3) >= 0)
+}
+
+///|
+/// 性质 56：solar_altitude 非负性
+/// altitude >= 0
+test "spec: solar_altitude non_negative" {
+  let alt1 = @solar.solar_altitude(40.0, 180, 12.0)
+  let alt2 = @solar.solar_altitude(40.0, 180, 6.0)
+  let alt3 = @solar.solar_altitude(40.0, 180, 0.0)
+  assert_true(alt1 >= 0.0)
+  assert_true(alt2 >= 0.0)
+  assert_true(alt3 >= 0.0)
+}
+
+///|
+/// 性质 57：solar global = direct + diffuse
+/// global_radiation == direct_radiation + diffuse_radiation
+test "spec: solar_global_equals_direct_plus_diffuse" {
+  let cfg = @solar.make_solar_config(35.0, 120.0, 172, 14.0, 0.25)
+  let r = @solar.solar_radiation_point(cfg)
+  assert_true((r.global_radiation - r.direct_radiation - r.diffuse_radiation).abs() < 0.001)
+}
+
+///|
+/// 性质 58：solar_duration 范围
+/// 0 <= duration <= 24
+test "spec: solar_duration bounded" {
+  let dur1 = @solar.solar_duration(40.0, 180)
+  let dur2 = @solar.solar_duration(0.0, 80)
+  let dur3 = @solar.solar_duration(60.0, 355)
+  assert_true(dur1 >= 0.0 && dur1 <= 24.0)
+  assert_true(dur2 >= 0.0 && dur2 <= 24.0)
+  assert_true(dur3 >= 0.0 && dur3 <= 24.0)
+}
+
+///|
+/// 性质 59：darcy_velocity 非负性
+/// darcy_velocity >= 0
+test "spec: darcy_velocity non_negative" {
+  let cfg1 = @groundwater.make_groundwater_config(0.3, 0.001, 0.01, 0.005)
+  let cfg2 = @groundwater.make_groundwater_config(0.0, 0.001, 0.01, 0.0)
+  let cfg3 = @groundwater.make_groundwater_config(0.3, 0.0, 0.0, 0.0)
+  assert_true(@groundwater.darcy_velocity(cfg1) >= 0.0)
+  assert_true(@groundwater.darcy_velocity(cfg2) >= 0.0)
+  assert_true(@groundwater.darcy_velocity(cfg3) >= 0.0)
+}
+
+///|
+/// 性质 60：porous_puff 非负性
+/// porous_puff >= 0
+test "spec: porous_puff non_negative" {
+  let c1 = @groundwater.porous_puff(1.0, 1.0, 0.1, 100.0)
+  let c2 = @groundwater.porous_puff(0.0, 1.0, 0.1, 100.0)
+  let c3 = @groundwater.porous_puff(10.0, 0.5, 0.05, 50.0)
+  assert_true(c1 >= 0.0)
+  assert_true(c2 >= 0.0)
+  assert_true(c3 >= 0.0)
+}

@@ -49,4 +49,7 @@ import {
   "dataverse/learncore/interpolation",
   "dataverse/opcore/zonal",
   "dataverse/opcore/local_stats",
+  "dataverse/opcore/neighborhood",
+  "dataverse/opcore/solar",
+  "dataverse/opcore/groundwater",
 }

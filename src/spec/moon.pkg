@@ -52,4 +52,7 @@ import {
   "dataverse/opcore/neighborhood",
   "dataverse/opcore/solar",
   "dataverse/opcore/groundwater",
+  "dataverse/opcore/filter",
+  "dataverse/opcore/eval",
+  "dataverse/learncore/classify",
 }

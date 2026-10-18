@@ -766,3 +766,133 @@ test "spec: porous_puff non_negative" {
   assert_true(c2 >= 0.0)
   assert_true(c3 >= 0.0)
 }
+
+///|
+/// 性质 61：transform_set_null 幂等性
+/// ∀ c, r: set_null(c, set_null(c, r)) == set_null(c, r)
+test "spec: transform_set_null idempotency" {
+  let cond = @hydrology.make_raster([[1.0, 0.0], [1.0, 0.0]])
+  let r = @hydrology.make_raster([[5.0, 3.0], [7.0, 2.0]])
+  let once = @transform.transform_set_null(cond, r)
+  let twice = @transform.transform_set_null(cond, once)
+  assert_eq(@hydrology.raster_get(twice, 0, 0), @hydrology.raster_get(once, 0, 0))
+  assert_eq(@hydrology.raster_get(twice, 0, 1), @hydrology.raster_get(once, 0, 1))
+  assert_eq(@hydrology.raster_get(twice, 1, 0), @hydrology.raster_get(once, 1, 0))
+  assert_eq(@hydrology.raster_get(twice, 1, 1), @hydrology.raster_get(once, 1, 1))
+}
+
+///|
+/// 性质 62：transform_reclassify 空映射保持不变
+/// ∀ r: reclassify(r, []) == r
+test "spec: transform_reclassify empty_remap_identity" {
+  let r = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let result = @transform.transform_reclassify(r, [])
+  assert_eq(@hydrology.raster_get(result, 0, 0), 1.0)
+  assert_eq(@hydrology.raster_get(result, 0, 1), 2.0)
+  assert_eq(@hydrology.raster_get(result, 1, 0), 3.0)
+  assert_eq(@hydrology.raster_get(result, 1, 1), 4.0)
+}
+
+///|
+/// 性质 63：transform_slice 值域有界
+/// ∀ r, n>0: slice 值 ∈ [1, n]
+test "spec: transform_slice bounded" {
+  let r = @hydrology.make_raster([[1.0, 5.0, 10.0], [3.0, 7.0, 2.0]])
+  let n = 3
+  let result = @transform.transform_slice(r, n)
+  for i in 0..<2 {
+    for j in 0..<3 {
+      let v = @hydrology.raster_get(result, i, j)
+      assert_true(v >= 1.0 && v <= n.to_double())
+    }
+  }
+}
+
+///|
+/// 性质 64：transform_lookup 越界返回 0
+/// 索引超出 lookup_table 范围 → 0.0
+test "spec: transform_lookup out_of_bounds_returns_zero" {
+  let r = @hydrology.make_raster([[0.0, 5.0], [10.0, -1.0]])
+  let table = [10.0, 20.0, 30.0]
+  let result = @transform.transform_lookup(r, table)
+  assert_eq(@hydrology.raster_get(result, 0, 0), 10.0)
+  assert_eq(@hydrology.raster_get(result, 0, 1), 0.0)
+  assert_eq(@hydrology.raster_get(result, 1, 0), 0.0)
+  assert_eq(@hydrology.raster_get(result, 1, 1), 0.0)
+}
+
+///|
+/// 性质 65：feature_mean_center 质心性质
+/// mean_center 的结果等于各坐标算术平均
+test "spec: feature_mean_center centroid_property" {
+  let pts = [
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(2.0, 4.0),
+    @proximity.make_point(4.0, 8.0),
+  ]
+  let c = @feature.feature_mean_center(pts)
+  assert_eq(c.x, 2.0)
+  assert_eq(c.y, 4.0)
+}
+
+///|
+/// 性质 66：feature_standard_distance 非负性
+/// ∀ points: SD >= 0
+test "spec: feature_standard_distance non_negative" {
+  let pts1 = [
+    @proximity.make_point(0.0, 0.0),
+    @proximity.make_point(1.0, 1.0),
+    @proximity.make_point(2.0, 0.0),
+  ]
+  let pts2 = [@proximity.make_point(5.0, 5.0)]
+  let pts3 : Array[@proximity.Point] = []
+  assert_true(@feature.feature_standard_distance(pts1) >= 0.0)
+  assert_true(@feature.feature_standard_distance(pts2) >= 0.0)
+  assert_true(@feature.feature_standard_distance(pts3) >= 0.0)
+}
+
+///|
+/// 性质 67：filter_split 分隔符计数
+/// n 个分隔符 → n+1 个部分（单字符分隔符）
+test "spec: filter_split delimiter_count" {
+  let s = @schema.empty()
+  let d = @dataobject.make_dataobject("a,b,c,d", @dataobject.Text, s)
+  let result = @filter.filter_split(d, ",")
+  assert_eq(result.length(), 4)
+}
+
+///|
+/// 性质 68：cluster_similarity_search k 有界
+/// result.length() <= min(k, candidates.length())
+test "spec: cluster_similarity_search k_bounded" {
+  let target = [1.0, 0.0]
+  let candidates = [[0.0, 0.0], [1.0, 0.0], [2.0, 0.0]]
+  let r1 = @cluster.cluster_similarity_search(target, candidates, 2)
+  assert_true(r1.length() <= 2)
+  let r2 = @cluster.cluster_similarity_search(target, candidates, 10)
+  assert_true(r2.length() <= 3)
+}
+
+///|
+/// 性质 69：classify_forest 空训练集返回 0
+/// ∀ features: classify_forest(features, [], [], n) == 0
+test "spec: classify_forest empty_training_returns_zero" {
+  let features = [1.0, 2.0, 3.0]
+  let result = @classify.classify_forest(features, [], [], 5)
+  assert_eq(result, 0)
+}
+
+///|
+/// 性质 70：eval_tabulate_intersection 总数守恒
+/// Σ count == input length（当两 zone 等长）
+test "spec: eval_tabulate_intersection total_count_conserved" {
+  let zone1 = [1, 1, 2, 2, 3]
+  let zone2 = [10, 10, 20, 20, 30]
+  let result = @eval.eval_tabulate_intersection(zone1, zone2)
+  let mut total = 0
+  for i in 0..<result.length() {
+    let (_, _, c) = result[i]
+    total = total + c
+  }
+  assert_eq(total, 5)
+}

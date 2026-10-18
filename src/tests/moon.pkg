@@ -103,4 +103,5 @@ import {
   "dataverse/opcore/terrain",
   "dataverse/opcore/analysis3d",
   "dataverse/opcore/geocoding",
+  "dataverse/opcore/coord",
 }

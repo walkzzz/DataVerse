@@ -6764,3 +6764,12 @@ pub using @opcore.geocoding {
   address_match_score, address_matches, validate_coord, coord_distance,
   validate_postal, geocoding_id,
 }
+pub using @opcore.coord {
+  GeodeticCoord, ProjectedCoord, AffineTransform,
+  make_geodetic, make_projected, make_affine,
+  wgs84_to_web_mercator, web_mercator_to_wgs84,
+  wgs84_to_utm, utm_to_wgs84, utm_zone,
+  apply_affine, identity_affine, translation_affine, scale_affine,
+  great_circle_distance, bearing, destination_point,
+  decimal_to_dms, dms_to_decimal, coord_id,
+}

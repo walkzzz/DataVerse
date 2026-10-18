@@ -8973,3 +8973,195 @@ test "validate_postal CN invalid" {
 test "validate_postal UK valid" {
   assert_true(@geocoding.validate_postal("SW1A1AA", "UK"))
 }
+// ============================================
+// S8.6 opcore/coord 坐标变换算子测试
+// ============================================
+
+test "coord_id" {
+  assert_eq(@coord.coord_id(), "opcore/coord")
+}
+
+test "make_geodetic basic" {
+  let c = @coord.make_geodetic(116.4, 39.9)
+  assert_eq(c.lon, 116.4)
+  assert_eq(c.lat, 39.9)
+}
+
+test "make_projected basic" {
+  let c = @coord.make_projected(1000.0, 2000.0)
+  assert_eq(c.x, 1000.0)
+  assert_eq(c.y, 2000.0)
+}
+
+test "make_affine basic" {
+  let t = @coord.make_affine(1.0, 0.0, 5.0, 0.0, 1.0, 10.0)
+  assert_eq(t.a, 1.0)
+  assert_eq(t.c, 5.0)
+  assert_eq(t.f, 10.0)
+}
+
+test "wgs84_to_web_mercator basic" {
+  let c = @coord.make_geodetic(0.0, 0.0)
+  let p = @coord.wgs84_to_web_mercator(c)
+  assert_true(p.x < 0.001 && p.x > -0.001)
+  assert_true(p.y < 0.001 && p.y > -0.001)
+}
+
+test "wgs84_to_web_mercator non-zero" {
+  let c = @coord.make_geodetic(90.0, 45.0)
+  let p = @coord.wgs84_to_web_mercator(c)
+  assert_true(p.x > 5000000.0)
+  assert_true(p.y > 5000000.0)
+}
+
+test "web_mercator_to_wgs84 origin" {
+  let p = @coord.make_projected(0.0, 0.0)
+  let c = @coord.web_mercator_to_wgs84(p)
+  assert_true(c.lon < 0.001 && c.lon > -0.001)
+  assert_true(c.lat < 2.0 && c.lat > -2.0)
+}
+
+test "wgs84_to_utm basic" {
+  let c = @coord.make_geodetic(116.4, 39.9)
+  let p = @coord.wgs84_to_utm(c, 50)
+  assert_true(p.x > -1000000.0 && p.x < 1000000.0)
+  assert_true(p.y > 0.0)
+}
+
+test "utm_to_wgs84 basic" {
+  let p = @coord.make_projected(0.0, 4000000.0)
+  let c = @coord.utm_to_wgs84(p, 50)
+  assert_true(c.lat > 30.0 && c.lat < 50.0)
+}
+
+test "utm_zone basic" {
+  let c = @coord.make_geodetic(116.4, 39.9)
+  let z = @coord.utm_zone(c)
+  assert_eq(z, 50)
+}
+
+test "utm_zone new york" {
+  let c = @coord.make_geodetic(-74.0, 40.7)
+  let z = @coord.utm_zone(c)
+  assert_eq(z, 18)
+}
+
+test "apply_affine identity" {
+  let t = @coord.identity_affine()
+  let p = @coord.make_projected(5.0, 10.0)
+  let result = @coord.apply_affine(t, p)
+  assert_eq(result.x, 5.0)
+  assert_eq(result.y, 10.0)
+}
+
+test "apply_affine translation" {
+  let t = @coord.translation_affine(100.0, 200.0)
+  let p = @coord.make_projected(5.0, 10.0)
+  let result = @coord.apply_affine(t, p)
+  assert_eq(result.x, 105.0)
+  assert_eq(result.y, 210.0)
+}
+
+test "apply_affine scale" {
+  let t = @coord.scale_affine(2.0, 3.0)
+  let p = @coord.make_projected(5.0, 10.0)
+  let result = @coord.apply_affine(t, p)
+  assert_eq(result.x, 10.0)
+  assert_eq(result.y, 30.0)
+}
+
+test "identity_affine basic" {
+  let t = @coord.identity_affine()
+  assert_eq(t.a, 1.0)
+  assert_eq(t.e, 1.0)
+  assert_eq(t.c, 0.0)
+}
+
+test "translation_affine basic" {
+  let t = @coord.translation_affine(5.0, 10.0)
+  assert_eq(t.c, 5.0)
+  assert_eq(t.f, 10.0)
+}
+
+test "scale_affine basic" {
+  let t = @coord.scale_affine(2.0, 3.0)
+  assert_eq(t.a, 2.0)
+  assert_eq(t.e, 3.0)
+}
+
+test "great_circle_distance same point" {
+  let c = @coord.make_geodetic(116.4, 39.9)
+  assert_eq(@coord.great_circle_distance(c, c), 0.0)
+}
+
+test "great_circle_distance basic" {
+  let c1 = @coord.make_geodetic(0.0, 0.0)
+  let c2 = @coord.make_geodetic(0.0, 1.0)
+  let d = @coord.great_circle_distance(c1, c2)
+  assert_true(d > 100000.0 && d < 120000.0)
+}
+
+test "great_circle_distance beijing shanghai" {
+  let beijing = @coord.make_geodetic(116.4, 39.9)
+  let shanghai = @coord.make_geodetic(121.5, 31.2)
+  let d = @coord.great_circle_distance(beijing, shanghai)
+  assert_true(d > 1000000.0 && d < 1500000.0)
+}
+
+test "bearing basic" {
+  let c1 = @coord.make_geodetic(0.0, 0.0)
+  let c2 = @coord.make_geodetic(1.0, 0.0)
+  let b = @coord.bearing(c1, c2)
+  assert_true(b >= 0.0 && b < 360.0)
+}
+
+test "bearing north" {
+  let c1 = @coord.make_geodetic(0.0, 0.0)
+  let c2 = @coord.make_geodetic(0.0, 1.0)
+  let b = @coord.bearing(c1, c2)
+  assert_true(b >= 0.0 && b < 1.0)
+}
+
+test "destination_point basic" {
+  let start = @coord.make_geodetic(0.0, 0.0)
+  let dest = @coord.destination_point(start, 100000.0, 90.0)
+  assert_true(dest.lon > 0.5 && dest.lon < 2.0)
+  assert_true(dest.lat > -0.1 && dest.lat < 0.1)
+}
+
+test "destination_point zero distance" {
+  let start = @coord.make_geodetic(116.4, 39.9)
+  let dest = @coord.destination_point(start, 0.0, 90.0)
+  assert_true(dest.lon > 116.0 && dest.lon < 117.0)
+  assert_true(dest.lat > 39.0 && dest.lat < 40.0)
+}
+
+test "decimal_to_dms basic" {
+  let (deg, min, sec) = @coord.decimal_to_dms(116.5)
+  assert_eq(deg, 116)
+  assert_eq(min, 30)
+  assert_true(sec < 0.1)
+}
+
+test "decimal_to_dms negative" {
+  let (deg, min, _sec) = @coord.decimal_to_dms(-74.5)
+  assert_eq(deg, 74)
+  assert_eq(min, 30)
+}
+
+test "dms_to_decimal basic" {
+  let d = @coord.dms_to_decimal(116, 30, 0.0)
+  assert_true(d > 116.4 && d < 116.6)
+}
+
+test "dms_to_decimal negative" {
+  let d = @coord.dms_to_decimal(-74, 30, 0.0)
+  assert_true(d > -74.6 && d < -74.4)
+}
+
+test "dms round trip" {
+  let original = 116.4083
+  let (deg, min, sec) = @coord.decimal_to_dms(original)
+  let result = @coord.dms_to_decimal(deg, min, sec)
+  assert_true(result > 116.0 && result < 117.0)
+}

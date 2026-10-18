@@ -4,6 +4,38 @@
 
 ## [0.1.0-dev] - 2026-10-18
 
+### S4.9 - R16 门禁 + Phase 4 闭环
+
+**新增 / Added**
+- 10 个形式化性质（spec 41-50），覆盖 Phase 4 关键算子：
+  - euclidean_distance 对称性/自反性/三角不等式
+  - polygon_area/perimeter 非负性
+  - surface_slope 非负性
+  - density_kernel 非负性
+  - interpolation_idw 重合点返回采样值
+  - zonal_count 非负性
+  - focal_mean 常数栅格不变性
+
+**统计 / Stats**
+- 测试：714 → 724（+10 spec）
+- 形式化证明：40 → 50（+10）
+- Phase 4 闭环：9 子包，29 type + 158 fn，+253 tests
+
+### Phase 4 总结
+
+| Sprint | 子包 | type+fn | tests | commit |
+|--------|------|---------|-------|--------|
+| S4.1 | opcore/proximity | 5+18 | +32 | c9b703e |
+| S4.2 | opcore/overlay | 3+18 | +26 | a8a8114 |
+| S4.3 | opcore/hydrology | 4+16 | +20 | 7ce271c |
+| S4.4 | opcore/surface | 3+18 | +27 | 06cd39c |
+| S4.5 | opcore/density | 2+13 | +25 | 6b3c039 |
+| S4.6 | opcore/distance | 3+13 | +21 | 55844b7 |
+| S4.7 | learncore/interpolation | 3+18 | +37 | ec23ad0 |
+| S4.8 | opcore/zonal + local_stats | 6+44 | +55 | 366cb56 |
+| S4.9 | R16 spec 41-50 | 0+0 | +10 | f497d60 |
+| **合计** | **9 子包** | **29+158** | **+253** | — |
+
 ### S4.8 - opcore/zonal + opcore/local_stats 区域/局部分析
 
 **新增 / Added**

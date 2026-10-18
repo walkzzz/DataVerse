@@ -104,15 +104,15 @@
 | S4.6 | opcore/distance 距离分析（Euclidean/Cost/Path/Corridor 3 type + 13 fn） | ✅ | 55844b7 |
 | S4.7 | learncore/interpolation 插值分析（IDW/Kriging/Spline/NaturalNeighbor 3 type + 18 fn） | ✅ | ec23ad0 |
 | S4.8 | opcore/zonal 区域分析 + opcore/local_stats 局部分析（6 type + 44 fn） | ✅ | 366cb56 |
-| S4.9 | R16 门禁 + Phase 4 闭环 | ⏳ | — |
+| S4.9 | R16 门禁 + Phase 4 闭环（spec 41-50, +10 tests） | ✅ | f497d60 |
 
 ---
 
 ## 当前统计 / Current Stats
 
-- **测试**：714 passed
+- **测试**：724 passed
 - **API**：633 pub fn + 142 pub type
-- **形式化证明**：40 个 spec 性质
+- **形式化证明**：50 个 spec 性质
 - **编译**：0 error 0 warning
 - **MoonBit**：moon 0.1.20260920
 

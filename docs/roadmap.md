@@ -15,6 +15,12 @@
 | Phase 4 | ArcGIS Pro 算子对标期（P0-P1 工具 + R16 门禁） | ✅ 闭环 |
 | Phase 5 | P2 ArcGIS 工具扩展（neighborhood + solar + groundwater） | ✅ 闭环 |
 | Phase 6 | 待建映射补齐（transform/feature/零散算子） | ✅ 闭环 |
+| Phase 7 | 深度学习算子全集（DL 层/损失/优化器/NLP/时序/RL/集成） | ⏳ 进行中 |
+| Phase 8 | 空间分析深化（网络/拓扑/地形/3D/地理编码/坐标变换） | ⏳ |
+| Phase 9 | 多模态算子深化（image/audio/video/semantic/点云/遥感） | ⏳ |
+| Phase 10 | 数据基础设施深化（dataobject/datatemporal/datair/dosi/parallel/io） | ⏳ |
+| Phase 11 | Agent/LLM 集成深化（agent_kit/llm/retrieval/prompt） | ⏳ |
+| Phase 12 | 测试/规格/文档扩张 + 10 万行里程碑 | ⏳ |
 
 ---
 
@@ -150,3 +156,99 @@
 ---
 
 > DataVerse Roadmap | 2026-10-18 | Phase 6 闭环
+---
+
+## Phase 7：深度学习算子全集 / Deep Learning Operator Suite
+
+> 目标：learncore 全域 DL 算子，对标 PyTorch/TensorFlow 核心层。预计 +10,800 行源码。
+
+| Sprint | 内容 | 状态 | commit |
+|--------|------|------|--------|
+| S7.1 | learncore/dl_layers 扩展（Transformer/Attention/CNN/RNN/LSTM/GRU +30 fn） | ⏳ | — |
+| S7.2 | learncore/dl_losses 扩展（Contrastive/Triplet/Focal/LabelSmoothing/KLDiv +15 fn） | ⏳ | — |
+| S7.3 | learncore/dl_optimizers 扩展（AdamW/RAdam/Lookahead/AdaBelief +10 fn） | ⏳ | — |
+| S7.4 | learncore/nlp 新子包（Tokenizer/Embedding/BERT/GPT +25 fn） | ⏳ | — |
+| S7.5 | learncore/timeseries 新子包（ARIMA/GARCH/Prophet/SeasonalDecompose +20 fn） | ⏳ | — |
+| S7.6 | learncore/reinforcement 新子包（Q-Learning/PolicyGradient/ActorCritic +18 fn） | ⏳ | — |
+| S7.7 | learncore/ensemble 新子包（Bagging/Boosting/Stacking/Voting +15 fn） | ⏳ | — |
+| S7.8 | R16 门禁 + Phase 7 闭环（spec 71-80, +10 tests） | ⏳ | — |
+
+---
+
+## Phase 8：空间分析深化 / Spatial Analysis Deepening
+
+> 目标：opcore 空间分析全域深化，对标 ArcGIS Pro Network Analyst + 3D Analyst。预计 +11,000 行源码。
+
+| Sprint | 内容 | 状态 | commit |
+|--------|------|------|--------|
+| S8.1 | opcore/network 网络分析（ShortestPath/ServiceArea/LocationAllocation/ODCostMatrix +25 fn） | ⏳ | — |
+| S8.2 | opcore/topology 拓扑分析（Build/Validate/Edit +18 fn） | ⏳ | — |
+| S8.3 | opcore/terrain 地形分析深化（TPI/SPI/VRM/Roughness +15 fn） | ⏳ | — |
+| S8.4 | opcore/analysis3d 三维分析（Viewshed3D/Buffer3D/Distance3D +18 fn） | ⏳ | — |
+| S8.5 | opcore/geocoding 地理编码（Address/Reverse/Match +12 fn） | ⏳ | — |
+| S8.6 | opcore/coord 坐标变换（Projection/Transform/Datum +20 fn） | ⏳ | — |
+| S8.7 | R16 门禁 + Phase 8 闭环（spec 81-90, +10 tests） | ⏳ | — |
+
+---
+
+## Phase 9：多模态算子深化 / Multimodal Operator Deepening
+
+> 目标：opcore 多模态全域深化 + 点云/遥感新模态。预计 +10,000 行源码。
+
+| Sprint | 内容 | 状态 | commit |
+|--------|------|------|--------|
+| S9.1 | opcore/image 深化（滤波/边缘/形态学/色彩空间 +20 fn） | ⏳ | — |
+| S9.2 | opcore/audio 深化（STFT/MFCC/频谱/降噪 +15 fn） | ⏳ | — |
+| S9.3 | opcore/video 深化（运动检测/跟踪/光流 +15 fn） | ⏳ | — |
+| S9.4 | opcore/semantic 深化（NER/POS/Dependency/Segmentation +15 fn） | ⏳ | — |
+| S9.5 | opcore/pointcloud 点云分析（滤波/分类/分割/配准 +20 fn） | ⏳ | — |
+| S9.6 | opcore/remotesensing 遥感分析（NDVI/分类/变化检测 +15 fn） | ⏳ | — |
+| S9.7 | R16 门禁 + Phase 9 闭环（spec 91-100, +10 tests） | ⏳ | — |
+
+---
+
+## Phase 10：数据基础设施深化 / Data Infrastructure Deepening
+
+> 目标：dataobject/datatemporal/datair/dosi/parallel/io 全域深化。预计 +10,000 行源码。
+
+| Sprint | 内容 | 状态 | commit |
+|--------|------|------|--------|
+| S10.1 | dataobject 深化（更多模式/血缘/质量维度 +15 fn） | ⏳ | — |
+| S10.2 | datatemporal 深化（增量/版本合并/漂移检测 +18 fn） | ⏳ | — |
+| S10.3 | datair 深化（IR 优化/查询计划/代价模型 +20 fn） | ⏳ | — |
+| S10.4 | dosi 深化（调度/预算/验证深化 +15 fn） | ⏳ | — |
+| S10.5 | parallel 深化（GPU 并行/分布式/向量化 +12 fn） | ⏳ | — |
+| S10.6 | io 深化（更多格式/流式/压缩 +15 fn） | ⏳ | — |
+| S10.7 | governance 深化（基准/文档/门禁 +12 fn） | ⏳ | — |
+| S10.8 | R16 门禁 + Phase 10 闭环（spec 101-110, +10 tests） | ⏳ | — |
+
+---
+
+## Phase 11：Agent/LLM 集成深化 / Agent-LLM Integration
+
+> 目标：agent_kit/llm/retrieval/prompt 全域深化。预计 +7,000 行源码。
+
+| Sprint | 内容 | 状态 | commit |
+|--------|------|------|--------|
+| S11.1 | agent_kit 深化（Planner/Executor/Retriever +18 fn） | ⏳ | — |
+| S11.2 | learncore/llm 新子包（Tokenizer/Generation/Sampling/Cache +22 fn） | ⏳ | — |
+| S11.3 | learncore/retrieval 新子包（VectorStore/Embedding/Rerank +18 fn） | ⏳ | — |
+| S11.4 | opcore/prompt 新子包（PromptTemplate/Chain/Agent +15 fn） | ⏳ | — |
+| S11.5 | R16 门禁 + Phase 11 闭环（spec 111-120, +10 tests） | ⏳ | — |
+
+---
+
+## Phase 12：测试/规格/文档扩张 + 10 万行里程碑
+
+> 目标：测试/spec/重导出同步扩张至 10 万行。预计 +13,000 行。
+
+| Sprint | 内容 | 状态 | commit |
+|--------|------|------|--------|
+| S12.1 | tests 扩张（全新算子跨包测试 +5000 行） | ⏳ | — |
+| S12.2 | spec 扩张（形式化证明 spec 121-200 +3000 行） | ⏳ | — |
+| S12.3 | dataverse.mbt 重导出扩张（+3000 行） | ⏳ | — |
+| S12.4 | R16 最终门禁 + 10 万行里程碑 | ⏳ | — |
+
+---
+
+> DataVerse Roadmap | 2026-10-18 | Phase 7-12 超前规划（目标 10 万行）

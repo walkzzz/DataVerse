@@ -6707,3 +6707,255 @@ test "eval_frequency single value" {
   assert_eq(result[0].0, 42)
   assert_eq(result[0].1, 1)
 }
+
+// S7.1 dl_layers 扩展测试 / Extended DL layers tests
+
+test "activate_gelu basic" {
+  let r1 = @dl_layers.activate_gelu(0.0)
+  let r2 = @dl_layers.activate_gelu(1.0)
+  let r3 = @dl_layers.activate_gelu(-1.0)
+  assert_true(r1 >= -0.2 && r1 <= 0.2)
+  assert_true(r2 > 0.0)
+  assert_true(r3 < 0.0)
+}
+
+test "activate_silu basic" {
+  let r1 = @dl_layers.activate_silu(0.0)
+  let r2 = @dl_layers.activate_silu(1.0)
+  let r3 = @dl_layers.activate_silu(-1.0)
+  assert_eq(r1, 0.0)
+  assert_true(r2 > 0.0)
+  assert_true(r3 < 0.0)
+}
+
+test "activate_mish basic" {
+  let r1 = @dl_layers.activate_mish(0.0)
+  let r2 = @dl_layers.activate_mish(1.0)
+  assert_eq(r1, 0.0)
+  assert_true(r2 > 0.0)
+}
+
+test "activate_hardswish basic" {
+  let r1 = @dl_layers.activate_hardswish(0.0)
+  let r2 = @dl_layers.activate_hardswish(3.0)
+  let r3 = @dl_layers.activate_hardswish(-3.0)
+  assert_eq(r1, 0.0)
+  assert_eq(r2, 3.0)
+  assert_eq(r3, 0.0)
+}
+
+test "activate_hardsigmoid basic" {
+  let r1 = @dl_layers.activate_hardsigmoid(0.0)
+  let r2 = @dl_layers.activate_hardsigmoid(3.0)
+  let r3 = @dl_layers.activate_hardsigmoid(-3.0)
+  assert_eq(r1, 0.5)
+  assert_eq(r2, 1.0)
+  assert_eq(r3, 0.0)
+}
+
+test "activate_elu basic" {
+  let r1 = @dl_layers.activate_elu(1.0, 1.0)
+  let r2 = @dl_layers.activate_elu(-1.0, 1.0)
+  assert_eq(r1, 1.0)
+  assert_true(r2 < 0.0)
+}
+
+test "activate_leaky_relu basic" {
+  let r1 = @dl_layers.activate_leaky_relu(1.0, 0.01)
+  let r2 = @dl_layers.activate_leaky_relu(-1.0, 0.01)
+  assert_eq(r1, 1.0)
+  assert_eq(r2, -0.01)
+}
+
+test "activate_prelu basic" {
+  let r1 = @dl_layers.activate_prelu(2.0, 0.25)
+  let r2 = @dl_layers.activate_prelu(-2.0, 0.25)
+  assert_eq(r1, 2.0)
+  assert_eq(r2, -0.5)
+}
+
+test "activate_threshold_relu basic" {
+  let r1 = @dl_layers.activate_threshold_relu(2.0, 1.0)
+  let r2 = @dl_layers.activate_threshold_relu(0.5, 1.0)
+  assert_eq(r1, 2.0)
+  assert_eq(r2, 0.0)
+}
+
+test "softmax basic" {
+  let result = @dl_layers.softmax([0.0, 0.0, 0.0])
+  assert_eq(result.length(), 3)
+  assert_true(result[0] > 0.3 && result[0] < 0.34)
+  assert_true(result[1] > 0.3 && result[1] < 0.34)
+  assert_true(result[2] > 0.3 && result[2] < 0.34)
+}
+
+test "softmax empty" {
+  let result = @dl_layers.softmax([])
+  assert_eq(result.length(), 0)
+}
+
+test "log_softmax basic" {
+  let result = @dl_layers.log_softmax([0.0, 0.0])
+  assert_eq(result.length(), 2)
+  assert_true(result[0] < 0.0)
+  assert_true(result[1] < 0.0)
+}
+
+test "layernorm basic" {
+  let meta = @dl_layers.make_layernorm(3, 0.00001)
+  let result = @dl_layers.layernorm_forward([1.0, 2.0, 3.0], meta)
+  assert_eq(result.length(), 3)
+}
+
+test "layernorm empty" {
+  let meta = @dl_layers.make_layernorm(3, 0.00001)
+  let result = @dl_layers.layernorm_forward([], meta)
+  assert_eq(result.length(), 0)
+}
+
+test "groupnorm basic" {
+  let meta = @dl_layers.make_groupnorm(2, 4, 0.00001)
+  let result = @dl_layers.groupnorm_forward([1.0, 2.0, 3.0, 4.0], meta)
+  assert_eq(result.length(), 4)
+}
+
+test "instancenorm basic" {
+  let meta = @dl_layers.make_instancenorm(3, 0.00001)
+  let result = @dl_layers.instancenorm_forward([1.0, 2.0, 3.0], meta)
+  assert_eq(result.length(), 3)
+}
+
+test "attention_scaled_dot_product basic" {
+  let q = [1.0, 0.0]
+  let k = [[1.0, 0.0], [0.0, 1.0]]
+  let v = [[1.0, 2.0], [3.0, 4.0]]
+  let result = @dl_layers.attention_scaled_dot_product(q, k, v)
+  assert_eq(result.length(), 2)
+}
+
+test "attention_scaled_dot_product empty" {
+  let result = @dl_layers.attention_scaled_dot_product([1.0], [], [])
+  assert_eq(result.length(), 0)
+}
+
+test "multihead_attention basic" {
+  let meta = @dl_layers.make_multihead_attention(2, 4)
+  let q = [1.0, 0.0, 0.0, 0.0]
+  let k = [[1.0, 0.0, 0.0, 0.0], [0.0, 1.0, 0.0, 0.0]]
+  let v = [[1.0, 2.0, 3.0, 4.0], [5.0, 6.0, 7.0, 8.0]]
+  let result = @dl_layers.multihead_attention_forward(q, k, v, meta)
+  assert_eq(result.length(), 4)
+}
+
+test "rnn_step basic" {
+  let meta = @dl_layers.make_rnn(2, 2)
+  let h = @dl_layers.rnn_step([0.5, 0.5], [0.0, 0.0], meta)
+  assert_eq(h.length(), 2)
+}
+
+test "rnn_forward basic" {
+  let meta = @dl_layers.make_rnn(2, 2)
+  let seq = [[0.5, 0.5], [0.3, 0.3]]
+  let result = @dl_layers.rnn_forward(seq, [0.0, 0.0], meta)
+  assert_eq(result.length(), 2)
+}
+
+test "lstm_step basic" {
+  let meta = @dl_layers.make_lstm(2, 2)
+  let (h, c) = @dl_layers.lstm_step([0.5, 0.5], [0.0, 0.0], [0.0, 0.0], meta)
+  assert_eq(h.length(), 2)
+  assert_eq(c.length(), 2)
+}
+
+test "lstm_forward basic" {
+  let meta = @dl_layers.make_lstm(2, 2)
+  let seq = [[0.5, 0.5], [0.3, 0.3]]
+  let result = @dl_layers.lstm_forward(seq, [0.0, 0.0], [0.0, 0.0], meta)
+  assert_eq(result.length(), 2)
+}
+
+test "gru_step basic" {
+  let meta = @dl_layers.make_gru(2, 2)
+  let h = @dl_layers.gru_step([0.5, 0.5], [0.0, 0.0], meta)
+  assert_eq(h.length(), 2)
+}
+
+test "gru_forward basic" {
+  let meta = @dl_layers.make_gru(2, 2)
+  let seq = [[0.5, 0.5], [0.3, 0.3]]
+  let result = @dl_layers.gru_forward(seq, [0.0, 0.0], meta)
+  assert_eq(result.length(), 2)
+}
+
+test "conv1d basic" {
+  let meta = @dl_layers.make_conv1d(1, 1, 3, 1, 1)
+  let result = @dl_layers.conv1d_forward([1.0, 2.0, 3.0, 4.0, 5.0], meta)
+  assert_true(result.length() > 0)
+}
+
+test "conv1d_output_dim basic" {
+  let meta = @dl_layers.make_conv1d(1, 1, 3, 1, 1)
+  let out = @dl_layers.conv1d_output_dim(5, meta)
+  assert_eq(out, 5)
+}
+
+test "avgpool2d_output_dim basic" {
+  let meta = @dl_layers.make_avgpool2d(2, 2)
+  let out = @dl_layers.avgpool2d_output_dim(4, meta)
+  assert_eq(out, 2)
+}
+
+test "flatten_forward basic" {
+  let result = @dl_layers.flatten_forward([[1.0, 2.0], [3.0, 4.0]])
+  assert_eq(result.length(), 4)
+  assert_eq(result[0], 1.0)
+  assert_eq(result[3], 4.0)
+}
+
+test "global_avg_pool_forward basic" {
+  let result = @dl_layers.global_avg_pool_forward([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
+  assert_eq(result.length(), 2)
+  assert_eq(result[0], 2.0)
+  assert_eq(result[1], 5.0)
+}
+
+test "residual_add basic" {
+  let result = @dl_layers.residual_add([1.0, 2.0, 3.0], [4.0, 5.0, 6.0])
+  assert_eq(result.length(), 3)
+  assert_eq(result[0], 5.0)
+  assert_eq(result[1], 7.0)
+  assert_eq(result[2], 9.0)
+}
+
+test "concat_forward basic" {
+  let result = @dl_layers.concat_forward([1.0, 2.0], [3.0, 4.0, 5.0])
+  assert_eq(result.length(), 5)
+  assert_eq(result[0], 1.0)
+  assert_eq(result[4], 5.0)
+}
+
+test "embedding_forward basic" {
+  let table = [[1.0, 2.0], [3.0, 4.0], [5.0, 6.0]]
+  let result = @dl_layers.embedding_forward([0, 2, 1], table)
+  assert_eq(result.length(), 3)
+  assert_eq(result[0][0], 1.0)
+  assert_eq(result[1][0], 5.0)
+  assert_eq(result[2][0], 3.0)
+}
+
+test "embedding_forward out of bounds" {
+  let table = [[1.0, 2.0]]
+  let result = @dl_layers.embedding_forward([0, 5], table)
+  assert_eq(result.length(), 2)
+  assert_eq(result[1].length(), 0)
+}
+
+test "pixel_shuffle_forward basic" {
+  let result = @dl_layers.pixel_shuffle_forward([1.0, 2.0, 3.0, 4.0], 2)
+  assert_eq(result.length(), 4)
+}
+
+test "conv_transpose2d_output_dim basic" {
+  let out = @dl_layers.conv_transpose2d_output_dim(3, 3, 2, 1, 0)
+  assert_eq(out, 5)
+}

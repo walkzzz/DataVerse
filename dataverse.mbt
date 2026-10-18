@@ -6589,6 +6589,12 @@ pub using @learncore.dl_layers {
   dl_layers_id, Activation, LinearLayer, make_linear_layer, make_linear_layer_with_weights, linear_forward, activate, activation_forward, activation_name,
   Conv2dMeta, make_conv2d, conv2d_output_dim, MaxPoolMeta, make_maxpool, maxpool_output_dim,
   DropoutMode, dropout_forward, dropout_mode_name, BatchNormMeta, make_batchnorm, batchnorm_forward,
+  activate_gelu, activate_silu, activate_mish, activate_hardswish, activate_hardsigmoid, activate_elu, activate_leaky_relu, activate_prelu, activate_threshold_relu,
+  softmax, log_softmax, LayerNormMeta, make_layernorm, layernorm_forward, GroupNormMeta, make_groupnorm, groupnorm_forward, InstanceNormMeta, make_instancenorm, instancenorm_forward,
+  attention_scaled_dot_product, MultiHeadAttentionMeta, make_multihead_attention, multihead_attention_forward,
+  RNNMeta, make_rnn, rnn_step, rnn_forward, LSTMMeta, make_lstm, lstm_step, lstm_forward, GRUMeta, make_gru, gru_step, gru_forward,
+  Conv1dMeta, make_conv1d, conv1d_output_dim, conv1d_forward, AvgPool2dMeta, make_avgpool2d, avgpool2d_output_dim,
+  flatten_forward, global_avg_pool_forward, residual_add, concat_forward, embedding_forward, pixel_shuffle_forward, conv_transpose2d_output_dim,
 }
 pub using @learncore.dl_losses {
   dl_losses_id, LossKind, mse_loss, cross_entropy_loss, hinge_loss, loss_value, loss_name,

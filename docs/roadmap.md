@@ -14,7 +14,7 @@
 | Phase 3 | 生产化期（真实 I/O + 分布式 + 插件 + 性能） | ✅ 闭环 |
 | Phase 4 | ArcGIS Pro 算子对标期（P0-P1 工具 + R16 门禁） | ✅ 闭环 |
 | Phase 5 | P2 ArcGIS 工具扩展（neighborhood + solar + groundwater） | ✅ 闭环 |
-| Phase 6 | 待建映射补齐（transform/feature/零散算子） | ⏳ 进行中 |
+| Phase 6 | 待建映射补齐（transform/feature/零散算子） | ✅ 闭环 |
 
 ---
 
@@ -133,7 +133,7 @@
 | S6.1 | opcore/transform 扩展（Con/Pick/SetNull/Reclassify/Slice/Lookup） | ✅ | 423af39 |
 | S6.2 | learncore/feature 扩展（CentralFeature/MeanCenter/MedianCenter/StandardDistance/DirectionalDistribution） | ✅ | e43bdbd |
 | S6.3 | 零散算子补齐（Split/SimilaritySearch/Forest/GLM/TabulateIntersection） | ✅ | aa8ffb2 |
-| S6.4 | R16 门禁 + Phase 6 闭环 | ⏳ | — |
+| S6.4 | R16 门禁 + Phase 6 闭环 | ✅ | f4c87a3 |
 
 ---
 

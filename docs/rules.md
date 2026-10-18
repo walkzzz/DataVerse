@@ -176,8 +176,9 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S6.1 | opcore/transform 扩展（Con/Pick/SetNull/Reclassify/Slice/Lookup +6 fn） | ✅ | 423af39 |
 | S6.2 | learncore/feature 扩展（度量地理分布 +5 fn） | ✅ | e43bdbd |
 | S6.3 | 零散算子补齐（Split/SimilaritySearch/Forest/GLM/TabulateIntersection +5 fn） | ✅ | aa8ffb2 |
+| S6.4 | R16 门禁 + Phase 6 闭环（spec 61-70, +10 tests） | ✅ | f4c87a3 |
 
-**当前测试**：880 · **当前 API**：714（pub fn）+ 153（pub type） · **形式化证明**：60
+**当前测试**：890 · **当前 API**：714（pub fn）+ 153（pub type） · **形式化证明**：70
 
 ---
 

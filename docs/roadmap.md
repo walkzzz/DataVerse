@@ -12,6 +12,9 @@
 | Phase 2 | 全域算子成熟期（多模态 + 语义 + DL + 评估 + 编排 + R16 门禁） | ✅ 闭环 |
 | Phase 2 深化 | 质量深化（DL 扩展 + 多模态扩展 + 语义扩展 + 文档治理） | ✅ 闭环 |
 | Phase 3 | 生产化期（真实 I/O + 分布式 + 插件 + 性能） | ✅ 闭环 |
+| Phase 4 | ArcGIS Pro 算子对标期（P0-P1 工具 + R16 门禁） | ✅ 闭环 |
+| Phase 5 | P2 ArcGIS 工具扩展（neighborhood + solar + groundwater） | ✅ 闭环 |
+| Phase 6 | 待建映射补齐（transform/feature/零散算子） | ⏳ 进行中 |
 
 ---
 
@@ -118,6 +121,19 @@
 | S5.2 | opcore/solar 太阳辐射（Area/Point Radiation 3 type + 17 fn） | ✅ | 09333e2 |
 | S5.3 | opcore/groundwater 地下水分析（Darcy Flow/Particle Track 3 type + 15 fn） | ✅ | 65e462b |
 | S5.4 | R16 门禁 + Phase 5 闭环（spec 51-60, +10 tests） | ✅ | 96d9091 |
+
+---
+
+## Phase 6：待建映射补齐 / Pending Mapping Completion
+
+> 补齐 arcgis_operator_mapping.md 中标记待建的算子。
+
+| Sprint | 内容 | 状态 | commit |
+|--------|------|------|--------|
+| S6.1 | opcore/transform 扩展（Con/Pick/SetNull/Reclassify/Slice/Lookup） | ⏳ | — |
+| S6.2 | learncore/feature 扩展（CentralFeature/MeanCenter/MedianCenter/StandardDistance/DirectionalDistribution） | ⏳ | — |
+| S6.3 | 零散算子补齐（Split/SimilaritySearch/Forest/GLM/TabulateIntersection/TopoToRaster） | ⏳ | — |
+| S6.4 | R16 门禁 + Phase 6 闭环 | ⏳ | — |
 
 ---
 

@@ -34,7 +34,7 @@ pub using @opcore.registry { registry_id, empty as empty_registry, register, loo
 pub using @opcore.ingest { ingest_id, text_formatter, json_formatter, csv_formatter }
 pub using @opcore.normalize { normalize_id, whitespace_normalization, punctuation_normalization }
 pub using @opcore.quality { quality_id, length_quality_score, text_quality_score }
-pub using @opcore.transform { transform_id, to_lowercase, to_uppercase, truncate }
+pub using @opcore.transform { transform_id, to_lowercase, to_uppercase, truncate, transform_conditional, transform_pick, transform_set_null, transform_reclassify, transform_slice, transform_lookup }
 pub using @opcore.annotate { annotate_id, tag_by_length, tag_modality }
 pub using @opcore.select { select_id, topk_by_length, threshold_by_length }
 pub using @opcore.mix { mix_id, group_by_modality, interleave }

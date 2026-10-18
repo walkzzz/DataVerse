@@ -6259,3 +6259,128 @@ test "S5.3 darcy_flow conservation" {
   let expected_v = @groundwater.darcy_velocity(cfg)
   assert_true((r.velocity - expected_v).abs() < 0.0001)
 }
+
+// ============================================================
+// S6.1 opcore/transform 栅格条件分析测试
+// ============================================================
+
+test "S6.1 transform_conditional basic" {
+  let cond = @hydrology.make_raster([[1.0, 0.0], [0.0, 1.0]])
+  let true_r = @hydrology.make_raster([[10.0, 20.0], [30.0, 40.0]])
+  let false_r = @hydrology.make_raster([[100.0, 200.0], [300.0, 400.0]])
+  let result = @transform.transform_conditional(cond, true_r, false_r)
+  assert_eq(@hydrology.raster_get(result, 0, 0), 10.0)
+  assert_eq(@hydrology.raster_get(result, 0, 1), 200.0)
+  assert_eq(@hydrology.raster_get(result, 1, 0), 300.0)
+  assert_eq(@hydrology.raster_get(result, 1, 1), 40.0)
+}
+
+test "S6.1 transform_conditional mismatched" {
+  let cond = @hydrology.make_raster([[1.0, 0.0]])
+  let true_r = @hydrology.make_raster([[10.0, 20.0], [30.0, 40.0]])
+  let false_r = @hydrology.make_raster([[100.0, 200.0]])
+  let result = @transform.transform_conditional(cond, true_r, false_r)
+  assert_eq(@hydrology.raster_rows(result), 0)
+}
+
+test "S6.1 transform_pick basic" {
+  let pos = @hydrology.make_raster([[0.0, 1.0], [1.0, 0.0]])
+  let r0 = @hydrology.make_raster([[10.0, 20.0], [30.0, 40.0]])
+  let r1 = @hydrology.make_raster([[100.0, 200.0], [300.0, 400.0]])
+  let result = @transform.transform_pick(pos, [r0, r1])
+  assert_eq(@hydrology.raster_get(result, 0, 0), 10.0)
+  assert_eq(@hydrology.raster_get(result, 0, 1), 200.0)
+  assert_eq(@hydrology.raster_get(result, 1, 0), 300.0)
+  assert_eq(@hydrology.raster_get(result, 1, 1), 40.0)
+}
+
+test "S6.1 transform_pick empty" {
+  let pos = @hydrology.make_raster([[0.0, 1.0]])
+  let result = @transform.transform_pick(pos, [])
+  assert_eq(@hydrology.raster_rows(result), 0)
+}
+
+test "S6.1 transform_pick out of bounds" {
+  let pos = @hydrology.make_raster([[5.0]])
+  let r0 = @hydrology.make_raster([[10.0]])
+  let result = @transform.transform_pick(pos, [r0])
+  assert_eq(@hydrology.raster_get(result, 0, 0), 0.0)
+}
+
+test "S6.1 transform_set_null basic" {
+  let cond = @hydrology.make_raster([[1.0, 0.0], [0.0, 1.0]])
+  let input = @hydrology.make_raster([[10.0, 20.0], [30.0, 40.0]])
+  let result = @transform.transform_set_null(cond, input)
+  assert_eq(@hydrology.raster_get(result, 0, 0), -9999.0)
+  assert_eq(@hydrology.raster_get(result, 0, 1), 20.0)
+  assert_eq(@hydrology.raster_get(result, 1, 0), 30.0)
+  assert_eq(@hydrology.raster_get(result, 1, 1), -9999.0)
+}
+
+test "S6.1 transform_set_null mismatched" {
+  let cond = @hydrology.make_raster([[1.0, 0.0]])
+  let input = @hydrology.make_raster([[10.0]])
+  let result = @transform.transform_set_null(cond, input)
+  assert_eq(@hydrology.raster_rows(result), 0)
+}
+
+test "S6.1 transform_reclassify basic" {
+  let input = @hydrology.make_raster([[1.0, 5.0], [10.0, 15.0]])
+  let remap = [(0.0, 4.0, 1.0), (4.0, 9.0, 2.0), (9.0, 20.0, 3.0)]
+  let result = @transform.transform_reclassify(input, remap)
+  assert_eq(@hydrology.raster_get(result, 0, 0), 1.0)
+  assert_eq(@hydrology.raster_get(result, 0, 1), 2.0)
+  assert_eq(@hydrology.raster_get(result, 1, 0), 3.0)
+  assert_eq(@hydrology.raster_get(result, 1, 1), 3.0)
+}
+
+test "S6.1 transform_reclassify no match" {
+  let input = @hydrology.make_raster([[100.0]])
+  let remap = [(0.0, 4.0, 1.0)]
+  let result = @transform.transform_reclassify(input, remap)
+  assert_eq(@hydrology.raster_get(result, 0, 0), 100.0)
+}
+
+test "S6.1 transform_slice basic" {
+  let input = @hydrology.make_raster([[0.0, 10.0], [20.0, 30.0]])
+  let result = @transform.transform_slice(input, 3)
+  assert_eq(@hydrology.raster_get(result, 0, 0), 1.0)
+  assert_true(@hydrology.raster_get(result, 1, 1) >= 1.0)
+  assert_true(@hydrology.raster_get(result, 1, 1) <= 3.0)
+}
+
+test "S6.1 transform_slice zero slices" {
+  let input = @hydrology.make_raster([[1.0, 2.0], [3.0, 4.0]])
+  let result = @transform.transform_slice(input, 0)
+  assert_eq(@hydrology.raster_get(result, 0, 0), 1.0)
+}
+
+test "S6.1 transform_slice constant" {
+  let input = @hydrology.make_raster([[5.0, 5.0], [5.0, 5.0]])
+  let result = @transform.transform_slice(input, 3)
+  assert_eq(@hydrology.raster_get(result, 0, 0), 5.0)
+}
+
+test "S6.1 transform_lookup basic" {
+  let input = @hydrology.make_raster([[0.0, 1.0], [2.0, 3.0]])
+  let table = [10.0, 20.0, 30.0, 40.0]
+  let result = @transform.transform_lookup(input, table)
+  assert_eq(@hydrology.raster_get(result, 0, 0), 10.0)
+  assert_eq(@hydrology.raster_get(result, 0, 1), 20.0)
+  assert_eq(@hydrology.raster_get(result, 1, 0), 30.0)
+  assert_eq(@hydrology.raster_get(result, 1, 1), 40.0)
+}
+
+test "S6.1 transform_lookup out of bounds" {
+  let input = @hydrology.make_raster([[5.0]])
+  let table = [10.0, 20.0]
+  let result = @transform.transform_lookup(input, table)
+  assert_eq(@hydrology.raster_get(result, 0, 0), 0.0)
+}
+
+test "S6.1 transform_lookup empty table" {
+  let input = @hydrology.make_raster([[0.0, 1.0]])
+  let result = @transform.transform_lookup(input, [])
+  assert_eq(@hydrology.raster_get(result, 0, 0), 0.0)
+  assert_eq(@hydrology.raster_get(result, 0, 1), 0.0)
+}

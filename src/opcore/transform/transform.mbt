@@ -50,3 +50,202 @@ pub fn truncate(
 pub fn transform_id() -> String {
   "opcore/transform"
 }
+
+// ============================================================
+// S6.1 栅格条件分析 / Raster conditional analysis
+// 对标 ArcGIS Pro: Con / Pick / Set Null / Reclassify / Slice / Lookup
+// ============================================================
+
+/// 条件赋值 / Conditional assignment (Con).
+///
+/// 对标 ArcGIS Pro Con 工具。
+/// 如果 condition 栅格值 > 0，取 true_raster 值，否则取 false_raster 值。
+/// 退化安全：尺寸不匹配返回空栅格。
+pub fn transform_conditional(
+  condition : @hydrology.RasterGrid,
+  true_raster : @hydrology.RasterGrid,
+  false_raster : @hydrology.RasterGrid
+) -> @hydrology.RasterGrid {
+  let rows = @hydrology.raster_rows(condition)
+  let cols = @hydrology.raster_cols(condition)
+  if rows != @hydrology.raster_rows(true_raster) || cols != @hydrology.raster_cols(true_raster) ||
+     rows != @hydrology.raster_rows(false_raster) || cols != @hydrology.raster_cols(false_raster) {
+    @hydrology.make_raster([])
+  } else {
+    let result : Array[Array[Double]] = []
+    for i in 0..<rows {
+      let row : Array[Double] = []
+      for j in 0..<cols {
+        if @hydrology.raster_get(condition, i, j) > 0.0 {
+          row.push(@hydrology.raster_get(true_raster, i, j))
+        } else {
+          row.push(@hydrology.raster_get(false_raster, i, j))
+        }
+      }
+      result.push(row)
+    }
+    @hydrology.make_raster(result)
+  }
+}
+
+/// 位置选择 / Pick by position.
+///
+/// 对标 ArcGIS Pro Pick 工具。
+/// 从 input_rasters 中按 position 栅格的值选择对应栅格的值。
+/// 退化安全：位置越界或空数组返回空栅格。
+pub fn transform_pick(
+  position : @hydrology.RasterGrid,
+  input_rasters : Array[@hydrology.RasterGrid]
+) -> @hydrology.RasterGrid {
+  let rows = @hydrology.raster_rows(position)
+  let cols = @hydrology.raster_cols(position)
+  if input_rasters.length() == 0 || rows == 0 || cols == 0 {
+    @hydrology.make_raster([])
+  } else {
+    let result : Array[Array[Double]] = []
+    for i in 0..<rows {
+      let row : Array[Double] = []
+      for j in 0..<cols {
+        let idx = @hydrology.raster_get(position, i, j).to_int()
+        if idx >= 0 && idx < input_rasters.length() &&
+           i < @hydrology.raster_rows(input_rasters[idx]) &&
+           j < @hydrology.raster_cols(input_rasters[idx]) {
+          row.push(@hydrology.raster_get(input_rasters[idx], i, j))
+        } else {
+          row.push(0.0)
+        }
+      }
+      result.push(row)
+    }
+    @hydrology.make_raster(result)
+  }
+}
+
+/// 设空 / Set Null.
+///
+/// 对标 ArcGIS Pro Set Null 工具。
+/// 将满足条件（值 > 0）的单元格设为 NoData（用 -9999 表示）。
+/// 退化安全：空栅格返回空栅格。
+pub fn transform_set_null(
+  condition : @hydrology.RasterGrid,
+  input_raster : @hydrology.RasterGrid
+) -> @hydrology.RasterGrid {
+  let rows = @hydrology.raster_rows(condition)
+  let cols = @hydrology.raster_cols(condition)
+  if rows != @hydrology.raster_rows(input_raster) || cols != @hydrology.raster_cols(input_raster) {
+    @hydrology.make_raster([])
+  } else {
+    let result : Array[Array[Double]] = []
+    for i in 0..<rows {
+      let row : Array[Double] = []
+      for j in 0..<cols {
+        if @hydrology.raster_get(condition, i, j) > 0.0 {
+          row.push(-9999.0)
+        } else {
+          row.push(@hydrology.raster_get(input_raster, i, j))
+        }
+      }
+      result.push(row)
+    }
+    @hydrology.make_raster(result)
+  }
+}
+
+/// 重分类 / Reclassify.
+///
+/// 对标 ArcGIS Pro Reclassify 工具。
+/// 按重分类映射表将值重新分类。映射表为 (old_min, old_max, new_value) 三元组数组。
+/// 退化安全：无匹配范围返回原值。
+pub fn transform_reclassify(
+  input_raster : @hydrology.RasterGrid,
+  remap : Array[(Double, Double, Double)]
+) -> @hydrology.RasterGrid {
+  let rows = @hydrology.raster_rows(input_raster)
+  let cols = @hydrology.raster_cols(input_raster)
+  let result : Array[Array[Double]] = []
+  for i in 0..<rows {
+    let row : Array[Double] = []
+    for j in 0..<cols {
+      let v = @hydrology.raster_get(input_raster, i, j)
+      let mut new_val = v
+      for (lo, hi, nv) in remap {
+        if v >= lo && v <= hi {
+          new_val = nv
+        }
+      }
+      row.push(new_val)
+    }
+    result.push(row)
+  }
+  @hydrology.make_raster(result)
+}
+
+/// 切片 / Slice.
+///
+/// 对标 ArcGIS Pro Slice 工具。
+/// 将值范围 [min, max] 等分成 n_slices 个等级，返回等级编号（1-based）。
+/// 退化安全：n_slices <= 0 或值范围为 0 返回原栅格。
+pub fn transform_slice(
+  input_raster : @hydrology.RasterGrid,
+  n_slices : Int
+) -> @hydrology.RasterGrid {
+  let rows = @hydrology.raster_rows(input_raster)
+  let cols = @hydrology.raster_cols(input_raster)
+  if n_slices <= 0 || rows == 0 || cols == 0 {
+    input_raster
+  } else {
+    let mut min_v = @hydrology.raster_get(input_raster, 0, 0)
+    let mut max_v = min_v
+    for i in 0..<rows {
+      for j in 0..<cols {
+        let v = @hydrology.raster_get(input_raster, i, j)
+        if v < min_v { min_v = v }
+        if v > max_v { max_v = v }
+      }
+    }
+    let range = max_v - min_v
+    if range == 0.0 {
+      input_raster
+    } else {
+      let result : Array[Array[Double]] = []
+      for i in 0..<rows {
+        let row : Array[Double] = []
+        for j in 0..<cols {
+          let v = @hydrology.raster_get(input_raster, i, j)
+          let raw_slice = ((v - min_v) / range * n_slices.to_double()).to_int() + 1
+          let slice = if raw_slice > n_slices { n_slices } else { raw_slice }
+          row.push(slice.to_double())
+        }
+        result.push(row)
+      }
+      @hydrology.make_raster(result)
+    }
+  }
+}
+
+/// 查找 / Lookup.
+///
+/// 对标 ArcGIS Pro Lookup 工具。
+/// 按栅格值作为索引在查找表中找到新值。
+/// 退化安全：索引越界返回 0.0。
+pub fn transform_lookup(
+  input_raster : @hydrology.RasterGrid,
+  lookup_table : Array[Double]
+) -> @hydrology.RasterGrid {
+  let rows = @hydrology.raster_rows(input_raster)
+  let cols = @hydrology.raster_cols(input_raster)
+  let result : Array[Array[Double]] = []
+  for i in 0..<rows {
+    let row : Array[Double] = []
+    for j in 0..<cols {
+      let idx = @hydrology.raster_get(input_raster, i, j).to_int()
+      if idx >= 0 && idx < lookup_table.length() {
+        row.push(lookup_table[idx])
+      } else {
+        row.push(0.0)
+      }
+    }
+    result.push(row)
+  }
+  @hydrology.make_raster(result)
+}

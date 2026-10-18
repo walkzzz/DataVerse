@@ -169,7 +169,9 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S4.8 | opcore/zonal 区域分析 + opcore/local_stats 局部分析（6 type + 44 fn） | ✅ | 366cb56 |
 | S4.9 | R16 门禁 + Phase 4 闭环（spec 41-50, +10 tests） | ✅ | f497d60 |
 
-**当前测试**：724 · **当前 API**：633（pub fn）+ 142（pub type） · **形式化证明**：50
+| S5.1 | opcore/neighborhood 邻域分析（Block/Line/Neighborhood 5 type + 33 fn） | ✅ | 14c50cc |
+
+**当前测试**：763 · **当前 API**：666（pub fn）+ 147（pub type） · **形式化证明**：50
 
 ---
 

@@ -4,6 +4,19 @@
 
 ## [0.1.0-dev] - 2026-10-18
 
+### S5.1 - opcore/neighborhood 邻域分析
+
+**新增 / Added**
+- `src/opcore/neighborhood/`：邻域分析算子包（5 type + 33 fn）
+  - 类型：`BlockStat` / `LineStat` / `NeighborhoodKind` / `NeighborhoodConfig` / `BlockResult`
+  - 算子：`block_mean/sum/min/max/range/count/std/majority/minority/median` / `block_statistics` / `block_statistics_grid` / `line_mean/sum/min/max/count/range/std` / `line_statistics` / `line_statistics_col` / `neighborhood_cells` / `neighborhood_expand` 等
+  - 对标 ArcGIS Pro: Block Statistics / Line Statistics / Neighborhood Statistics
+- 39 个跨包测试（S5.1 系列）
+
+**统计 / Stats**
+- 测试：724 → 763（+39）
+- API：633 fn + 142 type → 666 fn + 147 type（+33 fn + 5 type）
+
 ### S4.9 - R16 门禁 + Phase 4 闭环
 
 **新增 / Added**

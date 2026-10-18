@@ -1259,7 +1259,9 @@ pub using @pkg { type T, name1, trait Trait1 }
 
 > **Phase 4 ArcGIS Pro 对标**：详见 `docs/arcgis_operator_mapping.md`（726 工具映射）
 
-**当前测试**：724 · **当前 API**：633（pub fn）+ 142（pub type） · **形式化证明**：50
+| S5.1 | opcore/neighborhood 邻域分析（Block/Line/Neighborhood 5 type + 33 fn） | ✅ | 14c50cc |
+
+**当前测试**：763 · **当前 API**：666（pub fn）+ 147（pub type） · **形式化证明**：50
 
 ---
 

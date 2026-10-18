@@ -4,6 +4,19 @@
 
 ## [0.1.0-dev] - 2026-10-18
 
+### S4.6 - opcore/distance 距离分析
+
+**新增 / Added**
+- `src/opcore/distance/`：距离分析算子包（3 type + 13 fn）
+  - 类型：`DistanceResult` / `CostSurface` / `PathResult`
+  - 算子：`distance_euclidean_grid` / `distance_euclidean_allocation` / `distance_cost` / `distance_cost_allocation` / `distance_back_link` / `distance_optimal_path` / `distance_corridor` / `distance_stats` 等
+  - 对标 ArcGIS Pro: Euclidean Distance / Cost Distance / Optimal Path / Corridor / Back Link
+- 21 个跨包测试（S4.6 系列）
+
+**统计 / Stats**
+- 测试：601 → 622（+21）
+- API：558 fn + 130 type → 571 fn + 133 type（+13 fn + 3 type）
+
 ### S4.5 - opcore/density 密度分析
 
 **新增 / Added**

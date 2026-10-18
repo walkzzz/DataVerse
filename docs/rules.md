@@ -164,8 +164,9 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S4.3 | opcore/hydrology 水文分析（Fill/Flow/Watershed/Basin 4 type + 16 fn） | ✅ | 7ce271c |
 | S4.4 | opcore/surface 表面分析（Slope/Aspect/Hillshade/Contour/Viewshed 3 type + 18 fn） | ✅ | 06cd39c |
 | S4.5 | opcore/density 密度分析（Kernel/Point/Line Density 2 type + 13 fn） | ✅ | 6b3c039 |
+| S4.6 | opcore/distance 距离分析（Euclidean/Cost/Path/Corridor 3 type + 13 fn） | ✅ | 55844b7 |
 
-**当前测试**：601 · **当前 API**：558（pub fn）+ 130（pub type） · **形式化证明**：40
+**当前测试**：622 · **当前 API**：571（pub fn）+ 133（pub type） · **形式化证明**：40
 
 ---
 

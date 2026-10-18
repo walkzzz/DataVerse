@@ -4,6 +4,19 @@
 
 ## [0.1.0-dev] - 2026-10-18
 
+### S4.7 - learncore/interpolation 插值分析
+
+**新增 / Added**
+- `src/learncore/interpolation/`：插值分析算子包（3 type + 18 fn）
+  - 类型：`InterpolationMethod`（IDW/Kriging/Spline/NaturalNeighbor）/ `SamplePoint` / `InterpolationResult`
+  - 算子：`interpolation_idw` / `interpolation_idw_grid` / `interpolation_kriging` / `interpolation_kriging_grid` / `interpolation_spline` / `interpolation_spline_grid` / `interpolation_natural_neighbor` / `interpolation_natural_neighbor_grid` / `interpolate` / `interpolate_grid` / `interpolation_idw_results` / `interpolation_stats` 等
+  - 对标 ArcGIS Pro: IDW / Kriging / Spline / Natural Neighbor
+- 37 个跨包测试（S4.7 系列）
+
+**统计 / Stats**
+- 测试：622 → 659（+37）
+- API：571 fn + 133 type → 589 fn + 136 type（+18 fn + 3 type）
+
 ### S4.6 - opcore/distance 距离分析
 
 **新增 / Added**

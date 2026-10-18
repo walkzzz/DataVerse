@@ -102,7 +102,7 @@
 | S4.4 | opcore/surface 表面分析（Slope/Aspect/Hillshade/Contour/Viewshed 3 type + 18 fn） | ✅ | 06cd39c |
 | S4.5 | opcore/density 密度分析（Kernel/Point/Line Density 2 type + 13 fn） | ✅ | 6b3c039 |
 | S4.6 | opcore/distance 距离分析（Euclidean/Cost/Path/Corridor 3 type + 13 fn） | ✅ | 55844b7 |
-| S4.7 | learncore/interpolation 插值分析（IDW/Kriging/Spline） | ⏳ | — |
+| S4.7 | learncore/interpolation 插值分析（IDW/Kriging/Spline/NaturalNeighbor 3 type + 18 fn） | ✅ | ec23ad0 |
 | S4.8 | opcore/zonal 区域分析 + opcore/local_stats 局部分析 | ⏳ | — |
 | S4.9 | R16 门禁 + Phase 4 闭环 | ⏳ | — |
 
@@ -110,8 +110,8 @@
 
 ## 当前统计 / Current Stats
 
-- **测试**：622 passed
-- **API**：571 pub fn + 133 pub type
+- **测试**：659 passed
+- **API**：589 pub fn + 136 pub type
 - **形式化证明**：40 个 spec 性质
 - **编译**：0 error 0 warning
 - **MoonBit**：moon 0.1.20260920

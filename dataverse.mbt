@@ -6802,3 +6802,17 @@ pub using @opcore.remotesensing {
   band_subtract, band_ratio, threshold_classify, supervised_classify, band_stats,
   remotesensing_id,
 }
+
+///===
+/// S10.1 dataobject/serialize 数据序列化
+
+pub using @dataobject.serialize {
+  SerializeFormat, SerializeResult, ValidationResult,
+  format_name, make_serialize_result,
+  json_escape, json_string_value, json_number_value, json_bool_value,
+  json_array, json_object,
+  csv_escape, csv_row, csv_table,
+  make_validation_result, validate_non_empty, validate_length, validate_range, validate_pattern,
+  to_int_safe, to_double_safe, int_to_padded, bool_to_string, string_to_bool,
+  base64_encode, hex_encode, serialize_id,
+}

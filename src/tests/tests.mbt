@@ -9679,3 +9679,169 @@ test "band_stats basic" {
   assert_eq(mean_v, 25.0)
   assert_true(std_v > 0.0)
 }
+///===
+/// S10.1 dataobject/serialize 测试
+
+test "serialize_format_name" {
+  assert_eq(@serialize.format_name(@serialize.JSON), "json")
+  assert_eq(@serialize.format_name(@serialize.CSV), "csv")
+  assert_eq(@serialize.format_name(@serialize.TSV), "tsv")
+  assert_eq(@serialize.format_name(@serialize.Binary), "binary")
+  assert_eq(@serialize.format_name(@serialize.XML), "xml")
+  assert_eq(@serialize.format_name(@serialize.YAML), "yaml")
+}
+
+test "serialize_make_result" {
+  let r = @serialize.make_serialize_result(@serialize.JSON, "{\"a\":1}", true, "")
+  assert_true(r.success)
+  assert_eq(r.size, 7)
+  assert_eq(r.error_msg, "")
+}
+
+test "serialize_json_escape" {
+  let bs = String::from_array([Char::from_int(92)])
+  assert_eq(@serialize.json_escape("hello"), "hello")
+  let q_in = "a" + "\"" + "b"
+  let q_out = "a" + bs + "\"" + "b"
+  assert_eq(@serialize.json_escape(q_in), q_out)
+  let bs_in = "a" + bs + "b"
+  let bs_out = "a" + bs + bs + "b"
+  assert_eq(@serialize.json_escape(bs_in), bs_out)
+  let n_in = "a" + "\n" + "b"
+  let n_out = "a" + bs + "n" + "b"
+  assert_eq(@serialize.json_escape(n_in), n_out)
+  let t_in = "a" + "\t" + "b"
+  let t_out = "a" + bs + "t" + "b"
+  assert_eq(@serialize.json_escape(t_in), t_out)
+}
+
+test "serialize_json_string_value" {
+  let v = @serialize.json_string_value("name", "Alice")
+  assert_true(v.contains("name"))
+  assert_true(v.contains("Alice"))
+}
+
+test "serialize_json_number_value" {
+  let v = @serialize.json_number_value("age", 30.0)
+  assert_true(v.contains("age"))
+  assert_true(v.contains("30"))
+}
+
+test "serialize_json_bool_value" {
+  let v1 = @serialize.json_bool_value("flag", true)
+  let v2 = @serialize.json_bool_value("flag", false)
+  assert_true(v1.contains("true"))
+  assert_true(v2.contains("false"))
+}
+
+test "serialize_json_array" {
+  let v = @serialize.json_array(["1", "2", "3"])
+  assert_eq(v, "[1, 2, 3]")
+}
+
+test "serialize_json_object" {
+  let v = @serialize.json_object(["\"a\":1", "\"b\":2"])
+  assert_eq(v, "{\"a\":1, \"b\":2}")
+}
+
+test "serialize_csv_escape" {
+  assert_eq(@serialize.csv_escape("hello", ","), "hello")
+  assert_eq(@serialize.csv_escape("a,b", ","), "\"a,b\"")
+  assert_eq(@serialize.csv_escape("a\"b", ","), "\"a\"\"b\"")
+  assert_eq(@serialize.csv_escape("a\nb", ","), "\"a\nb\"")
+}
+
+test "serialize_csv_row" {
+  let r = @serialize.csv_row(["a", "b", "c"], ",")
+  assert_eq(r, "a,b,c")
+}
+
+test "serialize_csv_table" {
+  let t = @serialize.csv_table([["a", "b"], ["c", "d"]], ",")
+  assert_eq(t, "a,b\nc,d")
+}
+
+test "serialize_validate_non_empty" {
+  let r1 = @serialize.validate_non_empty("hello", "field")
+  assert_true(r1.valid)
+  let r2 = @serialize.validate_non_empty("", "field")
+  assert_false(r2.valid)
+  assert_eq(r2.errors.length(), 1)
+}
+
+test "serialize_validate_length" {
+  let r1 = @serialize.validate_length("hello", 1, 10, "field")
+  assert_true(r1.valid)
+  let r2 = @serialize.validate_length("hi", 5, 10, "field")
+  assert_false(r2.valid)
+  let r3 = @serialize.validate_length("toolongstring", 1, 5, "field")
+  assert_false(r3.valid)
+}
+
+test "serialize_validate_range" {
+  let r1 = @serialize.validate_range(5.0, 0.0, 10.0, "field")
+  assert_true(r1.valid)
+  let r2 = @serialize.validate_range(-1.0, 0.0, 10.0, "field")
+  assert_false(r2.valid)
+  let r3 = @serialize.validate_range(11.0, 0.0, 10.0, "field")
+  assert_false(r3.valid)
+}
+
+test "serialize_validate_pattern" {
+  let r1 = @serialize.validate_pattern("hello world", "world", "field")
+  assert_true(r1.valid)
+  let r2 = @serialize.validate_pattern("hello", "world", "field")
+  assert_false(r2.valid)
+}
+
+test "serialize_to_int_safe" {
+  assert_eq(@serialize.to_int_safe("123"), Some(123))
+  assert_eq(@serialize.to_int_safe("-456"), Some(-456))
+  assert_eq(@serialize.to_int_safe("+789"), Some(789))
+  assert_eq(@serialize.to_int_safe("12.3"), None)
+  assert_eq(@serialize.to_int_safe("abc"), None)
+  assert_eq(@serialize.to_int_safe(""), None)
+}
+
+test "serialize_to_double_safe" {
+  assert_eq(@serialize.to_double_safe("123.0"), Some(123.0))
+  assert_eq(@serialize.to_double_safe("-45.6"), Some(-45.6))
+  assert_eq(@serialize.to_double_safe("0.5"), Some(0.5))
+  assert_eq(@serialize.to_double_safe("abc"), None)
+  assert_eq(@serialize.to_double_safe(""), None)
+  assert_eq(@serialize.to_double_safe("1.2.3"), None)
+}
+
+test "serialize_int_to_padded" {
+  assert_eq(@serialize.int_to_padded(5, 3), "005")
+  assert_eq(@serialize.int_to_padded(42, 3), "042")
+  assert_eq(@serialize.int_to_padded(123, 3), "123")
+  assert_eq(@serialize.int_to_padded(12345, 3), "12345")
+}
+
+test "serialize_bool_string" {
+  assert_eq(@serialize.bool_to_string(true), "true")
+  assert_eq(@serialize.bool_to_string(false), "false")
+  assert_eq(@serialize.string_to_bool("true"), Some(true))
+  assert_eq(@serialize.string_to_bool("True"), Some(true))
+  assert_eq(@serialize.string_to_bool("1"), Some(true))
+  assert_eq(@serialize.string_to_bool("false"), Some(false))
+  assert_eq(@serialize.string_to_bool("FALSE"), Some(false))
+  assert_eq(@serialize.string_to_bool("0"), Some(false))
+  assert_eq(@serialize.string_to_bool("maybe"), None)
+}
+
+test "serialize_hex_encode" {
+  let h = @serialize.hex_encode("AB")
+  assert_eq(h.length(), 4)
+  assert_eq(h, "4142")
+}
+
+test "serialize_base64_encode" {
+  let b = @serialize.base64_encode("ABC")
+  assert_true(b.length() > 0)
+}
+
+test "serialize_id" {
+  assert_eq(@serialize.serialize_id(), "dataobject/serialize")
+}

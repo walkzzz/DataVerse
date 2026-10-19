@@ -106,4 +106,5 @@ import {
   "dataverse/opcore/coord",
   "dataverse/opcore/pointcloud",
   "dataverse/opcore/remotesensing",
+  "dataverse/dataobject/serialize",
 }

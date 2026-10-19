@@ -335,249 +335,63 @@ pub fn timeseries_decomp_beveridge_vector_to_string(v : Timeseriesdecompbeveridg
   if v.dim > 10 { result + "...]" } else { result + "]" }
 }
 
-pub fn timeseries_decomp_beveridge_mean(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut sum = 0.0
-    for i in 0..<n { sum = sum + data[i] }
-    sum / n.to_double()
-  }
-}
+pub fn timeseries_decomp_beveridge_mean(data : Array[Double]) -> Double { @_common.mean(data) }
 
-pub fn timeseries_decomp_beveridge_var(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let m = timeseries_decomp_beveridge_mean(data)
-    let mut sum = 0.0
-    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
-    sum / n.to_double()
-  }
-}
+pub fn timeseries_decomp_beveridge_var(data : Array[Double]) -> Double { @_common.variance(data) }
 
-pub fn timeseries_decomp_beveridge_std(data : Array[Double]) -> Double { @_common.sqrt(timeseries_decomp_beveridge_var(data)) }
+pub fn timeseries_decomp_beveridge_std(data : Array[Double]) -> Double { @_common.std(data) }
 
-pub fn timeseries_decomp_beveridge_cov(a : Array[Double], b : Array[Double]) -> Double {
-  let n = if a.length() < b.length() { a.length() } else { b.length() }
-  if n == 0 { 0.0 } else {
-    let ma = timeseries_decomp_beveridge_mean(a); let mb = timeseries_decomp_beveridge_mean(b)
-    let mut sum = 0.0
-    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
-    sum / n.to_double()
-  }
-}
+pub fn timeseries_decomp_beveridge_cov(a : Array[Double], b : Array[Double]) -> Double { @_common.cov(a, b) }
 
-pub fn timeseries_decomp_beveridge_corr(a : Array[Double], b : Array[Double]) -> Double {
-  let sa = timeseries_decomp_beveridge_std(a); let sb = timeseries_decomp_beveridge_std(b)
-  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { timeseries_decomp_beveridge_cov(a, b) / (sa * sb) }
-}
+pub fn timeseries_decomp_beveridge_corr(a : Array[Double], b : Array[Double]) -> Double { @_common.corr(a, b) }
 
-pub fn timeseries_decomp_beveridge_median(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let sorted = timeseries_decomp_beveridge_sort(data)
-    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
-  }
-}
+pub fn timeseries_decomp_beveridge_median(data : Array[Double]) -> Double { @_common.median(data) }
 
-pub fn timeseries_decomp_beveridge_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
-  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
-  if n == 0 { 0.0 } else {
-    let mut correct = 0
-    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
-    correct.to_double() / n.to_double()
-  }
-}
+pub fn timeseries_decomp_beveridge_accuracy(pred : Array[Int], labels : Array[Int]) -> Double { @_common.accuracy(pred, labels) }
 
-pub fn timeseries_decomp_beveridge_mse(pred : Array[Double], labels : Array[Double]) -> Double {
-  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
-  if n == 0 { 0.0 } else {
-    let mut sum = 0.0
-    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
-    sum / n.to_double()
-  }
-}
+pub fn timeseries_decomp_beveridge_mse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mse(pred, labels) }
 
-pub fn timeseries_decomp_beveridge_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
-  @_common.sqrt(timeseries_decomp_beveridge_mse(pred, labels))
-}
+pub fn timeseries_decomp_beveridge_rmse(pred : Array[Double], labels : Array[Double]) -> Double { @_common.rmse(pred, labels) }
 
-pub fn timeseries_decomp_beveridge_mae(pred : Array[Double], labels : Array[Double]) -> Double {
-  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
-  if n == 0 { 0.0 } else {
-    let mut sum = 0.0
-    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
-    sum / n.to_double()
-  }
-}
+pub fn timeseries_decomp_beveridge_mae(pred : Array[Double], labels : Array[Double]) -> Double { @_common.mae(pred, labels) }
 
-pub fn timeseries_decomp_beveridge_r2(pred : Array[Double], labels : Array[Double]) -> Double {
-  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
-  if n == 0 { 0.0 } else {
-    let lm = timeseries_decomp_beveridge_mean(labels)
-    let mut ss_res = 0.0; let mut ss_tot = 0.0
-    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
-    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
-  }
-}
+pub fn timeseries_decomp_beveridge_r2(pred : Array[Double], labels : Array[Double]) -> Double { @_common.r2(pred, labels) }
 
-pub fn timeseries_decomp_beveridge_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
-  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
-  let mut tp = 0; let mut fp = 0
-  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
-  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
-}
+pub fn timeseries_decomp_beveridge_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.precision(pred, labels, pos) }
 
-pub fn timeseries_decomp_beveridge_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
-  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
-  let mut tp = 0; let mut fn_ = 0
-  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
-  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
-}
+pub fn timeseries_decomp_beveridge_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.recall(pred, labels, pos) }
 
-pub fn timeseries_decomp_beveridge_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
-  let p_ = timeseries_decomp_beveridge_precision(pred, labels, pos); let r = timeseries_decomp_beveridge_recall(pred, labels, pos)
-  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
-}
+pub fn timeseries_decomp_beveridge_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double { @_common.f1(pred, labels, pos) }
 
-pub fn timeseries_decomp_beveridge_sort(arr : Array[Double]) -> Array[Double] {
-  let n = arr.length()
-  let result = Array::make(n, 0.0)
-  for i in 0..<n { result[i] = arr[i] }
-  for i in 0..<n {
-    let mut min_idx = i
-    let start = i + 1
-    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
-    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
-  }
-  result
-}
+pub fn timeseries_decomp_beveridge_sort(arr : Array[Double]) -> Array[Double] { @_common.sort(arr) }
 
-pub fn timeseries_decomp_beveridge_sort_desc(arr : Array[Double]) -> Array[Double] {
-  let sorted = timeseries_decomp_beveridge_sort(arr)
-  let n = sorted.length()
-  let result = Array::make(n, 0.0)
-  for i in 0..<n { result[i] = sorted[n - 1 - i] }
-  result
-}
+pub fn timeseries_decomp_beveridge_sort_desc(arr : Array[Double]) -> Array[Double] { @_common.sort_desc(arr) }
 
-pub fn timeseries_decomp_beveridge_factorial(n : Int) -> Double {
-  let mut result = 1.0
-  let end = n + 1
-  for i in 2..<end { result = result * i.to_double() }
-  result
-}
+pub fn timeseries_decomp_beveridge_factorial(n : Int) -> Double { @_common.factorial(n) }
 
-pub fn timeseries_decomp_beveridge_gcd(a : Int, b : Int) -> Int {
-  let mut x = if a < 0 { -a } else { a }
-  let mut y = if b < 0 { -b } else { b }
-  while y > 0 { let t = y; y = x % y; x = t }
-  x
-}
+pub fn timeseries_decomp_beveridge_gcd(a : Int, b : Int) -> Int { @_common.gcd(a, b) }
 
-pub fn timeseries_decomp_beveridge_lcm(a : Int, b : Int) -> Int {
-  if a == 0 || b == 0 { 0 } else {
-    let g = timeseries_decomp_beveridge_gcd(a, b)
-    (a / g) * b
-  }
-}
+pub fn timeseries_decomp_beveridge_lcm(a : Int, b : Int) -> Int { @_common.lcm(a, b) }
 
-pub fn timeseries_decomp_beveridge_is_prime(n : Int) -> Bool {
-  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
-    let mut result = true
-    let mut i = 3
-    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
-    result
-  }
-}
+pub fn timeseries_decomp_beveridge_is_prime(n : Int) -> Bool { @_common.is_prime(n) }
 
-pub fn timeseries_decomp_beveridge_fibonacci(n : Int) -> Int {
-  if n < 2 {
-    n
-  } else {
-    let mut a = 0
-    let mut b = 1
-    let end = n + 1
-    for _ in 2..<end {
-      let c = a + b
-      a = b
-      b = c
-    }
-    b
-  }
-}
+pub fn timeseries_decomp_beveridge_fibonacci(n : Int) -> Int { @_common.fibonacci(n) }
 
-pub fn timeseries_decomp_beveridge_normalize(data : Array[Double]) -> Array[Double] {
-  let n = data.length()
-  if n == 0 { [] } else {
-    let mn = timeseries_decomp_beveridge_min(data); let mx = timeseries_decomp_beveridge_max(data)
-    let r = mx - mn
-    if r < 0.0000001 { Array::make(n, 0.0) } else {
-      let result = Array::make(n, 0.0)
-      for i in 0..<n { result[i] = (data[i] - mn) / r }
-      result
-    }
-  }
-}
+pub fn timeseries_decomp_beveridge_normalize(data : Array[Double]) -> Array[Double] { @_common.normalize(data) }
 
-pub fn timeseries_decomp_beveridge_standardize(data : Array[Double]) -> Array[Double] {
-  let n = data.length()
-  if n == 0 { [] } else {
-    let m = timeseries_decomp_beveridge_mean(data); let sd = timeseries_decomp_beveridge_std(data)
-    if sd < 0.0000001 { Array::make(n, 0.0) } else {
-      let result = Array::make(n, 0.0)
-      for i in 0..<n { result[i] = (data[i] - m) / sd }
-      result
-    }
-  }
-}
+pub fn timeseries_decomp_beveridge_standardize(data : Array[Double]) -> Array[Double] { @_common.standardize(data) }
 
-pub fn timeseries_decomp_beveridge_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
-  let n = data.length()
-  let result = Array::make(n, 0.0)
-  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
-  result
-}
+pub fn timeseries_decomp_beveridge_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] { @_common.clip(data, lo, hi) }
 
-pub fn timeseries_decomp_beveridge_min(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut m = data[0]
-    for i in 1..<n { if data[i] < m { m = data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_min(data : Array[Double]) -> Double { @_common.min(data) }
 
-pub fn timeseries_decomp_beveridge_max(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut m = data[0]
-    for i in 1..<n { if data[i] > m { m = data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_max(data : Array[Double]) -> Double { @_common.max(data) }
 
-pub fn timeseries_decomp_beveridge_cumsum(data : Array[Double]) -> Array[Double] {
-  let n = data.length()
-  let result = Array::make(n, 0.0)
-  let mut total = 0.0
-  for i in 0..<n { total = total + data[i]; result[i] = total }
-  result
-}
+pub fn timeseries_decomp_beveridge_cumsum(data : Array[Double]) -> Array[Double] { @_common.cumsum(data) }
 
-pub fn timeseries_decomp_beveridge_reverse(data : Array[Double]) -> Array[Double] {
-  let n = data.length()
-  let result = Array::make(n, 0.0)
-  for i in 0..<n { result[i] = data[n - 1 - i] }
-  result
-}
+pub fn timeseries_decomp_beveridge_reverse(data : Array[Double]) -> Array[Double] { @_common.reverse(data) }
 
-pub fn timeseries_decomp_beveridge_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
-  let na = a.length(); let nb = b.length()
-  let result = Array::make(na + nb, 0.0)
-  for i in 0..<na { result[i] = a[i] }
-  for i in 0..<nb { result[na + i] = b[i] }
-  result
-}
+pub fn timeseries_decomp_beveridge_concat(a : Array[Double], b : Array[Double]) -> Array[Double] { @_common.concat(a, b) }
 
 pub(all) struct TimeseriesdecompbeveridgeFrame {
   data : Array[Double]

@@ -5,22 +5,27 @@
 /// - sqrt: 牛顿法 20 次迭代（double 精度足够）
 /// - abs:  条件判断
 /// - dbl:  Double → String 格式化
+/// - 统计/评估/排序/数学/数据处理函数统一实现
+
+// ============================================================================
+// 基础数学函数
+// ============================================================================
 
 /// 牛顿法求平方根，20 次迭代（double 精度足够收敛）
 pub fn sqrt(x : Double) -> Double {
-  if x <= 0.0 {
-    0.0
-  } else if x == 1.0 {
-    1.0
-  } else {
-    let mut g = x / 2.0
-    if g < 1.0 {
-      g = 1.0
+  match x {
+    x if x <= 0.0 => 0.0
+    1.0 => 1.0
+    _ => {
+      let mut g = x / 2.0
+      if g < 1.0 {
+        g = 1.0
+      }
+      for _ in 0..<20 {
+        g = (g + x / g) / 2.0
+      }
+      g
     }
-    for _ in 0..<20 {
-      g = (g + x / g) / 2.0
-    }
-    g
   }
 }
 
@@ -67,4 +72,507 @@ pub fn deg_to_rad(deg : Double) -> Double {
 /// 将角度从弧度转为度
 pub fn rad_to_deg(rad : Double) -> Double {
   rad * 180.0 / 3.141592653589793
+}
+
+// ============================================================================
+// 统计函数
+// ============================================================================
+
+/// 均值
+pub fn mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  match n {
+    0 => 0.0
+    _ => {
+      let mut sum = 0.0
+      for i in 0..<n {
+        sum = sum + data[i]
+      }
+      sum / n.to_double()
+    }
+  }
+}
+
+/// 方差
+pub fn variance(data : Array[Double]) -> Double {
+  let n = data.length()
+  match n {
+    0 => 0.0
+    _ => {
+      let m = mean(data)
+      let mut total = 0.0
+      for i in 0..<n {
+        let d = data[i] - m
+        total = total + d * d
+      }
+      total / n.to_double()
+    }
+  }
+}
+
+/// 标准差
+pub fn std(data : Array[Double]) -> Double {
+  sqrt(variance(data))
+}
+
+/// 协方差
+pub fn cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() {
+    a.length()
+  } else {
+    b.length()
+  }
+  match n {
+    0 => 0.0
+    _ => {
+      let ma = mean(a)
+      let mb = mean(b)
+      let mut total = 0.0
+      for i in 0..<n {
+        total = total + (a[i] - ma) * (b[i] - mb)
+      }
+      total / n.to_double()
+    }
+  }
+}
+
+/// 相关系数
+pub fn corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = std(a)
+  let sb = std(b)
+  if sa < 0.0000001 || sb < 0.0000001 {
+    0.0
+  } else {
+    cov(a, b) / (sa * sb)
+  }
+}
+
+/// 中位数
+pub fn median(data : Array[Double]) -> Double {
+  let n = data.length()
+  match n {
+    0 => 0.0
+    _ => {
+      let sorted = sort(data)
+      if n % 2 == 1 {
+        sorted[n / 2]
+      } else {
+        (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0
+      }
+    }
+  }
+}
+
+// ============================================================================
+// 评估指标
+// ============================================================================
+
+/// 分类准确率
+pub fn accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() {
+    pred.length()
+  } else {
+    labels.length()
+  }
+  match n {
+    0 => 0.0
+    _ => {
+      let mut correct = 0
+      for i in 0..<n {
+        if pred[i] == labels[i] {
+          correct = correct + 1
+        }
+      }
+      correct.to_double() / n.to_double()
+    }
+  }
+}
+
+/// 均方误差
+pub fn mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() {
+    pred.length()
+  } else {
+    labels.length()
+  }
+  match n {
+    0 => 0.0
+    _ => {
+      let mut sum = 0.0
+      for i in 0..<n {
+        let d = pred[i] - labels[i]
+        sum = sum + d * d
+      }
+      sum / n.to_double()
+    }
+  }
+}
+
+/// 均方根误差
+pub fn rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  sqrt(mse(pred, labels))
+}
+
+/// 平均绝对误差
+pub fn mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() {
+    pred.length()
+  } else {
+    labels.length()
+  }
+  match n {
+    0 => 0.0
+    _ => {
+      let mut sum = 0.0
+      for i in 0..<n {
+        sum = sum + abs(pred[i] - labels[i])
+      }
+      sum / n.to_double()
+    }
+  }
+}
+
+/// R² 决定系数
+pub fn r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() {
+    pred.length()
+  } else {
+    labels.length()
+  }
+  match n {
+    0 => 0.0
+    _ => {
+      let lm = mean(labels)
+      let mut ss_res = 0.0
+      let mut ss_tot = 0.0
+      for i in 0..<n {
+        let r = labels[i] - pred[i]
+        ss_res = ss_res + r * r
+        let t = labels[i] - lm
+        ss_tot = ss_tot + t * t
+      }
+      if ss_tot < 0.0000001 {
+        0.0
+      } else {
+        1.0 - ss_res / ss_tot
+      }
+    }
+  }
+}
+
+/// 精确率
+pub fn precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() {
+    pred.length()
+  } else {
+    labels.length()
+  }
+  let mut tp = 0
+  let mut fp = 0
+  for i in 0..<n {
+    if pred[i] == pos {
+      if labels[i] == pos {
+        tp = tp + 1
+      } else {
+        fp = fp + 1
+      }
+    }
+  }
+  match tp + fp {
+    0 => 0.0
+    _ => tp.to_double() / (tp + fp).to_double()
+  }
+}
+
+/// 召回率
+pub fn recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() {
+    pred.length()
+  } else {
+    labels.length()
+  }
+  let mut tp = 0
+  let mut fn_ = 0
+  for i in 0..<n {
+    if labels[i] == pos {
+      if pred[i] == pos {
+        tp = tp + 1
+      } else {
+        fn_ = fn_ + 1
+      }
+    }
+  }
+  match tp + fn_ {
+    0 => 0.0
+    _ => tp.to_double() / (tp + fn_).to_double()
+  }
+}
+
+/// F1 分数
+pub fn f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = precision(pred, labels, pos)
+  let r = recall(pred, labels, pos)
+  if p_ + r < 0.0000001 {
+    0.0
+  } else {
+    2.0 * p_ * r / (p_ + r)
+  }
+}
+
+// ============================================================================
+// 排序函数
+// ============================================================================
+
+/// 选择排序（升序）
+pub fn sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n {
+    result[i] = arr[i]
+  }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n {
+      if result[j] < result[min_idx] {
+        min_idx = j
+      }
+    }
+    let tmp = result[i]
+    result[i] = result[min_idx]
+    result[min_idx] = tmp
+  }
+  result
+}
+
+/// 降序排序
+pub fn sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n {
+    result[i] = sorted[n - 1 - i]
+  }
+  result
+}
+
+// ============================================================================
+// 数论函数
+// ============================================================================
+
+/// 阶乘
+pub fn factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end {
+    result = result * i.to_double()
+  }
+  result
+}
+
+/// 最大公约数
+pub fn gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 {
+    -a
+  } else {
+    a
+  }
+  let mut y = if b < 0 {
+    -b
+  } else {
+    b
+  }
+  while y > 0 {
+    let t = y
+    y = x % y
+    x = t
+  }
+  x
+}
+
+/// 最小公倍数
+pub fn lcm(a : Int, b : Int) -> Int {
+  match a {
+    0 => 0
+    _ => match b {
+      0 => 0
+      _ => {
+        let g = gcd(a, b)
+        (a / g) * b
+      }
+    }
+  }
+}
+
+/// 判断素数
+pub fn is_prime(n : Int) -> Bool {
+  match n {
+    n if n < 2 => false
+    2 => true
+    n if n % 2 == 0 => false
+    _ => {
+      let mut result = true
+      let mut i = 3
+      while i * i <= n {
+        if n % i == 0 {
+          result = false
+        }
+        i = i + 2
+      }
+      result
+    }
+  }
+}
+
+/// 斐波那契数列
+pub fn fibonacci(n : Int) -> Int {
+  match n {
+    0 => 0
+    1 => 1
+    _ => {
+      let mut a = 0
+      let mut b = 1
+      let end = n + 1
+      for _ in 2..<end {
+        let c = a + b
+        a = b
+        b = c
+      }
+      b
+    }
+  }
+}
+
+// ============================================================================
+// 数据处理函数
+// ============================================================================
+
+/// 最小值
+pub fn min(data : Array[Double]) -> Double {
+  let n = data.length()
+  match n {
+    0 => 0.0
+    _ => {
+      let mut m = data[0]
+      for i in 1..<n {
+        if data[i] < m {
+          m = data[i]
+        }
+      }
+      m
+    }
+  }
+}
+
+/// 最大值
+pub fn max(data : Array[Double]) -> Double {
+  let n = data.length()
+  match n {
+    0 => 0.0
+    _ => {
+      let mut m = data[0]
+      for i in 1..<n {
+        if data[i] > m {
+          m = data[i]
+        }
+      }
+      m
+    }
+  }
+}
+
+/// 归一化到 [0, 1]
+pub fn normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  match n {
+    0 => []
+    _ => {
+      let mn = min(data)
+      let mx = max(data)
+      let r = mx - mn
+      if r < 0.0000001 {
+        Array::make(n, 0.0)
+      } else {
+        let result = Array::make(n, 0.0)
+        for i in 0..<n {
+          result[i] = (data[i] - mn) / r
+        }
+        result
+      }
+    }
+  }
+}
+
+/// 标准化（Z-score）
+pub fn standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  match n {
+    0 => []
+    _ => {
+      let m = mean(data)
+      let sd = std(data)
+      if sd < 0.0000001 {
+        Array::make(n, 0.0)
+      } else {
+        let result = Array::make(n, 0.0)
+        for i in 0..<n {
+          result[i] = (data[i] - m) / sd
+        }
+        result
+      }
+    }
+  }
+}
+
+/// 截断到 [lo, hi] 范围
+pub fn clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n {
+    let v = data[i]
+    result[i] = if v < lo {
+      lo
+    } else if v > hi {
+      hi
+    } else {
+      v
+    }
+  }
+  result
+}
+
+/// 累积和
+pub fn cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n {
+    total = total + data[i]
+    result[i] = total
+  }
+  result
+}
+
+/// 反转数组
+pub fn reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n {
+    result[i] = data[n - 1 - i]
+  }
+  result
+}
+
+/// 拼接两个数组
+pub fn concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length()
+  let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na {
+    result[i] = a[i]
+  }
+  for i in 0..<nb {
+    result[na + i] = b[i]
+  }
+  result
 }

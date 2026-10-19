@@ -1,1 +1,4 @@
 // extcore/geo_buffer_circle
+import {
+  "dataverse/extcore/_common",
+}

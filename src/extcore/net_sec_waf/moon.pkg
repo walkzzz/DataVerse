@@ -1,1 +1,4 @@
 // extcore/net_sec_waf
+import {
+  "dataverse/extcore/_common",
+}

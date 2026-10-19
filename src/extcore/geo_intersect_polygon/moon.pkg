@@ -1,1 +1,4 @@
 // extcore/geo_intersect_polygon
+import {
+  "dataverse/extcore/_common",
+}

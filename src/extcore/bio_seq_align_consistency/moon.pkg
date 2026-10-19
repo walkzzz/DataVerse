@@ -1,1 +1,4 @@
 // extcore/bio_seq_align_consistency
+import {
+  "dataverse/extcore/_common",
+}

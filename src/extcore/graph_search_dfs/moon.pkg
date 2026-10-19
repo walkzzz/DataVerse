@@ -1,1 +1,4 @@
 // extcore/graph_search_dfs
+import {
+  "dataverse/extcore/_common",
+}

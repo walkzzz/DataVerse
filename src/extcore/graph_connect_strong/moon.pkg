@@ -1,1 +1,4 @@
 // extcore/graph_connect_strong
+import {
+  "dataverse/extcore/_common",
+}

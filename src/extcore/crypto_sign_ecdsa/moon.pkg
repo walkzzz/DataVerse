@@ -1,1 +1,4 @@
 // extcore/crypto_sign_ecdsa
+import {
+  "dataverse/extcore/_common",
+}

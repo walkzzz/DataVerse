@@ -1,1 +1,4 @@
 // extcore/signal_spec_periodogram
+import {
+  "dataverse/extcore/_common",
+}

@@ -1,1 +1,4 @@
 // extcore/chem_mol_repr_canonical
+import {
+  "dataverse/extcore/_common",
+}

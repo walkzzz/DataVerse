@@ -1,1 +1,4 @@
 // extcore/chem_desc_hybrid
+import {
+  "dataverse/extcore/_common",
+}

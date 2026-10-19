@@ -1,1 +1,4 @@
 // extcore/nlp_parse_constituency
+import {
+  "dataverse/extcore/_common",
+}

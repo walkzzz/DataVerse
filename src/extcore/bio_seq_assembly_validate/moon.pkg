@@ -1,1 +1,4 @@
 // extcore/bio_seq_assembly_validate
+import {
+  "dataverse/extcore/_common",
+}

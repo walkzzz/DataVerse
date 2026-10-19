@@ -1,1 +1,4 @@
 // extcore/signal_window_kaiser
+import {
+  "dataverse/extcore/_common",
+}

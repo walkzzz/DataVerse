@@ -1,1 +1,4 @@
 // extcore/signal_window_hamming
+import {
+  "dataverse/extcore/_common",
+}

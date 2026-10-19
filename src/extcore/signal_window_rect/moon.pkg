@@ -1,1 +1,4 @@
 // extcore/signal_window_rect
+import {
+  "dataverse/extcore/_common",
+}

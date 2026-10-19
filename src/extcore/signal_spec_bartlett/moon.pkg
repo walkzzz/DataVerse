@@ -1,1 +1,4 @@
 // extcore/signal_spec_bartlett
+import {
+  "dataverse/extcore/_common",
+}

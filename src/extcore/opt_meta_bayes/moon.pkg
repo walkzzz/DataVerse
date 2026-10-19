@@ -1,1 +1,4 @@
 // extcore/opt_meta_bayes
+import {
+  "dataverse/extcore/_common",
+}

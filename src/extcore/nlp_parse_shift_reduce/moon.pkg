@@ -1,1 +1,4 @@
 // extcore/nlp_parse_shift_reduce
+import {
+  "dataverse/extcore/_common",
+}

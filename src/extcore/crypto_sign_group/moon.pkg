@@ -1,1 +1,4 @@
 // extcore/crypto_sign_group
+import {
+  "dataverse/extcore/_common",
+}

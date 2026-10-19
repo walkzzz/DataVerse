@@ -1,1 +1,4 @@
 // extcore/bio_struct_motif
+import {
+  "dataverse/extcore/_common",
+}

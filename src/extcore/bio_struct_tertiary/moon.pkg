@@ -1,1 +1,4 @@
 // extcore/bio_struct_tertiary
+import {
+  "dataverse/extcore/_common",
+}

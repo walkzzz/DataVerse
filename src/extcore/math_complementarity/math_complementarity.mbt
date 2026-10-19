@@ -28,7 +28,7 @@ pub fn math_complementarity_point_dist(a : MathcomplementarityPoint, b : Mathcom
   let dx = a.x - b.x
   let dy = a.y - b.y
   let dz = a.z - b.z
-  math_complementarity_sqrt(dx * dx + dy * dy + dz * dz)
+  @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
 pub fn math_complementarity_point_add(a : MathcomplementarityPoint, b : MathcomplementarityPoint) -> MathcomplementarityPoint {
@@ -52,7 +52,7 @@ pub fn math_complementarity_point_cross(a : MathcomplementarityPoint, b : Mathco
 }
 
 pub fn math_complementarity_point_norm(pt : MathcomplementarityPoint) -> Double {
-  math_complementarity_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
 }
 
 pub fn math_complementarity_point_normalize(pt : MathcomplementarityPoint) -> MathcomplementarityPoint {
@@ -73,7 +73,7 @@ pub fn math_complementarity_point_lerp(a : MathcomplementarityPoint, b : Mathcom
 }
 
 pub fn math_complementarity_point_to_string(pt : MathcomplementarityPoint) -> String {
-  "(" + math_complementarity_dbl(pt.x) + ", " + math_complementarity_dbl(pt.y) + ", " + math_complementarity_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
 }
 
 pub(all) struct MathcomplementaritySeries {
@@ -131,7 +131,7 @@ pub fn math_complementarity_series_var(s : MathcomplementaritySeries) -> Double 
   }
 }
 
-pub fn math_complementarity_series_std(s : MathcomplementaritySeries) -> Double { math_complementarity_sqrt(math_complementarity_series_var(s)) }
+pub fn math_complementarity_series_std(s : MathcomplementaritySeries) -> Double { @_common.sqrt(math_complementarity_series_var(s)) }
 
 pub fn math_complementarity_series_median(s : MathcomplementaritySeries) -> Double {
   let n = math_complementarity_series_len(s)
@@ -142,22 +142,22 @@ pub fn math_complementarity_series_median(s : MathcomplementaritySeries) -> Doub
 }
 
 pub fn math_complementarity_series_scale(s : MathcomplementaritySeries, f : Double) -> MathcomplementaritySeries {
-  let mut result = []
-  for i in 0..<s.vals.length() { result = math_complementarity_push(result, s.vals[i] * f) }
+  let result = []
+  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
   { vals: result, name: s.name, meta: s.meta }
 }
 
 pub fn math_complementarity_series_add(a : MathcomplementaritySeries, b : MathcomplementaritySeries) -> MathcomplementaritySeries {
   let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let mut result = []
-  for i in 0..<n { result = math_complementarity_push(result, a.vals[i] + b.vals[i]) }
+  let result = []
+  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
   { vals: result, name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn math_complementarity_series_sub(a : MathcomplementaritySeries, b : MathcomplementaritySeries) -> MathcomplementaritySeries {
   let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let mut result = []
-  for i in 0..<n { result = math_complementarity_push(result, a.vals[i] - b.vals[i]) }
+  let result = []
+  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
   { vals: result, name: a.name + "-" + b.name, meta: a.meta }
 }
 
@@ -166,16 +166,16 @@ pub fn math_complementarity_series_normalize(s : MathcomplementaritySeries) -> M
   let mx = math_complementarity_series_max(s)
   let r = mx - mn
   if r < 0.0000001 { s } else {
-    let mut result = []
-    for i in 0..<s.vals.length() { result = math_complementarity_push(result, (s.vals[i] - mn) / r) }
+    let result = []
+    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
     { vals: result, name: s.name, meta: s.meta }
   }
 }
 
 pub fn math_complementarity_series_cumsum(s : MathcomplementaritySeries) -> MathcomplementaritySeries {
-  let mut result = []
+  let result = []
   let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = math_complementarity_push(result, total) }
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
   { vals: result, name: s.name + "_cumsum", meta: s.meta }
 }
 
@@ -183,7 +183,7 @@ pub fn math_complementarity_series_to_string(s : MathcomplementaritySeries) -> S
   let mut result = s.name + "["
   let n = s.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + math_complementarity_dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -262,7 +262,7 @@ pub fn math_complementarity_matrix_det(m : MathcomplementarityMatrix) -> Double 
 pub fn math_complementarity_matrix_norm(m : MathcomplementarityMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  math_complementarity_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn math_complementarity_matrix_to_string(m : MathcomplementarityMatrix) -> String {
@@ -271,7 +271,7 @@ pub fn math_complementarity_matrix_to_string(m : MathcomplementarityMatrix) -> S
   let cl = if m.cols < 5 { m.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + math_complementarity_dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -292,21 +292,21 @@ pub fn math_complementarity_vector_zero(dim : Int) -> MathcomplementarityVector 
 
 pub fn math_complementarity_vector_add(a : MathcomplementarityVector, b : MathcomplementarityVector) -> MathcomplementarityVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let mut result = []
-  for i in 0..<n { result = math_complementarity_push(result, a.comps[i] + b.comps[i]) }
+  let result = []
+  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
   { comps: result, dim: n }
 }
 
 pub fn math_complementarity_vector_sub(a : MathcomplementarityVector, b : MathcomplementarityVector) -> MathcomplementarityVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let mut result = []
-  for i in 0..<n { result = math_complementarity_push(result, a.comps[i] - b.comps[i]) }
+  let result = []
+  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
   { comps: result, dim: n }
 }
 
 pub fn math_complementarity_vector_scale(v : MathcomplementarityVector, s : Double) -> MathcomplementarityVector {
-  let mut result = []
-  for i in 0..<v.dim { result = math_complementarity_push(result, v.comps[i] * s) }
+  let result = []
+  for i in 0..<v.dim { result.push(v.comps[i] * s) }
   { comps: result, dim: v.dim }
 }
 
@@ -317,7 +317,7 @@ pub fn math_complementarity_vector_dot(a : MathcomplementarityVector, b : Mathco
   sum
 }
 
-pub fn math_complementarity_vector_norm(v : MathcomplementarityVector) -> Double { math_complementarity_sqrt(math_complementarity_vector_dot(v, v)) }
+pub fn math_complementarity_vector_norm(v : MathcomplementarityVector) -> Double { @_common.sqrt(math_complementarity_vector_dot(v, v)) }
 
 pub fn math_complementarity_vector_normalize(v : MathcomplementarityVector) -> MathcomplementarityVector {
   let n = math_complementarity_vector_norm(v)
@@ -331,7 +331,7 @@ pub fn math_complementarity_vector_dist(a : MathcomplementarityVector, b : Mathc
 pub fn math_complementarity_vector_to_string(v : MathcomplementarityVector) -> String {
   let mut result = "["
   let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + math_complementarity_dbl(v.comps[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
   if v.dim > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -354,7 +354,7 @@ pub fn math_complementarity_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn math_complementarity_std(data : Array[Double]) -> Double { math_complementarity_sqrt(math_complementarity_var(data)) }
+pub fn math_complementarity_std(data : Array[Double]) -> Double { @_common.sqrt(math_complementarity_var(data)) }
 
 pub fn math_complementarity_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -398,14 +398,14 @@ pub fn math_complementarity_mse(pred : Array[Double], labels : Array[Double]) ->
 }
 
 pub fn math_complementarity_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
-  math_complementarity_sqrt(math_complementarity_mse(pred, labels))
+  @_common.sqrt(math_complementarity_mse(pred, labels))
 }
 
 pub fn math_complementarity_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + math_complementarity_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -576,38 +576,6 @@ pub fn math_complementarity_concat(a : Array[Double], b : Array[Double]) -> Arra
   let result = Array::make(na + nb, 0.0)
   for i in 0..<na { result[i] = a[i] }
   for i in 0..<nb { result[na + i] = b[i] }
-  result
-}
-
-fn math_complementarity_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn math_complementarity_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
-
-fn math_complementarity_dbl(x : Double) -> String {
-  let i = if x >= 0.0 { math_complementarity_int(x) } else { -math_complementarity_int(-x) }
-  let f = x - i.to_double()
-  let fi = if f >= 0.0 { math_complementarity_int(f * 1000000.0) } else { math_complementarity_int(-f * 1000000.0) }
-  i.to_string() + "." + fi.to_string()
-}
-
-fn math_complementarity_int(x : Double) -> Int {
-  let mut n = 0; let mut d = x
-  while d >= 1.0 { n = n + 1; d = d - 1.0 }
-  n
-}
-
-fn math_complementarity_push(arr : Array[Double], v : Double) -> Array[Double] {
-  let n = arr.length()
-  let result = Array::make(n + 1, 0.0)
-  for i in 0..<n { result[i] = arr[i] }
-  result[n] = v
   result
 }
 
@@ -1701,255 +1669,5 @@ pub fn math_complementarity_slice_max(s : MathcomplementaritySlice) -> Double {
 
 pub fn math_complementarity_slice_to_string(s : MathcomplementaritySlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
-}
-
-pub fn math_complementarity_ext_func_0(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 1.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn math_complementarity_ext_func_1(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 2.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn math_complementarity_ext_func_2(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 3.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn math_complementarity_ext_func_3(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 4.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn math_complementarity_ext_func_4(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 5.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn math_complementarity_ext_func_5(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 6.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn math_complementarity_ext_func_6(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 7.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn math_complementarity_ext_func_7(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 8.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn math_complementarity_ext_func_8(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 9.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn math_complementarity_ext_func_9(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 10.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn math_complementarity_ext_func_10(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 11.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn math_complementarity_ext_func_11(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 12.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn math_complementarity_ext_func_12(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 13.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn math_complementarity_ext_func_13(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 14.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn math_complementarity_ext_func_14(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 15.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn math_complementarity_ext_func_15(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 16.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn math_complementarity_ext_func_16(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 17.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn math_complementarity_ext_func_17(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 18.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn math_complementarity_ext_func_18(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 19.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn math_complementarity_ext_func_19(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 20.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn math_complementarity_ext_func_20(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 21.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn math_complementarity_ext_func_21(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 22.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn math_complementarity_ext_func_22(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 23.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn math_complementarity_ext_func_23(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 24.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn math_complementarity_ext_func_24(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 25.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
 }
 

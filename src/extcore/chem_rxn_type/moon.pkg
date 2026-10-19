@@ -1,1 +1,4 @@
 // extcore/chem_rxn_type
+import {
+  "dataverse/extcore/_common",
+}

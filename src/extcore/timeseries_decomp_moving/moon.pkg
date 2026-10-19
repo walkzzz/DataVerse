@@ -1,1 +1,4 @@
 // extcore/timeseries_decomp_moving
+import {
+  "dataverse/extcore/_common",
+}

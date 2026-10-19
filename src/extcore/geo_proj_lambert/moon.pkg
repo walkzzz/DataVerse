@@ -1,1 +1,4 @@
 // extcore/geo_proj_lambert
+import {
+  "dataverse/extcore/_common",
+}

@@ -1,1 +1,4 @@
 // extcore/geo_proj_stereographic
+import {
+  "dataverse/extcore/_common",
+}

@@ -1,1 +1,4 @@
 // extcore/db_store_tensor
+import {
+  "dataverse/extcore/_common",
+}

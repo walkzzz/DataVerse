@@ -1,1 +1,4 @@
 // extcore/graph_tree_isomorphism
+import {
+  "dataverse/extcore/_common",
+}

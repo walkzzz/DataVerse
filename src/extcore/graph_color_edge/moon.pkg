@@ -1,1 +1,4 @@
 // extcore/graph_color_edge
+import {
+  "dataverse/extcore/_common",
+}

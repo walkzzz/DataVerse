@@ -1,1 +1,4 @@
 // extcore/nlp_embed_universal
+import {
+  "dataverse/extcore/_common",
+}

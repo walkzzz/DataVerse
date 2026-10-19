@@ -1,1 +1,4 @@
 // extcore/physics_em_wave
+import {
+  "dataverse/extcore/_common",
+}

@@ -1,1 +1,4 @@
 // extcore/stats_dist_multinomial
+import {
+  "dataverse/extcore/_common",
+}

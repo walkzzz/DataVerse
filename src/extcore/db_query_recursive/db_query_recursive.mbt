@@ -28,7 +28,7 @@ pub fn db_query_recursive_point_dist(a : DbqueryrecursivePoint, b : Dbqueryrecur
   let dx = a.x - b.x
   let dy = a.y - b.y
   let dz = a.z - b.z
-  db_query_recursive_sqrt(dx * dx + dy * dy + dz * dz)
+  @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
 pub fn db_query_recursive_point_add(a : DbqueryrecursivePoint, b : DbqueryrecursivePoint) -> DbqueryrecursivePoint {
@@ -52,7 +52,7 @@ pub fn db_query_recursive_point_cross(a : DbqueryrecursivePoint, b : Dbqueryrecu
 }
 
 pub fn db_query_recursive_point_norm(pt : DbqueryrecursivePoint) -> Double {
-  db_query_recursive_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
 }
 
 pub fn db_query_recursive_point_normalize(pt : DbqueryrecursivePoint) -> DbqueryrecursivePoint {
@@ -73,7 +73,7 @@ pub fn db_query_recursive_point_lerp(a : DbqueryrecursivePoint, b : Dbqueryrecur
 }
 
 pub fn db_query_recursive_point_to_string(pt : DbqueryrecursivePoint) -> String {
-  "(" + db_query_recursive_dbl(pt.x) + ", " + db_query_recursive_dbl(pt.y) + ", " + db_query_recursive_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
 }
 
 pub(all) struct DbqueryrecursiveSeries {
@@ -131,7 +131,7 @@ pub fn db_query_recursive_series_var(s : DbqueryrecursiveSeries) -> Double {
   }
 }
 
-pub fn db_query_recursive_series_std(s : DbqueryrecursiveSeries) -> Double { db_query_recursive_sqrt(db_query_recursive_series_var(s)) }
+pub fn db_query_recursive_series_std(s : DbqueryrecursiveSeries) -> Double { @_common.sqrt(db_query_recursive_series_var(s)) }
 
 pub fn db_query_recursive_series_median(s : DbqueryrecursiveSeries) -> Double {
   let n = db_query_recursive_series_len(s)
@@ -142,22 +142,22 @@ pub fn db_query_recursive_series_median(s : DbqueryrecursiveSeries) -> Double {
 }
 
 pub fn db_query_recursive_series_scale(s : DbqueryrecursiveSeries, f : Double) -> DbqueryrecursiveSeries {
-  let mut result = []
-  for i in 0..<s.vals.length() { result = db_query_recursive_push(result, s.vals[i] * f) }
+  let result = []
+  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
   { vals: result, name: s.name, meta: s.meta }
 }
 
 pub fn db_query_recursive_series_add(a : DbqueryrecursiveSeries, b : DbqueryrecursiveSeries) -> DbqueryrecursiveSeries {
   let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let mut result = []
-  for i in 0..<n { result = db_query_recursive_push(result, a.vals[i] + b.vals[i]) }
+  let result = []
+  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
   { vals: result, name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn db_query_recursive_series_sub(a : DbqueryrecursiveSeries, b : DbqueryrecursiveSeries) -> DbqueryrecursiveSeries {
   let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let mut result = []
-  for i in 0..<n { result = db_query_recursive_push(result, a.vals[i] - b.vals[i]) }
+  let result = []
+  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
   { vals: result, name: a.name + "-" + b.name, meta: a.meta }
 }
 
@@ -166,16 +166,16 @@ pub fn db_query_recursive_series_normalize(s : DbqueryrecursiveSeries) -> Dbquer
   let mx = db_query_recursive_series_max(s)
   let r = mx - mn
   if r < 0.0000001 { s } else {
-    let mut result = []
-    for i in 0..<s.vals.length() { result = db_query_recursive_push(result, (s.vals[i] - mn) / r) }
+    let result = []
+    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
     { vals: result, name: s.name, meta: s.meta }
   }
 }
 
 pub fn db_query_recursive_series_cumsum(s : DbqueryrecursiveSeries) -> DbqueryrecursiveSeries {
-  let mut result = []
+  let result = []
   let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = db_query_recursive_push(result, total) }
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
   { vals: result, name: s.name + "_cumsum", meta: s.meta }
 }
 
@@ -183,7 +183,7 @@ pub fn db_query_recursive_series_to_string(s : DbqueryrecursiveSeries) -> String
   let mut result = s.name + "["
   let n = s.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + db_query_recursive_dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -262,7 +262,7 @@ pub fn db_query_recursive_matrix_det(m : DbqueryrecursiveMatrix) -> Double {
 pub fn db_query_recursive_matrix_norm(m : DbqueryrecursiveMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  db_query_recursive_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn db_query_recursive_matrix_to_string(m : DbqueryrecursiveMatrix) -> String {
@@ -271,7 +271,7 @@ pub fn db_query_recursive_matrix_to_string(m : DbqueryrecursiveMatrix) -> String
   let cl = if m.cols < 5 { m.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + db_query_recursive_dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -292,21 +292,21 @@ pub fn db_query_recursive_vector_zero(dim : Int) -> DbqueryrecursiveVector {
 
 pub fn db_query_recursive_vector_add(a : DbqueryrecursiveVector, b : DbqueryrecursiveVector) -> DbqueryrecursiveVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let mut result = []
-  for i in 0..<n { result = db_query_recursive_push(result, a.comps[i] + b.comps[i]) }
+  let result = []
+  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
   { comps: result, dim: n }
 }
 
 pub fn db_query_recursive_vector_sub(a : DbqueryrecursiveVector, b : DbqueryrecursiveVector) -> DbqueryrecursiveVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let mut result = []
-  for i in 0..<n { result = db_query_recursive_push(result, a.comps[i] - b.comps[i]) }
+  let result = []
+  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
   { comps: result, dim: n }
 }
 
 pub fn db_query_recursive_vector_scale(v : DbqueryrecursiveVector, s : Double) -> DbqueryrecursiveVector {
-  let mut result = []
-  for i in 0..<v.dim { result = db_query_recursive_push(result, v.comps[i] * s) }
+  let result = []
+  for i in 0..<v.dim { result.push(v.comps[i] * s) }
   { comps: result, dim: v.dim }
 }
 
@@ -317,7 +317,7 @@ pub fn db_query_recursive_vector_dot(a : DbqueryrecursiveVector, b : Dbqueryrecu
   sum
 }
 
-pub fn db_query_recursive_vector_norm(v : DbqueryrecursiveVector) -> Double { db_query_recursive_sqrt(db_query_recursive_vector_dot(v, v)) }
+pub fn db_query_recursive_vector_norm(v : DbqueryrecursiveVector) -> Double { @_common.sqrt(db_query_recursive_vector_dot(v, v)) }
 
 pub fn db_query_recursive_vector_normalize(v : DbqueryrecursiveVector) -> DbqueryrecursiveVector {
   let n = db_query_recursive_vector_norm(v)
@@ -331,7 +331,7 @@ pub fn db_query_recursive_vector_dist(a : DbqueryrecursiveVector, b : Dbqueryrec
 pub fn db_query_recursive_vector_to_string(v : DbqueryrecursiveVector) -> String {
   let mut result = "["
   let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + db_query_recursive_dbl(v.comps[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
   if v.dim > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -354,7 +354,7 @@ pub fn db_query_recursive_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn db_query_recursive_std(data : Array[Double]) -> Double { db_query_recursive_sqrt(db_query_recursive_var(data)) }
+pub fn db_query_recursive_std(data : Array[Double]) -> Double { @_common.sqrt(db_query_recursive_var(data)) }
 
 pub fn db_query_recursive_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -398,14 +398,14 @@ pub fn db_query_recursive_mse(pred : Array[Double], labels : Array[Double]) -> D
 }
 
 pub fn db_query_recursive_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
-  db_query_recursive_sqrt(db_query_recursive_mse(pred, labels))
+  @_common.sqrt(db_query_recursive_mse(pred, labels))
 }
 
 pub fn db_query_recursive_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + db_query_recursive_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -576,38 +576,6 @@ pub fn db_query_recursive_concat(a : Array[Double], b : Array[Double]) -> Array[
   let result = Array::make(na + nb, 0.0)
   for i in 0..<na { result[i] = a[i] }
   for i in 0..<nb { result[na + i] = b[i] }
-  result
-}
-
-fn db_query_recursive_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn db_query_recursive_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
-
-fn db_query_recursive_dbl(x : Double) -> String {
-  let i = if x >= 0.0 { db_query_recursive_int(x) } else { -db_query_recursive_int(-x) }
-  let f = x - i.to_double()
-  let fi = if f >= 0.0 { db_query_recursive_int(f * 1000000.0) } else { db_query_recursive_int(-f * 1000000.0) }
-  i.to_string() + "." + fi.to_string()
-}
-
-fn db_query_recursive_int(x : Double) -> Int {
-  let mut n = 0; let mut d = x
-  while d >= 1.0 { n = n + 1; d = d - 1.0 }
-  n
-}
-
-fn db_query_recursive_push(arr : Array[Double], v : Double) -> Array[Double] {
-  let n = arr.length()
-  let result = Array::make(n + 1, 0.0)
-  for i in 0..<n { result[i] = arr[i] }
-  result[n] = v
   result
 }
 
@@ -1701,255 +1669,5 @@ pub fn db_query_recursive_slice_max(s : DbqueryrecursiveSlice) -> Double {
 
 pub fn db_query_recursive_slice_to_string(s : DbqueryrecursiveSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
-}
-
-pub fn db_query_recursive_ext_func_0(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 1.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn db_query_recursive_ext_func_1(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 2.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn db_query_recursive_ext_func_2(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 3.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn db_query_recursive_ext_func_3(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 4.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn db_query_recursive_ext_func_4(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 5.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn db_query_recursive_ext_func_5(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 6.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn db_query_recursive_ext_func_6(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 7.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn db_query_recursive_ext_func_7(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 8.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn db_query_recursive_ext_func_8(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 9.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn db_query_recursive_ext_func_9(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 10.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn db_query_recursive_ext_func_10(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 11.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn db_query_recursive_ext_func_11(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 12.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn db_query_recursive_ext_func_12(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 13.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn db_query_recursive_ext_func_13(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 14.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn db_query_recursive_ext_func_14(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 15.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn db_query_recursive_ext_func_15(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 16.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn db_query_recursive_ext_func_16(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 17.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn db_query_recursive_ext_func_17(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 18.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn db_query_recursive_ext_func_18(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 19.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn db_query_recursive_ext_func_19(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 20.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn db_query_recursive_ext_func_20(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 21.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn db_query_recursive_ext_func_21(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 22.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn db_query_recursive_ext_func_22(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 23.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn db_query_recursive_ext_func_23(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 24.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn db_query_recursive_ext_func_24(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 25.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
 }
 

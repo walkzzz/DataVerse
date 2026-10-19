@@ -1,1 +1,4 @@
 // extcore/nlp_parse_early
+import {
+  "dataverse/extcore/_common",
+}

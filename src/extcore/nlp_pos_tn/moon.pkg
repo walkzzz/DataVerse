@@ -1,1 +1,4 @@
 // extcore/nlp_pos_tn
+import {
+  "dataverse/extcore/_common",
+}

@@ -1,1 +1,4 @@
 // extcore/stats_infer_bayesian
+import {
+  "dataverse/extcore/_common",
+}

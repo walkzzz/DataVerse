@@ -1,1 +1,4 @@
 // extcore/finance_risk_stress
+import {
+  "dataverse/extcore/_common",
+}

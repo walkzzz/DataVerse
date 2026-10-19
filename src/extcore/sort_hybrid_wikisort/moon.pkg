@@ -1,1 +1,4 @@
 // extcore/sort_hybrid_wikisort
+import {
+  "dataverse/extcore/_common",
+}

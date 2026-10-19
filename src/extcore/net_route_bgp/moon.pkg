@@ -1,1 +1,4 @@
 // extcore/net_route_bgp
+import {
+  "dataverse/extcore/_common",
+}

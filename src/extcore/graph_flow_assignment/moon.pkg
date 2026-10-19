@@ -1,1 +1,4 @@
 // extcore/graph_flow_assignment
+import {
+  "dataverse/extcore/_common",
+}

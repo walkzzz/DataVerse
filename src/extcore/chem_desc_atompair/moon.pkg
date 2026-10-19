@@ -1,1 +1,4 @@
 // extcore/chem_desc_atompair
+import {
+  "dataverse/extcore/_common",
+}

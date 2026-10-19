@@ -28,7 +28,7 @@ pub fn crypto_asym_sm9_point_dist(a : Cryptoasymsm9Point, b : Cryptoasymsm9Point
   let dx = a.x - b.x
   let dy = a.y - b.y
   let dz = a.z - b.z
-  crypto_asym_sm9_sqrt(dx * dx + dy * dy + dz * dz)
+  @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
 pub fn crypto_asym_sm9_point_add(a : Cryptoasymsm9Point, b : Cryptoasymsm9Point) -> Cryptoasymsm9Point {
@@ -52,7 +52,7 @@ pub fn crypto_asym_sm9_point_cross(a : Cryptoasymsm9Point, b : Cryptoasymsm9Poin
 }
 
 pub fn crypto_asym_sm9_point_norm(pt : Cryptoasymsm9Point) -> Double {
-  crypto_asym_sm9_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
 }
 
 pub fn crypto_asym_sm9_point_normalize(pt : Cryptoasymsm9Point) -> Cryptoasymsm9Point {
@@ -73,7 +73,7 @@ pub fn crypto_asym_sm9_point_lerp(a : Cryptoasymsm9Point, b : Cryptoasymsm9Point
 }
 
 pub fn crypto_asym_sm9_point_to_string(pt : Cryptoasymsm9Point) -> String {
-  "(" + crypto_asym_sm9_dbl(pt.x) + ", " + crypto_asym_sm9_dbl(pt.y) + ", " + crypto_asym_sm9_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
 }
 
 pub(all) struct Cryptoasymsm9Series {
@@ -131,7 +131,7 @@ pub fn crypto_asym_sm9_series_var(s : Cryptoasymsm9Series) -> Double {
   }
 }
 
-pub fn crypto_asym_sm9_series_std(s : Cryptoasymsm9Series) -> Double { crypto_asym_sm9_sqrt(crypto_asym_sm9_series_var(s)) }
+pub fn crypto_asym_sm9_series_std(s : Cryptoasymsm9Series) -> Double { @_common.sqrt(crypto_asym_sm9_series_var(s)) }
 
 pub fn crypto_asym_sm9_series_median(s : Cryptoasymsm9Series) -> Double {
   let n = crypto_asym_sm9_series_len(s)
@@ -142,22 +142,22 @@ pub fn crypto_asym_sm9_series_median(s : Cryptoasymsm9Series) -> Double {
 }
 
 pub fn crypto_asym_sm9_series_scale(s : Cryptoasymsm9Series, f : Double) -> Cryptoasymsm9Series {
-  let mut result = []
-  for i in 0..<s.vals.length() { result = crypto_asym_sm9_push(result, s.vals[i] * f) }
+  let result = []
+  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
   { vals: result, name: s.name, meta: s.meta }
 }
 
 pub fn crypto_asym_sm9_series_add(a : Cryptoasymsm9Series, b : Cryptoasymsm9Series) -> Cryptoasymsm9Series {
   let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let mut result = []
-  for i in 0..<n { result = crypto_asym_sm9_push(result, a.vals[i] + b.vals[i]) }
+  let result = []
+  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
   { vals: result, name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn crypto_asym_sm9_series_sub(a : Cryptoasymsm9Series, b : Cryptoasymsm9Series) -> Cryptoasymsm9Series {
   let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let mut result = []
-  for i in 0..<n { result = crypto_asym_sm9_push(result, a.vals[i] - b.vals[i]) }
+  let result = []
+  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
   { vals: result, name: a.name + "-" + b.name, meta: a.meta }
 }
 
@@ -166,16 +166,16 @@ pub fn crypto_asym_sm9_series_normalize(s : Cryptoasymsm9Series) -> Cryptoasymsm
   let mx = crypto_asym_sm9_series_max(s)
   let r = mx - mn
   if r < 0.0000001 { s } else {
-    let mut result = []
-    for i in 0..<s.vals.length() { result = crypto_asym_sm9_push(result, (s.vals[i] - mn) / r) }
+    let result = []
+    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
     { vals: result, name: s.name, meta: s.meta }
   }
 }
 
 pub fn crypto_asym_sm9_series_cumsum(s : Cryptoasymsm9Series) -> Cryptoasymsm9Series {
-  let mut result = []
+  let result = []
   let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = crypto_asym_sm9_push(result, total) }
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
   { vals: result, name: s.name + "_cumsum", meta: s.meta }
 }
 
@@ -183,7 +183,7 @@ pub fn crypto_asym_sm9_series_to_string(s : Cryptoasymsm9Series) -> String {
   let mut result = s.name + "["
   let n = s.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + crypto_asym_sm9_dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -262,7 +262,7 @@ pub fn crypto_asym_sm9_matrix_det(m : Cryptoasymsm9Matrix) -> Double {
 pub fn crypto_asym_sm9_matrix_norm(m : Cryptoasymsm9Matrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  crypto_asym_sm9_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn crypto_asym_sm9_matrix_to_string(m : Cryptoasymsm9Matrix) -> String {
@@ -271,7 +271,7 @@ pub fn crypto_asym_sm9_matrix_to_string(m : Cryptoasymsm9Matrix) -> String {
   let cl = if m.cols < 5 { m.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + crypto_asym_sm9_dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -292,21 +292,21 @@ pub fn crypto_asym_sm9_vector_zero(dim : Int) -> Cryptoasymsm9Vector {
 
 pub fn crypto_asym_sm9_vector_add(a : Cryptoasymsm9Vector, b : Cryptoasymsm9Vector) -> Cryptoasymsm9Vector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let mut result = []
-  for i in 0..<n { result = crypto_asym_sm9_push(result, a.comps[i] + b.comps[i]) }
+  let result = []
+  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
   { comps: result, dim: n }
 }
 
 pub fn crypto_asym_sm9_vector_sub(a : Cryptoasymsm9Vector, b : Cryptoasymsm9Vector) -> Cryptoasymsm9Vector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let mut result = []
-  for i in 0..<n { result = crypto_asym_sm9_push(result, a.comps[i] - b.comps[i]) }
+  let result = []
+  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
   { comps: result, dim: n }
 }
 
 pub fn crypto_asym_sm9_vector_scale(v : Cryptoasymsm9Vector, s : Double) -> Cryptoasymsm9Vector {
-  let mut result = []
-  for i in 0..<v.dim { result = crypto_asym_sm9_push(result, v.comps[i] * s) }
+  let result = []
+  for i in 0..<v.dim { result.push(v.comps[i] * s) }
   { comps: result, dim: v.dim }
 }
 
@@ -317,7 +317,7 @@ pub fn crypto_asym_sm9_vector_dot(a : Cryptoasymsm9Vector, b : Cryptoasymsm9Vect
   sum
 }
 
-pub fn crypto_asym_sm9_vector_norm(v : Cryptoasymsm9Vector) -> Double { crypto_asym_sm9_sqrt(crypto_asym_sm9_vector_dot(v, v)) }
+pub fn crypto_asym_sm9_vector_norm(v : Cryptoasymsm9Vector) -> Double { @_common.sqrt(crypto_asym_sm9_vector_dot(v, v)) }
 
 pub fn crypto_asym_sm9_vector_normalize(v : Cryptoasymsm9Vector) -> Cryptoasymsm9Vector {
   let n = crypto_asym_sm9_vector_norm(v)
@@ -331,7 +331,7 @@ pub fn crypto_asym_sm9_vector_dist(a : Cryptoasymsm9Vector, b : Cryptoasymsm9Vec
 pub fn crypto_asym_sm9_vector_to_string(v : Cryptoasymsm9Vector) -> String {
   let mut result = "["
   let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + crypto_asym_sm9_dbl(v.comps[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
   if v.dim > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -354,7 +354,7 @@ pub fn crypto_asym_sm9_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn crypto_asym_sm9_std(data : Array[Double]) -> Double { crypto_asym_sm9_sqrt(crypto_asym_sm9_var(data)) }
+pub fn crypto_asym_sm9_std(data : Array[Double]) -> Double { @_common.sqrt(crypto_asym_sm9_var(data)) }
 
 pub fn crypto_asym_sm9_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -398,14 +398,14 @@ pub fn crypto_asym_sm9_mse(pred : Array[Double], labels : Array[Double]) -> Doub
 }
 
 pub fn crypto_asym_sm9_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
-  crypto_asym_sm9_sqrt(crypto_asym_sm9_mse(pred, labels))
+  @_common.sqrt(crypto_asym_sm9_mse(pred, labels))
 }
 
 pub fn crypto_asym_sm9_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + crypto_asym_sm9_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -576,38 +576,6 @@ pub fn crypto_asym_sm9_concat(a : Array[Double], b : Array[Double]) -> Array[Dou
   let result = Array::make(na + nb, 0.0)
   for i in 0..<na { result[i] = a[i] }
   for i in 0..<nb { result[na + i] = b[i] }
-  result
-}
-
-fn crypto_asym_sm9_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn crypto_asym_sm9_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
-
-fn crypto_asym_sm9_dbl(x : Double) -> String {
-  let i = if x >= 0.0 { crypto_asym_sm9_int(x) } else { -crypto_asym_sm9_int(-x) }
-  let f = x - i.to_double()
-  let fi = if f >= 0.0 { crypto_asym_sm9_int(f * 1000000.0) } else { crypto_asym_sm9_int(-f * 1000000.0) }
-  i.to_string() + "." + fi.to_string()
-}
-
-fn crypto_asym_sm9_int(x : Double) -> Int {
-  let mut n = 0; let mut d = x
-  while d >= 1.0 { n = n + 1; d = d - 1.0 }
-  n
-}
-
-fn crypto_asym_sm9_push(arr : Array[Double], v : Double) -> Array[Double] {
-  let n = arr.length()
-  let result = Array::make(n + 1, 0.0)
-  for i in 0..<n { result[i] = arr[i] }
-  result[n] = v
   result
 }
 
@@ -1701,255 +1669,5 @@ pub fn crypto_asym_sm9_slice_max(s : Cryptoasymsm9Slice) -> Double {
 
 pub fn crypto_asym_sm9_slice_to_string(s : Cryptoasymsm9Slice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
-}
-
-pub fn crypto_asym_sm9_ext_func_0(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 1.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn crypto_asym_sm9_ext_func_1(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 2.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn crypto_asym_sm9_ext_func_2(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 3.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn crypto_asym_sm9_ext_func_3(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 4.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn crypto_asym_sm9_ext_func_4(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 5.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn crypto_asym_sm9_ext_func_5(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 6.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn crypto_asym_sm9_ext_func_6(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 7.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn crypto_asym_sm9_ext_func_7(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 8.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn crypto_asym_sm9_ext_func_8(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 9.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn crypto_asym_sm9_ext_func_9(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 10.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn crypto_asym_sm9_ext_func_10(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 11.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn crypto_asym_sm9_ext_func_11(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 12.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn crypto_asym_sm9_ext_func_12(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 13.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn crypto_asym_sm9_ext_func_13(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 14.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn crypto_asym_sm9_ext_func_14(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 15.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn crypto_asym_sm9_ext_func_15(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 16.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn crypto_asym_sm9_ext_func_16(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 17.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn crypto_asym_sm9_ext_func_17(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 18.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn crypto_asym_sm9_ext_func_18(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 19.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn crypto_asym_sm9_ext_func_19(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 20.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn crypto_asym_sm9_ext_func_20(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 21.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn crypto_asym_sm9_ext_func_21(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 22.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn crypto_asym_sm9_ext_func_22(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 23.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn crypto_asym_sm9_ext_func_23(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 24.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn crypto_asym_sm9_ext_func_24(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 25.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
 }
 

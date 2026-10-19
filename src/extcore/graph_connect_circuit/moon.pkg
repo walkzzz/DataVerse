@@ -1,1 +1,4 @@
 // extcore/graph_connect_circuit
+import {
+  "dataverse/extcore/_common",
+}

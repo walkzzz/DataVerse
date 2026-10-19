@@ -28,7 +28,7 @@ pub fn signal_window_kaiser_point_dist(a : SignalwindowkaiserPoint, b : Signalwi
   let dx = a.x - b.x
   let dy = a.y - b.y
   let dz = a.z - b.z
-  signal_window_kaiser_sqrt(dx * dx + dy * dy + dz * dz)
+  @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
 pub fn signal_window_kaiser_point_add(a : SignalwindowkaiserPoint, b : SignalwindowkaiserPoint) -> SignalwindowkaiserPoint {
@@ -52,7 +52,7 @@ pub fn signal_window_kaiser_point_cross(a : SignalwindowkaiserPoint, b : Signalw
 }
 
 pub fn signal_window_kaiser_point_norm(pt : SignalwindowkaiserPoint) -> Double {
-  signal_window_kaiser_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
 }
 
 pub fn signal_window_kaiser_point_normalize(pt : SignalwindowkaiserPoint) -> SignalwindowkaiserPoint {
@@ -73,7 +73,7 @@ pub fn signal_window_kaiser_point_lerp(a : SignalwindowkaiserPoint, b : Signalwi
 }
 
 pub fn signal_window_kaiser_point_to_string(pt : SignalwindowkaiserPoint) -> String {
-  "(" + signal_window_kaiser_dbl(pt.x) + ", " + signal_window_kaiser_dbl(pt.y) + ", " + signal_window_kaiser_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
 }
 
 pub(all) struct SignalwindowkaiserSeries {
@@ -131,7 +131,7 @@ pub fn signal_window_kaiser_series_var(s : SignalwindowkaiserSeries) -> Double {
   }
 }
 
-pub fn signal_window_kaiser_series_std(s : SignalwindowkaiserSeries) -> Double { signal_window_kaiser_sqrt(signal_window_kaiser_series_var(s)) }
+pub fn signal_window_kaiser_series_std(s : SignalwindowkaiserSeries) -> Double { @_common.sqrt(signal_window_kaiser_series_var(s)) }
 
 pub fn signal_window_kaiser_series_median(s : SignalwindowkaiserSeries) -> Double {
   let n = signal_window_kaiser_series_len(s)
@@ -142,22 +142,22 @@ pub fn signal_window_kaiser_series_median(s : SignalwindowkaiserSeries) -> Doubl
 }
 
 pub fn signal_window_kaiser_series_scale(s : SignalwindowkaiserSeries, f : Double) -> SignalwindowkaiserSeries {
-  let mut result = []
-  for i in 0..<s.vals.length() { result = signal_window_kaiser_push(result, s.vals[i] * f) }
+  let result = []
+  for i in 0..<s.vals.length() { result.push(s.vals[i] * f) }
   { vals: result, name: s.name, meta: s.meta }
 }
 
 pub fn signal_window_kaiser_series_add(a : SignalwindowkaiserSeries, b : SignalwindowkaiserSeries) -> SignalwindowkaiserSeries {
   let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let mut result = []
-  for i in 0..<n { result = signal_window_kaiser_push(result, a.vals[i] + b.vals[i]) }
+  let result = []
+  for i in 0..<n { result.push(a.vals[i] + b.vals[i]) }
   { vals: result, name: a.name + "+" + b.name, meta: a.meta }
 }
 
 pub fn signal_window_kaiser_series_sub(a : SignalwindowkaiserSeries, b : SignalwindowkaiserSeries) -> SignalwindowkaiserSeries {
   let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
-  let mut result = []
-  for i in 0..<n { result = signal_window_kaiser_push(result, a.vals[i] - b.vals[i]) }
+  let result = []
+  for i in 0..<n { result.push(a.vals[i] - b.vals[i]) }
   { vals: result, name: a.name + "-" + b.name, meta: a.meta }
 }
 
@@ -166,16 +166,16 @@ pub fn signal_window_kaiser_series_normalize(s : SignalwindowkaiserSeries) -> Si
   let mx = signal_window_kaiser_series_max(s)
   let r = mx - mn
   if r < 0.0000001 { s } else {
-    let mut result = []
-    for i in 0..<s.vals.length() { result = signal_window_kaiser_push(result, (s.vals[i] - mn) / r) }
+    let result = []
+    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
     { vals: result, name: s.name, meta: s.meta }
   }
 }
 
 pub fn signal_window_kaiser_series_cumsum(s : SignalwindowkaiserSeries) -> SignalwindowkaiserSeries {
-  let mut result = []
+  let result = []
   let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = signal_window_kaiser_push(result, total) }
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result.push(total) }
   { vals: result, name: s.name + "_cumsum", meta: s.meta }
 }
 
@@ -183,7 +183,7 @@ pub fn signal_window_kaiser_series_to_string(s : SignalwindowkaiserSeries) -> St
   let mut result = s.name + "["
   let n = s.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + signal_window_kaiser_dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -262,7 +262,7 @@ pub fn signal_window_kaiser_matrix_det(m : SignalwindowkaiserMatrix) -> Double {
 pub fn signal_window_kaiser_matrix_norm(m : SignalwindowkaiserMatrix) -> Double {
   let mut sum = 0.0
   for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
-  signal_window_kaiser_sqrt(sum)
+  @_common.sqrt(sum)
 }
 
 pub fn signal_window_kaiser_matrix_to_string(m : SignalwindowkaiserMatrix) -> String {
@@ -271,7 +271,7 @@ pub fn signal_window_kaiser_matrix_to_string(m : SignalwindowkaiserMatrix) -> St
   let cl = if m.cols < 5 { m.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + signal_window_kaiser_dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -292,21 +292,21 @@ pub fn signal_window_kaiser_vector_zero(dim : Int) -> SignalwindowkaiserVector {
 
 pub fn signal_window_kaiser_vector_add(a : SignalwindowkaiserVector, b : SignalwindowkaiserVector) -> SignalwindowkaiserVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let mut result = []
-  for i in 0..<n { result = signal_window_kaiser_push(result, a.comps[i] + b.comps[i]) }
+  let result = []
+  for i in 0..<n { result.push(a.comps[i] + b.comps[i]) }
   { comps: result, dim: n }
 }
 
 pub fn signal_window_kaiser_vector_sub(a : SignalwindowkaiserVector, b : SignalwindowkaiserVector) -> SignalwindowkaiserVector {
   let n = if a.dim < b.dim { a.dim } else { b.dim }
-  let mut result = []
-  for i in 0..<n { result = signal_window_kaiser_push(result, a.comps[i] - b.comps[i]) }
+  let result = []
+  for i in 0..<n { result.push(a.comps[i] - b.comps[i]) }
   { comps: result, dim: n }
 }
 
 pub fn signal_window_kaiser_vector_scale(v : SignalwindowkaiserVector, s : Double) -> SignalwindowkaiserVector {
-  let mut result = []
-  for i in 0..<v.dim { result = signal_window_kaiser_push(result, v.comps[i] * s) }
+  let result = []
+  for i in 0..<v.dim { result.push(v.comps[i] * s) }
   { comps: result, dim: v.dim }
 }
 
@@ -317,7 +317,7 @@ pub fn signal_window_kaiser_vector_dot(a : SignalwindowkaiserVector, b : Signalw
   sum
 }
 
-pub fn signal_window_kaiser_vector_norm(v : SignalwindowkaiserVector) -> Double { signal_window_kaiser_sqrt(signal_window_kaiser_vector_dot(v, v)) }
+pub fn signal_window_kaiser_vector_norm(v : SignalwindowkaiserVector) -> Double { @_common.sqrt(signal_window_kaiser_vector_dot(v, v)) }
 
 pub fn signal_window_kaiser_vector_normalize(v : SignalwindowkaiserVector) -> SignalwindowkaiserVector {
   let n = signal_window_kaiser_vector_norm(v)
@@ -331,7 +331,7 @@ pub fn signal_window_kaiser_vector_dist(a : SignalwindowkaiserVector, b : Signal
 pub fn signal_window_kaiser_vector_to_string(v : SignalwindowkaiserVector) -> String {
   let mut result = "["
   let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + signal_window_kaiser_dbl(v.comps[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
   if v.dim > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -354,7 +354,7 @@ pub fn signal_window_kaiser_var(data : Array[Double]) -> Double {
   }
 }
 
-pub fn signal_window_kaiser_std(data : Array[Double]) -> Double { signal_window_kaiser_sqrt(signal_window_kaiser_var(data)) }
+pub fn signal_window_kaiser_std(data : Array[Double]) -> Double { @_common.sqrt(signal_window_kaiser_var(data)) }
 
 pub fn signal_window_kaiser_cov(a : Array[Double], b : Array[Double]) -> Double {
   let n = if a.length() < b.length() { a.length() } else { b.length() }
@@ -398,14 +398,14 @@ pub fn signal_window_kaiser_mse(pred : Array[Double], labels : Array[Double]) ->
 }
 
 pub fn signal_window_kaiser_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
-  signal_window_kaiser_sqrt(signal_window_kaiser_mse(pred, labels))
+  @_common.sqrt(signal_window_kaiser_mse(pred, labels))
 }
 
 pub fn signal_window_kaiser_mae(pred : Array[Double], labels : Array[Double]) -> Double {
   let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
   if n == 0 { 0.0 } else {
     let mut sum = 0.0
-    for i in 0..<n { sum = sum + signal_window_kaiser_abs(pred[i] - labels[i]) }
+    for i in 0..<n { sum = sum + @_common.abs(pred[i] - labels[i]) }
     sum / n.to_double()
   }
 }
@@ -576,38 +576,6 @@ pub fn signal_window_kaiser_concat(a : Array[Double], b : Array[Double]) -> Arra
   let result = Array::make(na + nb, 0.0)
   for i in 0..<na { result[i] = a[i] }
   for i in 0..<nb { result[na + i] = b[i] }
-  result
-}
-
-fn signal_window_kaiser_sqrt(x : Double) -> Double {
-  if x <= 0.0 { 0.0 } else {
-    let mut g = x / 2.0
-    if g < 1.0 { g = 1.0 }
-    for _ in 0..<50 { g = (g + x / g) / 2.0 }
-    g
-  }
-}
-
-fn signal_window_kaiser_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
-
-fn signal_window_kaiser_dbl(x : Double) -> String {
-  let i = if x >= 0.0 { signal_window_kaiser_int(x) } else { -signal_window_kaiser_int(-x) }
-  let f = x - i.to_double()
-  let fi = if f >= 0.0 { signal_window_kaiser_int(f * 1000000.0) } else { signal_window_kaiser_int(-f * 1000000.0) }
-  i.to_string() + "." + fi.to_string()
-}
-
-fn signal_window_kaiser_int(x : Double) -> Int {
-  let mut n = 0; let mut d = x
-  while d >= 1.0 { n = n + 1; d = d - 1.0 }
-  n
-}
-
-fn signal_window_kaiser_push(arr : Array[Double], v : Double) -> Array[Double] {
-  let n = arr.length()
-  let result = Array::make(n + 1, 0.0)
-  for i in 0..<n { result[i] = arr[i] }
-  result[n] = v
   result
 }
 
@@ -1701,255 +1669,5 @@ pub fn signal_window_kaiser_slice_max(s : SignalwindowkaiserSlice) -> Double {
 
 pub fn signal_window_kaiser_slice_to_string(s : SignalwindowkaiserSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
-}
-
-pub fn signal_window_kaiser_ext_func_0(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 1.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn signal_window_kaiser_ext_func_1(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 2.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn signal_window_kaiser_ext_func_2(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 3.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn signal_window_kaiser_ext_func_3(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 4.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn signal_window_kaiser_ext_func_4(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 5.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn signal_window_kaiser_ext_func_5(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 6.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn signal_window_kaiser_ext_func_6(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 7.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn signal_window_kaiser_ext_func_7(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 8.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn signal_window_kaiser_ext_func_8(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 9.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn signal_window_kaiser_ext_func_9(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 10.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn signal_window_kaiser_ext_func_10(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 11.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn signal_window_kaiser_ext_func_11(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 12.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn signal_window_kaiser_ext_func_12(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 13.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn signal_window_kaiser_ext_func_13(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 14.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn signal_window_kaiser_ext_func_14(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 15.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn signal_window_kaiser_ext_func_15(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 16.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn signal_window_kaiser_ext_func_16(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 17.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn signal_window_kaiser_ext_func_17(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 18.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn signal_window_kaiser_ext_func_18(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 19.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn signal_window_kaiser_ext_func_19(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 20.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn signal_window_kaiser_ext_func_20(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 21.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn signal_window_kaiser_ext_func_21(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 22.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn signal_window_kaiser_ext_func_22(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 23.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn signal_window_kaiser_ext_func_23(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 24.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
-}
-
-pub fn signal_window_kaiser_ext_func_24(data : Array[Double]) -> Double {
-  let n = data.length()
-  if n == 0 { 0.0 } else {
-    let mut result = 0.0
-    let factor = 25.0
-    for j in 0..<n { result = result + data[j] * factor }
-    result / n.to_double()
-  }
 }
 

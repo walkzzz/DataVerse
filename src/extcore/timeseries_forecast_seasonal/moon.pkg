@@ -1,1 +1,4 @@
 // extcore/timeseries_forecast_seasonal
+import {
+  "dataverse/extcore/_common",
+}

@@ -1,1 +1,4 @@
 // extcore/image_filter_mean
+import {
+  "dataverse/extcore/_common",
+}

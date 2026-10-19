@@ -1,1 +1,4 @@
 // extcore/chem_desc_ecfp
+import {
+  "dataverse/extcore/_common",
+}

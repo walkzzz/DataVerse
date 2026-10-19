@@ -1,1 +1,4 @@
 // extcore/signal_spec_min_norm
+import {
+  "dataverse/extcore/_common",
+}

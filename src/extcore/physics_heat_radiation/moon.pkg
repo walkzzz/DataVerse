@@ -1,1 +1,4 @@
 // extcore/physics_heat_radiation
+import {
+  "dataverse/extcore/_common",
+}

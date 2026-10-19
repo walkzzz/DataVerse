@@ -1,1 +1,4 @@
 // extcore/crypto_asym_eddsa
+import {
+  "dataverse/extcore/_common",
+}

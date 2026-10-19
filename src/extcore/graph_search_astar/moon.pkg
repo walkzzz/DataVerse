@@ -1,1 +1,4 @@
 // extcore/graph_search_astar
+import {
+  "dataverse/extcore/_common",
+}

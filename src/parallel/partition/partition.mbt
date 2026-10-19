@@ -70,7 +70,7 @@ pub fn hash_partition(
     return []
   }
   let buckets : Array[Array[String]] = []
-  for i in 0..<num_partitions {
+  for _ in 0..<num_partitions {
     buckets.push([])
   }
   for i in 0..<items.length() {
@@ -95,7 +95,7 @@ pub fn range_partition(
 ) -> Array[PartitionResult] {
   let num_partitions = boundaries.length() + 1
   let buckets : Array[Array[String]] = []
-  for i in 0..<num_partitions {
+  for _ in 0..<num_partitions {
     buckets.push([])
   }
   for i in 0..<items.length() {
@@ -126,7 +126,7 @@ pub fn round_robin_partition(
     return []
   }
   let buckets : Array[Array[String]] = []
-  for i in 0..<num_partitions {
+  for _ in 0..<num_partitions {
     buckets.push([])
   }
   for i in 0..<items.length() {

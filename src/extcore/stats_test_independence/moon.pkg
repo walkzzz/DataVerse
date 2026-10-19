@@ -1,1 +1,4 @@
 // extcore/stats_test_independence
+import {
+  "dataverse/extcore/_common",
+}

@@ -1,1 +1,4 @@
 // extcore/stats_model_gam
+import {
+  "dataverse/extcore/_common",
+}

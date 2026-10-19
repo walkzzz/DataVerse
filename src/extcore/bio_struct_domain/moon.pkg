@@ -1,1 +1,4 @@
 // extcore/bio_struct_domain
+import {
+  "dataverse/extcore/_common",
+}

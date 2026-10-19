@@ -1,1 +1,4 @@
 // extcore/geo_buffer_segment
+import {
+  "dataverse/extcore/_common",
+}

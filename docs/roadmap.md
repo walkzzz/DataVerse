@@ -19,7 +19,7 @@
 | Phase 8 | 空间分析深化（网络/拓扑/地形/3D/地理编码/坐标变换） | ✅ 闭环 |
 | Phase 9 | 多模态算子深化（image/audio/video/semantic/点云/遥感） | ✅ 闭环 |
 | Phase 10 | 数据基础设施深化（dataobject/datatemporal/datair/dosi/parallel/io） | ✅ 闭环 |
-| Phase 11 | Agent/LLM 集成深化（agent_kit/llm/retrieval/prompt） | ⏳ |
+| Phase 11 | Agent/LLM 集成深化（agent_kit/llm/retrieval/prompt） | ✅ 闭环 |
 | Phase 12 | 测试/规格/文档扩张 + 10 万行里程碑 | ⏳ |
 
 ---

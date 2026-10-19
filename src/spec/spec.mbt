@@ -1243,3 +1243,96 @@ test "spec: infer_type correct" {
   assert_eq(@format.infer_type("true"), @format.BoolType)
   assert_eq(@format.infer_type("hello"), @format.StringType)
 }
+
+///|
+/// 性质 111：estimate_tokens 非负
+test "spec: estimate_tokens non-negative" {
+  assert_true(@llm.estimate_tokens("hello") >= 0)
+  assert_eq(@llm.estimate_tokens(""), 0)
+}
+
+///|
+/// 性质 112：cosine_similarity 自身为 1
+test "spec: cosine self similarity" {
+  let v = [1.0, 2.0, 3.0]
+  let sim = @retrieval.cosine_similarity(v, v)
+  assert_true(sim > 0.99)
+}
+
+///|
+/// 性质 113：replace_variable 正确替换
+test "spec: replace_variable correct" {
+  assert_eq(@prompt.replace_variable("Hi {name}", "name", "Bob"), "Hi Bob")
+}
+
+///|
+/// 性质 114：count_variables 正确计数
+test "spec: count_variables correct" {
+  assert_eq(@prompt.count_variables("{a}{b}{c}"), 3)
+  assert_eq(@prompt.count_variables("no vars"), 0)
+}
+
+///|
+/// 性质 115：memory_add 增加计数
+test "spec: memory_add increases count" {
+  let store = @memory.make_memory_store(10, 10)
+  let entry = @memory.make_memory_entry("e1", "test", @memory.ShortTerm, 1.0, 0.5)
+  let store2 = @memory.add_memory(store, entry)
+  assert_eq(@memory.memory_count(store2), @memory.memory_count(store) + 1)
+}
+
+///|
+/// 性质 116：validate_arguments 必选参数
+test "spec: validate required args" {
+  let params = [@tool.make_param("x", @tool.StringType, "x", true, "")]
+  let tool_def = @tool.make_tool_def("f", "func", params)
+  assert_true(@tool.validate_arguments(tool_def, [("x", "1")]))
+  assert_false(@tool.validate_arguments(tool_def, []))
+}
+
+///|
+/// 性质 117：to_int_arg 正确解析
+test "spec: to_int_arg correct" {
+  assert_eq(@tool.to_int_arg("123"), Some(123))
+  assert_eq(@tool.to_int_arg("abc"), None)
+}
+
+///|
+/// 性质 118：vector_search 返回 top_k
+test "spec: vector_search top_k" {
+  let docs = [
+    @retrieval.make_document("d1", "a", [1.0], ""),
+    @retrieval.make_document("d2", "b", [0.0], ""),
+    @retrieval.make_document("d3", "c", [0.5], ""),
+  ]
+  let results = @retrieval.vector_search([1.0], docs, 2)
+  assert_eq(results.length(), 2)
+}
+
+///|
+/// 性质 119：rerank 按分数排序
+test "spec: rerank by score" {
+  let docs = [
+    @retrieval.make_document("d1", "a", [], ""),
+    @retrieval.make_document("d2", "b", [], ""),
+  ]
+  let results = [
+    @retrieval.make_retrieval_result({ ..docs[0], score: 0.3 }, @retrieval.VectorSearch, 1),
+    @retrieval.make_retrieval_result({ ..docs[1], score: 0.8 }, @retrieval.VectorSearch, 2),
+  ]
+  let reranked = @retrieval.rerank(results)
+  assert_eq(reranked[0].rank, 1)
+  assert_eq(reranked[0].document.id, "d2")
+}
+
+///|
+/// 性质 120：clear_short_term 只保留非短期
+test "spec: clear_short_term keeps non-short" {
+  let store = @memory.make_memory_store(10, 10)
+  let e1 = @memory.make_memory_entry("e1", "short", @memory.ShortTerm, 1.0, 0.5)
+  let e2 = @memory.make_memory_entry("e2", "long", @memory.LongTerm, 2.0, 0.8)
+  let store2 = @memory.add_memory(@memory.add_memory(store, e1), e2)
+  let cleared = @memory.clear_short_term(store2)
+  assert_eq(@memory.memory_count_by_type(cleared, @memory.ShortTerm), 0)
+  assert_eq(@memory.memory_count_by_type(cleared, @memory.LongTerm), 1)
+}

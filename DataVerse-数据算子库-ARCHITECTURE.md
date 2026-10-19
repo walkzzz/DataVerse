@@ -1272,8 +1272,9 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S8.1-S8.7 | 空间分析深化（network/topology/terrain/3d/geocoding/coord + spec 81-90） | ✅ | — |
 | S9.1-S9.7 | 多模态算子深化（image/audio/video/semantic/pointcloud/remotesensing + spec 91-100） | ✅ | — |
 | S10.1-S10.7 | 数据基础设施深化（serialize/window/ir_transform/scheduler/partition/format + spec 101-110） | ✅ | — |
+| S11.1-S11.5 | Agent/LLM 集成深化（llm/retrieval/prompt/memory/tool + spec 111-120） | ✅ | — |
 
-**当前测试**：1417 · **形式化证明**：110 · **ArcGIS 映射**：726/726
+**当前测试**：1468 · **形式化证明**：120 · **ArcGIS 映射**：726/726
 
 ---
 

@@ -900,3 +900,18 @@ DataVerse 已完成 ArcGIS Pro 726 工具的 100% 映射，0 待建。
 ### S10.7 R16 门禁 + Phase 10 闭环 (spec 101-110, +10 tests)
 - 形式化性质 101-110: json_escape/to_int_safe/validate_range/tumbling_windows/window_count/moving_average/fold_add/hash_partition/round_robin/infer_type
 - **1417 tests passed, 0 errors, 110 spec properties**
+
+## Phase 11 闭环 (S11.1-S11.5) — Agent/LLM 集成深化
+
+### S11.1 agent_kit/llm LLM 集成 (+20 fn)
+- ChatMessage/LLMRequest/LLMResponse + token 估计 + 流式处理
+### S11.2 agent_kit/retrieval 检索增强 (+20 fn)
+- 向量/关键词/混合检索 + 重排序 + 去重
+### S11.3 agent_kit/prompt Prompt 工程 (+18 fn)
+- 模板/变量替换/few-shot/链式 Prompt
+### S11.4 agent_kit/memory Agent 记忆 (+16 fn)
+- 短期/长期/工作/情景记忆 + 修剪/检索
+### S11.5 agent_kit/tool 工具调用 (+16 fn)
+- 参数验证/类型转换/结果格式化
+### spec 111-120: 10 个形式化性质
+- **1468 tests passed, 0 errors, 120 spec properties**

@@ -10267,3 +10267,288 @@ test "format_type_name" {
 test "format_id" {
   assert_eq(@format.format_id(), "io/format")
 }
+
+///===
+/// S11.1 agent_kit/llm 测试
+
+test "llm_make_message" {
+  let m = @llm.make_message(@llm.User, "hello")
+  assert_eq(m.content, "hello")
+  assert_true(m.tokens > 0)
+}
+
+test "llm_estimate_tokens" {
+  assert_true(@llm.estimate_tokens("hello world") > 0)
+  assert_eq(@llm.estimate_tokens(""), 0)
+}
+
+test "llm_system_message" {
+  let m = @llm.system_message("You are helpful")
+  assert_eq(m.content, "You are helpful")
+}
+
+test "llm_make_request" {
+  let msgs = [@llm.user_message("hi")]
+  let req = @llm.make_request("gpt-4", @llm.OpenAI, msgs, 100, 0.7)
+  assert_eq(req.model, "gpt-4")
+  assert_eq(req.temperature, 0.7)
+}
+
+test "llm_with_temperature" {
+  let msgs = [@llm.user_message("hi")]
+  let req = @llm.make_request("gpt-4", @llm.OpenAI, msgs, 100, 0.7)
+  let req2 = @llm.with_temperature(req, 0.5)
+  assert_eq(req2.temperature, 0.5)
+}
+
+test "llm_response_ok" {
+  let r = @llm.make_response("hello", "stop", 10, 5, true, "")
+  assert_true(@llm.response_ok(r))
+  let r2 = @llm.make_response("", "", 0, 0, false, "error")
+  assert_false(@llm.response_ok(r2))
+}
+
+test "llm_estimate_cost" {
+  let r = @llm.make_response("hello", "stop", 1000, 500, true, "")
+  let cost = @llm.estimate_cost(r, 0.01, 0.03)
+  assert_true(cost > 0.0)
+}
+
+test "llm_merge_chunks" {
+  let chunks = [
+    @llm.make_chunk("Hello", false, 0),
+    @llm.make_chunk(" World", true, 1),
+  ]
+  assert_eq(@llm.merge_chunks(chunks), "Hello World")
+}
+
+test "llm_provider_name" {
+  assert_eq(@llm.provider_name(@llm.OpenAI), "openai")
+  assert_eq(@llm.provider_name(@llm.Anthropic), "anthropic")
+}
+
+test "llm_id" {
+  assert_eq(@llm.llm_id(), "agent_kit/llm")
+}
+
+///===
+/// S11.2 agent_kit/retrieval 测试
+
+test "retrieval_cosine_similarity" {
+  let a = [1.0, 0.0, 0.0]
+  let b = [1.0, 0.0, 0.0]
+  assert_true(@retrieval.cosine_similarity(a, b) > 0.99)
+  let c = [0.0, 1.0, 0.0]
+  assert_true(@retrieval.cosine_similarity(a, c) < 0.01)
+}
+
+test "retrieval_vector_search" {
+  let docs = [
+    @retrieval.make_document("d1", "hello", [1.0, 0.0], ""),
+    @retrieval.make_document("d2", "world", [0.0, 1.0], ""),
+  ]
+  let results = @retrieval.vector_search([1.0, 0.0], docs, 1)
+  assert_eq(results.length(), 1)
+  assert_eq(results[0].document.id, "d1")
+}
+
+test "retrieval_keyword_search" {
+  let docs = [
+    @retrieval.make_document("d1", "hello world", [], ""),
+    @retrieval.make_document("d2", "foo bar", [], ""),
+  ]
+  let results = @retrieval.keyword_search("hello", docs, 1)
+  assert_eq(results.length(), 1)
+  assert_eq(results[0].document.id, "d1")
+}
+
+test "retrieval_rerank" {
+  let docs = [
+    @retrieval.make_document("d1", "a", [], ""),
+    @retrieval.make_document("d2", "b", [], ""),
+  ]
+  let results = [
+    @retrieval.make_retrieval_result({ ..docs[0], score: 0.5 }, @retrieval.VectorSearch, 1),
+    @retrieval.make_retrieval_result({ ..docs[1], score: 0.9 }, @retrieval.VectorSearch, 2),
+  ]
+  let reranked = @retrieval.rerank(results)
+  assert_eq(reranked[0].document.id, "d2")
+}
+
+test "retrieval_method_name" {
+  assert_eq(@retrieval.method_name(@retrieval.VectorSearch), "vector")
+  assert_eq(@retrieval.method_name(@retrieval.KeywordSearch), "keyword")
+}
+
+test "retrieval_id" {
+  assert_eq(@retrieval.retrieval_id(), "agent_kit/retrieval")
+}
+
+///===
+/// S11.3 agent_kit/prompt 测试
+
+test "prompt_replace_variable" {
+  let result = @prompt.replace_variable("Hello {name}!", "name", "World")
+  assert_eq(result, "Hello World!")
+}
+
+test "prompt_render_template" {
+  let tmpl = @prompt.make_template("greet", "Hello {name}!", ["name"])
+  let result = @prompt.render_template(tmpl, [("name", "Alice")])
+  assert_eq(result, "Hello Alice!")
+}
+
+test "prompt_build_system" {
+  let p = @prompt.build_system_prompt("assistant", "Be helpful.")
+  assert_true(p.contains("assistant"))
+  assert_true(p.contains("Be helpful."))
+}
+
+test "prompt_build_user" {
+  let p = @prompt.build_user_prompt("What is 2+2?", "Math context")
+  assert_true(p.contains("What is 2+2?"))
+  assert_true(p.contains("Math context"))
+}
+
+test "prompt_few_shot" {
+  let examples = [@prompt.make_few_shot("1+1", "2")]
+  let p = @prompt.build_few_shot_prompt("Solve:", examples, "2+2")
+  assert_true(p.contains("1+1"))
+  assert_true(p.contains("2+2"))
+}
+
+test "prompt_count_variables" {
+  assert_eq(@prompt.count_variables("Hello {a} and {b}"), 2)
+  assert_eq(@prompt.count_variables("No variables"), 0)
+}
+
+test "prompt_extract_variables" {
+  let vars = @prompt.extract_variables("Hello {a} and {b}")
+  assert_eq(vars.length(), 2)
+}
+
+test "prompt_chain" {
+  let steps = [
+    @prompt.make_template("s1", "Step1: {x}", ["x"]),
+    @prompt.make_template("s2", "Step2: {x}", ["x"]),
+  ]
+  let chain = @prompt.make_chain(steps, " -> ")
+  let result = @prompt.render_chain(chain, [("x", "data")])
+  assert_true(result.contains("Step1"))
+  assert_true(result.contains("Step2"))
+}
+
+test "prompt_id" {
+  assert_eq(@prompt.prompt_id(), "agent_kit/prompt")
+}
+
+///===
+/// S11.4 agent_kit/memory 测试
+
+test "memory_add" {
+  let store = @memory.make_memory_store(10, 10)
+  let entry = @memory.make_memory_entry("e1", "hello", @memory.ShortTerm, 1.0, 0.5)
+  let store2 = @memory.add_memory(store, entry)
+  assert_eq(@memory.memory_count(store2), 1)
+}
+
+test "memory_retrieve_by_type" {
+  let store = @memory.make_memory_store(10, 10)
+  let e1 = @memory.make_memory_entry("e1", "short", @memory.ShortTerm, 1.0, 0.5)
+  let e2 = @memory.make_memory_entry("e2", "long", @memory.LongTerm, 2.0, 0.8)
+  let store2 = @memory.add_memory(@memory.add_memory(store, e1), e2)
+  let short = @memory.retrieve_by_type(store2, @memory.ShortTerm)
+  assert_eq(short.length(), 1)
+}
+
+test "memory_retrieve_by_keyword" {
+  let store = @memory.make_memory_store(10, 10)
+  let e1 = @memory.make_memory_entry("e1", "hello world", @memory.ShortTerm, 1.0, 0.5)
+  let e2 = @memory.make_memory_entry("e2", "foo bar", @memory.ShortTerm, 2.0, 0.5)
+  let store2 = @memory.add_memory(@memory.add_memory(store, e1), e2)
+  let results = @memory.retrieve_by_keyword(store2, "hello")
+  assert_eq(results.length(), 1)
+}
+
+test "memory_clear_short_term" {
+  let store = @memory.make_memory_store(10, 10)
+  let e1 = @memory.make_memory_entry("e1", "short", @memory.ShortTerm, 1.0, 0.5)
+  let e2 = @memory.make_memory_entry("e2", "long", @memory.LongTerm, 2.0, 0.8)
+  let store2 = @memory.add_memory(@memory.add_memory(store, e1), e2)
+  let cleared = @memory.clear_short_term(store2)
+  assert_eq(@memory.memory_count(cleared), 1)
+}
+
+test "memory_type_name" {
+  assert_eq(@memory.memory_type_name(@memory.ShortTerm), "short_term")
+  assert_eq(@memory.memory_type_name(@memory.LongTerm), "long_term")
+}
+
+test "memory_id" {
+  assert_eq(@memory.memory_id(), "agent_kit/memory")
+}
+
+///===
+/// S11.5 agent_kit/tool 测试
+
+test "tool_validate_arguments" {
+  let params = [
+    @tool.make_param("x", @tool.StringType, "x param", true, ""),
+    @tool.make_param("y", @tool.NumberType, "y param", false, "0"),
+  ]
+  let tool_def = @tool.make_tool_def("add", "Add two numbers", params)
+  assert_true(@tool.validate_arguments(tool_def, [("x", "1"), ("y", "2")]))
+  assert_false(@tool.validate_arguments(tool_def, [("y", "2")]))
+}
+
+test "tool_get_argument" {
+  let args = [("x", "1"), ("y", "2")]
+  assert_eq(@tool.get_argument(args, "x"), Some("1"))
+  assert_eq(@tool.get_argument(args, "z"), None)
+  assert_eq(@tool.get_required_argument(args, "x"), "1")
+}
+
+test "tool_to_int_arg" {
+  assert_eq(@tool.to_int_arg("42"), Some(42))
+  assert_eq(@tool.to_int_arg("-7"), Some(-7))
+  assert_eq(@tool.to_int_arg("abc"), None)
+}
+
+test "tool_to_double_arg" {
+  assert_eq(@tool.to_double_arg("3.14"), Some(3.14))
+  assert_eq(@tool.to_double_arg("abc"), None)
+}
+
+test "tool_to_bool_arg" {
+  assert_eq(@tool.to_bool_arg("true"), Some(true))
+  assert_eq(@tool.to_bool_arg("false"), Some(false))
+  assert_eq(@tool.to_bool_arg("yes"), None)
+}
+
+test "tool_success_result" {
+  let r = @tool.success_result("call1", "result", 0.5)
+  assert_true(r.success)
+  assert_eq(r.output, "result")
+}
+
+test "tool_error_result" {
+  let r = @tool.error_result("call1", "failed", 0.1)
+  assert_false(r.success)
+  assert_eq(r.error, "failed")
+}
+
+test "tool_result_to_json" {
+  let r = @tool.success_result("call1", "ok", 0.5)
+  let json = @tool.result_to_json(r)
+  assert_true(json.contains("call1"))
+  assert_true(json.contains("true"))
+}
+
+test "tool_param_type_name" {
+  assert_eq(@tool.param_type_name(@tool.StringType), "string")
+  assert_eq(@tool.param_type_name(@tool.NumberType), "number")
+}
+
+test "tool_id" {
+  assert_eq(@tool.tool_id(), "agent_kit/tool")
+}

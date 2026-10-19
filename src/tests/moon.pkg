@@ -112,4 +112,9 @@ import {
   "dataverse/dosi/scheduler",
   "dataverse/parallel/partition",
   "dataverse/io/format",
+  "dataverse/agent_kit/llm",
+  "dataverse/agent_kit/retrieval",
+  "dataverse/agent_kit/prompt",
+  "dataverse/agent_kit/memory",
+  "dataverse/agent_kit/tool",
 }

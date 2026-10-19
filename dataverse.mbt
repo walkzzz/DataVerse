@@ -6883,3 +6883,66 @@ pub using @io.format {
   type_name, row_count, column_count, column_index, column_values,
   format_id,
 }
+
+///===
+/// S11.1 agent_kit/llm LLM 集成
+
+pub using @agent_kit.llm {
+  LLMProvider, LLMRole, ChatMessage, LLMRequest, LLMResponse, StreamChunk,
+  make_message, make_request, make_response,
+  estimate_tokens, estimate_message_tokens,
+  system_message, user_message, assistant_message, append_message,
+  with_temperature, with_max_tokens, with_top_p, with_stream,
+  response_ok, estimate_cost, response_text,
+  make_chunk, merge_chunks,
+  provider_name, role_name, llm_id,
+}
+
+///===
+/// S11.2 agent_kit/retrieval 检索增强
+
+pub using @agent_kit.retrieval {
+  RetrievalMethod, Document, RetrievalResult,
+  make_document, make_retrieval_result,
+  cosine_similarity, vector_search, keyword_search, hybrid_search,
+  rerank, deduplicate_results,
+  method_name, retrieval_id,
+}
+
+///===
+/// S11.3 agent_kit/prompt Prompt 工程
+
+pub using @agent_kit.prompt {
+  PromptTemplate, FewShotExample, PromptChain,
+  make_template, make_few_shot,
+  replace_variable, replace_all_variables, render_template,
+  build_system_prompt, build_user_prompt,
+  build_few_shot_prompt,
+  make_chain, render_chain, append_step,
+  count_variables, extract_variables,
+  prompt_id,
+}
+
+///===
+/// S11.4 agent_kit/memory Agent 记忆
+
+pub using @agent_kit.memory {
+  MemoryType, MemoryEntry, MemoryStore,
+  make_memory_entry, make_memory_store,
+  add_memory, retrieve_by_type, retrieve_by_keyword,
+  access_memory, clear_short_term,
+  memory_count, memory_count_by_type,
+  memory_type_name, memory_id,
+}
+
+///===
+/// S11.5 agent_kit/tool 工具调用
+
+pub using @agent_kit.tool {
+  ParamType, ToolParam, ToolDef, ToolCall, ToolResult,
+  make_param, make_tool_def, make_tool_call, make_tool_result,
+  validate_arguments, get_argument, get_required_argument,
+  to_int_arg, to_double_arg, to_bool_arg,
+  success_result, error_result, result_to_json,
+  param_type_name, tool_id,
+}

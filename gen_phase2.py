@@ -1048,7 +1048,7 @@ def main():
     extcore_dir = os.path.join(base, "src", "extcore")
     os.makedirs(extcore_dir, exist_ok=True)
 
-    num_packages = 820
+    num_packages = 1400
     total_lines = 0
 
     for idx in range(1, num_packages + 1):

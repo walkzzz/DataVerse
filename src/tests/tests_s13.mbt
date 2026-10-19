@@ -226,3 +226,36 @@ test "p0820_linked_list" {
   assert_true(@p0820.p0820_ll_get(lst3, 1) == 20.0)
   assert_true(@p0820.p0820_ll_sum(lst3) > 29.9 && @p0820.p0820_ll_sum(lst3) < 30.1)
 }
+test "p0821_basic" {
+  let p = @p0821.p0821_make_point(3.0, 4.0)
+  assert_true(@p0821.p0821_point_x(p) == 3.0)
+  let s = @p0821.p0821_make_series([1.0, 2.0, 3.0], "test")
+  assert_true(@p0821.p0821_series_len(s) == 3)
+  let m = @p0821.p0821_matrix_identity(3)
+  assert_true(@p0821.p0821_matrix_trace(m) == 3.0)
+}
+
+test "p1000_basic" {
+  let v = @p1000.p1000_make_vector([1.0, 2.0, 3.0])
+  assert_true(@p1000.p1000_vector_norm(v) > 3.7 && @p1000.p1000_vector_norm(v) < 3.8)
+  let data = [3.0, 1.0, 2.0]
+  let sorted = @p1000.p1000_sort(data)
+  assert_true(sorted[0] == 1.0 && sorted[2] == 3.0)
+}
+
+test "p1200_basic" {
+  let p = @p1200.p1200_make_point3(1.0, 2.0, 3.0)
+  assert_true(@p1200.p1200_point_z(p) == 3.0)
+  assert_true(@p1200.p1200_is_prime(13))
+  assert_true(@p1200.p1200_fibonacci(10) == 55)
+}
+
+test "p1400_basic" {
+  let g = @p1400.p1400_make_graph(3)
+  let g2 = @p1400.p1400_graph_add_edge(g, 0, 1, 1.0)
+  let g3 = @p1400.p1400_graph_add_edge(g2, 1, 2, 2.0)
+  assert_true(@p1400.p1400_graph_edge_count(g3) == 2)
+  let lst = @p1400.p1400_make_linked_list()
+  let lst2 = @p1400.p1400_ll_push(lst, 42.0)
+  assert_true(@p1400.p1400_ll_get(lst2, 0) == 42.0)
+}

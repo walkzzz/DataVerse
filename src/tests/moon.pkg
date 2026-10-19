@@ -194,4 +194,8 @@ import {
   "dataverse/extcore/p0100",
   "dataverse/extcore/p0500",
   "dataverse/extcore/p0820",
+  "dataverse/extcore/p0821",
+  "dataverse/extcore/p1000",
+  "dataverse/extcore/p1200",
+  "dataverse/extcore/p1400",
 }

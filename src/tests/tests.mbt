@@ -10036,3 +10036,234 @@ test "temporal_lag_timeseries" {
   assert_eq(lagged[1], 4.0)
   assert_eq(lagged[2], 5.0)
 }
+
+///===
+/// S10.3 datair/ir_transform 测试
+
+test "ir_transform_fold_binary" {
+  assert_eq(@ir_transform.fold_binary_op("+", 1.0, 2.0), Some(3.0))
+  assert_eq(@ir_transform.fold_binary_op("-", 5.0, 3.0), Some(2.0))
+  assert_eq(@ir_transform.fold_binary_op("*", 4.0, 3.0), Some(12.0))
+  assert_eq(@ir_transform.fold_binary_op("/", 10.0, 2.0), Some(5.0))
+  assert_eq(@ir_transform.fold_binary_op("/", 10.0, 0.0), None)
+}
+
+test "ir_transform_fold_unary" {
+  assert_eq(@ir_transform.fold_unary_op("-", 5.0), Some(-5.0))
+  assert_eq(@ir_transform.fold_unary_op("abs", -5.0), Some(5.0))
+  assert_eq(@ir_transform.fold_unary_op("abs", 5.0), Some(5.0))
+}
+
+test "ir_transform_parse_constant" {
+  assert_eq(@ir_transform.parse_constant("123"), Some(123.0))
+  assert_eq(@ir_transform.parse_constant("-45.6"), Some(-45.6))
+  assert_eq(@ir_transform.parse_constant("abc"), None)
+}
+
+test "ir_transform_eliminate_dead" {
+  let nodes = [
+    @ir_transform.make_node(@ir_transform.Constant, "1", []),
+    @ir_transform.make_node(@ir_transform.Variable, "x", []),
+  ]
+  let marked = @ir_transform.mark_dead(nodes, 1)
+  let live = @ir_transform.eliminate_dead(marked)
+  assert_eq(live.length(), 1)
+}
+
+test "ir_transform_simplify_add" {
+  assert_eq(@ir_transform.simplify_add("1", "2"), "3")
+  assert_eq(@ir_transform.simplify_add("0", "x"), "x")
+  assert_eq(@ir_transform.simplify_add("x", "0"), "x")
+}
+
+test "ir_transform_simplify_mul" {
+  assert_eq(@ir_transform.simplify_mul("2", "3"), "6")
+  assert_eq(@ir_transform.simplify_mul("0", "x"), "0")
+  assert_eq(@ir_transform.simplify_mul("1", "x"), "x")
+}
+
+test "ir_transform_name" {
+  assert_eq(@ir_transform.transform_name(@ir_transform.ConstantFolding), "constant_folding")
+  assert_eq(@ir_transform.transform_name(@ir_transform.DeadCodeElimination), "dead_code_elimination")
+}
+
+test "ir_transform_id" {
+  assert_eq(@ir_transform.ir_transform_id(), "datair/ir_transform")
+}
+
+///===
+/// S10.4 dosi/scheduler 测试
+
+test "scheduler_priority" {
+  let tasks = [
+    @scheduler.make_task("a", 1, 10.0, 1.0, 0.0),
+    @scheduler.make_task("b", 3, 20.0, 1.0, 0.0),
+    @scheduler.make_task("c", 2, 15.0, 1.0, 0.0),
+  ]
+  let sorted = @scheduler.sort_by_priority(tasks)
+  assert_eq(sorted[0].id, "b")
+  assert_eq(sorted[1].id, "c")
+  assert_eq(sorted[2].id, "a")
+}
+
+test "scheduler_fifo" {
+  let tasks = [
+    @scheduler.make_task("a", 1, 10.0, 1.0, 2.0),
+    @scheduler.make_task("b", 3, 20.0, 1.0, 1.0),
+    @scheduler.make_task("c", 2, 15.0, 1.0, 0.0),
+  ]
+  let sorted = @scheduler.sort_by_submit_time(tasks)
+  assert_eq(sorted[0].id, "c")
+  assert_eq(sorted[1].id, "b")
+  assert_eq(sorted[2].id, "a")
+}
+
+test "scheduler_sjf" {
+  let tasks = [
+    @scheduler.make_task("a", 1, 30.0, 1.0, 0.0),
+    @scheduler.make_task("b", 1, 10.0, 1.0, 0.0),
+    @scheduler.make_task("c", 1, 20.0, 1.0, 0.0),
+  ]
+  let sorted = @scheduler.sort_by_cost(tasks)
+  assert_eq(sorted[0].id, "b")
+  assert_eq(sorted[1].id, "c")
+  assert_eq(sorted[2].id, "a")
+}
+
+test "scheduler_resource" {
+  let r = @scheduler.make_resource("r1", 100.0)
+  let r1 = @scheduler.allocate_resource(r, 40.0)
+  assert_true(r1.is_some())
+  let r2 = @scheduler.allocate_resource(r, 150.0)
+  assert_true(r2.is_none())
+}
+
+test "scheduler_utilization" {
+  let r = @scheduler.make_resource("r1", 100.0)
+  let r1 = @scheduler.allocate_resource(r, 40.0)
+  match r1 {
+    Some(allocated) => assert_eq(@scheduler.resource_utilization(allocated), 0.4)
+    None => assert_true(false)
+  }
+}
+
+test "scheduler_policy_name" {
+  assert_eq(@scheduler.policy_name(@scheduler.FIFO), "fifo")
+  assert_eq(@scheduler.policy_name(@scheduler.Priority), "priority")
+}
+
+test "scheduler_id" {
+  assert_eq(@scheduler.scheduler_id(), "dosi/scheduler")
+}
+
+///===
+/// S10.5 parallel/partition 测试
+
+test "partition_hash" {
+  let h = @partition.hash_value("test")
+  assert_true(h >= 0)
+}
+
+test "partition_hash_partition" {
+  let items = ["a", "b", "c", "d", "e", "f"]
+  let result = @partition.hash_partition(items, 3)
+  assert_eq(result.length(), 3)
+  assert_eq(@partition.total_items(result), 6)
+}
+
+test "partition_range" {
+  let items = ["apple", "banana", "cherry", "date", "elderberry"]
+  let result = @partition.range_partition(items, ["c", "e"])
+  assert_eq(result.length(), 3)
+  assert_eq(@partition.total_items(result), 5)
+}
+
+test "partition_round_robin" {
+  let items = ["a", "b", "c", "d", "e", "f"]
+  let result = @partition.round_robin_partition(items, 3)
+  assert_eq(result.length(), 3)
+  assert_eq(result[0].items.length(), 2)
+  assert_eq(result[1].items.length(), 2)
+  assert_eq(result[2].items.length(), 2)
+}
+
+test "partition_balance" {
+  let items = ["a", "b", "c", "d", "e", "f"]
+  let result = @partition.round_robin_partition(items, 3)
+  let balance = @partition.partition_balance(result)
+  assert_eq(balance, 1.0)
+}
+
+test "partition_strategy_name" {
+  assert_eq(@partition.strategy_name(@partition.HashPartition), "hash")
+  assert_eq(@partition.strategy_name(@partition.RangePartition), "range")
+}
+
+test "partition_id" {
+  assert_eq(@partition.partition_id(), "parallel/partition")
+}
+
+///===
+/// S10.6 io/format 测试
+
+test "format_infer_type" {
+  assert_eq(@format.infer_type("123"), @format.IntType)
+  assert_eq(@format.infer_type("45.6"), @format.FloatType)
+  assert_eq(@format.infer_type("true"), @format.BoolType)
+  assert_eq(@format.infer_type("null"), @format.NullType)
+  assert_eq(@format.infer_type("hello"), @format.StringType)
+}
+
+test "format_infer_column_type" {
+  assert_eq(@format.infer_column_type(["1", "2", "3"]), @format.IntType)
+  assert_eq(@format.infer_column_type(["1.0", "2.5"]), @format.FloatType)
+  assert_eq(@format.infer_column_type(["true", "false"]), @format.BoolType)
+  assert_eq(@format.infer_column_type(["a", "b", "c"]), @format.StringType)
+}
+
+test "format_transpose" {
+  let cols = [
+    @format.make_column("a", @format.StringType, false),
+    @format.make_column("b", @format.StringType, false),
+  ]
+  let rows = [
+    @format.make_row(["1", "2"]),
+    @format.make_row(["3", "4"]),
+  ]
+  let table = @format.make_table(cols, rows)
+  let transposed = @format.transpose_table(table)
+  assert_eq(@format.row_count(transposed), 2)
+  assert_eq(@format.column_count(transposed), 2)
+}
+
+test "format_table_stats" {
+  let cols = [
+    @format.make_column("a", @format.IntType, false),
+    @format.make_column("b", @format.StringType, true),
+  ]
+  let rows = [
+    @format.make_row(["1", "x"]),
+    @format.make_row(["2", "y"]),
+    @format.make_row(["3", "z"]),
+  ]
+  let table = @format.make_table(cols, rows)
+  assert_eq(@format.row_count(table), 3)
+  assert_eq(@format.column_count(table), 2)
+  let idx = @format.column_index(table, "b")
+  assert_eq(idx, Some(1))
+  let vals = @format.column_values(table, 0)
+  assert_eq(vals.length(), 3)
+  assert_eq(vals[0], "1")
+}
+
+test "format_type_name" {
+  assert_eq(@format.type_name(@format.StringType), "string")
+  assert_eq(@format.type_name(@format.IntType), "int")
+  assert_eq(@format.type_name(@format.FloatType), "float")
+  assert_eq(@format.type_name(@format.BoolType), "bool")
+  assert_eq(@format.type_name(@format.NullType), "null")
+}
+
+test "format_id" {
+  assert_eq(@format.format_id(), "io/format")
+}

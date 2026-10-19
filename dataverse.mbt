@@ -6835,3 +6835,51 @@ pub using @datatemporal {
   merge_intervals, compare_timestamps, timestamp_in_interval,
   sample_timeseries, diff_timeseries, moving_average, lag_timeseries,
 }
+
+///===
+/// S10.3 datair/ir_transform IR 变换
+
+pub using @datair.ir_transform {
+  TransformKind, TransformResult, IRNodeKind, IRNode,
+  make_node, make_transform_result,
+  fold_binary_op, fold_unary_op, parse_constant,
+  mark_dead, eliminate_dead, count_live_nodes,
+  simplify_add, simplify_mul,
+  run_constant_folding, run_dead_code_elimination,
+  transform_name, ir_transform_id,
+}
+
+///===
+/// S10.4 dosi/scheduler 调度策略
+
+pub using @dosi.scheduler {
+  SchedulePolicy, ScheduleTask, ScheduleResult, Resource,
+  make_task, make_schedule_result,
+  sort_by_priority, schedule_priority,
+  sort_by_submit_time, schedule_fifo,
+  sort_by_cost, schedule_sjf,
+  make_resource, allocate_resource, release_resource, resource_utilization,
+  policy_name, scheduler_id,
+}
+
+///===
+/// S10.5 parallel/partition 数据分区
+
+pub using @parallel.partition {
+  PartitionStrategy, PartitionConfig, PartitionResult,
+  make_partition_config, make_partition_result,
+  hash_value, hash_partition, range_partition, round_robin_partition,
+  partition_count, total_items, max_partition_size, partition_balance,
+  strategy_name, partition_id,
+}
+
+///===
+/// S10.6 io/format 数据格式
+
+pub using @io.format {
+  DataType, ColumnDef, Row, Table,
+  make_column, make_row, make_table,
+  infer_type, infer_column_type, transpose_table,
+  type_name, row_count, column_count, column_index, column_values,
+  format_id,
+}

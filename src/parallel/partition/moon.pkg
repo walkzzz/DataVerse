@@ -1,0 +1,2 @@
+// parallel/partition 数据分区 / Partition
+// S10.5 新建：分区策略 + 哈希/范围/轮询分区 +15 fn

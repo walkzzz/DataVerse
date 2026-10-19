@@ -108,4 +108,8 @@ import {
   "dataverse/opcore/remotesensing",
   "dataverse/dataobject/serialize",
   "dataverse/datatemporal/window",
+  "dataverse/datair/ir_transform",
+  "dataverse/dosi/scheduler",
+  "dataverse/parallel/partition",
+  "dataverse/io/format",
 }

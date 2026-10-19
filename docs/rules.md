@@ -178,8 +178,12 @@ pub using @pkg { type T, name1, trait Trait1 }
 | S6.3 | 零散算子补齐（Split/SimilaritySearch/Forest/GLM/TabulateIntersection +5 fn） | ✅ | aa8ffb2 |
 | S6.4 | R16 门禁 + Phase 6 闭环（spec 61-70, +10 tests） | ✅ | f4c87a3 |
 | S6.5 | 收尾：Split By Attributes + Frequency（726/726 全映射） | ✅ | 0fefa5f |
+| S7.1-S7.8 | DL 算子全集（layers/losses/optimizers/NLP/timeseries/RL/ensemble + spec 71-80） | ✅ | — |
+| S8.1-S8.7 | 空间分析深化（network/topology/terrain/3d/geocoding/coord + spec 81-90） | ✅ | — |
+| S9.1-S9.7 | 多模态算子深化（image/audio/video/semantic/pointcloud/remotesensing + spec 91-100） | ✅ | — |
+| S10.1-S10.7 | 数据基础设施深化（serialize/window/ir_transform/scheduler/partition/format + spec 101-110） | ✅ | — |
 
-**当前测试**：900 · **当前 API**：716（pub fn）+ 153（pub type） · **形式化证明**：70 · **ArcGIS 映射**：726/726
+**当前测试**：1417 · **形式化证明**：110 · **ArcGIS 映射**：726/726
 
 ---
 

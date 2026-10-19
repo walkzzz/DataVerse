@@ -1151,3 +1151,95 @@ test "spec: threshold binary output" {
     assert_true(result.pixels[i] == 0.0 || result.pixels[i] == 255.0)
   }
 }
+
+///|
+/// 性质 101：json_escape 双引号转义
+test "spec: json_escape quote" {
+  let bs = String::from_array([Char::from_int(92)])
+  let q_in = "a" + "\"" + "b"
+  let q_out = "a" + bs + "\"" + "b"
+  assert_eq(@serialize.json_escape(q_in), q_out)
+}
+
+///|
+/// 性质 102：to_int_safe 正确解析
+test "spec: to_int_safe correct" {
+  assert_eq(@serialize.to_int_safe("42"), Some(42))
+  assert_eq(@serialize.to_int_safe("-7"), Some(-7))
+  assert_eq(@serialize.to_int_safe("abc"), None)
+}
+
+///|
+/// 性质 103：validate_range 边界
+test "spec: validate_range boundary" {
+  let r1 = @serialize.validate_range(5.0, 5.0, 10.0, "x")
+  assert_true(r1.valid)
+  let r2 = @serialize.validate_range(10.0, 5.0, 10.0, "x")
+  assert_true(r2.valid)
+  let r3 = @serialize.validate_range(4.9, 5.0, 10.0, "x")
+  assert_false(r3.valid)
+}
+
+///|
+/// 性质 104：tumbling_windows 不重叠
+test "spec: tumbling_windows non-overlap" {
+  let ws = @window.tumbling_windows(0.0, 30.0, 10.0)
+  for i in 0..<ws.length() {
+    assert_true(ws[i].end > ws[i].start)
+    if i > 0 {
+      assert_eq(ws[i].start, ws[i - 1].end)
+    }
+  }
+}
+
+///|
+/// 性质 105：window_count 等于事件数
+test "spec: window_count equals events" {
+  let events = [
+    @window.make_event(1.0, 1.0, "a"),
+    @window.make_event(5.0, 2.0, "b"),
+  ]
+  let w = @window.make_window(0.0, 10.0, @window.Tumbling, 10.0, 10.0)
+  assert_eq(@window.window_count(events, w), 2)
+}
+
+///|
+/// 性质 106：moving_average 保持长度
+test "spec: moving_average length" {
+  let values = [1.0, 2.0, 3.0, 4.0, 5.0]
+  let ma = @datatemporal.moving_average(values, 3)
+  assert_eq(ma.length(), values.length() - 3 + 1)
+}
+
+///|
+/// 性质 107：fold_binary_op 加法交换
+test "spec: fold_add commutative" {
+  assert_eq(@ir_transform.fold_binary_op("+", 3.0, 5.0), @ir_transform.fold_binary_op("+", 5.0, 3.0))
+}
+
+///|
+/// 性质 108：hash_partition 保留所有元素
+test "spec: hash_partition preserves elements" {
+  let items = ["a", "b", "c", "d", "e"]
+  let result = @partition.hash_partition(items, 3)
+  assert_eq(@partition.total_items(result), items.length())
+}
+
+///|
+/// 性质 109：round_robin_partition 均匀分布
+test "spec: round_robin balanced" {
+  let items = ["a", "b", "c", "d", "e", "f"]
+  let result = @partition.round_robin_partition(items, 3)
+  for i in 0..<result.length() {
+    assert_eq(result[i].items.length(), 2)
+  }
+}
+
+///|
+/// 性质 110：infer_type 类型正确
+test "spec: infer_type correct" {
+  assert_eq(@format.infer_type("42"), @format.IntType)
+  assert_eq(@format.infer_type("3.14"), @format.FloatType)
+  assert_eq(@format.infer_type("true"), @format.BoolType)
+  assert_eq(@format.infer_type("hello"), @format.StringType)
+}

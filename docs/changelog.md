@@ -875,3 +875,28 @@ DataVerse 已完成 ArcGIS Pro 726 工具的 100% 映射，0 待建。
 - 新增 ~79 个公开算子
 - spec: 91-100 (10 个形式化性质)
 - 对标: OpenCV / ArcGIS Pro Image Analyst / 3D Analyst Point Cloud
+
+## Phase 10 闭环 (S10.1-S10.7) — 数据基础设施深化
+
+### S10.1 dataobject/serialize 数据序列化 (+25 fn, +22 tests)
+- JSON 序列化: escape/string_value/number_value/bool_value/array/object
+- CSV 序列化: escape/row/table
+- 数据验证: non_empty/length/range/pattern + ValidationResult
+- 类型转换: to_int_safe/to_double_safe/int_to_padded/bool_to_string/string_to_bool
+- 编码: base64_encode/hex_encode
+
+### S10.2 datatemporal/window 时间窗口 (+32 fn, +21 tests)
+- window 子包: TimeEvent/TimeWindow/WindowType + 滚动/滑动/会话窗口
+- 窗口聚合: sum/avg/max/min/count + apply_windows/tumbling_sum/sliding_avg
+- 窗口分组: window_group_by_key
+- datatemporal 扩展: TimeInterval/overlap/merge/sample/diff/moving_average/lag
+
+### S10.3-S10.6 datair/dosi/parallel/io 扩展 (+65 fn, +28 tests)
+- S10.3 datair/ir_transform: 常量折叠/死代码消除/表达式简化 +18 fn
+- S10.4 dosi/scheduler: 优先级/FIFO/SJF调度 + 资源管理 +16 fn
+- S10.5 parallel/partition: 哈希/范围/轮询分区 + 分区统计 +15 fn
+- S10.6 io/format: 类型推断/行列转置/表统计 +16 fn
+
+### S10.7 R16 门禁 + Phase 10 闭环 (spec 101-110, +10 tests)
+- 形式化性质 101-110: json_escape/to_int_safe/validate_range/tumbling_windows/window_count/moving_average/fold_add/hash_partition/round_robin/infer_type
+- **1417 tests passed, 0 errors, 110 spec properties**

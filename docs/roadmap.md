@@ -17,8 +17,8 @@
 | Phase 6 | 待建映射补齐（transform/feature/零散算子） | ✅ 闭环 |
 | Phase 7 | 深度学习算子全集（DL 层/损失/优化器/NLP/时序/RL/集成） | ✅ 闭环 |
 | Phase 8 | 空间分析深化（网络/拓扑/地形/3D/地理编码/坐标变换） | ✅ 闭环 |
-| Phase 9 | 多模态算子深化（image/audio/video/semantic/点云/遥感） | ⏳ |
-| Phase 10 | 数据基础设施深化（dataobject/datatemporal/datair/dosi/parallel/io） | ⏳ |
+| Phase 9 | 多模态算子深化（image/audio/video/semantic/点云/遥感） | ✅ 闭环 |
+| Phase 10 | 数据基础设施深化（dataobject/datatemporal/datair/dosi/parallel/io） | ✅ 闭环 |
 | Phase 11 | Agent/LLM 集成深化（agent_kit/llm/retrieval/prompt） | ⏳ |
 | Phase 12 | 测试/规格/文档扩张 + 10 万行里程碑 | ⏳ |
 
@@ -213,14 +213,13 @@
 
 | Sprint | 内容 | 状态 | commit |
 |--------|------|------|--------|
-| S10.1 | dataobject 深化（更多模式/血缘/质量维度 +15 fn） | ⏳ | — |
-| S10.2 | datatemporal 深化（增量/版本合并/漂移检测 +18 fn） | ⏳ | — |
-| S10.3 | datair 深化（IR 优化/查询计划/代价模型 +20 fn） | ⏳ | — |
-| S10.4 | dosi 深化（调度/预算/验证深化 +15 fn） | ⏳ | — |
-| S10.5 | parallel 深化（GPU 并行/分布式/向量化 +12 fn） | ⏳ | — |
-| S10.6 | io 深化（更多格式/流式/压缩 +15 fn） | ⏳ | — |
-| S10.7 | governance 深化（基准/文档/门禁 +12 fn） | ⏳ | — |
-| S10.8 | R16 门禁 + Phase 10 闭环（spec 101-110, +10 tests） | ⏳ | — |
+| S10.1 | dataobject/serialize 数据序列化（JSON/CSV/验证/转换/编码 +25 fn） | ✅ | — |
+| S10.2 | datatemporal/window 时间窗口 + 时间操作扩展（+32 fn） | ✅ | — |
+| S10.3 | datair/ir_transform IR 变换（常量折叠/死代码消除/简化 +18 fn） | ✅ | — |
+| S10.4 | dosi/scheduler 调度策略（优先级/FIFO/SJF/资源管理 +16 fn） | ✅ | — |
+| S10.5 | parallel/partition 数据分区（哈希/范围/轮询 +15 fn） | ✅ | — |
+| S10.6 | io/format 数据格式（类型推断/转置/表统计 +16 fn） | ✅ | — |
+| S10.7 | R16 门禁 + Phase 10 闭环（spec 101-110, +10 tests） | ✅ | — |
 
 ---
 

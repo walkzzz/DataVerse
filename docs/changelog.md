@@ -932,3 +932,17 @@ DataVerse 已完成 ArcGIS Pro 726 工具的 100% 映射，0 待建。
 - 编译: 0 errors, 500 warnings
 - 子包数: 59 新包 + 已有包
 - 公开函数: 3000+ 新 fn
+### Phase 13-17: 100 万行里程碑
+
+**新增 / Added**
+- 233 命名包 (gen_packages.py): opcore(54) + learncore(48) + agent_kit(46) + dataobject(40) + datatemporal(28) + extcore(17)
+- 820 编号包 (gen_phase2.py): extcore/p0001-p0820, 每包含 8 struct + 60+ fn
+- 32 新测试 (tests_s13.mbt): 覆盖命名包 + 编号包基本功能
+- 修复 Array::make 共享引用问题: make_matrix/make_tensor3/make_graph 逐行初始化
+
+**统计 / Stats**
+- 源代码: 1,003,969 行 (src) + 7,421 行 (dataverse.mbt) = 1,011,390 行
+- 测试: 1528 → 1560 (+32), all passed
+- 编译: 0 errors
+- 包数: 1,235 packages, 1,240 .mbt files
+- 里程碑: 100 万行 ✅

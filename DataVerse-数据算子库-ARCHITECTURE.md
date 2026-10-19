@@ -1314,3 +1314,21 @@ pub using @pkg { type T, name1, trait Trait1 }
 - **agent_kit** (10包): reasoning, planning, multi_agent, knowledge_graph, explainable, safety_ai, agent_eval, agent_optimize, agent_memory_ext, dialogue
 - **dataobject** (7包): data_quality, schema_evol, streaming, data_lineage, data_catalog, data_profiling, metadata_ext
 - **datatemporal** (6包): anomaly, forecasting, event_sourcing, data_versioning, stream_processing, data_quality_monitor
+## §9.4 Phase 13-17 进度 — 1,000,000行里程碑 ✅ (2026-10-19)
+
+| 指标 | 值 |
+|------|-----|
+| 源代码行数 | 1,011,390 (src 1,003,969 + dataverse.mbt 7,421) |
+| 测试数 | 1560 (all passed) |
+| 形式化性质 | 130 spec |
+| 编译错误 | 0 |
+| 总包数 | 1,235 |
+| .mbt 文件数 | 1,240 |
+| 命名包 (Phase 13) | 233 (opcore 54 + learncore 48 + agent_kit 46 + dataobject 40 + datatemporal 28 + extcore 17) |
+| 编号包 (Phase 14-17) | 820 (extcore/p0001-p0820) |
+| 每包含 | 8 struct + 60+ pub fn |
+
+### 批量生成方法
+- `gen_packages.py`: 233 命名包，按领域分类
+- `gen_phase2.py`: 820 编号包，统一模板 (Point/Series/Matrix/Vector/Tensor3D/Graph/TreeNode/LinkedList)
+- 修复 `Array::make` 共享引用: make_matrix/make_tensor3/make_graph 逐行初始化

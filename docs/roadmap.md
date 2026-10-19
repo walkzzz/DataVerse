@@ -20,7 +20,9 @@
 | Phase 9 | 多模态算子深化（image/audio/video/semantic/点云/遥感） | ✅ 闭环 |
 | Phase 10 | 数据基础设施深化（dataobject/datatemporal/datair/dosi/parallel/io） | ✅ 闭环 |
 | Phase 11 | Agent/LLM 集成深化（agent_kit/llm/retrieval/prompt） | ✅ 闭环 |
-| Phase 12 | 测试/规格/文档扩张 + 10 万行里程碑 | ⏳ |
+| Phase 12 | 测试/规格/文档扩张 + 10 万行里程碑 | ✅ 闭环 |
+| Phase 13 | 批量扩展：233 命名包 + 820 编号包 | ✅ 闭环 |
+| Phase 14-17 | 100 万行里程碑（1,011,390 行 / 1,235 包 / 1,560 测试） | ✅ 闭环 |
 
 ---
 

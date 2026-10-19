@@ -1,0 +1,1955 @@
+///===
+/// extcore/ml_ensemble_rf
+
+pub(all) struct MlensemblerfPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn ml_ensemble_rf_make_point(x : Double, y : Double) -> MlensemblerfPoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn ml_ensemble_rf_make_point3(x : Double, y : Double, z : Double) -> MlensemblerfPoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn ml_ensemble_rf_point_x(pt : MlensemblerfPoint) -> Double { pt.x }
+
+pub fn ml_ensemble_rf_point_y(pt : MlensemblerfPoint) -> Double { pt.y }
+
+pub fn ml_ensemble_rf_point_z(pt : MlensemblerfPoint) -> Double { pt.z }
+
+pub fn ml_ensemble_rf_point_label(pt : MlensemblerfPoint) -> Int { pt.label }
+
+pub fn ml_ensemble_rf_point_dist(a : MlensemblerfPoint, b : MlensemblerfPoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  ml_ensemble_rf_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn ml_ensemble_rf_point_add(a : MlensemblerfPoint, b : MlensemblerfPoint) -> MlensemblerfPoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn ml_ensemble_rf_point_sub(a : MlensemblerfPoint, b : MlensemblerfPoint) -> MlensemblerfPoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn ml_ensemble_rf_point_scale(pt : MlensemblerfPoint, s : Double) -> MlensemblerfPoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn ml_ensemble_rf_point_dot(a : MlensemblerfPoint, b : MlensemblerfPoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn ml_ensemble_rf_point_cross(a : MlensemblerfPoint, b : MlensemblerfPoint) -> MlensemblerfPoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn ml_ensemble_rf_point_norm(pt : MlensemblerfPoint) -> Double {
+  ml_ensemble_rf_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn ml_ensemble_rf_point_normalize(pt : MlensemblerfPoint) -> MlensemblerfPoint {
+  let n = ml_ensemble_rf_point_norm(pt)
+  if n < 0.0000001 { pt } else { ml_ensemble_rf_point_scale(pt, 1.0 / n) }
+}
+
+pub fn ml_ensemble_rf_point_negate(pt : MlensemblerfPoint) -> MlensemblerfPoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn ml_ensemble_rf_point_mid(a : MlensemblerfPoint, b : MlensemblerfPoint) -> MlensemblerfPoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn ml_ensemble_rf_point_lerp(a : MlensemblerfPoint, b : MlensemblerfPoint, t : Double) -> MlensemblerfPoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn ml_ensemble_rf_point_to_string(pt : MlensemblerfPoint) -> String {
+  "(" + ml_ensemble_rf_dbl(pt.x) + ", " + ml_ensemble_rf_dbl(pt.y) + ", " + ml_ensemble_rf_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct MlensemblerfSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn ml_ensemble_rf_make_series(vals : Array[Double], name : String) -> MlensemblerfSeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn ml_ensemble_rf_series_len(s : MlensemblerfSeries) -> Int { s.vals.length() }
+
+pub fn ml_ensemble_rf_series_sum(s : MlensemblerfSeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn ml_ensemble_rf_series_mean(s : MlensemblerfSeries) -> Double {
+  let n = ml_ensemble_rf_series_len(s)
+  if n == 0 { 0.0 } else { ml_ensemble_rf_series_sum(s) / n.to_double() }
+}
+
+pub fn ml_ensemble_rf_series_min(s : MlensemblerfSeries) -> Double {
+  let n = ml_ensemble_rf_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_series_max(s : MlensemblerfSeries) -> Double {
+  let n = ml_ensemble_rf_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_series_range(s : MlensemblerfSeries) -> Double {
+  ml_ensemble_rf_series_max(s) - ml_ensemble_rf_series_min(s)
+}
+
+pub fn ml_ensemble_rf_series_var(s : MlensemblerfSeries) -> Double {
+  let n = ml_ensemble_rf_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = ml_ensemble_rf_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_series_std(s : MlensemblerfSeries) -> Double { ml_ensemble_rf_sqrt(ml_ensemble_rf_series_var(s)) }
+
+pub fn ml_ensemble_rf_series_median(s : MlensemblerfSeries) -> Double {
+  let n = ml_ensemble_rf_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = ml_ensemble_rf_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn ml_ensemble_rf_series_scale(s : MlensemblerfSeries, f : Double) -> MlensemblerfSeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = ml_ensemble_rf_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn ml_ensemble_rf_series_add(a : MlensemblerfSeries, b : MlensemblerfSeries) -> MlensemblerfSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = ml_ensemble_rf_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn ml_ensemble_rf_series_sub(a : MlensemblerfSeries, b : MlensemblerfSeries) -> MlensemblerfSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = ml_ensemble_rf_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn ml_ensemble_rf_series_normalize(s : MlensemblerfSeries) -> MlensemblerfSeries {
+  let mn = ml_ensemble_rf_series_min(s)
+  let mx = ml_ensemble_rf_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = ml_ensemble_rf_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn ml_ensemble_rf_series_cumsum(s : MlensemblerfSeries) -> MlensemblerfSeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = ml_ensemble_rf_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn ml_ensemble_rf_series_to_string(s : MlensemblerfSeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + ml_ensemble_rf_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct MlensemblerfMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn ml_ensemble_rf_make_matrix(rows : Int, cols : Int, val : Double) -> MlensemblerfMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn ml_ensemble_rf_matrix_identity(n : Int) -> MlensemblerfMatrix {
+  let m = ml_ensemble_rf_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn ml_ensemble_rf_matrix_get(m : MlensemblerfMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn ml_ensemble_rf_matrix_transpose(m : MlensemblerfMatrix) -> MlensemblerfMatrix {
+  let result = ml_ensemble_rf_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn ml_ensemble_rf_matrix_add(a : MlensemblerfMatrix, b : MlensemblerfMatrix) -> MlensemblerfMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = ml_ensemble_rf_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn ml_ensemble_rf_matrix_scale(m : MlensemblerfMatrix, s : Double) -> MlensemblerfMatrix {
+  let result = ml_ensemble_rf_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn ml_ensemble_rf_matrix_multiply(a : MlensemblerfMatrix, b : MlensemblerfMatrix) -> MlensemblerfMatrix {
+  if a.cols != b.rows { return ml_ensemble_rf_make_matrix(a.rows, b.cols, 0.0) }
+  let result = ml_ensemble_rf_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn ml_ensemble_rf_matrix_trace(m : MlensemblerfMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn ml_ensemble_rf_matrix_det(m : MlensemblerfMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn ml_ensemble_rf_matrix_norm(m : MlensemblerfMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  ml_ensemble_rf_sqrt(sum)
+}
+
+pub fn ml_ensemble_rf_matrix_to_string(m : MlensemblerfMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + ml_ensemble_rf_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct MlensemblerfVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn ml_ensemble_rf_make_vector(comps : Array[Double]) -> MlensemblerfVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn ml_ensemble_rf_vector_zero(dim : Int) -> MlensemblerfVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn ml_ensemble_rf_vector_add(a : MlensemblerfVector, b : MlensemblerfVector) -> MlensemblerfVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = ml_ensemble_rf_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn ml_ensemble_rf_vector_sub(a : MlensemblerfVector, b : MlensemblerfVector) -> MlensemblerfVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = ml_ensemble_rf_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn ml_ensemble_rf_vector_scale(v : MlensemblerfVector, s : Double) -> MlensemblerfVector {
+  let mut result = []
+  for i in 0..<v.dim { result = ml_ensemble_rf_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn ml_ensemble_rf_vector_dot(a : MlensemblerfVector, b : MlensemblerfVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn ml_ensemble_rf_vector_norm(v : MlensemblerfVector) -> Double { ml_ensemble_rf_sqrt(ml_ensemble_rf_vector_dot(v, v)) }
+
+pub fn ml_ensemble_rf_vector_normalize(v : MlensemblerfVector) -> MlensemblerfVector {
+  let n = ml_ensemble_rf_vector_norm(v)
+  if n < 0.0000001 { v } else { ml_ensemble_rf_vector_scale(v, 1.0 / n) }
+}
+
+pub fn ml_ensemble_rf_vector_dist(a : MlensemblerfVector, b : MlensemblerfVector) -> Double {
+  ml_ensemble_rf_vector_norm(ml_ensemble_rf_vector_sub(a, b))
+}
+
+pub fn ml_ensemble_rf_vector_to_string(v : MlensemblerfVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + ml_ensemble_rf_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn ml_ensemble_rf_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = ml_ensemble_rf_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_std(data : Array[Double]) -> Double { ml_ensemble_rf_sqrt(ml_ensemble_rf_var(data)) }
+
+pub fn ml_ensemble_rf_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = ml_ensemble_rf_mean(a); let mb = ml_ensemble_rf_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = ml_ensemble_rf_std(a); let sb = ml_ensemble_rf_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { ml_ensemble_rf_cov(a, b) / (sa * sb) }
+}
+
+pub fn ml_ensemble_rf_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = ml_ensemble_rf_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn ml_ensemble_rf_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  ml_ensemble_rf_sqrt(ml_ensemble_rf_mse(pred, labels))
+}
+
+pub fn ml_ensemble_rf_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + ml_ensemble_rf_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = ml_ensemble_rf_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn ml_ensemble_rf_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn ml_ensemble_rf_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn ml_ensemble_rf_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = ml_ensemble_rf_precision(pred, labels, pos); let r = ml_ensemble_rf_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn ml_ensemble_rf_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn ml_ensemble_rf_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = ml_ensemble_rf_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn ml_ensemble_rf_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn ml_ensemble_rf_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn ml_ensemble_rf_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = ml_ensemble_rf_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn ml_ensemble_rf_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn ml_ensemble_rf_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn ml_ensemble_rf_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = ml_ensemble_rf_min(data); let mx = ml_ensemble_rf_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn ml_ensemble_rf_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = ml_ensemble_rf_mean(data); let sd = ml_ensemble_rf_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn ml_ensemble_rf_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn ml_ensemble_rf_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn ml_ensemble_rf_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn ml_ensemble_rf_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn ml_ensemble_rf_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn ml_ensemble_rf_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn ml_ensemble_rf_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { ml_ensemble_rf_int(x) } else { -ml_ensemble_rf_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { ml_ensemble_rf_int(f * 1000000.0) } else { ml_ensemble_rf_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn ml_ensemble_rf_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn ml_ensemble_rf_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct MlensemblerfFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_ensemble_rf_frame_make(size : Int) -> MlensemblerfFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_ensemble_rf_frame_len(s : MlensemblerfFrame) -> Int { s.size }
+
+pub fn ml_ensemble_rf_frame_get(s : MlensemblerfFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_ensemble_rf_frame_set(s : MlensemblerfFrame, i : Int, v : Double) -> MlensemblerfFrame {
+  let result = ml_ensemble_rf_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_frame_sum(s : MlensemblerfFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_ensemble_rf_frame_mean(s : MlensemblerfFrame) -> Double {
+  if s.size == 0 { 0.0 } else { ml_ensemble_rf_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_ensemble_rf_frame_scale(s : MlensemblerfFrame, f : Double) -> MlensemblerfFrame {
+  let result = ml_ensemble_rf_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_ensemble_rf_frame_add(a : MlensemblerfFrame, b : MlensemblerfFrame) -> MlensemblerfFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_ensemble_rf_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_frame_copy(s : MlensemblerfFrame) -> MlensemblerfFrame {
+  let result = ml_ensemble_rf_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_frame_fill(s : MlensemblerfFrame, v : Double) -> MlensemblerfFrame {
+  let result = ml_ensemble_rf_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_frame_min(s : MlensemblerfFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_frame_max(s : MlensemblerfFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_frame_to_string(s : MlensemblerfFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlensemblerfTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_ensemble_rf_table_make(size : Int) -> MlensemblerfTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_ensemble_rf_table_len(s : MlensemblerfTable) -> Int { s.size }
+
+pub fn ml_ensemble_rf_table_get(s : MlensemblerfTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_ensemble_rf_table_set(s : MlensemblerfTable, i : Int, v : Double) -> MlensemblerfTable {
+  let result = ml_ensemble_rf_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_table_sum(s : MlensemblerfTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_ensemble_rf_table_mean(s : MlensemblerfTable) -> Double {
+  if s.size == 0 { 0.0 } else { ml_ensemble_rf_table_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_ensemble_rf_table_scale(s : MlensemblerfTable, f : Double) -> MlensemblerfTable {
+  let result = ml_ensemble_rf_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_ensemble_rf_table_add(a : MlensemblerfTable, b : MlensemblerfTable) -> MlensemblerfTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_ensemble_rf_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_table_copy(s : MlensemblerfTable) -> MlensemblerfTable {
+  let result = ml_ensemble_rf_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_table_fill(s : MlensemblerfTable, v : Double) -> MlensemblerfTable {
+  let result = ml_ensemble_rf_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_table_min(s : MlensemblerfTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_table_max(s : MlensemblerfTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_table_to_string(s : MlensemblerfTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlensemblerfGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_ensemble_rf_graphn_make(size : Int) -> MlensemblerfGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_ensemble_rf_graphn_len(s : MlensemblerfGraphN) -> Int { s.size }
+
+pub fn ml_ensemble_rf_graphn_get(s : MlensemblerfGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_ensemble_rf_graphn_set(s : MlensemblerfGraphN, i : Int, v : Double) -> MlensemblerfGraphN {
+  let result = ml_ensemble_rf_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_graphn_sum(s : MlensemblerfGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_ensemble_rf_graphn_mean(s : MlensemblerfGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { ml_ensemble_rf_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_ensemble_rf_graphn_scale(s : MlensemblerfGraphN, f : Double) -> MlensemblerfGraphN {
+  let result = ml_ensemble_rf_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_ensemble_rf_graphn_add(a : MlensemblerfGraphN, b : MlensemblerfGraphN) -> MlensemblerfGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_ensemble_rf_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_graphn_copy(s : MlensemblerfGraphN) -> MlensemblerfGraphN {
+  let result = ml_ensemble_rf_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_graphn_fill(s : MlensemblerfGraphN, v : Double) -> MlensemblerfGraphN {
+  let result = ml_ensemble_rf_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_graphn_min(s : MlensemblerfGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_graphn_max(s : MlensemblerfGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_graphn_to_string(s : MlensemblerfGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlensemblerfNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_ensemble_rf_node_make(size : Int) -> MlensemblerfNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_ensemble_rf_node_len(s : MlensemblerfNode) -> Int { s.size }
+
+pub fn ml_ensemble_rf_node_get(s : MlensemblerfNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_ensemble_rf_node_set(s : MlensemblerfNode, i : Int, v : Double) -> MlensemblerfNode {
+  let result = ml_ensemble_rf_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_node_sum(s : MlensemblerfNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_ensemble_rf_node_mean(s : MlensemblerfNode) -> Double {
+  if s.size == 0 { 0.0 } else { ml_ensemble_rf_node_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_ensemble_rf_node_scale(s : MlensemblerfNode, f : Double) -> MlensemblerfNode {
+  let result = ml_ensemble_rf_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_ensemble_rf_node_add(a : MlensemblerfNode, b : MlensemblerfNode) -> MlensemblerfNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_ensemble_rf_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_node_copy(s : MlensemblerfNode) -> MlensemblerfNode {
+  let result = ml_ensemble_rf_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_node_fill(s : MlensemblerfNode, v : Double) -> MlensemblerfNode {
+  let result = ml_ensemble_rf_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_node_min(s : MlensemblerfNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_node_max(s : MlensemblerfNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_node_to_string(s : MlensemblerfNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlensemblerfEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_ensemble_rf_edge_make(size : Int) -> MlensemblerfEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_ensemble_rf_edge_len(s : MlensemblerfEdge) -> Int { s.size }
+
+pub fn ml_ensemble_rf_edge_get(s : MlensemblerfEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_ensemble_rf_edge_set(s : MlensemblerfEdge, i : Int, v : Double) -> MlensemblerfEdge {
+  let result = ml_ensemble_rf_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_edge_sum(s : MlensemblerfEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_ensemble_rf_edge_mean(s : MlensemblerfEdge) -> Double {
+  if s.size == 0 { 0.0 } else { ml_ensemble_rf_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_ensemble_rf_edge_scale(s : MlensemblerfEdge, f : Double) -> MlensemblerfEdge {
+  let result = ml_ensemble_rf_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_ensemble_rf_edge_add(a : MlensemblerfEdge, b : MlensemblerfEdge) -> MlensemblerfEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_ensemble_rf_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_edge_copy(s : MlensemblerfEdge) -> MlensemblerfEdge {
+  let result = ml_ensemble_rf_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_edge_fill(s : MlensemblerfEdge, v : Double) -> MlensemblerfEdge {
+  let result = ml_ensemble_rf_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_edge_min(s : MlensemblerfEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_edge_max(s : MlensemblerfEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_edge_to_string(s : MlensemblerfEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlensemblerfPath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_ensemble_rf_path_make(size : Int) -> MlensemblerfPath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_ensemble_rf_path_len(s : MlensemblerfPath) -> Int { s.size }
+
+pub fn ml_ensemble_rf_path_get(s : MlensemblerfPath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_ensemble_rf_path_set(s : MlensemblerfPath, i : Int, v : Double) -> MlensemblerfPath {
+  let result = ml_ensemble_rf_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_path_sum(s : MlensemblerfPath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_ensemble_rf_path_mean(s : MlensemblerfPath) -> Double {
+  if s.size == 0 { 0.0 } else { ml_ensemble_rf_path_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_ensemble_rf_path_scale(s : MlensemblerfPath, f : Double) -> MlensemblerfPath {
+  let result = ml_ensemble_rf_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_ensemble_rf_path_add(a : MlensemblerfPath, b : MlensemblerfPath) -> MlensemblerfPath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_ensemble_rf_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_path_copy(s : MlensemblerfPath) -> MlensemblerfPath {
+  let result = ml_ensemble_rf_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_path_fill(s : MlensemblerfPath, v : Double) -> MlensemblerfPath {
+  let result = ml_ensemble_rf_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_path_min(s : MlensemblerfPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_path_max(s : MlensemblerfPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_path_to_string(s : MlensemblerfPath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlensemblerfCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_ensemble_rf_cluster_make(size : Int) -> MlensemblerfCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_ensemble_rf_cluster_len(s : MlensemblerfCluster) -> Int { s.size }
+
+pub fn ml_ensemble_rf_cluster_get(s : MlensemblerfCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_ensemble_rf_cluster_set(s : MlensemblerfCluster, i : Int, v : Double) -> MlensemblerfCluster {
+  let result = ml_ensemble_rf_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_cluster_sum(s : MlensemblerfCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_ensemble_rf_cluster_mean(s : MlensemblerfCluster) -> Double {
+  if s.size == 0 { 0.0 } else { ml_ensemble_rf_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_ensemble_rf_cluster_scale(s : MlensemblerfCluster, f : Double) -> MlensemblerfCluster {
+  let result = ml_ensemble_rf_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_ensemble_rf_cluster_add(a : MlensemblerfCluster, b : MlensemblerfCluster) -> MlensemblerfCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_ensemble_rf_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_cluster_copy(s : MlensemblerfCluster) -> MlensemblerfCluster {
+  let result = ml_ensemble_rf_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_cluster_fill(s : MlensemblerfCluster, v : Double) -> MlensemblerfCluster {
+  let result = ml_ensemble_rf_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_cluster_min(s : MlensemblerfCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_cluster_max(s : MlensemblerfCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_cluster_to_string(s : MlensemblerfCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlensemblerfModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_ensemble_rf_model_make(size : Int) -> MlensemblerfModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_ensemble_rf_model_len(s : MlensemblerfModel) -> Int { s.size }
+
+pub fn ml_ensemble_rf_model_get(s : MlensemblerfModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_ensemble_rf_model_set(s : MlensemblerfModel, i : Int, v : Double) -> MlensemblerfModel {
+  let result = ml_ensemble_rf_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_model_sum(s : MlensemblerfModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_ensemble_rf_model_mean(s : MlensemblerfModel) -> Double {
+  if s.size == 0 { 0.0 } else { ml_ensemble_rf_model_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_ensemble_rf_model_scale(s : MlensemblerfModel, f : Double) -> MlensemblerfModel {
+  let result = ml_ensemble_rf_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_ensemble_rf_model_add(a : MlensemblerfModel, b : MlensemblerfModel) -> MlensemblerfModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_ensemble_rf_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_model_copy(s : MlensemblerfModel) -> MlensemblerfModel {
+  let result = ml_ensemble_rf_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_model_fill(s : MlensemblerfModel, v : Double) -> MlensemblerfModel {
+  let result = ml_ensemble_rf_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_model_min(s : MlensemblerfModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_model_max(s : MlensemblerfModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_model_to_string(s : MlensemblerfModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlensemblerfLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_ensemble_rf_layer_make(size : Int) -> MlensemblerfLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_ensemble_rf_layer_len(s : MlensemblerfLayer) -> Int { s.size }
+
+pub fn ml_ensemble_rf_layer_get(s : MlensemblerfLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_ensemble_rf_layer_set(s : MlensemblerfLayer, i : Int, v : Double) -> MlensemblerfLayer {
+  let result = ml_ensemble_rf_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_layer_sum(s : MlensemblerfLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_ensemble_rf_layer_mean(s : MlensemblerfLayer) -> Double {
+  if s.size == 0 { 0.0 } else { ml_ensemble_rf_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_ensemble_rf_layer_scale(s : MlensemblerfLayer, f : Double) -> MlensemblerfLayer {
+  let result = ml_ensemble_rf_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_ensemble_rf_layer_add(a : MlensemblerfLayer, b : MlensemblerfLayer) -> MlensemblerfLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_ensemble_rf_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_layer_copy(s : MlensemblerfLayer) -> MlensemblerfLayer {
+  let result = ml_ensemble_rf_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_layer_fill(s : MlensemblerfLayer, v : Double) -> MlensemblerfLayer {
+  let result = ml_ensemble_rf_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_layer_min(s : MlensemblerfLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_layer_max(s : MlensemblerfLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_layer_to_string(s : MlensemblerfLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlensemblerfBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_ensemble_rf_buffer_make(size : Int) -> MlensemblerfBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_ensemble_rf_buffer_len(s : MlensemblerfBuffer) -> Int { s.size }
+
+pub fn ml_ensemble_rf_buffer_get(s : MlensemblerfBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_ensemble_rf_buffer_set(s : MlensemblerfBuffer, i : Int, v : Double) -> MlensemblerfBuffer {
+  let result = ml_ensemble_rf_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_buffer_sum(s : MlensemblerfBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_ensemble_rf_buffer_mean(s : MlensemblerfBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { ml_ensemble_rf_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_ensemble_rf_buffer_scale(s : MlensemblerfBuffer, f : Double) -> MlensemblerfBuffer {
+  let result = ml_ensemble_rf_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_ensemble_rf_buffer_add(a : MlensemblerfBuffer, b : MlensemblerfBuffer) -> MlensemblerfBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_ensemble_rf_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_buffer_copy(s : MlensemblerfBuffer) -> MlensemblerfBuffer {
+  let result = ml_ensemble_rf_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_buffer_fill(s : MlensemblerfBuffer, v : Double) -> MlensemblerfBuffer {
+  let result = ml_ensemble_rf_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_buffer_min(s : MlensemblerfBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_buffer_max(s : MlensemblerfBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_buffer_to_string(s : MlensemblerfBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlensemblerfCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_ensemble_rf_cursor_make(size : Int) -> MlensemblerfCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_ensemble_rf_cursor_len(s : MlensemblerfCursor) -> Int { s.size }
+
+pub fn ml_ensemble_rf_cursor_get(s : MlensemblerfCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_ensemble_rf_cursor_set(s : MlensemblerfCursor, i : Int, v : Double) -> MlensemblerfCursor {
+  let result = ml_ensemble_rf_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_cursor_sum(s : MlensemblerfCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_ensemble_rf_cursor_mean(s : MlensemblerfCursor) -> Double {
+  if s.size == 0 { 0.0 } else { ml_ensemble_rf_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_ensemble_rf_cursor_scale(s : MlensemblerfCursor, f : Double) -> MlensemblerfCursor {
+  let result = ml_ensemble_rf_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_ensemble_rf_cursor_add(a : MlensemblerfCursor, b : MlensemblerfCursor) -> MlensemblerfCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_ensemble_rf_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_cursor_copy(s : MlensemblerfCursor) -> MlensemblerfCursor {
+  let result = ml_ensemble_rf_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_cursor_fill(s : MlensemblerfCursor, v : Double) -> MlensemblerfCursor {
+  let result = ml_ensemble_rf_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_cursor_min(s : MlensemblerfCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_cursor_max(s : MlensemblerfCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_cursor_to_string(s : MlensemblerfCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlensemblerfView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_ensemble_rf_view_make(size : Int) -> MlensemblerfView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_ensemble_rf_view_len(s : MlensemblerfView) -> Int { s.size }
+
+pub fn ml_ensemble_rf_view_get(s : MlensemblerfView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_ensemble_rf_view_set(s : MlensemblerfView, i : Int, v : Double) -> MlensemblerfView {
+  let result = ml_ensemble_rf_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_view_sum(s : MlensemblerfView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_ensemble_rf_view_mean(s : MlensemblerfView) -> Double {
+  if s.size == 0 { 0.0 } else { ml_ensemble_rf_view_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_ensemble_rf_view_scale(s : MlensemblerfView, f : Double) -> MlensemblerfView {
+  let result = ml_ensemble_rf_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_ensemble_rf_view_add(a : MlensemblerfView, b : MlensemblerfView) -> MlensemblerfView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_ensemble_rf_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_view_copy(s : MlensemblerfView) -> MlensemblerfView {
+  let result = ml_ensemble_rf_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_view_fill(s : MlensemblerfView, v : Double) -> MlensemblerfView {
+  let result = ml_ensemble_rf_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_view_min(s : MlensemblerfView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_view_max(s : MlensemblerfView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_view_to_string(s : MlensemblerfView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlensemblerfRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_ensemble_rf_range_make(size : Int) -> MlensemblerfRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_ensemble_rf_range_len(s : MlensemblerfRange) -> Int { s.size }
+
+pub fn ml_ensemble_rf_range_get(s : MlensemblerfRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_ensemble_rf_range_set(s : MlensemblerfRange, i : Int, v : Double) -> MlensemblerfRange {
+  let result = ml_ensemble_rf_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_range_sum(s : MlensemblerfRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_ensemble_rf_range_mean(s : MlensemblerfRange) -> Double {
+  if s.size == 0 { 0.0 } else { ml_ensemble_rf_range_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_ensemble_rf_range_scale(s : MlensemblerfRange, f : Double) -> MlensemblerfRange {
+  let result = ml_ensemble_rf_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_ensemble_rf_range_add(a : MlensemblerfRange, b : MlensemblerfRange) -> MlensemblerfRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_ensemble_rf_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_range_copy(s : MlensemblerfRange) -> MlensemblerfRange {
+  let result = ml_ensemble_rf_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_range_fill(s : MlensemblerfRange, v : Double) -> MlensemblerfRange {
+  let result = ml_ensemble_rf_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_range_min(s : MlensemblerfRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_range_max(s : MlensemblerfRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_range_to_string(s : MlensemblerfRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlensemblerfSlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_ensemble_rf_slice_make(size : Int) -> MlensemblerfSlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_ensemble_rf_slice_len(s : MlensemblerfSlice) -> Int { s.size }
+
+pub fn ml_ensemble_rf_slice_get(s : MlensemblerfSlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_ensemble_rf_slice_set(s : MlensemblerfSlice, i : Int, v : Double) -> MlensemblerfSlice {
+  let result = ml_ensemble_rf_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_slice_sum(s : MlensemblerfSlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_ensemble_rf_slice_mean(s : MlensemblerfSlice) -> Double {
+  if s.size == 0 { 0.0 } else { ml_ensemble_rf_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_ensemble_rf_slice_scale(s : MlensemblerfSlice, f : Double) -> MlensemblerfSlice {
+  let result = ml_ensemble_rf_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_ensemble_rf_slice_add(a : MlensemblerfSlice, b : MlensemblerfSlice) -> MlensemblerfSlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_ensemble_rf_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_slice_copy(s : MlensemblerfSlice) -> MlensemblerfSlice {
+  let result = ml_ensemble_rf_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_ensemble_rf_slice_fill(s : MlensemblerfSlice, v : Double) -> MlensemblerfSlice {
+  let result = ml_ensemble_rf_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_ensemble_rf_slice_min(s : MlensemblerfSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_slice_max(s : MlensemblerfSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_ensemble_rf_slice_to_string(s : MlensemblerfSlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn ml_ensemble_rf_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_ensemble_rf_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

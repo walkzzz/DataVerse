@@ -1,0 +1,1955 @@
+///===
+/// extcore/ml_feature_nmf
+
+pub(all) struct MlfeaturenmfPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn ml_feature_nmf_make_point(x : Double, y : Double) -> MlfeaturenmfPoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn ml_feature_nmf_make_point3(x : Double, y : Double, z : Double) -> MlfeaturenmfPoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn ml_feature_nmf_point_x(pt : MlfeaturenmfPoint) -> Double { pt.x }
+
+pub fn ml_feature_nmf_point_y(pt : MlfeaturenmfPoint) -> Double { pt.y }
+
+pub fn ml_feature_nmf_point_z(pt : MlfeaturenmfPoint) -> Double { pt.z }
+
+pub fn ml_feature_nmf_point_label(pt : MlfeaturenmfPoint) -> Int { pt.label }
+
+pub fn ml_feature_nmf_point_dist(a : MlfeaturenmfPoint, b : MlfeaturenmfPoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  ml_feature_nmf_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn ml_feature_nmf_point_add(a : MlfeaturenmfPoint, b : MlfeaturenmfPoint) -> MlfeaturenmfPoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn ml_feature_nmf_point_sub(a : MlfeaturenmfPoint, b : MlfeaturenmfPoint) -> MlfeaturenmfPoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn ml_feature_nmf_point_scale(pt : MlfeaturenmfPoint, s : Double) -> MlfeaturenmfPoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn ml_feature_nmf_point_dot(a : MlfeaturenmfPoint, b : MlfeaturenmfPoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn ml_feature_nmf_point_cross(a : MlfeaturenmfPoint, b : MlfeaturenmfPoint) -> MlfeaturenmfPoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn ml_feature_nmf_point_norm(pt : MlfeaturenmfPoint) -> Double {
+  ml_feature_nmf_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn ml_feature_nmf_point_normalize(pt : MlfeaturenmfPoint) -> MlfeaturenmfPoint {
+  let n = ml_feature_nmf_point_norm(pt)
+  if n < 0.0000001 { pt } else { ml_feature_nmf_point_scale(pt, 1.0 / n) }
+}
+
+pub fn ml_feature_nmf_point_negate(pt : MlfeaturenmfPoint) -> MlfeaturenmfPoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn ml_feature_nmf_point_mid(a : MlfeaturenmfPoint, b : MlfeaturenmfPoint) -> MlfeaturenmfPoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn ml_feature_nmf_point_lerp(a : MlfeaturenmfPoint, b : MlfeaturenmfPoint, t : Double) -> MlfeaturenmfPoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn ml_feature_nmf_point_to_string(pt : MlfeaturenmfPoint) -> String {
+  "(" + ml_feature_nmf_dbl(pt.x) + ", " + ml_feature_nmf_dbl(pt.y) + ", " + ml_feature_nmf_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct MlfeaturenmfSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn ml_feature_nmf_make_series(vals : Array[Double], name : String) -> MlfeaturenmfSeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn ml_feature_nmf_series_len(s : MlfeaturenmfSeries) -> Int { s.vals.length() }
+
+pub fn ml_feature_nmf_series_sum(s : MlfeaturenmfSeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn ml_feature_nmf_series_mean(s : MlfeaturenmfSeries) -> Double {
+  let n = ml_feature_nmf_series_len(s)
+  if n == 0 { 0.0 } else { ml_feature_nmf_series_sum(s) / n.to_double() }
+}
+
+pub fn ml_feature_nmf_series_min(s : MlfeaturenmfSeries) -> Double {
+  let n = ml_feature_nmf_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_series_max(s : MlfeaturenmfSeries) -> Double {
+  let n = ml_feature_nmf_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_series_range(s : MlfeaturenmfSeries) -> Double {
+  ml_feature_nmf_series_max(s) - ml_feature_nmf_series_min(s)
+}
+
+pub fn ml_feature_nmf_series_var(s : MlfeaturenmfSeries) -> Double {
+  let n = ml_feature_nmf_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = ml_feature_nmf_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_series_std(s : MlfeaturenmfSeries) -> Double { ml_feature_nmf_sqrt(ml_feature_nmf_series_var(s)) }
+
+pub fn ml_feature_nmf_series_median(s : MlfeaturenmfSeries) -> Double {
+  let n = ml_feature_nmf_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = ml_feature_nmf_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn ml_feature_nmf_series_scale(s : MlfeaturenmfSeries, f : Double) -> MlfeaturenmfSeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = ml_feature_nmf_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn ml_feature_nmf_series_add(a : MlfeaturenmfSeries, b : MlfeaturenmfSeries) -> MlfeaturenmfSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = ml_feature_nmf_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn ml_feature_nmf_series_sub(a : MlfeaturenmfSeries, b : MlfeaturenmfSeries) -> MlfeaturenmfSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = ml_feature_nmf_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn ml_feature_nmf_series_normalize(s : MlfeaturenmfSeries) -> MlfeaturenmfSeries {
+  let mn = ml_feature_nmf_series_min(s)
+  let mx = ml_feature_nmf_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = ml_feature_nmf_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn ml_feature_nmf_series_cumsum(s : MlfeaturenmfSeries) -> MlfeaturenmfSeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = ml_feature_nmf_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn ml_feature_nmf_series_to_string(s : MlfeaturenmfSeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + ml_feature_nmf_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct MlfeaturenmfMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn ml_feature_nmf_make_matrix(rows : Int, cols : Int, val : Double) -> MlfeaturenmfMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn ml_feature_nmf_matrix_identity(n : Int) -> MlfeaturenmfMatrix {
+  let m = ml_feature_nmf_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn ml_feature_nmf_matrix_get(m : MlfeaturenmfMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn ml_feature_nmf_matrix_transpose(m : MlfeaturenmfMatrix) -> MlfeaturenmfMatrix {
+  let result = ml_feature_nmf_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn ml_feature_nmf_matrix_add(a : MlfeaturenmfMatrix, b : MlfeaturenmfMatrix) -> MlfeaturenmfMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = ml_feature_nmf_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn ml_feature_nmf_matrix_scale(m : MlfeaturenmfMatrix, s : Double) -> MlfeaturenmfMatrix {
+  let result = ml_feature_nmf_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn ml_feature_nmf_matrix_multiply(a : MlfeaturenmfMatrix, b : MlfeaturenmfMatrix) -> MlfeaturenmfMatrix {
+  if a.cols != b.rows { return ml_feature_nmf_make_matrix(a.rows, b.cols, 0.0) }
+  let result = ml_feature_nmf_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn ml_feature_nmf_matrix_trace(m : MlfeaturenmfMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn ml_feature_nmf_matrix_det(m : MlfeaturenmfMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn ml_feature_nmf_matrix_norm(m : MlfeaturenmfMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  ml_feature_nmf_sqrt(sum)
+}
+
+pub fn ml_feature_nmf_matrix_to_string(m : MlfeaturenmfMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + ml_feature_nmf_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct MlfeaturenmfVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn ml_feature_nmf_make_vector(comps : Array[Double]) -> MlfeaturenmfVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn ml_feature_nmf_vector_zero(dim : Int) -> MlfeaturenmfVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn ml_feature_nmf_vector_add(a : MlfeaturenmfVector, b : MlfeaturenmfVector) -> MlfeaturenmfVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = ml_feature_nmf_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn ml_feature_nmf_vector_sub(a : MlfeaturenmfVector, b : MlfeaturenmfVector) -> MlfeaturenmfVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = ml_feature_nmf_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn ml_feature_nmf_vector_scale(v : MlfeaturenmfVector, s : Double) -> MlfeaturenmfVector {
+  let mut result = []
+  for i in 0..<v.dim { result = ml_feature_nmf_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn ml_feature_nmf_vector_dot(a : MlfeaturenmfVector, b : MlfeaturenmfVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn ml_feature_nmf_vector_norm(v : MlfeaturenmfVector) -> Double { ml_feature_nmf_sqrt(ml_feature_nmf_vector_dot(v, v)) }
+
+pub fn ml_feature_nmf_vector_normalize(v : MlfeaturenmfVector) -> MlfeaturenmfVector {
+  let n = ml_feature_nmf_vector_norm(v)
+  if n < 0.0000001 { v } else { ml_feature_nmf_vector_scale(v, 1.0 / n) }
+}
+
+pub fn ml_feature_nmf_vector_dist(a : MlfeaturenmfVector, b : MlfeaturenmfVector) -> Double {
+  ml_feature_nmf_vector_norm(ml_feature_nmf_vector_sub(a, b))
+}
+
+pub fn ml_feature_nmf_vector_to_string(v : MlfeaturenmfVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + ml_feature_nmf_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn ml_feature_nmf_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = ml_feature_nmf_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_std(data : Array[Double]) -> Double { ml_feature_nmf_sqrt(ml_feature_nmf_var(data)) }
+
+pub fn ml_feature_nmf_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = ml_feature_nmf_mean(a); let mb = ml_feature_nmf_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = ml_feature_nmf_std(a); let sb = ml_feature_nmf_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { ml_feature_nmf_cov(a, b) / (sa * sb) }
+}
+
+pub fn ml_feature_nmf_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = ml_feature_nmf_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn ml_feature_nmf_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  ml_feature_nmf_sqrt(ml_feature_nmf_mse(pred, labels))
+}
+
+pub fn ml_feature_nmf_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + ml_feature_nmf_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = ml_feature_nmf_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn ml_feature_nmf_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn ml_feature_nmf_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn ml_feature_nmf_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = ml_feature_nmf_precision(pred, labels, pos); let r = ml_feature_nmf_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn ml_feature_nmf_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn ml_feature_nmf_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = ml_feature_nmf_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn ml_feature_nmf_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn ml_feature_nmf_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn ml_feature_nmf_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = ml_feature_nmf_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn ml_feature_nmf_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn ml_feature_nmf_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn ml_feature_nmf_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = ml_feature_nmf_min(data); let mx = ml_feature_nmf_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn ml_feature_nmf_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = ml_feature_nmf_mean(data); let sd = ml_feature_nmf_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn ml_feature_nmf_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn ml_feature_nmf_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn ml_feature_nmf_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn ml_feature_nmf_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn ml_feature_nmf_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn ml_feature_nmf_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn ml_feature_nmf_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { ml_feature_nmf_int(x) } else { -ml_feature_nmf_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { ml_feature_nmf_int(f * 1000000.0) } else { ml_feature_nmf_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn ml_feature_nmf_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn ml_feature_nmf_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct MlfeaturenmfFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_nmf_frame_make(size : Int) -> MlfeaturenmfFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_nmf_frame_len(s : MlfeaturenmfFrame) -> Int { s.size }
+
+pub fn ml_feature_nmf_frame_get(s : MlfeaturenmfFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_nmf_frame_set(s : MlfeaturenmfFrame, i : Int, v : Double) -> MlfeaturenmfFrame {
+  let result = ml_feature_nmf_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_frame_sum(s : MlfeaturenmfFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_nmf_frame_mean(s : MlfeaturenmfFrame) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_nmf_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_nmf_frame_scale(s : MlfeaturenmfFrame, f : Double) -> MlfeaturenmfFrame {
+  let result = ml_feature_nmf_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_nmf_frame_add(a : MlfeaturenmfFrame, b : MlfeaturenmfFrame) -> MlfeaturenmfFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_nmf_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_frame_copy(s : MlfeaturenmfFrame) -> MlfeaturenmfFrame {
+  let result = ml_feature_nmf_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_frame_fill(s : MlfeaturenmfFrame, v : Double) -> MlfeaturenmfFrame {
+  let result = ml_feature_nmf_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_frame_min(s : MlfeaturenmfFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_frame_max(s : MlfeaturenmfFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_frame_to_string(s : MlfeaturenmfFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlfeaturenmfTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_nmf_table_make(size : Int) -> MlfeaturenmfTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_nmf_table_len(s : MlfeaturenmfTable) -> Int { s.size }
+
+pub fn ml_feature_nmf_table_get(s : MlfeaturenmfTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_nmf_table_set(s : MlfeaturenmfTable, i : Int, v : Double) -> MlfeaturenmfTable {
+  let result = ml_feature_nmf_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_table_sum(s : MlfeaturenmfTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_nmf_table_mean(s : MlfeaturenmfTable) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_nmf_table_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_nmf_table_scale(s : MlfeaturenmfTable, f : Double) -> MlfeaturenmfTable {
+  let result = ml_feature_nmf_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_nmf_table_add(a : MlfeaturenmfTable, b : MlfeaturenmfTable) -> MlfeaturenmfTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_nmf_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_table_copy(s : MlfeaturenmfTable) -> MlfeaturenmfTable {
+  let result = ml_feature_nmf_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_table_fill(s : MlfeaturenmfTable, v : Double) -> MlfeaturenmfTable {
+  let result = ml_feature_nmf_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_table_min(s : MlfeaturenmfTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_table_max(s : MlfeaturenmfTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_table_to_string(s : MlfeaturenmfTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlfeaturenmfGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_nmf_graphn_make(size : Int) -> MlfeaturenmfGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_nmf_graphn_len(s : MlfeaturenmfGraphN) -> Int { s.size }
+
+pub fn ml_feature_nmf_graphn_get(s : MlfeaturenmfGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_nmf_graphn_set(s : MlfeaturenmfGraphN, i : Int, v : Double) -> MlfeaturenmfGraphN {
+  let result = ml_feature_nmf_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_graphn_sum(s : MlfeaturenmfGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_nmf_graphn_mean(s : MlfeaturenmfGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_nmf_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_nmf_graphn_scale(s : MlfeaturenmfGraphN, f : Double) -> MlfeaturenmfGraphN {
+  let result = ml_feature_nmf_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_nmf_graphn_add(a : MlfeaturenmfGraphN, b : MlfeaturenmfGraphN) -> MlfeaturenmfGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_nmf_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_graphn_copy(s : MlfeaturenmfGraphN) -> MlfeaturenmfGraphN {
+  let result = ml_feature_nmf_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_graphn_fill(s : MlfeaturenmfGraphN, v : Double) -> MlfeaturenmfGraphN {
+  let result = ml_feature_nmf_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_graphn_min(s : MlfeaturenmfGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_graphn_max(s : MlfeaturenmfGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_graphn_to_string(s : MlfeaturenmfGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlfeaturenmfNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_nmf_node_make(size : Int) -> MlfeaturenmfNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_nmf_node_len(s : MlfeaturenmfNode) -> Int { s.size }
+
+pub fn ml_feature_nmf_node_get(s : MlfeaturenmfNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_nmf_node_set(s : MlfeaturenmfNode, i : Int, v : Double) -> MlfeaturenmfNode {
+  let result = ml_feature_nmf_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_node_sum(s : MlfeaturenmfNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_nmf_node_mean(s : MlfeaturenmfNode) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_nmf_node_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_nmf_node_scale(s : MlfeaturenmfNode, f : Double) -> MlfeaturenmfNode {
+  let result = ml_feature_nmf_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_nmf_node_add(a : MlfeaturenmfNode, b : MlfeaturenmfNode) -> MlfeaturenmfNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_nmf_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_node_copy(s : MlfeaturenmfNode) -> MlfeaturenmfNode {
+  let result = ml_feature_nmf_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_node_fill(s : MlfeaturenmfNode, v : Double) -> MlfeaturenmfNode {
+  let result = ml_feature_nmf_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_node_min(s : MlfeaturenmfNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_node_max(s : MlfeaturenmfNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_node_to_string(s : MlfeaturenmfNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlfeaturenmfEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_nmf_edge_make(size : Int) -> MlfeaturenmfEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_nmf_edge_len(s : MlfeaturenmfEdge) -> Int { s.size }
+
+pub fn ml_feature_nmf_edge_get(s : MlfeaturenmfEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_nmf_edge_set(s : MlfeaturenmfEdge, i : Int, v : Double) -> MlfeaturenmfEdge {
+  let result = ml_feature_nmf_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_edge_sum(s : MlfeaturenmfEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_nmf_edge_mean(s : MlfeaturenmfEdge) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_nmf_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_nmf_edge_scale(s : MlfeaturenmfEdge, f : Double) -> MlfeaturenmfEdge {
+  let result = ml_feature_nmf_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_nmf_edge_add(a : MlfeaturenmfEdge, b : MlfeaturenmfEdge) -> MlfeaturenmfEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_nmf_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_edge_copy(s : MlfeaturenmfEdge) -> MlfeaturenmfEdge {
+  let result = ml_feature_nmf_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_edge_fill(s : MlfeaturenmfEdge, v : Double) -> MlfeaturenmfEdge {
+  let result = ml_feature_nmf_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_edge_min(s : MlfeaturenmfEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_edge_max(s : MlfeaturenmfEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_edge_to_string(s : MlfeaturenmfEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlfeaturenmfPath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_nmf_path_make(size : Int) -> MlfeaturenmfPath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_nmf_path_len(s : MlfeaturenmfPath) -> Int { s.size }
+
+pub fn ml_feature_nmf_path_get(s : MlfeaturenmfPath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_nmf_path_set(s : MlfeaturenmfPath, i : Int, v : Double) -> MlfeaturenmfPath {
+  let result = ml_feature_nmf_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_path_sum(s : MlfeaturenmfPath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_nmf_path_mean(s : MlfeaturenmfPath) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_nmf_path_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_nmf_path_scale(s : MlfeaturenmfPath, f : Double) -> MlfeaturenmfPath {
+  let result = ml_feature_nmf_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_nmf_path_add(a : MlfeaturenmfPath, b : MlfeaturenmfPath) -> MlfeaturenmfPath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_nmf_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_path_copy(s : MlfeaturenmfPath) -> MlfeaturenmfPath {
+  let result = ml_feature_nmf_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_path_fill(s : MlfeaturenmfPath, v : Double) -> MlfeaturenmfPath {
+  let result = ml_feature_nmf_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_path_min(s : MlfeaturenmfPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_path_max(s : MlfeaturenmfPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_path_to_string(s : MlfeaturenmfPath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlfeaturenmfCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_nmf_cluster_make(size : Int) -> MlfeaturenmfCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_nmf_cluster_len(s : MlfeaturenmfCluster) -> Int { s.size }
+
+pub fn ml_feature_nmf_cluster_get(s : MlfeaturenmfCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_nmf_cluster_set(s : MlfeaturenmfCluster, i : Int, v : Double) -> MlfeaturenmfCluster {
+  let result = ml_feature_nmf_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_cluster_sum(s : MlfeaturenmfCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_nmf_cluster_mean(s : MlfeaturenmfCluster) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_nmf_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_nmf_cluster_scale(s : MlfeaturenmfCluster, f : Double) -> MlfeaturenmfCluster {
+  let result = ml_feature_nmf_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_nmf_cluster_add(a : MlfeaturenmfCluster, b : MlfeaturenmfCluster) -> MlfeaturenmfCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_nmf_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_cluster_copy(s : MlfeaturenmfCluster) -> MlfeaturenmfCluster {
+  let result = ml_feature_nmf_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_cluster_fill(s : MlfeaturenmfCluster, v : Double) -> MlfeaturenmfCluster {
+  let result = ml_feature_nmf_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_cluster_min(s : MlfeaturenmfCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_cluster_max(s : MlfeaturenmfCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_cluster_to_string(s : MlfeaturenmfCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlfeaturenmfModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_nmf_model_make(size : Int) -> MlfeaturenmfModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_nmf_model_len(s : MlfeaturenmfModel) -> Int { s.size }
+
+pub fn ml_feature_nmf_model_get(s : MlfeaturenmfModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_nmf_model_set(s : MlfeaturenmfModel, i : Int, v : Double) -> MlfeaturenmfModel {
+  let result = ml_feature_nmf_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_model_sum(s : MlfeaturenmfModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_nmf_model_mean(s : MlfeaturenmfModel) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_nmf_model_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_nmf_model_scale(s : MlfeaturenmfModel, f : Double) -> MlfeaturenmfModel {
+  let result = ml_feature_nmf_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_nmf_model_add(a : MlfeaturenmfModel, b : MlfeaturenmfModel) -> MlfeaturenmfModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_nmf_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_model_copy(s : MlfeaturenmfModel) -> MlfeaturenmfModel {
+  let result = ml_feature_nmf_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_model_fill(s : MlfeaturenmfModel, v : Double) -> MlfeaturenmfModel {
+  let result = ml_feature_nmf_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_model_min(s : MlfeaturenmfModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_model_max(s : MlfeaturenmfModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_model_to_string(s : MlfeaturenmfModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlfeaturenmfLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_nmf_layer_make(size : Int) -> MlfeaturenmfLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_nmf_layer_len(s : MlfeaturenmfLayer) -> Int { s.size }
+
+pub fn ml_feature_nmf_layer_get(s : MlfeaturenmfLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_nmf_layer_set(s : MlfeaturenmfLayer, i : Int, v : Double) -> MlfeaturenmfLayer {
+  let result = ml_feature_nmf_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_layer_sum(s : MlfeaturenmfLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_nmf_layer_mean(s : MlfeaturenmfLayer) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_nmf_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_nmf_layer_scale(s : MlfeaturenmfLayer, f : Double) -> MlfeaturenmfLayer {
+  let result = ml_feature_nmf_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_nmf_layer_add(a : MlfeaturenmfLayer, b : MlfeaturenmfLayer) -> MlfeaturenmfLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_nmf_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_layer_copy(s : MlfeaturenmfLayer) -> MlfeaturenmfLayer {
+  let result = ml_feature_nmf_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_layer_fill(s : MlfeaturenmfLayer, v : Double) -> MlfeaturenmfLayer {
+  let result = ml_feature_nmf_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_layer_min(s : MlfeaturenmfLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_layer_max(s : MlfeaturenmfLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_layer_to_string(s : MlfeaturenmfLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlfeaturenmfBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_nmf_buffer_make(size : Int) -> MlfeaturenmfBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_nmf_buffer_len(s : MlfeaturenmfBuffer) -> Int { s.size }
+
+pub fn ml_feature_nmf_buffer_get(s : MlfeaturenmfBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_nmf_buffer_set(s : MlfeaturenmfBuffer, i : Int, v : Double) -> MlfeaturenmfBuffer {
+  let result = ml_feature_nmf_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_buffer_sum(s : MlfeaturenmfBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_nmf_buffer_mean(s : MlfeaturenmfBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_nmf_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_nmf_buffer_scale(s : MlfeaturenmfBuffer, f : Double) -> MlfeaturenmfBuffer {
+  let result = ml_feature_nmf_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_nmf_buffer_add(a : MlfeaturenmfBuffer, b : MlfeaturenmfBuffer) -> MlfeaturenmfBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_nmf_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_buffer_copy(s : MlfeaturenmfBuffer) -> MlfeaturenmfBuffer {
+  let result = ml_feature_nmf_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_buffer_fill(s : MlfeaturenmfBuffer, v : Double) -> MlfeaturenmfBuffer {
+  let result = ml_feature_nmf_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_buffer_min(s : MlfeaturenmfBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_buffer_max(s : MlfeaturenmfBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_buffer_to_string(s : MlfeaturenmfBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlfeaturenmfCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_nmf_cursor_make(size : Int) -> MlfeaturenmfCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_nmf_cursor_len(s : MlfeaturenmfCursor) -> Int { s.size }
+
+pub fn ml_feature_nmf_cursor_get(s : MlfeaturenmfCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_nmf_cursor_set(s : MlfeaturenmfCursor, i : Int, v : Double) -> MlfeaturenmfCursor {
+  let result = ml_feature_nmf_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_cursor_sum(s : MlfeaturenmfCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_nmf_cursor_mean(s : MlfeaturenmfCursor) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_nmf_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_nmf_cursor_scale(s : MlfeaturenmfCursor, f : Double) -> MlfeaturenmfCursor {
+  let result = ml_feature_nmf_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_nmf_cursor_add(a : MlfeaturenmfCursor, b : MlfeaturenmfCursor) -> MlfeaturenmfCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_nmf_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_cursor_copy(s : MlfeaturenmfCursor) -> MlfeaturenmfCursor {
+  let result = ml_feature_nmf_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_cursor_fill(s : MlfeaturenmfCursor, v : Double) -> MlfeaturenmfCursor {
+  let result = ml_feature_nmf_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_cursor_min(s : MlfeaturenmfCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_cursor_max(s : MlfeaturenmfCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_cursor_to_string(s : MlfeaturenmfCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlfeaturenmfView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_nmf_view_make(size : Int) -> MlfeaturenmfView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_nmf_view_len(s : MlfeaturenmfView) -> Int { s.size }
+
+pub fn ml_feature_nmf_view_get(s : MlfeaturenmfView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_nmf_view_set(s : MlfeaturenmfView, i : Int, v : Double) -> MlfeaturenmfView {
+  let result = ml_feature_nmf_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_view_sum(s : MlfeaturenmfView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_nmf_view_mean(s : MlfeaturenmfView) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_nmf_view_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_nmf_view_scale(s : MlfeaturenmfView, f : Double) -> MlfeaturenmfView {
+  let result = ml_feature_nmf_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_nmf_view_add(a : MlfeaturenmfView, b : MlfeaturenmfView) -> MlfeaturenmfView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_nmf_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_view_copy(s : MlfeaturenmfView) -> MlfeaturenmfView {
+  let result = ml_feature_nmf_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_view_fill(s : MlfeaturenmfView, v : Double) -> MlfeaturenmfView {
+  let result = ml_feature_nmf_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_view_min(s : MlfeaturenmfView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_view_max(s : MlfeaturenmfView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_view_to_string(s : MlfeaturenmfView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlfeaturenmfRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_nmf_range_make(size : Int) -> MlfeaturenmfRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_nmf_range_len(s : MlfeaturenmfRange) -> Int { s.size }
+
+pub fn ml_feature_nmf_range_get(s : MlfeaturenmfRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_nmf_range_set(s : MlfeaturenmfRange, i : Int, v : Double) -> MlfeaturenmfRange {
+  let result = ml_feature_nmf_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_range_sum(s : MlfeaturenmfRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_nmf_range_mean(s : MlfeaturenmfRange) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_nmf_range_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_nmf_range_scale(s : MlfeaturenmfRange, f : Double) -> MlfeaturenmfRange {
+  let result = ml_feature_nmf_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_nmf_range_add(a : MlfeaturenmfRange, b : MlfeaturenmfRange) -> MlfeaturenmfRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_nmf_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_range_copy(s : MlfeaturenmfRange) -> MlfeaturenmfRange {
+  let result = ml_feature_nmf_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_range_fill(s : MlfeaturenmfRange, v : Double) -> MlfeaturenmfRange {
+  let result = ml_feature_nmf_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_range_min(s : MlfeaturenmfRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_range_max(s : MlfeaturenmfRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_range_to_string(s : MlfeaturenmfRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlfeaturenmfSlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_nmf_slice_make(size : Int) -> MlfeaturenmfSlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_nmf_slice_len(s : MlfeaturenmfSlice) -> Int { s.size }
+
+pub fn ml_feature_nmf_slice_get(s : MlfeaturenmfSlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_nmf_slice_set(s : MlfeaturenmfSlice, i : Int, v : Double) -> MlfeaturenmfSlice {
+  let result = ml_feature_nmf_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_slice_sum(s : MlfeaturenmfSlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_nmf_slice_mean(s : MlfeaturenmfSlice) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_nmf_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_nmf_slice_scale(s : MlfeaturenmfSlice, f : Double) -> MlfeaturenmfSlice {
+  let result = ml_feature_nmf_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_nmf_slice_add(a : MlfeaturenmfSlice, b : MlfeaturenmfSlice) -> MlfeaturenmfSlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_nmf_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_slice_copy(s : MlfeaturenmfSlice) -> MlfeaturenmfSlice {
+  let result = ml_feature_nmf_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_nmf_slice_fill(s : MlfeaturenmfSlice, v : Double) -> MlfeaturenmfSlice {
+  let result = ml_feature_nmf_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_nmf_slice_min(s : MlfeaturenmfSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_slice_max(s : MlfeaturenmfSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_nmf_slice_to_string(s : MlfeaturenmfSlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn ml_feature_nmf_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_nmf_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

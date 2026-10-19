@@ -1,0 +1,1955 @@
+///===
+/// extcore/sort_exchange_comb
+
+pub(all) struct SortexchangecombPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn sort_exchange_comb_make_point(x : Double, y : Double) -> SortexchangecombPoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn sort_exchange_comb_make_point3(x : Double, y : Double, z : Double) -> SortexchangecombPoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn sort_exchange_comb_point_x(pt : SortexchangecombPoint) -> Double { pt.x }
+
+pub fn sort_exchange_comb_point_y(pt : SortexchangecombPoint) -> Double { pt.y }
+
+pub fn sort_exchange_comb_point_z(pt : SortexchangecombPoint) -> Double { pt.z }
+
+pub fn sort_exchange_comb_point_label(pt : SortexchangecombPoint) -> Int { pt.label }
+
+pub fn sort_exchange_comb_point_dist(a : SortexchangecombPoint, b : SortexchangecombPoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  sort_exchange_comb_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn sort_exchange_comb_point_add(a : SortexchangecombPoint, b : SortexchangecombPoint) -> SortexchangecombPoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn sort_exchange_comb_point_sub(a : SortexchangecombPoint, b : SortexchangecombPoint) -> SortexchangecombPoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn sort_exchange_comb_point_scale(pt : SortexchangecombPoint, s : Double) -> SortexchangecombPoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn sort_exchange_comb_point_dot(a : SortexchangecombPoint, b : SortexchangecombPoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn sort_exchange_comb_point_cross(a : SortexchangecombPoint, b : SortexchangecombPoint) -> SortexchangecombPoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn sort_exchange_comb_point_norm(pt : SortexchangecombPoint) -> Double {
+  sort_exchange_comb_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn sort_exchange_comb_point_normalize(pt : SortexchangecombPoint) -> SortexchangecombPoint {
+  let n = sort_exchange_comb_point_norm(pt)
+  if n < 0.0000001 { pt } else { sort_exchange_comb_point_scale(pt, 1.0 / n) }
+}
+
+pub fn sort_exchange_comb_point_negate(pt : SortexchangecombPoint) -> SortexchangecombPoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn sort_exchange_comb_point_mid(a : SortexchangecombPoint, b : SortexchangecombPoint) -> SortexchangecombPoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn sort_exchange_comb_point_lerp(a : SortexchangecombPoint, b : SortexchangecombPoint, t : Double) -> SortexchangecombPoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn sort_exchange_comb_point_to_string(pt : SortexchangecombPoint) -> String {
+  "(" + sort_exchange_comb_dbl(pt.x) + ", " + sort_exchange_comb_dbl(pt.y) + ", " + sort_exchange_comb_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct SortexchangecombSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn sort_exchange_comb_make_series(vals : Array[Double], name : String) -> SortexchangecombSeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn sort_exchange_comb_series_len(s : SortexchangecombSeries) -> Int { s.vals.length() }
+
+pub fn sort_exchange_comb_series_sum(s : SortexchangecombSeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn sort_exchange_comb_series_mean(s : SortexchangecombSeries) -> Double {
+  let n = sort_exchange_comb_series_len(s)
+  if n == 0 { 0.0 } else { sort_exchange_comb_series_sum(s) / n.to_double() }
+}
+
+pub fn sort_exchange_comb_series_min(s : SortexchangecombSeries) -> Double {
+  let n = sort_exchange_comb_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_series_max(s : SortexchangecombSeries) -> Double {
+  let n = sort_exchange_comb_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_series_range(s : SortexchangecombSeries) -> Double {
+  sort_exchange_comb_series_max(s) - sort_exchange_comb_series_min(s)
+}
+
+pub fn sort_exchange_comb_series_var(s : SortexchangecombSeries) -> Double {
+  let n = sort_exchange_comb_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = sort_exchange_comb_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_series_std(s : SortexchangecombSeries) -> Double { sort_exchange_comb_sqrt(sort_exchange_comb_series_var(s)) }
+
+pub fn sort_exchange_comb_series_median(s : SortexchangecombSeries) -> Double {
+  let n = sort_exchange_comb_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = sort_exchange_comb_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn sort_exchange_comb_series_scale(s : SortexchangecombSeries, f : Double) -> SortexchangecombSeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = sort_exchange_comb_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn sort_exchange_comb_series_add(a : SortexchangecombSeries, b : SortexchangecombSeries) -> SortexchangecombSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = sort_exchange_comb_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn sort_exchange_comb_series_sub(a : SortexchangecombSeries, b : SortexchangecombSeries) -> SortexchangecombSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = sort_exchange_comb_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn sort_exchange_comb_series_normalize(s : SortexchangecombSeries) -> SortexchangecombSeries {
+  let mn = sort_exchange_comb_series_min(s)
+  let mx = sort_exchange_comb_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = sort_exchange_comb_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn sort_exchange_comb_series_cumsum(s : SortexchangecombSeries) -> SortexchangecombSeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = sort_exchange_comb_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn sort_exchange_comb_series_to_string(s : SortexchangecombSeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + sort_exchange_comb_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct SortexchangecombMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn sort_exchange_comb_make_matrix(rows : Int, cols : Int, val : Double) -> SortexchangecombMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn sort_exchange_comb_matrix_identity(n : Int) -> SortexchangecombMatrix {
+  let m = sort_exchange_comb_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn sort_exchange_comb_matrix_get(m : SortexchangecombMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn sort_exchange_comb_matrix_transpose(m : SortexchangecombMatrix) -> SortexchangecombMatrix {
+  let result = sort_exchange_comb_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn sort_exchange_comb_matrix_add(a : SortexchangecombMatrix, b : SortexchangecombMatrix) -> SortexchangecombMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = sort_exchange_comb_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn sort_exchange_comb_matrix_scale(m : SortexchangecombMatrix, s : Double) -> SortexchangecombMatrix {
+  let result = sort_exchange_comb_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn sort_exchange_comb_matrix_multiply(a : SortexchangecombMatrix, b : SortexchangecombMatrix) -> SortexchangecombMatrix {
+  if a.cols != b.rows { return sort_exchange_comb_make_matrix(a.rows, b.cols, 0.0) }
+  let result = sort_exchange_comb_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn sort_exchange_comb_matrix_trace(m : SortexchangecombMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn sort_exchange_comb_matrix_det(m : SortexchangecombMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn sort_exchange_comb_matrix_norm(m : SortexchangecombMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  sort_exchange_comb_sqrt(sum)
+}
+
+pub fn sort_exchange_comb_matrix_to_string(m : SortexchangecombMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + sort_exchange_comb_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct SortexchangecombVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn sort_exchange_comb_make_vector(comps : Array[Double]) -> SortexchangecombVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn sort_exchange_comb_vector_zero(dim : Int) -> SortexchangecombVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn sort_exchange_comb_vector_add(a : SortexchangecombVector, b : SortexchangecombVector) -> SortexchangecombVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = sort_exchange_comb_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn sort_exchange_comb_vector_sub(a : SortexchangecombVector, b : SortexchangecombVector) -> SortexchangecombVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = sort_exchange_comb_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn sort_exchange_comb_vector_scale(v : SortexchangecombVector, s : Double) -> SortexchangecombVector {
+  let mut result = []
+  for i in 0..<v.dim { result = sort_exchange_comb_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn sort_exchange_comb_vector_dot(a : SortexchangecombVector, b : SortexchangecombVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn sort_exchange_comb_vector_norm(v : SortexchangecombVector) -> Double { sort_exchange_comb_sqrt(sort_exchange_comb_vector_dot(v, v)) }
+
+pub fn sort_exchange_comb_vector_normalize(v : SortexchangecombVector) -> SortexchangecombVector {
+  let n = sort_exchange_comb_vector_norm(v)
+  if n < 0.0000001 { v } else { sort_exchange_comb_vector_scale(v, 1.0 / n) }
+}
+
+pub fn sort_exchange_comb_vector_dist(a : SortexchangecombVector, b : SortexchangecombVector) -> Double {
+  sort_exchange_comb_vector_norm(sort_exchange_comb_vector_sub(a, b))
+}
+
+pub fn sort_exchange_comb_vector_to_string(v : SortexchangecombVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + sort_exchange_comb_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn sort_exchange_comb_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = sort_exchange_comb_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_std(data : Array[Double]) -> Double { sort_exchange_comb_sqrt(sort_exchange_comb_var(data)) }
+
+pub fn sort_exchange_comb_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = sort_exchange_comb_mean(a); let mb = sort_exchange_comb_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = sort_exchange_comb_std(a); let sb = sort_exchange_comb_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { sort_exchange_comb_cov(a, b) / (sa * sb) }
+}
+
+pub fn sort_exchange_comb_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = sort_exchange_comb_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn sort_exchange_comb_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  sort_exchange_comb_sqrt(sort_exchange_comb_mse(pred, labels))
+}
+
+pub fn sort_exchange_comb_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + sort_exchange_comb_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = sort_exchange_comb_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn sort_exchange_comb_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn sort_exchange_comb_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn sort_exchange_comb_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = sort_exchange_comb_precision(pred, labels, pos); let r = sort_exchange_comb_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn sort_exchange_comb_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn sort_exchange_comb_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = sort_exchange_comb_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn sort_exchange_comb_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn sort_exchange_comb_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn sort_exchange_comb_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = sort_exchange_comb_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn sort_exchange_comb_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn sort_exchange_comb_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn sort_exchange_comb_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = sort_exchange_comb_min(data); let mx = sort_exchange_comb_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn sort_exchange_comb_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = sort_exchange_comb_mean(data); let sd = sort_exchange_comb_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn sort_exchange_comb_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn sort_exchange_comb_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn sort_exchange_comb_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn sort_exchange_comb_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn sort_exchange_comb_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn sort_exchange_comb_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn sort_exchange_comb_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { sort_exchange_comb_int(x) } else { -sort_exchange_comb_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { sort_exchange_comb_int(f * 1000000.0) } else { sort_exchange_comb_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn sort_exchange_comb_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn sort_exchange_comb_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct SortexchangecombFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_comb_frame_make(size : Int) -> SortexchangecombFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_comb_frame_len(s : SortexchangecombFrame) -> Int { s.size }
+
+pub fn sort_exchange_comb_frame_get(s : SortexchangecombFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_comb_frame_set(s : SortexchangecombFrame, i : Int, v : Double) -> SortexchangecombFrame {
+  let result = sort_exchange_comb_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_frame_sum(s : SortexchangecombFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_comb_frame_mean(s : SortexchangecombFrame) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_comb_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_comb_frame_scale(s : SortexchangecombFrame, f : Double) -> SortexchangecombFrame {
+  let result = sort_exchange_comb_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_comb_frame_add(a : SortexchangecombFrame, b : SortexchangecombFrame) -> SortexchangecombFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_comb_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_frame_copy(s : SortexchangecombFrame) -> SortexchangecombFrame {
+  let result = sort_exchange_comb_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_frame_fill(s : SortexchangecombFrame, v : Double) -> SortexchangecombFrame {
+  let result = sort_exchange_comb_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_frame_min(s : SortexchangecombFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_frame_max(s : SortexchangecombFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_frame_to_string(s : SortexchangecombFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortexchangecombTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_comb_table_make(size : Int) -> SortexchangecombTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_comb_table_len(s : SortexchangecombTable) -> Int { s.size }
+
+pub fn sort_exchange_comb_table_get(s : SortexchangecombTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_comb_table_set(s : SortexchangecombTable, i : Int, v : Double) -> SortexchangecombTable {
+  let result = sort_exchange_comb_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_table_sum(s : SortexchangecombTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_comb_table_mean(s : SortexchangecombTable) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_comb_table_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_comb_table_scale(s : SortexchangecombTable, f : Double) -> SortexchangecombTable {
+  let result = sort_exchange_comb_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_comb_table_add(a : SortexchangecombTable, b : SortexchangecombTable) -> SortexchangecombTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_comb_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_table_copy(s : SortexchangecombTable) -> SortexchangecombTable {
+  let result = sort_exchange_comb_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_table_fill(s : SortexchangecombTable, v : Double) -> SortexchangecombTable {
+  let result = sort_exchange_comb_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_table_min(s : SortexchangecombTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_table_max(s : SortexchangecombTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_table_to_string(s : SortexchangecombTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortexchangecombGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_comb_graphn_make(size : Int) -> SortexchangecombGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_comb_graphn_len(s : SortexchangecombGraphN) -> Int { s.size }
+
+pub fn sort_exchange_comb_graphn_get(s : SortexchangecombGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_comb_graphn_set(s : SortexchangecombGraphN, i : Int, v : Double) -> SortexchangecombGraphN {
+  let result = sort_exchange_comb_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_graphn_sum(s : SortexchangecombGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_comb_graphn_mean(s : SortexchangecombGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_comb_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_comb_graphn_scale(s : SortexchangecombGraphN, f : Double) -> SortexchangecombGraphN {
+  let result = sort_exchange_comb_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_comb_graphn_add(a : SortexchangecombGraphN, b : SortexchangecombGraphN) -> SortexchangecombGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_comb_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_graphn_copy(s : SortexchangecombGraphN) -> SortexchangecombGraphN {
+  let result = sort_exchange_comb_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_graphn_fill(s : SortexchangecombGraphN, v : Double) -> SortexchangecombGraphN {
+  let result = sort_exchange_comb_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_graphn_min(s : SortexchangecombGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_graphn_max(s : SortexchangecombGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_graphn_to_string(s : SortexchangecombGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortexchangecombNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_comb_node_make(size : Int) -> SortexchangecombNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_comb_node_len(s : SortexchangecombNode) -> Int { s.size }
+
+pub fn sort_exchange_comb_node_get(s : SortexchangecombNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_comb_node_set(s : SortexchangecombNode, i : Int, v : Double) -> SortexchangecombNode {
+  let result = sort_exchange_comb_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_node_sum(s : SortexchangecombNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_comb_node_mean(s : SortexchangecombNode) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_comb_node_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_comb_node_scale(s : SortexchangecombNode, f : Double) -> SortexchangecombNode {
+  let result = sort_exchange_comb_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_comb_node_add(a : SortexchangecombNode, b : SortexchangecombNode) -> SortexchangecombNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_comb_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_node_copy(s : SortexchangecombNode) -> SortexchangecombNode {
+  let result = sort_exchange_comb_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_node_fill(s : SortexchangecombNode, v : Double) -> SortexchangecombNode {
+  let result = sort_exchange_comb_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_node_min(s : SortexchangecombNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_node_max(s : SortexchangecombNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_node_to_string(s : SortexchangecombNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortexchangecombEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_comb_edge_make(size : Int) -> SortexchangecombEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_comb_edge_len(s : SortexchangecombEdge) -> Int { s.size }
+
+pub fn sort_exchange_comb_edge_get(s : SortexchangecombEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_comb_edge_set(s : SortexchangecombEdge, i : Int, v : Double) -> SortexchangecombEdge {
+  let result = sort_exchange_comb_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_edge_sum(s : SortexchangecombEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_comb_edge_mean(s : SortexchangecombEdge) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_comb_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_comb_edge_scale(s : SortexchangecombEdge, f : Double) -> SortexchangecombEdge {
+  let result = sort_exchange_comb_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_comb_edge_add(a : SortexchangecombEdge, b : SortexchangecombEdge) -> SortexchangecombEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_comb_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_edge_copy(s : SortexchangecombEdge) -> SortexchangecombEdge {
+  let result = sort_exchange_comb_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_edge_fill(s : SortexchangecombEdge, v : Double) -> SortexchangecombEdge {
+  let result = sort_exchange_comb_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_edge_min(s : SortexchangecombEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_edge_max(s : SortexchangecombEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_edge_to_string(s : SortexchangecombEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortexchangecombPath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_comb_path_make(size : Int) -> SortexchangecombPath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_comb_path_len(s : SortexchangecombPath) -> Int { s.size }
+
+pub fn sort_exchange_comb_path_get(s : SortexchangecombPath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_comb_path_set(s : SortexchangecombPath, i : Int, v : Double) -> SortexchangecombPath {
+  let result = sort_exchange_comb_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_path_sum(s : SortexchangecombPath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_comb_path_mean(s : SortexchangecombPath) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_comb_path_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_comb_path_scale(s : SortexchangecombPath, f : Double) -> SortexchangecombPath {
+  let result = sort_exchange_comb_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_comb_path_add(a : SortexchangecombPath, b : SortexchangecombPath) -> SortexchangecombPath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_comb_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_path_copy(s : SortexchangecombPath) -> SortexchangecombPath {
+  let result = sort_exchange_comb_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_path_fill(s : SortexchangecombPath, v : Double) -> SortexchangecombPath {
+  let result = sort_exchange_comb_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_path_min(s : SortexchangecombPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_path_max(s : SortexchangecombPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_path_to_string(s : SortexchangecombPath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortexchangecombCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_comb_cluster_make(size : Int) -> SortexchangecombCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_comb_cluster_len(s : SortexchangecombCluster) -> Int { s.size }
+
+pub fn sort_exchange_comb_cluster_get(s : SortexchangecombCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_comb_cluster_set(s : SortexchangecombCluster, i : Int, v : Double) -> SortexchangecombCluster {
+  let result = sort_exchange_comb_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_cluster_sum(s : SortexchangecombCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_comb_cluster_mean(s : SortexchangecombCluster) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_comb_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_comb_cluster_scale(s : SortexchangecombCluster, f : Double) -> SortexchangecombCluster {
+  let result = sort_exchange_comb_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_comb_cluster_add(a : SortexchangecombCluster, b : SortexchangecombCluster) -> SortexchangecombCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_comb_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_cluster_copy(s : SortexchangecombCluster) -> SortexchangecombCluster {
+  let result = sort_exchange_comb_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_cluster_fill(s : SortexchangecombCluster, v : Double) -> SortexchangecombCluster {
+  let result = sort_exchange_comb_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_cluster_min(s : SortexchangecombCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_cluster_max(s : SortexchangecombCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_cluster_to_string(s : SortexchangecombCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortexchangecombModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_comb_model_make(size : Int) -> SortexchangecombModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_comb_model_len(s : SortexchangecombModel) -> Int { s.size }
+
+pub fn sort_exchange_comb_model_get(s : SortexchangecombModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_comb_model_set(s : SortexchangecombModel, i : Int, v : Double) -> SortexchangecombModel {
+  let result = sort_exchange_comb_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_model_sum(s : SortexchangecombModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_comb_model_mean(s : SortexchangecombModel) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_comb_model_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_comb_model_scale(s : SortexchangecombModel, f : Double) -> SortexchangecombModel {
+  let result = sort_exchange_comb_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_comb_model_add(a : SortexchangecombModel, b : SortexchangecombModel) -> SortexchangecombModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_comb_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_model_copy(s : SortexchangecombModel) -> SortexchangecombModel {
+  let result = sort_exchange_comb_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_model_fill(s : SortexchangecombModel, v : Double) -> SortexchangecombModel {
+  let result = sort_exchange_comb_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_model_min(s : SortexchangecombModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_model_max(s : SortexchangecombModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_model_to_string(s : SortexchangecombModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortexchangecombLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_comb_layer_make(size : Int) -> SortexchangecombLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_comb_layer_len(s : SortexchangecombLayer) -> Int { s.size }
+
+pub fn sort_exchange_comb_layer_get(s : SortexchangecombLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_comb_layer_set(s : SortexchangecombLayer, i : Int, v : Double) -> SortexchangecombLayer {
+  let result = sort_exchange_comb_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_layer_sum(s : SortexchangecombLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_comb_layer_mean(s : SortexchangecombLayer) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_comb_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_comb_layer_scale(s : SortexchangecombLayer, f : Double) -> SortexchangecombLayer {
+  let result = sort_exchange_comb_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_comb_layer_add(a : SortexchangecombLayer, b : SortexchangecombLayer) -> SortexchangecombLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_comb_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_layer_copy(s : SortexchangecombLayer) -> SortexchangecombLayer {
+  let result = sort_exchange_comb_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_layer_fill(s : SortexchangecombLayer, v : Double) -> SortexchangecombLayer {
+  let result = sort_exchange_comb_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_layer_min(s : SortexchangecombLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_layer_max(s : SortexchangecombLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_layer_to_string(s : SortexchangecombLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortexchangecombBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_comb_buffer_make(size : Int) -> SortexchangecombBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_comb_buffer_len(s : SortexchangecombBuffer) -> Int { s.size }
+
+pub fn sort_exchange_comb_buffer_get(s : SortexchangecombBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_comb_buffer_set(s : SortexchangecombBuffer, i : Int, v : Double) -> SortexchangecombBuffer {
+  let result = sort_exchange_comb_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_buffer_sum(s : SortexchangecombBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_comb_buffer_mean(s : SortexchangecombBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_comb_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_comb_buffer_scale(s : SortexchangecombBuffer, f : Double) -> SortexchangecombBuffer {
+  let result = sort_exchange_comb_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_comb_buffer_add(a : SortexchangecombBuffer, b : SortexchangecombBuffer) -> SortexchangecombBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_comb_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_buffer_copy(s : SortexchangecombBuffer) -> SortexchangecombBuffer {
+  let result = sort_exchange_comb_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_buffer_fill(s : SortexchangecombBuffer, v : Double) -> SortexchangecombBuffer {
+  let result = sort_exchange_comb_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_buffer_min(s : SortexchangecombBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_buffer_max(s : SortexchangecombBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_buffer_to_string(s : SortexchangecombBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortexchangecombCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_comb_cursor_make(size : Int) -> SortexchangecombCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_comb_cursor_len(s : SortexchangecombCursor) -> Int { s.size }
+
+pub fn sort_exchange_comb_cursor_get(s : SortexchangecombCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_comb_cursor_set(s : SortexchangecombCursor, i : Int, v : Double) -> SortexchangecombCursor {
+  let result = sort_exchange_comb_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_cursor_sum(s : SortexchangecombCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_comb_cursor_mean(s : SortexchangecombCursor) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_comb_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_comb_cursor_scale(s : SortexchangecombCursor, f : Double) -> SortexchangecombCursor {
+  let result = sort_exchange_comb_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_comb_cursor_add(a : SortexchangecombCursor, b : SortexchangecombCursor) -> SortexchangecombCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_comb_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_cursor_copy(s : SortexchangecombCursor) -> SortexchangecombCursor {
+  let result = sort_exchange_comb_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_cursor_fill(s : SortexchangecombCursor, v : Double) -> SortexchangecombCursor {
+  let result = sort_exchange_comb_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_cursor_min(s : SortexchangecombCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_cursor_max(s : SortexchangecombCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_cursor_to_string(s : SortexchangecombCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortexchangecombView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_comb_view_make(size : Int) -> SortexchangecombView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_comb_view_len(s : SortexchangecombView) -> Int { s.size }
+
+pub fn sort_exchange_comb_view_get(s : SortexchangecombView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_comb_view_set(s : SortexchangecombView, i : Int, v : Double) -> SortexchangecombView {
+  let result = sort_exchange_comb_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_view_sum(s : SortexchangecombView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_comb_view_mean(s : SortexchangecombView) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_comb_view_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_comb_view_scale(s : SortexchangecombView, f : Double) -> SortexchangecombView {
+  let result = sort_exchange_comb_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_comb_view_add(a : SortexchangecombView, b : SortexchangecombView) -> SortexchangecombView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_comb_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_view_copy(s : SortexchangecombView) -> SortexchangecombView {
+  let result = sort_exchange_comb_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_view_fill(s : SortexchangecombView, v : Double) -> SortexchangecombView {
+  let result = sort_exchange_comb_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_view_min(s : SortexchangecombView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_view_max(s : SortexchangecombView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_view_to_string(s : SortexchangecombView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortexchangecombRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_comb_range_make(size : Int) -> SortexchangecombRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_comb_range_len(s : SortexchangecombRange) -> Int { s.size }
+
+pub fn sort_exchange_comb_range_get(s : SortexchangecombRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_comb_range_set(s : SortexchangecombRange, i : Int, v : Double) -> SortexchangecombRange {
+  let result = sort_exchange_comb_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_range_sum(s : SortexchangecombRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_comb_range_mean(s : SortexchangecombRange) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_comb_range_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_comb_range_scale(s : SortexchangecombRange, f : Double) -> SortexchangecombRange {
+  let result = sort_exchange_comb_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_comb_range_add(a : SortexchangecombRange, b : SortexchangecombRange) -> SortexchangecombRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_comb_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_range_copy(s : SortexchangecombRange) -> SortexchangecombRange {
+  let result = sort_exchange_comb_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_range_fill(s : SortexchangecombRange, v : Double) -> SortexchangecombRange {
+  let result = sort_exchange_comb_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_range_min(s : SortexchangecombRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_range_max(s : SortexchangecombRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_range_to_string(s : SortexchangecombRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortexchangecombSlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_comb_slice_make(size : Int) -> SortexchangecombSlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_comb_slice_len(s : SortexchangecombSlice) -> Int { s.size }
+
+pub fn sort_exchange_comb_slice_get(s : SortexchangecombSlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_comb_slice_set(s : SortexchangecombSlice, i : Int, v : Double) -> SortexchangecombSlice {
+  let result = sort_exchange_comb_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_slice_sum(s : SortexchangecombSlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_comb_slice_mean(s : SortexchangecombSlice) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_comb_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_comb_slice_scale(s : SortexchangecombSlice, f : Double) -> SortexchangecombSlice {
+  let result = sort_exchange_comb_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_comb_slice_add(a : SortexchangecombSlice, b : SortexchangecombSlice) -> SortexchangecombSlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_comb_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_slice_copy(s : SortexchangecombSlice) -> SortexchangecombSlice {
+  let result = sort_exchange_comb_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_comb_slice_fill(s : SortexchangecombSlice, v : Double) -> SortexchangecombSlice {
+  let result = sort_exchange_comb_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_comb_slice_min(s : SortexchangecombSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_slice_max(s : SortexchangecombSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_comb_slice_to_string(s : SortexchangecombSlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn sort_exchange_comb_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_comb_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

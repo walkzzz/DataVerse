@@ -1,0 +1,1955 @@
+///===
+/// extcore/ml_metric_ranking
+
+pub(all) struct MlmetricrankingPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn ml_metric_ranking_make_point(x : Double, y : Double) -> MlmetricrankingPoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn ml_metric_ranking_make_point3(x : Double, y : Double, z : Double) -> MlmetricrankingPoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn ml_metric_ranking_point_x(pt : MlmetricrankingPoint) -> Double { pt.x }
+
+pub fn ml_metric_ranking_point_y(pt : MlmetricrankingPoint) -> Double { pt.y }
+
+pub fn ml_metric_ranking_point_z(pt : MlmetricrankingPoint) -> Double { pt.z }
+
+pub fn ml_metric_ranking_point_label(pt : MlmetricrankingPoint) -> Int { pt.label }
+
+pub fn ml_metric_ranking_point_dist(a : MlmetricrankingPoint, b : MlmetricrankingPoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  ml_metric_ranking_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn ml_metric_ranking_point_add(a : MlmetricrankingPoint, b : MlmetricrankingPoint) -> MlmetricrankingPoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn ml_metric_ranking_point_sub(a : MlmetricrankingPoint, b : MlmetricrankingPoint) -> MlmetricrankingPoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn ml_metric_ranking_point_scale(pt : MlmetricrankingPoint, s : Double) -> MlmetricrankingPoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn ml_metric_ranking_point_dot(a : MlmetricrankingPoint, b : MlmetricrankingPoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn ml_metric_ranking_point_cross(a : MlmetricrankingPoint, b : MlmetricrankingPoint) -> MlmetricrankingPoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn ml_metric_ranking_point_norm(pt : MlmetricrankingPoint) -> Double {
+  ml_metric_ranking_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn ml_metric_ranking_point_normalize(pt : MlmetricrankingPoint) -> MlmetricrankingPoint {
+  let n = ml_metric_ranking_point_norm(pt)
+  if n < 0.0000001 { pt } else { ml_metric_ranking_point_scale(pt, 1.0 / n) }
+}
+
+pub fn ml_metric_ranking_point_negate(pt : MlmetricrankingPoint) -> MlmetricrankingPoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn ml_metric_ranking_point_mid(a : MlmetricrankingPoint, b : MlmetricrankingPoint) -> MlmetricrankingPoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn ml_metric_ranking_point_lerp(a : MlmetricrankingPoint, b : MlmetricrankingPoint, t : Double) -> MlmetricrankingPoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn ml_metric_ranking_point_to_string(pt : MlmetricrankingPoint) -> String {
+  "(" + ml_metric_ranking_dbl(pt.x) + ", " + ml_metric_ranking_dbl(pt.y) + ", " + ml_metric_ranking_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct MlmetricrankingSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn ml_metric_ranking_make_series(vals : Array[Double], name : String) -> MlmetricrankingSeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn ml_metric_ranking_series_len(s : MlmetricrankingSeries) -> Int { s.vals.length() }
+
+pub fn ml_metric_ranking_series_sum(s : MlmetricrankingSeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn ml_metric_ranking_series_mean(s : MlmetricrankingSeries) -> Double {
+  let n = ml_metric_ranking_series_len(s)
+  if n == 0 { 0.0 } else { ml_metric_ranking_series_sum(s) / n.to_double() }
+}
+
+pub fn ml_metric_ranking_series_min(s : MlmetricrankingSeries) -> Double {
+  let n = ml_metric_ranking_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_series_max(s : MlmetricrankingSeries) -> Double {
+  let n = ml_metric_ranking_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_series_range(s : MlmetricrankingSeries) -> Double {
+  ml_metric_ranking_series_max(s) - ml_metric_ranking_series_min(s)
+}
+
+pub fn ml_metric_ranking_series_var(s : MlmetricrankingSeries) -> Double {
+  let n = ml_metric_ranking_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = ml_metric_ranking_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_series_std(s : MlmetricrankingSeries) -> Double { ml_metric_ranking_sqrt(ml_metric_ranking_series_var(s)) }
+
+pub fn ml_metric_ranking_series_median(s : MlmetricrankingSeries) -> Double {
+  let n = ml_metric_ranking_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = ml_metric_ranking_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn ml_metric_ranking_series_scale(s : MlmetricrankingSeries, f : Double) -> MlmetricrankingSeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = ml_metric_ranking_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn ml_metric_ranking_series_add(a : MlmetricrankingSeries, b : MlmetricrankingSeries) -> MlmetricrankingSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = ml_metric_ranking_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn ml_metric_ranking_series_sub(a : MlmetricrankingSeries, b : MlmetricrankingSeries) -> MlmetricrankingSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = ml_metric_ranking_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn ml_metric_ranking_series_normalize(s : MlmetricrankingSeries) -> MlmetricrankingSeries {
+  let mn = ml_metric_ranking_series_min(s)
+  let mx = ml_metric_ranking_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = ml_metric_ranking_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn ml_metric_ranking_series_cumsum(s : MlmetricrankingSeries) -> MlmetricrankingSeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = ml_metric_ranking_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn ml_metric_ranking_series_to_string(s : MlmetricrankingSeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + ml_metric_ranking_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct MlmetricrankingMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn ml_metric_ranking_make_matrix(rows : Int, cols : Int, val : Double) -> MlmetricrankingMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn ml_metric_ranking_matrix_identity(n : Int) -> MlmetricrankingMatrix {
+  let m = ml_metric_ranking_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn ml_metric_ranking_matrix_get(m : MlmetricrankingMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn ml_metric_ranking_matrix_transpose(m : MlmetricrankingMatrix) -> MlmetricrankingMatrix {
+  let result = ml_metric_ranking_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn ml_metric_ranking_matrix_add(a : MlmetricrankingMatrix, b : MlmetricrankingMatrix) -> MlmetricrankingMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = ml_metric_ranking_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn ml_metric_ranking_matrix_scale(m : MlmetricrankingMatrix, s : Double) -> MlmetricrankingMatrix {
+  let result = ml_metric_ranking_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn ml_metric_ranking_matrix_multiply(a : MlmetricrankingMatrix, b : MlmetricrankingMatrix) -> MlmetricrankingMatrix {
+  if a.cols != b.rows { return ml_metric_ranking_make_matrix(a.rows, b.cols, 0.0) }
+  let result = ml_metric_ranking_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn ml_metric_ranking_matrix_trace(m : MlmetricrankingMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn ml_metric_ranking_matrix_det(m : MlmetricrankingMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn ml_metric_ranking_matrix_norm(m : MlmetricrankingMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  ml_metric_ranking_sqrt(sum)
+}
+
+pub fn ml_metric_ranking_matrix_to_string(m : MlmetricrankingMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + ml_metric_ranking_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct MlmetricrankingVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn ml_metric_ranking_make_vector(comps : Array[Double]) -> MlmetricrankingVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn ml_metric_ranking_vector_zero(dim : Int) -> MlmetricrankingVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn ml_metric_ranking_vector_add(a : MlmetricrankingVector, b : MlmetricrankingVector) -> MlmetricrankingVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = ml_metric_ranking_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn ml_metric_ranking_vector_sub(a : MlmetricrankingVector, b : MlmetricrankingVector) -> MlmetricrankingVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = ml_metric_ranking_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn ml_metric_ranking_vector_scale(v : MlmetricrankingVector, s : Double) -> MlmetricrankingVector {
+  let mut result = []
+  for i in 0..<v.dim { result = ml_metric_ranking_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn ml_metric_ranking_vector_dot(a : MlmetricrankingVector, b : MlmetricrankingVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn ml_metric_ranking_vector_norm(v : MlmetricrankingVector) -> Double { ml_metric_ranking_sqrt(ml_metric_ranking_vector_dot(v, v)) }
+
+pub fn ml_metric_ranking_vector_normalize(v : MlmetricrankingVector) -> MlmetricrankingVector {
+  let n = ml_metric_ranking_vector_norm(v)
+  if n < 0.0000001 { v } else { ml_metric_ranking_vector_scale(v, 1.0 / n) }
+}
+
+pub fn ml_metric_ranking_vector_dist(a : MlmetricrankingVector, b : MlmetricrankingVector) -> Double {
+  ml_metric_ranking_vector_norm(ml_metric_ranking_vector_sub(a, b))
+}
+
+pub fn ml_metric_ranking_vector_to_string(v : MlmetricrankingVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + ml_metric_ranking_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn ml_metric_ranking_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = ml_metric_ranking_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_std(data : Array[Double]) -> Double { ml_metric_ranking_sqrt(ml_metric_ranking_var(data)) }
+
+pub fn ml_metric_ranking_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = ml_metric_ranking_mean(a); let mb = ml_metric_ranking_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = ml_metric_ranking_std(a); let sb = ml_metric_ranking_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { ml_metric_ranking_cov(a, b) / (sa * sb) }
+}
+
+pub fn ml_metric_ranking_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = ml_metric_ranking_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn ml_metric_ranking_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  ml_metric_ranking_sqrt(ml_metric_ranking_mse(pred, labels))
+}
+
+pub fn ml_metric_ranking_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + ml_metric_ranking_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = ml_metric_ranking_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn ml_metric_ranking_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn ml_metric_ranking_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn ml_metric_ranking_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = ml_metric_ranking_precision(pred, labels, pos); let r = ml_metric_ranking_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn ml_metric_ranking_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn ml_metric_ranking_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = ml_metric_ranking_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn ml_metric_ranking_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn ml_metric_ranking_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn ml_metric_ranking_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = ml_metric_ranking_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn ml_metric_ranking_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn ml_metric_ranking_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn ml_metric_ranking_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = ml_metric_ranking_min(data); let mx = ml_metric_ranking_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn ml_metric_ranking_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = ml_metric_ranking_mean(data); let sd = ml_metric_ranking_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn ml_metric_ranking_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn ml_metric_ranking_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn ml_metric_ranking_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn ml_metric_ranking_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn ml_metric_ranking_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn ml_metric_ranking_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn ml_metric_ranking_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { ml_metric_ranking_int(x) } else { -ml_metric_ranking_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { ml_metric_ranking_int(f * 1000000.0) } else { ml_metric_ranking_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn ml_metric_ranking_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn ml_metric_ranking_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct MlmetricrankingFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_metric_ranking_frame_make(size : Int) -> MlmetricrankingFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_metric_ranking_frame_len(s : MlmetricrankingFrame) -> Int { s.size }
+
+pub fn ml_metric_ranking_frame_get(s : MlmetricrankingFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_metric_ranking_frame_set(s : MlmetricrankingFrame, i : Int, v : Double) -> MlmetricrankingFrame {
+  let result = ml_metric_ranking_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_frame_sum(s : MlmetricrankingFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_metric_ranking_frame_mean(s : MlmetricrankingFrame) -> Double {
+  if s.size == 0 { 0.0 } else { ml_metric_ranking_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_metric_ranking_frame_scale(s : MlmetricrankingFrame, f : Double) -> MlmetricrankingFrame {
+  let result = ml_metric_ranking_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_metric_ranking_frame_add(a : MlmetricrankingFrame, b : MlmetricrankingFrame) -> MlmetricrankingFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_metric_ranking_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_frame_copy(s : MlmetricrankingFrame) -> MlmetricrankingFrame {
+  let result = ml_metric_ranking_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_frame_fill(s : MlmetricrankingFrame, v : Double) -> MlmetricrankingFrame {
+  let result = ml_metric_ranking_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_frame_min(s : MlmetricrankingFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_frame_max(s : MlmetricrankingFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_frame_to_string(s : MlmetricrankingFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlmetricrankingTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_metric_ranking_table_make(size : Int) -> MlmetricrankingTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_metric_ranking_table_len(s : MlmetricrankingTable) -> Int { s.size }
+
+pub fn ml_metric_ranking_table_get(s : MlmetricrankingTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_metric_ranking_table_set(s : MlmetricrankingTable, i : Int, v : Double) -> MlmetricrankingTable {
+  let result = ml_metric_ranking_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_table_sum(s : MlmetricrankingTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_metric_ranking_table_mean(s : MlmetricrankingTable) -> Double {
+  if s.size == 0 { 0.0 } else { ml_metric_ranking_table_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_metric_ranking_table_scale(s : MlmetricrankingTable, f : Double) -> MlmetricrankingTable {
+  let result = ml_metric_ranking_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_metric_ranking_table_add(a : MlmetricrankingTable, b : MlmetricrankingTable) -> MlmetricrankingTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_metric_ranking_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_table_copy(s : MlmetricrankingTable) -> MlmetricrankingTable {
+  let result = ml_metric_ranking_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_table_fill(s : MlmetricrankingTable, v : Double) -> MlmetricrankingTable {
+  let result = ml_metric_ranking_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_table_min(s : MlmetricrankingTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_table_max(s : MlmetricrankingTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_table_to_string(s : MlmetricrankingTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlmetricrankingGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_metric_ranking_graphn_make(size : Int) -> MlmetricrankingGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_metric_ranking_graphn_len(s : MlmetricrankingGraphN) -> Int { s.size }
+
+pub fn ml_metric_ranking_graphn_get(s : MlmetricrankingGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_metric_ranking_graphn_set(s : MlmetricrankingGraphN, i : Int, v : Double) -> MlmetricrankingGraphN {
+  let result = ml_metric_ranking_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_graphn_sum(s : MlmetricrankingGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_metric_ranking_graphn_mean(s : MlmetricrankingGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { ml_metric_ranking_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_metric_ranking_graphn_scale(s : MlmetricrankingGraphN, f : Double) -> MlmetricrankingGraphN {
+  let result = ml_metric_ranking_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_metric_ranking_graphn_add(a : MlmetricrankingGraphN, b : MlmetricrankingGraphN) -> MlmetricrankingGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_metric_ranking_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_graphn_copy(s : MlmetricrankingGraphN) -> MlmetricrankingGraphN {
+  let result = ml_metric_ranking_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_graphn_fill(s : MlmetricrankingGraphN, v : Double) -> MlmetricrankingGraphN {
+  let result = ml_metric_ranking_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_graphn_min(s : MlmetricrankingGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_graphn_max(s : MlmetricrankingGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_graphn_to_string(s : MlmetricrankingGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlmetricrankingNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_metric_ranking_node_make(size : Int) -> MlmetricrankingNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_metric_ranking_node_len(s : MlmetricrankingNode) -> Int { s.size }
+
+pub fn ml_metric_ranking_node_get(s : MlmetricrankingNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_metric_ranking_node_set(s : MlmetricrankingNode, i : Int, v : Double) -> MlmetricrankingNode {
+  let result = ml_metric_ranking_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_node_sum(s : MlmetricrankingNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_metric_ranking_node_mean(s : MlmetricrankingNode) -> Double {
+  if s.size == 0 { 0.0 } else { ml_metric_ranking_node_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_metric_ranking_node_scale(s : MlmetricrankingNode, f : Double) -> MlmetricrankingNode {
+  let result = ml_metric_ranking_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_metric_ranking_node_add(a : MlmetricrankingNode, b : MlmetricrankingNode) -> MlmetricrankingNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_metric_ranking_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_node_copy(s : MlmetricrankingNode) -> MlmetricrankingNode {
+  let result = ml_metric_ranking_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_node_fill(s : MlmetricrankingNode, v : Double) -> MlmetricrankingNode {
+  let result = ml_metric_ranking_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_node_min(s : MlmetricrankingNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_node_max(s : MlmetricrankingNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_node_to_string(s : MlmetricrankingNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlmetricrankingEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_metric_ranking_edge_make(size : Int) -> MlmetricrankingEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_metric_ranking_edge_len(s : MlmetricrankingEdge) -> Int { s.size }
+
+pub fn ml_metric_ranking_edge_get(s : MlmetricrankingEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_metric_ranking_edge_set(s : MlmetricrankingEdge, i : Int, v : Double) -> MlmetricrankingEdge {
+  let result = ml_metric_ranking_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_edge_sum(s : MlmetricrankingEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_metric_ranking_edge_mean(s : MlmetricrankingEdge) -> Double {
+  if s.size == 0 { 0.0 } else { ml_metric_ranking_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_metric_ranking_edge_scale(s : MlmetricrankingEdge, f : Double) -> MlmetricrankingEdge {
+  let result = ml_metric_ranking_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_metric_ranking_edge_add(a : MlmetricrankingEdge, b : MlmetricrankingEdge) -> MlmetricrankingEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_metric_ranking_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_edge_copy(s : MlmetricrankingEdge) -> MlmetricrankingEdge {
+  let result = ml_metric_ranking_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_edge_fill(s : MlmetricrankingEdge, v : Double) -> MlmetricrankingEdge {
+  let result = ml_metric_ranking_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_edge_min(s : MlmetricrankingEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_edge_max(s : MlmetricrankingEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_edge_to_string(s : MlmetricrankingEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlmetricrankingPath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_metric_ranking_path_make(size : Int) -> MlmetricrankingPath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_metric_ranking_path_len(s : MlmetricrankingPath) -> Int { s.size }
+
+pub fn ml_metric_ranking_path_get(s : MlmetricrankingPath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_metric_ranking_path_set(s : MlmetricrankingPath, i : Int, v : Double) -> MlmetricrankingPath {
+  let result = ml_metric_ranking_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_path_sum(s : MlmetricrankingPath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_metric_ranking_path_mean(s : MlmetricrankingPath) -> Double {
+  if s.size == 0 { 0.0 } else { ml_metric_ranking_path_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_metric_ranking_path_scale(s : MlmetricrankingPath, f : Double) -> MlmetricrankingPath {
+  let result = ml_metric_ranking_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_metric_ranking_path_add(a : MlmetricrankingPath, b : MlmetricrankingPath) -> MlmetricrankingPath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_metric_ranking_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_path_copy(s : MlmetricrankingPath) -> MlmetricrankingPath {
+  let result = ml_metric_ranking_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_path_fill(s : MlmetricrankingPath, v : Double) -> MlmetricrankingPath {
+  let result = ml_metric_ranking_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_path_min(s : MlmetricrankingPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_path_max(s : MlmetricrankingPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_path_to_string(s : MlmetricrankingPath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlmetricrankingCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_metric_ranking_cluster_make(size : Int) -> MlmetricrankingCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_metric_ranking_cluster_len(s : MlmetricrankingCluster) -> Int { s.size }
+
+pub fn ml_metric_ranking_cluster_get(s : MlmetricrankingCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_metric_ranking_cluster_set(s : MlmetricrankingCluster, i : Int, v : Double) -> MlmetricrankingCluster {
+  let result = ml_metric_ranking_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_cluster_sum(s : MlmetricrankingCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_metric_ranking_cluster_mean(s : MlmetricrankingCluster) -> Double {
+  if s.size == 0 { 0.0 } else { ml_metric_ranking_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_metric_ranking_cluster_scale(s : MlmetricrankingCluster, f : Double) -> MlmetricrankingCluster {
+  let result = ml_metric_ranking_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_metric_ranking_cluster_add(a : MlmetricrankingCluster, b : MlmetricrankingCluster) -> MlmetricrankingCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_metric_ranking_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_cluster_copy(s : MlmetricrankingCluster) -> MlmetricrankingCluster {
+  let result = ml_metric_ranking_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_cluster_fill(s : MlmetricrankingCluster, v : Double) -> MlmetricrankingCluster {
+  let result = ml_metric_ranking_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_cluster_min(s : MlmetricrankingCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_cluster_max(s : MlmetricrankingCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_cluster_to_string(s : MlmetricrankingCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlmetricrankingModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_metric_ranking_model_make(size : Int) -> MlmetricrankingModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_metric_ranking_model_len(s : MlmetricrankingModel) -> Int { s.size }
+
+pub fn ml_metric_ranking_model_get(s : MlmetricrankingModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_metric_ranking_model_set(s : MlmetricrankingModel, i : Int, v : Double) -> MlmetricrankingModel {
+  let result = ml_metric_ranking_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_model_sum(s : MlmetricrankingModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_metric_ranking_model_mean(s : MlmetricrankingModel) -> Double {
+  if s.size == 0 { 0.0 } else { ml_metric_ranking_model_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_metric_ranking_model_scale(s : MlmetricrankingModel, f : Double) -> MlmetricrankingModel {
+  let result = ml_metric_ranking_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_metric_ranking_model_add(a : MlmetricrankingModel, b : MlmetricrankingModel) -> MlmetricrankingModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_metric_ranking_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_model_copy(s : MlmetricrankingModel) -> MlmetricrankingModel {
+  let result = ml_metric_ranking_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_model_fill(s : MlmetricrankingModel, v : Double) -> MlmetricrankingModel {
+  let result = ml_metric_ranking_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_model_min(s : MlmetricrankingModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_model_max(s : MlmetricrankingModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_model_to_string(s : MlmetricrankingModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlmetricrankingLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_metric_ranking_layer_make(size : Int) -> MlmetricrankingLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_metric_ranking_layer_len(s : MlmetricrankingLayer) -> Int { s.size }
+
+pub fn ml_metric_ranking_layer_get(s : MlmetricrankingLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_metric_ranking_layer_set(s : MlmetricrankingLayer, i : Int, v : Double) -> MlmetricrankingLayer {
+  let result = ml_metric_ranking_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_layer_sum(s : MlmetricrankingLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_metric_ranking_layer_mean(s : MlmetricrankingLayer) -> Double {
+  if s.size == 0 { 0.0 } else { ml_metric_ranking_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_metric_ranking_layer_scale(s : MlmetricrankingLayer, f : Double) -> MlmetricrankingLayer {
+  let result = ml_metric_ranking_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_metric_ranking_layer_add(a : MlmetricrankingLayer, b : MlmetricrankingLayer) -> MlmetricrankingLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_metric_ranking_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_layer_copy(s : MlmetricrankingLayer) -> MlmetricrankingLayer {
+  let result = ml_metric_ranking_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_layer_fill(s : MlmetricrankingLayer, v : Double) -> MlmetricrankingLayer {
+  let result = ml_metric_ranking_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_layer_min(s : MlmetricrankingLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_layer_max(s : MlmetricrankingLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_layer_to_string(s : MlmetricrankingLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlmetricrankingBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_metric_ranking_buffer_make(size : Int) -> MlmetricrankingBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_metric_ranking_buffer_len(s : MlmetricrankingBuffer) -> Int { s.size }
+
+pub fn ml_metric_ranking_buffer_get(s : MlmetricrankingBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_metric_ranking_buffer_set(s : MlmetricrankingBuffer, i : Int, v : Double) -> MlmetricrankingBuffer {
+  let result = ml_metric_ranking_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_buffer_sum(s : MlmetricrankingBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_metric_ranking_buffer_mean(s : MlmetricrankingBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { ml_metric_ranking_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_metric_ranking_buffer_scale(s : MlmetricrankingBuffer, f : Double) -> MlmetricrankingBuffer {
+  let result = ml_metric_ranking_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_metric_ranking_buffer_add(a : MlmetricrankingBuffer, b : MlmetricrankingBuffer) -> MlmetricrankingBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_metric_ranking_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_buffer_copy(s : MlmetricrankingBuffer) -> MlmetricrankingBuffer {
+  let result = ml_metric_ranking_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_buffer_fill(s : MlmetricrankingBuffer, v : Double) -> MlmetricrankingBuffer {
+  let result = ml_metric_ranking_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_buffer_min(s : MlmetricrankingBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_buffer_max(s : MlmetricrankingBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_buffer_to_string(s : MlmetricrankingBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlmetricrankingCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_metric_ranking_cursor_make(size : Int) -> MlmetricrankingCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_metric_ranking_cursor_len(s : MlmetricrankingCursor) -> Int { s.size }
+
+pub fn ml_metric_ranking_cursor_get(s : MlmetricrankingCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_metric_ranking_cursor_set(s : MlmetricrankingCursor, i : Int, v : Double) -> MlmetricrankingCursor {
+  let result = ml_metric_ranking_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_cursor_sum(s : MlmetricrankingCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_metric_ranking_cursor_mean(s : MlmetricrankingCursor) -> Double {
+  if s.size == 0 { 0.0 } else { ml_metric_ranking_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_metric_ranking_cursor_scale(s : MlmetricrankingCursor, f : Double) -> MlmetricrankingCursor {
+  let result = ml_metric_ranking_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_metric_ranking_cursor_add(a : MlmetricrankingCursor, b : MlmetricrankingCursor) -> MlmetricrankingCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_metric_ranking_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_cursor_copy(s : MlmetricrankingCursor) -> MlmetricrankingCursor {
+  let result = ml_metric_ranking_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_cursor_fill(s : MlmetricrankingCursor, v : Double) -> MlmetricrankingCursor {
+  let result = ml_metric_ranking_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_cursor_min(s : MlmetricrankingCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_cursor_max(s : MlmetricrankingCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_cursor_to_string(s : MlmetricrankingCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlmetricrankingView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_metric_ranking_view_make(size : Int) -> MlmetricrankingView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_metric_ranking_view_len(s : MlmetricrankingView) -> Int { s.size }
+
+pub fn ml_metric_ranking_view_get(s : MlmetricrankingView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_metric_ranking_view_set(s : MlmetricrankingView, i : Int, v : Double) -> MlmetricrankingView {
+  let result = ml_metric_ranking_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_view_sum(s : MlmetricrankingView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_metric_ranking_view_mean(s : MlmetricrankingView) -> Double {
+  if s.size == 0 { 0.0 } else { ml_metric_ranking_view_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_metric_ranking_view_scale(s : MlmetricrankingView, f : Double) -> MlmetricrankingView {
+  let result = ml_metric_ranking_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_metric_ranking_view_add(a : MlmetricrankingView, b : MlmetricrankingView) -> MlmetricrankingView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_metric_ranking_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_view_copy(s : MlmetricrankingView) -> MlmetricrankingView {
+  let result = ml_metric_ranking_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_view_fill(s : MlmetricrankingView, v : Double) -> MlmetricrankingView {
+  let result = ml_metric_ranking_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_view_min(s : MlmetricrankingView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_view_max(s : MlmetricrankingView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_view_to_string(s : MlmetricrankingView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlmetricrankingRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_metric_ranking_range_make(size : Int) -> MlmetricrankingRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_metric_ranking_range_len(s : MlmetricrankingRange) -> Int { s.size }
+
+pub fn ml_metric_ranking_range_get(s : MlmetricrankingRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_metric_ranking_range_set(s : MlmetricrankingRange, i : Int, v : Double) -> MlmetricrankingRange {
+  let result = ml_metric_ranking_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_range_sum(s : MlmetricrankingRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_metric_ranking_range_mean(s : MlmetricrankingRange) -> Double {
+  if s.size == 0 { 0.0 } else { ml_metric_ranking_range_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_metric_ranking_range_scale(s : MlmetricrankingRange, f : Double) -> MlmetricrankingRange {
+  let result = ml_metric_ranking_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_metric_ranking_range_add(a : MlmetricrankingRange, b : MlmetricrankingRange) -> MlmetricrankingRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_metric_ranking_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_range_copy(s : MlmetricrankingRange) -> MlmetricrankingRange {
+  let result = ml_metric_ranking_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_range_fill(s : MlmetricrankingRange, v : Double) -> MlmetricrankingRange {
+  let result = ml_metric_ranking_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_range_min(s : MlmetricrankingRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_range_max(s : MlmetricrankingRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_range_to_string(s : MlmetricrankingRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlmetricrankingSlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_metric_ranking_slice_make(size : Int) -> MlmetricrankingSlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_metric_ranking_slice_len(s : MlmetricrankingSlice) -> Int { s.size }
+
+pub fn ml_metric_ranking_slice_get(s : MlmetricrankingSlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_metric_ranking_slice_set(s : MlmetricrankingSlice, i : Int, v : Double) -> MlmetricrankingSlice {
+  let result = ml_metric_ranking_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_slice_sum(s : MlmetricrankingSlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_metric_ranking_slice_mean(s : MlmetricrankingSlice) -> Double {
+  if s.size == 0 { 0.0 } else { ml_metric_ranking_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_metric_ranking_slice_scale(s : MlmetricrankingSlice, f : Double) -> MlmetricrankingSlice {
+  let result = ml_metric_ranking_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_metric_ranking_slice_add(a : MlmetricrankingSlice, b : MlmetricrankingSlice) -> MlmetricrankingSlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_metric_ranking_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_slice_copy(s : MlmetricrankingSlice) -> MlmetricrankingSlice {
+  let result = ml_metric_ranking_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_metric_ranking_slice_fill(s : MlmetricrankingSlice, v : Double) -> MlmetricrankingSlice {
+  let result = ml_metric_ranking_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_metric_ranking_slice_min(s : MlmetricrankingSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_slice_max(s : MlmetricrankingSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_metric_ranking_slice_to_string(s : MlmetricrankingSlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn ml_metric_ranking_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_metric_ranking_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

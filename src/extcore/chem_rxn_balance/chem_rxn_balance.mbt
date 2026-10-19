@@ -1,0 +1,1955 @@
+///===
+/// extcore/chem_rxn_balance
+
+pub(all) struct ChemrxnbalancePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn chem_rxn_balance_make_point(x : Double, y : Double) -> ChemrxnbalancePoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn chem_rxn_balance_make_point3(x : Double, y : Double, z : Double) -> ChemrxnbalancePoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn chem_rxn_balance_point_x(pt : ChemrxnbalancePoint) -> Double { pt.x }
+
+pub fn chem_rxn_balance_point_y(pt : ChemrxnbalancePoint) -> Double { pt.y }
+
+pub fn chem_rxn_balance_point_z(pt : ChemrxnbalancePoint) -> Double { pt.z }
+
+pub fn chem_rxn_balance_point_label(pt : ChemrxnbalancePoint) -> Int { pt.label }
+
+pub fn chem_rxn_balance_point_dist(a : ChemrxnbalancePoint, b : ChemrxnbalancePoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  chem_rxn_balance_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn chem_rxn_balance_point_add(a : ChemrxnbalancePoint, b : ChemrxnbalancePoint) -> ChemrxnbalancePoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn chem_rxn_balance_point_sub(a : ChemrxnbalancePoint, b : ChemrxnbalancePoint) -> ChemrxnbalancePoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn chem_rxn_balance_point_scale(pt : ChemrxnbalancePoint, s : Double) -> ChemrxnbalancePoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn chem_rxn_balance_point_dot(a : ChemrxnbalancePoint, b : ChemrxnbalancePoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn chem_rxn_balance_point_cross(a : ChemrxnbalancePoint, b : ChemrxnbalancePoint) -> ChemrxnbalancePoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn chem_rxn_balance_point_norm(pt : ChemrxnbalancePoint) -> Double {
+  chem_rxn_balance_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn chem_rxn_balance_point_normalize(pt : ChemrxnbalancePoint) -> ChemrxnbalancePoint {
+  let n = chem_rxn_balance_point_norm(pt)
+  if n < 0.0000001 { pt } else { chem_rxn_balance_point_scale(pt, 1.0 / n) }
+}
+
+pub fn chem_rxn_balance_point_negate(pt : ChemrxnbalancePoint) -> ChemrxnbalancePoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn chem_rxn_balance_point_mid(a : ChemrxnbalancePoint, b : ChemrxnbalancePoint) -> ChemrxnbalancePoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn chem_rxn_balance_point_lerp(a : ChemrxnbalancePoint, b : ChemrxnbalancePoint, t : Double) -> ChemrxnbalancePoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn chem_rxn_balance_point_to_string(pt : ChemrxnbalancePoint) -> String {
+  "(" + chem_rxn_balance_dbl(pt.x) + ", " + chem_rxn_balance_dbl(pt.y) + ", " + chem_rxn_balance_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct ChemrxnbalanceSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn chem_rxn_balance_make_series(vals : Array[Double], name : String) -> ChemrxnbalanceSeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn chem_rxn_balance_series_len(s : ChemrxnbalanceSeries) -> Int { s.vals.length() }
+
+pub fn chem_rxn_balance_series_sum(s : ChemrxnbalanceSeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn chem_rxn_balance_series_mean(s : ChemrxnbalanceSeries) -> Double {
+  let n = chem_rxn_balance_series_len(s)
+  if n == 0 { 0.0 } else { chem_rxn_balance_series_sum(s) / n.to_double() }
+}
+
+pub fn chem_rxn_balance_series_min(s : ChemrxnbalanceSeries) -> Double {
+  let n = chem_rxn_balance_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_series_max(s : ChemrxnbalanceSeries) -> Double {
+  let n = chem_rxn_balance_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_series_range(s : ChemrxnbalanceSeries) -> Double {
+  chem_rxn_balance_series_max(s) - chem_rxn_balance_series_min(s)
+}
+
+pub fn chem_rxn_balance_series_var(s : ChemrxnbalanceSeries) -> Double {
+  let n = chem_rxn_balance_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = chem_rxn_balance_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_series_std(s : ChemrxnbalanceSeries) -> Double { chem_rxn_balance_sqrt(chem_rxn_balance_series_var(s)) }
+
+pub fn chem_rxn_balance_series_median(s : ChemrxnbalanceSeries) -> Double {
+  let n = chem_rxn_balance_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = chem_rxn_balance_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn chem_rxn_balance_series_scale(s : ChemrxnbalanceSeries, f : Double) -> ChemrxnbalanceSeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = chem_rxn_balance_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn chem_rxn_balance_series_add(a : ChemrxnbalanceSeries, b : ChemrxnbalanceSeries) -> ChemrxnbalanceSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = chem_rxn_balance_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn chem_rxn_balance_series_sub(a : ChemrxnbalanceSeries, b : ChemrxnbalanceSeries) -> ChemrxnbalanceSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = chem_rxn_balance_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn chem_rxn_balance_series_normalize(s : ChemrxnbalanceSeries) -> ChemrxnbalanceSeries {
+  let mn = chem_rxn_balance_series_min(s)
+  let mx = chem_rxn_balance_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = chem_rxn_balance_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn chem_rxn_balance_series_cumsum(s : ChemrxnbalanceSeries) -> ChemrxnbalanceSeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = chem_rxn_balance_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn chem_rxn_balance_series_to_string(s : ChemrxnbalanceSeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + chem_rxn_balance_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct ChemrxnbalanceMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn chem_rxn_balance_make_matrix(rows : Int, cols : Int, val : Double) -> ChemrxnbalanceMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn chem_rxn_balance_matrix_identity(n : Int) -> ChemrxnbalanceMatrix {
+  let m = chem_rxn_balance_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn chem_rxn_balance_matrix_get(m : ChemrxnbalanceMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn chem_rxn_balance_matrix_transpose(m : ChemrxnbalanceMatrix) -> ChemrxnbalanceMatrix {
+  let result = chem_rxn_balance_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn chem_rxn_balance_matrix_add(a : ChemrxnbalanceMatrix, b : ChemrxnbalanceMatrix) -> ChemrxnbalanceMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = chem_rxn_balance_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn chem_rxn_balance_matrix_scale(m : ChemrxnbalanceMatrix, s : Double) -> ChemrxnbalanceMatrix {
+  let result = chem_rxn_balance_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn chem_rxn_balance_matrix_multiply(a : ChemrxnbalanceMatrix, b : ChemrxnbalanceMatrix) -> ChemrxnbalanceMatrix {
+  if a.cols != b.rows { return chem_rxn_balance_make_matrix(a.rows, b.cols, 0.0) }
+  let result = chem_rxn_balance_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn chem_rxn_balance_matrix_trace(m : ChemrxnbalanceMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn chem_rxn_balance_matrix_det(m : ChemrxnbalanceMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn chem_rxn_balance_matrix_norm(m : ChemrxnbalanceMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  chem_rxn_balance_sqrt(sum)
+}
+
+pub fn chem_rxn_balance_matrix_to_string(m : ChemrxnbalanceMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + chem_rxn_balance_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct ChemrxnbalanceVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn chem_rxn_balance_make_vector(comps : Array[Double]) -> ChemrxnbalanceVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn chem_rxn_balance_vector_zero(dim : Int) -> ChemrxnbalanceVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn chem_rxn_balance_vector_add(a : ChemrxnbalanceVector, b : ChemrxnbalanceVector) -> ChemrxnbalanceVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = chem_rxn_balance_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn chem_rxn_balance_vector_sub(a : ChemrxnbalanceVector, b : ChemrxnbalanceVector) -> ChemrxnbalanceVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = chem_rxn_balance_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn chem_rxn_balance_vector_scale(v : ChemrxnbalanceVector, s : Double) -> ChemrxnbalanceVector {
+  let mut result = []
+  for i in 0..<v.dim { result = chem_rxn_balance_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn chem_rxn_balance_vector_dot(a : ChemrxnbalanceVector, b : ChemrxnbalanceVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn chem_rxn_balance_vector_norm(v : ChemrxnbalanceVector) -> Double { chem_rxn_balance_sqrt(chem_rxn_balance_vector_dot(v, v)) }
+
+pub fn chem_rxn_balance_vector_normalize(v : ChemrxnbalanceVector) -> ChemrxnbalanceVector {
+  let n = chem_rxn_balance_vector_norm(v)
+  if n < 0.0000001 { v } else { chem_rxn_balance_vector_scale(v, 1.0 / n) }
+}
+
+pub fn chem_rxn_balance_vector_dist(a : ChemrxnbalanceVector, b : ChemrxnbalanceVector) -> Double {
+  chem_rxn_balance_vector_norm(chem_rxn_balance_vector_sub(a, b))
+}
+
+pub fn chem_rxn_balance_vector_to_string(v : ChemrxnbalanceVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + chem_rxn_balance_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn chem_rxn_balance_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = chem_rxn_balance_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_std(data : Array[Double]) -> Double { chem_rxn_balance_sqrt(chem_rxn_balance_var(data)) }
+
+pub fn chem_rxn_balance_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = chem_rxn_balance_mean(a); let mb = chem_rxn_balance_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = chem_rxn_balance_std(a); let sb = chem_rxn_balance_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { chem_rxn_balance_cov(a, b) / (sa * sb) }
+}
+
+pub fn chem_rxn_balance_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = chem_rxn_balance_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn chem_rxn_balance_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  chem_rxn_balance_sqrt(chem_rxn_balance_mse(pred, labels))
+}
+
+pub fn chem_rxn_balance_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + chem_rxn_balance_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = chem_rxn_balance_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn chem_rxn_balance_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn chem_rxn_balance_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn chem_rxn_balance_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = chem_rxn_balance_precision(pred, labels, pos); let r = chem_rxn_balance_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn chem_rxn_balance_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn chem_rxn_balance_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = chem_rxn_balance_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn chem_rxn_balance_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn chem_rxn_balance_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn chem_rxn_balance_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = chem_rxn_balance_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn chem_rxn_balance_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn chem_rxn_balance_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn chem_rxn_balance_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = chem_rxn_balance_min(data); let mx = chem_rxn_balance_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn chem_rxn_balance_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = chem_rxn_balance_mean(data); let sd = chem_rxn_balance_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn chem_rxn_balance_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn chem_rxn_balance_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn chem_rxn_balance_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn chem_rxn_balance_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn chem_rxn_balance_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn chem_rxn_balance_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn chem_rxn_balance_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { chem_rxn_balance_int(x) } else { -chem_rxn_balance_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { chem_rxn_balance_int(f * 1000000.0) } else { chem_rxn_balance_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn chem_rxn_balance_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn chem_rxn_balance_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct ChemrxnbalanceFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_balance_frame_make(size : Int) -> ChemrxnbalanceFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_balance_frame_len(s : ChemrxnbalanceFrame) -> Int { s.size }
+
+pub fn chem_rxn_balance_frame_get(s : ChemrxnbalanceFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_balance_frame_set(s : ChemrxnbalanceFrame, i : Int, v : Double) -> ChemrxnbalanceFrame {
+  let result = chem_rxn_balance_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_frame_sum(s : ChemrxnbalanceFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_balance_frame_mean(s : ChemrxnbalanceFrame) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_balance_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_balance_frame_scale(s : ChemrxnbalanceFrame, f : Double) -> ChemrxnbalanceFrame {
+  let result = chem_rxn_balance_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_balance_frame_add(a : ChemrxnbalanceFrame, b : ChemrxnbalanceFrame) -> ChemrxnbalanceFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_balance_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_frame_copy(s : ChemrxnbalanceFrame) -> ChemrxnbalanceFrame {
+  let result = chem_rxn_balance_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_frame_fill(s : ChemrxnbalanceFrame, v : Double) -> ChemrxnbalanceFrame {
+  let result = chem_rxn_balance_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_frame_min(s : ChemrxnbalanceFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_frame_max(s : ChemrxnbalanceFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_frame_to_string(s : ChemrxnbalanceFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnbalanceTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_balance_table_make(size : Int) -> ChemrxnbalanceTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_balance_table_len(s : ChemrxnbalanceTable) -> Int { s.size }
+
+pub fn chem_rxn_balance_table_get(s : ChemrxnbalanceTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_balance_table_set(s : ChemrxnbalanceTable, i : Int, v : Double) -> ChemrxnbalanceTable {
+  let result = chem_rxn_balance_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_table_sum(s : ChemrxnbalanceTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_balance_table_mean(s : ChemrxnbalanceTable) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_balance_table_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_balance_table_scale(s : ChemrxnbalanceTable, f : Double) -> ChemrxnbalanceTable {
+  let result = chem_rxn_balance_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_balance_table_add(a : ChemrxnbalanceTable, b : ChemrxnbalanceTable) -> ChemrxnbalanceTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_balance_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_table_copy(s : ChemrxnbalanceTable) -> ChemrxnbalanceTable {
+  let result = chem_rxn_balance_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_table_fill(s : ChemrxnbalanceTable, v : Double) -> ChemrxnbalanceTable {
+  let result = chem_rxn_balance_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_table_min(s : ChemrxnbalanceTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_table_max(s : ChemrxnbalanceTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_table_to_string(s : ChemrxnbalanceTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnbalanceGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_balance_graphn_make(size : Int) -> ChemrxnbalanceGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_balance_graphn_len(s : ChemrxnbalanceGraphN) -> Int { s.size }
+
+pub fn chem_rxn_balance_graphn_get(s : ChemrxnbalanceGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_balance_graphn_set(s : ChemrxnbalanceGraphN, i : Int, v : Double) -> ChemrxnbalanceGraphN {
+  let result = chem_rxn_balance_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_graphn_sum(s : ChemrxnbalanceGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_balance_graphn_mean(s : ChemrxnbalanceGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_balance_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_balance_graphn_scale(s : ChemrxnbalanceGraphN, f : Double) -> ChemrxnbalanceGraphN {
+  let result = chem_rxn_balance_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_balance_graphn_add(a : ChemrxnbalanceGraphN, b : ChemrxnbalanceGraphN) -> ChemrxnbalanceGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_balance_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_graphn_copy(s : ChemrxnbalanceGraphN) -> ChemrxnbalanceGraphN {
+  let result = chem_rxn_balance_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_graphn_fill(s : ChemrxnbalanceGraphN, v : Double) -> ChemrxnbalanceGraphN {
+  let result = chem_rxn_balance_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_graphn_min(s : ChemrxnbalanceGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_graphn_max(s : ChemrxnbalanceGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_graphn_to_string(s : ChemrxnbalanceGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnbalanceNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_balance_node_make(size : Int) -> ChemrxnbalanceNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_balance_node_len(s : ChemrxnbalanceNode) -> Int { s.size }
+
+pub fn chem_rxn_balance_node_get(s : ChemrxnbalanceNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_balance_node_set(s : ChemrxnbalanceNode, i : Int, v : Double) -> ChemrxnbalanceNode {
+  let result = chem_rxn_balance_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_node_sum(s : ChemrxnbalanceNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_balance_node_mean(s : ChemrxnbalanceNode) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_balance_node_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_balance_node_scale(s : ChemrxnbalanceNode, f : Double) -> ChemrxnbalanceNode {
+  let result = chem_rxn_balance_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_balance_node_add(a : ChemrxnbalanceNode, b : ChemrxnbalanceNode) -> ChemrxnbalanceNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_balance_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_node_copy(s : ChemrxnbalanceNode) -> ChemrxnbalanceNode {
+  let result = chem_rxn_balance_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_node_fill(s : ChemrxnbalanceNode, v : Double) -> ChemrxnbalanceNode {
+  let result = chem_rxn_balance_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_node_min(s : ChemrxnbalanceNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_node_max(s : ChemrxnbalanceNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_node_to_string(s : ChemrxnbalanceNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnbalanceEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_balance_edge_make(size : Int) -> ChemrxnbalanceEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_balance_edge_len(s : ChemrxnbalanceEdge) -> Int { s.size }
+
+pub fn chem_rxn_balance_edge_get(s : ChemrxnbalanceEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_balance_edge_set(s : ChemrxnbalanceEdge, i : Int, v : Double) -> ChemrxnbalanceEdge {
+  let result = chem_rxn_balance_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_edge_sum(s : ChemrxnbalanceEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_balance_edge_mean(s : ChemrxnbalanceEdge) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_balance_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_balance_edge_scale(s : ChemrxnbalanceEdge, f : Double) -> ChemrxnbalanceEdge {
+  let result = chem_rxn_balance_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_balance_edge_add(a : ChemrxnbalanceEdge, b : ChemrxnbalanceEdge) -> ChemrxnbalanceEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_balance_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_edge_copy(s : ChemrxnbalanceEdge) -> ChemrxnbalanceEdge {
+  let result = chem_rxn_balance_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_edge_fill(s : ChemrxnbalanceEdge, v : Double) -> ChemrxnbalanceEdge {
+  let result = chem_rxn_balance_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_edge_min(s : ChemrxnbalanceEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_edge_max(s : ChemrxnbalanceEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_edge_to_string(s : ChemrxnbalanceEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnbalancePath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_balance_path_make(size : Int) -> ChemrxnbalancePath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_balance_path_len(s : ChemrxnbalancePath) -> Int { s.size }
+
+pub fn chem_rxn_balance_path_get(s : ChemrxnbalancePath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_balance_path_set(s : ChemrxnbalancePath, i : Int, v : Double) -> ChemrxnbalancePath {
+  let result = chem_rxn_balance_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_path_sum(s : ChemrxnbalancePath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_balance_path_mean(s : ChemrxnbalancePath) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_balance_path_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_balance_path_scale(s : ChemrxnbalancePath, f : Double) -> ChemrxnbalancePath {
+  let result = chem_rxn_balance_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_balance_path_add(a : ChemrxnbalancePath, b : ChemrxnbalancePath) -> ChemrxnbalancePath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_balance_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_path_copy(s : ChemrxnbalancePath) -> ChemrxnbalancePath {
+  let result = chem_rxn_balance_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_path_fill(s : ChemrxnbalancePath, v : Double) -> ChemrxnbalancePath {
+  let result = chem_rxn_balance_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_path_min(s : ChemrxnbalancePath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_path_max(s : ChemrxnbalancePath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_path_to_string(s : ChemrxnbalancePath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnbalanceCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_balance_cluster_make(size : Int) -> ChemrxnbalanceCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_balance_cluster_len(s : ChemrxnbalanceCluster) -> Int { s.size }
+
+pub fn chem_rxn_balance_cluster_get(s : ChemrxnbalanceCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_balance_cluster_set(s : ChemrxnbalanceCluster, i : Int, v : Double) -> ChemrxnbalanceCluster {
+  let result = chem_rxn_balance_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_cluster_sum(s : ChemrxnbalanceCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_balance_cluster_mean(s : ChemrxnbalanceCluster) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_balance_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_balance_cluster_scale(s : ChemrxnbalanceCluster, f : Double) -> ChemrxnbalanceCluster {
+  let result = chem_rxn_balance_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_balance_cluster_add(a : ChemrxnbalanceCluster, b : ChemrxnbalanceCluster) -> ChemrxnbalanceCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_balance_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_cluster_copy(s : ChemrxnbalanceCluster) -> ChemrxnbalanceCluster {
+  let result = chem_rxn_balance_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_cluster_fill(s : ChemrxnbalanceCluster, v : Double) -> ChemrxnbalanceCluster {
+  let result = chem_rxn_balance_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_cluster_min(s : ChemrxnbalanceCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_cluster_max(s : ChemrxnbalanceCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_cluster_to_string(s : ChemrxnbalanceCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnbalanceModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_balance_model_make(size : Int) -> ChemrxnbalanceModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_balance_model_len(s : ChemrxnbalanceModel) -> Int { s.size }
+
+pub fn chem_rxn_balance_model_get(s : ChemrxnbalanceModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_balance_model_set(s : ChemrxnbalanceModel, i : Int, v : Double) -> ChemrxnbalanceModel {
+  let result = chem_rxn_balance_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_model_sum(s : ChemrxnbalanceModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_balance_model_mean(s : ChemrxnbalanceModel) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_balance_model_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_balance_model_scale(s : ChemrxnbalanceModel, f : Double) -> ChemrxnbalanceModel {
+  let result = chem_rxn_balance_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_balance_model_add(a : ChemrxnbalanceModel, b : ChemrxnbalanceModel) -> ChemrxnbalanceModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_balance_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_model_copy(s : ChemrxnbalanceModel) -> ChemrxnbalanceModel {
+  let result = chem_rxn_balance_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_model_fill(s : ChemrxnbalanceModel, v : Double) -> ChemrxnbalanceModel {
+  let result = chem_rxn_balance_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_model_min(s : ChemrxnbalanceModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_model_max(s : ChemrxnbalanceModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_model_to_string(s : ChemrxnbalanceModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnbalanceLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_balance_layer_make(size : Int) -> ChemrxnbalanceLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_balance_layer_len(s : ChemrxnbalanceLayer) -> Int { s.size }
+
+pub fn chem_rxn_balance_layer_get(s : ChemrxnbalanceLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_balance_layer_set(s : ChemrxnbalanceLayer, i : Int, v : Double) -> ChemrxnbalanceLayer {
+  let result = chem_rxn_balance_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_layer_sum(s : ChemrxnbalanceLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_balance_layer_mean(s : ChemrxnbalanceLayer) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_balance_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_balance_layer_scale(s : ChemrxnbalanceLayer, f : Double) -> ChemrxnbalanceLayer {
+  let result = chem_rxn_balance_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_balance_layer_add(a : ChemrxnbalanceLayer, b : ChemrxnbalanceLayer) -> ChemrxnbalanceLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_balance_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_layer_copy(s : ChemrxnbalanceLayer) -> ChemrxnbalanceLayer {
+  let result = chem_rxn_balance_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_layer_fill(s : ChemrxnbalanceLayer, v : Double) -> ChemrxnbalanceLayer {
+  let result = chem_rxn_balance_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_layer_min(s : ChemrxnbalanceLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_layer_max(s : ChemrxnbalanceLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_layer_to_string(s : ChemrxnbalanceLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnbalanceBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_balance_buffer_make(size : Int) -> ChemrxnbalanceBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_balance_buffer_len(s : ChemrxnbalanceBuffer) -> Int { s.size }
+
+pub fn chem_rxn_balance_buffer_get(s : ChemrxnbalanceBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_balance_buffer_set(s : ChemrxnbalanceBuffer, i : Int, v : Double) -> ChemrxnbalanceBuffer {
+  let result = chem_rxn_balance_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_buffer_sum(s : ChemrxnbalanceBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_balance_buffer_mean(s : ChemrxnbalanceBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_balance_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_balance_buffer_scale(s : ChemrxnbalanceBuffer, f : Double) -> ChemrxnbalanceBuffer {
+  let result = chem_rxn_balance_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_balance_buffer_add(a : ChemrxnbalanceBuffer, b : ChemrxnbalanceBuffer) -> ChemrxnbalanceBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_balance_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_buffer_copy(s : ChemrxnbalanceBuffer) -> ChemrxnbalanceBuffer {
+  let result = chem_rxn_balance_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_buffer_fill(s : ChemrxnbalanceBuffer, v : Double) -> ChemrxnbalanceBuffer {
+  let result = chem_rxn_balance_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_buffer_min(s : ChemrxnbalanceBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_buffer_max(s : ChemrxnbalanceBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_buffer_to_string(s : ChemrxnbalanceBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnbalanceCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_balance_cursor_make(size : Int) -> ChemrxnbalanceCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_balance_cursor_len(s : ChemrxnbalanceCursor) -> Int { s.size }
+
+pub fn chem_rxn_balance_cursor_get(s : ChemrxnbalanceCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_balance_cursor_set(s : ChemrxnbalanceCursor, i : Int, v : Double) -> ChemrxnbalanceCursor {
+  let result = chem_rxn_balance_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_cursor_sum(s : ChemrxnbalanceCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_balance_cursor_mean(s : ChemrxnbalanceCursor) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_balance_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_balance_cursor_scale(s : ChemrxnbalanceCursor, f : Double) -> ChemrxnbalanceCursor {
+  let result = chem_rxn_balance_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_balance_cursor_add(a : ChemrxnbalanceCursor, b : ChemrxnbalanceCursor) -> ChemrxnbalanceCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_balance_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_cursor_copy(s : ChemrxnbalanceCursor) -> ChemrxnbalanceCursor {
+  let result = chem_rxn_balance_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_cursor_fill(s : ChemrxnbalanceCursor, v : Double) -> ChemrxnbalanceCursor {
+  let result = chem_rxn_balance_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_cursor_min(s : ChemrxnbalanceCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_cursor_max(s : ChemrxnbalanceCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_cursor_to_string(s : ChemrxnbalanceCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnbalanceView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_balance_view_make(size : Int) -> ChemrxnbalanceView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_balance_view_len(s : ChemrxnbalanceView) -> Int { s.size }
+
+pub fn chem_rxn_balance_view_get(s : ChemrxnbalanceView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_balance_view_set(s : ChemrxnbalanceView, i : Int, v : Double) -> ChemrxnbalanceView {
+  let result = chem_rxn_balance_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_view_sum(s : ChemrxnbalanceView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_balance_view_mean(s : ChemrxnbalanceView) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_balance_view_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_balance_view_scale(s : ChemrxnbalanceView, f : Double) -> ChemrxnbalanceView {
+  let result = chem_rxn_balance_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_balance_view_add(a : ChemrxnbalanceView, b : ChemrxnbalanceView) -> ChemrxnbalanceView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_balance_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_view_copy(s : ChemrxnbalanceView) -> ChemrxnbalanceView {
+  let result = chem_rxn_balance_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_view_fill(s : ChemrxnbalanceView, v : Double) -> ChemrxnbalanceView {
+  let result = chem_rxn_balance_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_view_min(s : ChemrxnbalanceView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_view_max(s : ChemrxnbalanceView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_view_to_string(s : ChemrxnbalanceView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnbalanceRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_balance_range_make(size : Int) -> ChemrxnbalanceRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_balance_range_len(s : ChemrxnbalanceRange) -> Int { s.size }
+
+pub fn chem_rxn_balance_range_get(s : ChemrxnbalanceRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_balance_range_set(s : ChemrxnbalanceRange, i : Int, v : Double) -> ChemrxnbalanceRange {
+  let result = chem_rxn_balance_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_range_sum(s : ChemrxnbalanceRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_balance_range_mean(s : ChemrxnbalanceRange) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_balance_range_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_balance_range_scale(s : ChemrxnbalanceRange, f : Double) -> ChemrxnbalanceRange {
+  let result = chem_rxn_balance_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_balance_range_add(a : ChemrxnbalanceRange, b : ChemrxnbalanceRange) -> ChemrxnbalanceRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_balance_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_range_copy(s : ChemrxnbalanceRange) -> ChemrxnbalanceRange {
+  let result = chem_rxn_balance_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_range_fill(s : ChemrxnbalanceRange, v : Double) -> ChemrxnbalanceRange {
+  let result = chem_rxn_balance_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_range_min(s : ChemrxnbalanceRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_range_max(s : ChemrxnbalanceRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_range_to_string(s : ChemrxnbalanceRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnbalanceSlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_balance_slice_make(size : Int) -> ChemrxnbalanceSlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_balance_slice_len(s : ChemrxnbalanceSlice) -> Int { s.size }
+
+pub fn chem_rxn_balance_slice_get(s : ChemrxnbalanceSlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_balance_slice_set(s : ChemrxnbalanceSlice, i : Int, v : Double) -> ChemrxnbalanceSlice {
+  let result = chem_rxn_balance_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_slice_sum(s : ChemrxnbalanceSlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_balance_slice_mean(s : ChemrxnbalanceSlice) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_balance_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_balance_slice_scale(s : ChemrxnbalanceSlice, f : Double) -> ChemrxnbalanceSlice {
+  let result = chem_rxn_balance_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_balance_slice_add(a : ChemrxnbalanceSlice, b : ChemrxnbalanceSlice) -> ChemrxnbalanceSlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_balance_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_slice_copy(s : ChemrxnbalanceSlice) -> ChemrxnbalanceSlice {
+  let result = chem_rxn_balance_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_balance_slice_fill(s : ChemrxnbalanceSlice, v : Double) -> ChemrxnbalanceSlice {
+  let result = chem_rxn_balance_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_balance_slice_min(s : ChemrxnbalanceSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_slice_max(s : ChemrxnbalanceSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_balance_slice_to_string(s : ChemrxnbalanceSlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn chem_rxn_balance_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_balance_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

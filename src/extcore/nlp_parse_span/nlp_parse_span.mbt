@@ -1,0 +1,1955 @@
+///===
+/// extcore/nlp_parse_span
+
+pub(all) struct NlpparsespanPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn nlp_parse_span_make_point(x : Double, y : Double) -> NlpparsespanPoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn nlp_parse_span_make_point3(x : Double, y : Double, z : Double) -> NlpparsespanPoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn nlp_parse_span_point_x(pt : NlpparsespanPoint) -> Double { pt.x }
+
+pub fn nlp_parse_span_point_y(pt : NlpparsespanPoint) -> Double { pt.y }
+
+pub fn nlp_parse_span_point_z(pt : NlpparsespanPoint) -> Double { pt.z }
+
+pub fn nlp_parse_span_point_label(pt : NlpparsespanPoint) -> Int { pt.label }
+
+pub fn nlp_parse_span_point_dist(a : NlpparsespanPoint, b : NlpparsespanPoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  nlp_parse_span_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn nlp_parse_span_point_add(a : NlpparsespanPoint, b : NlpparsespanPoint) -> NlpparsespanPoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn nlp_parse_span_point_sub(a : NlpparsespanPoint, b : NlpparsespanPoint) -> NlpparsespanPoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn nlp_parse_span_point_scale(pt : NlpparsespanPoint, s : Double) -> NlpparsespanPoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn nlp_parse_span_point_dot(a : NlpparsespanPoint, b : NlpparsespanPoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn nlp_parse_span_point_cross(a : NlpparsespanPoint, b : NlpparsespanPoint) -> NlpparsespanPoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn nlp_parse_span_point_norm(pt : NlpparsespanPoint) -> Double {
+  nlp_parse_span_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn nlp_parse_span_point_normalize(pt : NlpparsespanPoint) -> NlpparsespanPoint {
+  let n = nlp_parse_span_point_norm(pt)
+  if n < 0.0000001 { pt } else { nlp_parse_span_point_scale(pt, 1.0 / n) }
+}
+
+pub fn nlp_parse_span_point_negate(pt : NlpparsespanPoint) -> NlpparsespanPoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn nlp_parse_span_point_mid(a : NlpparsespanPoint, b : NlpparsespanPoint) -> NlpparsespanPoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn nlp_parse_span_point_lerp(a : NlpparsespanPoint, b : NlpparsespanPoint, t : Double) -> NlpparsespanPoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn nlp_parse_span_point_to_string(pt : NlpparsespanPoint) -> String {
+  "(" + nlp_parse_span_dbl(pt.x) + ", " + nlp_parse_span_dbl(pt.y) + ", " + nlp_parse_span_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct NlpparsespanSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn nlp_parse_span_make_series(vals : Array[Double], name : String) -> NlpparsespanSeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn nlp_parse_span_series_len(s : NlpparsespanSeries) -> Int { s.vals.length() }
+
+pub fn nlp_parse_span_series_sum(s : NlpparsespanSeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn nlp_parse_span_series_mean(s : NlpparsespanSeries) -> Double {
+  let n = nlp_parse_span_series_len(s)
+  if n == 0 { 0.0 } else { nlp_parse_span_series_sum(s) / n.to_double() }
+}
+
+pub fn nlp_parse_span_series_min(s : NlpparsespanSeries) -> Double {
+  let n = nlp_parse_span_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_series_max(s : NlpparsespanSeries) -> Double {
+  let n = nlp_parse_span_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_series_range(s : NlpparsespanSeries) -> Double {
+  nlp_parse_span_series_max(s) - nlp_parse_span_series_min(s)
+}
+
+pub fn nlp_parse_span_series_var(s : NlpparsespanSeries) -> Double {
+  let n = nlp_parse_span_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = nlp_parse_span_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_series_std(s : NlpparsespanSeries) -> Double { nlp_parse_span_sqrt(nlp_parse_span_series_var(s)) }
+
+pub fn nlp_parse_span_series_median(s : NlpparsespanSeries) -> Double {
+  let n = nlp_parse_span_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = nlp_parse_span_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn nlp_parse_span_series_scale(s : NlpparsespanSeries, f : Double) -> NlpparsespanSeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = nlp_parse_span_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn nlp_parse_span_series_add(a : NlpparsespanSeries, b : NlpparsespanSeries) -> NlpparsespanSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = nlp_parse_span_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn nlp_parse_span_series_sub(a : NlpparsespanSeries, b : NlpparsespanSeries) -> NlpparsespanSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = nlp_parse_span_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn nlp_parse_span_series_normalize(s : NlpparsespanSeries) -> NlpparsespanSeries {
+  let mn = nlp_parse_span_series_min(s)
+  let mx = nlp_parse_span_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = nlp_parse_span_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn nlp_parse_span_series_cumsum(s : NlpparsespanSeries) -> NlpparsespanSeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = nlp_parse_span_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn nlp_parse_span_series_to_string(s : NlpparsespanSeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + nlp_parse_span_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct NlpparsespanMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn nlp_parse_span_make_matrix(rows : Int, cols : Int, val : Double) -> NlpparsespanMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn nlp_parse_span_matrix_identity(n : Int) -> NlpparsespanMatrix {
+  let m = nlp_parse_span_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn nlp_parse_span_matrix_get(m : NlpparsespanMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn nlp_parse_span_matrix_transpose(m : NlpparsespanMatrix) -> NlpparsespanMatrix {
+  let result = nlp_parse_span_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn nlp_parse_span_matrix_add(a : NlpparsespanMatrix, b : NlpparsespanMatrix) -> NlpparsespanMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = nlp_parse_span_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn nlp_parse_span_matrix_scale(m : NlpparsespanMatrix, s : Double) -> NlpparsespanMatrix {
+  let result = nlp_parse_span_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn nlp_parse_span_matrix_multiply(a : NlpparsespanMatrix, b : NlpparsespanMatrix) -> NlpparsespanMatrix {
+  if a.cols != b.rows { return nlp_parse_span_make_matrix(a.rows, b.cols, 0.0) }
+  let result = nlp_parse_span_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn nlp_parse_span_matrix_trace(m : NlpparsespanMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn nlp_parse_span_matrix_det(m : NlpparsespanMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn nlp_parse_span_matrix_norm(m : NlpparsespanMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  nlp_parse_span_sqrt(sum)
+}
+
+pub fn nlp_parse_span_matrix_to_string(m : NlpparsespanMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + nlp_parse_span_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct NlpparsespanVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn nlp_parse_span_make_vector(comps : Array[Double]) -> NlpparsespanVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn nlp_parse_span_vector_zero(dim : Int) -> NlpparsespanVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn nlp_parse_span_vector_add(a : NlpparsespanVector, b : NlpparsespanVector) -> NlpparsespanVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = nlp_parse_span_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn nlp_parse_span_vector_sub(a : NlpparsespanVector, b : NlpparsespanVector) -> NlpparsespanVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = nlp_parse_span_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn nlp_parse_span_vector_scale(v : NlpparsespanVector, s : Double) -> NlpparsespanVector {
+  let mut result = []
+  for i in 0..<v.dim { result = nlp_parse_span_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn nlp_parse_span_vector_dot(a : NlpparsespanVector, b : NlpparsespanVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn nlp_parse_span_vector_norm(v : NlpparsespanVector) -> Double { nlp_parse_span_sqrt(nlp_parse_span_vector_dot(v, v)) }
+
+pub fn nlp_parse_span_vector_normalize(v : NlpparsespanVector) -> NlpparsespanVector {
+  let n = nlp_parse_span_vector_norm(v)
+  if n < 0.0000001 { v } else { nlp_parse_span_vector_scale(v, 1.0 / n) }
+}
+
+pub fn nlp_parse_span_vector_dist(a : NlpparsespanVector, b : NlpparsespanVector) -> Double {
+  nlp_parse_span_vector_norm(nlp_parse_span_vector_sub(a, b))
+}
+
+pub fn nlp_parse_span_vector_to_string(v : NlpparsespanVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + nlp_parse_span_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn nlp_parse_span_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = nlp_parse_span_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_std(data : Array[Double]) -> Double { nlp_parse_span_sqrt(nlp_parse_span_var(data)) }
+
+pub fn nlp_parse_span_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = nlp_parse_span_mean(a); let mb = nlp_parse_span_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = nlp_parse_span_std(a); let sb = nlp_parse_span_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { nlp_parse_span_cov(a, b) / (sa * sb) }
+}
+
+pub fn nlp_parse_span_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = nlp_parse_span_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn nlp_parse_span_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  nlp_parse_span_sqrt(nlp_parse_span_mse(pred, labels))
+}
+
+pub fn nlp_parse_span_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + nlp_parse_span_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = nlp_parse_span_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn nlp_parse_span_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn nlp_parse_span_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn nlp_parse_span_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = nlp_parse_span_precision(pred, labels, pos); let r = nlp_parse_span_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn nlp_parse_span_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn nlp_parse_span_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = nlp_parse_span_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn nlp_parse_span_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn nlp_parse_span_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn nlp_parse_span_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = nlp_parse_span_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn nlp_parse_span_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn nlp_parse_span_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn nlp_parse_span_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = nlp_parse_span_min(data); let mx = nlp_parse_span_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn nlp_parse_span_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = nlp_parse_span_mean(data); let sd = nlp_parse_span_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn nlp_parse_span_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn nlp_parse_span_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn nlp_parse_span_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn nlp_parse_span_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn nlp_parse_span_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn nlp_parse_span_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn nlp_parse_span_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { nlp_parse_span_int(x) } else { -nlp_parse_span_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { nlp_parse_span_int(f * 1000000.0) } else { nlp_parse_span_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn nlp_parse_span_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn nlp_parse_span_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct NlpparsespanFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_parse_span_frame_make(size : Int) -> NlpparsespanFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_parse_span_frame_len(s : NlpparsespanFrame) -> Int { s.size }
+
+pub fn nlp_parse_span_frame_get(s : NlpparsespanFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_parse_span_frame_set(s : NlpparsespanFrame, i : Int, v : Double) -> NlpparsespanFrame {
+  let result = nlp_parse_span_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_frame_sum(s : NlpparsespanFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_parse_span_frame_mean(s : NlpparsespanFrame) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_parse_span_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_parse_span_frame_scale(s : NlpparsespanFrame, f : Double) -> NlpparsespanFrame {
+  let result = nlp_parse_span_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_parse_span_frame_add(a : NlpparsespanFrame, b : NlpparsespanFrame) -> NlpparsespanFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_parse_span_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_frame_copy(s : NlpparsespanFrame) -> NlpparsespanFrame {
+  let result = nlp_parse_span_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_frame_fill(s : NlpparsespanFrame, v : Double) -> NlpparsespanFrame {
+  let result = nlp_parse_span_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_frame_min(s : NlpparsespanFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_frame_max(s : NlpparsespanFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_frame_to_string(s : NlpparsespanFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NlpparsespanTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_parse_span_table_make(size : Int) -> NlpparsespanTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_parse_span_table_len(s : NlpparsespanTable) -> Int { s.size }
+
+pub fn nlp_parse_span_table_get(s : NlpparsespanTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_parse_span_table_set(s : NlpparsespanTable, i : Int, v : Double) -> NlpparsespanTable {
+  let result = nlp_parse_span_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_table_sum(s : NlpparsespanTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_parse_span_table_mean(s : NlpparsespanTable) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_parse_span_table_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_parse_span_table_scale(s : NlpparsespanTable, f : Double) -> NlpparsespanTable {
+  let result = nlp_parse_span_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_parse_span_table_add(a : NlpparsespanTable, b : NlpparsespanTable) -> NlpparsespanTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_parse_span_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_table_copy(s : NlpparsespanTable) -> NlpparsespanTable {
+  let result = nlp_parse_span_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_table_fill(s : NlpparsespanTable, v : Double) -> NlpparsespanTable {
+  let result = nlp_parse_span_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_table_min(s : NlpparsespanTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_table_max(s : NlpparsespanTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_table_to_string(s : NlpparsespanTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NlpparsespanGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_parse_span_graphn_make(size : Int) -> NlpparsespanGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_parse_span_graphn_len(s : NlpparsespanGraphN) -> Int { s.size }
+
+pub fn nlp_parse_span_graphn_get(s : NlpparsespanGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_parse_span_graphn_set(s : NlpparsespanGraphN, i : Int, v : Double) -> NlpparsespanGraphN {
+  let result = nlp_parse_span_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_graphn_sum(s : NlpparsespanGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_parse_span_graphn_mean(s : NlpparsespanGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_parse_span_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_parse_span_graphn_scale(s : NlpparsespanGraphN, f : Double) -> NlpparsespanGraphN {
+  let result = nlp_parse_span_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_parse_span_graphn_add(a : NlpparsespanGraphN, b : NlpparsespanGraphN) -> NlpparsespanGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_parse_span_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_graphn_copy(s : NlpparsespanGraphN) -> NlpparsespanGraphN {
+  let result = nlp_parse_span_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_graphn_fill(s : NlpparsespanGraphN, v : Double) -> NlpparsespanGraphN {
+  let result = nlp_parse_span_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_graphn_min(s : NlpparsespanGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_graphn_max(s : NlpparsespanGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_graphn_to_string(s : NlpparsespanGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NlpparsespanNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_parse_span_node_make(size : Int) -> NlpparsespanNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_parse_span_node_len(s : NlpparsespanNode) -> Int { s.size }
+
+pub fn nlp_parse_span_node_get(s : NlpparsespanNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_parse_span_node_set(s : NlpparsespanNode, i : Int, v : Double) -> NlpparsespanNode {
+  let result = nlp_parse_span_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_node_sum(s : NlpparsespanNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_parse_span_node_mean(s : NlpparsespanNode) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_parse_span_node_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_parse_span_node_scale(s : NlpparsespanNode, f : Double) -> NlpparsespanNode {
+  let result = nlp_parse_span_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_parse_span_node_add(a : NlpparsespanNode, b : NlpparsespanNode) -> NlpparsespanNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_parse_span_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_node_copy(s : NlpparsespanNode) -> NlpparsespanNode {
+  let result = nlp_parse_span_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_node_fill(s : NlpparsespanNode, v : Double) -> NlpparsespanNode {
+  let result = nlp_parse_span_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_node_min(s : NlpparsespanNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_node_max(s : NlpparsespanNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_node_to_string(s : NlpparsespanNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NlpparsespanEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_parse_span_edge_make(size : Int) -> NlpparsespanEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_parse_span_edge_len(s : NlpparsespanEdge) -> Int { s.size }
+
+pub fn nlp_parse_span_edge_get(s : NlpparsespanEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_parse_span_edge_set(s : NlpparsespanEdge, i : Int, v : Double) -> NlpparsespanEdge {
+  let result = nlp_parse_span_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_edge_sum(s : NlpparsespanEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_parse_span_edge_mean(s : NlpparsespanEdge) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_parse_span_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_parse_span_edge_scale(s : NlpparsespanEdge, f : Double) -> NlpparsespanEdge {
+  let result = nlp_parse_span_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_parse_span_edge_add(a : NlpparsespanEdge, b : NlpparsespanEdge) -> NlpparsespanEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_parse_span_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_edge_copy(s : NlpparsespanEdge) -> NlpparsespanEdge {
+  let result = nlp_parse_span_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_edge_fill(s : NlpparsespanEdge, v : Double) -> NlpparsespanEdge {
+  let result = nlp_parse_span_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_edge_min(s : NlpparsespanEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_edge_max(s : NlpparsespanEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_edge_to_string(s : NlpparsespanEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NlpparsespanPath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_parse_span_path_make(size : Int) -> NlpparsespanPath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_parse_span_path_len(s : NlpparsespanPath) -> Int { s.size }
+
+pub fn nlp_parse_span_path_get(s : NlpparsespanPath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_parse_span_path_set(s : NlpparsespanPath, i : Int, v : Double) -> NlpparsespanPath {
+  let result = nlp_parse_span_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_path_sum(s : NlpparsespanPath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_parse_span_path_mean(s : NlpparsespanPath) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_parse_span_path_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_parse_span_path_scale(s : NlpparsespanPath, f : Double) -> NlpparsespanPath {
+  let result = nlp_parse_span_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_parse_span_path_add(a : NlpparsespanPath, b : NlpparsespanPath) -> NlpparsespanPath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_parse_span_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_path_copy(s : NlpparsespanPath) -> NlpparsespanPath {
+  let result = nlp_parse_span_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_path_fill(s : NlpparsespanPath, v : Double) -> NlpparsespanPath {
+  let result = nlp_parse_span_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_path_min(s : NlpparsespanPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_path_max(s : NlpparsespanPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_path_to_string(s : NlpparsespanPath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NlpparsespanCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_parse_span_cluster_make(size : Int) -> NlpparsespanCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_parse_span_cluster_len(s : NlpparsespanCluster) -> Int { s.size }
+
+pub fn nlp_parse_span_cluster_get(s : NlpparsespanCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_parse_span_cluster_set(s : NlpparsespanCluster, i : Int, v : Double) -> NlpparsespanCluster {
+  let result = nlp_parse_span_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_cluster_sum(s : NlpparsespanCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_parse_span_cluster_mean(s : NlpparsespanCluster) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_parse_span_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_parse_span_cluster_scale(s : NlpparsespanCluster, f : Double) -> NlpparsespanCluster {
+  let result = nlp_parse_span_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_parse_span_cluster_add(a : NlpparsespanCluster, b : NlpparsespanCluster) -> NlpparsespanCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_parse_span_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_cluster_copy(s : NlpparsespanCluster) -> NlpparsespanCluster {
+  let result = nlp_parse_span_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_cluster_fill(s : NlpparsespanCluster, v : Double) -> NlpparsespanCluster {
+  let result = nlp_parse_span_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_cluster_min(s : NlpparsespanCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_cluster_max(s : NlpparsespanCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_cluster_to_string(s : NlpparsespanCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NlpparsespanModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_parse_span_model_make(size : Int) -> NlpparsespanModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_parse_span_model_len(s : NlpparsespanModel) -> Int { s.size }
+
+pub fn nlp_parse_span_model_get(s : NlpparsespanModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_parse_span_model_set(s : NlpparsespanModel, i : Int, v : Double) -> NlpparsespanModel {
+  let result = nlp_parse_span_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_model_sum(s : NlpparsespanModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_parse_span_model_mean(s : NlpparsespanModel) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_parse_span_model_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_parse_span_model_scale(s : NlpparsespanModel, f : Double) -> NlpparsespanModel {
+  let result = nlp_parse_span_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_parse_span_model_add(a : NlpparsespanModel, b : NlpparsespanModel) -> NlpparsespanModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_parse_span_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_model_copy(s : NlpparsespanModel) -> NlpparsespanModel {
+  let result = nlp_parse_span_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_model_fill(s : NlpparsespanModel, v : Double) -> NlpparsespanModel {
+  let result = nlp_parse_span_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_model_min(s : NlpparsespanModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_model_max(s : NlpparsespanModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_model_to_string(s : NlpparsespanModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NlpparsespanLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_parse_span_layer_make(size : Int) -> NlpparsespanLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_parse_span_layer_len(s : NlpparsespanLayer) -> Int { s.size }
+
+pub fn nlp_parse_span_layer_get(s : NlpparsespanLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_parse_span_layer_set(s : NlpparsespanLayer, i : Int, v : Double) -> NlpparsespanLayer {
+  let result = nlp_parse_span_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_layer_sum(s : NlpparsespanLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_parse_span_layer_mean(s : NlpparsespanLayer) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_parse_span_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_parse_span_layer_scale(s : NlpparsespanLayer, f : Double) -> NlpparsespanLayer {
+  let result = nlp_parse_span_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_parse_span_layer_add(a : NlpparsespanLayer, b : NlpparsespanLayer) -> NlpparsespanLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_parse_span_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_layer_copy(s : NlpparsespanLayer) -> NlpparsespanLayer {
+  let result = nlp_parse_span_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_layer_fill(s : NlpparsespanLayer, v : Double) -> NlpparsespanLayer {
+  let result = nlp_parse_span_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_layer_min(s : NlpparsespanLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_layer_max(s : NlpparsespanLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_layer_to_string(s : NlpparsespanLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NlpparsespanBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_parse_span_buffer_make(size : Int) -> NlpparsespanBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_parse_span_buffer_len(s : NlpparsespanBuffer) -> Int { s.size }
+
+pub fn nlp_parse_span_buffer_get(s : NlpparsespanBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_parse_span_buffer_set(s : NlpparsespanBuffer, i : Int, v : Double) -> NlpparsespanBuffer {
+  let result = nlp_parse_span_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_buffer_sum(s : NlpparsespanBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_parse_span_buffer_mean(s : NlpparsespanBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_parse_span_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_parse_span_buffer_scale(s : NlpparsespanBuffer, f : Double) -> NlpparsespanBuffer {
+  let result = nlp_parse_span_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_parse_span_buffer_add(a : NlpparsespanBuffer, b : NlpparsespanBuffer) -> NlpparsespanBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_parse_span_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_buffer_copy(s : NlpparsespanBuffer) -> NlpparsespanBuffer {
+  let result = nlp_parse_span_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_buffer_fill(s : NlpparsespanBuffer, v : Double) -> NlpparsespanBuffer {
+  let result = nlp_parse_span_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_buffer_min(s : NlpparsespanBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_buffer_max(s : NlpparsespanBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_buffer_to_string(s : NlpparsespanBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NlpparsespanCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_parse_span_cursor_make(size : Int) -> NlpparsespanCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_parse_span_cursor_len(s : NlpparsespanCursor) -> Int { s.size }
+
+pub fn nlp_parse_span_cursor_get(s : NlpparsespanCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_parse_span_cursor_set(s : NlpparsespanCursor, i : Int, v : Double) -> NlpparsespanCursor {
+  let result = nlp_parse_span_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_cursor_sum(s : NlpparsespanCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_parse_span_cursor_mean(s : NlpparsespanCursor) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_parse_span_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_parse_span_cursor_scale(s : NlpparsespanCursor, f : Double) -> NlpparsespanCursor {
+  let result = nlp_parse_span_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_parse_span_cursor_add(a : NlpparsespanCursor, b : NlpparsespanCursor) -> NlpparsespanCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_parse_span_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_cursor_copy(s : NlpparsespanCursor) -> NlpparsespanCursor {
+  let result = nlp_parse_span_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_cursor_fill(s : NlpparsespanCursor, v : Double) -> NlpparsespanCursor {
+  let result = nlp_parse_span_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_cursor_min(s : NlpparsespanCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_cursor_max(s : NlpparsespanCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_cursor_to_string(s : NlpparsespanCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NlpparsespanView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_parse_span_view_make(size : Int) -> NlpparsespanView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_parse_span_view_len(s : NlpparsespanView) -> Int { s.size }
+
+pub fn nlp_parse_span_view_get(s : NlpparsespanView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_parse_span_view_set(s : NlpparsespanView, i : Int, v : Double) -> NlpparsespanView {
+  let result = nlp_parse_span_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_view_sum(s : NlpparsespanView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_parse_span_view_mean(s : NlpparsespanView) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_parse_span_view_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_parse_span_view_scale(s : NlpparsespanView, f : Double) -> NlpparsespanView {
+  let result = nlp_parse_span_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_parse_span_view_add(a : NlpparsespanView, b : NlpparsespanView) -> NlpparsespanView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_parse_span_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_view_copy(s : NlpparsespanView) -> NlpparsespanView {
+  let result = nlp_parse_span_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_view_fill(s : NlpparsespanView, v : Double) -> NlpparsespanView {
+  let result = nlp_parse_span_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_view_min(s : NlpparsespanView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_view_max(s : NlpparsespanView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_view_to_string(s : NlpparsespanView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NlpparsespanRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_parse_span_range_make(size : Int) -> NlpparsespanRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_parse_span_range_len(s : NlpparsespanRange) -> Int { s.size }
+
+pub fn nlp_parse_span_range_get(s : NlpparsespanRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_parse_span_range_set(s : NlpparsespanRange, i : Int, v : Double) -> NlpparsespanRange {
+  let result = nlp_parse_span_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_range_sum(s : NlpparsespanRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_parse_span_range_mean(s : NlpparsespanRange) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_parse_span_range_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_parse_span_range_scale(s : NlpparsespanRange, f : Double) -> NlpparsespanRange {
+  let result = nlp_parse_span_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_parse_span_range_add(a : NlpparsespanRange, b : NlpparsespanRange) -> NlpparsespanRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_parse_span_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_range_copy(s : NlpparsespanRange) -> NlpparsespanRange {
+  let result = nlp_parse_span_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_range_fill(s : NlpparsespanRange, v : Double) -> NlpparsespanRange {
+  let result = nlp_parse_span_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_range_min(s : NlpparsespanRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_range_max(s : NlpparsespanRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_range_to_string(s : NlpparsespanRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NlpparsespanSlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_parse_span_slice_make(size : Int) -> NlpparsespanSlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_parse_span_slice_len(s : NlpparsespanSlice) -> Int { s.size }
+
+pub fn nlp_parse_span_slice_get(s : NlpparsespanSlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_parse_span_slice_set(s : NlpparsespanSlice, i : Int, v : Double) -> NlpparsespanSlice {
+  let result = nlp_parse_span_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_slice_sum(s : NlpparsespanSlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_parse_span_slice_mean(s : NlpparsespanSlice) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_parse_span_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_parse_span_slice_scale(s : NlpparsespanSlice, f : Double) -> NlpparsespanSlice {
+  let result = nlp_parse_span_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_parse_span_slice_add(a : NlpparsespanSlice, b : NlpparsespanSlice) -> NlpparsespanSlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_parse_span_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_slice_copy(s : NlpparsespanSlice) -> NlpparsespanSlice {
+  let result = nlp_parse_span_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_parse_span_slice_fill(s : NlpparsespanSlice, v : Double) -> NlpparsespanSlice {
+  let result = nlp_parse_span_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_parse_span_slice_min(s : NlpparsespanSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_slice_max(s : NlpparsespanSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_parse_span_slice_to_string(s : NlpparsespanSlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn nlp_parse_span_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_parse_span_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

@@ -1,0 +1,1955 @@
+///===
+/// extcore/ml_neural_mlp
+
+pub(all) struct MlneuralmlpPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn ml_neural_mlp_make_point(x : Double, y : Double) -> MlneuralmlpPoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn ml_neural_mlp_make_point3(x : Double, y : Double, z : Double) -> MlneuralmlpPoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn ml_neural_mlp_point_x(pt : MlneuralmlpPoint) -> Double { pt.x }
+
+pub fn ml_neural_mlp_point_y(pt : MlneuralmlpPoint) -> Double { pt.y }
+
+pub fn ml_neural_mlp_point_z(pt : MlneuralmlpPoint) -> Double { pt.z }
+
+pub fn ml_neural_mlp_point_label(pt : MlneuralmlpPoint) -> Int { pt.label }
+
+pub fn ml_neural_mlp_point_dist(a : MlneuralmlpPoint, b : MlneuralmlpPoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  ml_neural_mlp_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn ml_neural_mlp_point_add(a : MlneuralmlpPoint, b : MlneuralmlpPoint) -> MlneuralmlpPoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn ml_neural_mlp_point_sub(a : MlneuralmlpPoint, b : MlneuralmlpPoint) -> MlneuralmlpPoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn ml_neural_mlp_point_scale(pt : MlneuralmlpPoint, s : Double) -> MlneuralmlpPoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn ml_neural_mlp_point_dot(a : MlneuralmlpPoint, b : MlneuralmlpPoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn ml_neural_mlp_point_cross(a : MlneuralmlpPoint, b : MlneuralmlpPoint) -> MlneuralmlpPoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn ml_neural_mlp_point_norm(pt : MlneuralmlpPoint) -> Double {
+  ml_neural_mlp_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn ml_neural_mlp_point_normalize(pt : MlneuralmlpPoint) -> MlneuralmlpPoint {
+  let n = ml_neural_mlp_point_norm(pt)
+  if n < 0.0000001 { pt } else { ml_neural_mlp_point_scale(pt, 1.0 / n) }
+}
+
+pub fn ml_neural_mlp_point_negate(pt : MlneuralmlpPoint) -> MlneuralmlpPoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn ml_neural_mlp_point_mid(a : MlneuralmlpPoint, b : MlneuralmlpPoint) -> MlneuralmlpPoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn ml_neural_mlp_point_lerp(a : MlneuralmlpPoint, b : MlneuralmlpPoint, t : Double) -> MlneuralmlpPoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn ml_neural_mlp_point_to_string(pt : MlneuralmlpPoint) -> String {
+  "(" + ml_neural_mlp_dbl(pt.x) + ", " + ml_neural_mlp_dbl(pt.y) + ", " + ml_neural_mlp_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct MlneuralmlpSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn ml_neural_mlp_make_series(vals : Array[Double], name : String) -> MlneuralmlpSeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn ml_neural_mlp_series_len(s : MlneuralmlpSeries) -> Int { s.vals.length() }
+
+pub fn ml_neural_mlp_series_sum(s : MlneuralmlpSeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn ml_neural_mlp_series_mean(s : MlneuralmlpSeries) -> Double {
+  let n = ml_neural_mlp_series_len(s)
+  if n == 0 { 0.0 } else { ml_neural_mlp_series_sum(s) / n.to_double() }
+}
+
+pub fn ml_neural_mlp_series_min(s : MlneuralmlpSeries) -> Double {
+  let n = ml_neural_mlp_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_series_max(s : MlneuralmlpSeries) -> Double {
+  let n = ml_neural_mlp_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_series_range(s : MlneuralmlpSeries) -> Double {
+  ml_neural_mlp_series_max(s) - ml_neural_mlp_series_min(s)
+}
+
+pub fn ml_neural_mlp_series_var(s : MlneuralmlpSeries) -> Double {
+  let n = ml_neural_mlp_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = ml_neural_mlp_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_series_std(s : MlneuralmlpSeries) -> Double { ml_neural_mlp_sqrt(ml_neural_mlp_series_var(s)) }
+
+pub fn ml_neural_mlp_series_median(s : MlneuralmlpSeries) -> Double {
+  let n = ml_neural_mlp_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = ml_neural_mlp_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn ml_neural_mlp_series_scale(s : MlneuralmlpSeries, f : Double) -> MlneuralmlpSeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = ml_neural_mlp_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn ml_neural_mlp_series_add(a : MlneuralmlpSeries, b : MlneuralmlpSeries) -> MlneuralmlpSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = ml_neural_mlp_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn ml_neural_mlp_series_sub(a : MlneuralmlpSeries, b : MlneuralmlpSeries) -> MlneuralmlpSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = ml_neural_mlp_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn ml_neural_mlp_series_normalize(s : MlneuralmlpSeries) -> MlneuralmlpSeries {
+  let mn = ml_neural_mlp_series_min(s)
+  let mx = ml_neural_mlp_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = ml_neural_mlp_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn ml_neural_mlp_series_cumsum(s : MlneuralmlpSeries) -> MlneuralmlpSeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = ml_neural_mlp_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn ml_neural_mlp_series_to_string(s : MlneuralmlpSeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + ml_neural_mlp_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct MlneuralmlpMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn ml_neural_mlp_make_matrix(rows : Int, cols : Int, val : Double) -> MlneuralmlpMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn ml_neural_mlp_matrix_identity(n : Int) -> MlneuralmlpMatrix {
+  let m = ml_neural_mlp_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn ml_neural_mlp_matrix_get(m : MlneuralmlpMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn ml_neural_mlp_matrix_transpose(m : MlneuralmlpMatrix) -> MlneuralmlpMatrix {
+  let result = ml_neural_mlp_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn ml_neural_mlp_matrix_add(a : MlneuralmlpMatrix, b : MlneuralmlpMatrix) -> MlneuralmlpMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = ml_neural_mlp_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn ml_neural_mlp_matrix_scale(m : MlneuralmlpMatrix, s : Double) -> MlneuralmlpMatrix {
+  let result = ml_neural_mlp_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn ml_neural_mlp_matrix_multiply(a : MlneuralmlpMatrix, b : MlneuralmlpMatrix) -> MlneuralmlpMatrix {
+  if a.cols != b.rows { return ml_neural_mlp_make_matrix(a.rows, b.cols, 0.0) }
+  let result = ml_neural_mlp_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn ml_neural_mlp_matrix_trace(m : MlneuralmlpMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn ml_neural_mlp_matrix_det(m : MlneuralmlpMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn ml_neural_mlp_matrix_norm(m : MlneuralmlpMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  ml_neural_mlp_sqrt(sum)
+}
+
+pub fn ml_neural_mlp_matrix_to_string(m : MlneuralmlpMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + ml_neural_mlp_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct MlneuralmlpVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn ml_neural_mlp_make_vector(comps : Array[Double]) -> MlneuralmlpVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn ml_neural_mlp_vector_zero(dim : Int) -> MlneuralmlpVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn ml_neural_mlp_vector_add(a : MlneuralmlpVector, b : MlneuralmlpVector) -> MlneuralmlpVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = ml_neural_mlp_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn ml_neural_mlp_vector_sub(a : MlneuralmlpVector, b : MlneuralmlpVector) -> MlneuralmlpVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = ml_neural_mlp_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn ml_neural_mlp_vector_scale(v : MlneuralmlpVector, s : Double) -> MlneuralmlpVector {
+  let mut result = []
+  for i in 0..<v.dim { result = ml_neural_mlp_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn ml_neural_mlp_vector_dot(a : MlneuralmlpVector, b : MlneuralmlpVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn ml_neural_mlp_vector_norm(v : MlneuralmlpVector) -> Double { ml_neural_mlp_sqrt(ml_neural_mlp_vector_dot(v, v)) }
+
+pub fn ml_neural_mlp_vector_normalize(v : MlneuralmlpVector) -> MlneuralmlpVector {
+  let n = ml_neural_mlp_vector_norm(v)
+  if n < 0.0000001 { v } else { ml_neural_mlp_vector_scale(v, 1.0 / n) }
+}
+
+pub fn ml_neural_mlp_vector_dist(a : MlneuralmlpVector, b : MlneuralmlpVector) -> Double {
+  ml_neural_mlp_vector_norm(ml_neural_mlp_vector_sub(a, b))
+}
+
+pub fn ml_neural_mlp_vector_to_string(v : MlneuralmlpVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + ml_neural_mlp_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn ml_neural_mlp_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = ml_neural_mlp_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_std(data : Array[Double]) -> Double { ml_neural_mlp_sqrt(ml_neural_mlp_var(data)) }
+
+pub fn ml_neural_mlp_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = ml_neural_mlp_mean(a); let mb = ml_neural_mlp_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = ml_neural_mlp_std(a); let sb = ml_neural_mlp_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { ml_neural_mlp_cov(a, b) / (sa * sb) }
+}
+
+pub fn ml_neural_mlp_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = ml_neural_mlp_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn ml_neural_mlp_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  ml_neural_mlp_sqrt(ml_neural_mlp_mse(pred, labels))
+}
+
+pub fn ml_neural_mlp_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + ml_neural_mlp_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = ml_neural_mlp_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn ml_neural_mlp_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn ml_neural_mlp_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn ml_neural_mlp_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = ml_neural_mlp_precision(pred, labels, pos); let r = ml_neural_mlp_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn ml_neural_mlp_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn ml_neural_mlp_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = ml_neural_mlp_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn ml_neural_mlp_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn ml_neural_mlp_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn ml_neural_mlp_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = ml_neural_mlp_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn ml_neural_mlp_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn ml_neural_mlp_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn ml_neural_mlp_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = ml_neural_mlp_min(data); let mx = ml_neural_mlp_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn ml_neural_mlp_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = ml_neural_mlp_mean(data); let sd = ml_neural_mlp_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn ml_neural_mlp_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn ml_neural_mlp_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn ml_neural_mlp_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn ml_neural_mlp_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn ml_neural_mlp_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn ml_neural_mlp_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn ml_neural_mlp_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { ml_neural_mlp_int(x) } else { -ml_neural_mlp_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { ml_neural_mlp_int(f * 1000000.0) } else { ml_neural_mlp_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn ml_neural_mlp_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn ml_neural_mlp_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct MlneuralmlpFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_neural_mlp_frame_make(size : Int) -> MlneuralmlpFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_neural_mlp_frame_len(s : MlneuralmlpFrame) -> Int { s.size }
+
+pub fn ml_neural_mlp_frame_get(s : MlneuralmlpFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_neural_mlp_frame_set(s : MlneuralmlpFrame, i : Int, v : Double) -> MlneuralmlpFrame {
+  let result = ml_neural_mlp_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_frame_sum(s : MlneuralmlpFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_neural_mlp_frame_mean(s : MlneuralmlpFrame) -> Double {
+  if s.size == 0 { 0.0 } else { ml_neural_mlp_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_neural_mlp_frame_scale(s : MlneuralmlpFrame, f : Double) -> MlneuralmlpFrame {
+  let result = ml_neural_mlp_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_neural_mlp_frame_add(a : MlneuralmlpFrame, b : MlneuralmlpFrame) -> MlneuralmlpFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_neural_mlp_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_frame_copy(s : MlneuralmlpFrame) -> MlneuralmlpFrame {
+  let result = ml_neural_mlp_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_frame_fill(s : MlneuralmlpFrame, v : Double) -> MlneuralmlpFrame {
+  let result = ml_neural_mlp_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_frame_min(s : MlneuralmlpFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_frame_max(s : MlneuralmlpFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_frame_to_string(s : MlneuralmlpFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlneuralmlpTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_neural_mlp_table_make(size : Int) -> MlneuralmlpTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_neural_mlp_table_len(s : MlneuralmlpTable) -> Int { s.size }
+
+pub fn ml_neural_mlp_table_get(s : MlneuralmlpTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_neural_mlp_table_set(s : MlneuralmlpTable, i : Int, v : Double) -> MlneuralmlpTable {
+  let result = ml_neural_mlp_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_table_sum(s : MlneuralmlpTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_neural_mlp_table_mean(s : MlneuralmlpTable) -> Double {
+  if s.size == 0 { 0.0 } else { ml_neural_mlp_table_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_neural_mlp_table_scale(s : MlneuralmlpTable, f : Double) -> MlneuralmlpTable {
+  let result = ml_neural_mlp_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_neural_mlp_table_add(a : MlneuralmlpTable, b : MlneuralmlpTable) -> MlneuralmlpTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_neural_mlp_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_table_copy(s : MlneuralmlpTable) -> MlneuralmlpTable {
+  let result = ml_neural_mlp_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_table_fill(s : MlneuralmlpTable, v : Double) -> MlneuralmlpTable {
+  let result = ml_neural_mlp_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_table_min(s : MlneuralmlpTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_table_max(s : MlneuralmlpTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_table_to_string(s : MlneuralmlpTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlneuralmlpGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_neural_mlp_graphn_make(size : Int) -> MlneuralmlpGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_neural_mlp_graphn_len(s : MlneuralmlpGraphN) -> Int { s.size }
+
+pub fn ml_neural_mlp_graphn_get(s : MlneuralmlpGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_neural_mlp_graphn_set(s : MlneuralmlpGraphN, i : Int, v : Double) -> MlneuralmlpGraphN {
+  let result = ml_neural_mlp_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_graphn_sum(s : MlneuralmlpGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_neural_mlp_graphn_mean(s : MlneuralmlpGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { ml_neural_mlp_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_neural_mlp_graphn_scale(s : MlneuralmlpGraphN, f : Double) -> MlneuralmlpGraphN {
+  let result = ml_neural_mlp_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_neural_mlp_graphn_add(a : MlneuralmlpGraphN, b : MlneuralmlpGraphN) -> MlneuralmlpGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_neural_mlp_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_graphn_copy(s : MlneuralmlpGraphN) -> MlneuralmlpGraphN {
+  let result = ml_neural_mlp_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_graphn_fill(s : MlneuralmlpGraphN, v : Double) -> MlneuralmlpGraphN {
+  let result = ml_neural_mlp_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_graphn_min(s : MlneuralmlpGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_graphn_max(s : MlneuralmlpGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_graphn_to_string(s : MlneuralmlpGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlneuralmlpNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_neural_mlp_node_make(size : Int) -> MlneuralmlpNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_neural_mlp_node_len(s : MlneuralmlpNode) -> Int { s.size }
+
+pub fn ml_neural_mlp_node_get(s : MlneuralmlpNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_neural_mlp_node_set(s : MlneuralmlpNode, i : Int, v : Double) -> MlneuralmlpNode {
+  let result = ml_neural_mlp_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_node_sum(s : MlneuralmlpNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_neural_mlp_node_mean(s : MlneuralmlpNode) -> Double {
+  if s.size == 0 { 0.0 } else { ml_neural_mlp_node_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_neural_mlp_node_scale(s : MlneuralmlpNode, f : Double) -> MlneuralmlpNode {
+  let result = ml_neural_mlp_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_neural_mlp_node_add(a : MlneuralmlpNode, b : MlneuralmlpNode) -> MlneuralmlpNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_neural_mlp_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_node_copy(s : MlneuralmlpNode) -> MlneuralmlpNode {
+  let result = ml_neural_mlp_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_node_fill(s : MlneuralmlpNode, v : Double) -> MlneuralmlpNode {
+  let result = ml_neural_mlp_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_node_min(s : MlneuralmlpNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_node_max(s : MlneuralmlpNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_node_to_string(s : MlneuralmlpNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlneuralmlpEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_neural_mlp_edge_make(size : Int) -> MlneuralmlpEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_neural_mlp_edge_len(s : MlneuralmlpEdge) -> Int { s.size }
+
+pub fn ml_neural_mlp_edge_get(s : MlneuralmlpEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_neural_mlp_edge_set(s : MlneuralmlpEdge, i : Int, v : Double) -> MlneuralmlpEdge {
+  let result = ml_neural_mlp_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_edge_sum(s : MlneuralmlpEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_neural_mlp_edge_mean(s : MlneuralmlpEdge) -> Double {
+  if s.size == 0 { 0.0 } else { ml_neural_mlp_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_neural_mlp_edge_scale(s : MlneuralmlpEdge, f : Double) -> MlneuralmlpEdge {
+  let result = ml_neural_mlp_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_neural_mlp_edge_add(a : MlneuralmlpEdge, b : MlneuralmlpEdge) -> MlneuralmlpEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_neural_mlp_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_edge_copy(s : MlneuralmlpEdge) -> MlneuralmlpEdge {
+  let result = ml_neural_mlp_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_edge_fill(s : MlneuralmlpEdge, v : Double) -> MlneuralmlpEdge {
+  let result = ml_neural_mlp_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_edge_min(s : MlneuralmlpEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_edge_max(s : MlneuralmlpEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_edge_to_string(s : MlneuralmlpEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlneuralmlpPath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_neural_mlp_path_make(size : Int) -> MlneuralmlpPath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_neural_mlp_path_len(s : MlneuralmlpPath) -> Int { s.size }
+
+pub fn ml_neural_mlp_path_get(s : MlneuralmlpPath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_neural_mlp_path_set(s : MlneuralmlpPath, i : Int, v : Double) -> MlneuralmlpPath {
+  let result = ml_neural_mlp_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_path_sum(s : MlneuralmlpPath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_neural_mlp_path_mean(s : MlneuralmlpPath) -> Double {
+  if s.size == 0 { 0.0 } else { ml_neural_mlp_path_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_neural_mlp_path_scale(s : MlneuralmlpPath, f : Double) -> MlneuralmlpPath {
+  let result = ml_neural_mlp_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_neural_mlp_path_add(a : MlneuralmlpPath, b : MlneuralmlpPath) -> MlneuralmlpPath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_neural_mlp_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_path_copy(s : MlneuralmlpPath) -> MlneuralmlpPath {
+  let result = ml_neural_mlp_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_path_fill(s : MlneuralmlpPath, v : Double) -> MlneuralmlpPath {
+  let result = ml_neural_mlp_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_path_min(s : MlneuralmlpPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_path_max(s : MlneuralmlpPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_path_to_string(s : MlneuralmlpPath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlneuralmlpCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_neural_mlp_cluster_make(size : Int) -> MlneuralmlpCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_neural_mlp_cluster_len(s : MlneuralmlpCluster) -> Int { s.size }
+
+pub fn ml_neural_mlp_cluster_get(s : MlneuralmlpCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_neural_mlp_cluster_set(s : MlneuralmlpCluster, i : Int, v : Double) -> MlneuralmlpCluster {
+  let result = ml_neural_mlp_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_cluster_sum(s : MlneuralmlpCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_neural_mlp_cluster_mean(s : MlneuralmlpCluster) -> Double {
+  if s.size == 0 { 0.0 } else { ml_neural_mlp_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_neural_mlp_cluster_scale(s : MlneuralmlpCluster, f : Double) -> MlneuralmlpCluster {
+  let result = ml_neural_mlp_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_neural_mlp_cluster_add(a : MlneuralmlpCluster, b : MlneuralmlpCluster) -> MlneuralmlpCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_neural_mlp_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_cluster_copy(s : MlneuralmlpCluster) -> MlneuralmlpCluster {
+  let result = ml_neural_mlp_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_cluster_fill(s : MlneuralmlpCluster, v : Double) -> MlneuralmlpCluster {
+  let result = ml_neural_mlp_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_cluster_min(s : MlneuralmlpCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_cluster_max(s : MlneuralmlpCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_cluster_to_string(s : MlneuralmlpCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlneuralmlpModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_neural_mlp_model_make(size : Int) -> MlneuralmlpModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_neural_mlp_model_len(s : MlneuralmlpModel) -> Int { s.size }
+
+pub fn ml_neural_mlp_model_get(s : MlneuralmlpModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_neural_mlp_model_set(s : MlneuralmlpModel, i : Int, v : Double) -> MlneuralmlpModel {
+  let result = ml_neural_mlp_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_model_sum(s : MlneuralmlpModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_neural_mlp_model_mean(s : MlneuralmlpModel) -> Double {
+  if s.size == 0 { 0.0 } else { ml_neural_mlp_model_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_neural_mlp_model_scale(s : MlneuralmlpModel, f : Double) -> MlneuralmlpModel {
+  let result = ml_neural_mlp_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_neural_mlp_model_add(a : MlneuralmlpModel, b : MlneuralmlpModel) -> MlneuralmlpModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_neural_mlp_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_model_copy(s : MlneuralmlpModel) -> MlneuralmlpModel {
+  let result = ml_neural_mlp_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_model_fill(s : MlneuralmlpModel, v : Double) -> MlneuralmlpModel {
+  let result = ml_neural_mlp_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_model_min(s : MlneuralmlpModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_model_max(s : MlneuralmlpModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_model_to_string(s : MlneuralmlpModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlneuralmlpLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_neural_mlp_layer_make(size : Int) -> MlneuralmlpLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_neural_mlp_layer_len(s : MlneuralmlpLayer) -> Int { s.size }
+
+pub fn ml_neural_mlp_layer_get(s : MlneuralmlpLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_neural_mlp_layer_set(s : MlneuralmlpLayer, i : Int, v : Double) -> MlneuralmlpLayer {
+  let result = ml_neural_mlp_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_layer_sum(s : MlneuralmlpLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_neural_mlp_layer_mean(s : MlneuralmlpLayer) -> Double {
+  if s.size == 0 { 0.0 } else { ml_neural_mlp_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_neural_mlp_layer_scale(s : MlneuralmlpLayer, f : Double) -> MlneuralmlpLayer {
+  let result = ml_neural_mlp_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_neural_mlp_layer_add(a : MlneuralmlpLayer, b : MlneuralmlpLayer) -> MlneuralmlpLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_neural_mlp_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_layer_copy(s : MlneuralmlpLayer) -> MlneuralmlpLayer {
+  let result = ml_neural_mlp_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_layer_fill(s : MlneuralmlpLayer, v : Double) -> MlneuralmlpLayer {
+  let result = ml_neural_mlp_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_layer_min(s : MlneuralmlpLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_layer_max(s : MlneuralmlpLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_layer_to_string(s : MlneuralmlpLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlneuralmlpBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_neural_mlp_buffer_make(size : Int) -> MlneuralmlpBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_neural_mlp_buffer_len(s : MlneuralmlpBuffer) -> Int { s.size }
+
+pub fn ml_neural_mlp_buffer_get(s : MlneuralmlpBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_neural_mlp_buffer_set(s : MlneuralmlpBuffer, i : Int, v : Double) -> MlneuralmlpBuffer {
+  let result = ml_neural_mlp_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_buffer_sum(s : MlneuralmlpBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_neural_mlp_buffer_mean(s : MlneuralmlpBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { ml_neural_mlp_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_neural_mlp_buffer_scale(s : MlneuralmlpBuffer, f : Double) -> MlneuralmlpBuffer {
+  let result = ml_neural_mlp_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_neural_mlp_buffer_add(a : MlneuralmlpBuffer, b : MlneuralmlpBuffer) -> MlneuralmlpBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_neural_mlp_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_buffer_copy(s : MlneuralmlpBuffer) -> MlneuralmlpBuffer {
+  let result = ml_neural_mlp_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_buffer_fill(s : MlneuralmlpBuffer, v : Double) -> MlneuralmlpBuffer {
+  let result = ml_neural_mlp_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_buffer_min(s : MlneuralmlpBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_buffer_max(s : MlneuralmlpBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_buffer_to_string(s : MlneuralmlpBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlneuralmlpCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_neural_mlp_cursor_make(size : Int) -> MlneuralmlpCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_neural_mlp_cursor_len(s : MlneuralmlpCursor) -> Int { s.size }
+
+pub fn ml_neural_mlp_cursor_get(s : MlneuralmlpCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_neural_mlp_cursor_set(s : MlneuralmlpCursor, i : Int, v : Double) -> MlneuralmlpCursor {
+  let result = ml_neural_mlp_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_cursor_sum(s : MlneuralmlpCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_neural_mlp_cursor_mean(s : MlneuralmlpCursor) -> Double {
+  if s.size == 0 { 0.0 } else { ml_neural_mlp_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_neural_mlp_cursor_scale(s : MlneuralmlpCursor, f : Double) -> MlneuralmlpCursor {
+  let result = ml_neural_mlp_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_neural_mlp_cursor_add(a : MlneuralmlpCursor, b : MlneuralmlpCursor) -> MlneuralmlpCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_neural_mlp_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_cursor_copy(s : MlneuralmlpCursor) -> MlneuralmlpCursor {
+  let result = ml_neural_mlp_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_cursor_fill(s : MlneuralmlpCursor, v : Double) -> MlneuralmlpCursor {
+  let result = ml_neural_mlp_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_cursor_min(s : MlneuralmlpCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_cursor_max(s : MlneuralmlpCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_cursor_to_string(s : MlneuralmlpCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlneuralmlpView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_neural_mlp_view_make(size : Int) -> MlneuralmlpView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_neural_mlp_view_len(s : MlneuralmlpView) -> Int { s.size }
+
+pub fn ml_neural_mlp_view_get(s : MlneuralmlpView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_neural_mlp_view_set(s : MlneuralmlpView, i : Int, v : Double) -> MlneuralmlpView {
+  let result = ml_neural_mlp_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_view_sum(s : MlneuralmlpView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_neural_mlp_view_mean(s : MlneuralmlpView) -> Double {
+  if s.size == 0 { 0.0 } else { ml_neural_mlp_view_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_neural_mlp_view_scale(s : MlneuralmlpView, f : Double) -> MlneuralmlpView {
+  let result = ml_neural_mlp_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_neural_mlp_view_add(a : MlneuralmlpView, b : MlneuralmlpView) -> MlneuralmlpView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_neural_mlp_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_view_copy(s : MlneuralmlpView) -> MlneuralmlpView {
+  let result = ml_neural_mlp_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_view_fill(s : MlneuralmlpView, v : Double) -> MlneuralmlpView {
+  let result = ml_neural_mlp_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_view_min(s : MlneuralmlpView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_view_max(s : MlneuralmlpView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_view_to_string(s : MlneuralmlpView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlneuralmlpRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_neural_mlp_range_make(size : Int) -> MlneuralmlpRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_neural_mlp_range_len(s : MlneuralmlpRange) -> Int { s.size }
+
+pub fn ml_neural_mlp_range_get(s : MlneuralmlpRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_neural_mlp_range_set(s : MlneuralmlpRange, i : Int, v : Double) -> MlneuralmlpRange {
+  let result = ml_neural_mlp_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_range_sum(s : MlneuralmlpRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_neural_mlp_range_mean(s : MlneuralmlpRange) -> Double {
+  if s.size == 0 { 0.0 } else { ml_neural_mlp_range_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_neural_mlp_range_scale(s : MlneuralmlpRange, f : Double) -> MlneuralmlpRange {
+  let result = ml_neural_mlp_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_neural_mlp_range_add(a : MlneuralmlpRange, b : MlneuralmlpRange) -> MlneuralmlpRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_neural_mlp_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_range_copy(s : MlneuralmlpRange) -> MlneuralmlpRange {
+  let result = ml_neural_mlp_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_range_fill(s : MlneuralmlpRange, v : Double) -> MlneuralmlpRange {
+  let result = ml_neural_mlp_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_range_min(s : MlneuralmlpRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_range_max(s : MlneuralmlpRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_range_to_string(s : MlneuralmlpRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlneuralmlpSlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_neural_mlp_slice_make(size : Int) -> MlneuralmlpSlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_neural_mlp_slice_len(s : MlneuralmlpSlice) -> Int { s.size }
+
+pub fn ml_neural_mlp_slice_get(s : MlneuralmlpSlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_neural_mlp_slice_set(s : MlneuralmlpSlice, i : Int, v : Double) -> MlneuralmlpSlice {
+  let result = ml_neural_mlp_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_slice_sum(s : MlneuralmlpSlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_neural_mlp_slice_mean(s : MlneuralmlpSlice) -> Double {
+  if s.size == 0 { 0.0 } else { ml_neural_mlp_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_neural_mlp_slice_scale(s : MlneuralmlpSlice, f : Double) -> MlneuralmlpSlice {
+  let result = ml_neural_mlp_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_neural_mlp_slice_add(a : MlneuralmlpSlice, b : MlneuralmlpSlice) -> MlneuralmlpSlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_neural_mlp_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_slice_copy(s : MlneuralmlpSlice) -> MlneuralmlpSlice {
+  let result = ml_neural_mlp_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_neural_mlp_slice_fill(s : MlneuralmlpSlice, v : Double) -> MlneuralmlpSlice {
+  let result = ml_neural_mlp_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_neural_mlp_slice_min(s : MlneuralmlpSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_slice_max(s : MlneuralmlpSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_neural_mlp_slice_to_string(s : MlneuralmlpSlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn ml_neural_mlp_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_neural_mlp_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

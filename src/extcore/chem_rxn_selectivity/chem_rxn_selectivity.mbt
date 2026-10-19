@@ -1,0 +1,1955 @@
+///===
+/// extcore/chem_rxn_selectivity
+
+pub(all) struct ChemrxnselectivityPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn chem_rxn_selectivity_make_point(x : Double, y : Double) -> ChemrxnselectivityPoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn chem_rxn_selectivity_make_point3(x : Double, y : Double, z : Double) -> ChemrxnselectivityPoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn chem_rxn_selectivity_point_x(pt : ChemrxnselectivityPoint) -> Double { pt.x }
+
+pub fn chem_rxn_selectivity_point_y(pt : ChemrxnselectivityPoint) -> Double { pt.y }
+
+pub fn chem_rxn_selectivity_point_z(pt : ChemrxnselectivityPoint) -> Double { pt.z }
+
+pub fn chem_rxn_selectivity_point_label(pt : ChemrxnselectivityPoint) -> Int { pt.label }
+
+pub fn chem_rxn_selectivity_point_dist(a : ChemrxnselectivityPoint, b : ChemrxnselectivityPoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  chem_rxn_selectivity_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn chem_rxn_selectivity_point_add(a : ChemrxnselectivityPoint, b : ChemrxnselectivityPoint) -> ChemrxnselectivityPoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn chem_rxn_selectivity_point_sub(a : ChemrxnselectivityPoint, b : ChemrxnselectivityPoint) -> ChemrxnselectivityPoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn chem_rxn_selectivity_point_scale(pt : ChemrxnselectivityPoint, s : Double) -> ChemrxnselectivityPoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn chem_rxn_selectivity_point_dot(a : ChemrxnselectivityPoint, b : ChemrxnselectivityPoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn chem_rxn_selectivity_point_cross(a : ChemrxnselectivityPoint, b : ChemrxnselectivityPoint) -> ChemrxnselectivityPoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn chem_rxn_selectivity_point_norm(pt : ChemrxnselectivityPoint) -> Double {
+  chem_rxn_selectivity_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn chem_rxn_selectivity_point_normalize(pt : ChemrxnselectivityPoint) -> ChemrxnselectivityPoint {
+  let n = chem_rxn_selectivity_point_norm(pt)
+  if n < 0.0000001 { pt } else { chem_rxn_selectivity_point_scale(pt, 1.0 / n) }
+}
+
+pub fn chem_rxn_selectivity_point_negate(pt : ChemrxnselectivityPoint) -> ChemrxnselectivityPoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn chem_rxn_selectivity_point_mid(a : ChemrxnselectivityPoint, b : ChemrxnselectivityPoint) -> ChemrxnselectivityPoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn chem_rxn_selectivity_point_lerp(a : ChemrxnselectivityPoint, b : ChemrxnselectivityPoint, t : Double) -> ChemrxnselectivityPoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn chem_rxn_selectivity_point_to_string(pt : ChemrxnselectivityPoint) -> String {
+  "(" + chem_rxn_selectivity_dbl(pt.x) + ", " + chem_rxn_selectivity_dbl(pt.y) + ", " + chem_rxn_selectivity_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct ChemrxnselectivitySeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn chem_rxn_selectivity_make_series(vals : Array[Double], name : String) -> ChemrxnselectivitySeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn chem_rxn_selectivity_series_len(s : ChemrxnselectivitySeries) -> Int { s.vals.length() }
+
+pub fn chem_rxn_selectivity_series_sum(s : ChemrxnselectivitySeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn chem_rxn_selectivity_series_mean(s : ChemrxnselectivitySeries) -> Double {
+  let n = chem_rxn_selectivity_series_len(s)
+  if n == 0 { 0.0 } else { chem_rxn_selectivity_series_sum(s) / n.to_double() }
+}
+
+pub fn chem_rxn_selectivity_series_min(s : ChemrxnselectivitySeries) -> Double {
+  let n = chem_rxn_selectivity_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_series_max(s : ChemrxnselectivitySeries) -> Double {
+  let n = chem_rxn_selectivity_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_series_range(s : ChemrxnselectivitySeries) -> Double {
+  chem_rxn_selectivity_series_max(s) - chem_rxn_selectivity_series_min(s)
+}
+
+pub fn chem_rxn_selectivity_series_var(s : ChemrxnselectivitySeries) -> Double {
+  let n = chem_rxn_selectivity_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = chem_rxn_selectivity_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_series_std(s : ChemrxnselectivitySeries) -> Double { chem_rxn_selectivity_sqrt(chem_rxn_selectivity_series_var(s)) }
+
+pub fn chem_rxn_selectivity_series_median(s : ChemrxnselectivitySeries) -> Double {
+  let n = chem_rxn_selectivity_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = chem_rxn_selectivity_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn chem_rxn_selectivity_series_scale(s : ChemrxnselectivitySeries, f : Double) -> ChemrxnselectivitySeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = chem_rxn_selectivity_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn chem_rxn_selectivity_series_add(a : ChemrxnselectivitySeries, b : ChemrxnselectivitySeries) -> ChemrxnselectivitySeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = chem_rxn_selectivity_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn chem_rxn_selectivity_series_sub(a : ChemrxnselectivitySeries, b : ChemrxnselectivitySeries) -> ChemrxnselectivitySeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = chem_rxn_selectivity_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn chem_rxn_selectivity_series_normalize(s : ChemrxnselectivitySeries) -> ChemrxnselectivitySeries {
+  let mn = chem_rxn_selectivity_series_min(s)
+  let mx = chem_rxn_selectivity_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = chem_rxn_selectivity_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn chem_rxn_selectivity_series_cumsum(s : ChemrxnselectivitySeries) -> ChemrxnselectivitySeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = chem_rxn_selectivity_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn chem_rxn_selectivity_series_to_string(s : ChemrxnselectivitySeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + chem_rxn_selectivity_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct ChemrxnselectivityMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn chem_rxn_selectivity_make_matrix(rows : Int, cols : Int, val : Double) -> ChemrxnselectivityMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn chem_rxn_selectivity_matrix_identity(n : Int) -> ChemrxnselectivityMatrix {
+  let m = chem_rxn_selectivity_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn chem_rxn_selectivity_matrix_get(m : ChemrxnselectivityMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn chem_rxn_selectivity_matrix_transpose(m : ChemrxnselectivityMatrix) -> ChemrxnselectivityMatrix {
+  let result = chem_rxn_selectivity_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn chem_rxn_selectivity_matrix_add(a : ChemrxnselectivityMatrix, b : ChemrxnselectivityMatrix) -> ChemrxnselectivityMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = chem_rxn_selectivity_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn chem_rxn_selectivity_matrix_scale(m : ChemrxnselectivityMatrix, s : Double) -> ChemrxnselectivityMatrix {
+  let result = chem_rxn_selectivity_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn chem_rxn_selectivity_matrix_multiply(a : ChemrxnselectivityMatrix, b : ChemrxnselectivityMatrix) -> ChemrxnselectivityMatrix {
+  if a.cols != b.rows { return chem_rxn_selectivity_make_matrix(a.rows, b.cols, 0.0) }
+  let result = chem_rxn_selectivity_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn chem_rxn_selectivity_matrix_trace(m : ChemrxnselectivityMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn chem_rxn_selectivity_matrix_det(m : ChemrxnselectivityMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn chem_rxn_selectivity_matrix_norm(m : ChemrxnselectivityMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  chem_rxn_selectivity_sqrt(sum)
+}
+
+pub fn chem_rxn_selectivity_matrix_to_string(m : ChemrxnselectivityMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + chem_rxn_selectivity_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct ChemrxnselectivityVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn chem_rxn_selectivity_make_vector(comps : Array[Double]) -> ChemrxnselectivityVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn chem_rxn_selectivity_vector_zero(dim : Int) -> ChemrxnselectivityVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn chem_rxn_selectivity_vector_add(a : ChemrxnselectivityVector, b : ChemrxnselectivityVector) -> ChemrxnselectivityVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = chem_rxn_selectivity_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn chem_rxn_selectivity_vector_sub(a : ChemrxnselectivityVector, b : ChemrxnselectivityVector) -> ChemrxnselectivityVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = chem_rxn_selectivity_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn chem_rxn_selectivity_vector_scale(v : ChemrxnselectivityVector, s : Double) -> ChemrxnselectivityVector {
+  let mut result = []
+  for i in 0..<v.dim { result = chem_rxn_selectivity_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn chem_rxn_selectivity_vector_dot(a : ChemrxnselectivityVector, b : ChemrxnselectivityVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn chem_rxn_selectivity_vector_norm(v : ChemrxnselectivityVector) -> Double { chem_rxn_selectivity_sqrt(chem_rxn_selectivity_vector_dot(v, v)) }
+
+pub fn chem_rxn_selectivity_vector_normalize(v : ChemrxnselectivityVector) -> ChemrxnselectivityVector {
+  let n = chem_rxn_selectivity_vector_norm(v)
+  if n < 0.0000001 { v } else { chem_rxn_selectivity_vector_scale(v, 1.0 / n) }
+}
+
+pub fn chem_rxn_selectivity_vector_dist(a : ChemrxnselectivityVector, b : ChemrxnselectivityVector) -> Double {
+  chem_rxn_selectivity_vector_norm(chem_rxn_selectivity_vector_sub(a, b))
+}
+
+pub fn chem_rxn_selectivity_vector_to_string(v : ChemrxnselectivityVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + chem_rxn_selectivity_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn chem_rxn_selectivity_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = chem_rxn_selectivity_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_std(data : Array[Double]) -> Double { chem_rxn_selectivity_sqrt(chem_rxn_selectivity_var(data)) }
+
+pub fn chem_rxn_selectivity_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = chem_rxn_selectivity_mean(a); let mb = chem_rxn_selectivity_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = chem_rxn_selectivity_std(a); let sb = chem_rxn_selectivity_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { chem_rxn_selectivity_cov(a, b) / (sa * sb) }
+}
+
+pub fn chem_rxn_selectivity_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = chem_rxn_selectivity_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn chem_rxn_selectivity_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  chem_rxn_selectivity_sqrt(chem_rxn_selectivity_mse(pred, labels))
+}
+
+pub fn chem_rxn_selectivity_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + chem_rxn_selectivity_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = chem_rxn_selectivity_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn chem_rxn_selectivity_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn chem_rxn_selectivity_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn chem_rxn_selectivity_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = chem_rxn_selectivity_precision(pred, labels, pos); let r = chem_rxn_selectivity_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn chem_rxn_selectivity_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn chem_rxn_selectivity_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = chem_rxn_selectivity_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn chem_rxn_selectivity_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn chem_rxn_selectivity_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = chem_rxn_selectivity_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn chem_rxn_selectivity_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn chem_rxn_selectivity_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn chem_rxn_selectivity_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = chem_rxn_selectivity_min(data); let mx = chem_rxn_selectivity_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn chem_rxn_selectivity_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = chem_rxn_selectivity_mean(data); let sd = chem_rxn_selectivity_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn chem_rxn_selectivity_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn chem_rxn_selectivity_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn chem_rxn_selectivity_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn chem_rxn_selectivity_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn chem_rxn_selectivity_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn chem_rxn_selectivity_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { chem_rxn_selectivity_int(x) } else { -chem_rxn_selectivity_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { chem_rxn_selectivity_int(f * 1000000.0) } else { chem_rxn_selectivity_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn chem_rxn_selectivity_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn chem_rxn_selectivity_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct ChemrxnselectivityFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_selectivity_frame_make(size : Int) -> ChemrxnselectivityFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_selectivity_frame_len(s : ChemrxnselectivityFrame) -> Int { s.size }
+
+pub fn chem_rxn_selectivity_frame_get(s : ChemrxnselectivityFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_selectivity_frame_set(s : ChemrxnselectivityFrame, i : Int, v : Double) -> ChemrxnselectivityFrame {
+  let result = chem_rxn_selectivity_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_frame_sum(s : ChemrxnselectivityFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_selectivity_frame_mean(s : ChemrxnselectivityFrame) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_selectivity_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_selectivity_frame_scale(s : ChemrxnselectivityFrame, f : Double) -> ChemrxnselectivityFrame {
+  let result = chem_rxn_selectivity_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_selectivity_frame_add(a : ChemrxnselectivityFrame, b : ChemrxnselectivityFrame) -> ChemrxnselectivityFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_selectivity_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_frame_copy(s : ChemrxnselectivityFrame) -> ChemrxnselectivityFrame {
+  let result = chem_rxn_selectivity_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_frame_fill(s : ChemrxnselectivityFrame, v : Double) -> ChemrxnselectivityFrame {
+  let result = chem_rxn_selectivity_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_frame_min(s : ChemrxnselectivityFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_frame_max(s : ChemrxnselectivityFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_frame_to_string(s : ChemrxnselectivityFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnselectivityTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_selectivity_table_make(size : Int) -> ChemrxnselectivityTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_selectivity_table_len(s : ChemrxnselectivityTable) -> Int { s.size }
+
+pub fn chem_rxn_selectivity_table_get(s : ChemrxnselectivityTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_selectivity_table_set(s : ChemrxnselectivityTable, i : Int, v : Double) -> ChemrxnselectivityTable {
+  let result = chem_rxn_selectivity_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_table_sum(s : ChemrxnselectivityTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_selectivity_table_mean(s : ChemrxnselectivityTable) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_selectivity_table_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_selectivity_table_scale(s : ChemrxnselectivityTable, f : Double) -> ChemrxnselectivityTable {
+  let result = chem_rxn_selectivity_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_selectivity_table_add(a : ChemrxnselectivityTable, b : ChemrxnselectivityTable) -> ChemrxnselectivityTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_selectivity_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_table_copy(s : ChemrxnselectivityTable) -> ChemrxnselectivityTable {
+  let result = chem_rxn_selectivity_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_table_fill(s : ChemrxnselectivityTable, v : Double) -> ChemrxnselectivityTable {
+  let result = chem_rxn_selectivity_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_table_min(s : ChemrxnselectivityTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_table_max(s : ChemrxnselectivityTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_table_to_string(s : ChemrxnselectivityTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnselectivityGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_selectivity_graphn_make(size : Int) -> ChemrxnselectivityGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_selectivity_graphn_len(s : ChemrxnselectivityGraphN) -> Int { s.size }
+
+pub fn chem_rxn_selectivity_graphn_get(s : ChemrxnselectivityGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_selectivity_graphn_set(s : ChemrxnselectivityGraphN, i : Int, v : Double) -> ChemrxnselectivityGraphN {
+  let result = chem_rxn_selectivity_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_graphn_sum(s : ChemrxnselectivityGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_selectivity_graphn_mean(s : ChemrxnselectivityGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_selectivity_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_selectivity_graphn_scale(s : ChemrxnselectivityGraphN, f : Double) -> ChemrxnselectivityGraphN {
+  let result = chem_rxn_selectivity_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_selectivity_graphn_add(a : ChemrxnselectivityGraphN, b : ChemrxnselectivityGraphN) -> ChemrxnselectivityGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_selectivity_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_graphn_copy(s : ChemrxnselectivityGraphN) -> ChemrxnselectivityGraphN {
+  let result = chem_rxn_selectivity_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_graphn_fill(s : ChemrxnselectivityGraphN, v : Double) -> ChemrxnselectivityGraphN {
+  let result = chem_rxn_selectivity_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_graphn_min(s : ChemrxnselectivityGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_graphn_max(s : ChemrxnselectivityGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_graphn_to_string(s : ChemrxnselectivityGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnselectivityNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_selectivity_node_make(size : Int) -> ChemrxnselectivityNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_selectivity_node_len(s : ChemrxnselectivityNode) -> Int { s.size }
+
+pub fn chem_rxn_selectivity_node_get(s : ChemrxnselectivityNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_selectivity_node_set(s : ChemrxnselectivityNode, i : Int, v : Double) -> ChemrxnselectivityNode {
+  let result = chem_rxn_selectivity_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_node_sum(s : ChemrxnselectivityNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_selectivity_node_mean(s : ChemrxnselectivityNode) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_selectivity_node_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_selectivity_node_scale(s : ChemrxnselectivityNode, f : Double) -> ChemrxnselectivityNode {
+  let result = chem_rxn_selectivity_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_selectivity_node_add(a : ChemrxnselectivityNode, b : ChemrxnselectivityNode) -> ChemrxnselectivityNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_selectivity_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_node_copy(s : ChemrxnselectivityNode) -> ChemrxnselectivityNode {
+  let result = chem_rxn_selectivity_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_node_fill(s : ChemrxnselectivityNode, v : Double) -> ChemrxnselectivityNode {
+  let result = chem_rxn_selectivity_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_node_min(s : ChemrxnselectivityNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_node_max(s : ChemrxnselectivityNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_node_to_string(s : ChemrxnselectivityNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnselectivityEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_selectivity_edge_make(size : Int) -> ChemrxnselectivityEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_selectivity_edge_len(s : ChemrxnselectivityEdge) -> Int { s.size }
+
+pub fn chem_rxn_selectivity_edge_get(s : ChemrxnselectivityEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_selectivity_edge_set(s : ChemrxnselectivityEdge, i : Int, v : Double) -> ChemrxnselectivityEdge {
+  let result = chem_rxn_selectivity_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_edge_sum(s : ChemrxnselectivityEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_selectivity_edge_mean(s : ChemrxnselectivityEdge) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_selectivity_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_selectivity_edge_scale(s : ChemrxnselectivityEdge, f : Double) -> ChemrxnselectivityEdge {
+  let result = chem_rxn_selectivity_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_selectivity_edge_add(a : ChemrxnselectivityEdge, b : ChemrxnselectivityEdge) -> ChemrxnselectivityEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_selectivity_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_edge_copy(s : ChemrxnselectivityEdge) -> ChemrxnselectivityEdge {
+  let result = chem_rxn_selectivity_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_edge_fill(s : ChemrxnselectivityEdge, v : Double) -> ChemrxnselectivityEdge {
+  let result = chem_rxn_selectivity_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_edge_min(s : ChemrxnselectivityEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_edge_max(s : ChemrxnselectivityEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_edge_to_string(s : ChemrxnselectivityEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnselectivityPath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_selectivity_path_make(size : Int) -> ChemrxnselectivityPath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_selectivity_path_len(s : ChemrxnselectivityPath) -> Int { s.size }
+
+pub fn chem_rxn_selectivity_path_get(s : ChemrxnselectivityPath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_selectivity_path_set(s : ChemrxnselectivityPath, i : Int, v : Double) -> ChemrxnselectivityPath {
+  let result = chem_rxn_selectivity_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_path_sum(s : ChemrxnselectivityPath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_selectivity_path_mean(s : ChemrxnselectivityPath) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_selectivity_path_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_selectivity_path_scale(s : ChemrxnselectivityPath, f : Double) -> ChemrxnselectivityPath {
+  let result = chem_rxn_selectivity_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_selectivity_path_add(a : ChemrxnselectivityPath, b : ChemrxnselectivityPath) -> ChemrxnselectivityPath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_selectivity_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_path_copy(s : ChemrxnselectivityPath) -> ChemrxnselectivityPath {
+  let result = chem_rxn_selectivity_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_path_fill(s : ChemrxnselectivityPath, v : Double) -> ChemrxnselectivityPath {
+  let result = chem_rxn_selectivity_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_path_min(s : ChemrxnselectivityPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_path_max(s : ChemrxnselectivityPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_path_to_string(s : ChemrxnselectivityPath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnselectivityCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_selectivity_cluster_make(size : Int) -> ChemrxnselectivityCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_selectivity_cluster_len(s : ChemrxnselectivityCluster) -> Int { s.size }
+
+pub fn chem_rxn_selectivity_cluster_get(s : ChemrxnselectivityCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_selectivity_cluster_set(s : ChemrxnselectivityCluster, i : Int, v : Double) -> ChemrxnselectivityCluster {
+  let result = chem_rxn_selectivity_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_cluster_sum(s : ChemrxnselectivityCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_selectivity_cluster_mean(s : ChemrxnselectivityCluster) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_selectivity_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_selectivity_cluster_scale(s : ChemrxnselectivityCluster, f : Double) -> ChemrxnselectivityCluster {
+  let result = chem_rxn_selectivity_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_selectivity_cluster_add(a : ChemrxnselectivityCluster, b : ChemrxnselectivityCluster) -> ChemrxnselectivityCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_selectivity_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_cluster_copy(s : ChemrxnselectivityCluster) -> ChemrxnselectivityCluster {
+  let result = chem_rxn_selectivity_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_cluster_fill(s : ChemrxnselectivityCluster, v : Double) -> ChemrxnselectivityCluster {
+  let result = chem_rxn_selectivity_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_cluster_min(s : ChemrxnselectivityCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_cluster_max(s : ChemrxnselectivityCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_cluster_to_string(s : ChemrxnselectivityCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnselectivityModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_selectivity_model_make(size : Int) -> ChemrxnselectivityModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_selectivity_model_len(s : ChemrxnselectivityModel) -> Int { s.size }
+
+pub fn chem_rxn_selectivity_model_get(s : ChemrxnselectivityModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_selectivity_model_set(s : ChemrxnselectivityModel, i : Int, v : Double) -> ChemrxnselectivityModel {
+  let result = chem_rxn_selectivity_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_model_sum(s : ChemrxnselectivityModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_selectivity_model_mean(s : ChemrxnselectivityModel) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_selectivity_model_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_selectivity_model_scale(s : ChemrxnselectivityModel, f : Double) -> ChemrxnselectivityModel {
+  let result = chem_rxn_selectivity_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_selectivity_model_add(a : ChemrxnselectivityModel, b : ChemrxnselectivityModel) -> ChemrxnselectivityModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_selectivity_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_model_copy(s : ChemrxnselectivityModel) -> ChemrxnselectivityModel {
+  let result = chem_rxn_selectivity_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_model_fill(s : ChemrxnselectivityModel, v : Double) -> ChemrxnselectivityModel {
+  let result = chem_rxn_selectivity_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_model_min(s : ChemrxnselectivityModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_model_max(s : ChemrxnselectivityModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_model_to_string(s : ChemrxnselectivityModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnselectivityLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_selectivity_layer_make(size : Int) -> ChemrxnselectivityLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_selectivity_layer_len(s : ChemrxnselectivityLayer) -> Int { s.size }
+
+pub fn chem_rxn_selectivity_layer_get(s : ChemrxnselectivityLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_selectivity_layer_set(s : ChemrxnselectivityLayer, i : Int, v : Double) -> ChemrxnselectivityLayer {
+  let result = chem_rxn_selectivity_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_layer_sum(s : ChemrxnselectivityLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_selectivity_layer_mean(s : ChemrxnselectivityLayer) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_selectivity_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_selectivity_layer_scale(s : ChemrxnselectivityLayer, f : Double) -> ChemrxnselectivityLayer {
+  let result = chem_rxn_selectivity_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_selectivity_layer_add(a : ChemrxnselectivityLayer, b : ChemrxnselectivityLayer) -> ChemrxnselectivityLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_selectivity_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_layer_copy(s : ChemrxnselectivityLayer) -> ChemrxnselectivityLayer {
+  let result = chem_rxn_selectivity_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_layer_fill(s : ChemrxnselectivityLayer, v : Double) -> ChemrxnselectivityLayer {
+  let result = chem_rxn_selectivity_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_layer_min(s : ChemrxnselectivityLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_layer_max(s : ChemrxnselectivityLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_layer_to_string(s : ChemrxnselectivityLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnselectivityBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_selectivity_buffer_make(size : Int) -> ChemrxnselectivityBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_selectivity_buffer_len(s : ChemrxnselectivityBuffer) -> Int { s.size }
+
+pub fn chem_rxn_selectivity_buffer_get(s : ChemrxnselectivityBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_selectivity_buffer_set(s : ChemrxnselectivityBuffer, i : Int, v : Double) -> ChemrxnselectivityBuffer {
+  let result = chem_rxn_selectivity_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_buffer_sum(s : ChemrxnselectivityBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_selectivity_buffer_mean(s : ChemrxnselectivityBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_selectivity_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_selectivity_buffer_scale(s : ChemrxnselectivityBuffer, f : Double) -> ChemrxnselectivityBuffer {
+  let result = chem_rxn_selectivity_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_selectivity_buffer_add(a : ChemrxnselectivityBuffer, b : ChemrxnselectivityBuffer) -> ChemrxnselectivityBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_selectivity_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_buffer_copy(s : ChemrxnselectivityBuffer) -> ChemrxnselectivityBuffer {
+  let result = chem_rxn_selectivity_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_buffer_fill(s : ChemrxnselectivityBuffer, v : Double) -> ChemrxnselectivityBuffer {
+  let result = chem_rxn_selectivity_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_buffer_min(s : ChemrxnselectivityBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_buffer_max(s : ChemrxnselectivityBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_buffer_to_string(s : ChemrxnselectivityBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnselectivityCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_selectivity_cursor_make(size : Int) -> ChemrxnselectivityCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_selectivity_cursor_len(s : ChemrxnselectivityCursor) -> Int { s.size }
+
+pub fn chem_rxn_selectivity_cursor_get(s : ChemrxnselectivityCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_selectivity_cursor_set(s : ChemrxnselectivityCursor, i : Int, v : Double) -> ChemrxnselectivityCursor {
+  let result = chem_rxn_selectivity_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_cursor_sum(s : ChemrxnselectivityCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_selectivity_cursor_mean(s : ChemrxnselectivityCursor) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_selectivity_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_selectivity_cursor_scale(s : ChemrxnselectivityCursor, f : Double) -> ChemrxnselectivityCursor {
+  let result = chem_rxn_selectivity_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_selectivity_cursor_add(a : ChemrxnselectivityCursor, b : ChemrxnselectivityCursor) -> ChemrxnselectivityCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_selectivity_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_cursor_copy(s : ChemrxnselectivityCursor) -> ChemrxnselectivityCursor {
+  let result = chem_rxn_selectivity_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_cursor_fill(s : ChemrxnselectivityCursor, v : Double) -> ChemrxnselectivityCursor {
+  let result = chem_rxn_selectivity_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_cursor_min(s : ChemrxnselectivityCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_cursor_max(s : ChemrxnselectivityCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_cursor_to_string(s : ChemrxnselectivityCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnselectivityView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_selectivity_view_make(size : Int) -> ChemrxnselectivityView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_selectivity_view_len(s : ChemrxnselectivityView) -> Int { s.size }
+
+pub fn chem_rxn_selectivity_view_get(s : ChemrxnselectivityView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_selectivity_view_set(s : ChemrxnselectivityView, i : Int, v : Double) -> ChemrxnselectivityView {
+  let result = chem_rxn_selectivity_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_view_sum(s : ChemrxnselectivityView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_selectivity_view_mean(s : ChemrxnselectivityView) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_selectivity_view_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_selectivity_view_scale(s : ChemrxnselectivityView, f : Double) -> ChemrxnselectivityView {
+  let result = chem_rxn_selectivity_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_selectivity_view_add(a : ChemrxnselectivityView, b : ChemrxnselectivityView) -> ChemrxnselectivityView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_selectivity_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_view_copy(s : ChemrxnselectivityView) -> ChemrxnselectivityView {
+  let result = chem_rxn_selectivity_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_view_fill(s : ChemrxnselectivityView, v : Double) -> ChemrxnselectivityView {
+  let result = chem_rxn_selectivity_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_view_min(s : ChemrxnselectivityView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_view_max(s : ChemrxnselectivityView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_view_to_string(s : ChemrxnselectivityView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnselectivityRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_selectivity_range_make(size : Int) -> ChemrxnselectivityRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_selectivity_range_len(s : ChemrxnselectivityRange) -> Int { s.size }
+
+pub fn chem_rxn_selectivity_range_get(s : ChemrxnselectivityRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_selectivity_range_set(s : ChemrxnselectivityRange, i : Int, v : Double) -> ChemrxnselectivityRange {
+  let result = chem_rxn_selectivity_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_range_sum(s : ChemrxnselectivityRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_selectivity_range_mean(s : ChemrxnselectivityRange) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_selectivity_range_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_selectivity_range_scale(s : ChemrxnselectivityRange, f : Double) -> ChemrxnselectivityRange {
+  let result = chem_rxn_selectivity_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_selectivity_range_add(a : ChemrxnselectivityRange, b : ChemrxnselectivityRange) -> ChemrxnselectivityRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_selectivity_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_range_copy(s : ChemrxnselectivityRange) -> ChemrxnselectivityRange {
+  let result = chem_rxn_selectivity_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_range_fill(s : ChemrxnselectivityRange, v : Double) -> ChemrxnselectivityRange {
+  let result = chem_rxn_selectivity_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_range_min(s : ChemrxnselectivityRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_range_max(s : ChemrxnselectivityRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_range_to_string(s : ChemrxnselectivityRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnselectivitySlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_selectivity_slice_make(size : Int) -> ChemrxnselectivitySlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_selectivity_slice_len(s : ChemrxnselectivitySlice) -> Int { s.size }
+
+pub fn chem_rxn_selectivity_slice_get(s : ChemrxnselectivitySlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_selectivity_slice_set(s : ChemrxnselectivitySlice, i : Int, v : Double) -> ChemrxnselectivitySlice {
+  let result = chem_rxn_selectivity_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_slice_sum(s : ChemrxnselectivitySlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_selectivity_slice_mean(s : ChemrxnselectivitySlice) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_selectivity_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_selectivity_slice_scale(s : ChemrxnselectivitySlice, f : Double) -> ChemrxnselectivitySlice {
+  let result = chem_rxn_selectivity_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_selectivity_slice_add(a : ChemrxnselectivitySlice, b : ChemrxnselectivitySlice) -> ChemrxnselectivitySlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_selectivity_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_slice_copy(s : ChemrxnselectivitySlice) -> ChemrxnselectivitySlice {
+  let result = chem_rxn_selectivity_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_selectivity_slice_fill(s : ChemrxnselectivitySlice, v : Double) -> ChemrxnselectivitySlice {
+  let result = chem_rxn_selectivity_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_selectivity_slice_min(s : ChemrxnselectivitySlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_slice_max(s : ChemrxnselectivitySlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_selectivity_slice_to_string(s : ChemrxnselectivitySlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn chem_rxn_selectivity_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_selectivity_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

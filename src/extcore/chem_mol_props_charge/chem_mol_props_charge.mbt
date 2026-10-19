@@ -1,0 +1,1955 @@
+///===
+/// extcore/chem_mol_props_charge
+
+pub(all) struct ChemmolpropschargePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn chem_mol_props_charge_make_point(x : Double, y : Double) -> ChemmolpropschargePoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn chem_mol_props_charge_make_point3(x : Double, y : Double, z : Double) -> ChemmolpropschargePoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn chem_mol_props_charge_point_x(pt : ChemmolpropschargePoint) -> Double { pt.x }
+
+pub fn chem_mol_props_charge_point_y(pt : ChemmolpropschargePoint) -> Double { pt.y }
+
+pub fn chem_mol_props_charge_point_z(pt : ChemmolpropschargePoint) -> Double { pt.z }
+
+pub fn chem_mol_props_charge_point_label(pt : ChemmolpropschargePoint) -> Int { pt.label }
+
+pub fn chem_mol_props_charge_point_dist(a : ChemmolpropschargePoint, b : ChemmolpropschargePoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  chem_mol_props_charge_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn chem_mol_props_charge_point_add(a : ChemmolpropschargePoint, b : ChemmolpropschargePoint) -> ChemmolpropschargePoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn chem_mol_props_charge_point_sub(a : ChemmolpropschargePoint, b : ChemmolpropschargePoint) -> ChemmolpropschargePoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn chem_mol_props_charge_point_scale(pt : ChemmolpropschargePoint, s : Double) -> ChemmolpropschargePoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn chem_mol_props_charge_point_dot(a : ChemmolpropschargePoint, b : ChemmolpropschargePoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn chem_mol_props_charge_point_cross(a : ChemmolpropschargePoint, b : ChemmolpropschargePoint) -> ChemmolpropschargePoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn chem_mol_props_charge_point_norm(pt : ChemmolpropschargePoint) -> Double {
+  chem_mol_props_charge_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn chem_mol_props_charge_point_normalize(pt : ChemmolpropschargePoint) -> ChemmolpropschargePoint {
+  let n = chem_mol_props_charge_point_norm(pt)
+  if n < 0.0000001 { pt } else { chem_mol_props_charge_point_scale(pt, 1.0 / n) }
+}
+
+pub fn chem_mol_props_charge_point_negate(pt : ChemmolpropschargePoint) -> ChemmolpropschargePoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn chem_mol_props_charge_point_mid(a : ChemmolpropschargePoint, b : ChemmolpropschargePoint) -> ChemmolpropschargePoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn chem_mol_props_charge_point_lerp(a : ChemmolpropschargePoint, b : ChemmolpropschargePoint, t : Double) -> ChemmolpropschargePoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn chem_mol_props_charge_point_to_string(pt : ChemmolpropschargePoint) -> String {
+  "(" + chem_mol_props_charge_dbl(pt.x) + ", " + chem_mol_props_charge_dbl(pt.y) + ", " + chem_mol_props_charge_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct ChemmolpropschargeSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn chem_mol_props_charge_make_series(vals : Array[Double], name : String) -> ChemmolpropschargeSeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn chem_mol_props_charge_series_len(s : ChemmolpropschargeSeries) -> Int { s.vals.length() }
+
+pub fn chem_mol_props_charge_series_sum(s : ChemmolpropschargeSeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn chem_mol_props_charge_series_mean(s : ChemmolpropschargeSeries) -> Double {
+  let n = chem_mol_props_charge_series_len(s)
+  if n == 0 { 0.0 } else { chem_mol_props_charge_series_sum(s) / n.to_double() }
+}
+
+pub fn chem_mol_props_charge_series_min(s : ChemmolpropschargeSeries) -> Double {
+  let n = chem_mol_props_charge_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_series_max(s : ChemmolpropschargeSeries) -> Double {
+  let n = chem_mol_props_charge_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_series_range(s : ChemmolpropschargeSeries) -> Double {
+  chem_mol_props_charge_series_max(s) - chem_mol_props_charge_series_min(s)
+}
+
+pub fn chem_mol_props_charge_series_var(s : ChemmolpropschargeSeries) -> Double {
+  let n = chem_mol_props_charge_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = chem_mol_props_charge_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_series_std(s : ChemmolpropschargeSeries) -> Double { chem_mol_props_charge_sqrt(chem_mol_props_charge_series_var(s)) }
+
+pub fn chem_mol_props_charge_series_median(s : ChemmolpropschargeSeries) -> Double {
+  let n = chem_mol_props_charge_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = chem_mol_props_charge_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn chem_mol_props_charge_series_scale(s : ChemmolpropschargeSeries, f : Double) -> ChemmolpropschargeSeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = chem_mol_props_charge_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn chem_mol_props_charge_series_add(a : ChemmolpropschargeSeries, b : ChemmolpropschargeSeries) -> ChemmolpropschargeSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = chem_mol_props_charge_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn chem_mol_props_charge_series_sub(a : ChemmolpropschargeSeries, b : ChemmolpropschargeSeries) -> ChemmolpropschargeSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = chem_mol_props_charge_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn chem_mol_props_charge_series_normalize(s : ChemmolpropschargeSeries) -> ChemmolpropschargeSeries {
+  let mn = chem_mol_props_charge_series_min(s)
+  let mx = chem_mol_props_charge_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = chem_mol_props_charge_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn chem_mol_props_charge_series_cumsum(s : ChemmolpropschargeSeries) -> ChemmolpropschargeSeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = chem_mol_props_charge_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn chem_mol_props_charge_series_to_string(s : ChemmolpropschargeSeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + chem_mol_props_charge_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct ChemmolpropschargeMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn chem_mol_props_charge_make_matrix(rows : Int, cols : Int, val : Double) -> ChemmolpropschargeMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn chem_mol_props_charge_matrix_identity(n : Int) -> ChemmolpropschargeMatrix {
+  let m = chem_mol_props_charge_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn chem_mol_props_charge_matrix_get(m : ChemmolpropschargeMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn chem_mol_props_charge_matrix_transpose(m : ChemmolpropschargeMatrix) -> ChemmolpropschargeMatrix {
+  let result = chem_mol_props_charge_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn chem_mol_props_charge_matrix_add(a : ChemmolpropschargeMatrix, b : ChemmolpropschargeMatrix) -> ChemmolpropschargeMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = chem_mol_props_charge_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn chem_mol_props_charge_matrix_scale(m : ChemmolpropschargeMatrix, s : Double) -> ChemmolpropschargeMatrix {
+  let result = chem_mol_props_charge_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn chem_mol_props_charge_matrix_multiply(a : ChemmolpropschargeMatrix, b : ChemmolpropschargeMatrix) -> ChemmolpropschargeMatrix {
+  if a.cols != b.rows { return chem_mol_props_charge_make_matrix(a.rows, b.cols, 0.0) }
+  let result = chem_mol_props_charge_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn chem_mol_props_charge_matrix_trace(m : ChemmolpropschargeMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn chem_mol_props_charge_matrix_det(m : ChemmolpropschargeMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn chem_mol_props_charge_matrix_norm(m : ChemmolpropschargeMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  chem_mol_props_charge_sqrt(sum)
+}
+
+pub fn chem_mol_props_charge_matrix_to_string(m : ChemmolpropschargeMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + chem_mol_props_charge_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct ChemmolpropschargeVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn chem_mol_props_charge_make_vector(comps : Array[Double]) -> ChemmolpropschargeVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn chem_mol_props_charge_vector_zero(dim : Int) -> ChemmolpropschargeVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn chem_mol_props_charge_vector_add(a : ChemmolpropschargeVector, b : ChemmolpropschargeVector) -> ChemmolpropschargeVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = chem_mol_props_charge_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn chem_mol_props_charge_vector_sub(a : ChemmolpropschargeVector, b : ChemmolpropschargeVector) -> ChemmolpropschargeVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = chem_mol_props_charge_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn chem_mol_props_charge_vector_scale(v : ChemmolpropschargeVector, s : Double) -> ChemmolpropschargeVector {
+  let mut result = []
+  for i in 0..<v.dim { result = chem_mol_props_charge_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn chem_mol_props_charge_vector_dot(a : ChemmolpropschargeVector, b : ChemmolpropschargeVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn chem_mol_props_charge_vector_norm(v : ChemmolpropschargeVector) -> Double { chem_mol_props_charge_sqrt(chem_mol_props_charge_vector_dot(v, v)) }
+
+pub fn chem_mol_props_charge_vector_normalize(v : ChemmolpropschargeVector) -> ChemmolpropschargeVector {
+  let n = chem_mol_props_charge_vector_norm(v)
+  if n < 0.0000001 { v } else { chem_mol_props_charge_vector_scale(v, 1.0 / n) }
+}
+
+pub fn chem_mol_props_charge_vector_dist(a : ChemmolpropschargeVector, b : ChemmolpropschargeVector) -> Double {
+  chem_mol_props_charge_vector_norm(chem_mol_props_charge_vector_sub(a, b))
+}
+
+pub fn chem_mol_props_charge_vector_to_string(v : ChemmolpropschargeVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + chem_mol_props_charge_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn chem_mol_props_charge_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = chem_mol_props_charge_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_std(data : Array[Double]) -> Double { chem_mol_props_charge_sqrt(chem_mol_props_charge_var(data)) }
+
+pub fn chem_mol_props_charge_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = chem_mol_props_charge_mean(a); let mb = chem_mol_props_charge_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = chem_mol_props_charge_std(a); let sb = chem_mol_props_charge_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { chem_mol_props_charge_cov(a, b) / (sa * sb) }
+}
+
+pub fn chem_mol_props_charge_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = chem_mol_props_charge_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn chem_mol_props_charge_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  chem_mol_props_charge_sqrt(chem_mol_props_charge_mse(pred, labels))
+}
+
+pub fn chem_mol_props_charge_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + chem_mol_props_charge_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = chem_mol_props_charge_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn chem_mol_props_charge_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn chem_mol_props_charge_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn chem_mol_props_charge_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = chem_mol_props_charge_precision(pred, labels, pos); let r = chem_mol_props_charge_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn chem_mol_props_charge_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn chem_mol_props_charge_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = chem_mol_props_charge_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn chem_mol_props_charge_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn chem_mol_props_charge_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn chem_mol_props_charge_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = chem_mol_props_charge_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn chem_mol_props_charge_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn chem_mol_props_charge_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn chem_mol_props_charge_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = chem_mol_props_charge_min(data); let mx = chem_mol_props_charge_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn chem_mol_props_charge_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = chem_mol_props_charge_mean(data); let sd = chem_mol_props_charge_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn chem_mol_props_charge_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn chem_mol_props_charge_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn chem_mol_props_charge_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn chem_mol_props_charge_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn chem_mol_props_charge_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn chem_mol_props_charge_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn chem_mol_props_charge_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { chem_mol_props_charge_int(x) } else { -chem_mol_props_charge_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { chem_mol_props_charge_int(f * 1000000.0) } else { chem_mol_props_charge_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn chem_mol_props_charge_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn chem_mol_props_charge_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct ChemmolpropschargeFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_mol_props_charge_frame_make(size : Int) -> ChemmolpropschargeFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_mol_props_charge_frame_len(s : ChemmolpropschargeFrame) -> Int { s.size }
+
+pub fn chem_mol_props_charge_frame_get(s : ChemmolpropschargeFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_mol_props_charge_frame_set(s : ChemmolpropschargeFrame, i : Int, v : Double) -> ChemmolpropschargeFrame {
+  let result = chem_mol_props_charge_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_frame_sum(s : ChemmolpropschargeFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_mol_props_charge_frame_mean(s : ChemmolpropschargeFrame) -> Double {
+  if s.size == 0 { 0.0 } else { chem_mol_props_charge_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_mol_props_charge_frame_scale(s : ChemmolpropschargeFrame, f : Double) -> ChemmolpropschargeFrame {
+  let result = chem_mol_props_charge_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_mol_props_charge_frame_add(a : ChemmolpropschargeFrame, b : ChemmolpropschargeFrame) -> ChemmolpropschargeFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_mol_props_charge_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_frame_copy(s : ChemmolpropschargeFrame) -> ChemmolpropschargeFrame {
+  let result = chem_mol_props_charge_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_frame_fill(s : ChemmolpropschargeFrame, v : Double) -> ChemmolpropschargeFrame {
+  let result = chem_mol_props_charge_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_frame_min(s : ChemmolpropschargeFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_frame_max(s : ChemmolpropschargeFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_frame_to_string(s : ChemmolpropschargeFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemmolpropschargeTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_mol_props_charge_table_make(size : Int) -> ChemmolpropschargeTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_mol_props_charge_table_len(s : ChemmolpropschargeTable) -> Int { s.size }
+
+pub fn chem_mol_props_charge_table_get(s : ChemmolpropschargeTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_mol_props_charge_table_set(s : ChemmolpropschargeTable, i : Int, v : Double) -> ChemmolpropschargeTable {
+  let result = chem_mol_props_charge_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_table_sum(s : ChemmolpropschargeTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_mol_props_charge_table_mean(s : ChemmolpropschargeTable) -> Double {
+  if s.size == 0 { 0.0 } else { chem_mol_props_charge_table_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_mol_props_charge_table_scale(s : ChemmolpropschargeTable, f : Double) -> ChemmolpropschargeTable {
+  let result = chem_mol_props_charge_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_mol_props_charge_table_add(a : ChemmolpropschargeTable, b : ChemmolpropschargeTable) -> ChemmolpropschargeTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_mol_props_charge_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_table_copy(s : ChemmolpropschargeTable) -> ChemmolpropschargeTable {
+  let result = chem_mol_props_charge_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_table_fill(s : ChemmolpropschargeTable, v : Double) -> ChemmolpropschargeTable {
+  let result = chem_mol_props_charge_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_table_min(s : ChemmolpropschargeTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_table_max(s : ChemmolpropschargeTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_table_to_string(s : ChemmolpropschargeTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemmolpropschargeGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_mol_props_charge_graphn_make(size : Int) -> ChemmolpropschargeGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_mol_props_charge_graphn_len(s : ChemmolpropschargeGraphN) -> Int { s.size }
+
+pub fn chem_mol_props_charge_graphn_get(s : ChemmolpropschargeGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_mol_props_charge_graphn_set(s : ChemmolpropschargeGraphN, i : Int, v : Double) -> ChemmolpropschargeGraphN {
+  let result = chem_mol_props_charge_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_graphn_sum(s : ChemmolpropschargeGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_mol_props_charge_graphn_mean(s : ChemmolpropschargeGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { chem_mol_props_charge_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_mol_props_charge_graphn_scale(s : ChemmolpropschargeGraphN, f : Double) -> ChemmolpropschargeGraphN {
+  let result = chem_mol_props_charge_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_mol_props_charge_graphn_add(a : ChemmolpropschargeGraphN, b : ChemmolpropschargeGraphN) -> ChemmolpropschargeGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_mol_props_charge_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_graphn_copy(s : ChemmolpropschargeGraphN) -> ChemmolpropschargeGraphN {
+  let result = chem_mol_props_charge_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_graphn_fill(s : ChemmolpropschargeGraphN, v : Double) -> ChemmolpropschargeGraphN {
+  let result = chem_mol_props_charge_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_graphn_min(s : ChemmolpropschargeGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_graphn_max(s : ChemmolpropschargeGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_graphn_to_string(s : ChemmolpropschargeGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemmolpropschargeNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_mol_props_charge_node_make(size : Int) -> ChemmolpropschargeNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_mol_props_charge_node_len(s : ChemmolpropschargeNode) -> Int { s.size }
+
+pub fn chem_mol_props_charge_node_get(s : ChemmolpropschargeNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_mol_props_charge_node_set(s : ChemmolpropschargeNode, i : Int, v : Double) -> ChemmolpropschargeNode {
+  let result = chem_mol_props_charge_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_node_sum(s : ChemmolpropschargeNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_mol_props_charge_node_mean(s : ChemmolpropschargeNode) -> Double {
+  if s.size == 0 { 0.0 } else { chem_mol_props_charge_node_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_mol_props_charge_node_scale(s : ChemmolpropschargeNode, f : Double) -> ChemmolpropschargeNode {
+  let result = chem_mol_props_charge_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_mol_props_charge_node_add(a : ChemmolpropschargeNode, b : ChemmolpropschargeNode) -> ChemmolpropschargeNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_mol_props_charge_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_node_copy(s : ChemmolpropschargeNode) -> ChemmolpropschargeNode {
+  let result = chem_mol_props_charge_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_node_fill(s : ChemmolpropschargeNode, v : Double) -> ChemmolpropschargeNode {
+  let result = chem_mol_props_charge_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_node_min(s : ChemmolpropschargeNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_node_max(s : ChemmolpropschargeNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_node_to_string(s : ChemmolpropschargeNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemmolpropschargeEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_mol_props_charge_edge_make(size : Int) -> ChemmolpropschargeEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_mol_props_charge_edge_len(s : ChemmolpropschargeEdge) -> Int { s.size }
+
+pub fn chem_mol_props_charge_edge_get(s : ChemmolpropschargeEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_mol_props_charge_edge_set(s : ChemmolpropschargeEdge, i : Int, v : Double) -> ChemmolpropschargeEdge {
+  let result = chem_mol_props_charge_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_edge_sum(s : ChemmolpropschargeEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_mol_props_charge_edge_mean(s : ChemmolpropschargeEdge) -> Double {
+  if s.size == 0 { 0.0 } else { chem_mol_props_charge_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_mol_props_charge_edge_scale(s : ChemmolpropschargeEdge, f : Double) -> ChemmolpropschargeEdge {
+  let result = chem_mol_props_charge_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_mol_props_charge_edge_add(a : ChemmolpropschargeEdge, b : ChemmolpropschargeEdge) -> ChemmolpropschargeEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_mol_props_charge_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_edge_copy(s : ChemmolpropschargeEdge) -> ChemmolpropschargeEdge {
+  let result = chem_mol_props_charge_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_edge_fill(s : ChemmolpropschargeEdge, v : Double) -> ChemmolpropschargeEdge {
+  let result = chem_mol_props_charge_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_edge_min(s : ChemmolpropschargeEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_edge_max(s : ChemmolpropschargeEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_edge_to_string(s : ChemmolpropschargeEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemmolpropschargePath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_mol_props_charge_path_make(size : Int) -> ChemmolpropschargePath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_mol_props_charge_path_len(s : ChemmolpropschargePath) -> Int { s.size }
+
+pub fn chem_mol_props_charge_path_get(s : ChemmolpropschargePath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_mol_props_charge_path_set(s : ChemmolpropschargePath, i : Int, v : Double) -> ChemmolpropschargePath {
+  let result = chem_mol_props_charge_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_path_sum(s : ChemmolpropschargePath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_mol_props_charge_path_mean(s : ChemmolpropschargePath) -> Double {
+  if s.size == 0 { 0.0 } else { chem_mol_props_charge_path_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_mol_props_charge_path_scale(s : ChemmolpropschargePath, f : Double) -> ChemmolpropschargePath {
+  let result = chem_mol_props_charge_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_mol_props_charge_path_add(a : ChemmolpropschargePath, b : ChemmolpropschargePath) -> ChemmolpropschargePath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_mol_props_charge_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_path_copy(s : ChemmolpropschargePath) -> ChemmolpropschargePath {
+  let result = chem_mol_props_charge_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_path_fill(s : ChemmolpropschargePath, v : Double) -> ChemmolpropschargePath {
+  let result = chem_mol_props_charge_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_path_min(s : ChemmolpropschargePath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_path_max(s : ChemmolpropschargePath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_path_to_string(s : ChemmolpropschargePath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemmolpropschargeCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_mol_props_charge_cluster_make(size : Int) -> ChemmolpropschargeCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_mol_props_charge_cluster_len(s : ChemmolpropschargeCluster) -> Int { s.size }
+
+pub fn chem_mol_props_charge_cluster_get(s : ChemmolpropschargeCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_mol_props_charge_cluster_set(s : ChemmolpropschargeCluster, i : Int, v : Double) -> ChemmolpropschargeCluster {
+  let result = chem_mol_props_charge_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_cluster_sum(s : ChemmolpropschargeCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_mol_props_charge_cluster_mean(s : ChemmolpropschargeCluster) -> Double {
+  if s.size == 0 { 0.0 } else { chem_mol_props_charge_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_mol_props_charge_cluster_scale(s : ChemmolpropschargeCluster, f : Double) -> ChemmolpropschargeCluster {
+  let result = chem_mol_props_charge_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_mol_props_charge_cluster_add(a : ChemmolpropschargeCluster, b : ChemmolpropschargeCluster) -> ChemmolpropschargeCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_mol_props_charge_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_cluster_copy(s : ChemmolpropschargeCluster) -> ChemmolpropschargeCluster {
+  let result = chem_mol_props_charge_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_cluster_fill(s : ChemmolpropschargeCluster, v : Double) -> ChemmolpropschargeCluster {
+  let result = chem_mol_props_charge_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_cluster_min(s : ChemmolpropschargeCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_cluster_max(s : ChemmolpropschargeCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_cluster_to_string(s : ChemmolpropschargeCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemmolpropschargeModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_mol_props_charge_model_make(size : Int) -> ChemmolpropschargeModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_mol_props_charge_model_len(s : ChemmolpropschargeModel) -> Int { s.size }
+
+pub fn chem_mol_props_charge_model_get(s : ChemmolpropschargeModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_mol_props_charge_model_set(s : ChemmolpropschargeModel, i : Int, v : Double) -> ChemmolpropschargeModel {
+  let result = chem_mol_props_charge_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_model_sum(s : ChemmolpropschargeModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_mol_props_charge_model_mean(s : ChemmolpropschargeModel) -> Double {
+  if s.size == 0 { 0.0 } else { chem_mol_props_charge_model_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_mol_props_charge_model_scale(s : ChemmolpropschargeModel, f : Double) -> ChemmolpropschargeModel {
+  let result = chem_mol_props_charge_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_mol_props_charge_model_add(a : ChemmolpropschargeModel, b : ChemmolpropschargeModel) -> ChemmolpropschargeModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_mol_props_charge_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_model_copy(s : ChemmolpropschargeModel) -> ChemmolpropschargeModel {
+  let result = chem_mol_props_charge_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_model_fill(s : ChemmolpropschargeModel, v : Double) -> ChemmolpropschargeModel {
+  let result = chem_mol_props_charge_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_model_min(s : ChemmolpropschargeModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_model_max(s : ChemmolpropschargeModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_model_to_string(s : ChemmolpropschargeModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemmolpropschargeLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_mol_props_charge_layer_make(size : Int) -> ChemmolpropschargeLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_mol_props_charge_layer_len(s : ChemmolpropschargeLayer) -> Int { s.size }
+
+pub fn chem_mol_props_charge_layer_get(s : ChemmolpropschargeLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_mol_props_charge_layer_set(s : ChemmolpropschargeLayer, i : Int, v : Double) -> ChemmolpropschargeLayer {
+  let result = chem_mol_props_charge_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_layer_sum(s : ChemmolpropschargeLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_mol_props_charge_layer_mean(s : ChemmolpropschargeLayer) -> Double {
+  if s.size == 0 { 0.0 } else { chem_mol_props_charge_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_mol_props_charge_layer_scale(s : ChemmolpropschargeLayer, f : Double) -> ChemmolpropschargeLayer {
+  let result = chem_mol_props_charge_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_mol_props_charge_layer_add(a : ChemmolpropschargeLayer, b : ChemmolpropschargeLayer) -> ChemmolpropschargeLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_mol_props_charge_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_layer_copy(s : ChemmolpropschargeLayer) -> ChemmolpropschargeLayer {
+  let result = chem_mol_props_charge_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_layer_fill(s : ChemmolpropschargeLayer, v : Double) -> ChemmolpropschargeLayer {
+  let result = chem_mol_props_charge_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_layer_min(s : ChemmolpropschargeLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_layer_max(s : ChemmolpropschargeLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_layer_to_string(s : ChemmolpropschargeLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemmolpropschargeBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_mol_props_charge_buffer_make(size : Int) -> ChemmolpropschargeBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_mol_props_charge_buffer_len(s : ChemmolpropschargeBuffer) -> Int { s.size }
+
+pub fn chem_mol_props_charge_buffer_get(s : ChemmolpropschargeBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_mol_props_charge_buffer_set(s : ChemmolpropschargeBuffer, i : Int, v : Double) -> ChemmolpropschargeBuffer {
+  let result = chem_mol_props_charge_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_buffer_sum(s : ChemmolpropschargeBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_mol_props_charge_buffer_mean(s : ChemmolpropschargeBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { chem_mol_props_charge_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_mol_props_charge_buffer_scale(s : ChemmolpropschargeBuffer, f : Double) -> ChemmolpropschargeBuffer {
+  let result = chem_mol_props_charge_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_mol_props_charge_buffer_add(a : ChemmolpropschargeBuffer, b : ChemmolpropschargeBuffer) -> ChemmolpropschargeBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_mol_props_charge_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_buffer_copy(s : ChemmolpropschargeBuffer) -> ChemmolpropschargeBuffer {
+  let result = chem_mol_props_charge_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_buffer_fill(s : ChemmolpropschargeBuffer, v : Double) -> ChemmolpropschargeBuffer {
+  let result = chem_mol_props_charge_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_buffer_min(s : ChemmolpropschargeBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_buffer_max(s : ChemmolpropschargeBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_buffer_to_string(s : ChemmolpropschargeBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemmolpropschargeCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_mol_props_charge_cursor_make(size : Int) -> ChemmolpropschargeCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_mol_props_charge_cursor_len(s : ChemmolpropschargeCursor) -> Int { s.size }
+
+pub fn chem_mol_props_charge_cursor_get(s : ChemmolpropschargeCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_mol_props_charge_cursor_set(s : ChemmolpropschargeCursor, i : Int, v : Double) -> ChemmolpropschargeCursor {
+  let result = chem_mol_props_charge_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_cursor_sum(s : ChemmolpropschargeCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_mol_props_charge_cursor_mean(s : ChemmolpropschargeCursor) -> Double {
+  if s.size == 0 { 0.0 } else { chem_mol_props_charge_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_mol_props_charge_cursor_scale(s : ChemmolpropschargeCursor, f : Double) -> ChemmolpropschargeCursor {
+  let result = chem_mol_props_charge_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_mol_props_charge_cursor_add(a : ChemmolpropschargeCursor, b : ChemmolpropschargeCursor) -> ChemmolpropschargeCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_mol_props_charge_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_cursor_copy(s : ChemmolpropschargeCursor) -> ChemmolpropschargeCursor {
+  let result = chem_mol_props_charge_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_cursor_fill(s : ChemmolpropschargeCursor, v : Double) -> ChemmolpropschargeCursor {
+  let result = chem_mol_props_charge_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_cursor_min(s : ChemmolpropschargeCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_cursor_max(s : ChemmolpropschargeCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_cursor_to_string(s : ChemmolpropschargeCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemmolpropschargeView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_mol_props_charge_view_make(size : Int) -> ChemmolpropschargeView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_mol_props_charge_view_len(s : ChemmolpropschargeView) -> Int { s.size }
+
+pub fn chem_mol_props_charge_view_get(s : ChemmolpropschargeView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_mol_props_charge_view_set(s : ChemmolpropschargeView, i : Int, v : Double) -> ChemmolpropschargeView {
+  let result = chem_mol_props_charge_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_view_sum(s : ChemmolpropschargeView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_mol_props_charge_view_mean(s : ChemmolpropschargeView) -> Double {
+  if s.size == 0 { 0.0 } else { chem_mol_props_charge_view_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_mol_props_charge_view_scale(s : ChemmolpropschargeView, f : Double) -> ChemmolpropschargeView {
+  let result = chem_mol_props_charge_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_mol_props_charge_view_add(a : ChemmolpropschargeView, b : ChemmolpropschargeView) -> ChemmolpropschargeView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_mol_props_charge_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_view_copy(s : ChemmolpropschargeView) -> ChemmolpropschargeView {
+  let result = chem_mol_props_charge_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_view_fill(s : ChemmolpropschargeView, v : Double) -> ChemmolpropschargeView {
+  let result = chem_mol_props_charge_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_view_min(s : ChemmolpropschargeView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_view_max(s : ChemmolpropschargeView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_view_to_string(s : ChemmolpropschargeView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemmolpropschargeRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_mol_props_charge_range_make(size : Int) -> ChemmolpropschargeRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_mol_props_charge_range_len(s : ChemmolpropschargeRange) -> Int { s.size }
+
+pub fn chem_mol_props_charge_range_get(s : ChemmolpropschargeRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_mol_props_charge_range_set(s : ChemmolpropschargeRange, i : Int, v : Double) -> ChemmolpropschargeRange {
+  let result = chem_mol_props_charge_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_range_sum(s : ChemmolpropschargeRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_mol_props_charge_range_mean(s : ChemmolpropschargeRange) -> Double {
+  if s.size == 0 { 0.0 } else { chem_mol_props_charge_range_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_mol_props_charge_range_scale(s : ChemmolpropschargeRange, f : Double) -> ChemmolpropschargeRange {
+  let result = chem_mol_props_charge_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_mol_props_charge_range_add(a : ChemmolpropschargeRange, b : ChemmolpropschargeRange) -> ChemmolpropschargeRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_mol_props_charge_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_range_copy(s : ChemmolpropschargeRange) -> ChemmolpropschargeRange {
+  let result = chem_mol_props_charge_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_range_fill(s : ChemmolpropschargeRange, v : Double) -> ChemmolpropschargeRange {
+  let result = chem_mol_props_charge_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_range_min(s : ChemmolpropschargeRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_range_max(s : ChemmolpropschargeRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_range_to_string(s : ChemmolpropschargeRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemmolpropschargeSlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_mol_props_charge_slice_make(size : Int) -> ChemmolpropschargeSlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_mol_props_charge_slice_len(s : ChemmolpropschargeSlice) -> Int { s.size }
+
+pub fn chem_mol_props_charge_slice_get(s : ChemmolpropschargeSlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_mol_props_charge_slice_set(s : ChemmolpropschargeSlice, i : Int, v : Double) -> ChemmolpropschargeSlice {
+  let result = chem_mol_props_charge_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_slice_sum(s : ChemmolpropschargeSlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_mol_props_charge_slice_mean(s : ChemmolpropschargeSlice) -> Double {
+  if s.size == 0 { 0.0 } else { chem_mol_props_charge_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_mol_props_charge_slice_scale(s : ChemmolpropschargeSlice, f : Double) -> ChemmolpropschargeSlice {
+  let result = chem_mol_props_charge_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_mol_props_charge_slice_add(a : ChemmolpropschargeSlice, b : ChemmolpropschargeSlice) -> ChemmolpropschargeSlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_mol_props_charge_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_slice_copy(s : ChemmolpropschargeSlice) -> ChemmolpropschargeSlice {
+  let result = chem_mol_props_charge_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_mol_props_charge_slice_fill(s : ChemmolpropschargeSlice, v : Double) -> ChemmolpropschargeSlice {
+  let result = chem_mol_props_charge_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_mol_props_charge_slice_min(s : ChemmolpropschargeSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_slice_max(s : ChemmolpropschargeSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_mol_props_charge_slice_to_string(s : ChemmolpropschargeSlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn chem_mol_props_charge_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_mol_props_charge_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

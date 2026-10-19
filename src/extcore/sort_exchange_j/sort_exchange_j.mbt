@@ -1,0 +1,1955 @@
+///===
+/// extcore/sort_exchange_j
+
+pub(all) struct SortexchangejPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn sort_exchange_j_make_point(x : Double, y : Double) -> SortexchangejPoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn sort_exchange_j_make_point3(x : Double, y : Double, z : Double) -> SortexchangejPoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn sort_exchange_j_point_x(pt : SortexchangejPoint) -> Double { pt.x }
+
+pub fn sort_exchange_j_point_y(pt : SortexchangejPoint) -> Double { pt.y }
+
+pub fn sort_exchange_j_point_z(pt : SortexchangejPoint) -> Double { pt.z }
+
+pub fn sort_exchange_j_point_label(pt : SortexchangejPoint) -> Int { pt.label }
+
+pub fn sort_exchange_j_point_dist(a : SortexchangejPoint, b : SortexchangejPoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  sort_exchange_j_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn sort_exchange_j_point_add(a : SortexchangejPoint, b : SortexchangejPoint) -> SortexchangejPoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn sort_exchange_j_point_sub(a : SortexchangejPoint, b : SortexchangejPoint) -> SortexchangejPoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn sort_exchange_j_point_scale(pt : SortexchangejPoint, s : Double) -> SortexchangejPoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn sort_exchange_j_point_dot(a : SortexchangejPoint, b : SortexchangejPoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn sort_exchange_j_point_cross(a : SortexchangejPoint, b : SortexchangejPoint) -> SortexchangejPoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn sort_exchange_j_point_norm(pt : SortexchangejPoint) -> Double {
+  sort_exchange_j_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn sort_exchange_j_point_normalize(pt : SortexchangejPoint) -> SortexchangejPoint {
+  let n = sort_exchange_j_point_norm(pt)
+  if n < 0.0000001 { pt } else { sort_exchange_j_point_scale(pt, 1.0 / n) }
+}
+
+pub fn sort_exchange_j_point_negate(pt : SortexchangejPoint) -> SortexchangejPoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn sort_exchange_j_point_mid(a : SortexchangejPoint, b : SortexchangejPoint) -> SortexchangejPoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn sort_exchange_j_point_lerp(a : SortexchangejPoint, b : SortexchangejPoint, t : Double) -> SortexchangejPoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn sort_exchange_j_point_to_string(pt : SortexchangejPoint) -> String {
+  "(" + sort_exchange_j_dbl(pt.x) + ", " + sort_exchange_j_dbl(pt.y) + ", " + sort_exchange_j_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct SortexchangejSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn sort_exchange_j_make_series(vals : Array[Double], name : String) -> SortexchangejSeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn sort_exchange_j_series_len(s : SortexchangejSeries) -> Int { s.vals.length() }
+
+pub fn sort_exchange_j_series_sum(s : SortexchangejSeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn sort_exchange_j_series_mean(s : SortexchangejSeries) -> Double {
+  let n = sort_exchange_j_series_len(s)
+  if n == 0 { 0.0 } else { sort_exchange_j_series_sum(s) / n.to_double() }
+}
+
+pub fn sort_exchange_j_series_min(s : SortexchangejSeries) -> Double {
+  let n = sort_exchange_j_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_series_max(s : SortexchangejSeries) -> Double {
+  let n = sort_exchange_j_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_series_range(s : SortexchangejSeries) -> Double {
+  sort_exchange_j_series_max(s) - sort_exchange_j_series_min(s)
+}
+
+pub fn sort_exchange_j_series_var(s : SortexchangejSeries) -> Double {
+  let n = sort_exchange_j_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = sort_exchange_j_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_series_std(s : SortexchangejSeries) -> Double { sort_exchange_j_sqrt(sort_exchange_j_series_var(s)) }
+
+pub fn sort_exchange_j_series_median(s : SortexchangejSeries) -> Double {
+  let n = sort_exchange_j_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = sort_exchange_j_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn sort_exchange_j_series_scale(s : SortexchangejSeries, f : Double) -> SortexchangejSeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = sort_exchange_j_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn sort_exchange_j_series_add(a : SortexchangejSeries, b : SortexchangejSeries) -> SortexchangejSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = sort_exchange_j_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn sort_exchange_j_series_sub(a : SortexchangejSeries, b : SortexchangejSeries) -> SortexchangejSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = sort_exchange_j_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn sort_exchange_j_series_normalize(s : SortexchangejSeries) -> SortexchangejSeries {
+  let mn = sort_exchange_j_series_min(s)
+  let mx = sort_exchange_j_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = sort_exchange_j_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn sort_exchange_j_series_cumsum(s : SortexchangejSeries) -> SortexchangejSeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = sort_exchange_j_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn sort_exchange_j_series_to_string(s : SortexchangejSeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + sort_exchange_j_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct SortexchangejMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn sort_exchange_j_make_matrix(rows : Int, cols : Int, val : Double) -> SortexchangejMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn sort_exchange_j_matrix_identity(n : Int) -> SortexchangejMatrix {
+  let m = sort_exchange_j_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn sort_exchange_j_matrix_get(m : SortexchangejMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn sort_exchange_j_matrix_transpose(m : SortexchangejMatrix) -> SortexchangejMatrix {
+  let result = sort_exchange_j_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn sort_exchange_j_matrix_add(a : SortexchangejMatrix, b : SortexchangejMatrix) -> SortexchangejMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = sort_exchange_j_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn sort_exchange_j_matrix_scale(m : SortexchangejMatrix, s : Double) -> SortexchangejMatrix {
+  let result = sort_exchange_j_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn sort_exchange_j_matrix_multiply(a : SortexchangejMatrix, b : SortexchangejMatrix) -> SortexchangejMatrix {
+  if a.cols != b.rows { return sort_exchange_j_make_matrix(a.rows, b.cols, 0.0) }
+  let result = sort_exchange_j_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn sort_exchange_j_matrix_trace(m : SortexchangejMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn sort_exchange_j_matrix_det(m : SortexchangejMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn sort_exchange_j_matrix_norm(m : SortexchangejMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  sort_exchange_j_sqrt(sum)
+}
+
+pub fn sort_exchange_j_matrix_to_string(m : SortexchangejMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + sort_exchange_j_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct SortexchangejVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn sort_exchange_j_make_vector(comps : Array[Double]) -> SortexchangejVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn sort_exchange_j_vector_zero(dim : Int) -> SortexchangejVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn sort_exchange_j_vector_add(a : SortexchangejVector, b : SortexchangejVector) -> SortexchangejVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = sort_exchange_j_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn sort_exchange_j_vector_sub(a : SortexchangejVector, b : SortexchangejVector) -> SortexchangejVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = sort_exchange_j_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn sort_exchange_j_vector_scale(v : SortexchangejVector, s : Double) -> SortexchangejVector {
+  let mut result = []
+  for i in 0..<v.dim { result = sort_exchange_j_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn sort_exchange_j_vector_dot(a : SortexchangejVector, b : SortexchangejVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn sort_exchange_j_vector_norm(v : SortexchangejVector) -> Double { sort_exchange_j_sqrt(sort_exchange_j_vector_dot(v, v)) }
+
+pub fn sort_exchange_j_vector_normalize(v : SortexchangejVector) -> SortexchangejVector {
+  let n = sort_exchange_j_vector_norm(v)
+  if n < 0.0000001 { v } else { sort_exchange_j_vector_scale(v, 1.0 / n) }
+}
+
+pub fn sort_exchange_j_vector_dist(a : SortexchangejVector, b : SortexchangejVector) -> Double {
+  sort_exchange_j_vector_norm(sort_exchange_j_vector_sub(a, b))
+}
+
+pub fn sort_exchange_j_vector_to_string(v : SortexchangejVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + sort_exchange_j_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn sort_exchange_j_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = sort_exchange_j_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_std(data : Array[Double]) -> Double { sort_exchange_j_sqrt(sort_exchange_j_var(data)) }
+
+pub fn sort_exchange_j_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = sort_exchange_j_mean(a); let mb = sort_exchange_j_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = sort_exchange_j_std(a); let sb = sort_exchange_j_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { sort_exchange_j_cov(a, b) / (sa * sb) }
+}
+
+pub fn sort_exchange_j_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = sort_exchange_j_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn sort_exchange_j_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  sort_exchange_j_sqrt(sort_exchange_j_mse(pred, labels))
+}
+
+pub fn sort_exchange_j_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + sort_exchange_j_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = sort_exchange_j_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn sort_exchange_j_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn sort_exchange_j_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn sort_exchange_j_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = sort_exchange_j_precision(pred, labels, pos); let r = sort_exchange_j_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn sort_exchange_j_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn sort_exchange_j_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = sort_exchange_j_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn sort_exchange_j_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn sort_exchange_j_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn sort_exchange_j_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = sort_exchange_j_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn sort_exchange_j_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn sort_exchange_j_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn sort_exchange_j_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = sort_exchange_j_min(data); let mx = sort_exchange_j_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn sort_exchange_j_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = sort_exchange_j_mean(data); let sd = sort_exchange_j_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn sort_exchange_j_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn sort_exchange_j_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn sort_exchange_j_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn sort_exchange_j_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn sort_exchange_j_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn sort_exchange_j_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn sort_exchange_j_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { sort_exchange_j_int(x) } else { -sort_exchange_j_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { sort_exchange_j_int(f * 1000000.0) } else { sort_exchange_j_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn sort_exchange_j_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn sort_exchange_j_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct SortexchangejFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_j_frame_make(size : Int) -> SortexchangejFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_j_frame_len(s : SortexchangejFrame) -> Int { s.size }
+
+pub fn sort_exchange_j_frame_get(s : SortexchangejFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_j_frame_set(s : SortexchangejFrame, i : Int, v : Double) -> SortexchangejFrame {
+  let result = sort_exchange_j_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_frame_sum(s : SortexchangejFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_j_frame_mean(s : SortexchangejFrame) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_j_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_j_frame_scale(s : SortexchangejFrame, f : Double) -> SortexchangejFrame {
+  let result = sort_exchange_j_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_j_frame_add(a : SortexchangejFrame, b : SortexchangejFrame) -> SortexchangejFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_j_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_frame_copy(s : SortexchangejFrame) -> SortexchangejFrame {
+  let result = sort_exchange_j_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_frame_fill(s : SortexchangejFrame, v : Double) -> SortexchangejFrame {
+  let result = sort_exchange_j_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_frame_min(s : SortexchangejFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_frame_max(s : SortexchangejFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_frame_to_string(s : SortexchangejFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortexchangejTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_j_table_make(size : Int) -> SortexchangejTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_j_table_len(s : SortexchangejTable) -> Int { s.size }
+
+pub fn sort_exchange_j_table_get(s : SortexchangejTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_j_table_set(s : SortexchangejTable, i : Int, v : Double) -> SortexchangejTable {
+  let result = sort_exchange_j_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_table_sum(s : SortexchangejTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_j_table_mean(s : SortexchangejTable) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_j_table_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_j_table_scale(s : SortexchangejTable, f : Double) -> SortexchangejTable {
+  let result = sort_exchange_j_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_j_table_add(a : SortexchangejTable, b : SortexchangejTable) -> SortexchangejTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_j_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_table_copy(s : SortexchangejTable) -> SortexchangejTable {
+  let result = sort_exchange_j_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_table_fill(s : SortexchangejTable, v : Double) -> SortexchangejTable {
+  let result = sort_exchange_j_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_table_min(s : SortexchangejTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_table_max(s : SortexchangejTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_table_to_string(s : SortexchangejTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortexchangejGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_j_graphn_make(size : Int) -> SortexchangejGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_j_graphn_len(s : SortexchangejGraphN) -> Int { s.size }
+
+pub fn sort_exchange_j_graphn_get(s : SortexchangejGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_j_graphn_set(s : SortexchangejGraphN, i : Int, v : Double) -> SortexchangejGraphN {
+  let result = sort_exchange_j_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_graphn_sum(s : SortexchangejGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_j_graphn_mean(s : SortexchangejGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_j_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_j_graphn_scale(s : SortexchangejGraphN, f : Double) -> SortexchangejGraphN {
+  let result = sort_exchange_j_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_j_graphn_add(a : SortexchangejGraphN, b : SortexchangejGraphN) -> SortexchangejGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_j_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_graphn_copy(s : SortexchangejGraphN) -> SortexchangejGraphN {
+  let result = sort_exchange_j_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_graphn_fill(s : SortexchangejGraphN, v : Double) -> SortexchangejGraphN {
+  let result = sort_exchange_j_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_graphn_min(s : SortexchangejGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_graphn_max(s : SortexchangejGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_graphn_to_string(s : SortexchangejGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortexchangejNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_j_node_make(size : Int) -> SortexchangejNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_j_node_len(s : SortexchangejNode) -> Int { s.size }
+
+pub fn sort_exchange_j_node_get(s : SortexchangejNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_j_node_set(s : SortexchangejNode, i : Int, v : Double) -> SortexchangejNode {
+  let result = sort_exchange_j_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_node_sum(s : SortexchangejNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_j_node_mean(s : SortexchangejNode) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_j_node_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_j_node_scale(s : SortexchangejNode, f : Double) -> SortexchangejNode {
+  let result = sort_exchange_j_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_j_node_add(a : SortexchangejNode, b : SortexchangejNode) -> SortexchangejNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_j_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_node_copy(s : SortexchangejNode) -> SortexchangejNode {
+  let result = sort_exchange_j_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_node_fill(s : SortexchangejNode, v : Double) -> SortexchangejNode {
+  let result = sort_exchange_j_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_node_min(s : SortexchangejNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_node_max(s : SortexchangejNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_node_to_string(s : SortexchangejNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortexchangejEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_j_edge_make(size : Int) -> SortexchangejEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_j_edge_len(s : SortexchangejEdge) -> Int { s.size }
+
+pub fn sort_exchange_j_edge_get(s : SortexchangejEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_j_edge_set(s : SortexchangejEdge, i : Int, v : Double) -> SortexchangejEdge {
+  let result = sort_exchange_j_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_edge_sum(s : SortexchangejEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_j_edge_mean(s : SortexchangejEdge) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_j_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_j_edge_scale(s : SortexchangejEdge, f : Double) -> SortexchangejEdge {
+  let result = sort_exchange_j_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_j_edge_add(a : SortexchangejEdge, b : SortexchangejEdge) -> SortexchangejEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_j_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_edge_copy(s : SortexchangejEdge) -> SortexchangejEdge {
+  let result = sort_exchange_j_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_edge_fill(s : SortexchangejEdge, v : Double) -> SortexchangejEdge {
+  let result = sort_exchange_j_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_edge_min(s : SortexchangejEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_edge_max(s : SortexchangejEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_edge_to_string(s : SortexchangejEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortexchangejPath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_j_path_make(size : Int) -> SortexchangejPath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_j_path_len(s : SortexchangejPath) -> Int { s.size }
+
+pub fn sort_exchange_j_path_get(s : SortexchangejPath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_j_path_set(s : SortexchangejPath, i : Int, v : Double) -> SortexchangejPath {
+  let result = sort_exchange_j_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_path_sum(s : SortexchangejPath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_j_path_mean(s : SortexchangejPath) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_j_path_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_j_path_scale(s : SortexchangejPath, f : Double) -> SortexchangejPath {
+  let result = sort_exchange_j_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_j_path_add(a : SortexchangejPath, b : SortexchangejPath) -> SortexchangejPath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_j_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_path_copy(s : SortexchangejPath) -> SortexchangejPath {
+  let result = sort_exchange_j_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_path_fill(s : SortexchangejPath, v : Double) -> SortexchangejPath {
+  let result = sort_exchange_j_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_path_min(s : SortexchangejPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_path_max(s : SortexchangejPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_path_to_string(s : SortexchangejPath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortexchangejCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_j_cluster_make(size : Int) -> SortexchangejCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_j_cluster_len(s : SortexchangejCluster) -> Int { s.size }
+
+pub fn sort_exchange_j_cluster_get(s : SortexchangejCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_j_cluster_set(s : SortexchangejCluster, i : Int, v : Double) -> SortexchangejCluster {
+  let result = sort_exchange_j_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_cluster_sum(s : SortexchangejCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_j_cluster_mean(s : SortexchangejCluster) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_j_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_j_cluster_scale(s : SortexchangejCluster, f : Double) -> SortexchangejCluster {
+  let result = sort_exchange_j_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_j_cluster_add(a : SortexchangejCluster, b : SortexchangejCluster) -> SortexchangejCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_j_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_cluster_copy(s : SortexchangejCluster) -> SortexchangejCluster {
+  let result = sort_exchange_j_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_cluster_fill(s : SortexchangejCluster, v : Double) -> SortexchangejCluster {
+  let result = sort_exchange_j_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_cluster_min(s : SortexchangejCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_cluster_max(s : SortexchangejCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_cluster_to_string(s : SortexchangejCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortexchangejModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_j_model_make(size : Int) -> SortexchangejModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_j_model_len(s : SortexchangejModel) -> Int { s.size }
+
+pub fn sort_exchange_j_model_get(s : SortexchangejModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_j_model_set(s : SortexchangejModel, i : Int, v : Double) -> SortexchangejModel {
+  let result = sort_exchange_j_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_model_sum(s : SortexchangejModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_j_model_mean(s : SortexchangejModel) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_j_model_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_j_model_scale(s : SortexchangejModel, f : Double) -> SortexchangejModel {
+  let result = sort_exchange_j_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_j_model_add(a : SortexchangejModel, b : SortexchangejModel) -> SortexchangejModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_j_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_model_copy(s : SortexchangejModel) -> SortexchangejModel {
+  let result = sort_exchange_j_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_model_fill(s : SortexchangejModel, v : Double) -> SortexchangejModel {
+  let result = sort_exchange_j_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_model_min(s : SortexchangejModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_model_max(s : SortexchangejModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_model_to_string(s : SortexchangejModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortexchangejLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_j_layer_make(size : Int) -> SortexchangejLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_j_layer_len(s : SortexchangejLayer) -> Int { s.size }
+
+pub fn sort_exchange_j_layer_get(s : SortexchangejLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_j_layer_set(s : SortexchangejLayer, i : Int, v : Double) -> SortexchangejLayer {
+  let result = sort_exchange_j_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_layer_sum(s : SortexchangejLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_j_layer_mean(s : SortexchangejLayer) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_j_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_j_layer_scale(s : SortexchangejLayer, f : Double) -> SortexchangejLayer {
+  let result = sort_exchange_j_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_j_layer_add(a : SortexchangejLayer, b : SortexchangejLayer) -> SortexchangejLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_j_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_layer_copy(s : SortexchangejLayer) -> SortexchangejLayer {
+  let result = sort_exchange_j_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_layer_fill(s : SortexchangejLayer, v : Double) -> SortexchangejLayer {
+  let result = sort_exchange_j_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_layer_min(s : SortexchangejLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_layer_max(s : SortexchangejLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_layer_to_string(s : SortexchangejLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortexchangejBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_j_buffer_make(size : Int) -> SortexchangejBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_j_buffer_len(s : SortexchangejBuffer) -> Int { s.size }
+
+pub fn sort_exchange_j_buffer_get(s : SortexchangejBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_j_buffer_set(s : SortexchangejBuffer, i : Int, v : Double) -> SortexchangejBuffer {
+  let result = sort_exchange_j_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_buffer_sum(s : SortexchangejBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_j_buffer_mean(s : SortexchangejBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_j_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_j_buffer_scale(s : SortexchangejBuffer, f : Double) -> SortexchangejBuffer {
+  let result = sort_exchange_j_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_j_buffer_add(a : SortexchangejBuffer, b : SortexchangejBuffer) -> SortexchangejBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_j_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_buffer_copy(s : SortexchangejBuffer) -> SortexchangejBuffer {
+  let result = sort_exchange_j_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_buffer_fill(s : SortexchangejBuffer, v : Double) -> SortexchangejBuffer {
+  let result = sort_exchange_j_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_buffer_min(s : SortexchangejBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_buffer_max(s : SortexchangejBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_buffer_to_string(s : SortexchangejBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortexchangejCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_j_cursor_make(size : Int) -> SortexchangejCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_j_cursor_len(s : SortexchangejCursor) -> Int { s.size }
+
+pub fn sort_exchange_j_cursor_get(s : SortexchangejCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_j_cursor_set(s : SortexchangejCursor, i : Int, v : Double) -> SortexchangejCursor {
+  let result = sort_exchange_j_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_cursor_sum(s : SortexchangejCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_j_cursor_mean(s : SortexchangejCursor) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_j_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_j_cursor_scale(s : SortexchangejCursor, f : Double) -> SortexchangejCursor {
+  let result = sort_exchange_j_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_j_cursor_add(a : SortexchangejCursor, b : SortexchangejCursor) -> SortexchangejCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_j_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_cursor_copy(s : SortexchangejCursor) -> SortexchangejCursor {
+  let result = sort_exchange_j_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_cursor_fill(s : SortexchangejCursor, v : Double) -> SortexchangejCursor {
+  let result = sort_exchange_j_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_cursor_min(s : SortexchangejCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_cursor_max(s : SortexchangejCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_cursor_to_string(s : SortexchangejCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortexchangejView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_j_view_make(size : Int) -> SortexchangejView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_j_view_len(s : SortexchangejView) -> Int { s.size }
+
+pub fn sort_exchange_j_view_get(s : SortexchangejView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_j_view_set(s : SortexchangejView, i : Int, v : Double) -> SortexchangejView {
+  let result = sort_exchange_j_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_view_sum(s : SortexchangejView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_j_view_mean(s : SortexchangejView) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_j_view_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_j_view_scale(s : SortexchangejView, f : Double) -> SortexchangejView {
+  let result = sort_exchange_j_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_j_view_add(a : SortexchangejView, b : SortexchangejView) -> SortexchangejView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_j_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_view_copy(s : SortexchangejView) -> SortexchangejView {
+  let result = sort_exchange_j_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_view_fill(s : SortexchangejView, v : Double) -> SortexchangejView {
+  let result = sort_exchange_j_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_view_min(s : SortexchangejView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_view_max(s : SortexchangejView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_view_to_string(s : SortexchangejView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortexchangejRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_j_range_make(size : Int) -> SortexchangejRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_j_range_len(s : SortexchangejRange) -> Int { s.size }
+
+pub fn sort_exchange_j_range_get(s : SortexchangejRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_j_range_set(s : SortexchangejRange, i : Int, v : Double) -> SortexchangejRange {
+  let result = sort_exchange_j_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_range_sum(s : SortexchangejRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_j_range_mean(s : SortexchangejRange) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_j_range_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_j_range_scale(s : SortexchangejRange, f : Double) -> SortexchangejRange {
+  let result = sort_exchange_j_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_j_range_add(a : SortexchangejRange, b : SortexchangejRange) -> SortexchangejRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_j_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_range_copy(s : SortexchangejRange) -> SortexchangejRange {
+  let result = sort_exchange_j_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_range_fill(s : SortexchangejRange, v : Double) -> SortexchangejRange {
+  let result = sort_exchange_j_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_range_min(s : SortexchangejRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_range_max(s : SortexchangejRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_range_to_string(s : SortexchangejRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortexchangejSlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_exchange_j_slice_make(size : Int) -> SortexchangejSlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_exchange_j_slice_len(s : SortexchangejSlice) -> Int { s.size }
+
+pub fn sort_exchange_j_slice_get(s : SortexchangejSlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_exchange_j_slice_set(s : SortexchangejSlice, i : Int, v : Double) -> SortexchangejSlice {
+  let result = sort_exchange_j_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_slice_sum(s : SortexchangejSlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_exchange_j_slice_mean(s : SortexchangejSlice) -> Double {
+  if s.size == 0 { 0.0 } else { sort_exchange_j_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_exchange_j_slice_scale(s : SortexchangejSlice, f : Double) -> SortexchangejSlice {
+  let result = sort_exchange_j_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_exchange_j_slice_add(a : SortexchangejSlice, b : SortexchangejSlice) -> SortexchangejSlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_exchange_j_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_slice_copy(s : SortexchangejSlice) -> SortexchangejSlice {
+  let result = sort_exchange_j_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_exchange_j_slice_fill(s : SortexchangejSlice, v : Double) -> SortexchangejSlice {
+  let result = sort_exchange_j_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_exchange_j_slice_min(s : SortexchangejSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_slice_max(s : SortexchangejSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_exchange_j_slice_to_string(s : SortexchangejSlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn sort_exchange_j_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_exchange_j_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

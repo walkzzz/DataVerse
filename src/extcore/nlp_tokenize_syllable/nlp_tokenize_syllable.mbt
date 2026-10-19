@@ -1,0 +1,1955 @@
+///===
+/// extcore/nlp_tokenize_syllable
+
+pub(all) struct NlptokenizesyllablePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn nlp_tokenize_syllable_make_point(x : Double, y : Double) -> NlptokenizesyllablePoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn nlp_tokenize_syllable_make_point3(x : Double, y : Double, z : Double) -> NlptokenizesyllablePoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn nlp_tokenize_syllable_point_x(pt : NlptokenizesyllablePoint) -> Double { pt.x }
+
+pub fn nlp_tokenize_syllable_point_y(pt : NlptokenizesyllablePoint) -> Double { pt.y }
+
+pub fn nlp_tokenize_syllable_point_z(pt : NlptokenizesyllablePoint) -> Double { pt.z }
+
+pub fn nlp_tokenize_syllable_point_label(pt : NlptokenizesyllablePoint) -> Int { pt.label }
+
+pub fn nlp_tokenize_syllable_point_dist(a : NlptokenizesyllablePoint, b : NlptokenizesyllablePoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  nlp_tokenize_syllable_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn nlp_tokenize_syllable_point_add(a : NlptokenizesyllablePoint, b : NlptokenizesyllablePoint) -> NlptokenizesyllablePoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn nlp_tokenize_syllable_point_sub(a : NlptokenizesyllablePoint, b : NlptokenizesyllablePoint) -> NlptokenizesyllablePoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn nlp_tokenize_syllable_point_scale(pt : NlptokenizesyllablePoint, s : Double) -> NlptokenizesyllablePoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn nlp_tokenize_syllable_point_dot(a : NlptokenizesyllablePoint, b : NlptokenizesyllablePoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn nlp_tokenize_syllable_point_cross(a : NlptokenizesyllablePoint, b : NlptokenizesyllablePoint) -> NlptokenizesyllablePoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn nlp_tokenize_syllable_point_norm(pt : NlptokenizesyllablePoint) -> Double {
+  nlp_tokenize_syllable_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn nlp_tokenize_syllable_point_normalize(pt : NlptokenizesyllablePoint) -> NlptokenizesyllablePoint {
+  let n = nlp_tokenize_syllable_point_norm(pt)
+  if n < 0.0000001 { pt } else { nlp_tokenize_syllable_point_scale(pt, 1.0 / n) }
+}
+
+pub fn nlp_tokenize_syllable_point_negate(pt : NlptokenizesyllablePoint) -> NlptokenizesyllablePoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn nlp_tokenize_syllable_point_mid(a : NlptokenizesyllablePoint, b : NlptokenizesyllablePoint) -> NlptokenizesyllablePoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn nlp_tokenize_syllable_point_lerp(a : NlptokenizesyllablePoint, b : NlptokenizesyllablePoint, t : Double) -> NlptokenizesyllablePoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn nlp_tokenize_syllable_point_to_string(pt : NlptokenizesyllablePoint) -> String {
+  "(" + nlp_tokenize_syllable_dbl(pt.x) + ", " + nlp_tokenize_syllable_dbl(pt.y) + ", " + nlp_tokenize_syllable_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct NlptokenizesyllableSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn nlp_tokenize_syllable_make_series(vals : Array[Double], name : String) -> NlptokenizesyllableSeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn nlp_tokenize_syllable_series_len(s : NlptokenizesyllableSeries) -> Int { s.vals.length() }
+
+pub fn nlp_tokenize_syllable_series_sum(s : NlptokenizesyllableSeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn nlp_tokenize_syllable_series_mean(s : NlptokenizesyllableSeries) -> Double {
+  let n = nlp_tokenize_syllable_series_len(s)
+  if n == 0 { 0.0 } else { nlp_tokenize_syllable_series_sum(s) / n.to_double() }
+}
+
+pub fn nlp_tokenize_syllable_series_min(s : NlptokenizesyllableSeries) -> Double {
+  let n = nlp_tokenize_syllable_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_series_max(s : NlptokenizesyllableSeries) -> Double {
+  let n = nlp_tokenize_syllable_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_series_range(s : NlptokenizesyllableSeries) -> Double {
+  nlp_tokenize_syllable_series_max(s) - nlp_tokenize_syllable_series_min(s)
+}
+
+pub fn nlp_tokenize_syllable_series_var(s : NlptokenizesyllableSeries) -> Double {
+  let n = nlp_tokenize_syllable_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = nlp_tokenize_syllable_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_series_std(s : NlptokenizesyllableSeries) -> Double { nlp_tokenize_syllable_sqrt(nlp_tokenize_syllable_series_var(s)) }
+
+pub fn nlp_tokenize_syllable_series_median(s : NlptokenizesyllableSeries) -> Double {
+  let n = nlp_tokenize_syllable_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = nlp_tokenize_syllable_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn nlp_tokenize_syllable_series_scale(s : NlptokenizesyllableSeries, f : Double) -> NlptokenizesyllableSeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = nlp_tokenize_syllable_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn nlp_tokenize_syllable_series_add(a : NlptokenizesyllableSeries, b : NlptokenizesyllableSeries) -> NlptokenizesyllableSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = nlp_tokenize_syllable_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn nlp_tokenize_syllable_series_sub(a : NlptokenizesyllableSeries, b : NlptokenizesyllableSeries) -> NlptokenizesyllableSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = nlp_tokenize_syllable_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn nlp_tokenize_syllable_series_normalize(s : NlptokenizesyllableSeries) -> NlptokenizesyllableSeries {
+  let mn = nlp_tokenize_syllable_series_min(s)
+  let mx = nlp_tokenize_syllable_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = nlp_tokenize_syllable_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn nlp_tokenize_syllable_series_cumsum(s : NlptokenizesyllableSeries) -> NlptokenizesyllableSeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = nlp_tokenize_syllable_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn nlp_tokenize_syllable_series_to_string(s : NlptokenizesyllableSeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + nlp_tokenize_syllable_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct NlptokenizesyllableMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn nlp_tokenize_syllable_make_matrix(rows : Int, cols : Int, val : Double) -> NlptokenizesyllableMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn nlp_tokenize_syllable_matrix_identity(n : Int) -> NlptokenizesyllableMatrix {
+  let m = nlp_tokenize_syllable_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn nlp_tokenize_syllable_matrix_get(m : NlptokenizesyllableMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn nlp_tokenize_syllable_matrix_transpose(m : NlptokenizesyllableMatrix) -> NlptokenizesyllableMatrix {
+  let result = nlp_tokenize_syllable_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn nlp_tokenize_syllable_matrix_add(a : NlptokenizesyllableMatrix, b : NlptokenizesyllableMatrix) -> NlptokenizesyllableMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = nlp_tokenize_syllable_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn nlp_tokenize_syllable_matrix_scale(m : NlptokenizesyllableMatrix, s : Double) -> NlptokenizesyllableMatrix {
+  let result = nlp_tokenize_syllable_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn nlp_tokenize_syllable_matrix_multiply(a : NlptokenizesyllableMatrix, b : NlptokenizesyllableMatrix) -> NlptokenizesyllableMatrix {
+  if a.cols != b.rows { return nlp_tokenize_syllable_make_matrix(a.rows, b.cols, 0.0) }
+  let result = nlp_tokenize_syllable_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn nlp_tokenize_syllable_matrix_trace(m : NlptokenizesyllableMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn nlp_tokenize_syllable_matrix_det(m : NlptokenizesyllableMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn nlp_tokenize_syllable_matrix_norm(m : NlptokenizesyllableMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  nlp_tokenize_syllable_sqrt(sum)
+}
+
+pub fn nlp_tokenize_syllable_matrix_to_string(m : NlptokenizesyllableMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + nlp_tokenize_syllable_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct NlptokenizesyllableVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn nlp_tokenize_syllable_make_vector(comps : Array[Double]) -> NlptokenizesyllableVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn nlp_tokenize_syllable_vector_zero(dim : Int) -> NlptokenizesyllableVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn nlp_tokenize_syllable_vector_add(a : NlptokenizesyllableVector, b : NlptokenizesyllableVector) -> NlptokenizesyllableVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = nlp_tokenize_syllable_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn nlp_tokenize_syllable_vector_sub(a : NlptokenizesyllableVector, b : NlptokenizesyllableVector) -> NlptokenizesyllableVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = nlp_tokenize_syllable_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn nlp_tokenize_syllable_vector_scale(v : NlptokenizesyllableVector, s : Double) -> NlptokenizesyllableVector {
+  let mut result = []
+  for i in 0..<v.dim { result = nlp_tokenize_syllable_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn nlp_tokenize_syllable_vector_dot(a : NlptokenizesyllableVector, b : NlptokenizesyllableVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn nlp_tokenize_syllable_vector_norm(v : NlptokenizesyllableVector) -> Double { nlp_tokenize_syllable_sqrt(nlp_tokenize_syllable_vector_dot(v, v)) }
+
+pub fn nlp_tokenize_syllable_vector_normalize(v : NlptokenizesyllableVector) -> NlptokenizesyllableVector {
+  let n = nlp_tokenize_syllable_vector_norm(v)
+  if n < 0.0000001 { v } else { nlp_tokenize_syllable_vector_scale(v, 1.0 / n) }
+}
+
+pub fn nlp_tokenize_syllable_vector_dist(a : NlptokenizesyllableVector, b : NlptokenizesyllableVector) -> Double {
+  nlp_tokenize_syllable_vector_norm(nlp_tokenize_syllable_vector_sub(a, b))
+}
+
+pub fn nlp_tokenize_syllable_vector_to_string(v : NlptokenizesyllableVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + nlp_tokenize_syllable_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn nlp_tokenize_syllable_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = nlp_tokenize_syllable_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_std(data : Array[Double]) -> Double { nlp_tokenize_syllable_sqrt(nlp_tokenize_syllable_var(data)) }
+
+pub fn nlp_tokenize_syllable_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = nlp_tokenize_syllable_mean(a); let mb = nlp_tokenize_syllable_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = nlp_tokenize_syllable_std(a); let sb = nlp_tokenize_syllable_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { nlp_tokenize_syllable_cov(a, b) / (sa * sb) }
+}
+
+pub fn nlp_tokenize_syllable_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = nlp_tokenize_syllable_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn nlp_tokenize_syllable_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  nlp_tokenize_syllable_sqrt(nlp_tokenize_syllable_mse(pred, labels))
+}
+
+pub fn nlp_tokenize_syllable_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + nlp_tokenize_syllable_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = nlp_tokenize_syllable_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn nlp_tokenize_syllable_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn nlp_tokenize_syllable_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn nlp_tokenize_syllable_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = nlp_tokenize_syllable_precision(pred, labels, pos); let r = nlp_tokenize_syllable_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn nlp_tokenize_syllable_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn nlp_tokenize_syllable_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = nlp_tokenize_syllable_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn nlp_tokenize_syllable_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn nlp_tokenize_syllable_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = nlp_tokenize_syllable_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn nlp_tokenize_syllable_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn nlp_tokenize_syllable_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn nlp_tokenize_syllable_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = nlp_tokenize_syllable_min(data); let mx = nlp_tokenize_syllable_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn nlp_tokenize_syllable_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = nlp_tokenize_syllable_mean(data); let sd = nlp_tokenize_syllable_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn nlp_tokenize_syllable_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn nlp_tokenize_syllable_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn nlp_tokenize_syllable_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn nlp_tokenize_syllable_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn nlp_tokenize_syllable_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn nlp_tokenize_syllable_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { nlp_tokenize_syllable_int(x) } else { -nlp_tokenize_syllable_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { nlp_tokenize_syllable_int(f * 1000000.0) } else { nlp_tokenize_syllable_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn nlp_tokenize_syllable_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn nlp_tokenize_syllable_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct NlptokenizesyllableFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_tokenize_syllable_frame_make(size : Int) -> NlptokenizesyllableFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_tokenize_syllable_frame_len(s : NlptokenizesyllableFrame) -> Int { s.size }
+
+pub fn nlp_tokenize_syllable_frame_get(s : NlptokenizesyllableFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_tokenize_syllable_frame_set(s : NlptokenizesyllableFrame, i : Int, v : Double) -> NlptokenizesyllableFrame {
+  let result = nlp_tokenize_syllable_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_frame_sum(s : NlptokenizesyllableFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_tokenize_syllable_frame_mean(s : NlptokenizesyllableFrame) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_tokenize_syllable_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_tokenize_syllable_frame_scale(s : NlptokenizesyllableFrame, f : Double) -> NlptokenizesyllableFrame {
+  let result = nlp_tokenize_syllable_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_tokenize_syllable_frame_add(a : NlptokenizesyllableFrame, b : NlptokenizesyllableFrame) -> NlptokenizesyllableFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_tokenize_syllable_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_frame_copy(s : NlptokenizesyllableFrame) -> NlptokenizesyllableFrame {
+  let result = nlp_tokenize_syllable_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_frame_fill(s : NlptokenizesyllableFrame, v : Double) -> NlptokenizesyllableFrame {
+  let result = nlp_tokenize_syllable_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_frame_min(s : NlptokenizesyllableFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_frame_max(s : NlptokenizesyllableFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_frame_to_string(s : NlptokenizesyllableFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NlptokenizesyllableTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_tokenize_syllable_table_make(size : Int) -> NlptokenizesyllableTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_tokenize_syllable_table_len(s : NlptokenizesyllableTable) -> Int { s.size }
+
+pub fn nlp_tokenize_syllable_table_get(s : NlptokenizesyllableTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_tokenize_syllable_table_set(s : NlptokenizesyllableTable, i : Int, v : Double) -> NlptokenizesyllableTable {
+  let result = nlp_tokenize_syllable_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_table_sum(s : NlptokenizesyllableTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_tokenize_syllable_table_mean(s : NlptokenizesyllableTable) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_tokenize_syllable_table_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_tokenize_syllable_table_scale(s : NlptokenizesyllableTable, f : Double) -> NlptokenizesyllableTable {
+  let result = nlp_tokenize_syllable_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_tokenize_syllable_table_add(a : NlptokenizesyllableTable, b : NlptokenizesyllableTable) -> NlptokenizesyllableTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_tokenize_syllable_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_table_copy(s : NlptokenizesyllableTable) -> NlptokenizesyllableTable {
+  let result = nlp_tokenize_syllable_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_table_fill(s : NlptokenizesyllableTable, v : Double) -> NlptokenizesyllableTable {
+  let result = nlp_tokenize_syllable_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_table_min(s : NlptokenizesyllableTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_table_max(s : NlptokenizesyllableTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_table_to_string(s : NlptokenizesyllableTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NlptokenizesyllableGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_tokenize_syllable_graphn_make(size : Int) -> NlptokenizesyllableGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_tokenize_syllable_graphn_len(s : NlptokenizesyllableGraphN) -> Int { s.size }
+
+pub fn nlp_tokenize_syllable_graphn_get(s : NlptokenizesyllableGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_tokenize_syllable_graphn_set(s : NlptokenizesyllableGraphN, i : Int, v : Double) -> NlptokenizesyllableGraphN {
+  let result = nlp_tokenize_syllable_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_graphn_sum(s : NlptokenizesyllableGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_tokenize_syllable_graphn_mean(s : NlptokenizesyllableGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_tokenize_syllable_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_tokenize_syllable_graphn_scale(s : NlptokenizesyllableGraphN, f : Double) -> NlptokenizesyllableGraphN {
+  let result = nlp_tokenize_syllable_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_tokenize_syllable_graphn_add(a : NlptokenizesyllableGraphN, b : NlptokenizesyllableGraphN) -> NlptokenizesyllableGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_tokenize_syllable_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_graphn_copy(s : NlptokenizesyllableGraphN) -> NlptokenizesyllableGraphN {
+  let result = nlp_tokenize_syllable_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_graphn_fill(s : NlptokenizesyllableGraphN, v : Double) -> NlptokenizesyllableGraphN {
+  let result = nlp_tokenize_syllable_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_graphn_min(s : NlptokenizesyllableGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_graphn_max(s : NlptokenizesyllableGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_graphn_to_string(s : NlptokenizesyllableGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NlptokenizesyllableNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_tokenize_syllable_node_make(size : Int) -> NlptokenizesyllableNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_tokenize_syllable_node_len(s : NlptokenizesyllableNode) -> Int { s.size }
+
+pub fn nlp_tokenize_syllable_node_get(s : NlptokenizesyllableNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_tokenize_syllable_node_set(s : NlptokenizesyllableNode, i : Int, v : Double) -> NlptokenizesyllableNode {
+  let result = nlp_tokenize_syllable_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_node_sum(s : NlptokenizesyllableNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_tokenize_syllable_node_mean(s : NlptokenizesyllableNode) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_tokenize_syllable_node_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_tokenize_syllable_node_scale(s : NlptokenizesyllableNode, f : Double) -> NlptokenizesyllableNode {
+  let result = nlp_tokenize_syllable_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_tokenize_syllable_node_add(a : NlptokenizesyllableNode, b : NlptokenizesyllableNode) -> NlptokenizesyllableNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_tokenize_syllable_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_node_copy(s : NlptokenizesyllableNode) -> NlptokenizesyllableNode {
+  let result = nlp_tokenize_syllable_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_node_fill(s : NlptokenizesyllableNode, v : Double) -> NlptokenizesyllableNode {
+  let result = nlp_tokenize_syllable_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_node_min(s : NlptokenizesyllableNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_node_max(s : NlptokenizesyllableNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_node_to_string(s : NlptokenizesyllableNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NlptokenizesyllableEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_tokenize_syllable_edge_make(size : Int) -> NlptokenizesyllableEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_tokenize_syllable_edge_len(s : NlptokenizesyllableEdge) -> Int { s.size }
+
+pub fn nlp_tokenize_syllable_edge_get(s : NlptokenizesyllableEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_tokenize_syllable_edge_set(s : NlptokenizesyllableEdge, i : Int, v : Double) -> NlptokenizesyllableEdge {
+  let result = nlp_tokenize_syllable_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_edge_sum(s : NlptokenizesyllableEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_tokenize_syllable_edge_mean(s : NlptokenizesyllableEdge) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_tokenize_syllable_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_tokenize_syllable_edge_scale(s : NlptokenizesyllableEdge, f : Double) -> NlptokenizesyllableEdge {
+  let result = nlp_tokenize_syllable_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_tokenize_syllable_edge_add(a : NlptokenizesyllableEdge, b : NlptokenizesyllableEdge) -> NlptokenizesyllableEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_tokenize_syllable_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_edge_copy(s : NlptokenizesyllableEdge) -> NlptokenizesyllableEdge {
+  let result = nlp_tokenize_syllable_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_edge_fill(s : NlptokenizesyllableEdge, v : Double) -> NlptokenizesyllableEdge {
+  let result = nlp_tokenize_syllable_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_edge_min(s : NlptokenizesyllableEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_edge_max(s : NlptokenizesyllableEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_edge_to_string(s : NlptokenizesyllableEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NlptokenizesyllablePath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_tokenize_syllable_path_make(size : Int) -> NlptokenizesyllablePath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_tokenize_syllable_path_len(s : NlptokenizesyllablePath) -> Int { s.size }
+
+pub fn nlp_tokenize_syllable_path_get(s : NlptokenizesyllablePath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_tokenize_syllable_path_set(s : NlptokenizesyllablePath, i : Int, v : Double) -> NlptokenizesyllablePath {
+  let result = nlp_tokenize_syllable_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_path_sum(s : NlptokenizesyllablePath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_tokenize_syllable_path_mean(s : NlptokenizesyllablePath) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_tokenize_syllable_path_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_tokenize_syllable_path_scale(s : NlptokenizesyllablePath, f : Double) -> NlptokenizesyllablePath {
+  let result = nlp_tokenize_syllable_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_tokenize_syllable_path_add(a : NlptokenizesyllablePath, b : NlptokenizesyllablePath) -> NlptokenizesyllablePath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_tokenize_syllable_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_path_copy(s : NlptokenizesyllablePath) -> NlptokenizesyllablePath {
+  let result = nlp_tokenize_syllable_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_path_fill(s : NlptokenizesyllablePath, v : Double) -> NlptokenizesyllablePath {
+  let result = nlp_tokenize_syllable_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_path_min(s : NlptokenizesyllablePath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_path_max(s : NlptokenizesyllablePath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_path_to_string(s : NlptokenizesyllablePath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NlptokenizesyllableCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_tokenize_syllable_cluster_make(size : Int) -> NlptokenizesyllableCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_tokenize_syllable_cluster_len(s : NlptokenizesyllableCluster) -> Int { s.size }
+
+pub fn nlp_tokenize_syllable_cluster_get(s : NlptokenizesyllableCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_tokenize_syllable_cluster_set(s : NlptokenizesyllableCluster, i : Int, v : Double) -> NlptokenizesyllableCluster {
+  let result = nlp_tokenize_syllable_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_cluster_sum(s : NlptokenizesyllableCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_tokenize_syllable_cluster_mean(s : NlptokenizesyllableCluster) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_tokenize_syllable_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_tokenize_syllable_cluster_scale(s : NlptokenizesyllableCluster, f : Double) -> NlptokenizesyllableCluster {
+  let result = nlp_tokenize_syllable_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_tokenize_syllable_cluster_add(a : NlptokenizesyllableCluster, b : NlptokenizesyllableCluster) -> NlptokenizesyllableCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_tokenize_syllable_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_cluster_copy(s : NlptokenizesyllableCluster) -> NlptokenizesyllableCluster {
+  let result = nlp_tokenize_syllable_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_cluster_fill(s : NlptokenizesyllableCluster, v : Double) -> NlptokenizesyllableCluster {
+  let result = nlp_tokenize_syllable_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_cluster_min(s : NlptokenizesyllableCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_cluster_max(s : NlptokenizesyllableCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_cluster_to_string(s : NlptokenizesyllableCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NlptokenizesyllableModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_tokenize_syllable_model_make(size : Int) -> NlptokenizesyllableModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_tokenize_syllable_model_len(s : NlptokenizesyllableModel) -> Int { s.size }
+
+pub fn nlp_tokenize_syllable_model_get(s : NlptokenizesyllableModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_tokenize_syllable_model_set(s : NlptokenizesyllableModel, i : Int, v : Double) -> NlptokenizesyllableModel {
+  let result = nlp_tokenize_syllable_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_model_sum(s : NlptokenizesyllableModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_tokenize_syllable_model_mean(s : NlptokenizesyllableModel) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_tokenize_syllable_model_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_tokenize_syllable_model_scale(s : NlptokenizesyllableModel, f : Double) -> NlptokenizesyllableModel {
+  let result = nlp_tokenize_syllable_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_tokenize_syllable_model_add(a : NlptokenizesyllableModel, b : NlptokenizesyllableModel) -> NlptokenizesyllableModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_tokenize_syllable_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_model_copy(s : NlptokenizesyllableModel) -> NlptokenizesyllableModel {
+  let result = nlp_tokenize_syllable_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_model_fill(s : NlptokenizesyllableModel, v : Double) -> NlptokenizesyllableModel {
+  let result = nlp_tokenize_syllable_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_model_min(s : NlptokenizesyllableModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_model_max(s : NlptokenizesyllableModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_model_to_string(s : NlptokenizesyllableModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NlptokenizesyllableLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_tokenize_syllable_layer_make(size : Int) -> NlptokenizesyllableLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_tokenize_syllable_layer_len(s : NlptokenizesyllableLayer) -> Int { s.size }
+
+pub fn nlp_tokenize_syllable_layer_get(s : NlptokenizesyllableLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_tokenize_syllable_layer_set(s : NlptokenizesyllableLayer, i : Int, v : Double) -> NlptokenizesyllableLayer {
+  let result = nlp_tokenize_syllable_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_layer_sum(s : NlptokenizesyllableLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_tokenize_syllable_layer_mean(s : NlptokenizesyllableLayer) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_tokenize_syllable_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_tokenize_syllable_layer_scale(s : NlptokenizesyllableLayer, f : Double) -> NlptokenizesyllableLayer {
+  let result = nlp_tokenize_syllable_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_tokenize_syllable_layer_add(a : NlptokenizesyllableLayer, b : NlptokenizesyllableLayer) -> NlptokenizesyllableLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_tokenize_syllable_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_layer_copy(s : NlptokenizesyllableLayer) -> NlptokenizesyllableLayer {
+  let result = nlp_tokenize_syllable_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_layer_fill(s : NlptokenizesyllableLayer, v : Double) -> NlptokenizesyllableLayer {
+  let result = nlp_tokenize_syllable_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_layer_min(s : NlptokenizesyllableLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_layer_max(s : NlptokenizesyllableLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_layer_to_string(s : NlptokenizesyllableLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NlptokenizesyllableBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_tokenize_syllable_buffer_make(size : Int) -> NlptokenizesyllableBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_tokenize_syllable_buffer_len(s : NlptokenizesyllableBuffer) -> Int { s.size }
+
+pub fn nlp_tokenize_syllable_buffer_get(s : NlptokenizesyllableBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_tokenize_syllable_buffer_set(s : NlptokenizesyllableBuffer, i : Int, v : Double) -> NlptokenizesyllableBuffer {
+  let result = nlp_tokenize_syllable_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_buffer_sum(s : NlptokenizesyllableBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_tokenize_syllable_buffer_mean(s : NlptokenizesyllableBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_tokenize_syllable_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_tokenize_syllable_buffer_scale(s : NlptokenizesyllableBuffer, f : Double) -> NlptokenizesyllableBuffer {
+  let result = nlp_tokenize_syllable_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_tokenize_syllable_buffer_add(a : NlptokenizesyllableBuffer, b : NlptokenizesyllableBuffer) -> NlptokenizesyllableBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_tokenize_syllable_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_buffer_copy(s : NlptokenizesyllableBuffer) -> NlptokenizesyllableBuffer {
+  let result = nlp_tokenize_syllable_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_buffer_fill(s : NlptokenizesyllableBuffer, v : Double) -> NlptokenizesyllableBuffer {
+  let result = nlp_tokenize_syllable_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_buffer_min(s : NlptokenizesyllableBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_buffer_max(s : NlptokenizesyllableBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_buffer_to_string(s : NlptokenizesyllableBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NlptokenizesyllableCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_tokenize_syllable_cursor_make(size : Int) -> NlptokenizesyllableCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_tokenize_syllable_cursor_len(s : NlptokenizesyllableCursor) -> Int { s.size }
+
+pub fn nlp_tokenize_syllable_cursor_get(s : NlptokenizesyllableCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_tokenize_syllable_cursor_set(s : NlptokenizesyllableCursor, i : Int, v : Double) -> NlptokenizesyllableCursor {
+  let result = nlp_tokenize_syllable_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_cursor_sum(s : NlptokenizesyllableCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_tokenize_syllable_cursor_mean(s : NlptokenizesyllableCursor) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_tokenize_syllable_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_tokenize_syllable_cursor_scale(s : NlptokenizesyllableCursor, f : Double) -> NlptokenizesyllableCursor {
+  let result = nlp_tokenize_syllable_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_tokenize_syllable_cursor_add(a : NlptokenizesyllableCursor, b : NlptokenizesyllableCursor) -> NlptokenizesyllableCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_tokenize_syllable_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_cursor_copy(s : NlptokenizesyllableCursor) -> NlptokenizesyllableCursor {
+  let result = nlp_tokenize_syllable_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_cursor_fill(s : NlptokenizesyllableCursor, v : Double) -> NlptokenizesyllableCursor {
+  let result = nlp_tokenize_syllable_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_cursor_min(s : NlptokenizesyllableCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_cursor_max(s : NlptokenizesyllableCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_cursor_to_string(s : NlptokenizesyllableCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NlptokenizesyllableView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_tokenize_syllable_view_make(size : Int) -> NlptokenizesyllableView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_tokenize_syllable_view_len(s : NlptokenizesyllableView) -> Int { s.size }
+
+pub fn nlp_tokenize_syllable_view_get(s : NlptokenizesyllableView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_tokenize_syllable_view_set(s : NlptokenizesyllableView, i : Int, v : Double) -> NlptokenizesyllableView {
+  let result = nlp_tokenize_syllable_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_view_sum(s : NlptokenizesyllableView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_tokenize_syllable_view_mean(s : NlptokenizesyllableView) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_tokenize_syllable_view_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_tokenize_syllable_view_scale(s : NlptokenizesyllableView, f : Double) -> NlptokenizesyllableView {
+  let result = nlp_tokenize_syllable_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_tokenize_syllable_view_add(a : NlptokenizesyllableView, b : NlptokenizesyllableView) -> NlptokenizesyllableView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_tokenize_syllable_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_view_copy(s : NlptokenizesyllableView) -> NlptokenizesyllableView {
+  let result = nlp_tokenize_syllable_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_view_fill(s : NlptokenizesyllableView, v : Double) -> NlptokenizesyllableView {
+  let result = nlp_tokenize_syllable_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_view_min(s : NlptokenizesyllableView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_view_max(s : NlptokenizesyllableView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_view_to_string(s : NlptokenizesyllableView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NlptokenizesyllableRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_tokenize_syllable_range_make(size : Int) -> NlptokenizesyllableRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_tokenize_syllable_range_len(s : NlptokenizesyllableRange) -> Int { s.size }
+
+pub fn nlp_tokenize_syllable_range_get(s : NlptokenizesyllableRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_tokenize_syllable_range_set(s : NlptokenizesyllableRange, i : Int, v : Double) -> NlptokenizesyllableRange {
+  let result = nlp_tokenize_syllable_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_range_sum(s : NlptokenizesyllableRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_tokenize_syllable_range_mean(s : NlptokenizesyllableRange) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_tokenize_syllable_range_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_tokenize_syllable_range_scale(s : NlptokenizesyllableRange, f : Double) -> NlptokenizesyllableRange {
+  let result = nlp_tokenize_syllable_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_tokenize_syllable_range_add(a : NlptokenizesyllableRange, b : NlptokenizesyllableRange) -> NlptokenizesyllableRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_tokenize_syllable_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_range_copy(s : NlptokenizesyllableRange) -> NlptokenizesyllableRange {
+  let result = nlp_tokenize_syllable_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_range_fill(s : NlptokenizesyllableRange, v : Double) -> NlptokenizesyllableRange {
+  let result = nlp_tokenize_syllable_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_range_min(s : NlptokenizesyllableRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_range_max(s : NlptokenizesyllableRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_range_to_string(s : NlptokenizesyllableRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NlptokenizesyllableSlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn nlp_tokenize_syllable_slice_make(size : Int) -> NlptokenizesyllableSlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn nlp_tokenize_syllable_slice_len(s : NlptokenizesyllableSlice) -> Int { s.size }
+
+pub fn nlp_tokenize_syllable_slice_get(s : NlptokenizesyllableSlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn nlp_tokenize_syllable_slice_set(s : NlptokenizesyllableSlice, i : Int, v : Double) -> NlptokenizesyllableSlice {
+  let result = nlp_tokenize_syllable_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_slice_sum(s : NlptokenizesyllableSlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn nlp_tokenize_syllable_slice_mean(s : NlptokenizesyllableSlice) -> Double {
+  if s.size == 0 { 0.0 } else { nlp_tokenize_syllable_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn nlp_tokenize_syllable_slice_scale(s : NlptokenizesyllableSlice, f : Double) -> NlptokenizesyllableSlice {
+  let result = nlp_tokenize_syllable_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn nlp_tokenize_syllable_slice_add(a : NlptokenizesyllableSlice, b : NlptokenizesyllableSlice) -> NlptokenizesyllableSlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = nlp_tokenize_syllable_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_slice_copy(s : NlptokenizesyllableSlice) -> NlptokenizesyllableSlice {
+  let result = nlp_tokenize_syllable_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn nlp_tokenize_syllable_slice_fill(s : NlptokenizesyllableSlice, v : Double) -> NlptokenizesyllableSlice {
+  let result = nlp_tokenize_syllable_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn nlp_tokenize_syllable_slice_min(s : NlptokenizesyllableSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_slice_max(s : NlptokenizesyllableSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn nlp_tokenize_syllable_slice_to_string(s : NlptokenizesyllableSlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn nlp_tokenize_syllable_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn nlp_tokenize_syllable_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

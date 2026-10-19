@@ -1,0 +1,1955 @@
+///===
+/// extcore/graph_connect_circuit
+
+pub(all) struct GraphconnectcircuitPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn graph_connect_circuit_make_point(x : Double, y : Double) -> GraphconnectcircuitPoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn graph_connect_circuit_make_point3(x : Double, y : Double, z : Double) -> GraphconnectcircuitPoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn graph_connect_circuit_point_x(pt : GraphconnectcircuitPoint) -> Double { pt.x }
+
+pub fn graph_connect_circuit_point_y(pt : GraphconnectcircuitPoint) -> Double { pt.y }
+
+pub fn graph_connect_circuit_point_z(pt : GraphconnectcircuitPoint) -> Double { pt.z }
+
+pub fn graph_connect_circuit_point_label(pt : GraphconnectcircuitPoint) -> Int { pt.label }
+
+pub fn graph_connect_circuit_point_dist(a : GraphconnectcircuitPoint, b : GraphconnectcircuitPoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  graph_connect_circuit_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn graph_connect_circuit_point_add(a : GraphconnectcircuitPoint, b : GraphconnectcircuitPoint) -> GraphconnectcircuitPoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn graph_connect_circuit_point_sub(a : GraphconnectcircuitPoint, b : GraphconnectcircuitPoint) -> GraphconnectcircuitPoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn graph_connect_circuit_point_scale(pt : GraphconnectcircuitPoint, s : Double) -> GraphconnectcircuitPoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn graph_connect_circuit_point_dot(a : GraphconnectcircuitPoint, b : GraphconnectcircuitPoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn graph_connect_circuit_point_cross(a : GraphconnectcircuitPoint, b : GraphconnectcircuitPoint) -> GraphconnectcircuitPoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn graph_connect_circuit_point_norm(pt : GraphconnectcircuitPoint) -> Double {
+  graph_connect_circuit_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn graph_connect_circuit_point_normalize(pt : GraphconnectcircuitPoint) -> GraphconnectcircuitPoint {
+  let n = graph_connect_circuit_point_norm(pt)
+  if n < 0.0000001 { pt } else { graph_connect_circuit_point_scale(pt, 1.0 / n) }
+}
+
+pub fn graph_connect_circuit_point_negate(pt : GraphconnectcircuitPoint) -> GraphconnectcircuitPoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn graph_connect_circuit_point_mid(a : GraphconnectcircuitPoint, b : GraphconnectcircuitPoint) -> GraphconnectcircuitPoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn graph_connect_circuit_point_lerp(a : GraphconnectcircuitPoint, b : GraphconnectcircuitPoint, t : Double) -> GraphconnectcircuitPoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn graph_connect_circuit_point_to_string(pt : GraphconnectcircuitPoint) -> String {
+  "(" + graph_connect_circuit_dbl(pt.x) + ", " + graph_connect_circuit_dbl(pt.y) + ", " + graph_connect_circuit_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct GraphconnectcircuitSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn graph_connect_circuit_make_series(vals : Array[Double], name : String) -> GraphconnectcircuitSeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn graph_connect_circuit_series_len(s : GraphconnectcircuitSeries) -> Int { s.vals.length() }
+
+pub fn graph_connect_circuit_series_sum(s : GraphconnectcircuitSeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn graph_connect_circuit_series_mean(s : GraphconnectcircuitSeries) -> Double {
+  let n = graph_connect_circuit_series_len(s)
+  if n == 0 { 0.0 } else { graph_connect_circuit_series_sum(s) / n.to_double() }
+}
+
+pub fn graph_connect_circuit_series_min(s : GraphconnectcircuitSeries) -> Double {
+  let n = graph_connect_circuit_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_series_max(s : GraphconnectcircuitSeries) -> Double {
+  let n = graph_connect_circuit_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_series_range(s : GraphconnectcircuitSeries) -> Double {
+  graph_connect_circuit_series_max(s) - graph_connect_circuit_series_min(s)
+}
+
+pub fn graph_connect_circuit_series_var(s : GraphconnectcircuitSeries) -> Double {
+  let n = graph_connect_circuit_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = graph_connect_circuit_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_series_std(s : GraphconnectcircuitSeries) -> Double { graph_connect_circuit_sqrt(graph_connect_circuit_series_var(s)) }
+
+pub fn graph_connect_circuit_series_median(s : GraphconnectcircuitSeries) -> Double {
+  let n = graph_connect_circuit_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = graph_connect_circuit_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn graph_connect_circuit_series_scale(s : GraphconnectcircuitSeries, f : Double) -> GraphconnectcircuitSeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = graph_connect_circuit_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn graph_connect_circuit_series_add(a : GraphconnectcircuitSeries, b : GraphconnectcircuitSeries) -> GraphconnectcircuitSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = graph_connect_circuit_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn graph_connect_circuit_series_sub(a : GraphconnectcircuitSeries, b : GraphconnectcircuitSeries) -> GraphconnectcircuitSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = graph_connect_circuit_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn graph_connect_circuit_series_normalize(s : GraphconnectcircuitSeries) -> GraphconnectcircuitSeries {
+  let mn = graph_connect_circuit_series_min(s)
+  let mx = graph_connect_circuit_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = graph_connect_circuit_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn graph_connect_circuit_series_cumsum(s : GraphconnectcircuitSeries) -> GraphconnectcircuitSeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = graph_connect_circuit_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn graph_connect_circuit_series_to_string(s : GraphconnectcircuitSeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + graph_connect_circuit_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct GraphconnectcircuitMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn graph_connect_circuit_make_matrix(rows : Int, cols : Int, val : Double) -> GraphconnectcircuitMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn graph_connect_circuit_matrix_identity(n : Int) -> GraphconnectcircuitMatrix {
+  let m = graph_connect_circuit_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn graph_connect_circuit_matrix_get(m : GraphconnectcircuitMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn graph_connect_circuit_matrix_transpose(m : GraphconnectcircuitMatrix) -> GraphconnectcircuitMatrix {
+  let result = graph_connect_circuit_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn graph_connect_circuit_matrix_add(a : GraphconnectcircuitMatrix, b : GraphconnectcircuitMatrix) -> GraphconnectcircuitMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = graph_connect_circuit_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn graph_connect_circuit_matrix_scale(m : GraphconnectcircuitMatrix, s : Double) -> GraphconnectcircuitMatrix {
+  let result = graph_connect_circuit_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn graph_connect_circuit_matrix_multiply(a : GraphconnectcircuitMatrix, b : GraphconnectcircuitMatrix) -> GraphconnectcircuitMatrix {
+  if a.cols != b.rows { return graph_connect_circuit_make_matrix(a.rows, b.cols, 0.0) }
+  let result = graph_connect_circuit_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn graph_connect_circuit_matrix_trace(m : GraphconnectcircuitMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn graph_connect_circuit_matrix_det(m : GraphconnectcircuitMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn graph_connect_circuit_matrix_norm(m : GraphconnectcircuitMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  graph_connect_circuit_sqrt(sum)
+}
+
+pub fn graph_connect_circuit_matrix_to_string(m : GraphconnectcircuitMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + graph_connect_circuit_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct GraphconnectcircuitVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn graph_connect_circuit_make_vector(comps : Array[Double]) -> GraphconnectcircuitVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn graph_connect_circuit_vector_zero(dim : Int) -> GraphconnectcircuitVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn graph_connect_circuit_vector_add(a : GraphconnectcircuitVector, b : GraphconnectcircuitVector) -> GraphconnectcircuitVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = graph_connect_circuit_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn graph_connect_circuit_vector_sub(a : GraphconnectcircuitVector, b : GraphconnectcircuitVector) -> GraphconnectcircuitVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = graph_connect_circuit_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn graph_connect_circuit_vector_scale(v : GraphconnectcircuitVector, s : Double) -> GraphconnectcircuitVector {
+  let mut result = []
+  for i in 0..<v.dim { result = graph_connect_circuit_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn graph_connect_circuit_vector_dot(a : GraphconnectcircuitVector, b : GraphconnectcircuitVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn graph_connect_circuit_vector_norm(v : GraphconnectcircuitVector) -> Double { graph_connect_circuit_sqrt(graph_connect_circuit_vector_dot(v, v)) }
+
+pub fn graph_connect_circuit_vector_normalize(v : GraphconnectcircuitVector) -> GraphconnectcircuitVector {
+  let n = graph_connect_circuit_vector_norm(v)
+  if n < 0.0000001 { v } else { graph_connect_circuit_vector_scale(v, 1.0 / n) }
+}
+
+pub fn graph_connect_circuit_vector_dist(a : GraphconnectcircuitVector, b : GraphconnectcircuitVector) -> Double {
+  graph_connect_circuit_vector_norm(graph_connect_circuit_vector_sub(a, b))
+}
+
+pub fn graph_connect_circuit_vector_to_string(v : GraphconnectcircuitVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + graph_connect_circuit_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn graph_connect_circuit_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = graph_connect_circuit_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_std(data : Array[Double]) -> Double { graph_connect_circuit_sqrt(graph_connect_circuit_var(data)) }
+
+pub fn graph_connect_circuit_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = graph_connect_circuit_mean(a); let mb = graph_connect_circuit_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = graph_connect_circuit_std(a); let sb = graph_connect_circuit_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { graph_connect_circuit_cov(a, b) / (sa * sb) }
+}
+
+pub fn graph_connect_circuit_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = graph_connect_circuit_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn graph_connect_circuit_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  graph_connect_circuit_sqrt(graph_connect_circuit_mse(pred, labels))
+}
+
+pub fn graph_connect_circuit_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + graph_connect_circuit_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = graph_connect_circuit_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn graph_connect_circuit_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn graph_connect_circuit_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn graph_connect_circuit_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = graph_connect_circuit_precision(pred, labels, pos); let r = graph_connect_circuit_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn graph_connect_circuit_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn graph_connect_circuit_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = graph_connect_circuit_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn graph_connect_circuit_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn graph_connect_circuit_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn graph_connect_circuit_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = graph_connect_circuit_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn graph_connect_circuit_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn graph_connect_circuit_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn graph_connect_circuit_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = graph_connect_circuit_min(data); let mx = graph_connect_circuit_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn graph_connect_circuit_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = graph_connect_circuit_mean(data); let sd = graph_connect_circuit_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn graph_connect_circuit_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn graph_connect_circuit_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn graph_connect_circuit_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn graph_connect_circuit_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn graph_connect_circuit_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn graph_connect_circuit_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn graph_connect_circuit_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { graph_connect_circuit_int(x) } else { -graph_connect_circuit_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { graph_connect_circuit_int(f * 1000000.0) } else { graph_connect_circuit_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn graph_connect_circuit_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn graph_connect_circuit_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct GraphconnectcircuitFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_connect_circuit_frame_make(size : Int) -> GraphconnectcircuitFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_connect_circuit_frame_len(s : GraphconnectcircuitFrame) -> Int { s.size }
+
+pub fn graph_connect_circuit_frame_get(s : GraphconnectcircuitFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_connect_circuit_frame_set(s : GraphconnectcircuitFrame, i : Int, v : Double) -> GraphconnectcircuitFrame {
+  let result = graph_connect_circuit_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_frame_sum(s : GraphconnectcircuitFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_connect_circuit_frame_mean(s : GraphconnectcircuitFrame) -> Double {
+  if s.size == 0 { 0.0 } else { graph_connect_circuit_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_connect_circuit_frame_scale(s : GraphconnectcircuitFrame, f : Double) -> GraphconnectcircuitFrame {
+  let result = graph_connect_circuit_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_connect_circuit_frame_add(a : GraphconnectcircuitFrame, b : GraphconnectcircuitFrame) -> GraphconnectcircuitFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_connect_circuit_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_frame_copy(s : GraphconnectcircuitFrame) -> GraphconnectcircuitFrame {
+  let result = graph_connect_circuit_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_frame_fill(s : GraphconnectcircuitFrame, v : Double) -> GraphconnectcircuitFrame {
+  let result = graph_connect_circuit_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_frame_min(s : GraphconnectcircuitFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_frame_max(s : GraphconnectcircuitFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_frame_to_string(s : GraphconnectcircuitFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphconnectcircuitTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_connect_circuit_table_make(size : Int) -> GraphconnectcircuitTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_connect_circuit_table_len(s : GraphconnectcircuitTable) -> Int { s.size }
+
+pub fn graph_connect_circuit_table_get(s : GraphconnectcircuitTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_connect_circuit_table_set(s : GraphconnectcircuitTable, i : Int, v : Double) -> GraphconnectcircuitTable {
+  let result = graph_connect_circuit_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_table_sum(s : GraphconnectcircuitTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_connect_circuit_table_mean(s : GraphconnectcircuitTable) -> Double {
+  if s.size == 0 { 0.0 } else { graph_connect_circuit_table_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_connect_circuit_table_scale(s : GraphconnectcircuitTable, f : Double) -> GraphconnectcircuitTable {
+  let result = graph_connect_circuit_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_connect_circuit_table_add(a : GraphconnectcircuitTable, b : GraphconnectcircuitTable) -> GraphconnectcircuitTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_connect_circuit_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_table_copy(s : GraphconnectcircuitTable) -> GraphconnectcircuitTable {
+  let result = graph_connect_circuit_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_table_fill(s : GraphconnectcircuitTable, v : Double) -> GraphconnectcircuitTable {
+  let result = graph_connect_circuit_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_table_min(s : GraphconnectcircuitTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_table_max(s : GraphconnectcircuitTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_table_to_string(s : GraphconnectcircuitTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphconnectcircuitGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_connect_circuit_graphn_make(size : Int) -> GraphconnectcircuitGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_connect_circuit_graphn_len(s : GraphconnectcircuitGraphN) -> Int { s.size }
+
+pub fn graph_connect_circuit_graphn_get(s : GraphconnectcircuitGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_connect_circuit_graphn_set(s : GraphconnectcircuitGraphN, i : Int, v : Double) -> GraphconnectcircuitGraphN {
+  let result = graph_connect_circuit_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_graphn_sum(s : GraphconnectcircuitGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_connect_circuit_graphn_mean(s : GraphconnectcircuitGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { graph_connect_circuit_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_connect_circuit_graphn_scale(s : GraphconnectcircuitGraphN, f : Double) -> GraphconnectcircuitGraphN {
+  let result = graph_connect_circuit_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_connect_circuit_graphn_add(a : GraphconnectcircuitGraphN, b : GraphconnectcircuitGraphN) -> GraphconnectcircuitGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_connect_circuit_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_graphn_copy(s : GraphconnectcircuitGraphN) -> GraphconnectcircuitGraphN {
+  let result = graph_connect_circuit_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_graphn_fill(s : GraphconnectcircuitGraphN, v : Double) -> GraphconnectcircuitGraphN {
+  let result = graph_connect_circuit_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_graphn_min(s : GraphconnectcircuitGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_graphn_max(s : GraphconnectcircuitGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_graphn_to_string(s : GraphconnectcircuitGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphconnectcircuitNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_connect_circuit_node_make(size : Int) -> GraphconnectcircuitNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_connect_circuit_node_len(s : GraphconnectcircuitNode) -> Int { s.size }
+
+pub fn graph_connect_circuit_node_get(s : GraphconnectcircuitNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_connect_circuit_node_set(s : GraphconnectcircuitNode, i : Int, v : Double) -> GraphconnectcircuitNode {
+  let result = graph_connect_circuit_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_node_sum(s : GraphconnectcircuitNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_connect_circuit_node_mean(s : GraphconnectcircuitNode) -> Double {
+  if s.size == 0 { 0.0 } else { graph_connect_circuit_node_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_connect_circuit_node_scale(s : GraphconnectcircuitNode, f : Double) -> GraphconnectcircuitNode {
+  let result = graph_connect_circuit_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_connect_circuit_node_add(a : GraphconnectcircuitNode, b : GraphconnectcircuitNode) -> GraphconnectcircuitNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_connect_circuit_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_node_copy(s : GraphconnectcircuitNode) -> GraphconnectcircuitNode {
+  let result = graph_connect_circuit_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_node_fill(s : GraphconnectcircuitNode, v : Double) -> GraphconnectcircuitNode {
+  let result = graph_connect_circuit_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_node_min(s : GraphconnectcircuitNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_node_max(s : GraphconnectcircuitNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_node_to_string(s : GraphconnectcircuitNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphconnectcircuitEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_connect_circuit_edge_make(size : Int) -> GraphconnectcircuitEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_connect_circuit_edge_len(s : GraphconnectcircuitEdge) -> Int { s.size }
+
+pub fn graph_connect_circuit_edge_get(s : GraphconnectcircuitEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_connect_circuit_edge_set(s : GraphconnectcircuitEdge, i : Int, v : Double) -> GraphconnectcircuitEdge {
+  let result = graph_connect_circuit_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_edge_sum(s : GraphconnectcircuitEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_connect_circuit_edge_mean(s : GraphconnectcircuitEdge) -> Double {
+  if s.size == 0 { 0.0 } else { graph_connect_circuit_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_connect_circuit_edge_scale(s : GraphconnectcircuitEdge, f : Double) -> GraphconnectcircuitEdge {
+  let result = graph_connect_circuit_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_connect_circuit_edge_add(a : GraphconnectcircuitEdge, b : GraphconnectcircuitEdge) -> GraphconnectcircuitEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_connect_circuit_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_edge_copy(s : GraphconnectcircuitEdge) -> GraphconnectcircuitEdge {
+  let result = graph_connect_circuit_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_edge_fill(s : GraphconnectcircuitEdge, v : Double) -> GraphconnectcircuitEdge {
+  let result = graph_connect_circuit_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_edge_min(s : GraphconnectcircuitEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_edge_max(s : GraphconnectcircuitEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_edge_to_string(s : GraphconnectcircuitEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphconnectcircuitPath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_connect_circuit_path_make(size : Int) -> GraphconnectcircuitPath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_connect_circuit_path_len(s : GraphconnectcircuitPath) -> Int { s.size }
+
+pub fn graph_connect_circuit_path_get(s : GraphconnectcircuitPath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_connect_circuit_path_set(s : GraphconnectcircuitPath, i : Int, v : Double) -> GraphconnectcircuitPath {
+  let result = graph_connect_circuit_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_path_sum(s : GraphconnectcircuitPath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_connect_circuit_path_mean(s : GraphconnectcircuitPath) -> Double {
+  if s.size == 0 { 0.0 } else { graph_connect_circuit_path_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_connect_circuit_path_scale(s : GraphconnectcircuitPath, f : Double) -> GraphconnectcircuitPath {
+  let result = graph_connect_circuit_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_connect_circuit_path_add(a : GraphconnectcircuitPath, b : GraphconnectcircuitPath) -> GraphconnectcircuitPath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_connect_circuit_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_path_copy(s : GraphconnectcircuitPath) -> GraphconnectcircuitPath {
+  let result = graph_connect_circuit_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_path_fill(s : GraphconnectcircuitPath, v : Double) -> GraphconnectcircuitPath {
+  let result = graph_connect_circuit_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_path_min(s : GraphconnectcircuitPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_path_max(s : GraphconnectcircuitPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_path_to_string(s : GraphconnectcircuitPath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphconnectcircuitCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_connect_circuit_cluster_make(size : Int) -> GraphconnectcircuitCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_connect_circuit_cluster_len(s : GraphconnectcircuitCluster) -> Int { s.size }
+
+pub fn graph_connect_circuit_cluster_get(s : GraphconnectcircuitCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_connect_circuit_cluster_set(s : GraphconnectcircuitCluster, i : Int, v : Double) -> GraphconnectcircuitCluster {
+  let result = graph_connect_circuit_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_cluster_sum(s : GraphconnectcircuitCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_connect_circuit_cluster_mean(s : GraphconnectcircuitCluster) -> Double {
+  if s.size == 0 { 0.0 } else { graph_connect_circuit_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_connect_circuit_cluster_scale(s : GraphconnectcircuitCluster, f : Double) -> GraphconnectcircuitCluster {
+  let result = graph_connect_circuit_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_connect_circuit_cluster_add(a : GraphconnectcircuitCluster, b : GraphconnectcircuitCluster) -> GraphconnectcircuitCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_connect_circuit_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_cluster_copy(s : GraphconnectcircuitCluster) -> GraphconnectcircuitCluster {
+  let result = graph_connect_circuit_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_cluster_fill(s : GraphconnectcircuitCluster, v : Double) -> GraphconnectcircuitCluster {
+  let result = graph_connect_circuit_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_cluster_min(s : GraphconnectcircuitCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_cluster_max(s : GraphconnectcircuitCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_cluster_to_string(s : GraphconnectcircuitCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphconnectcircuitModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_connect_circuit_model_make(size : Int) -> GraphconnectcircuitModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_connect_circuit_model_len(s : GraphconnectcircuitModel) -> Int { s.size }
+
+pub fn graph_connect_circuit_model_get(s : GraphconnectcircuitModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_connect_circuit_model_set(s : GraphconnectcircuitModel, i : Int, v : Double) -> GraphconnectcircuitModel {
+  let result = graph_connect_circuit_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_model_sum(s : GraphconnectcircuitModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_connect_circuit_model_mean(s : GraphconnectcircuitModel) -> Double {
+  if s.size == 0 { 0.0 } else { graph_connect_circuit_model_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_connect_circuit_model_scale(s : GraphconnectcircuitModel, f : Double) -> GraphconnectcircuitModel {
+  let result = graph_connect_circuit_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_connect_circuit_model_add(a : GraphconnectcircuitModel, b : GraphconnectcircuitModel) -> GraphconnectcircuitModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_connect_circuit_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_model_copy(s : GraphconnectcircuitModel) -> GraphconnectcircuitModel {
+  let result = graph_connect_circuit_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_model_fill(s : GraphconnectcircuitModel, v : Double) -> GraphconnectcircuitModel {
+  let result = graph_connect_circuit_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_model_min(s : GraphconnectcircuitModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_model_max(s : GraphconnectcircuitModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_model_to_string(s : GraphconnectcircuitModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphconnectcircuitLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_connect_circuit_layer_make(size : Int) -> GraphconnectcircuitLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_connect_circuit_layer_len(s : GraphconnectcircuitLayer) -> Int { s.size }
+
+pub fn graph_connect_circuit_layer_get(s : GraphconnectcircuitLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_connect_circuit_layer_set(s : GraphconnectcircuitLayer, i : Int, v : Double) -> GraphconnectcircuitLayer {
+  let result = graph_connect_circuit_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_layer_sum(s : GraphconnectcircuitLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_connect_circuit_layer_mean(s : GraphconnectcircuitLayer) -> Double {
+  if s.size == 0 { 0.0 } else { graph_connect_circuit_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_connect_circuit_layer_scale(s : GraphconnectcircuitLayer, f : Double) -> GraphconnectcircuitLayer {
+  let result = graph_connect_circuit_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_connect_circuit_layer_add(a : GraphconnectcircuitLayer, b : GraphconnectcircuitLayer) -> GraphconnectcircuitLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_connect_circuit_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_layer_copy(s : GraphconnectcircuitLayer) -> GraphconnectcircuitLayer {
+  let result = graph_connect_circuit_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_layer_fill(s : GraphconnectcircuitLayer, v : Double) -> GraphconnectcircuitLayer {
+  let result = graph_connect_circuit_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_layer_min(s : GraphconnectcircuitLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_layer_max(s : GraphconnectcircuitLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_layer_to_string(s : GraphconnectcircuitLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphconnectcircuitBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_connect_circuit_buffer_make(size : Int) -> GraphconnectcircuitBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_connect_circuit_buffer_len(s : GraphconnectcircuitBuffer) -> Int { s.size }
+
+pub fn graph_connect_circuit_buffer_get(s : GraphconnectcircuitBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_connect_circuit_buffer_set(s : GraphconnectcircuitBuffer, i : Int, v : Double) -> GraphconnectcircuitBuffer {
+  let result = graph_connect_circuit_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_buffer_sum(s : GraphconnectcircuitBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_connect_circuit_buffer_mean(s : GraphconnectcircuitBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { graph_connect_circuit_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_connect_circuit_buffer_scale(s : GraphconnectcircuitBuffer, f : Double) -> GraphconnectcircuitBuffer {
+  let result = graph_connect_circuit_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_connect_circuit_buffer_add(a : GraphconnectcircuitBuffer, b : GraphconnectcircuitBuffer) -> GraphconnectcircuitBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_connect_circuit_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_buffer_copy(s : GraphconnectcircuitBuffer) -> GraphconnectcircuitBuffer {
+  let result = graph_connect_circuit_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_buffer_fill(s : GraphconnectcircuitBuffer, v : Double) -> GraphconnectcircuitBuffer {
+  let result = graph_connect_circuit_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_buffer_min(s : GraphconnectcircuitBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_buffer_max(s : GraphconnectcircuitBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_buffer_to_string(s : GraphconnectcircuitBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphconnectcircuitCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_connect_circuit_cursor_make(size : Int) -> GraphconnectcircuitCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_connect_circuit_cursor_len(s : GraphconnectcircuitCursor) -> Int { s.size }
+
+pub fn graph_connect_circuit_cursor_get(s : GraphconnectcircuitCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_connect_circuit_cursor_set(s : GraphconnectcircuitCursor, i : Int, v : Double) -> GraphconnectcircuitCursor {
+  let result = graph_connect_circuit_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_cursor_sum(s : GraphconnectcircuitCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_connect_circuit_cursor_mean(s : GraphconnectcircuitCursor) -> Double {
+  if s.size == 0 { 0.0 } else { graph_connect_circuit_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_connect_circuit_cursor_scale(s : GraphconnectcircuitCursor, f : Double) -> GraphconnectcircuitCursor {
+  let result = graph_connect_circuit_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_connect_circuit_cursor_add(a : GraphconnectcircuitCursor, b : GraphconnectcircuitCursor) -> GraphconnectcircuitCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_connect_circuit_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_cursor_copy(s : GraphconnectcircuitCursor) -> GraphconnectcircuitCursor {
+  let result = graph_connect_circuit_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_cursor_fill(s : GraphconnectcircuitCursor, v : Double) -> GraphconnectcircuitCursor {
+  let result = graph_connect_circuit_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_cursor_min(s : GraphconnectcircuitCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_cursor_max(s : GraphconnectcircuitCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_cursor_to_string(s : GraphconnectcircuitCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphconnectcircuitView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_connect_circuit_view_make(size : Int) -> GraphconnectcircuitView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_connect_circuit_view_len(s : GraphconnectcircuitView) -> Int { s.size }
+
+pub fn graph_connect_circuit_view_get(s : GraphconnectcircuitView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_connect_circuit_view_set(s : GraphconnectcircuitView, i : Int, v : Double) -> GraphconnectcircuitView {
+  let result = graph_connect_circuit_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_view_sum(s : GraphconnectcircuitView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_connect_circuit_view_mean(s : GraphconnectcircuitView) -> Double {
+  if s.size == 0 { 0.0 } else { graph_connect_circuit_view_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_connect_circuit_view_scale(s : GraphconnectcircuitView, f : Double) -> GraphconnectcircuitView {
+  let result = graph_connect_circuit_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_connect_circuit_view_add(a : GraphconnectcircuitView, b : GraphconnectcircuitView) -> GraphconnectcircuitView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_connect_circuit_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_view_copy(s : GraphconnectcircuitView) -> GraphconnectcircuitView {
+  let result = graph_connect_circuit_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_view_fill(s : GraphconnectcircuitView, v : Double) -> GraphconnectcircuitView {
+  let result = graph_connect_circuit_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_view_min(s : GraphconnectcircuitView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_view_max(s : GraphconnectcircuitView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_view_to_string(s : GraphconnectcircuitView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphconnectcircuitRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_connect_circuit_range_make(size : Int) -> GraphconnectcircuitRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_connect_circuit_range_len(s : GraphconnectcircuitRange) -> Int { s.size }
+
+pub fn graph_connect_circuit_range_get(s : GraphconnectcircuitRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_connect_circuit_range_set(s : GraphconnectcircuitRange, i : Int, v : Double) -> GraphconnectcircuitRange {
+  let result = graph_connect_circuit_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_range_sum(s : GraphconnectcircuitRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_connect_circuit_range_mean(s : GraphconnectcircuitRange) -> Double {
+  if s.size == 0 { 0.0 } else { graph_connect_circuit_range_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_connect_circuit_range_scale(s : GraphconnectcircuitRange, f : Double) -> GraphconnectcircuitRange {
+  let result = graph_connect_circuit_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_connect_circuit_range_add(a : GraphconnectcircuitRange, b : GraphconnectcircuitRange) -> GraphconnectcircuitRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_connect_circuit_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_range_copy(s : GraphconnectcircuitRange) -> GraphconnectcircuitRange {
+  let result = graph_connect_circuit_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_range_fill(s : GraphconnectcircuitRange, v : Double) -> GraphconnectcircuitRange {
+  let result = graph_connect_circuit_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_range_min(s : GraphconnectcircuitRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_range_max(s : GraphconnectcircuitRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_range_to_string(s : GraphconnectcircuitRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphconnectcircuitSlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_connect_circuit_slice_make(size : Int) -> GraphconnectcircuitSlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_connect_circuit_slice_len(s : GraphconnectcircuitSlice) -> Int { s.size }
+
+pub fn graph_connect_circuit_slice_get(s : GraphconnectcircuitSlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_connect_circuit_slice_set(s : GraphconnectcircuitSlice, i : Int, v : Double) -> GraphconnectcircuitSlice {
+  let result = graph_connect_circuit_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_slice_sum(s : GraphconnectcircuitSlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_connect_circuit_slice_mean(s : GraphconnectcircuitSlice) -> Double {
+  if s.size == 0 { 0.0 } else { graph_connect_circuit_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_connect_circuit_slice_scale(s : GraphconnectcircuitSlice, f : Double) -> GraphconnectcircuitSlice {
+  let result = graph_connect_circuit_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_connect_circuit_slice_add(a : GraphconnectcircuitSlice, b : GraphconnectcircuitSlice) -> GraphconnectcircuitSlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_connect_circuit_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_slice_copy(s : GraphconnectcircuitSlice) -> GraphconnectcircuitSlice {
+  let result = graph_connect_circuit_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_connect_circuit_slice_fill(s : GraphconnectcircuitSlice, v : Double) -> GraphconnectcircuitSlice {
+  let result = graph_connect_circuit_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_connect_circuit_slice_min(s : GraphconnectcircuitSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_slice_max(s : GraphconnectcircuitSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_connect_circuit_slice_to_string(s : GraphconnectcircuitSlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn graph_connect_circuit_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_connect_circuit_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

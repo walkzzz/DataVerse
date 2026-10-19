@@ -1,0 +1,1955 @@
+///===
+/// extcore/image_transform_flip
+
+pub(all) struct ImagetransformflipPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn image_transform_flip_make_point(x : Double, y : Double) -> ImagetransformflipPoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn image_transform_flip_make_point3(x : Double, y : Double, z : Double) -> ImagetransformflipPoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn image_transform_flip_point_x(pt : ImagetransformflipPoint) -> Double { pt.x }
+
+pub fn image_transform_flip_point_y(pt : ImagetransformflipPoint) -> Double { pt.y }
+
+pub fn image_transform_flip_point_z(pt : ImagetransformflipPoint) -> Double { pt.z }
+
+pub fn image_transform_flip_point_label(pt : ImagetransformflipPoint) -> Int { pt.label }
+
+pub fn image_transform_flip_point_dist(a : ImagetransformflipPoint, b : ImagetransformflipPoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  image_transform_flip_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn image_transform_flip_point_add(a : ImagetransformflipPoint, b : ImagetransformflipPoint) -> ImagetransformflipPoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn image_transform_flip_point_sub(a : ImagetransformflipPoint, b : ImagetransformflipPoint) -> ImagetransformflipPoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn image_transform_flip_point_scale(pt : ImagetransformflipPoint, s : Double) -> ImagetransformflipPoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn image_transform_flip_point_dot(a : ImagetransformflipPoint, b : ImagetransformflipPoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn image_transform_flip_point_cross(a : ImagetransformflipPoint, b : ImagetransformflipPoint) -> ImagetransformflipPoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn image_transform_flip_point_norm(pt : ImagetransformflipPoint) -> Double {
+  image_transform_flip_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn image_transform_flip_point_normalize(pt : ImagetransformflipPoint) -> ImagetransformflipPoint {
+  let n = image_transform_flip_point_norm(pt)
+  if n < 0.0000001 { pt } else { image_transform_flip_point_scale(pt, 1.0 / n) }
+}
+
+pub fn image_transform_flip_point_negate(pt : ImagetransformflipPoint) -> ImagetransformflipPoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn image_transform_flip_point_mid(a : ImagetransformflipPoint, b : ImagetransformflipPoint) -> ImagetransformflipPoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn image_transform_flip_point_lerp(a : ImagetransformflipPoint, b : ImagetransformflipPoint, t : Double) -> ImagetransformflipPoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn image_transform_flip_point_to_string(pt : ImagetransformflipPoint) -> String {
+  "(" + image_transform_flip_dbl(pt.x) + ", " + image_transform_flip_dbl(pt.y) + ", " + image_transform_flip_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct ImagetransformflipSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn image_transform_flip_make_series(vals : Array[Double], name : String) -> ImagetransformflipSeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn image_transform_flip_series_len(s : ImagetransformflipSeries) -> Int { s.vals.length() }
+
+pub fn image_transform_flip_series_sum(s : ImagetransformflipSeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn image_transform_flip_series_mean(s : ImagetransformflipSeries) -> Double {
+  let n = image_transform_flip_series_len(s)
+  if n == 0 { 0.0 } else { image_transform_flip_series_sum(s) / n.to_double() }
+}
+
+pub fn image_transform_flip_series_min(s : ImagetransformflipSeries) -> Double {
+  let n = image_transform_flip_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_series_max(s : ImagetransformflipSeries) -> Double {
+  let n = image_transform_flip_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_series_range(s : ImagetransformflipSeries) -> Double {
+  image_transform_flip_series_max(s) - image_transform_flip_series_min(s)
+}
+
+pub fn image_transform_flip_series_var(s : ImagetransformflipSeries) -> Double {
+  let n = image_transform_flip_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = image_transform_flip_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_series_std(s : ImagetransformflipSeries) -> Double { image_transform_flip_sqrt(image_transform_flip_series_var(s)) }
+
+pub fn image_transform_flip_series_median(s : ImagetransformflipSeries) -> Double {
+  let n = image_transform_flip_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = image_transform_flip_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn image_transform_flip_series_scale(s : ImagetransformflipSeries, f : Double) -> ImagetransformflipSeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = image_transform_flip_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn image_transform_flip_series_add(a : ImagetransformflipSeries, b : ImagetransformflipSeries) -> ImagetransformflipSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = image_transform_flip_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn image_transform_flip_series_sub(a : ImagetransformflipSeries, b : ImagetransformflipSeries) -> ImagetransformflipSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = image_transform_flip_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn image_transform_flip_series_normalize(s : ImagetransformflipSeries) -> ImagetransformflipSeries {
+  let mn = image_transform_flip_series_min(s)
+  let mx = image_transform_flip_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = image_transform_flip_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn image_transform_flip_series_cumsum(s : ImagetransformflipSeries) -> ImagetransformflipSeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = image_transform_flip_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn image_transform_flip_series_to_string(s : ImagetransformflipSeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + image_transform_flip_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct ImagetransformflipMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn image_transform_flip_make_matrix(rows : Int, cols : Int, val : Double) -> ImagetransformflipMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn image_transform_flip_matrix_identity(n : Int) -> ImagetransformflipMatrix {
+  let m = image_transform_flip_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn image_transform_flip_matrix_get(m : ImagetransformflipMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn image_transform_flip_matrix_transpose(m : ImagetransformflipMatrix) -> ImagetransformflipMatrix {
+  let result = image_transform_flip_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn image_transform_flip_matrix_add(a : ImagetransformflipMatrix, b : ImagetransformflipMatrix) -> ImagetransformflipMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = image_transform_flip_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn image_transform_flip_matrix_scale(m : ImagetransformflipMatrix, s : Double) -> ImagetransformflipMatrix {
+  let result = image_transform_flip_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn image_transform_flip_matrix_multiply(a : ImagetransformflipMatrix, b : ImagetransformflipMatrix) -> ImagetransformflipMatrix {
+  if a.cols != b.rows { return image_transform_flip_make_matrix(a.rows, b.cols, 0.0) }
+  let result = image_transform_flip_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn image_transform_flip_matrix_trace(m : ImagetransformflipMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn image_transform_flip_matrix_det(m : ImagetransformflipMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn image_transform_flip_matrix_norm(m : ImagetransformflipMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  image_transform_flip_sqrt(sum)
+}
+
+pub fn image_transform_flip_matrix_to_string(m : ImagetransformflipMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + image_transform_flip_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct ImagetransformflipVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn image_transform_flip_make_vector(comps : Array[Double]) -> ImagetransformflipVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn image_transform_flip_vector_zero(dim : Int) -> ImagetransformflipVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn image_transform_flip_vector_add(a : ImagetransformflipVector, b : ImagetransformflipVector) -> ImagetransformflipVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = image_transform_flip_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn image_transform_flip_vector_sub(a : ImagetransformflipVector, b : ImagetransformflipVector) -> ImagetransformflipVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = image_transform_flip_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn image_transform_flip_vector_scale(v : ImagetransformflipVector, s : Double) -> ImagetransformflipVector {
+  let mut result = []
+  for i in 0..<v.dim { result = image_transform_flip_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn image_transform_flip_vector_dot(a : ImagetransformflipVector, b : ImagetransformflipVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn image_transform_flip_vector_norm(v : ImagetransformflipVector) -> Double { image_transform_flip_sqrt(image_transform_flip_vector_dot(v, v)) }
+
+pub fn image_transform_flip_vector_normalize(v : ImagetransformflipVector) -> ImagetransformflipVector {
+  let n = image_transform_flip_vector_norm(v)
+  if n < 0.0000001 { v } else { image_transform_flip_vector_scale(v, 1.0 / n) }
+}
+
+pub fn image_transform_flip_vector_dist(a : ImagetransformflipVector, b : ImagetransformflipVector) -> Double {
+  image_transform_flip_vector_norm(image_transform_flip_vector_sub(a, b))
+}
+
+pub fn image_transform_flip_vector_to_string(v : ImagetransformflipVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + image_transform_flip_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn image_transform_flip_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = image_transform_flip_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_std(data : Array[Double]) -> Double { image_transform_flip_sqrt(image_transform_flip_var(data)) }
+
+pub fn image_transform_flip_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = image_transform_flip_mean(a); let mb = image_transform_flip_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = image_transform_flip_std(a); let sb = image_transform_flip_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { image_transform_flip_cov(a, b) / (sa * sb) }
+}
+
+pub fn image_transform_flip_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = image_transform_flip_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn image_transform_flip_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  image_transform_flip_sqrt(image_transform_flip_mse(pred, labels))
+}
+
+pub fn image_transform_flip_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + image_transform_flip_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = image_transform_flip_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn image_transform_flip_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn image_transform_flip_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn image_transform_flip_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = image_transform_flip_precision(pred, labels, pos); let r = image_transform_flip_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn image_transform_flip_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn image_transform_flip_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = image_transform_flip_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn image_transform_flip_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn image_transform_flip_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn image_transform_flip_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = image_transform_flip_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn image_transform_flip_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn image_transform_flip_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn image_transform_flip_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = image_transform_flip_min(data); let mx = image_transform_flip_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn image_transform_flip_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = image_transform_flip_mean(data); let sd = image_transform_flip_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn image_transform_flip_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn image_transform_flip_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn image_transform_flip_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn image_transform_flip_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn image_transform_flip_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn image_transform_flip_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn image_transform_flip_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { image_transform_flip_int(x) } else { -image_transform_flip_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { image_transform_flip_int(f * 1000000.0) } else { image_transform_flip_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn image_transform_flip_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn image_transform_flip_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct ImagetransformflipFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_flip_frame_make(size : Int) -> ImagetransformflipFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_flip_frame_len(s : ImagetransformflipFrame) -> Int { s.size }
+
+pub fn image_transform_flip_frame_get(s : ImagetransformflipFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_flip_frame_set(s : ImagetransformflipFrame, i : Int, v : Double) -> ImagetransformflipFrame {
+  let result = image_transform_flip_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_frame_sum(s : ImagetransformflipFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_flip_frame_mean(s : ImagetransformflipFrame) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_flip_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_flip_frame_scale(s : ImagetransformflipFrame, f : Double) -> ImagetransformflipFrame {
+  let result = image_transform_flip_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_flip_frame_add(a : ImagetransformflipFrame, b : ImagetransformflipFrame) -> ImagetransformflipFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_flip_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_flip_frame_copy(s : ImagetransformflipFrame) -> ImagetransformflipFrame {
+  let result = image_transform_flip_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_flip_frame_fill(s : ImagetransformflipFrame, v : Double) -> ImagetransformflipFrame {
+  let result = image_transform_flip_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_frame_min(s : ImagetransformflipFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_frame_max(s : ImagetransformflipFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_frame_to_string(s : ImagetransformflipFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ImagetransformflipTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_flip_table_make(size : Int) -> ImagetransformflipTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_flip_table_len(s : ImagetransformflipTable) -> Int { s.size }
+
+pub fn image_transform_flip_table_get(s : ImagetransformflipTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_flip_table_set(s : ImagetransformflipTable, i : Int, v : Double) -> ImagetransformflipTable {
+  let result = image_transform_flip_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_table_sum(s : ImagetransformflipTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_flip_table_mean(s : ImagetransformflipTable) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_flip_table_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_flip_table_scale(s : ImagetransformflipTable, f : Double) -> ImagetransformflipTable {
+  let result = image_transform_flip_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_flip_table_add(a : ImagetransformflipTable, b : ImagetransformflipTable) -> ImagetransformflipTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_flip_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_flip_table_copy(s : ImagetransformflipTable) -> ImagetransformflipTable {
+  let result = image_transform_flip_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_flip_table_fill(s : ImagetransformflipTable, v : Double) -> ImagetransformflipTable {
+  let result = image_transform_flip_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_table_min(s : ImagetransformflipTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_table_max(s : ImagetransformflipTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_table_to_string(s : ImagetransformflipTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ImagetransformflipGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_flip_graphn_make(size : Int) -> ImagetransformflipGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_flip_graphn_len(s : ImagetransformflipGraphN) -> Int { s.size }
+
+pub fn image_transform_flip_graphn_get(s : ImagetransformflipGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_flip_graphn_set(s : ImagetransformflipGraphN, i : Int, v : Double) -> ImagetransformflipGraphN {
+  let result = image_transform_flip_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_graphn_sum(s : ImagetransformflipGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_flip_graphn_mean(s : ImagetransformflipGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_flip_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_flip_graphn_scale(s : ImagetransformflipGraphN, f : Double) -> ImagetransformflipGraphN {
+  let result = image_transform_flip_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_flip_graphn_add(a : ImagetransformflipGraphN, b : ImagetransformflipGraphN) -> ImagetransformflipGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_flip_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_flip_graphn_copy(s : ImagetransformflipGraphN) -> ImagetransformflipGraphN {
+  let result = image_transform_flip_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_flip_graphn_fill(s : ImagetransformflipGraphN, v : Double) -> ImagetransformflipGraphN {
+  let result = image_transform_flip_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_graphn_min(s : ImagetransformflipGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_graphn_max(s : ImagetransformflipGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_graphn_to_string(s : ImagetransformflipGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ImagetransformflipNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_flip_node_make(size : Int) -> ImagetransformflipNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_flip_node_len(s : ImagetransformflipNode) -> Int { s.size }
+
+pub fn image_transform_flip_node_get(s : ImagetransformflipNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_flip_node_set(s : ImagetransformflipNode, i : Int, v : Double) -> ImagetransformflipNode {
+  let result = image_transform_flip_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_node_sum(s : ImagetransformflipNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_flip_node_mean(s : ImagetransformflipNode) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_flip_node_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_flip_node_scale(s : ImagetransformflipNode, f : Double) -> ImagetransformflipNode {
+  let result = image_transform_flip_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_flip_node_add(a : ImagetransformflipNode, b : ImagetransformflipNode) -> ImagetransformflipNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_flip_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_flip_node_copy(s : ImagetransformflipNode) -> ImagetransformflipNode {
+  let result = image_transform_flip_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_flip_node_fill(s : ImagetransformflipNode, v : Double) -> ImagetransformflipNode {
+  let result = image_transform_flip_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_node_min(s : ImagetransformflipNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_node_max(s : ImagetransformflipNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_node_to_string(s : ImagetransformflipNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ImagetransformflipEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_flip_edge_make(size : Int) -> ImagetransformflipEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_flip_edge_len(s : ImagetransformflipEdge) -> Int { s.size }
+
+pub fn image_transform_flip_edge_get(s : ImagetransformflipEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_flip_edge_set(s : ImagetransformflipEdge, i : Int, v : Double) -> ImagetransformflipEdge {
+  let result = image_transform_flip_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_edge_sum(s : ImagetransformflipEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_flip_edge_mean(s : ImagetransformflipEdge) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_flip_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_flip_edge_scale(s : ImagetransformflipEdge, f : Double) -> ImagetransformflipEdge {
+  let result = image_transform_flip_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_flip_edge_add(a : ImagetransformflipEdge, b : ImagetransformflipEdge) -> ImagetransformflipEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_flip_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_flip_edge_copy(s : ImagetransformflipEdge) -> ImagetransformflipEdge {
+  let result = image_transform_flip_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_flip_edge_fill(s : ImagetransformflipEdge, v : Double) -> ImagetransformflipEdge {
+  let result = image_transform_flip_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_edge_min(s : ImagetransformflipEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_edge_max(s : ImagetransformflipEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_edge_to_string(s : ImagetransformflipEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ImagetransformflipPath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_flip_path_make(size : Int) -> ImagetransformflipPath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_flip_path_len(s : ImagetransformflipPath) -> Int { s.size }
+
+pub fn image_transform_flip_path_get(s : ImagetransformflipPath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_flip_path_set(s : ImagetransformflipPath, i : Int, v : Double) -> ImagetransformflipPath {
+  let result = image_transform_flip_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_path_sum(s : ImagetransformflipPath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_flip_path_mean(s : ImagetransformflipPath) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_flip_path_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_flip_path_scale(s : ImagetransformflipPath, f : Double) -> ImagetransformflipPath {
+  let result = image_transform_flip_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_flip_path_add(a : ImagetransformflipPath, b : ImagetransformflipPath) -> ImagetransformflipPath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_flip_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_flip_path_copy(s : ImagetransformflipPath) -> ImagetransformflipPath {
+  let result = image_transform_flip_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_flip_path_fill(s : ImagetransformflipPath, v : Double) -> ImagetransformflipPath {
+  let result = image_transform_flip_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_path_min(s : ImagetransformflipPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_path_max(s : ImagetransformflipPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_path_to_string(s : ImagetransformflipPath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ImagetransformflipCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_flip_cluster_make(size : Int) -> ImagetransformflipCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_flip_cluster_len(s : ImagetransformflipCluster) -> Int { s.size }
+
+pub fn image_transform_flip_cluster_get(s : ImagetransformflipCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_flip_cluster_set(s : ImagetransformflipCluster, i : Int, v : Double) -> ImagetransformflipCluster {
+  let result = image_transform_flip_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_cluster_sum(s : ImagetransformflipCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_flip_cluster_mean(s : ImagetransformflipCluster) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_flip_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_flip_cluster_scale(s : ImagetransformflipCluster, f : Double) -> ImagetransformflipCluster {
+  let result = image_transform_flip_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_flip_cluster_add(a : ImagetransformflipCluster, b : ImagetransformflipCluster) -> ImagetransformflipCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_flip_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_flip_cluster_copy(s : ImagetransformflipCluster) -> ImagetransformflipCluster {
+  let result = image_transform_flip_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_flip_cluster_fill(s : ImagetransformflipCluster, v : Double) -> ImagetransformflipCluster {
+  let result = image_transform_flip_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_cluster_min(s : ImagetransformflipCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_cluster_max(s : ImagetransformflipCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_cluster_to_string(s : ImagetransformflipCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ImagetransformflipModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_flip_model_make(size : Int) -> ImagetransformflipModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_flip_model_len(s : ImagetransformflipModel) -> Int { s.size }
+
+pub fn image_transform_flip_model_get(s : ImagetransformflipModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_flip_model_set(s : ImagetransformflipModel, i : Int, v : Double) -> ImagetransformflipModel {
+  let result = image_transform_flip_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_model_sum(s : ImagetransformflipModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_flip_model_mean(s : ImagetransformflipModel) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_flip_model_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_flip_model_scale(s : ImagetransformflipModel, f : Double) -> ImagetransformflipModel {
+  let result = image_transform_flip_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_flip_model_add(a : ImagetransformflipModel, b : ImagetransformflipModel) -> ImagetransformflipModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_flip_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_flip_model_copy(s : ImagetransformflipModel) -> ImagetransformflipModel {
+  let result = image_transform_flip_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_flip_model_fill(s : ImagetransformflipModel, v : Double) -> ImagetransformflipModel {
+  let result = image_transform_flip_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_model_min(s : ImagetransformflipModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_model_max(s : ImagetransformflipModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_model_to_string(s : ImagetransformflipModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ImagetransformflipLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_flip_layer_make(size : Int) -> ImagetransformflipLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_flip_layer_len(s : ImagetransformflipLayer) -> Int { s.size }
+
+pub fn image_transform_flip_layer_get(s : ImagetransformflipLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_flip_layer_set(s : ImagetransformflipLayer, i : Int, v : Double) -> ImagetransformflipLayer {
+  let result = image_transform_flip_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_layer_sum(s : ImagetransformflipLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_flip_layer_mean(s : ImagetransformflipLayer) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_flip_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_flip_layer_scale(s : ImagetransformflipLayer, f : Double) -> ImagetransformflipLayer {
+  let result = image_transform_flip_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_flip_layer_add(a : ImagetransformflipLayer, b : ImagetransformflipLayer) -> ImagetransformflipLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_flip_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_flip_layer_copy(s : ImagetransformflipLayer) -> ImagetransformflipLayer {
+  let result = image_transform_flip_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_flip_layer_fill(s : ImagetransformflipLayer, v : Double) -> ImagetransformflipLayer {
+  let result = image_transform_flip_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_layer_min(s : ImagetransformflipLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_layer_max(s : ImagetransformflipLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_layer_to_string(s : ImagetransformflipLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ImagetransformflipBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_flip_buffer_make(size : Int) -> ImagetransformflipBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_flip_buffer_len(s : ImagetransformflipBuffer) -> Int { s.size }
+
+pub fn image_transform_flip_buffer_get(s : ImagetransformflipBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_flip_buffer_set(s : ImagetransformflipBuffer, i : Int, v : Double) -> ImagetransformflipBuffer {
+  let result = image_transform_flip_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_buffer_sum(s : ImagetransformflipBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_flip_buffer_mean(s : ImagetransformflipBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_flip_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_flip_buffer_scale(s : ImagetransformflipBuffer, f : Double) -> ImagetransformflipBuffer {
+  let result = image_transform_flip_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_flip_buffer_add(a : ImagetransformflipBuffer, b : ImagetransformflipBuffer) -> ImagetransformflipBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_flip_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_flip_buffer_copy(s : ImagetransformflipBuffer) -> ImagetransformflipBuffer {
+  let result = image_transform_flip_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_flip_buffer_fill(s : ImagetransformflipBuffer, v : Double) -> ImagetransformflipBuffer {
+  let result = image_transform_flip_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_buffer_min(s : ImagetransformflipBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_buffer_max(s : ImagetransformflipBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_buffer_to_string(s : ImagetransformflipBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ImagetransformflipCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_flip_cursor_make(size : Int) -> ImagetransformflipCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_flip_cursor_len(s : ImagetransformflipCursor) -> Int { s.size }
+
+pub fn image_transform_flip_cursor_get(s : ImagetransformflipCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_flip_cursor_set(s : ImagetransformflipCursor, i : Int, v : Double) -> ImagetransformflipCursor {
+  let result = image_transform_flip_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_cursor_sum(s : ImagetransformflipCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_flip_cursor_mean(s : ImagetransformflipCursor) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_flip_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_flip_cursor_scale(s : ImagetransformflipCursor, f : Double) -> ImagetransformflipCursor {
+  let result = image_transform_flip_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_flip_cursor_add(a : ImagetransformflipCursor, b : ImagetransformflipCursor) -> ImagetransformflipCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_flip_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_flip_cursor_copy(s : ImagetransformflipCursor) -> ImagetransformflipCursor {
+  let result = image_transform_flip_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_flip_cursor_fill(s : ImagetransformflipCursor, v : Double) -> ImagetransformflipCursor {
+  let result = image_transform_flip_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_cursor_min(s : ImagetransformflipCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_cursor_max(s : ImagetransformflipCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_cursor_to_string(s : ImagetransformflipCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ImagetransformflipView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_flip_view_make(size : Int) -> ImagetransformflipView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_flip_view_len(s : ImagetransformflipView) -> Int { s.size }
+
+pub fn image_transform_flip_view_get(s : ImagetransformflipView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_flip_view_set(s : ImagetransformflipView, i : Int, v : Double) -> ImagetransformflipView {
+  let result = image_transform_flip_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_view_sum(s : ImagetransformflipView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_flip_view_mean(s : ImagetransformflipView) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_flip_view_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_flip_view_scale(s : ImagetransformflipView, f : Double) -> ImagetransformflipView {
+  let result = image_transform_flip_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_flip_view_add(a : ImagetransformflipView, b : ImagetransformflipView) -> ImagetransformflipView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_flip_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_flip_view_copy(s : ImagetransformflipView) -> ImagetransformflipView {
+  let result = image_transform_flip_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_flip_view_fill(s : ImagetransformflipView, v : Double) -> ImagetransformflipView {
+  let result = image_transform_flip_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_view_min(s : ImagetransformflipView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_view_max(s : ImagetransformflipView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_view_to_string(s : ImagetransformflipView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ImagetransformflipRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_flip_range_make(size : Int) -> ImagetransformflipRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_flip_range_len(s : ImagetransformflipRange) -> Int { s.size }
+
+pub fn image_transform_flip_range_get(s : ImagetransformflipRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_flip_range_set(s : ImagetransformflipRange, i : Int, v : Double) -> ImagetransformflipRange {
+  let result = image_transform_flip_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_range_sum(s : ImagetransformflipRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_flip_range_mean(s : ImagetransformflipRange) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_flip_range_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_flip_range_scale(s : ImagetransformflipRange, f : Double) -> ImagetransformflipRange {
+  let result = image_transform_flip_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_flip_range_add(a : ImagetransformflipRange, b : ImagetransformflipRange) -> ImagetransformflipRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_flip_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_flip_range_copy(s : ImagetransformflipRange) -> ImagetransformflipRange {
+  let result = image_transform_flip_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_flip_range_fill(s : ImagetransformflipRange, v : Double) -> ImagetransformflipRange {
+  let result = image_transform_flip_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_range_min(s : ImagetransformflipRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_range_max(s : ImagetransformflipRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_range_to_string(s : ImagetransformflipRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ImagetransformflipSlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_flip_slice_make(size : Int) -> ImagetransformflipSlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_flip_slice_len(s : ImagetransformflipSlice) -> Int { s.size }
+
+pub fn image_transform_flip_slice_get(s : ImagetransformflipSlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_flip_slice_set(s : ImagetransformflipSlice, i : Int, v : Double) -> ImagetransformflipSlice {
+  let result = image_transform_flip_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_slice_sum(s : ImagetransformflipSlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_flip_slice_mean(s : ImagetransformflipSlice) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_flip_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_flip_slice_scale(s : ImagetransformflipSlice, f : Double) -> ImagetransformflipSlice {
+  let result = image_transform_flip_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_flip_slice_add(a : ImagetransformflipSlice, b : ImagetransformflipSlice) -> ImagetransformflipSlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_flip_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_flip_slice_copy(s : ImagetransformflipSlice) -> ImagetransformflipSlice {
+  let result = image_transform_flip_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_flip_slice_fill(s : ImagetransformflipSlice, v : Double) -> ImagetransformflipSlice {
+  let result = image_transform_flip_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_flip_slice_min(s : ImagetransformflipSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_slice_max(s : ImagetransformflipSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_flip_slice_to_string(s : ImagetransformflipSlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn image_transform_flip_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_flip_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

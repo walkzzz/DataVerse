@@ -1,0 +1,1955 @@
+///===
+/// extcore/finance_pricing_barrier
+
+pub(all) struct FinancepricingbarrierPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn finance_pricing_barrier_make_point(x : Double, y : Double) -> FinancepricingbarrierPoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn finance_pricing_barrier_make_point3(x : Double, y : Double, z : Double) -> FinancepricingbarrierPoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn finance_pricing_barrier_point_x(pt : FinancepricingbarrierPoint) -> Double { pt.x }
+
+pub fn finance_pricing_barrier_point_y(pt : FinancepricingbarrierPoint) -> Double { pt.y }
+
+pub fn finance_pricing_barrier_point_z(pt : FinancepricingbarrierPoint) -> Double { pt.z }
+
+pub fn finance_pricing_barrier_point_label(pt : FinancepricingbarrierPoint) -> Int { pt.label }
+
+pub fn finance_pricing_barrier_point_dist(a : FinancepricingbarrierPoint, b : FinancepricingbarrierPoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  finance_pricing_barrier_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn finance_pricing_barrier_point_add(a : FinancepricingbarrierPoint, b : FinancepricingbarrierPoint) -> FinancepricingbarrierPoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn finance_pricing_barrier_point_sub(a : FinancepricingbarrierPoint, b : FinancepricingbarrierPoint) -> FinancepricingbarrierPoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn finance_pricing_barrier_point_scale(pt : FinancepricingbarrierPoint, s : Double) -> FinancepricingbarrierPoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn finance_pricing_barrier_point_dot(a : FinancepricingbarrierPoint, b : FinancepricingbarrierPoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn finance_pricing_barrier_point_cross(a : FinancepricingbarrierPoint, b : FinancepricingbarrierPoint) -> FinancepricingbarrierPoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn finance_pricing_barrier_point_norm(pt : FinancepricingbarrierPoint) -> Double {
+  finance_pricing_barrier_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn finance_pricing_barrier_point_normalize(pt : FinancepricingbarrierPoint) -> FinancepricingbarrierPoint {
+  let n = finance_pricing_barrier_point_norm(pt)
+  if n < 0.0000001 { pt } else { finance_pricing_barrier_point_scale(pt, 1.0 / n) }
+}
+
+pub fn finance_pricing_barrier_point_negate(pt : FinancepricingbarrierPoint) -> FinancepricingbarrierPoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn finance_pricing_barrier_point_mid(a : FinancepricingbarrierPoint, b : FinancepricingbarrierPoint) -> FinancepricingbarrierPoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn finance_pricing_barrier_point_lerp(a : FinancepricingbarrierPoint, b : FinancepricingbarrierPoint, t : Double) -> FinancepricingbarrierPoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn finance_pricing_barrier_point_to_string(pt : FinancepricingbarrierPoint) -> String {
+  "(" + finance_pricing_barrier_dbl(pt.x) + ", " + finance_pricing_barrier_dbl(pt.y) + ", " + finance_pricing_barrier_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct FinancepricingbarrierSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn finance_pricing_barrier_make_series(vals : Array[Double], name : String) -> FinancepricingbarrierSeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn finance_pricing_barrier_series_len(s : FinancepricingbarrierSeries) -> Int { s.vals.length() }
+
+pub fn finance_pricing_barrier_series_sum(s : FinancepricingbarrierSeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn finance_pricing_barrier_series_mean(s : FinancepricingbarrierSeries) -> Double {
+  let n = finance_pricing_barrier_series_len(s)
+  if n == 0 { 0.0 } else { finance_pricing_barrier_series_sum(s) / n.to_double() }
+}
+
+pub fn finance_pricing_barrier_series_min(s : FinancepricingbarrierSeries) -> Double {
+  let n = finance_pricing_barrier_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_series_max(s : FinancepricingbarrierSeries) -> Double {
+  let n = finance_pricing_barrier_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_series_range(s : FinancepricingbarrierSeries) -> Double {
+  finance_pricing_barrier_series_max(s) - finance_pricing_barrier_series_min(s)
+}
+
+pub fn finance_pricing_barrier_series_var(s : FinancepricingbarrierSeries) -> Double {
+  let n = finance_pricing_barrier_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = finance_pricing_barrier_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_series_std(s : FinancepricingbarrierSeries) -> Double { finance_pricing_barrier_sqrt(finance_pricing_barrier_series_var(s)) }
+
+pub fn finance_pricing_barrier_series_median(s : FinancepricingbarrierSeries) -> Double {
+  let n = finance_pricing_barrier_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = finance_pricing_barrier_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn finance_pricing_barrier_series_scale(s : FinancepricingbarrierSeries, f : Double) -> FinancepricingbarrierSeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = finance_pricing_barrier_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn finance_pricing_barrier_series_add(a : FinancepricingbarrierSeries, b : FinancepricingbarrierSeries) -> FinancepricingbarrierSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = finance_pricing_barrier_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn finance_pricing_barrier_series_sub(a : FinancepricingbarrierSeries, b : FinancepricingbarrierSeries) -> FinancepricingbarrierSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = finance_pricing_barrier_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn finance_pricing_barrier_series_normalize(s : FinancepricingbarrierSeries) -> FinancepricingbarrierSeries {
+  let mn = finance_pricing_barrier_series_min(s)
+  let mx = finance_pricing_barrier_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = finance_pricing_barrier_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn finance_pricing_barrier_series_cumsum(s : FinancepricingbarrierSeries) -> FinancepricingbarrierSeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = finance_pricing_barrier_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn finance_pricing_barrier_series_to_string(s : FinancepricingbarrierSeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + finance_pricing_barrier_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct FinancepricingbarrierMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn finance_pricing_barrier_make_matrix(rows : Int, cols : Int, val : Double) -> FinancepricingbarrierMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn finance_pricing_barrier_matrix_identity(n : Int) -> FinancepricingbarrierMatrix {
+  let m = finance_pricing_barrier_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn finance_pricing_barrier_matrix_get(m : FinancepricingbarrierMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn finance_pricing_barrier_matrix_transpose(m : FinancepricingbarrierMatrix) -> FinancepricingbarrierMatrix {
+  let result = finance_pricing_barrier_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn finance_pricing_barrier_matrix_add(a : FinancepricingbarrierMatrix, b : FinancepricingbarrierMatrix) -> FinancepricingbarrierMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = finance_pricing_barrier_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn finance_pricing_barrier_matrix_scale(m : FinancepricingbarrierMatrix, s : Double) -> FinancepricingbarrierMatrix {
+  let result = finance_pricing_barrier_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn finance_pricing_barrier_matrix_multiply(a : FinancepricingbarrierMatrix, b : FinancepricingbarrierMatrix) -> FinancepricingbarrierMatrix {
+  if a.cols != b.rows { return finance_pricing_barrier_make_matrix(a.rows, b.cols, 0.0) }
+  let result = finance_pricing_barrier_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn finance_pricing_barrier_matrix_trace(m : FinancepricingbarrierMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn finance_pricing_barrier_matrix_det(m : FinancepricingbarrierMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn finance_pricing_barrier_matrix_norm(m : FinancepricingbarrierMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  finance_pricing_barrier_sqrt(sum)
+}
+
+pub fn finance_pricing_barrier_matrix_to_string(m : FinancepricingbarrierMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + finance_pricing_barrier_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct FinancepricingbarrierVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn finance_pricing_barrier_make_vector(comps : Array[Double]) -> FinancepricingbarrierVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn finance_pricing_barrier_vector_zero(dim : Int) -> FinancepricingbarrierVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn finance_pricing_barrier_vector_add(a : FinancepricingbarrierVector, b : FinancepricingbarrierVector) -> FinancepricingbarrierVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = finance_pricing_barrier_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn finance_pricing_barrier_vector_sub(a : FinancepricingbarrierVector, b : FinancepricingbarrierVector) -> FinancepricingbarrierVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = finance_pricing_barrier_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn finance_pricing_barrier_vector_scale(v : FinancepricingbarrierVector, s : Double) -> FinancepricingbarrierVector {
+  let mut result = []
+  for i in 0..<v.dim { result = finance_pricing_barrier_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn finance_pricing_barrier_vector_dot(a : FinancepricingbarrierVector, b : FinancepricingbarrierVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn finance_pricing_barrier_vector_norm(v : FinancepricingbarrierVector) -> Double { finance_pricing_barrier_sqrt(finance_pricing_barrier_vector_dot(v, v)) }
+
+pub fn finance_pricing_barrier_vector_normalize(v : FinancepricingbarrierVector) -> FinancepricingbarrierVector {
+  let n = finance_pricing_barrier_vector_norm(v)
+  if n < 0.0000001 { v } else { finance_pricing_barrier_vector_scale(v, 1.0 / n) }
+}
+
+pub fn finance_pricing_barrier_vector_dist(a : FinancepricingbarrierVector, b : FinancepricingbarrierVector) -> Double {
+  finance_pricing_barrier_vector_norm(finance_pricing_barrier_vector_sub(a, b))
+}
+
+pub fn finance_pricing_barrier_vector_to_string(v : FinancepricingbarrierVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + finance_pricing_barrier_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn finance_pricing_barrier_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = finance_pricing_barrier_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_std(data : Array[Double]) -> Double { finance_pricing_barrier_sqrt(finance_pricing_barrier_var(data)) }
+
+pub fn finance_pricing_barrier_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = finance_pricing_barrier_mean(a); let mb = finance_pricing_barrier_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = finance_pricing_barrier_std(a); let sb = finance_pricing_barrier_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { finance_pricing_barrier_cov(a, b) / (sa * sb) }
+}
+
+pub fn finance_pricing_barrier_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = finance_pricing_barrier_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn finance_pricing_barrier_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  finance_pricing_barrier_sqrt(finance_pricing_barrier_mse(pred, labels))
+}
+
+pub fn finance_pricing_barrier_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + finance_pricing_barrier_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = finance_pricing_barrier_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn finance_pricing_barrier_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn finance_pricing_barrier_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn finance_pricing_barrier_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = finance_pricing_barrier_precision(pred, labels, pos); let r = finance_pricing_barrier_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn finance_pricing_barrier_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn finance_pricing_barrier_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = finance_pricing_barrier_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn finance_pricing_barrier_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn finance_pricing_barrier_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn finance_pricing_barrier_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = finance_pricing_barrier_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn finance_pricing_barrier_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn finance_pricing_barrier_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn finance_pricing_barrier_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = finance_pricing_barrier_min(data); let mx = finance_pricing_barrier_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn finance_pricing_barrier_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = finance_pricing_barrier_mean(data); let sd = finance_pricing_barrier_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn finance_pricing_barrier_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn finance_pricing_barrier_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn finance_pricing_barrier_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn finance_pricing_barrier_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn finance_pricing_barrier_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn finance_pricing_barrier_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn finance_pricing_barrier_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { finance_pricing_barrier_int(x) } else { -finance_pricing_barrier_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { finance_pricing_barrier_int(f * 1000000.0) } else { finance_pricing_barrier_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn finance_pricing_barrier_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn finance_pricing_barrier_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct FinancepricingbarrierFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn finance_pricing_barrier_frame_make(size : Int) -> FinancepricingbarrierFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn finance_pricing_barrier_frame_len(s : FinancepricingbarrierFrame) -> Int { s.size }
+
+pub fn finance_pricing_barrier_frame_get(s : FinancepricingbarrierFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn finance_pricing_barrier_frame_set(s : FinancepricingbarrierFrame, i : Int, v : Double) -> FinancepricingbarrierFrame {
+  let result = finance_pricing_barrier_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_frame_sum(s : FinancepricingbarrierFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn finance_pricing_barrier_frame_mean(s : FinancepricingbarrierFrame) -> Double {
+  if s.size == 0 { 0.0 } else { finance_pricing_barrier_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn finance_pricing_barrier_frame_scale(s : FinancepricingbarrierFrame, f : Double) -> FinancepricingbarrierFrame {
+  let result = finance_pricing_barrier_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn finance_pricing_barrier_frame_add(a : FinancepricingbarrierFrame, b : FinancepricingbarrierFrame) -> FinancepricingbarrierFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = finance_pricing_barrier_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_frame_copy(s : FinancepricingbarrierFrame) -> FinancepricingbarrierFrame {
+  let result = finance_pricing_barrier_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_frame_fill(s : FinancepricingbarrierFrame, v : Double) -> FinancepricingbarrierFrame {
+  let result = finance_pricing_barrier_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_frame_min(s : FinancepricingbarrierFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_frame_max(s : FinancepricingbarrierFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_frame_to_string(s : FinancepricingbarrierFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct FinancepricingbarrierTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn finance_pricing_barrier_table_make(size : Int) -> FinancepricingbarrierTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn finance_pricing_barrier_table_len(s : FinancepricingbarrierTable) -> Int { s.size }
+
+pub fn finance_pricing_barrier_table_get(s : FinancepricingbarrierTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn finance_pricing_barrier_table_set(s : FinancepricingbarrierTable, i : Int, v : Double) -> FinancepricingbarrierTable {
+  let result = finance_pricing_barrier_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_table_sum(s : FinancepricingbarrierTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn finance_pricing_barrier_table_mean(s : FinancepricingbarrierTable) -> Double {
+  if s.size == 0 { 0.0 } else { finance_pricing_barrier_table_sum(s) / s.size.to_double() }
+}
+
+pub fn finance_pricing_barrier_table_scale(s : FinancepricingbarrierTable, f : Double) -> FinancepricingbarrierTable {
+  let result = finance_pricing_barrier_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn finance_pricing_barrier_table_add(a : FinancepricingbarrierTable, b : FinancepricingbarrierTable) -> FinancepricingbarrierTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = finance_pricing_barrier_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_table_copy(s : FinancepricingbarrierTable) -> FinancepricingbarrierTable {
+  let result = finance_pricing_barrier_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_table_fill(s : FinancepricingbarrierTable, v : Double) -> FinancepricingbarrierTable {
+  let result = finance_pricing_barrier_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_table_min(s : FinancepricingbarrierTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_table_max(s : FinancepricingbarrierTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_table_to_string(s : FinancepricingbarrierTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct FinancepricingbarrierGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn finance_pricing_barrier_graphn_make(size : Int) -> FinancepricingbarrierGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn finance_pricing_barrier_graphn_len(s : FinancepricingbarrierGraphN) -> Int { s.size }
+
+pub fn finance_pricing_barrier_graphn_get(s : FinancepricingbarrierGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn finance_pricing_barrier_graphn_set(s : FinancepricingbarrierGraphN, i : Int, v : Double) -> FinancepricingbarrierGraphN {
+  let result = finance_pricing_barrier_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_graphn_sum(s : FinancepricingbarrierGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn finance_pricing_barrier_graphn_mean(s : FinancepricingbarrierGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { finance_pricing_barrier_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn finance_pricing_barrier_graphn_scale(s : FinancepricingbarrierGraphN, f : Double) -> FinancepricingbarrierGraphN {
+  let result = finance_pricing_barrier_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn finance_pricing_barrier_graphn_add(a : FinancepricingbarrierGraphN, b : FinancepricingbarrierGraphN) -> FinancepricingbarrierGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = finance_pricing_barrier_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_graphn_copy(s : FinancepricingbarrierGraphN) -> FinancepricingbarrierGraphN {
+  let result = finance_pricing_barrier_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_graphn_fill(s : FinancepricingbarrierGraphN, v : Double) -> FinancepricingbarrierGraphN {
+  let result = finance_pricing_barrier_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_graphn_min(s : FinancepricingbarrierGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_graphn_max(s : FinancepricingbarrierGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_graphn_to_string(s : FinancepricingbarrierGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct FinancepricingbarrierNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn finance_pricing_barrier_node_make(size : Int) -> FinancepricingbarrierNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn finance_pricing_barrier_node_len(s : FinancepricingbarrierNode) -> Int { s.size }
+
+pub fn finance_pricing_barrier_node_get(s : FinancepricingbarrierNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn finance_pricing_barrier_node_set(s : FinancepricingbarrierNode, i : Int, v : Double) -> FinancepricingbarrierNode {
+  let result = finance_pricing_barrier_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_node_sum(s : FinancepricingbarrierNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn finance_pricing_barrier_node_mean(s : FinancepricingbarrierNode) -> Double {
+  if s.size == 0 { 0.0 } else { finance_pricing_barrier_node_sum(s) / s.size.to_double() }
+}
+
+pub fn finance_pricing_barrier_node_scale(s : FinancepricingbarrierNode, f : Double) -> FinancepricingbarrierNode {
+  let result = finance_pricing_barrier_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn finance_pricing_barrier_node_add(a : FinancepricingbarrierNode, b : FinancepricingbarrierNode) -> FinancepricingbarrierNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = finance_pricing_barrier_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_node_copy(s : FinancepricingbarrierNode) -> FinancepricingbarrierNode {
+  let result = finance_pricing_barrier_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_node_fill(s : FinancepricingbarrierNode, v : Double) -> FinancepricingbarrierNode {
+  let result = finance_pricing_barrier_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_node_min(s : FinancepricingbarrierNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_node_max(s : FinancepricingbarrierNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_node_to_string(s : FinancepricingbarrierNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct FinancepricingbarrierEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn finance_pricing_barrier_edge_make(size : Int) -> FinancepricingbarrierEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn finance_pricing_barrier_edge_len(s : FinancepricingbarrierEdge) -> Int { s.size }
+
+pub fn finance_pricing_barrier_edge_get(s : FinancepricingbarrierEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn finance_pricing_barrier_edge_set(s : FinancepricingbarrierEdge, i : Int, v : Double) -> FinancepricingbarrierEdge {
+  let result = finance_pricing_barrier_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_edge_sum(s : FinancepricingbarrierEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn finance_pricing_barrier_edge_mean(s : FinancepricingbarrierEdge) -> Double {
+  if s.size == 0 { 0.0 } else { finance_pricing_barrier_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn finance_pricing_barrier_edge_scale(s : FinancepricingbarrierEdge, f : Double) -> FinancepricingbarrierEdge {
+  let result = finance_pricing_barrier_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn finance_pricing_barrier_edge_add(a : FinancepricingbarrierEdge, b : FinancepricingbarrierEdge) -> FinancepricingbarrierEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = finance_pricing_barrier_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_edge_copy(s : FinancepricingbarrierEdge) -> FinancepricingbarrierEdge {
+  let result = finance_pricing_barrier_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_edge_fill(s : FinancepricingbarrierEdge, v : Double) -> FinancepricingbarrierEdge {
+  let result = finance_pricing_barrier_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_edge_min(s : FinancepricingbarrierEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_edge_max(s : FinancepricingbarrierEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_edge_to_string(s : FinancepricingbarrierEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct FinancepricingbarrierPath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn finance_pricing_barrier_path_make(size : Int) -> FinancepricingbarrierPath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn finance_pricing_barrier_path_len(s : FinancepricingbarrierPath) -> Int { s.size }
+
+pub fn finance_pricing_barrier_path_get(s : FinancepricingbarrierPath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn finance_pricing_barrier_path_set(s : FinancepricingbarrierPath, i : Int, v : Double) -> FinancepricingbarrierPath {
+  let result = finance_pricing_barrier_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_path_sum(s : FinancepricingbarrierPath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn finance_pricing_barrier_path_mean(s : FinancepricingbarrierPath) -> Double {
+  if s.size == 0 { 0.0 } else { finance_pricing_barrier_path_sum(s) / s.size.to_double() }
+}
+
+pub fn finance_pricing_barrier_path_scale(s : FinancepricingbarrierPath, f : Double) -> FinancepricingbarrierPath {
+  let result = finance_pricing_barrier_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn finance_pricing_barrier_path_add(a : FinancepricingbarrierPath, b : FinancepricingbarrierPath) -> FinancepricingbarrierPath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = finance_pricing_barrier_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_path_copy(s : FinancepricingbarrierPath) -> FinancepricingbarrierPath {
+  let result = finance_pricing_barrier_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_path_fill(s : FinancepricingbarrierPath, v : Double) -> FinancepricingbarrierPath {
+  let result = finance_pricing_barrier_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_path_min(s : FinancepricingbarrierPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_path_max(s : FinancepricingbarrierPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_path_to_string(s : FinancepricingbarrierPath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct FinancepricingbarrierCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn finance_pricing_barrier_cluster_make(size : Int) -> FinancepricingbarrierCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn finance_pricing_barrier_cluster_len(s : FinancepricingbarrierCluster) -> Int { s.size }
+
+pub fn finance_pricing_barrier_cluster_get(s : FinancepricingbarrierCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn finance_pricing_barrier_cluster_set(s : FinancepricingbarrierCluster, i : Int, v : Double) -> FinancepricingbarrierCluster {
+  let result = finance_pricing_barrier_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_cluster_sum(s : FinancepricingbarrierCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn finance_pricing_barrier_cluster_mean(s : FinancepricingbarrierCluster) -> Double {
+  if s.size == 0 { 0.0 } else { finance_pricing_barrier_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn finance_pricing_barrier_cluster_scale(s : FinancepricingbarrierCluster, f : Double) -> FinancepricingbarrierCluster {
+  let result = finance_pricing_barrier_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn finance_pricing_barrier_cluster_add(a : FinancepricingbarrierCluster, b : FinancepricingbarrierCluster) -> FinancepricingbarrierCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = finance_pricing_barrier_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_cluster_copy(s : FinancepricingbarrierCluster) -> FinancepricingbarrierCluster {
+  let result = finance_pricing_barrier_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_cluster_fill(s : FinancepricingbarrierCluster, v : Double) -> FinancepricingbarrierCluster {
+  let result = finance_pricing_barrier_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_cluster_min(s : FinancepricingbarrierCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_cluster_max(s : FinancepricingbarrierCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_cluster_to_string(s : FinancepricingbarrierCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct FinancepricingbarrierModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn finance_pricing_barrier_model_make(size : Int) -> FinancepricingbarrierModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn finance_pricing_barrier_model_len(s : FinancepricingbarrierModel) -> Int { s.size }
+
+pub fn finance_pricing_barrier_model_get(s : FinancepricingbarrierModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn finance_pricing_barrier_model_set(s : FinancepricingbarrierModel, i : Int, v : Double) -> FinancepricingbarrierModel {
+  let result = finance_pricing_barrier_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_model_sum(s : FinancepricingbarrierModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn finance_pricing_barrier_model_mean(s : FinancepricingbarrierModel) -> Double {
+  if s.size == 0 { 0.0 } else { finance_pricing_barrier_model_sum(s) / s.size.to_double() }
+}
+
+pub fn finance_pricing_barrier_model_scale(s : FinancepricingbarrierModel, f : Double) -> FinancepricingbarrierModel {
+  let result = finance_pricing_barrier_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn finance_pricing_barrier_model_add(a : FinancepricingbarrierModel, b : FinancepricingbarrierModel) -> FinancepricingbarrierModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = finance_pricing_barrier_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_model_copy(s : FinancepricingbarrierModel) -> FinancepricingbarrierModel {
+  let result = finance_pricing_barrier_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_model_fill(s : FinancepricingbarrierModel, v : Double) -> FinancepricingbarrierModel {
+  let result = finance_pricing_barrier_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_model_min(s : FinancepricingbarrierModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_model_max(s : FinancepricingbarrierModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_model_to_string(s : FinancepricingbarrierModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct FinancepricingbarrierLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn finance_pricing_barrier_layer_make(size : Int) -> FinancepricingbarrierLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn finance_pricing_barrier_layer_len(s : FinancepricingbarrierLayer) -> Int { s.size }
+
+pub fn finance_pricing_barrier_layer_get(s : FinancepricingbarrierLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn finance_pricing_barrier_layer_set(s : FinancepricingbarrierLayer, i : Int, v : Double) -> FinancepricingbarrierLayer {
+  let result = finance_pricing_barrier_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_layer_sum(s : FinancepricingbarrierLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn finance_pricing_barrier_layer_mean(s : FinancepricingbarrierLayer) -> Double {
+  if s.size == 0 { 0.0 } else { finance_pricing_barrier_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn finance_pricing_barrier_layer_scale(s : FinancepricingbarrierLayer, f : Double) -> FinancepricingbarrierLayer {
+  let result = finance_pricing_barrier_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn finance_pricing_barrier_layer_add(a : FinancepricingbarrierLayer, b : FinancepricingbarrierLayer) -> FinancepricingbarrierLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = finance_pricing_barrier_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_layer_copy(s : FinancepricingbarrierLayer) -> FinancepricingbarrierLayer {
+  let result = finance_pricing_barrier_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_layer_fill(s : FinancepricingbarrierLayer, v : Double) -> FinancepricingbarrierLayer {
+  let result = finance_pricing_barrier_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_layer_min(s : FinancepricingbarrierLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_layer_max(s : FinancepricingbarrierLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_layer_to_string(s : FinancepricingbarrierLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct FinancepricingbarrierBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn finance_pricing_barrier_buffer_make(size : Int) -> FinancepricingbarrierBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn finance_pricing_barrier_buffer_len(s : FinancepricingbarrierBuffer) -> Int { s.size }
+
+pub fn finance_pricing_barrier_buffer_get(s : FinancepricingbarrierBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn finance_pricing_barrier_buffer_set(s : FinancepricingbarrierBuffer, i : Int, v : Double) -> FinancepricingbarrierBuffer {
+  let result = finance_pricing_barrier_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_buffer_sum(s : FinancepricingbarrierBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn finance_pricing_barrier_buffer_mean(s : FinancepricingbarrierBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { finance_pricing_barrier_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn finance_pricing_barrier_buffer_scale(s : FinancepricingbarrierBuffer, f : Double) -> FinancepricingbarrierBuffer {
+  let result = finance_pricing_barrier_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn finance_pricing_barrier_buffer_add(a : FinancepricingbarrierBuffer, b : FinancepricingbarrierBuffer) -> FinancepricingbarrierBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = finance_pricing_barrier_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_buffer_copy(s : FinancepricingbarrierBuffer) -> FinancepricingbarrierBuffer {
+  let result = finance_pricing_barrier_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_buffer_fill(s : FinancepricingbarrierBuffer, v : Double) -> FinancepricingbarrierBuffer {
+  let result = finance_pricing_barrier_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_buffer_min(s : FinancepricingbarrierBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_buffer_max(s : FinancepricingbarrierBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_buffer_to_string(s : FinancepricingbarrierBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct FinancepricingbarrierCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn finance_pricing_barrier_cursor_make(size : Int) -> FinancepricingbarrierCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn finance_pricing_barrier_cursor_len(s : FinancepricingbarrierCursor) -> Int { s.size }
+
+pub fn finance_pricing_barrier_cursor_get(s : FinancepricingbarrierCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn finance_pricing_barrier_cursor_set(s : FinancepricingbarrierCursor, i : Int, v : Double) -> FinancepricingbarrierCursor {
+  let result = finance_pricing_barrier_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_cursor_sum(s : FinancepricingbarrierCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn finance_pricing_barrier_cursor_mean(s : FinancepricingbarrierCursor) -> Double {
+  if s.size == 0 { 0.0 } else { finance_pricing_barrier_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn finance_pricing_barrier_cursor_scale(s : FinancepricingbarrierCursor, f : Double) -> FinancepricingbarrierCursor {
+  let result = finance_pricing_barrier_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn finance_pricing_barrier_cursor_add(a : FinancepricingbarrierCursor, b : FinancepricingbarrierCursor) -> FinancepricingbarrierCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = finance_pricing_barrier_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_cursor_copy(s : FinancepricingbarrierCursor) -> FinancepricingbarrierCursor {
+  let result = finance_pricing_barrier_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_cursor_fill(s : FinancepricingbarrierCursor, v : Double) -> FinancepricingbarrierCursor {
+  let result = finance_pricing_barrier_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_cursor_min(s : FinancepricingbarrierCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_cursor_max(s : FinancepricingbarrierCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_cursor_to_string(s : FinancepricingbarrierCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct FinancepricingbarrierView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn finance_pricing_barrier_view_make(size : Int) -> FinancepricingbarrierView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn finance_pricing_barrier_view_len(s : FinancepricingbarrierView) -> Int { s.size }
+
+pub fn finance_pricing_barrier_view_get(s : FinancepricingbarrierView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn finance_pricing_barrier_view_set(s : FinancepricingbarrierView, i : Int, v : Double) -> FinancepricingbarrierView {
+  let result = finance_pricing_barrier_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_view_sum(s : FinancepricingbarrierView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn finance_pricing_barrier_view_mean(s : FinancepricingbarrierView) -> Double {
+  if s.size == 0 { 0.0 } else { finance_pricing_barrier_view_sum(s) / s.size.to_double() }
+}
+
+pub fn finance_pricing_barrier_view_scale(s : FinancepricingbarrierView, f : Double) -> FinancepricingbarrierView {
+  let result = finance_pricing_barrier_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn finance_pricing_barrier_view_add(a : FinancepricingbarrierView, b : FinancepricingbarrierView) -> FinancepricingbarrierView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = finance_pricing_barrier_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_view_copy(s : FinancepricingbarrierView) -> FinancepricingbarrierView {
+  let result = finance_pricing_barrier_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_view_fill(s : FinancepricingbarrierView, v : Double) -> FinancepricingbarrierView {
+  let result = finance_pricing_barrier_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_view_min(s : FinancepricingbarrierView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_view_max(s : FinancepricingbarrierView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_view_to_string(s : FinancepricingbarrierView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct FinancepricingbarrierRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn finance_pricing_barrier_range_make(size : Int) -> FinancepricingbarrierRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn finance_pricing_barrier_range_len(s : FinancepricingbarrierRange) -> Int { s.size }
+
+pub fn finance_pricing_barrier_range_get(s : FinancepricingbarrierRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn finance_pricing_barrier_range_set(s : FinancepricingbarrierRange, i : Int, v : Double) -> FinancepricingbarrierRange {
+  let result = finance_pricing_barrier_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_range_sum(s : FinancepricingbarrierRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn finance_pricing_barrier_range_mean(s : FinancepricingbarrierRange) -> Double {
+  if s.size == 0 { 0.0 } else { finance_pricing_barrier_range_sum(s) / s.size.to_double() }
+}
+
+pub fn finance_pricing_barrier_range_scale(s : FinancepricingbarrierRange, f : Double) -> FinancepricingbarrierRange {
+  let result = finance_pricing_barrier_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn finance_pricing_barrier_range_add(a : FinancepricingbarrierRange, b : FinancepricingbarrierRange) -> FinancepricingbarrierRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = finance_pricing_barrier_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_range_copy(s : FinancepricingbarrierRange) -> FinancepricingbarrierRange {
+  let result = finance_pricing_barrier_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_range_fill(s : FinancepricingbarrierRange, v : Double) -> FinancepricingbarrierRange {
+  let result = finance_pricing_barrier_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_range_min(s : FinancepricingbarrierRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_range_max(s : FinancepricingbarrierRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_range_to_string(s : FinancepricingbarrierRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct FinancepricingbarrierSlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn finance_pricing_barrier_slice_make(size : Int) -> FinancepricingbarrierSlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn finance_pricing_barrier_slice_len(s : FinancepricingbarrierSlice) -> Int { s.size }
+
+pub fn finance_pricing_barrier_slice_get(s : FinancepricingbarrierSlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn finance_pricing_barrier_slice_set(s : FinancepricingbarrierSlice, i : Int, v : Double) -> FinancepricingbarrierSlice {
+  let result = finance_pricing_barrier_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_slice_sum(s : FinancepricingbarrierSlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn finance_pricing_barrier_slice_mean(s : FinancepricingbarrierSlice) -> Double {
+  if s.size == 0 { 0.0 } else { finance_pricing_barrier_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn finance_pricing_barrier_slice_scale(s : FinancepricingbarrierSlice, f : Double) -> FinancepricingbarrierSlice {
+  let result = finance_pricing_barrier_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn finance_pricing_barrier_slice_add(a : FinancepricingbarrierSlice, b : FinancepricingbarrierSlice) -> FinancepricingbarrierSlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = finance_pricing_barrier_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_slice_copy(s : FinancepricingbarrierSlice) -> FinancepricingbarrierSlice {
+  let result = finance_pricing_barrier_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn finance_pricing_barrier_slice_fill(s : FinancepricingbarrierSlice, v : Double) -> FinancepricingbarrierSlice {
+  let result = finance_pricing_barrier_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn finance_pricing_barrier_slice_min(s : FinancepricingbarrierSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_slice_max(s : FinancepricingbarrierSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn finance_pricing_barrier_slice_to_string(s : FinancepricingbarrierSlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn finance_pricing_barrier_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn finance_pricing_barrier_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

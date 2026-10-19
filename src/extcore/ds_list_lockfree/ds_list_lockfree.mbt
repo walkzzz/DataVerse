@@ -1,0 +1,1955 @@
+///===
+/// extcore/ds_list_lockfree
+
+pub(all) struct DslistlockfreePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn ds_list_lockfree_make_point(x : Double, y : Double) -> DslistlockfreePoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn ds_list_lockfree_make_point3(x : Double, y : Double, z : Double) -> DslistlockfreePoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn ds_list_lockfree_point_x(pt : DslistlockfreePoint) -> Double { pt.x }
+
+pub fn ds_list_lockfree_point_y(pt : DslistlockfreePoint) -> Double { pt.y }
+
+pub fn ds_list_lockfree_point_z(pt : DslistlockfreePoint) -> Double { pt.z }
+
+pub fn ds_list_lockfree_point_label(pt : DslistlockfreePoint) -> Int { pt.label }
+
+pub fn ds_list_lockfree_point_dist(a : DslistlockfreePoint, b : DslistlockfreePoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  ds_list_lockfree_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn ds_list_lockfree_point_add(a : DslistlockfreePoint, b : DslistlockfreePoint) -> DslistlockfreePoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn ds_list_lockfree_point_sub(a : DslistlockfreePoint, b : DslistlockfreePoint) -> DslistlockfreePoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn ds_list_lockfree_point_scale(pt : DslistlockfreePoint, s : Double) -> DslistlockfreePoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn ds_list_lockfree_point_dot(a : DslistlockfreePoint, b : DslistlockfreePoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn ds_list_lockfree_point_cross(a : DslistlockfreePoint, b : DslistlockfreePoint) -> DslistlockfreePoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn ds_list_lockfree_point_norm(pt : DslistlockfreePoint) -> Double {
+  ds_list_lockfree_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn ds_list_lockfree_point_normalize(pt : DslistlockfreePoint) -> DslistlockfreePoint {
+  let n = ds_list_lockfree_point_norm(pt)
+  if n < 0.0000001 { pt } else { ds_list_lockfree_point_scale(pt, 1.0 / n) }
+}
+
+pub fn ds_list_lockfree_point_negate(pt : DslistlockfreePoint) -> DslistlockfreePoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn ds_list_lockfree_point_mid(a : DslistlockfreePoint, b : DslistlockfreePoint) -> DslistlockfreePoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn ds_list_lockfree_point_lerp(a : DslistlockfreePoint, b : DslistlockfreePoint, t : Double) -> DslistlockfreePoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn ds_list_lockfree_point_to_string(pt : DslistlockfreePoint) -> String {
+  "(" + ds_list_lockfree_dbl(pt.x) + ", " + ds_list_lockfree_dbl(pt.y) + ", " + ds_list_lockfree_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct DslistlockfreeSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn ds_list_lockfree_make_series(vals : Array[Double], name : String) -> DslistlockfreeSeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn ds_list_lockfree_series_len(s : DslistlockfreeSeries) -> Int { s.vals.length() }
+
+pub fn ds_list_lockfree_series_sum(s : DslistlockfreeSeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn ds_list_lockfree_series_mean(s : DslistlockfreeSeries) -> Double {
+  let n = ds_list_lockfree_series_len(s)
+  if n == 0 { 0.0 } else { ds_list_lockfree_series_sum(s) / n.to_double() }
+}
+
+pub fn ds_list_lockfree_series_min(s : DslistlockfreeSeries) -> Double {
+  let n = ds_list_lockfree_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_series_max(s : DslistlockfreeSeries) -> Double {
+  let n = ds_list_lockfree_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_series_range(s : DslistlockfreeSeries) -> Double {
+  ds_list_lockfree_series_max(s) - ds_list_lockfree_series_min(s)
+}
+
+pub fn ds_list_lockfree_series_var(s : DslistlockfreeSeries) -> Double {
+  let n = ds_list_lockfree_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = ds_list_lockfree_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_series_std(s : DslistlockfreeSeries) -> Double { ds_list_lockfree_sqrt(ds_list_lockfree_series_var(s)) }
+
+pub fn ds_list_lockfree_series_median(s : DslistlockfreeSeries) -> Double {
+  let n = ds_list_lockfree_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = ds_list_lockfree_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn ds_list_lockfree_series_scale(s : DslistlockfreeSeries, f : Double) -> DslistlockfreeSeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = ds_list_lockfree_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn ds_list_lockfree_series_add(a : DslistlockfreeSeries, b : DslistlockfreeSeries) -> DslistlockfreeSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = ds_list_lockfree_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn ds_list_lockfree_series_sub(a : DslistlockfreeSeries, b : DslistlockfreeSeries) -> DslistlockfreeSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = ds_list_lockfree_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn ds_list_lockfree_series_normalize(s : DslistlockfreeSeries) -> DslistlockfreeSeries {
+  let mn = ds_list_lockfree_series_min(s)
+  let mx = ds_list_lockfree_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = ds_list_lockfree_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn ds_list_lockfree_series_cumsum(s : DslistlockfreeSeries) -> DslistlockfreeSeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = ds_list_lockfree_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn ds_list_lockfree_series_to_string(s : DslistlockfreeSeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + ds_list_lockfree_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct DslistlockfreeMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn ds_list_lockfree_make_matrix(rows : Int, cols : Int, val : Double) -> DslistlockfreeMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn ds_list_lockfree_matrix_identity(n : Int) -> DslistlockfreeMatrix {
+  let m = ds_list_lockfree_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn ds_list_lockfree_matrix_get(m : DslistlockfreeMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn ds_list_lockfree_matrix_transpose(m : DslistlockfreeMatrix) -> DslistlockfreeMatrix {
+  let result = ds_list_lockfree_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn ds_list_lockfree_matrix_add(a : DslistlockfreeMatrix, b : DslistlockfreeMatrix) -> DslistlockfreeMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = ds_list_lockfree_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn ds_list_lockfree_matrix_scale(m : DslistlockfreeMatrix, s : Double) -> DslistlockfreeMatrix {
+  let result = ds_list_lockfree_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn ds_list_lockfree_matrix_multiply(a : DslistlockfreeMatrix, b : DslistlockfreeMatrix) -> DslistlockfreeMatrix {
+  if a.cols != b.rows { return ds_list_lockfree_make_matrix(a.rows, b.cols, 0.0) }
+  let result = ds_list_lockfree_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn ds_list_lockfree_matrix_trace(m : DslistlockfreeMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn ds_list_lockfree_matrix_det(m : DslistlockfreeMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn ds_list_lockfree_matrix_norm(m : DslistlockfreeMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  ds_list_lockfree_sqrt(sum)
+}
+
+pub fn ds_list_lockfree_matrix_to_string(m : DslistlockfreeMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + ds_list_lockfree_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct DslistlockfreeVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn ds_list_lockfree_make_vector(comps : Array[Double]) -> DslistlockfreeVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn ds_list_lockfree_vector_zero(dim : Int) -> DslistlockfreeVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn ds_list_lockfree_vector_add(a : DslistlockfreeVector, b : DslistlockfreeVector) -> DslistlockfreeVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = ds_list_lockfree_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn ds_list_lockfree_vector_sub(a : DslistlockfreeVector, b : DslistlockfreeVector) -> DslistlockfreeVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = ds_list_lockfree_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn ds_list_lockfree_vector_scale(v : DslistlockfreeVector, s : Double) -> DslistlockfreeVector {
+  let mut result = []
+  for i in 0..<v.dim { result = ds_list_lockfree_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn ds_list_lockfree_vector_dot(a : DslistlockfreeVector, b : DslistlockfreeVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn ds_list_lockfree_vector_norm(v : DslistlockfreeVector) -> Double { ds_list_lockfree_sqrt(ds_list_lockfree_vector_dot(v, v)) }
+
+pub fn ds_list_lockfree_vector_normalize(v : DslistlockfreeVector) -> DslistlockfreeVector {
+  let n = ds_list_lockfree_vector_norm(v)
+  if n < 0.0000001 { v } else { ds_list_lockfree_vector_scale(v, 1.0 / n) }
+}
+
+pub fn ds_list_lockfree_vector_dist(a : DslistlockfreeVector, b : DslistlockfreeVector) -> Double {
+  ds_list_lockfree_vector_norm(ds_list_lockfree_vector_sub(a, b))
+}
+
+pub fn ds_list_lockfree_vector_to_string(v : DslistlockfreeVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + ds_list_lockfree_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn ds_list_lockfree_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = ds_list_lockfree_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_std(data : Array[Double]) -> Double { ds_list_lockfree_sqrt(ds_list_lockfree_var(data)) }
+
+pub fn ds_list_lockfree_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = ds_list_lockfree_mean(a); let mb = ds_list_lockfree_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = ds_list_lockfree_std(a); let sb = ds_list_lockfree_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { ds_list_lockfree_cov(a, b) / (sa * sb) }
+}
+
+pub fn ds_list_lockfree_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = ds_list_lockfree_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn ds_list_lockfree_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  ds_list_lockfree_sqrt(ds_list_lockfree_mse(pred, labels))
+}
+
+pub fn ds_list_lockfree_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + ds_list_lockfree_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = ds_list_lockfree_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn ds_list_lockfree_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn ds_list_lockfree_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn ds_list_lockfree_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = ds_list_lockfree_precision(pred, labels, pos); let r = ds_list_lockfree_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn ds_list_lockfree_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn ds_list_lockfree_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = ds_list_lockfree_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn ds_list_lockfree_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn ds_list_lockfree_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn ds_list_lockfree_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = ds_list_lockfree_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn ds_list_lockfree_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn ds_list_lockfree_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn ds_list_lockfree_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = ds_list_lockfree_min(data); let mx = ds_list_lockfree_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn ds_list_lockfree_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = ds_list_lockfree_mean(data); let sd = ds_list_lockfree_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn ds_list_lockfree_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn ds_list_lockfree_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn ds_list_lockfree_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn ds_list_lockfree_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn ds_list_lockfree_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn ds_list_lockfree_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn ds_list_lockfree_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { ds_list_lockfree_int(x) } else { -ds_list_lockfree_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { ds_list_lockfree_int(f * 1000000.0) } else { ds_list_lockfree_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn ds_list_lockfree_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn ds_list_lockfree_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct DslistlockfreeFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_list_lockfree_frame_make(size : Int) -> DslistlockfreeFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_list_lockfree_frame_len(s : DslistlockfreeFrame) -> Int { s.size }
+
+pub fn ds_list_lockfree_frame_get(s : DslistlockfreeFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_list_lockfree_frame_set(s : DslistlockfreeFrame, i : Int, v : Double) -> DslistlockfreeFrame {
+  let result = ds_list_lockfree_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_frame_sum(s : DslistlockfreeFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_list_lockfree_frame_mean(s : DslistlockfreeFrame) -> Double {
+  if s.size == 0 { 0.0 } else { ds_list_lockfree_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_list_lockfree_frame_scale(s : DslistlockfreeFrame, f : Double) -> DslistlockfreeFrame {
+  let result = ds_list_lockfree_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_list_lockfree_frame_add(a : DslistlockfreeFrame, b : DslistlockfreeFrame) -> DslistlockfreeFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_list_lockfree_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_frame_copy(s : DslistlockfreeFrame) -> DslistlockfreeFrame {
+  let result = ds_list_lockfree_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_frame_fill(s : DslistlockfreeFrame, v : Double) -> DslistlockfreeFrame {
+  let result = ds_list_lockfree_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_frame_min(s : DslistlockfreeFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_frame_max(s : DslistlockfreeFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_frame_to_string(s : DslistlockfreeFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct DslistlockfreeTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_list_lockfree_table_make(size : Int) -> DslistlockfreeTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_list_lockfree_table_len(s : DslistlockfreeTable) -> Int { s.size }
+
+pub fn ds_list_lockfree_table_get(s : DslistlockfreeTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_list_lockfree_table_set(s : DslistlockfreeTable, i : Int, v : Double) -> DslistlockfreeTable {
+  let result = ds_list_lockfree_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_table_sum(s : DslistlockfreeTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_list_lockfree_table_mean(s : DslistlockfreeTable) -> Double {
+  if s.size == 0 { 0.0 } else { ds_list_lockfree_table_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_list_lockfree_table_scale(s : DslistlockfreeTable, f : Double) -> DslistlockfreeTable {
+  let result = ds_list_lockfree_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_list_lockfree_table_add(a : DslistlockfreeTable, b : DslistlockfreeTable) -> DslistlockfreeTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_list_lockfree_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_table_copy(s : DslistlockfreeTable) -> DslistlockfreeTable {
+  let result = ds_list_lockfree_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_table_fill(s : DslistlockfreeTable, v : Double) -> DslistlockfreeTable {
+  let result = ds_list_lockfree_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_table_min(s : DslistlockfreeTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_table_max(s : DslistlockfreeTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_table_to_string(s : DslistlockfreeTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct DslistlockfreeGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_list_lockfree_graphn_make(size : Int) -> DslistlockfreeGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_list_lockfree_graphn_len(s : DslistlockfreeGraphN) -> Int { s.size }
+
+pub fn ds_list_lockfree_graphn_get(s : DslistlockfreeGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_list_lockfree_graphn_set(s : DslistlockfreeGraphN, i : Int, v : Double) -> DslistlockfreeGraphN {
+  let result = ds_list_lockfree_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_graphn_sum(s : DslistlockfreeGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_list_lockfree_graphn_mean(s : DslistlockfreeGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { ds_list_lockfree_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_list_lockfree_graphn_scale(s : DslistlockfreeGraphN, f : Double) -> DslistlockfreeGraphN {
+  let result = ds_list_lockfree_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_list_lockfree_graphn_add(a : DslistlockfreeGraphN, b : DslistlockfreeGraphN) -> DslistlockfreeGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_list_lockfree_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_graphn_copy(s : DslistlockfreeGraphN) -> DslistlockfreeGraphN {
+  let result = ds_list_lockfree_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_graphn_fill(s : DslistlockfreeGraphN, v : Double) -> DslistlockfreeGraphN {
+  let result = ds_list_lockfree_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_graphn_min(s : DslistlockfreeGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_graphn_max(s : DslistlockfreeGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_graphn_to_string(s : DslistlockfreeGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct DslistlockfreeNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_list_lockfree_node_make(size : Int) -> DslistlockfreeNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_list_lockfree_node_len(s : DslistlockfreeNode) -> Int { s.size }
+
+pub fn ds_list_lockfree_node_get(s : DslistlockfreeNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_list_lockfree_node_set(s : DslistlockfreeNode, i : Int, v : Double) -> DslistlockfreeNode {
+  let result = ds_list_lockfree_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_node_sum(s : DslistlockfreeNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_list_lockfree_node_mean(s : DslistlockfreeNode) -> Double {
+  if s.size == 0 { 0.0 } else { ds_list_lockfree_node_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_list_lockfree_node_scale(s : DslistlockfreeNode, f : Double) -> DslistlockfreeNode {
+  let result = ds_list_lockfree_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_list_lockfree_node_add(a : DslistlockfreeNode, b : DslistlockfreeNode) -> DslistlockfreeNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_list_lockfree_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_node_copy(s : DslistlockfreeNode) -> DslistlockfreeNode {
+  let result = ds_list_lockfree_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_node_fill(s : DslistlockfreeNode, v : Double) -> DslistlockfreeNode {
+  let result = ds_list_lockfree_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_node_min(s : DslistlockfreeNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_node_max(s : DslistlockfreeNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_node_to_string(s : DslistlockfreeNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct DslistlockfreeEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_list_lockfree_edge_make(size : Int) -> DslistlockfreeEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_list_lockfree_edge_len(s : DslistlockfreeEdge) -> Int { s.size }
+
+pub fn ds_list_lockfree_edge_get(s : DslistlockfreeEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_list_lockfree_edge_set(s : DslistlockfreeEdge, i : Int, v : Double) -> DslistlockfreeEdge {
+  let result = ds_list_lockfree_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_edge_sum(s : DslistlockfreeEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_list_lockfree_edge_mean(s : DslistlockfreeEdge) -> Double {
+  if s.size == 0 { 0.0 } else { ds_list_lockfree_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_list_lockfree_edge_scale(s : DslistlockfreeEdge, f : Double) -> DslistlockfreeEdge {
+  let result = ds_list_lockfree_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_list_lockfree_edge_add(a : DslistlockfreeEdge, b : DslistlockfreeEdge) -> DslistlockfreeEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_list_lockfree_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_edge_copy(s : DslistlockfreeEdge) -> DslistlockfreeEdge {
+  let result = ds_list_lockfree_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_edge_fill(s : DslistlockfreeEdge, v : Double) -> DslistlockfreeEdge {
+  let result = ds_list_lockfree_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_edge_min(s : DslistlockfreeEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_edge_max(s : DslistlockfreeEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_edge_to_string(s : DslistlockfreeEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct DslistlockfreePath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_list_lockfree_path_make(size : Int) -> DslistlockfreePath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_list_lockfree_path_len(s : DslistlockfreePath) -> Int { s.size }
+
+pub fn ds_list_lockfree_path_get(s : DslistlockfreePath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_list_lockfree_path_set(s : DslistlockfreePath, i : Int, v : Double) -> DslistlockfreePath {
+  let result = ds_list_lockfree_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_path_sum(s : DslistlockfreePath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_list_lockfree_path_mean(s : DslistlockfreePath) -> Double {
+  if s.size == 0 { 0.0 } else { ds_list_lockfree_path_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_list_lockfree_path_scale(s : DslistlockfreePath, f : Double) -> DslistlockfreePath {
+  let result = ds_list_lockfree_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_list_lockfree_path_add(a : DslistlockfreePath, b : DslistlockfreePath) -> DslistlockfreePath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_list_lockfree_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_path_copy(s : DslistlockfreePath) -> DslistlockfreePath {
+  let result = ds_list_lockfree_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_path_fill(s : DslistlockfreePath, v : Double) -> DslistlockfreePath {
+  let result = ds_list_lockfree_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_path_min(s : DslistlockfreePath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_path_max(s : DslistlockfreePath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_path_to_string(s : DslistlockfreePath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct DslistlockfreeCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_list_lockfree_cluster_make(size : Int) -> DslistlockfreeCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_list_lockfree_cluster_len(s : DslistlockfreeCluster) -> Int { s.size }
+
+pub fn ds_list_lockfree_cluster_get(s : DslistlockfreeCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_list_lockfree_cluster_set(s : DslistlockfreeCluster, i : Int, v : Double) -> DslistlockfreeCluster {
+  let result = ds_list_lockfree_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_cluster_sum(s : DslistlockfreeCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_list_lockfree_cluster_mean(s : DslistlockfreeCluster) -> Double {
+  if s.size == 0 { 0.0 } else { ds_list_lockfree_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_list_lockfree_cluster_scale(s : DslistlockfreeCluster, f : Double) -> DslistlockfreeCluster {
+  let result = ds_list_lockfree_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_list_lockfree_cluster_add(a : DslistlockfreeCluster, b : DslistlockfreeCluster) -> DslistlockfreeCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_list_lockfree_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_cluster_copy(s : DslistlockfreeCluster) -> DslistlockfreeCluster {
+  let result = ds_list_lockfree_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_cluster_fill(s : DslistlockfreeCluster, v : Double) -> DslistlockfreeCluster {
+  let result = ds_list_lockfree_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_cluster_min(s : DslistlockfreeCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_cluster_max(s : DslistlockfreeCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_cluster_to_string(s : DslistlockfreeCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct DslistlockfreeModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_list_lockfree_model_make(size : Int) -> DslistlockfreeModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_list_lockfree_model_len(s : DslistlockfreeModel) -> Int { s.size }
+
+pub fn ds_list_lockfree_model_get(s : DslistlockfreeModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_list_lockfree_model_set(s : DslistlockfreeModel, i : Int, v : Double) -> DslistlockfreeModel {
+  let result = ds_list_lockfree_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_model_sum(s : DslistlockfreeModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_list_lockfree_model_mean(s : DslistlockfreeModel) -> Double {
+  if s.size == 0 { 0.0 } else { ds_list_lockfree_model_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_list_lockfree_model_scale(s : DslistlockfreeModel, f : Double) -> DslistlockfreeModel {
+  let result = ds_list_lockfree_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_list_lockfree_model_add(a : DslistlockfreeModel, b : DslistlockfreeModel) -> DslistlockfreeModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_list_lockfree_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_model_copy(s : DslistlockfreeModel) -> DslistlockfreeModel {
+  let result = ds_list_lockfree_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_model_fill(s : DslistlockfreeModel, v : Double) -> DslistlockfreeModel {
+  let result = ds_list_lockfree_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_model_min(s : DslistlockfreeModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_model_max(s : DslistlockfreeModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_model_to_string(s : DslistlockfreeModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct DslistlockfreeLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_list_lockfree_layer_make(size : Int) -> DslistlockfreeLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_list_lockfree_layer_len(s : DslistlockfreeLayer) -> Int { s.size }
+
+pub fn ds_list_lockfree_layer_get(s : DslistlockfreeLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_list_lockfree_layer_set(s : DslistlockfreeLayer, i : Int, v : Double) -> DslistlockfreeLayer {
+  let result = ds_list_lockfree_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_layer_sum(s : DslistlockfreeLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_list_lockfree_layer_mean(s : DslistlockfreeLayer) -> Double {
+  if s.size == 0 { 0.0 } else { ds_list_lockfree_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_list_lockfree_layer_scale(s : DslistlockfreeLayer, f : Double) -> DslistlockfreeLayer {
+  let result = ds_list_lockfree_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_list_lockfree_layer_add(a : DslistlockfreeLayer, b : DslistlockfreeLayer) -> DslistlockfreeLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_list_lockfree_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_layer_copy(s : DslistlockfreeLayer) -> DslistlockfreeLayer {
+  let result = ds_list_lockfree_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_layer_fill(s : DslistlockfreeLayer, v : Double) -> DslistlockfreeLayer {
+  let result = ds_list_lockfree_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_layer_min(s : DslistlockfreeLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_layer_max(s : DslistlockfreeLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_layer_to_string(s : DslistlockfreeLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct DslistlockfreeBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_list_lockfree_buffer_make(size : Int) -> DslistlockfreeBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_list_lockfree_buffer_len(s : DslistlockfreeBuffer) -> Int { s.size }
+
+pub fn ds_list_lockfree_buffer_get(s : DslistlockfreeBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_list_lockfree_buffer_set(s : DslistlockfreeBuffer, i : Int, v : Double) -> DslistlockfreeBuffer {
+  let result = ds_list_lockfree_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_buffer_sum(s : DslistlockfreeBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_list_lockfree_buffer_mean(s : DslistlockfreeBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { ds_list_lockfree_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_list_lockfree_buffer_scale(s : DslistlockfreeBuffer, f : Double) -> DslistlockfreeBuffer {
+  let result = ds_list_lockfree_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_list_lockfree_buffer_add(a : DslistlockfreeBuffer, b : DslistlockfreeBuffer) -> DslistlockfreeBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_list_lockfree_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_buffer_copy(s : DslistlockfreeBuffer) -> DslistlockfreeBuffer {
+  let result = ds_list_lockfree_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_buffer_fill(s : DslistlockfreeBuffer, v : Double) -> DslistlockfreeBuffer {
+  let result = ds_list_lockfree_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_buffer_min(s : DslistlockfreeBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_buffer_max(s : DslistlockfreeBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_buffer_to_string(s : DslistlockfreeBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct DslistlockfreeCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_list_lockfree_cursor_make(size : Int) -> DslistlockfreeCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_list_lockfree_cursor_len(s : DslistlockfreeCursor) -> Int { s.size }
+
+pub fn ds_list_lockfree_cursor_get(s : DslistlockfreeCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_list_lockfree_cursor_set(s : DslistlockfreeCursor, i : Int, v : Double) -> DslistlockfreeCursor {
+  let result = ds_list_lockfree_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_cursor_sum(s : DslistlockfreeCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_list_lockfree_cursor_mean(s : DslistlockfreeCursor) -> Double {
+  if s.size == 0 { 0.0 } else { ds_list_lockfree_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_list_lockfree_cursor_scale(s : DslistlockfreeCursor, f : Double) -> DslistlockfreeCursor {
+  let result = ds_list_lockfree_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_list_lockfree_cursor_add(a : DslistlockfreeCursor, b : DslistlockfreeCursor) -> DslistlockfreeCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_list_lockfree_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_cursor_copy(s : DslistlockfreeCursor) -> DslistlockfreeCursor {
+  let result = ds_list_lockfree_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_cursor_fill(s : DslistlockfreeCursor, v : Double) -> DslistlockfreeCursor {
+  let result = ds_list_lockfree_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_cursor_min(s : DslistlockfreeCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_cursor_max(s : DslistlockfreeCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_cursor_to_string(s : DslistlockfreeCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct DslistlockfreeView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_list_lockfree_view_make(size : Int) -> DslistlockfreeView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_list_lockfree_view_len(s : DslistlockfreeView) -> Int { s.size }
+
+pub fn ds_list_lockfree_view_get(s : DslistlockfreeView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_list_lockfree_view_set(s : DslistlockfreeView, i : Int, v : Double) -> DslistlockfreeView {
+  let result = ds_list_lockfree_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_view_sum(s : DslistlockfreeView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_list_lockfree_view_mean(s : DslistlockfreeView) -> Double {
+  if s.size == 0 { 0.0 } else { ds_list_lockfree_view_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_list_lockfree_view_scale(s : DslistlockfreeView, f : Double) -> DslistlockfreeView {
+  let result = ds_list_lockfree_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_list_lockfree_view_add(a : DslistlockfreeView, b : DslistlockfreeView) -> DslistlockfreeView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_list_lockfree_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_view_copy(s : DslistlockfreeView) -> DslistlockfreeView {
+  let result = ds_list_lockfree_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_view_fill(s : DslistlockfreeView, v : Double) -> DslistlockfreeView {
+  let result = ds_list_lockfree_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_view_min(s : DslistlockfreeView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_view_max(s : DslistlockfreeView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_view_to_string(s : DslistlockfreeView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct DslistlockfreeRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_list_lockfree_range_make(size : Int) -> DslistlockfreeRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_list_lockfree_range_len(s : DslistlockfreeRange) -> Int { s.size }
+
+pub fn ds_list_lockfree_range_get(s : DslistlockfreeRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_list_lockfree_range_set(s : DslistlockfreeRange, i : Int, v : Double) -> DslistlockfreeRange {
+  let result = ds_list_lockfree_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_range_sum(s : DslistlockfreeRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_list_lockfree_range_mean(s : DslistlockfreeRange) -> Double {
+  if s.size == 0 { 0.0 } else { ds_list_lockfree_range_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_list_lockfree_range_scale(s : DslistlockfreeRange, f : Double) -> DslistlockfreeRange {
+  let result = ds_list_lockfree_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_list_lockfree_range_add(a : DslistlockfreeRange, b : DslistlockfreeRange) -> DslistlockfreeRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_list_lockfree_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_range_copy(s : DslistlockfreeRange) -> DslistlockfreeRange {
+  let result = ds_list_lockfree_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_range_fill(s : DslistlockfreeRange, v : Double) -> DslistlockfreeRange {
+  let result = ds_list_lockfree_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_range_min(s : DslistlockfreeRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_range_max(s : DslistlockfreeRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_range_to_string(s : DslistlockfreeRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct DslistlockfreeSlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_list_lockfree_slice_make(size : Int) -> DslistlockfreeSlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_list_lockfree_slice_len(s : DslistlockfreeSlice) -> Int { s.size }
+
+pub fn ds_list_lockfree_slice_get(s : DslistlockfreeSlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_list_lockfree_slice_set(s : DslistlockfreeSlice, i : Int, v : Double) -> DslistlockfreeSlice {
+  let result = ds_list_lockfree_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_slice_sum(s : DslistlockfreeSlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_list_lockfree_slice_mean(s : DslistlockfreeSlice) -> Double {
+  if s.size == 0 { 0.0 } else { ds_list_lockfree_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_list_lockfree_slice_scale(s : DslistlockfreeSlice, f : Double) -> DslistlockfreeSlice {
+  let result = ds_list_lockfree_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_list_lockfree_slice_add(a : DslistlockfreeSlice, b : DslistlockfreeSlice) -> DslistlockfreeSlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_list_lockfree_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_slice_copy(s : DslistlockfreeSlice) -> DslistlockfreeSlice {
+  let result = ds_list_lockfree_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_list_lockfree_slice_fill(s : DslistlockfreeSlice, v : Double) -> DslistlockfreeSlice {
+  let result = ds_list_lockfree_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_list_lockfree_slice_min(s : DslistlockfreeSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_slice_max(s : DslistlockfreeSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_list_lockfree_slice_to_string(s : DslistlockfreeSlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn ds_list_lockfree_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_list_lockfree_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

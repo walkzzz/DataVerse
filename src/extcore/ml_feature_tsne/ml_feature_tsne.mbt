@@ -1,0 +1,1955 @@
+///===
+/// extcore/ml_feature_tsne
+
+pub(all) struct MlfeaturetsnePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn ml_feature_tsne_make_point(x : Double, y : Double) -> MlfeaturetsnePoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn ml_feature_tsne_make_point3(x : Double, y : Double, z : Double) -> MlfeaturetsnePoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn ml_feature_tsne_point_x(pt : MlfeaturetsnePoint) -> Double { pt.x }
+
+pub fn ml_feature_tsne_point_y(pt : MlfeaturetsnePoint) -> Double { pt.y }
+
+pub fn ml_feature_tsne_point_z(pt : MlfeaturetsnePoint) -> Double { pt.z }
+
+pub fn ml_feature_tsne_point_label(pt : MlfeaturetsnePoint) -> Int { pt.label }
+
+pub fn ml_feature_tsne_point_dist(a : MlfeaturetsnePoint, b : MlfeaturetsnePoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  ml_feature_tsne_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn ml_feature_tsne_point_add(a : MlfeaturetsnePoint, b : MlfeaturetsnePoint) -> MlfeaturetsnePoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn ml_feature_tsne_point_sub(a : MlfeaturetsnePoint, b : MlfeaturetsnePoint) -> MlfeaturetsnePoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn ml_feature_tsne_point_scale(pt : MlfeaturetsnePoint, s : Double) -> MlfeaturetsnePoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn ml_feature_tsne_point_dot(a : MlfeaturetsnePoint, b : MlfeaturetsnePoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn ml_feature_tsne_point_cross(a : MlfeaturetsnePoint, b : MlfeaturetsnePoint) -> MlfeaturetsnePoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn ml_feature_tsne_point_norm(pt : MlfeaturetsnePoint) -> Double {
+  ml_feature_tsne_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn ml_feature_tsne_point_normalize(pt : MlfeaturetsnePoint) -> MlfeaturetsnePoint {
+  let n = ml_feature_tsne_point_norm(pt)
+  if n < 0.0000001 { pt } else { ml_feature_tsne_point_scale(pt, 1.0 / n) }
+}
+
+pub fn ml_feature_tsne_point_negate(pt : MlfeaturetsnePoint) -> MlfeaturetsnePoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn ml_feature_tsne_point_mid(a : MlfeaturetsnePoint, b : MlfeaturetsnePoint) -> MlfeaturetsnePoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn ml_feature_tsne_point_lerp(a : MlfeaturetsnePoint, b : MlfeaturetsnePoint, t : Double) -> MlfeaturetsnePoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn ml_feature_tsne_point_to_string(pt : MlfeaturetsnePoint) -> String {
+  "(" + ml_feature_tsne_dbl(pt.x) + ", " + ml_feature_tsne_dbl(pt.y) + ", " + ml_feature_tsne_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct MlfeaturetsneSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn ml_feature_tsne_make_series(vals : Array[Double], name : String) -> MlfeaturetsneSeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn ml_feature_tsne_series_len(s : MlfeaturetsneSeries) -> Int { s.vals.length() }
+
+pub fn ml_feature_tsne_series_sum(s : MlfeaturetsneSeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn ml_feature_tsne_series_mean(s : MlfeaturetsneSeries) -> Double {
+  let n = ml_feature_tsne_series_len(s)
+  if n == 0 { 0.0 } else { ml_feature_tsne_series_sum(s) / n.to_double() }
+}
+
+pub fn ml_feature_tsne_series_min(s : MlfeaturetsneSeries) -> Double {
+  let n = ml_feature_tsne_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_series_max(s : MlfeaturetsneSeries) -> Double {
+  let n = ml_feature_tsne_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_series_range(s : MlfeaturetsneSeries) -> Double {
+  ml_feature_tsne_series_max(s) - ml_feature_tsne_series_min(s)
+}
+
+pub fn ml_feature_tsne_series_var(s : MlfeaturetsneSeries) -> Double {
+  let n = ml_feature_tsne_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = ml_feature_tsne_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_series_std(s : MlfeaturetsneSeries) -> Double { ml_feature_tsne_sqrt(ml_feature_tsne_series_var(s)) }
+
+pub fn ml_feature_tsne_series_median(s : MlfeaturetsneSeries) -> Double {
+  let n = ml_feature_tsne_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = ml_feature_tsne_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn ml_feature_tsne_series_scale(s : MlfeaturetsneSeries, f : Double) -> MlfeaturetsneSeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = ml_feature_tsne_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn ml_feature_tsne_series_add(a : MlfeaturetsneSeries, b : MlfeaturetsneSeries) -> MlfeaturetsneSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = ml_feature_tsne_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn ml_feature_tsne_series_sub(a : MlfeaturetsneSeries, b : MlfeaturetsneSeries) -> MlfeaturetsneSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = ml_feature_tsne_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn ml_feature_tsne_series_normalize(s : MlfeaturetsneSeries) -> MlfeaturetsneSeries {
+  let mn = ml_feature_tsne_series_min(s)
+  let mx = ml_feature_tsne_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = ml_feature_tsne_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn ml_feature_tsne_series_cumsum(s : MlfeaturetsneSeries) -> MlfeaturetsneSeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = ml_feature_tsne_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn ml_feature_tsne_series_to_string(s : MlfeaturetsneSeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + ml_feature_tsne_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct MlfeaturetsneMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn ml_feature_tsne_make_matrix(rows : Int, cols : Int, val : Double) -> MlfeaturetsneMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn ml_feature_tsne_matrix_identity(n : Int) -> MlfeaturetsneMatrix {
+  let m = ml_feature_tsne_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn ml_feature_tsne_matrix_get(m : MlfeaturetsneMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn ml_feature_tsne_matrix_transpose(m : MlfeaturetsneMatrix) -> MlfeaturetsneMatrix {
+  let result = ml_feature_tsne_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn ml_feature_tsne_matrix_add(a : MlfeaturetsneMatrix, b : MlfeaturetsneMatrix) -> MlfeaturetsneMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = ml_feature_tsne_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn ml_feature_tsne_matrix_scale(m : MlfeaturetsneMatrix, s : Double) -> MlfeaturetsneMatrix {
+  let result = ml_feature_tsne_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn ml_feature_tsne_matrix_multiply(a : MlfeaturetsneMatrix, b : MlfeaturetsneMatrix) -> MlfeaturetsneMatrix {
+  if a.cols != b.rows { return ml_feature_tsne_make_matrix(a.rows, b.cols, 0.0) }
+  let result = ml_feature_tsne_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn ml_feature_tsne_matrix_trace(m : MlfeaturetsneMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn ml_feature_tsne_matrix_det(m : MlfeaturetsneMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn ml_feature_tsne_matrix_norm(m : MlfeaturetsneMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  ml_feature_tsne_sqrt(sum)
+}
+
+pub fn ml_feature_tsne_matrix_to_string(m : MlfeaturetsneMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + ml_feature_tsne_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct MlfeaturetsneVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn ml_feature_tsne_make_vector(comps : Array[Double]) -> MlfeaturetsneVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn ml_feature_tsne_vector_zero(dim : Int) -> MlfeaturetsneVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn ml_feature_tsne_vector_add(a : MlfeaturetsneVector, b : MlfeaturetsneVector) -> MlfeaturetsneVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = ml_feature_tsne_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn ml_feature_tsne_vector_sub(a : MlfeaturetsneVector, b : MlfeaturetsneVector) -> MlfeaturetsneVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = ml_feature_tsne_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn ml_feature_tsne_vector_scale(v : MlfeaturetsneVector, s : Double) -> MlfeaturetsneVector {
+  let mut result = []
+  for i in 0..<v.dim { result = ml_feature_tsne_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn ml_feature_tsne_vector_dot(a : MlfeaturetsneVector, b : MlfeaturetsneVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn ml_feature_tsne_vector_norm(v : MlfeaturetsneVector) -> Double { ml_feature_tsne_sqrt(ml_feature_tsne_vector_dot(v, v)) }
+
+pub fn ml_feature_tsne_vector_normalize(v : MlfeaturetsneVector) -> MlfeaturetsneVector {
+  let n = ml_feature_tsne_vector_norm(v)
+  if n < 0.0000001 { v } else { ml_feature_tsne_vector_scale(v, 1.0 / n) }
+}
+
+pub fn ml_feature_tsne_vector_dist(a : MlfeaturetsneVector, b : MlfeaturetsneVector) -> Double {
+  ml_feature_tsne_vector_norm(ml_feature_tsne_vector_sub(a, b))
+}
+
+pub fn ml_feature_tsne_vector_to_string(v : MlfeaturetsneVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + ml_feature_tsne_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn ml_feature_tsne_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = ml_feature_tsne_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_std(data : Array[Double]) -> Double { ml_feature_tsne_sqrt(ml_feature_tsne_var(data)) }
+
+pub fn ml_feature_tsne_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = ml_feature_tsne_mean(a); let mb = ml_feature_tsne_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = ml_feature_tsne_std(a); let sb = ml_feature_tsne_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { ml_feature_tsne_cov(a, b) / (sa * sb) }
+}
+
+pub fn ml_feature_tsne_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = ml_feature_tsne_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn ml_feature_tsne_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  ml_feature_tsne_sqrt(ml_feature_tsne_mse(pred, labels))
+}
+
+pub fn ml_feature_tsne_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + ml_feature_tsne_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = ml_feature_tsne_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn ml_feature_tsne_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn ml_feature_tsne_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn ml_feature_tsne_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = ml_feature_tsne_precision(pred, labels, pos); let r = ml_feature_tsne_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn ml_feature_tsne_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn ml_feature_tsne_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = ml_feature_tsne_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn ml_feature_tsne_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn ml_feature_tsne_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn ml_feature_tsne_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = ml_feature_tsne_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn ml_feature_tsne_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn ml_feature_tsne_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn ml_feature_tsne_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = ml_feature_tsne_min(data); let mx = ml_feature_tsne_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn ml_feature_tsne_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = ml_feature_tsne_mean(data); let sd = ml_feature_tsne_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn ml_feature_tsne_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn ml_feature_tsne_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn ml_feature_tsne_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn ml_feature_tsne_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn ml_feature_tsne_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn ml_feature_tsne_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn ml_feature_tsne_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { ml_feature_tsne_int(x) } else { -ml_feature_tsne_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { ml_feature_tsne_int(f * 1000000.0) } else { ml_feature_tsne_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn ml_feature_tsne_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn ml_feature_tsne_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct MlfeaturetsneFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_tsne_frame_make(size : Int) -> MlfeaturetsneFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_tsne_frame_len(s : MlfeaturetsneFrame) -> Int { s.size }
+
+pub fn ml_feature_tsne_frame_get(s : MlfeaturetsneFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_tsne_frame_set(s : MlfeaturetsneFrame, i : Int, v : Double) -> MlfeaturetsneFrame {
+  let result = ml_feature_tsne_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_frame_sum(s : MlfeaturetsneFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_tsne_frame_mean(s : MlfeaturetsneFrame) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_tsne_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_tsne_frame_scale(s : MlfeaturetsneFrame, f : Double) -> MlfeaturetsneFrame {
+  let result = ml_feature_tsne_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_tsne_frame_add(a : MlfeaturetsneFrame, b : MlfeaturetsneFrame) -> MlfeaturetsneFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_tsne_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_frame_copy(s : MlfeaturetsneFrame) -> MlfeaturetsneFrame {
+  let result = ml_feature_tsne_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_frame_fill(s : MlfeaturetsneFrame, v : Double) -> MlfeaturetsneFrame {
+  let result = ml_feature_tsne_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_frame_min(s : MlfeaturetsneFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_frame_max(s : MlfeaturetsneFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_frame_to_string(s : MlfeaturetsneFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlfeaturetsneTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_tsne_table_make(size : Int) -> MlfeaturetsneTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_tsne_table_len(s : MlfeaturetsneTable) -> Int { s.size }
+
+pub fn ml_feature_tsne_table_get(s : MlfeaturetsneTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_tsne_table_set(s : MlfeaturetsneTable, i : Int, v : Double) -> MlfeaturetsneTable {
+  let result = ml_feature_tsne_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_table_sum(s : MlfeaturetsneTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_tsne_table_mean(s : MlfeaturetsneTable) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_tsne_table_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_tsne_table_scale(s : MlfeaturetsneTable, f : Double) -> MlfeaturetsneTable {
+  let result = ml_feature_tsne_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_tsne_table_add(a : MlfeaturetsneTable, b : MlfeaturetsneTable) -> MlfeaturetsneTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_tsne_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_table_copy(s : MlfeaturetsneTable) -> MlfeaturetsneTable {
+  let result = ml_feature_tsne_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_table_fill(s : MlfeaturetsneTable, v : Double) -> MlfeaturetsneTable {
+  let result = ml_feature_tsne_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_table_min(s : MlfeaturetsneTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_table_max(s : MlfeaturetsneTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_table_to_string(s : MlfeaturetsneTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlfeaturetsneGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_tsne_graphn_make(size : Int) -> MlfeaturetsneGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_tsne_graphn_len(s : MlfeaturetsneGraphN) -> Int { s.size }
+
+pub fn ml_feature_tsne_graphn_get(s : MlfeaturetsneGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_tsne_graphn_set(s : MlfeaturetsneGraphN, i : Int, v : Double) -> MlfeaturetsneGraphN {
+  let result = ml_feature_tsne_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_graphn_sum(s : MlfeaturetsneGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_tsne_graphn_mean(s : MlfeaturetsneGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_tsne_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_tsne_graphn_scale(s : MlfeaturetsneGraphN, f : Double) -> MlfeaturetsneGraphN {
+  let result = ml_feature_tsne_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_tsne_graphn_add(a : MlfeaturetsneGraphN, b : MlfeaturetsneGraphN) -> MlfeaturetsneGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_tsne_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_graphn_copy(s : MlfeaturetsneGraphN) -> MlfeaturetsneGraphN {
+  let result = ml_feature_tsne_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_graphn_fill(s : MlfeaturetsneGraphN, v : Double) -> MlfeaturetsneGraphN {
+  let result = ml_feature_tsne_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_graphn_min(s : MlfeaturetsneGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_graphn_max(s : MlfeaturetsneGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_graphn_to_string(s : MlfeaturetsneGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlfeaturetsneNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_tsne_node_make(size : Int) -> MlfeaturetsneNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_tsne_node_len(s : MlfeaturetsneNode) -> Int { s.size }
+
+pub fn ml_feature_tsne_node_get(s : MlfeaturetsneNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_tsne_node_set(s : MlfeaturetsneNode, i : Int, v : Double) -> MlfeaturetsneNode {
+  let result = ml_feature_tsne_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_node_sum(s : MlfeaturetsneNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_tsne_node_mean(s : MlfeaturetsneNode) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_tsne_node_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_tsne_node_scale(s : MlfeaturetsneNode, f : Double) -> MlfeaturetsneNode {
+  let result = ml_feature_tsne_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_tsne_node_add(a : MlfeaturetsneNode, b : MlfeaturetsneNode) -> MlfeaturetsneNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_tsne_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_node_copy(s : MlfeaturetsneNode) -> MlfeaturetsneNode {
+  let result = ml_feature_tsne_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_node_fill(s : MlfeaturetsneNode, v : Double) -> MlfeaturetsneNode {
+  let result = ml_feature_tsne_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_node_min(s : MlfeaturetsneNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_node_max(s : MlfeaturetsneNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_node_to_string(s : MlfeaturetsneNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlfeaturetsneEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_tsne_edge_make(size : Int) -> MlfeaturetsneEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_tsne_edge_len(s : MlfeaturetsneEdge) -> Int { s.size }
+
+pub fn ml_feature_tsne_edge_get(s : MlfeaturetsneEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_tsne_edge_set(s : MlfeaturetsneEdge, i : Int, v : Double) -> MlfeaturetsneEdge {
+  let result = ml_feature_tsne_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_edge_sum(s : MlfeaturetsneEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_tsne_edge_mean(s : MlfeaturetsneEdge) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_tsne_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_tsne_edge_scale(s : MlfeaturetsneEdge, f : Double) -> MlfeaturetsneEdge {
+  let result = ml_feature_tsne_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_tsne_edge_add(a : MlfeaturetsneEdge, b : MlfeaturetsneEdge) -> MlfeaturetsneEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_tsne_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_edge_copy(s : MlfeaturetsneEdge) -> MlfeaturetsneEdge {
+  let result = ml_feature_tsne_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_edge_fill(s : MlfeaturetsneEdge, v : Double) -> MlfeaturetsneEdge {
+  let result = ml_feature_tsne_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_edge_min(s : MlfeaturetsneEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_edge_max(s : MlfeaturetsneEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_edge_to_string(s : MlfeaturetsneEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlfeaturetsnePath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_tsne_path_make(size : Int) -> MlfeaturetsnePath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_tsne_path_len(s : MlfeaturetsnePath) -> Int { s.size }
+
+pub fn ml_feature_tsne_path_get(s : MlfeaturetsnePath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_tsne_path_set(s : MlfeaturetsnePath, i : Int, v : Double) -> MlfeaturetsnePath {
+  let result = ml_feature_tsne_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_path_sum(s : MlfeaturetsnePath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_tsne_path_mean(s : MlfeaturetsnePath) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_tsne_path_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_tsne_path_scale(s : MlfeaturetsnePath, f : Double) -> MlfeaturetsnePath {
+  let result = ml_feature_tsne_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_tsne_path_add(a : MlfeaturetsnePath, b : MlfeaturetsnePath) -> MlfeaturetsnePath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_tsne_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_path_copy(s : MlfeaturetsnePath) -> MlfeaturetsnePath {
+  let result = ml_feature_tsne_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_path_fill(s : MlfeaturetsnePath, v : Double) -> MlfeaturetsnePath {
+  let result = ml_feature_tsne_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_path_min(s : MlfeaturetsnePath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_path_max(s : MlfeaturetsnePath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_path_to_string(s : MlfeaturetsnePath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlfeaturetsneCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_tsne_cluster_make(size : Int) -> MlfeaturetsneCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_tsne_cluster_len(s : MlfeaturetsneCluster) -> Int { s.size }
+
+pub fn ml_feature_tsne_cluster_get(s : MlfeaturetsneCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_tsne_cluster_set(s : MlfeaturetsneCluster, i : Int, v : Double) -> MlfeaturetsneCluster {
+  let result = ml_feature_tsne_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_cluster_sum(s : MlfeaturetsneCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_tsne_cluster_mean(s : MlfeaturetsneCluster) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_tsne_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_tsne_cluster_scale(s : MlfeaturetsneCluster, f : Double) -> MlfeaturetsneCluster {
+  let result = ml_feature_tsne_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_tsne_cluster_add(a : MlfeaturetsneCluster, b : MlfeaturetsneCluster) -> MlfeaturetsneCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_tsne_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_cluster_copy(s : MlfeaturetsneCluster) -> MlfeaturetsneCluster {
+  let result = ml_feature_tsne_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_cluster_fill(s : MlfeaturetsneCluster, v : Double) -> MlfeaturetsneCluster {
+  let result = ml_feature_tsne_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_cluster_min(s : MlfeaturetsneCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_cluster_max(s : MlfeaturetsneCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_cluster_to_string(s : MlfeaturetsneCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlfeaturetsneModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_tsne_model_make(size : Int) -> MlfeaturetsneModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_tsne_model_len(s : MlfeaturetsneModel) -> Int { s.size }
+
+pub fn ml_feature_tsne_model_get(s : MlfeaturetsneModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_tsne_model_set(s : MlfeaturetsneModel, i : Int, v : Double) -> MlfeaturetsneModel {
+  let result = ml_feature_tsne_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_model_sum(s : MlfeaturetsneModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_tsne_model_mean(s : MlfeaturetsneModel) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_tsne_model_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_tsne_model_scale(s : MlfeaturetsneModel, f : Double) -> MlfeaturetsneModel {
+  let result = ml_feature_tsne_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_tsne_model_add(a : MlfeaturetsneModel, b : MlfeaturetsneModel) -> MlfeaturetsneModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_tsne_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_model_copy(s : MlfeaturetsneModel) -> MlfeaturetsneModel {
+  let result = ml_feature_tsne_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_model_fill(s : MlfeaturetsneModel, v : Double) -> MlfeaturetsneModel {
+  let result = ml_feature_tsne_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_model_min(s : MlfeaturetsneModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_model_max(s : MlfeaturetsneModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_model_to_string(s : MlfeaturetsneModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlfeaturetsneLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_tsne_layer_make(size : Int) -> MlfeaturetsneLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_tsne_layer_len(s : MlfeaturetsneLayer) -> Int { s.size }
+
+pub fn ml_feature_tsne_layer_get(s : MlfeaturetsneLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_tsne_layer_set(s : MlfeaturetsneLayer, i : Int, v : Double) -> MlfeaturetsneLayer {
+  let result = ml_feature_tsne_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_layer_sum(s : MlfeaturetsneLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_tsne_layer_mean(s : MlfeaturetsneLayer) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_tsne_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_tsne_layer_scale(s : MlfeaturetsneLayer, f : Double) -> MlfeaturetsneLayer {
+  let result = ml_feature_tsne_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_tsne_layer_add(a : MlfeaturetsneLayer, b : MlfeaturetsneLayer) -> MlfeaturetsneLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_tsne_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_layer_copy(s : MlfeaturetsneLayer) -> MlfeaturetsneLayer {
+  let result = ml_feature_tsne_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_layer_fill(s : MlfeaturetsneLayer, v : Double) -> MlfeaturetsneLayer {
+  let result = ml_feature_tsne_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_layer_min(s : MlfeaturetsneLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_layer_max(s : MlfeaturetsneLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_layer_to_string(s : MlfeaturetsneLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlfeaturetsneBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_tsne_buffer_make(size : Int) -> MlfeaturetsneBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_tsne_buffer_len(s : MlfeaturetsneBuffer) -> Int { s.size }
+
+pub fn ml_feature_tsne_buffer_get(s : MlfeaturetsneBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_tsne_buffer_set(s : MlfeaturetsneBuffer, i : Int, v : Double) -> MlfeaturetsneBuffer {
+  let result = ml_feature_tsne_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_buffer_sum(s : MlfeaturetsneBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_tsne_buffer_mean(s : MlfeaturetsneBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_tsne_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_tsne_buffer_scale(s : MlfeaturetsneBuffer, f : Double) -> MlfeaturetsneBuffer {
+  let result = ml_feature_tsne_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_tsne_buffer_add(a : MlfeaturetsneBuffer, b : MlfeaturetsneBuffer) -> MlfeaturetsneBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_tsne_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_buffer_copy(s : MlfeaturetsneBuffer) -> MlfeaturetsneBuffer {
+  let result = ml_feature_tsne_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_buffer_fill(s : MlfeaturetsneBuffer, v : Double) -> MlfeaturetsneBuffer {
+  let result = ml_feature_tsne_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_buffer_min(s : MlfeaturetsneBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_buffer_max(s : MlfeaturetsneBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_buffer_to_string(s : MlfeaturetsneBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlfeaturetsneCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_tsne_cursor_make(size : Int) -> MlfeaturetsneCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_tsne_cursor_len(s : MlfeaturetsneCursor) -> Int { s.size }
+
+pub fn ml_feature_tsne_cursor_get(s : MlfeaturetsneCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_tsne_cursor_set(s : MlfeaturetsneCursor, i : Int, v : Double) -> MlfeaturetsneCursor {
+  let result = ml_feature_tsne_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_cursor_sum(s : MlfeaturetsneCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_tsne_cursor_mean(s : MlfeaturetsneCursor) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_tsne_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_tsne_cursor_scale(s : MlfeaturetsneCursor, f : Double) -> MlfeaturetsneCursor {
+  let result = ml_feature_tsne_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_tsne_cursor_add(a : MlfeaturetsneCursor, b : MlfeaturetsneCursor) -> MlfeaturetsneCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_tsne_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_cursor_copy(s : MlfeaturetsneCursor) -> MlfeaturetsneCursor {
+  let result = ml_feature_tsne_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_cursor_fill(s : MlfeaturetsneCursor, v : Double) -> MlfeaturetsneCursor {
+  let result = ml_feature_tsne_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_cursor_min(s : MlfeaturetsneCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_cursor_max(s : MlfeaturetsneCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_cursor_to_string(s : MlfeaturetsneCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlfeaturetsneView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_tsne_view_make(size : Int) -> MlfeaturetsneView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_tsne_view_len(s : MlfeaturetsneView) -> Int { s.size }
+
+pub fn ml_feature_tsne_view_get(s : MlfeaturetsneView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_tsne_view_set(s : MlfeaturetsneView, i : Int, v : Double) -> MlfeaturetsneView {
+  let result = ml_feature_tsne_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_view_sum(s : MlfeaturetsneView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_tsne_view_mean(s : MlfeaturetsneView) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_tsne_view_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_tsne_view_scale(s : MlfeaturetsneView, f : Double) -> MlfeaturetsneView {
+  let result = ml_feature_tsne_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_tsne_view_add(a : MlfeaturetsneView, b : MlfeaturetsneView) -> MlfeaturetsneView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_tsne_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_view_copy(s : MlfeaturetsneView) -> MlfeaturetsneView {
+  let result = ml_feature_tsne_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_view_fill(s : MlfeaturetsneView, v : Double) -> MlfeaturetsneView {
+  let result = ml_feature_tsne_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_view_min(s : MlfeaturetsneView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_view_max(s : MlfeaturetsneView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_view_to_string(s : MlfeaturetsneView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlfeaturetsneRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_tsne_range_make(size : Int) -> MlfeaturetsneRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_tsne_range_len(s : MlfeaturetsneRange) -> Int { s.size }
+
+pub fn ml_feature_tsne_range_get(s : MlfeaturetsneRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_tsne_range_set(s : MlfeaturetsneRange, i : Int, v : Double) -> MlfeaturetsneRange {
+  let result = ml_feature_tsne_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_range_sum(s : MlfeaturetsneRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_tsne_range_mean(s : MlfeaturetsneRange) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_tsne_range_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_tsne_range_scale(s : MlfeaturetsneRange, f : Double) -> MlfeaturetsneRange {
+  let result = ml_feature_tsne_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_tsne_range_add(a : MlfeaturetsneRange, b : MlfeaturetsneRange) -> MlfeaturetsneRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_tsne_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_range_copy(s : MlfeaturetsneRange) -> MlfeaturetsneRange {
+  let result = ml_feature_tsne_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_range_fill(s : MlfeaturetsneRange, v : Double) -> MlfeaturetsneRange {
+  let result = ml_feature_tsne_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_range_min(s : MlfeaturetsneRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_range_max(s : MlfeaturetsneRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_range_to_string(s : MlfeaturetsneRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct MlfeaturetsneSlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ml_feature_tsne_slice_make(size : Int) -> MlfeaturetsneSlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ml_feature_tsne_slice_len(s : MlfeaturetsneSlice) -> Int { s.size }
+
+pub fn ml_feature_tsne_slice_get(s : MlfeaturetsneSlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ml_feature_tsne_slice_set(s : MlfeaturetsneSlice, i : Int, v : Double) -> MlfeaturetsneSlice {
+  let result = ml_feature_tsne_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_slice_sum(s : MlfeaturetsneSlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ml_feature_tsne_slice_mean(s : MlfeaturetsneSlice) -> Double {
+  if s.size == 0 { 0.0 } else { ml_feature_tsne_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn ml_feature_tsne_slice_scale(s : MlfeaturetsneSlice, f : Double) -> MlfeaturetsneSlice {
+  let result = ml_feature_tsne_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ml_feature_tsne_slice_add(a : MlfeaturetsneSlice, b : MlfeaturetsneSlice) -> MlfeaturetsneSlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ml_feature_tsne_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_slice_copy(s : MlfeaturetsneSlice) -> MlfeaturetsneSlice {
+  let result = ml_feature_tsne_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ml_feature_tsne_slice_fill(s : MlfeaturetsneSlice, v : Double) -> MlfeaturetsneSlice {
+  let result = ml_feature_tsne_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ml_feature_tsne_slice_min(s : MlfeaturetsneSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_slice_max(s : MlfeaturetsneSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ml_feature_tsne_slice_to_string(s : MlfeaturetsneSlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn ml_feature_tsne_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ml_feature_tsne_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

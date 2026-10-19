@@ -1,0 +1,1955 @@
+///===
+/// extcore/stats_test_f
+
+pub(all) struct StatstestfPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn stats_test_f_make_point(x : Double, y : Double) -> StatstestfPoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn stats_test_f_make_point3(x : Double, y : Double, z : Double) -> StatstestfPoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn stats_test_f_point_x(pt : StatstestfPoint) -> Double { pt.x }
+
+pub fn stats_test_f_point_y(pt : StatstestfPoint) -> Double { pt.y }
+
+pub fn stats_test_f_point_z(pt : StatstestfPoint) -> Double { pt.z }
+
+pub fn stats_test_f_point_label(pt : StatstestfPoint) -> Int { pt.label }
+
+pub fn stats_test_f_point_dist(a : StatstestfPoint, b : StatstestfPoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  stats_test_f_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn stats_test_f_point_add(a : StatstestfPoint, b : StatstestfPoint) -> StatstestfPoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn stats_test_f_point_sub(a : StatstestfPoint, b : StatstestfPoint) -> StatstestfPoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn stats_test_f_point_scale(pt : StatstestfPoint, s : Double) -> StatstestfPoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn stats_test_f_point_dot(a : StatstestfPoint, b : StatstestfPoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn stats_test_f_point_cross(a : StatstestfPoint, b : StatstestfPoint) -> StatstestfPoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn stats_test_f_point_norm(pt : StatstestfPoint) -> Double {
+  stats_test_f_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn stats_test_f_point_normalize(pt : StatstestfPoint) -> StatstestfPoint {
+  let n = stats_test_f_point_norm(pt)
+  if n < 0.0000001 { pt } else { stats_test_f_point_scale(pt, 1.0 / n) }
+}
+
+pub fn stats_test_f_point_negate(pt : StatstestfPoint) -> StatstestfPoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn stats_test_f_point_mid(a : StatstestfPoint, b : StatstestfPoint) -> StatstestfPoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn stats_test_f_point_lerp(a : StatstestfPoint, b : StatstestfPoint, t : Double) -> StatstestfPoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn stats_test_f_point_to_string(pt : StatstestfPoint) -> String {
+  "(" + stats_test_f_dbl(pt.x) + ", " + stats_test_f_dbl(pt.y) + ", " + stats_test_f_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct StatstestfSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn stats_test_f_make_series(vals : Array[Double], name : String) -> StatstestfSeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn stats_test_f_series_len(s : StatstestfSeries) -> Int { s.vals.length() }
+
+pub fn stats_test_f_series_sum(s : StatstestfSeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn stats_test_f_series_mean(s : StatstestfSeries) -> Double {
+  let n = stats_test_f_series_len(s)
+  if n == 0 { 0.0 } else { stats_test_f_series_sum(s) / n.to_double() }
+}
+
+pub fn stats_test_f_series_min(s : StatstestfSeries) -> Double {
+  let n = stats_test_f_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_series_max(s : StatstestfSeries) -> Double {
+  let n = stats_test_f_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_series_range(s : StatstestfSeries) -> Double {
+  stats_test_f_series_max(s) - stats_test_f_series_min(s)
+}
+
+pub fn stats_test_f_series_var(s : StatstestfSeries) -> Double {
+  let n = stats_test_f_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = stats_test_f_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn stats_test_f_series_std(s : StatstestfSeries) -> Double { stats_test_f_sqrt(stats_test_f_series_var(s)) }
+
+pub fn stats_test_f_series_median(s : StatstestfSeries) -> Double {
+  let n = stats_test_f_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = stats_test_f_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn stats_test_f_series_scale(s : StatstestfSeries, f : Double) -> StatstestfSeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = stats_test_f_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn stats_test_f_series_add(a : StatstestfSeries, b : StatstestfSeries) -> StatstestfSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = stats_test_f_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn stats_test_f_series_sub(a : StatstestfSeries, b : StatstestfSeries) -> StatstestfSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = stats_test_f_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn stats_test_f_series_normalize(s : StatstestfSeries) -> StatstestfSeries {
+  let mn = stats_test_f_series_min(s)
+  let mx = stats_test_f_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = stats_test_f_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn stats_test_f_series_cumsum(s : StatstestfSeries) -> StatstestfSeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = stats_test_f_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn stats_test_f_series_to_string(s : StatstestfSeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + stats_test_f_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct StatstestfMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn stats_test_f_make_matrix(rows : Int, cols : Int, val : Double) -> StatstestfMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn stats_test_f_matrix_identity(n : Int) -> StatstestfMatrix {
+  let m = stats_test_f_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn stats_test_f_matrix_get(m : StatstestfMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn stats_test_f_matrix_transpose(m : StatstestfMatrix) -> StatstestfMatrix {
+  let result = stats_test_f_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn stats_test_f_matrix_add(a : StatstestfMatrix, b : StatstestfMatrix) -> StatstestfMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = stats_test_f_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn stats_test_f_matrix_scale(m : StatstestfMatrix, s : Double) -> StatstestfMatrix {
+  let result = stats_test_f_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn stats_test_f_matrix_multiply(a : StatstestfMatrix, b : StatstestfMatrix) -> StatstestfMatrix {
+  if a.cols != b.rows { return stats_test_f_make_matrix(a.rows, b.cols, 0.0) }
+  let result = stats_test_f_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn stats_test_f_matrix_trace(m : StatstestfMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn stats_test_f_matrix_det(m : StatstestfMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn stats_test_f_matrix_norm(m : StatstestfMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  stats_test_f_sqrt(sum)
+}
+
+pub fn stats_test_f_matrix_to_string(m : StatstestfMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + stats_test_f_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct StatstestfVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn stats_test_f_make_vector(comps : Array[Double]) -> StatstestfVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn stats_test_f_vector_zero(dim : Int) -> StatstestfVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn stats_test_f_vector_add(a : StatstestfVector, b : StatstestfVector) -> StatstestfVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = stats_test_f_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn stats_test_f_vector_sub(a : StatstestfVector, b : StatstestfVector) -> StatstestfVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = stats_test_f_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn stats_test_f_vector_scale(v : StatstestfVector, s : Double) -> StatstestfVector {
+  let mut result = []
+  for i in 0..<v.dim { result = stats_test_f_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn stats_test_f_vector_dot(a : StatstestfVector, b : StatstestfVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn stats_test_f_vector_norm(v : StatstestfVector) -> Double { stats_test_f_sqrt(stats_test_f_vector_dot(v, v)) }
+
+pub fn stats_test_f_vector_normalize(v : StatstestfVector) -> StatstestfVector {
+  let n = stats_test_f_vector_norm(v)
+  if n < 0.0000001 { v } else { stats_test_f_vector_scale(v, 1.0 / n) }
+}
+
+pub fn stats_test_f_vector_dist(a : StatstestfVector, b : StatstestfVector) -> Double {
+  stats_test_f_vector_norm(stats_test_f_vector_sub(a, b))
+}
+
+pub fn stats_test_f_vector_to_string(v : StatstestfVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + stats_test_f_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn stats_test_f_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn stats_test_f_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = stats_test_f_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn stats_test_f_std(data : Array[Double]) -> Double { stats_test_f_sqrt(stats_test_f_var(data)) }
+
+pub fn stats_test_f_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = stats_test_f_mean(a); let mb = stats_test_f_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn stats_test_f_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = stats_test_f_std(a); let sb = stats_test_f_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { stats_test_f_cov(a, b) / (sa * sb) }
+}
+
+pub fn stats_test_f_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = stats_test_f_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn stats_test_f_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn stats_test_f_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn stats_test_f_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  stats_test_f_sqrt(stats_test_f_mse(pred, labels))
+}
+
+pub fn stats_test_f_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + stats_test_f_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn stats_test_f_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = stats_test_f_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn stats_test_f_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn stats_test_f_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn stats_test_f_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = stats_test_f_precision(pred, labels, pos); let r = stats_test_f_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn stats_test_f_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn stats_test_f_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = stats_test_f_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn stats_test_f_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn stats_test_f_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn stats_test_f_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = stats_test_f_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn stats_test_f_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn stats_test_f_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn stats_test_f_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = stats_test_f_min(data); let mx = stats_test_f_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn stats_test_f_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = stats_test_f_mean(data); let sd = stats_test_f_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn stats_test_f_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn stats_test_f_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn stats_test_f_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn stats_test_f_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn stats_test_f_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn stats_test_f_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn stats_test_f_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { stats_test_f_int(x) } else { -stats_test_f_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { stats_test_f_int(f * 1000000.0) } else { stats_test_f_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn stats_test_f_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn stats_test_f_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct StatstestfFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn stats_test_f_frame_make(size : Int) -> StatstestfFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn stats_test_f_frame_len(s : StatstestfFrame) -> Int { s.size }
+
+pub fn stats_test_f_frame_get(s : StatstestfFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn stats_test_f_frame_set(s : StatstestfFrame, i : Int, v : Double) -> StatstestfFrame {
+  let result = stats_test_f_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_frame_sum(s : StatstestfFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn stats_test_f_frame_mean(s : StatstestfFrame) -> Double {
+  if s.size == 0 { 0.0 } else { stats_test_f_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn stats_test_f_frame_scale(s : StatstestfFrame, f : Double) -> StatstestfFrame {
+  let result = stats_test_f_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn stats_test_f_frame_add(a : StatstestfFrame, b : StatstestfFrame) -> StatstestfFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = stats_test_f_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn stats_test_f_frame_copy(s : StatstestfFrame) -> StatstestfFrame {
+  let result = stats_test_f_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn stats_test_f_frame_fill(s : StatstestfFrame, v : Double) -> StatstestfFrame {
+  let result = stats_test_f_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_frame_min(s : StatstestfFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_frame_max(s : StatstestfFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_frame_to_string(s : StatstestfFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct StatstestfTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn stats_test_f_table_make(size : Int) -> StatstestfTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn stats_test_f_table_len(s : StatstestfTable) -> Int { s.size }
+
+pub fn stats_test_f_table_get(s : StatstestfTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn stats_test_f_table_set(s : StatstestfTable, i : Int, v : Double) -> StatstestfTable {
+  let result = stats_test_f_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_table_sum(s : StatstestfTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn stats_test_f_table_mean(s : StatstestfTable) -> Double {
+  if s.size == 0 { 0.0 } else { stats_test_f_table_sum(s) / s.size.to_double() }
+}
+
+pub fn stats_test_f_table_scale(s : StatstestfTable, f : Double) -> StatstestfTable {
+  let result = stats_test_f_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn stats_test_f_table_add(a : StatstestfTable, b : StatstestfTable) -> StatstestfTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = stats_test_f_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn stats_test_f_table_copy(s : StatstestfTable) -> StatstestfTable {
+  let result = stats_test_f_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn stats_test_f_table_fill(s : StatstestfTable, v : Double) -> StatstestfTable {
+  let result = stats_test_f_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_table_min(s : StatstestfTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_table_max(s : StatstestfTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_table_to_string(s : StatstestfTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct StatstestfGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn stats_test_f_graphn_make(size : Int) -> StatstestfGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn stats_test_f_graphn_len(s : StatstestfGraphN) -> Int { s.size }
+
+pub fn stats_test_f_graphn_get(s : StatstestfGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn stats_test_f_graphn_set(s : StatstestfGraphN, i : Int, v : Double) -> StatstestfGraphN {
+  let result = stats_test_f_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_graphn_sum(s : StatstestfGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn stats_test_f_graphn_mean(s : StatstestfGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { stats_test_f_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn stats_test_f_graphn_scale(s : StatstestfGraphN, f : Double) -> StatstestfGraphN {
+  let result = stats_test_f_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn stats_test_f_graphn_add(a : StatstestfGraphN, b : StatstestfGraphN) -> StatstestfGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = stats_test_f_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn stats_test_f_graphn_copy(s : StatstestfGraphN) -> StatstestfGraphN {
+  let result = stats_test_f_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn stats_test_f_graphn_fill(s : StatstestfGraphN, v : Double) -> StatstestfGraphN {
+  let result = stats_test_f_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_graphn_min(s : StatstestfGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_graphn_max(s : StatstestfGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_graphn_to_string(s : StatstestfGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct StatstestfNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn stats_test_f_node_make(size : Int) -> StatstestfNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn stats_test_f_node_len(s : StatstestfNode) -> Int { s.size }
+
+pub fn stats_test_f_node_get(s : StatstestfNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn stats_test_f_node_set(s : StatstestfNode, i : Int, v : Double) -> StatstestfNode {
+  let result = stats_test_f_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_node_sum(s : StatstestfNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn stats_test_f_node_mean(s : StatstestfNode) -> Double {
+  if s.size == 0 { 0.0 } else { stats_test_f_node_sum(s) / s.size.to_double() }
+}
+
+pub fn stats_test_f_node_scale(s : StatstestfNode, f : Double) -> StatstestfNode {
+  let result = stats_test_f_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn stats_test_f_node_add(a : StatstestfNode, b : StatstestfNode) -> StatstestfNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = stats_test_f_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn stats_test_f_node_copy(s : StatstestfNode) -> StatstestfNode {
+  let result = stats_test_f_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn stats_test_f_node_fill(s : StatstestfNode, v : Double) -> StatstestfNode {
+  let result = stats_test_f_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_node_min(s : StatstestfNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_node_max(s : StatstestfNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_node_to_string(s : StatstestfNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct StatstestfEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn stats_test_f_edge_make(size : Int) -> StatstestfEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn stats_test_f_edge_len(s : StatstestfEdge) -> Int { s.size }
+
+pub fn stats_test_f_edge_get(s : StatstestfEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn stats_test_f_edge_set(s : StatstestfEdge, i : Int, v : Double) -> StatstestfEdge {
+  let result = stats_test_f_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_edge_sum(s : StatstestfEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn stats_test_f_edge_mean(s : StatstestfEdge) -> Double {
+  if s.size == 0 { 0.0 } else { stats_test_f_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn stats_test_f_edge_scale(s : StatstestfEdge, f : Double) -> StatstestfEdge {
+  let result = stats_test_f_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn stats_test_f_edge_add(a : StatstestfEdge, b : StatstestfEdge) -> StatstestfEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = stats_test_f_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn stats_test_f_edge_copy(s : StatstestfEdge) -> StatstestfEdge {
+  let result = stats_test_f_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn stats_test_f_edge_fill(s : StatstestfEdge, v : Double) -> StatstestfEdge {
+  let result = stats_test_f_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_edge_min(s : StatstestfEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_edge_max(s : StatstestfEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_edge_to_string(s : StatstestfEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct StatstestfPath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn stats_test_f_path_make(size : Int) -> StatstestfPath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn stats_test_f_path_len(s : StatstestfPath) -> Int { s.size }
+
+pub fn stats_test_f_path_get(s : StatstestfPath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn stats_test_f_path_set(s : StatstestfPath, i : Int, v : Double) -> StatstestfPath {
+  let result = stats_test_f_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_path_sum(s : StatstestfPath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn stats_test_f_path_mean(s : StatstestfPath) -> Double {
+  if s.size == 0 { 0.0 } else { stats_test_f_path_sum(s) / s.size.to_double() }
+}
+
+pub fn stats_test_f_path_scale(s : StatstestfPath, f : Double) -> StatstestfPath {
+  let result = stats_test_f_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn stats_test_f_path_add(a : StatstestfPath, b : StatstestfPath) -> StatstestfPath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = stats_test_f_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn stats_test_f_path_copy(s : StatstestfPath) -> StatstestfPath {
+  let result = stats_test_f_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn stats_test_f_path_fill(s : StatstestfPath, v : Double) -> StatstestfPath {
+  let result = stats_test_f_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_path_min(s : StatstestfPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_path_max(s : StatstestfPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_path_to_string(s : StatstestfPath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct StatstestfCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn stats_test_f_cluster_make(size : Int) -> StatstestfCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn stats_test_f_cluster_len(s : StatstestfCluster) -> Int { s.size }
+
+pub fn stats_test_f_cluster_get(s : StatstestfCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn stats_test_f_cluster_set(s : StatstestfCluster, i : Int, v : Double) -> StatstestfCluster {
+  let result = stats_test_f_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_cluster_sum(s : StatstestfCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn stats_test_f_cluster_mean(s : StatstestfCluster) -> Double {
+  if s.size == 0 { 0.0 } else { stats_test_f_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn stats_test_f_cluster_scale(s : StatstestfCluster, f : Double) -> StatstestfCluster {
+  let result = stats_test_f_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn stats_test_f_cluster_add(a : StatstestfCluster, b : StatstestfCluster) -> StatstestfCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = stats_test_f_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn stats_test_f_cluster_copy(s : StatstestfCluster) -> StatstestfCluster {
+  let result = stats_test_f_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn stats_test_f_cluster_fill(s : StatstestfCluster, v : Double) -> StatstestfCluster {
+  let result = stats_test_f_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_cluster_min(s : StatstestfCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_cluster_max(s : StatstestfCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_cluster_to_string(s : StatstestfCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct StatstestfModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn stats_test_f_model_make(size : Int) -> StatstestfModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn stats_test_f_model_len(s : StatstestfModel) -> Int { s.size }
+
+pub fn stats_test_f_model_get(s : StatstestfModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn stats_test_f_model_set(s : StatstestfModel, i : Int, v : Double) -> StatstestfModel {
+  let result = stats_test_f_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_model_sum(s : StatstestfModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn stats_test_f_model_mean(s : StatstestfModel) -> Double {
+  if s.size == 0 { 0.0 } else { stats_test_f_model_sum(s) / s.size.to_double() }
+}
+
+pub fn stats_test_f_model_scale(s : StatstestfModel, f : Double) -> StatstestfModel {
+  let result = stats_test_f_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn stats_test_f_model_add(a : StatstestfModel, b : StatstestfModel) -> StatstestfModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = stats_test_f_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn stats_test_f_model_copy(s : StatstestfModel) -> StatstestfModel {
+  let result = stats_test_f_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn stats_test_f_model_fill(s : StatstestfModel, v : Double) -> StatstestfModel {
+  let result = stats_test_f_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_model_min(s : StatstestfModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_model_max(s : StatstestfModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_model_to_string(s : StatstestfModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct StatstestfLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn stats_test_f_layer_make(size : Int) -> StatstestfLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn stats_test_f_layer_len(s : StatstestfLayer) -> Int { s.size }
+
+pub fn stats_test_f_layer_get(s : StatstestfLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn stats_test_f_layer_set(s : StatstestfLayer, i : Int, v : Double) -> StatstestfLayer {
+  let result = stats_test_f_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_layer_sum(s : StatstestfLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn stats_test_f_layer_mean(s : StatstestfLayer) -> Double {
+  if s.size == 0 { 0.0 } else { stats_test_f_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn stats_test_f_layer_scale(s : StatstestfLayer, f : Double) -> StatstestfLayer {
+  let result = stats_test_f_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn stats_test_f_layer_add(a : StatstestfLayer, b : StatstestfLayer) -> StatstestfLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = stats_test_f_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn stats_test_f_layer_copy(s : StatstestfLayer) -> StatstestfLayer {
+  let result = stats_test_f_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn stats_test_f_layer_fill(s : StatstestfLayer, v : Double) -> StatstestfLayer {
+  let result = stats_test_f_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_layer_min(s : StatstestfLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_layer_max(s : StatstestfLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_layer_to_string(s : StatstestfLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct StatstestfBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn stats_test_f_buffer_make(size : Int) -> StatstestfBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn stats_test_f_buffer_len(s : StatstestfBuffer) -> Int { s.size }
+
+pub fn stats_test_f_buffer_get(s : StatstestfBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn stats_test_f_buffer_set(s : StatstestfBuffer, i : Int, v : Double) -> StatstestfBuffer {
+  let result = stats_test_f_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_buffer_sum(s : StatstestfBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn stats_test_f_buffer_mean(s : StatstestfBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { stats_test_f_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn stats_test_f_buffer_scale(s : StatstestfBuffer, f : Double) -> StatstestfBuffer {
+  let result = stats_test_f_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn stats_test_f_buffer_add(a : StatstestfBuffer, b : StatstestfBuffer) -> StatstestfBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = stats_test_f_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn stats_test_f_buffer_copy(s : StatstestfBuffer) -> StatstestfBuffer {
+  let result = stats_test_f_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn stats_test_f_buffer_fill(s : StatstestfBuffer, v : Double) -> StatstestfBuffer {
+  let result = stats_test_f_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_buffer_min(s : StatstestfBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_buffer_max(s : StatstestfBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_buffer_to_string(s : StatstestfBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct StatstestfCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn stats_test_f_cursor_make(size : Int) -> StatstestfCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn stats_test_f_cursor_len(s : StatstestfCursor) -> Int { s.size }
+
+pub fn stats_test_f_cursor_get(s : StatstestfCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn stats_test_f_cursor_set(s : StatstestfCursor, i : Int, v : Double) -> StatstestfCursor {
+  let result = stats_test_f_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_cursor_sum(s : StatstestfCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn stats_test_f_cursor_mean(s : StatstestfCursor) -> Double {
+  if s.size == 0 { 0.0 } else { stats_test_f_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn stats_test_f_cursor_scale(s : StatstestfCursor, f : Double) -> StatstestfCursor {
+  let result = stats_test_f_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn stats_test_f_cursor_add(a : StatstestfCursor, b : StatstestfCursor) -> StatstestfCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = stats_test_f_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn stats_test_f_cursor_copy(s : StatstestfCursor) -> StatstestfCursor {
+  let result = stats_test_f_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn stats_test_f_cursor_fill(s : StatstestfCursor, v : Double) -> StatstestfCursor {
+  let result = stats_test_f_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_cursor_min(s : StatstestfCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_cursor_max(s : StatstestfCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_cursor_to_string(s : StatstestfCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct StatstestfView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn stats_test_f_view_make(size : Int) -> StatstestfView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn stats_test_f_view_len(s : StatstestfView) -> Int { s.size }
+
+pub fn stats_test_f_view_get(s : StatstestfView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn stats_test_f_view_set(s : StatstestfView, i : Int, v : Double) -> StatstestfView {
+  let result = stats_test_f_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_view_sum(s : StatstestfView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn stats_test_f_view_mean(s : StatstestfView) -> Double {
+  if s.size == 0 { 0.0 } else { stats_test_f_view_sum(s) / s.size.to_double() }
+}
+
+pub fn stats_test_f_view_scale(s : StatstestfView, f : Double) -> StatstestfView {
+  let result = stats_test_f_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn stats_test_f_view_add(a : StatstestfView, b : StatstestfView) -> StatstestfView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = stats_test_f_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn stats_test_f_view_copy(s : StatstestfView) -> StatstestfView {
+  let result = stats_test_f_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn stats_test_f_view_fill(s : StatstestfView, v : Double) -> StatstestfView {
+  let result = stats_test_f_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_view_min(s : StatstestfView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_view_max(s : StatstestfView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_view_to_string(s : StatstestfView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct StatstestfRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn stats_test_f_range_make(size : Int) -> StatstestfRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn stats_test_f_range_len(s : StatstestfRange) -> Int { s.size }
+
+pub fn stats_test_f_range_get(s : StatstestfRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn stats_test_f_range_set(s : StatstestfRange, i : Int, v : Double) -> StatstestfRange {
+  let result = stats_test_f_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_range_sum(s : StatstestfRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn stats_test_f_range_mean(s : StatstestfRange) -> Double {
+  if s.size == 0 { 0.0 } else { stats_test_f_range_sum(s) / s.size.to_double() }
+}
+
+pub fn stats_test_f_range_scale(s : StatstestfRange, f : Double) -> StatstestfRange {
+  let result = stats_test_f_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn stats_test_f_range_add(a : StatstestfRange, b : StatstestfRange) -> StatstestfRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = stats_test_f_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn stats_test_f_range_copy(s : StatstestfRange) -> StatstestfRange {
+  let result = stats_test_f_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn stats_test_f_range_fill(s : StatstestfRange, v : Double) -> StatstestfRange {
+  let result = stats_test_f_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_range_min(s : StatstestfRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_range_max(s : StatstestfRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_range_to_string(s : StatstestfRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct StatstestfSlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn stats_test_f_slice_make(size : Int) -> StatstestfSlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn stats_test_f_slice_len(s : StatstestfSlice) -> Int { s.size }
+
+pub fn stats_test_f_slice_get(s : StatstestfSlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn stats_test_f_slice_set(s : StatstestfSlice, i : Int, v : Double) -> StatstestfSlice {
+  let result = stats_test_f_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_slice_sum(s : StatstestfSlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn stats_test_f_slice_mean(s : StatstestfSlice) -> Double {
+  if s.size == 0 { 0.0 } else { stats_test_f_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn stats_test_f_slice_scale(s : StatstestfSlice, f : Double) -> StatstestfSlice {
+  let result = stats_test_f_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn stats_test_f_slice_add(a : StatstestfSlice, b : StatstestfSlice) -> StatstestfSlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = stats_test_f_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn stats_test_f_slice_copy(s : StatstestfSlice) -> StatstestfSlice {
+  let result = stats_test_f_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn stats_test_f_slice_fill(s : StatstestfSlice, v : Double) -> StatstestfSlice {
+  let result = stats_test_f_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn stats_test_f_slice_min(s : StatstestfSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_slice_max(s : StatstestfSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn stats_test_f_slice_to_string(s : StatstestfSlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn stats_test_f_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn stats_test_f_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn stats_test_f_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn stats_test_f_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn stats_test_f_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn stats_test_f_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn stats_test_f_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn stats_test_f_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn stats_test_f_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn stats_test_f_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn stats_test_f_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn stats_test_f_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn stats_test_f_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn stats_test_f_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn stats_test_f_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn stats_test_f_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn stats_test_f_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn stats_test_f_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn stats_test_f_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn stats_test_f_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn stats_test_f_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn stats_test_f_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn stats_test_f_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn stats_test_f_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn stats_test_f_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

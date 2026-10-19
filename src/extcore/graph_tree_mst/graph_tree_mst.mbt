@@ -1,0 +1,1955 @@
+///===
+/// extcore/graph_tree_mst
+
+pub(all) struct GraphtreemstPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn graph_tree_mst_make_point(x : Double, y : Double) -> GraphtreemstPoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn graph_tree_mst_make_point3(x : Double, y : Double, z : Double) -> GraphtreemstPoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn graph_tree_mst_point_x(pt : GraphtreemstPoint) -> Double { pt.x }
+
+pub fn graph_tree_mst_point_y(pt : GraphtreemstPoint) -> Double { pt.y }
+
+pub fn graph_tree_mst_point_z(pt : GraphtreemstPoint) -> Double { pt.z }
+
+pub fn graph_tree_mst_point_label(pt : GraphtreemstPoint) -> Int { pt.label }
+
+pub fn graph_tree_mst_point_dist(a : GraphtreemstPoint, b : GraphtreemstPoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  graph_tree_mst_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn graph_tree_mst_point_add(a : GraphtreemstPoint, b : GraphtreemstPoint) -> GraphtreemstPoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn graph_tree_mst_point_sub(a : GraphtreemstPoint, b : GraphtreemstPoint) -> GraphtreemstPoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn graph_tree_mst_point_scale(pt : GraphtreemstPoint, s : Double) -> GraphtreemstPoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn graph_tree_mst_point_dot(a : GraphtreemstPoint, b : GraphtreemstPoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn graph_tree_mst_point_cross(a : GraphtreemstPoint, b : GraphtreemstPoint) -> GraphtreemstPoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn graph_tree_mst_point_norm(pt : GraphtreemstPoint) -> Double {
+  graph_tree_mst_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn graph_tree_mst_point_normalize(pt : GraphtreemstPoint) -> GraphtreemstPoint {
+  let n = graph_tree_mst_point_norm(pt)
+  if n < 0.0000001 { pt } else { graph_tree_mst_point_scale(pt, 1.0 / n) }
+}
+
+pub fn graph_tree_mst_point_negate(pt : GraphtreemstPoint) -> GraphtreemstPoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn graph_tree_mst_point_mid(a : GraphtreemstPoint, b : GraphtreemstPoint) -> GraphtreemstPoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn graph_tree_mst_point_lerp(a : GraphtreemstPoint, b : GraphtreemstPoint, t : Double) -> GraphtreemstPoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn graph_tree_mst_point_to_string(pt : GraphtreemstPoint) -> String {
+  "(" + graph_tree_mst_dbl(pt.x) + ", " + graph_tree_mst_dbl(pt.y) + ", " + graph_tree_mst_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct GraphtreemstSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn graph_tree_mst_make_series(vals : Array[Double], name : String) -> GraphtreemstSeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn graph_tree_mst_series_len(s : GraphtreemstSeries) -> Int { s.vals.length() }
+
+pub fn graph_tree_mst_series_sum(s : GraphtreemstSeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn graph_tree_mst_series_mean(s : GraphtreemstSeries) -> Double {
+  let n = graph_tree_mst_series_len(s)
+  if n == 0 { 0.0 } else { graph_tree_mst_series_sum(s) / n.to_double() }
+}
+
+pub fn graph_tree_mst_series_min(s : GraphtreemstSeries) -> Double {
+  let n = graph_tree_mst_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_series_max(s : GraphtreemstSeries) -> Double {
+  let n = graph_tree_mst_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_series_range(s : GraphtreemstSeries) -> Double {
+  graph_tree_mst_series_max(s) - graph_tree_mst_series_min(s)
+}
+
+pub fn graph_tree_mst_series_var(s : GraphtreemstSeries) -> Double {
+  let n = graph_tree_mst_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = graph_tree_mst_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_series_std(s : GraphtreemstSeries) -> Double { graph_tree_mst_sqrt(graph_tree_mst_series_var(s)) }
+
+pub fn graph_tree_mst_series_median(s : GraphtreemstSeries) -> Double {
+  let n = graph_tree_mst_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = graph_tree_mst_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn graph_tree_mst_series_scale(s : GraphtreemstSeries, f : Double) -> GraphtreemstSeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = graph_tree_mst_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn graph_tree_mst_series_add(a : GraphtreemstSeries, b : GraphtreemstSeries) -> GraphtreemstSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = graph_tree_mst_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn graph_tree_mst_series_sub(a : GraphtreemstSeries, b : GraphtreemstSeries) -> GraphtreemstSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = graph_tree_mst_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn graph_tree_mst_series_normalize(s : GraphtreemstSeries) -> GraphtreemstSeries {
+  let mn = graph_tree_mst_series_min(s)
+  let mx = graph_tree_mst_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = graph_tree_mst_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn graph_tree_mst_series_cumsum(s : GraphtreemstSeries) -> GraphtreemstSeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = graph_tree_mst_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn graph_tree_mst_series_to_string(s : GraphtreemstSeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + graph_tree_mst_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct GraphtreemstMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn graph_tree_mst_make_matrix(rows : Int, cols : Int, val : Double) -> GraphtreemstMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn graph_tree_mst_matrix_identity(n : Int) -> GraphtreemstMatrix {
+  let m = graph_tree_mst_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn graph_tree_mst_matrix_get(m : GraphtreemstMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn graph_tree_mst_matrix_transpose(m : GraphtreemstMatrix) -> GraphtreemstMatrix {
+  let result = graph_tree_mst_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn graph_tree_mst_matrix_add(a : GraphtreemstMatrix, b : GraphtreemstMatrix) -> GraphtreemstMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = graph_tree_mst_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn graph_tree_mst_matrix_scale(m : GraphtreemstMatrix, s : Double) -> GraphtreemstMatrix {
+  let result = graph_tree_mst_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn graph_tree_mst_matrix_multiply(a : GraphtreemstMatrix, b : GraphtreemstMatrix) -> GraphtreemstMatrix {
+  if a.cols != b.rows { return graph_tree_mst_make_matrix(a.rows, b.cols, 0.0) }
+  let result = graph_tree_mst_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn graph_tree_mst_matrix_trace(m : GraphtreemstMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn graph_tree_mst_matrix_det(m : GraphtreemstMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn graph_tree_mst_matrix_norm(m : GraphtreemstMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  graph_tree_mst_sqrt(sum)
+}
+
+pub fn graph_tree_mst_matrix_to_string(m : GraphtreemstMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + graph_tree_mst_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct GraphtreemstVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn graph_tree_mst_make_vector(comps : Array[Double]) -> GraphtreemstVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn graph_tree_mst_vector_zero(dim : Int) -> GraphtreemstVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn graph_tree_mst_vector_add(a : GraphtreemstVector, b : GraphtreemstVector) -> GraphtreemstVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = graph_tree_mst_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn graph_tree_mst_vector_sub(a : GraphtreemstVector, b : GraphtreemstVector) -> GraphtreemstVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = graph_tree_mst_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn graph_tree_mst_vector_scale(v : GraphtreemstVector, s : Double) -> GraphtreemstVector {
+  let mut result = []
+  for i in 0..<v.dim { result = graph_tree_mst_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn graph_tree_mst_vector_dot(a : GraphtreemstVector, b : GraphtreemstVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn graph_tree_mst_vector_norm(v : GraphtreemstVector) -> Double { graph_tree_mst_sqrt(graph_tree_mst_vector_dot(v, v)) }
+
+pub fn graph_tree_mst_vector_normalize(v : GraphtreemstVector) -> GraphtreemstVector {
+  let n = graph_tree_mst_vector_norm(v)
+  if n < 0.0000001 { v } else { graph_tree_mst_vector_scale(v, 1.0 / n) }
+}
+
+pub fn graph_tree_mst_vector_dist(a : GraphtreemstVector, b : GraphtreemstVector) -> Double {
+  graph_tree_mst_vector_norm(graph_tree_mst_vector_sub(a, b))
+}
+
+pub fn graph_tree_mst_vector_to_string(v : GraphtreemstVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + graph_tree_mst_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn graph_tree_mst_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = graph_tree_mst_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_std(data : Array[Double]) -> Double { graph_tree_mst_sqrt(graph_tree_mst_var(data)) }
+
+pub fn graph_tree_mst_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = graph_tree_mst_mean(a); let mb = graph_tree_mst_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = graph_tree_mst_std(a); let sb = graph_tree_mst_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { graph_tree_mst_cov(a, b) / (sa * sb) }
+}
+
+pub fn graph_tree_mst_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = graph_tree_mst_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn graph_tree_mst_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  graph_tree_mst_sqrt(graph_tree_mst_mse(pred, labels))
+}
+
+pub fn graph_tree_mst_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + graph_tree_mst_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = graph_tree_mst_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn graph_tree_mst_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn graph_tree_mst_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn graph_tree_mst_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = graph_tree_mst_precision(pred, labels, pos); let r = graph_tree_mst_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn graph_tree_mst_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn graph_tree_mst_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = graph_tree_mst_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn graph_tree_mst_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn graph_tree_mst_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn graph_tree_mst_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = graph_tree_mst_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn graph_tree_mst_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn graph_tree_mst_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn graph_tree_mst_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = graph_tree_mst_min(data); let mx = graph_tree_mst_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn graph_tree_mst_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = graph_tree_mst_mean(data); let sd = graph_tree_mst_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn graph_tree_mst_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn graph_tree_mst_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn graph_tree_mst_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn graph_tree_mst_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn graph_tree_mst_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn graph_tree_mst_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn graph_tree_mst_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { graph_tree_mst_int(x) } else { -graph_tree_mst_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { graph_tree_mst_int(f * 1000000.0) } else { graph_tree_mst_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn graph_tree_mst_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn graph_tree_mst_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct GraphtreemstFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_tree_mst_frame_make(size : Int) -> GraphtreemstFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_tree_mst_frame_len(s : GraphtreemstFrame) -> Int { s.size }
+
+pub fn graph_tree_mst_frame_get(s : GraphtreemstFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_tree_mst_frame_set(s : GraphtreemstFrame, i : Int, v : Double) -> GraphtreemstFrame {
+  let result = graph_tree_mst_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_frame_sum(s : GraphtreemstFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_tree_mst_frame_mean(s : GraphtreemstFrame) -> Double {
+  if s.size == 0 { 0.0 } else { graph_tree_mst_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_tree_mst_frame_scale(s : GraphtreemstFrame, f : Double) -> GraphtreemstFrame {
+  let result = graph_tree_mst_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_tree_mst_frame_add(a : GraphtreemstFrame, b : GraphtreemstFrame) -> GraphtreemstFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_tree_mst_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_frame_copy(s : GraphtreemstFrame) -> GraphtreemstFrame {
+  let result = graph_tree_mst_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_frame_fill(s : GraphtreemstFrame, v : Double) -> GraphtreemstFrame {
+  let result = graph_tree_mst_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_frame_min(s : GraphtreemstFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_frame_max(s : GraphtreemstFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_frame_to_string(s : GraphtreemstFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphtreemstTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_tree_mst_table_make(size : Int) -> GraphtreemstTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_tree_mst_table_len(s : GraphtreemstTable) -> Int { s.size }
+
+pub fn graph_tree_mst_table_get(s : GraphtreemstTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_tree_mst_table_set(s : GraphtreemstTable, i : Int, v : Double) -> GraphtreemstTable {
+  let result = graph_tree_mst_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_table_sum(s : GraphtreemstTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_tree_mst_table_mean(s : GraphtreemstTable) -> Double {
+  if s.size == 0 { 0.0 } else { graph_tree_mst_table_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_tree_mst_table_scale(s : GraphtreemstTable, f : Double) -> GraphtreemstTable {
+  let result = graph_tree_mst_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_tree_mst_table_add(a : GraphtreemstTable, b : GraphtreemstTable) -> GraphtreemstTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_tree_mst_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_table_copy(s : GraphtreemstTable) -> GraphtreemstTable {
+  let result = graph_tree_mst_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_table_fill(s : GraphtreemstTable, v : Double) -> GraphtreemstTable {
+  let result = graph_tree_mst_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_table_min(s : GraphtreemstTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_table_max(s : GraphtreemstTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_table_to_string(s : GraphtreemstTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphtreemstGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_tree_mst_graphn_make(size : Int) -> GraphtreemstGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_tree_mst_graphn_len(s : GraphtreemstGraphN) -> Int { s.size }
+
+pub fn graph_tree_mst_graphn_get(s : GraphtreemstGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_tree_mst_graphn_set(s : GraphtreemstGraphN, i : Int, v : Double) -> GraphtreemstGraphN {
+  let result = graph_tree_mst_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_graphn_sum(s : GraphtreemstGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_tree_mst_graphn_mean(s : GraphtreemstGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { graph_tree_mst_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_tree_mst_graphn_scale(s : GraphtreemstGraphN, f : Double) -> GraphtreemstGraphN {
+  let result = graph_tree_mst_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_tree_mst_graphn_add(a : GraphtreemstGraphN, b : GraphtreemstGraphN) -> GraphtreemstGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_tree_mst_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_graphn_copy(s : GraphtreemstGraphN) -> GraphtreemstGraphN {
+  let result = graph_tree_mst_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_graphn_fill(s : GraphtreemstGraphN, v : Double) -> GraphtreemstGraphN {
+  let result = graph_tree_mst_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_graphn_min(s : GraphtreemstGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_graphn_max(s : GraphtreemstGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_graphn_to_string(s : GraphtreemstGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphtreemstNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_tree_mst_node_make(size : Int) -> GraphtreemstNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_tree_mst_node_len(s : GraphtreemstNode) -> Int { s.size }
+
+pub fn graph_tree_mst_node_get(s : GraphtreemstNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_tree_mst_node_set(s : GraphtreemstNode, i : Int, v : Double) -> GraphtreemstNode {
+  let result = graph_tree_mst_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_node_sum(s : GraphtreemstNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_tree_mst_node_mean(s : GraphtreemstNode) -> Double {
+  if s.size == 0 { 0.0 } else { graph_tree_mst_node_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_tree_mst_node_scale(s : GraphtreemstNode, f : Double) -> GraphtreemstNode {
+  let result = graph_tree_mst_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_tree_mst_node_add(a : GraphtreemstNode, b : GraphtreemstNode) -> GraphtreemstNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_tree_mst_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_node_copy(s : GraphtreemstNode) -> GraphtreemstNode {
+  let result = graph_tree_mst_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_node_fill(s : GraphtreemstNode, v : Double) -> GraphtreemstNode {
+  let result = graph_tree_mst_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_node_min(s : GraphtreemstNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_node_max(s : GraphtreemstNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_node_to_string(s : GraphtreemstNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphtreemstEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_tree_mst_edge_make(size : Int) -> GraphtreemstEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_tree_mst_edge_len(s : GraphtreemstEdge) -> Int { s.size }
+
+pub fn graph_tree_mst_edge_get(s : GraphtreemstEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_tree_mst_edge_set(s : GraphtreemstEdge, i : Int, v : Double) -> GraphtreemstEdge {
+  let result = graph_tree_mst_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_edge_sum(s : GraphtreemstEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_tree_mst_edge_mean(s : GraphtreemstEdge) -> Double {
+  if s.size == 0 { 0.0 } else { graph_tree_mst_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_tree_mst_edge_scale(s : GraphtreemstEdge, f : Double) -> GraphtreemstEdge {
+  let result = graph_tree_mst_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_tree_mst_edge_add(a : GraphtreemstEdge, b : GraphtreemstEdge) -> GraphtreemstEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_tree_mst_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_edge_copy(s : GraphtreemstEdge) -> GraphtreemstEdge {
+  let result = graph_tree_mst_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_edge_fill(s : GraphtreemstEdge, v : Double) -> GraphtreemstEdge {
+  let result = graph_tree_mst_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_edge_min(s : GraphtreemstEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_edge_max(s : GraphtreemstEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_edge_to_string(s : GraphtreemstEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphtreemstPath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_tree_mst_path_make(size : Int) -> GraphtreemstPath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_tree_mst_path_len(s : GraphtreemstPath) -> Int { s.size }
+
+pub fn graph_tree_mst_path_get(s : GraphtreemstPath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_tree_mst_path_set(s : GraphtreemstPath, i : Int, v : Double) -> GraphtreemstPath {
+  let result = graph_tree_mst_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_path_sum(s : GraphtreemstPath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_tree_mst_path_mean(s : GraphtreemstPath) -> Double {
+  if s.size == 0 { 0.0 } else { graph_tree_mst_path_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_tree_mst_path_scale(s : GraphtreemstPath, f : Double) -> GraphtreemstPath {
+  let result = graph_tree_mst_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_tree_mst_path_add(a : GraphtreemstPath, b : GraphtreemstPath) -> GraphtreemstPath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_tree_mst_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_path_copy(s : GraphtreemstPath) -> GraphtreemstPath {
+  let result = graph_tree_mst_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_path_fill(s : GraphtreemstPath, v : Double) -> GraphtreemstPath {
+  let result = graph_tree_mst_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_path_min(s : GraphtreemstPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_path_max(s : GraphtreemstPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_path_to_string(s : GraphtreemstPath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphtreemstCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_tree_mst_cluster_make(size : Int) -> GraphtreemstCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_tree_mst_cluster_len(s : GraphtreemstCluster) -> Int { s.size }
+
+pub fn graph_tree_mst_cluster_get(s : GraphtreemstCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_tree_mst_cluster_set(s : GraphtreemstCluster, i : Int, v : Double) -> GraphtreemstCluster {
+  let result = graph_tree_mst_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_cluster_sum(s : GraphtreemstCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_tree_mst_cluster_mean(s : GraphtreemstCluster) -> Double {
+  if s.size == 0 { 0.0 } else { graph_tree_mst_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_tree_mst_cluster_scale(s : GraphtreemstCluster, f : Double) -> GraphtreemstCluster {
+  let result = graph_tree_mst_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_tree_mst_cluster_add(a : GraphtreemstCluster, b : GraphtreemstCluster) -> GraphtreemstCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_tree_mst_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_cluster_copy(s : GraphtreemstCluster) -> GraphtreemstCluster {
+  let result = graph_tree_mst_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_cluster_fill(s : GraphtreemstCluster, v : Double) -> GraphtreemstCluster {
+  let result = graph_tree_mst_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_cluster_min(s : GraphtreemstCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_cluster_max(s : GraphtreemstCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_cluster_to_string(s : GraphtreemstCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphtreemstModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_tree_mst_model_make(size : Int) -> GraphtreemstModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_tree_mst_model_len(s : GraphtreemstModel) -> Int { s.size }
+
+pub fn graph_tree_mst_model_get(s : GraphtreemstModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_tree_mst_model_set(s : GraphtreemstModel, i : Int, v : Double) -> GraphtreemstModel {
+  let result = graph_tree_mst_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_model_sum(s : GraphtreemstModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_tree_mst_model_mean(s : GraphtreemstModel) -> Double {
+  if s.size == 0 { 0.0 } else { graph_tree_mst_model_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_tree_mst_model_scale(s : GraphtreemstModel, f : Double) -> GraphtreemstModel {
+  let result = graph_tree_mst_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_tree_mst_model_add(a : GraphtreemstModel, b : GraphtreemstModel) -> GraphtreemstModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_tree_mst_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_model_copy(s : GraphtreemstModel) -> GraphtreemstModel {
+  let result = graph_tree_mst_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_model_fill(s : GraphtreemstModel, v : Double) -> GraphtreemstModel {
+  let result = graph_tree_mst_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_model_min(s : GraphtreemstModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_model_max(s : GraphtreemstModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_model_to_string(s : GraphtreemstModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphtreemstLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_tree_mst_layer_make(size : Int) -> GraphtreemstLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_tree_mst_layer_len(s : GraphtreemstLayer) -> Int { s.size }
+
+pub fn graph_tree_mst_layer_get(s : GraphtreemstLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_tree_mst_layer_set(s : GraphtreemstLayer, i : Int, v : Double) -> GraphtreemstLayer {
+  let result = graph_tree_mst_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_layer_sum(s : GraphtreemstLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_tree_mst_layer_mean(s : GraphtreemstLayer) -> Double {
+  if s.size == 0 { 0.0 } else { graph_tree_mst_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_tree_mst_layer_scale(s : GraphtreemstLayer, f : Double) -> GraphtreemstLayer {
+  let result = graph_tree_mst_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_tree_mst_layer_add(a : GraphtreemstLayer, b : GraphtreemstLayer) -> GraphtreemstLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_tree_mst_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_layer_copy(s : GraphtreemstLayer) -> GraphtreemstLayer {
+  let result = graph_tree_mst_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_layer_fill(s : GraphtreemstLayer, v : Double) -> GraphtreemstLayer {
+  let result = graph_tree_mst_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_layer_min(s : GraphtreemstLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_layer_max(s : GraphtreemstLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_layer_to_string(s : GraphtreemstLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphtreemstBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_tree_mst_buffer_make(size : Int) -> GraphtreemstBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_tree_mst_buffer_len(s : GraphtreemstBuffer) -> Int { s.size }
+
+pub fn graph_tree_mst_buffer_get(s : GraphtreemstBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_tree_mst_buffer_set(s : GraphtreemstBuffer, i : Int, v : Double) -> GraphtreemstBuffer {
+  let result = graph_tree_mst_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_buffer_sum(s : GraphtreemstBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_tree_mst_buffer_mean(s : GraphtreemstBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { graph_tree_mst_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_tree_mst_buffer_scale(s : GraphtreemstBuffer, f : Double) -> GraphtreemstBuffer {
+  let result = graph_tree_mst_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_tree_mst_buffer_add(a : GraphtreemstBuffer, b : GraphtreemstBuffer) -> GraphtreemstBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_tree_mst_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_buffer_copy(s : GraphtreemstBuffer) -> GraphtreemstBuffer {
+  let result = graph_tree_mst_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_buffer_fill(s : GraphtreemstBuffer, v : Double) -> GraphtreemstBuffer {
+  let result = graph_tree_mst_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_buffer_min(s : GraphtreemstBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_buffer_max(s : GraphtreemstBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_buffer_to_string(s : GraphtreemstBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphtreemstCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_tree_mst_cursor_make(size : Int) -> GraphtreemstCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_tree_mst_cursor_len(s : GraphtreemstCursor) -> Int { s.size }
+
+pub fn graph_tree_mst_cursor_get(s : GraphtreemstCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_tree_mst_cursor_set(s : GraphtreemstCursor, i : Int, v : Double) -> GraphtreemstCursor {
+  let result = graph_tree_mst_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_cursor_sum(s : GraphtreemstCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_tree_mst_cursor_mean(s : GraphtreemstCursor) -> Double {
+  if s.size == 0 { 0.0 } else { graph_tree_mst_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_tree_mst_cursor_scale(s : GraphtreemstCursor, f : Double) -> GraphtreemstCursor {
+  let result = graph_tree_mst_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_tree_mst_cursor_add(a : GraphtreemstCursor, b : GraphtreemstCursor) -> GraphtreemstCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_tree_mst_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_cursor_copy(s : GraphtreemstCursor) -> GraphtreemstCursor {
+  let result = graph_tree_mst_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_cursor_fill(s : GraphtreemstCursor, v : Double) -> GraphtreemstCursor {
+  let result = graph_tree_mst_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_cursor_min(s : GraphtreemstCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_cursor_max(s : GraphtreemstCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_cursor_to_string(s : GraphtreemstCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphtreemstView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_tree_mst_view_make(size : Int) -> GraphtreemstView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_tree_mst_view_len(s : GraphtreemstView) -> Int { s.size }
+
+pub fn graph_tree_mst_view_get(s : GraphtreemstView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_tree_mst_view_set(s : GraphtreemstView, i : Int, v : Double) -> GraphtreemstView {
+  let result = graph_tree_mst_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_view_sum(s : GraphtreemstView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_tree_mst_view_mean(s : GraphtreemstView) -> Double {
+  if s.size == 0 { 0.0 } else { graph_tree_mst_view_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_tree_mst_view_scale(s : GraphtreemstView, f : Double) -> GraphtreemstView {
+  let result = graph_tree_mst_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_tree_mst_view_add(a : GraphtreemstView, b : GraphtreemstView) -> GraphtreemstView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_tree_mst_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_view_copy(s : GraphtreemstView) -> GraphtreemstView {
+  let result = graph_tree_mst_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_view_fill(s : GraphtreemstView, v : Double) -> GraphtreemstView {
+  let result = graph_tree_mst_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_view_min(s : GraphtreemstView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_view_max(s : GraphtreemstView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_view_to_string(s : GraphtreemstView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphtreemstRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_tree_mst_range_make(size : Int) -> GraphtreemstRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_tree_mst_range_len(s : GraphtreemstRange) -> Int { s.size }
+
+pub fn graph_tree_mst_range_get(s : GraphtreemstRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_tree_mst_range_set(s : GraphtreemstRange, i : Int, v : Double) -> GraphtreemstRange {
+  let result = graph_tree_mst_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_range_sum(s : GraphtreemstRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_tree_mst_range_mean(s : GraphtreemstRange) -> Double {
+  if s.size == 0 { 0.0 } else { graph_tree_mst_range_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_tree_mst_range_scale(s : GraphtreemstRange, f : Double) -> GraphtreemstRange {
+  let result = graph_tree_mst_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_tree_mst_range_add(a : GraphtreemstRange, b : GraphtreemstRange) -> GraphtreemstRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_tree_mst_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_range_copy(s : GraphtreemstRange) -> GraphtreemstRange {
+  let result = graph_tree_mst_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_range_fill(s : GraphtreemstRange, v : Double) -> GraphtreemstRange {
+  let result = graph_tree_mst_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_range_min(s : GraphtreemstRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_range_max(s : GraphtreemstRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_range_to_string(s : GraphtreemstRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphtreemstSlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_tree_mst_slice_make(size : Int) -> GraphtreemstSlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_tree_mst_slice_len(s : GraphtreemstSlice) -> Int { s.size }
+
+pub fn graph_tree_mst_slice_get(s : GraphtreemstSlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_tree_mst_slice_set(s : GraphtreemstSlice, i : Int, v : Double) -> GraphtreemstSlice {
+  let result = graph_tree_mst_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_slice_sum(s : GraphtreemstSlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_tree_mst_slice_mean(s : GraphtreemstSlice) -> Double {
+  if s.size == 0 { 0.0 } else { graph_tree_mst_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_tree_mst_slice_scale(s : GraphtreemstSlice, f : Double) -> GraphtreemstSlice {
+  let result = graph_tree_mst_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_tree_mst_slice_add(a : GraphtreemstSlice, b : GraphtreemstSlice) -> GraphtreemstSlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_tree_mst_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_slice_copy(s : GraphtreemstSlice) -> GraphtreemstSlice {
+  let result = graph_tree_mst_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_tree_mst_slice_fill(s : GraphtreemstSlice, v : Double) -> GraphtreemstSlice {
+  let result = graph_tree_mst_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_tree_mst_slice_min(s : GraphtreemstSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_slice_max(s : GraphtreemstSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_tree_mst_slice_to_string(s : GraphtreemstSlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn graph_tree_mst_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_tree_mst_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

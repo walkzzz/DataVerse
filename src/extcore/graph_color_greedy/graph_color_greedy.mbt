@@ -1,0 +1,1955 @@
+///===
+/// extcore/graph_color_greedy
+
+pub(all) struct GraphcolorgreedyPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn graph_color_greedy_make_point(x : Double, y : Double) -> GraphcolorgreedyPoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn graph_color_greedy_make_point3(x : Double, y : Double, z : Double) -> GraphcolorgreedyPoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn graph_color_greedy_point_x(pt : GraphcolorgreedyPoint) -> Double { pt.x }
+
+pub fn graph_color_greedy_point_y(pt : GraphcolorgreedyPoint) -> Double { pt.y }
+
+pub fn graph_color_greedy_point_z(pt : GraphcolorgreedyPoint) -> Double { pt.z }
+
+pub fn graph_color_greedy_point_label(pt : GraphcolorgreedyPoint) -> Int { pt.label }
+
+pub fn graph_color_greedy_point_dist(a : GraphcolorgreedyPoint, b : GraphcolorgreedyPoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  graph_color_greedy_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn graph_color_greedy_point_add(a : GraphcolorgreedyPoint, b : GraphcolorgreedyPoint) -> GraphcolorgreedyPoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn graph_color_greedy_point_sub(a : GraphcolorgreedyPoint, b : GraphcolorgreedyPoint) -> GraphcolorgreedyPoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn graph_color_greedy_point_scale(pt : GraphcolorgreedyPoint, s : Double) -> GraphcolorgreedyPoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn graph_color_greedy_point_dot(a : GraphcolorgreedyPoint, b : GraphcolorgreedyPoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn graph_color_greedy_point_cross(a : GraphcolorgreedyPoint, b : GraphcolorgreedyPoint) -> GraphcolorgreedyPoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn graph_color_greedy_point_norm(pt : GraphcolorgreedyPoint) -> Double {
+  graph_color_greedy_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn graph_color_greedy_point_normalize(pt : GraphcolorgreedyPoint) -> GraphcolorgreedyPoint {
+  let n = graph_color_greedy_point_norm(pt)
+  if n < 0.0000001 { pt } else { graph_color_greedy_point_scale(pt, 1.0 / n) }
+}
+
+pub fn graph_color_greedy_point_negate(pt : GraphcolorgreedyPoint) -> GraphcolorgreedyPoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn graph_color_greedy_point_mid(a : GraphcolorgreedyPoint, b : GraphcolorgreedyPoint) -> GraphcolorgreedyPoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn graph_color_greedy_point_lerp(a : GraphcolorgreedyPoint, b : GraphcolorgreedyPoint, t : Double) -> GraphcolorgreedyPoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn graph_color_greedy_point_to_string(pt : GraphcolorgreedyPoint) -> String {
+  "(" + graph_color_greedy_dbl(pt.x) + ", " + graph_color_greedy_dbl(pt.y) + ", " + graph_color_greedy_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct GraphcolorgreedySeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn graph_color_greedy_make_series(vals : Array[Double], name : String) -> GraphcolorgreedySeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn graph_color_greedy_series_len(s : GraphcolorgreedySeries) -> Int { s.vals.length() }
+
+pub fn graph_color_greedy_series_sum(s : GraphcolorgreedySeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn graph_color_greedy_series_mean(s : GraphcolorgreedySeries) -> Double {
+  let n = graph_color_greedy_series_len(s)
+  if n == 0 { 0.0 } else { graph_color_greedy_series_sum(s) / n.to_double() }
+}
+
+pub fn graph_color_greedy_series_min(s : GraphcolorgreedySeries) -> Double {
+  let n = graph_color_greedy_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_series_max(s : GraphcolorgreedySeries) -> Double {
+  let n = graph_color_greedy_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_series_range(s : GraphcolorgreedySeries) -> Double {
+  graph_color_greedy_series_max(s) - graph_color_greedy_series_min(s)
+}
+
+pub fn graph_color_greedy_series_var(s : GraphcolorgreedySeries) -> Double {
+  let n = graph_color_greedy_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = graph_color_greedy_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_series_std(s : GraphcolorgreedySeries) -> Double { graph_color_greedy_sqrt(graph_color_greedy_series_var(s)) }
+
+pub fn graph_color_greedy_series_median(s : GraphcolorgreedySeries) -> Double {
+  let n = graph_color_greedy_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = graph_color_greedy_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn graph_color_greedy_series_scale(s : GraphcolorgreedySeries, f : Double) -> GraphcolorgreedySeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = graph_color_greedy_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn graph_color_greedy_series_add(a : GraphcolorgreedySeries, b : GraphcolorgreedySeries) -> GraphcolorgreedySeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = graph_color_greedy_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn graph_color_greedy_series_sub(a : GraphcolorgreedySeries, b : GraphcolorgreedySeries) -> GraphcolorgreedySeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = graph_color_greedy_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn graph_color_greedy_series_normalize(s : GraphcolorgreedySeries) -> GraphcolorgreedySeries {
+  let mn = graph_color_greedy_series_min(s)
+  let mx = graph_color_greedy_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = graph_color_greedy_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn graph_color_greedy_series_cumsum(s : GraphcolorgreedySeries) -> GraphcolorgreedySeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = graph_color_greedy_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn graph_color_greedy_series_to_string(s : GraphcolorgreedySeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + graph_color_greedy_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct GraphcolorgreedyMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn graph_color_greedy_make_matrix(rows : Int, cols : Int, val : Double) -> GraphcolorgreedyMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn graph_color_greedy_matrix_identity(n : Int) -> GraphcolorgreedyMatrix {
+  let m = graph_color_greedy_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn graph_color_greedy_matrix_get(m : GraphcolorgreedyMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn graph_color_greedy_matrix_transpose(m : GraphcolorgreedyMatrix) -> GraphcolorgreedyMatrix {
+  let result = graph_color_greedy_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn graph_color_greedy_matrix_add(a : GraphcolorgreedyMatrix, b : GraphcolorgreedyMatrix) -> GraphcolorgreedyMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = graph_color_greedy_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn graph_color_greedy_matrix_scale(m : GraphcolorgreedyMatrix, s : Double) -> GraphcolorgreedyMatrix {
+  let result = graph_color_greedy_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn graph_color_greedy_matrix_multiply(a : GraphcolorgreedyMatrix, b : GraphcolorgreedyMatrix) -> GraphcolorgreedyMatrix {
+  if a.cols != b.rows { return graph_color_greedy_make_matrix(a.rows, b.cols, 0.0) }
+  let result = graph_color_greedy_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn graph_color_greedy_matrix_trace(m : GraphcolorgreedyMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn graph_color_greedy_matrix_det(m : GraphcolorgreedyMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn graph_color_greedy_matrix_norm(m : GraphcolorgreedyMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  graph_color_greedy_sqrt(sum)
+}
+
+pub fn graph_color_greedy_matrix_to_string(m : GraphcolorgreedyMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + graph_color_greedy_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct GraphcolorgreedyVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn graph_color_greedy_make_vector(comps : Array[Double]) -> GraphcolorgreedyVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn graph_color_greedy_vector_zero(dim : Int) -> GraphcolorgreedyVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn graph_color_greedy_vector_add(a : GraphcolorgreedyVector, b : GraphcolorgreedyVector) -> GraphcolorgreedyVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = graph_color_greedy_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn graph_color_greedy_vector_sub(a : GraphcolorgreedyVector, b : GraphcolorgreedyVector) -> GraphcolorgreedyVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = graph_color_greedy_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn graph_color_greedy_vector_scale(v : GraphcolorgreedyVector, s : Double) -> GraphcolorgreedyVector {
+  let mut result = []
+  for i in 0..<v.dim { result = graph_color_greedy_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn graph_color_greedy_vector_dot(a : GraphcolorgreedyVector, b : GraphcolorgreedyVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn graph_color_greedy_vector_norm(v : GraphcolorgreedyVector) -> Double { graph_color_greedy_sqrt(graph_color_greedy_vector_dot(v, v)) }
+
+pub fn graph_color_greedy_vector_normalize(v : GraphcolorgreedyVector) -> GraphcolorgreedyVector {
+  let n = graph_color_greedy_vector_norm(v)
+  if n < 0.0000001 { v } else { graph_color_greedy_vector_scale(v, 1.0 / n) }
+}
+
+pub fn graph_color_greedy_vector_dist(a : GraphcolorgreedyVector, b : GraphcolorgreedyVector) -> Double {
+  graph_color_greedy_vector_norm(graph_color_greedy_vector_sub(a, b))
+}
+
+pub fn graph_color_greedy_vector_to_string(v : GraphcolorgreedyVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + graph_color_greedy_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn graph_color_greedy_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = graph_color_greedy_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_std(data : Array[Double]) -> Double { graph_color_greedy_sqrt(graph_color_greedy_var(data)) }
+
+pub fn graph_color_greedy_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = graph_color_greedy_mean(a); let mb = graph_color_greedy_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = graph_color_greedy_std(a); let sb = graph_color_greedy_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { graph_color_greedy_cov(a, b) / (sa * sb) }
+}
+
+pub fn graph_color_greedy_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = graph_color_greedy_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn graph_color_greedy_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  graph_color_greedy_sqrt(graph_color_greedy_mse(pred, labels))
+}
+
+pub fn graph_color_greedy_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + graph_color_greedy_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = graph_color_greedy_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn graph_color_greedy_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn graph_color_greedy_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn graph_color_greedy_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = graph_color_greedy_precision(pred, labels, pos); let r = graph_color_greedy_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn graph_color_greedy_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn graph_color_greedy_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = graph_color_greedy_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn graph_color_greedy_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn graph_color_greedy_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn graph_color_greedy_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = graph_color_greedy_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn graph_color_greedy_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn graph_color_greedy_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn graph_color_greedy_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = graph_color_greedy_min(data); let mx = graph_color_greedy_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn graph_color_greedy_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = graph_color_greedy_mean(data); let sd = graph_color_greedy_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn graph_color_greedy_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn graph_color_greedy_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn graph_color_greedy_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn graph_color_greedy_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn graph_color_greedy_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn graph_color_greedy_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn graph_color_greedy_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { graph_color_greedy_int(x) } else { -graph_color_greedy_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { graph_color_greedy_int(f * 1000000.0) } else { graph_color_greedy_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn graph_color_greedy_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn graph_color_greedy_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct GraphcolorgreedyFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_color_greedy_frame_make(size : Int) -> GraphcolorgreedyFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_color_greedy_frame_len(s : GraphcolorgreedyFrame) -> Int { s.size }
+
+pub fn graph_color_greedy_frame_get(s : GraphcolorgreedyFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_color_greedy_frame_set(s : GraphcolorgreedyFrame, i : Int, v : Double) -> GraphcolorgreedyFrame {
+  let result = graph_color_greedy_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_frame_sum(s : GraphcolorgreedyFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_color_greedy_frame_mean(s : GraphcolorgreedyFrame) -> Double {
+  if s.size == 0 { 0.0 } else { graph_color_greedy_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_color_greedy_frame_scale(s : GraphcolorgreedyFrame, f : Double) -> GraphcolorgreedyFrame {
+  let result = graph_color_greedy_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_color_greedy_frame_add(a : GraphcolorgreedyFrame, b : GraphcolorgreedyFrame) -> GraphcolorgreedyFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_color_greedy_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_frame_copy(s : GraphcolorgreedyFrame) -> GraphcolorgreedyFrame {
+  let result = graph_color_greedy_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_frame_fill(s : GraphcolorgreedyFrame, v : Double) -> GraphcolorgreedyFrame {
+  let result = graph_color_greedy_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_frame_min(s : GraphcolorgreedyFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_frame_max(s : GraphcolorgreedyFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_frame_to_string(s : GraphcolorgreedyFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphcolorgreedyTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_color_greedy_table_make(size : Int) -> GraphcolorgreedyTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_color_greedy_table_len(s : GraphcolorgreedyTable) -> Int { s.size }
+
+pub fn graph_color_greedy_table_get(s : GraphcolorgreedyTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_color_greedy_table_set(s : GraphcolorgreedyTable, i : Int, v : Double) -> GraphcolorgreedyTable {
+  let result = graph_color_greedy_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_table_sum(s : GraphcolorgreedyTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_color_greedy_table_mean(s : GraphcolorgreedyTable) -> Double {
+  if s.size == 0 { 0.0 } else { graph_color_greedy_table_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_color_greedy_table_scale(s : GraphcolorgreedyTable, f : Double) -> GraphcolorgreedyTable {
+  let result = graph_color_greedy_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_color_greedy_table_add(a : GraphcolorgreedyTable, b : GraphcolorgreedyTable) -> GraphcolorgreedyTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_color_greedy_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_table_copy(s : GraphcolorgreedyTable) -> GraphcolorgreedyTable {
+  let result = graph_color_greedy_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_table_fill(s : GraphcolorgreedyTable, v : Double) -> GraphcolorgreedyTable {
+  let result = graph_color_greedy_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_table_min(s : GraphcolorgreedyTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_table_max(s : GraphcolorgreedyTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_table_to_string(s : GraphcolorgreedyTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphcolorgreedyGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_color_greedy_graphn_make(size : Int) -> GraphcolorgreedyGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_color_greedy_graphn_len(s : GraphcolorgreedyGraphN) -> Int { s.size }
+
+pub fn graph_color_greedy_graphn_get(s : GraphcolorgreedyGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_color_greedy_graphn_set(s : GraphcolorgreedyGraphN, i : Int, v : Double) -> GraphcolorgreedyGraphN {
+  let result = graph_color_greedy_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_graphn_sum(s : GraphcolorgreedyGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_color_greedy_graphn_mean(s : GraphcolorgreedyGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { graph_color_greedy_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_color_greedy_graphn_scale(s : GraphcolorgreedyGraphN, f : Double) -> GraphcolorgreedyGraphN {
+  let result = graph_color_greedy_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_color_greedy_graphn_add(a : GraphcolorgreedyGraphN, b : GraphcolorgreedyGraphN) -> GraphcolorgreedyGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_color_greedy_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_graphn_copy(s : GraphcolorgreedyGraphN) -> GraphcolorgreedyGraphN {
+  let result = graph_color_greedy_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_graphn_fill(s : GraphcolorgreedyGraphN, v : Double) -> GraphcolorgreedyGraphN {
+  let result = graph_color_greedy_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_graphn_min(s : GraphcolorgreedyGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_graphn_max(s : GraphcolorgreedyGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_graphn_to_string(s : GraphcolorgreedyGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphcolorgreedyNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_color_greedy_node_make(size : Int) -> GraphcolorgreedyNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_color_greedy_node_len(s : GraphcolorgreedyNode) -> Int { s.size }
+
+pub fn graph_color_greedy_node_get(s : GraphcolorgreedyNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_color_greedy_node_set(s : GraphcolorgreedyNode, i : Int, v : Double) -> GraphcolorgreedyNode {
+  let result = graph_color_greedy_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_node_sum(s : GraphcolorgreedyNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_color_greedy_node_mean(s : GraphcolorgreedyNode) -> Double {
+  if s.size == 0 { 0.0 } else { graph_color_greedy_node_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_color_greedy_node_scale(s : GraphcolorgreedyNode, f : Double) -> GraphcolorgreedyNode {
+  let result = graph_color_greedy_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_color_greedy_node_add(a : GraphcolorgreedyNode, b : GraphcolorgreedyNode) -> GraphcolorgreedyNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_color_greedy_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_node_copy(s : GraphcolorgreedyNode) -> GraphcolorgreedyNode {
+  let result = graph_color_greedy_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_node_fill(s : GraphcolorgreedyNode, v : Double) -> GraphcolorgreedyNode {
+  let result = graph_color_greedy_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_node_min(s : GraphcolorgreedyNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_node_max(s : GraphcolorgreedyNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_node_to_string(s : GraphcolorgreedyNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphcolorgreedyEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_color_greedy_edge_make(size : Int) -> GraphcolorgreedyEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_color_greedy_edge_len(s : GraphcolorgreedyEdge) -> Int { s.size }
+
+pub fn graph_color_greedy_edge_get(s : GraphcolorgreedyEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_color_greedy_edge_set(s : GraphcolorgreedyEdge, i : Int, v : Double) -> GraphcolorgreedyEdge {
+  let result = graph_color_greedy_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_edge_sum(s : GraphcolorgreedyEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_color_greedy_edge_mean(s : GraphcolorgreedyEdge) -> Double {
+  if s.size == 0 { 0.0 } else { graph_color_greedy_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_color_greedy_edge_scale(s : GraphcolorgreedyEdge, f : Double) -> GraphcolorgreedyEdge {
+  let result = graph_color_greedy_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_color_greedy_edge_add(a : GraphcolorgreedyEdge, b : GraphcolorgreedyEdge) -> GraphcolorgreedyEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_color_greedy_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_edge_copy(s : GraphcolorgreedyEdge) -> GraphcolorgreedyEdge {
+  let result = graph_color_greedy_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_edge_fill(s : GraphcolorgreedyEdge, v : Double) -> GraphcolorgreedyEdge {
+  let result = graph_color_greedy_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_edge_min(s : GraphcolorgreedyEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_edge_max(s : GraphcolorgreedyEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_edge_to_string(s : GraphcolorgreedyEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphcolorgreedyPath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_color_greedy_path_make(size : Int) -> GraphcolorgreedyPath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_color_greedy_path_len(s : GraphcolorgreedyPath) -> Int { s.size }
+
+pub fn graph_color_greedy_path_get(s : GraphcolorgreedyPath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_color_greedy_path_set(s : GraphcolorgreedyPath, i : Int, v : Double) -> GraphcolorgreedyPath {
+  let result = graph_color_greedy_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_path_sum(s : GraphcolorgreedyPath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_color_greedy_path_mean(s : GraphcolorgreedyPath) -> Double {
+  if s.size == 0 { 0.0 } else { graph_color_greedy_path_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_color_greedy_path_scale(s : GraphcolorgreedyPath, f : Double) -> GraphcolorgreedyPath {
+  let result = graph_color_greedy_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_color_greedy_path_add(a : GraphcolorgreedyPath, b : GraphcolorgreedyPath) -> GraphcolorgreedyPath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_color_greedy_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_path_copy(s : GraphcolorgreedyPath) -> GraphcolorgreedyPath {
+  let result = graph_color_greedy_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_path_fill(s : GraphcolorgreedyPath, v : Double) -> GraphcolorgreedyPath {
+  let result = graph_color_greedy_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_path_min(s : GraphcolorgreedyPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_path_max(s : GraphcolorgreedyPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_path_to_string(s : GraphcolorgreedyPath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphcolorgreedyCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_color_greedy_cluster_make(size : Int) -> GraphcolorgreedyCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_color_greedy_cluster_len(s : GraphcolorgreedyCluster) -> Int { s.size }
+
+pub fn graph_color_greedy_cluster_get(s : GraphcolorgreedyCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_color_greedy_cluster_set(s : GraphcolorgreedyCluster, i : Int, v : Double) -> GraphcolorgreedyCluster {
+  let result = graph_color_greedy_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_cluster_sum(s : GraphcolorgreedyCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_color_greedy_cluster_mean(s : GraphcolorgreedyCluster) -> Double {
+  if s.size == 0 { 0.0 } else { graph_color_greedy_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_color_greedy_cluster_scale(s : GraphcolorgreedyCluster, f : Double) -> GraphcolorgreedyCluster {
+  let result = graph_color_greedy_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_color_greedy_cluster_add(a : GraphcolorgreedyCluster, b : GraphcolorgreedyCluster) -> GraphcolorgreedyCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_color_greedy_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_cluster_copy(s : GraphcolorgreedyCluster) -> GraphcolorgreedyCluster {
+  let result = graph_color_greedy_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_cluster_fill(s : GraphcolorgreedyCluster, v : Double) -> GraphcolorgreedyCluster {
+  let result = graph_color_greedy_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_cluster_min(s : GraphcolorgreedyCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_cluster_max(s : GraphcolorgreedyCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_cluster_to_string(s : GraphcolorgreedyCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphcolorgreedyModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_color_greedy_model_make(size : Int) -> GraphcolorgreedyModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_color_greedy_model_len(s : GraphcolorgreedyModel) -> Int { s.size }
+
+pub fn graph_color_greedy_model_get(s : GraphcolorgreedyModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_color_greedy_model_set(s : GraphcolorgreedyModel, i : Int, v : Double) -> GraphcolorgreedyModel {
+  let result = graph_color_greedy_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_model_sum(s : GraphcolorgreedyModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_color_greedy_model_mean(s : GraphcolorgreedyModel) -> Double {
+  if s.size == 0 { 0.0 } else { graph_color_greedy_model_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_color_greedy_model_scale(s : GraphcolorgreedyModel, f : Double) -> GraphcolorgreedyModel {
+  let result = graph_color_greedy_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_color_greedy_model_add(a : GraphcolorgreedyModel, b : GraphcolorgreedyModel) -> GraphcolorgreedyModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_color_greedy_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_model_copy(s : GraphcolorgreedyModel) -> GraphcolorgreedyModel {
+  let result = graph_color_greedy_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_model_fill(s : GraphcolorgreedyModel, v : Double) -> GraphcolorgreedyModel {
+  let result = graph_color_greedy_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_model_min(s : GraphcolorgreedyModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_model_max(s : GraphcolorgreedyModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_model_to_string(s : GraphcolorgreedyModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphcolorgreedyLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_color_greedy_layer_make(size : Int) -> GraphcolorgreedyLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_color_greedy_layer_len(s : GraphcolorgreedyLayer) -> Int { s.size }
+
+pub fn graph_color_greedy_layer_get(s : GraphcolorgreedyLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_color_greedy_layer_set(s : GraphcolorgreedyLayer, i : Int, v : Double) -> GraphcolorgreedyLayer {
+  let result = graph_color_greedy_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_layer_sum(s : GraphcolorgreedyLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_color_greedy_layer_mean(s : GraphcolorgreedyLayer) -> Double {
+  if s.size == 0 { 0.0 } else { graph_color_greedy_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_color_greedy_layer_scale(s : GraphcolorgreedyLayer, f : Double) -> GraphcolorgreedyLayer {
+  let result = graph_color_greedy_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_color_greedy_layer_add(a : GraphcolorgreedyLayer, b : GraphcolorgreedyLayer) -> GraphcolorgreedyLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_color_greedy_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_layer_copy(s : GraphcolorgreedyLayer) -> GraphcolorgreedyLayer {
+  let result = graph_color_greedy_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_layer_fill(s : GraphcolorgreedyLayer, v : Double) -> GraphcolorgreedyLayer {
+  let result = graph_color_greedy_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_layer_min(s : GraphcolorgreedyLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_layer_max(s : GraphcolorgreedyLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_layer_to_string(s : GraphcolorgreedyLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphcolorgreedyBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_color_greedy_buffer_make(size : Int) -> GraphcolorgreedyBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_color_greedy_buffer_len(s : GraphcolorgreedyBuffer) -> Int { s.size }
+
+pub fn graph_color_greedy_buffer_get(s : GraphcolorgreedyBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_color_greedy_buffer_set(s : GraphcolorgreedyBuffer, i : Int, v : Double) -> GraphcolorgreedyBuffer {
+  let result = graph_color_greedy_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_buffer_sum(s : GraphcolorgreedyBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_color_greedy_buffer_mean(s : GraphcolorgreedyBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { graph_color_greedy_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_color_greedy_buffer_scale(s : GraphcolorgreedyBuffer, f : Double) -> GraphcolorgreedyBuffer {
+  let result = graph_color_greedy_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_color_greedy_buffer_add(a : GraphcolorgreedyBuffer, b : GraphcolorgreedyBuffer) -> GraphcolorgreedyBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_color_greedy_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_buffer_copy(s : GraphcolorgreedyBuffer) -> GraphcolorgreedyBuffer {
+  let result = graph_color_greedy_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_buffer_fill(s : GraphcolorgreedyBuffer, v : Double) -> GraphcolorgreedyBuffer {
+  let result = graph_color_greedy_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_buffer_min(s : GraphcolorgreedyBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_buffer_max(s : GraphcolorgreedyBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_buffer_to_string(s : GraphcolorgreedyBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphcolorgreedyCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_color_greedy_cursor_make(size : Int) -> GraphcolorgreedyCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_color_greedy_cursor_len(s : GraphcolorgreedyCursor) -> Int { s.size }
+
+pub fn graph_color_greedy_cursor_get(s : GraphcolorgreedyCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_color_greedy_cursor_set(s : GraphcolorgreedyCursor, i : Int, v : Double) -> GraphcolorgreedyCursor {
+  let result = graph_color_greedy_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_cursor_sum(s : GraphcolorgreedyCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_color_greedy_cursor_mean(s : GraphcolorgreedyCursor) -> Double {
+  if s.size == 0 { 0.0 } else { graph_color_greedy_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_color_greedy_cursor_scale(s : GraphcolorgreedyCursor, f : Double) -> GraphcolorgreedyCursor {
+  let result = graph_color_greedy_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_color_greedy_cursor_add(a : GraphcolorgreedyCursor, b : GraphcolorgreedyCursor) -> GraphcolorgreedyCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_color_greedy_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_cursor_copy(s : GraphcolorgreedyCursor) -> GraphcolorgreedyCursor {
+  let result = graph_color_greedy_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_cursor_fill(s : GraphcolorgreedyCursor, v : Double) -> GraphcolorgreedyCursor {
+  let result = graph_color_greedy_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_cursor_min(s : GraphcolorgreedyCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_cursor_max(s : GraphcolorgreedyCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_cursor_to_string(s : GraphcolorgreedyCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphcolorgreedyView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_color_greedy_view_make(size : Int) -> GraphcolorgreedyView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_color_greedy_view_len(s : GraphcolorgreedyView) -> Int { s.size }
+
+pub fn graph_color_greedy_view_get(s : GraphcolorgreedyView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_color_greedy_view_set(s : GraphcolorgreedyView, i : Int, v : Double) -> GraphcolorgreedyView {
+  let result = graph_color_greedy_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_view_sum(s : GraphcolorgreedyView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_color_greedy_view_mean(s : GraphcolorgreedyView) -> Double {
+  if s.size == 0 { 0.0 } else { graph_color_greedy_view_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_color_greedy_view_scale(s : GraphcolorgreedyView, f : Double) -> GraphcolorgreedyView {
+  let result = graph_color_greedy_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_color_greedy_view_add(a : GraphcolorgreedyView, b : GraphcolorgreedyView) -> GraphcolorgreedyView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_color_greedy_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_view_copy(s : GraphcolorgreedyView) -> GraphcolorgreedyView {
+  let result = graph_color_greedy_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_view_fill(s : GraphcolorgreedyView, v : Double) -> GraphcolorgreedyView {
+  let result = graph_color_greedy_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_view_min(s : GraphcolorgreedyView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_view_max(s : GraphcolorgreedyView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_view_to_string(s : GraphcolorgreedyView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphcolorgreedyRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_color_greedy_range_make(size : Int) -> GraphcolorgreedyRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_color_greedy_range_len(s : GraphcolorgreedyRange) -> Int { s.size }
+
+pub fn graph_color_greedy_range_get(s : GraphcolorgreedyRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_color_greedy_range_set(s : GraphcolorgreedyRange, i : Int, v : Double) -> GraphcolorgreedyRange {
+  let result = graph_color_greedy_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_range_sum(s : GraphcolorgreedyRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_color_greedy_range_mean(s : GraphcolorgreedyRange) -> Double {
+  if s.size == 0 { 0.0 } else { graph_color_greedy_range_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_color_greedy_range_scale(s : GraphcolorgreedyRange, f : Double) -> GraphcolorgreedyRange {
+  let result = graph_color_greedy_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_color_greedy_range_add(a : GraphcolorgreedyRange, b : GraphcolorgreedyRange) -> GraphcolorgreedyRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_color_greedy_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_range_copy(s : GraphcolorgreedyRange) -> GraphcolorgreedyRange {
+  let result = graph_color_greedy_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_range_fill(s : GraphcolorgreedyRange, v : Double) -> GraphcolorgreedyRange {
+  let result = graph_color_greedy_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_range_min(s : GraphcolorgreedyRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_range_max(s : GraphcolorgreedyRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_range_to_string(s : GraphcolorgreedyRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphcolorgreedySlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_color_greedy_slice_make(size : Int) -> GraphcolorgreedySlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_color_greedy_slice_len(s : GraphcolorgreedySlice) -> Int { s.size }
+
+pub fn graph_color_greedy_slice_get(s : GraphcolorgreedySlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_color_greedy_slice_set(s : GraphcolorgreedySlice, i : Int, v : Double) -> GraphcolorgreedySlice {
+  let result = graph_color_greedy_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_slice_sum(s : GraphcolorgreedySlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_color_greedy_slice_mean(s : GraphcolorgreedySlice) -> Double {
+  if s.size == 0 { 0.0 } else { graph_color_greedy_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_color_greedy_slice_scale(s : GraphcolorgreedySlice, f : Double) -> GraphcolorgreedySlice {
+  let result = graph_color_greedy_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_color_greedy_slice_add(a : GraphcolorgreedySlice, b : GraphcolorgreedySlice) -> GraphcolorgreedySlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_color_greedy_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_slice_copy(s : GraphcolorgreedySlice) -> GraphcolorgreedySlice {
+  let result = graph_color_greedy_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_color_greedy_slice_fill(s : GraphcolorgreedySlice, v : Double) -> GraphcolorgreedySlice {
+  let result = graph_color_greedy_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_color_greedy_slice_min(s : GraphcolorgreedySlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_slice_max(s : GraphcolorgreedySlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_color_greedy_slice_to_string(s : GraphcolorgreedySlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn graph_color_greedy_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_color_greedy_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

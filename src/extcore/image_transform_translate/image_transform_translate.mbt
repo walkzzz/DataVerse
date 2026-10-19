@@ -1,0 +1,1955 @@
+///===
+/// extcore/image_transform_translate
+
+pub(all) struct ImagetransformtranslatePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn image_transform_translate_make_point(x : Double, y : Double) -> ImagetransformtranslatePoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn image_transform_translate_make_point3(x : Double, y : Double, z : Double) -> ImagetransformtranslatePoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn image_transform_translate_point_x(pt : ImagetransformtranslatePoint) -> Double { pt.x }
+
+pub fn image_transform_translate_point_y(pt : ImagetransformtranslatePoint) -> Double { pt.y }
+
+pub fn image_transform_translate_point_z(pt : ImagetransformtranslatePoint) -> Double { pt.z }
+
+pub fn image_transform_translate_point_label(pt : ImagetransformtranslatePoint) -> Int { pt.label }
+
+pub fn image_transform_translate_point_dist(a : ImagetransformtranslatePoint, b : ImagetransformtranslatePoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  image_transform_translate_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn image_transform_translate_point_add(a : ImagetransformtranslatePoint, b : ImagetransformtranslatePoint) -> ImagetransformtranslatePoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn image_transform_translate_point_sub(a : ImagetransformtranslatePoint, b : ImagetransformtranslatePoint) -> ImagetransformtranslatePoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn image_transform_translate_point_scale(pt : ImagetransformtranslatePoint, s : Double) -> ImagetransformtranslatePoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn image_transform_translate_point_dot(a : ImagetransformtranslatePoint, b : ImagetransformtranslatePoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn image_transform_translate_point_cross(a : ImagetransformtranslatePoint, b : ImagetransformtranslatePoint) -> ImagetransformtranslatePoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn image_transform_translate_point_norm(pt : ImagetransformtranslatePoint) -> Double {
+  image_transform_translate_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn image_transform_translate_point_normalize(pt : ImagetransformtranslatePoint) -> ImagetransformtranslatePoint {
+  let n = image_transform_translate_point_norm(pt)
+  if n < 0.0000001 { pt } else { image_transform_translate_point_scale(pt, 1.0 / n) }
+}
+
+pub fn image_transform_translate_point_negate(pt : ImagetransformtranslatePoint) -> ImagetransformtranslatePoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn image_transform_translate_point_mid(a : ImagetransformtranslatePoint, b : ImagetransformtranslatePoint) -> ImagetransformtranslatePoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn image_transform_translate_point_lerp(a : ImagetransformtranslatePoint, b : ImagetransformtranslatePoint, t : Double) -> ImagetransformtranslatePoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn image_transform_translate_point_to_string(pt : ImagetransformtranslatePoint) -> String {
+  "(" + image_transform_translate_dbl(pt.x) + ", " + image_transform_translate_dbl(pt.y) + ", " + image_transform_translate_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct ImagetransformtranslateSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn image_transform_translate_make_series(vals : Array[Double], name : String) -> ImagetransformtranslateSeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn image_transform_translate_series_len(s : ImagetransformtranslateSeries) -> Int { s.vals.length() }
+
+pub fn image_transform_translate_series_sum(s : ImagetransformtranslateSeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn image_transform_translate_series_mean(s : ImagetransformtranslateSeries) -> Double {
+  let n = image_transform_translate_series_len(s)
+  if n == 0 { 0.0 } else { image_transform_translate_series_sum(s) / n.to_double() }
+}
+
+pub fn image_transform_translate_series_min(s : ImagetransformtranslateSeries) -> Double {
+  let n = image_transform_translate_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_series_max(s : ImagetransformtranslateSeries) -> Double {
+  let n = image_transform_translate_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_series_range(s : ImagetransformtranslateSeries) -> Double {
+  image_transform_translate_series_max(s) - image_transform_translate_series_min(s)
+}
+
+pub fn image_transform_translate_series_var(s : ImagetransformtranslateSeries) -> Double {
+  let n = image_transform_translate_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = image_transform_translate_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_series_std(s : ImagetransformtranslateSeries) -> Double { image_transform_translate_sqrt(image_transform_translate_series_var(s)) }
+
+pub fn image_transform_translate_series_median(s : ImagetransformtranslateSeries) -> Double {
+  let n = image_transform_translate_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = image_transform_translate_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn image_transform_translate_series_scale(s : ImagetransformtranslateSeries, f : Double) -> ImagetransformtranslateSeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = image_transform_translate_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn image_transform_translate_series_add(a : ImagetransformtranslateSeries, b : ImagetransformtranslateSeries) -> ImagetransformtranslateSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = image_transform_translate_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn image_transform_translate_series_sub(a : ImagetransformtranslateSeries, b : ImagetransformtranslateSeries) -> ImagetransformtranslateSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = image_transform_translate_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn image_transform_translate_series_normalize(s : ImagetransformtranslateSeries) -> ImagetransformtranslateSeries {
+  let mn = image_transform_translate_series_min(s)
+  let mx = image_transform_translate_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = image_transform_translate_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn image_transform_translate_series_cumsum(s : ImagetransformtranslateSeries) -> ImagetransformtranslateSeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = image_transform_translate_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn image_transform_translate_series_to_string(s : ImagetransformtranslateSeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + image_transform_translate_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct ImagetransformtranslateMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn image_transform_translate_make_matrix(rows : Int, cols : Int, val : Double) -> ImagetransformtranslateMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn image_transform_translate_matrix_identity(n : Int) -> ImagetransformtranslateMatrix {
+  let m = image_transform_translate_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn image_transform_translate_matrix_get(m : ImagetransformtranslateMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn image_transform_translate_matrix_transpose(m : ImagetransformtranslateMatrix) -> ImagetransformtranslateMatrix {
+  let result = image_transform_translate_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn image_transform_translate_matrix_add(a : ImagetransformtranslateMatrix, b : ImagetransformtranslateMatrix) -> ImagetransformtranslateMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = image_transform_translate_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn image_transform_translate_matrix_scale(m : ImagetransformtranslateMatrix, s : Double) -> ImagetransformtranslateMatrix {
+  let result = image_transform_translate_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn image_transform_translate_matrix_multiply(a : ImagetransformtranslateMatrix, b : ImagetransformtranslateMatrix) -> ImagetransformtranslateMatrix {
+  if a.cols != b.rows { return image_transform_translate_make_matrix(a.rows, b.cols, 0.0) }
+  let result = image_transform_translate_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn image_transform_translate_matrix_trace(m : ImagetransformtranslateMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn image_transform_translate_matrix_det(m : ImagetransformtranslateMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn image_transform_translate_matrix_norm(m : ImagetransformtranslateMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  image_transform_translate_sqrt(sum)
+}
+
+pub fn image_transform_translate_matrix_to_string(m : ImagetransformtranslateMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + image_transform_translate_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct ImagetransformtranslateVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn image_transform_translate_make_vector(comps : Array[Double]) -> ImagetransformtranslateVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn image_transform_translate_vector_zero(dim : Int) -> ImagetransformtranslateVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn image_transform_translate_vector_add(a : ImagetransformtranslateVector, b : ImagetransformtranslateVector) -> ImagetransformtranslateVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = image_transform_translate_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn image_transform_translate_vector_sub(a : ImagetransformtranslateVector, b : ImagetransformtranslateVector) -> ImagetransformtranslateVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = image_transform_translate_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn image_transform_translate_vector_scale(v : ImagetransformtranslateVector, s : Double) -> ImagetransformtranslateVector {
+  let mut result = []
+  for i in 0..<v.dim { result = image_transform_translate_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn image_transform_translate_vector_dot(a : ImagetransformtranslateVector, b : ImagetransformtranslateVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn image_transform_translate_vector_norm(v : ImagetransformtranslateVector) -> Double { image_transform_translate_sqrt(image_transform_translate_vector_dot(v, v)) }
+
+pub fn image_transform_translate_vector_normalize(v : ImagetransformtranslateVector) -> ImagetransformtranslateVector {
+  let n = image_transform_translate_vector_norm(v)
+  if n < 0.0000001 { v } else { image_transform_translate_vector_scale(v, 1.0 / n) }
+}
+
+pub fn image_transform_translate_vector_dist(a : ImagetransformtranslateVector, b : ImagetransformtranslateVector) -> Double {
+  image_transform_translate_vector_norm(image_transform_translate_vector_sub(a, b))
+}
+
+pub fn image_transform_translate_vector_to_string(v : ImagetransformtranslateVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + image_transform_translate_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn image_transform_translate_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = image_transform_translate_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_std(data : Array[Double]) -> Double { image_transform_translate_sqrt(image_transform_translate_var(data)) }
+
+pub fn image_transform_translate_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = image_transform_translate_mean(a); let mb = image_transform_translate_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = image_transform_translate_std(a); let sb = image_transform_translate_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { image_transform_translate_cov(a, b) / (sa * sb) }
+}
+
+pub fn image_transform_translate_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = image_transform_translate_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn image_transform_translate_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  image_transform_translate_sqrt(image_transform_translate_mse(pred, labels))
+}
+
+pub fn image_transform_translate_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + image_transform_translate_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = image_transform_translate_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn image_transform_translate_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn image_transform_translate_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn image_transform_translate_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = image_transform_translate_precision(pred, labels, pos); let r = image_transform_translate_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn image_transform_translate_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn image_transform_translate_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = image_transform_translate_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn image_transform_translate_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn image_transform_translate_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn image_transform_translate_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = image_transform_translate_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn image_transform_translate_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn image_transform_translate_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn image_transform_translate_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = image_transform_translate_min(data); let mx = image_transform_translate_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn image_transform_translate_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = image_transform_translate_mean(data); let sd = image_transform_translate_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn image_transform_translate_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn image_transform_translate_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn image_transform_translate_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn image_transform_translate_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn image_transform_translate_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn image_transform_translate_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn image_transform_translate_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { image_transform_translate_int(x) } else { -image_transform_translate_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { image_transform_translate_int(f * 1000000.0) } else { image_transform_translate_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn image_transform_translate_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn image_transform_translate_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct ImagetransformtranslateFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_translate_frame_make(size : Int) -> ImagetransformtranslateFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_translate_frame_len(s : ImagetransformtranslateFrame) -> Int { s.size }
+
+pub fn image_transform_translate_frame_get(s : ImagetransformtranslateFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_translate_frame_set(s : ImagetransformtranslateFrame, i : Int, v : Double) -> ImagetransformtranslateFrame {
+  let result = image_transform_translate_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_frame_sum(s : ImagetransformtranslateFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_translate_frame_mean(s : ImagetransformtranslateFrame) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_translate_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_translate_frame_scale(s : ImagetransformtranslateFrame, f : Double) -> ImagetransformtranslateFrame {
+  let result = image_transform_translate_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_translate_frame_add(a : ImagetransformtranslateFrame, b : ImagetransformtranslateFrame) -> ImagetransformtranslateFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_translate_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_translate_frame_copy(s : ImagetransformtranslateFrame) -> ImagetransformtranslateFrame {
+  let result = image_transform_translate_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_translate_frame_fill(s : ImagetransformtranslateFrame, v : Double) -> ImagetransformtranslateFrame {
+  let result = image_transform_translate_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_frame_min(s : ImagetransformtranslateFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_frame_max(s : ImagetransformtranslateFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_frame_to_string(s : ImagetransformtranslateFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ImagetransformtranslateTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_translate_table_make(size : Int) -> ImagetransformtranslateTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_translate_table_len(s : ImagetransformtranslateTable) -> Int { s.size }
+
+pub fn image_transform_translate_table_get(s : ImagetransformtranslateTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_translate_table_set(s : ImagetransformtranslateTable, i : Int, v : Double) -> ImagetransformtranslateTable {
+  let result = image_transform_translate_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_table_sum(s : ImagetransformtranslateTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_translate_table_mean(s : ImagetransformtranslateTable) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_translate_table_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_translate_table_scale(s : ImagetransformtranslateTable, f : Double) -> ImagetransformtranslateTable {
+  let result = image_transform_translate_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_translate_table_add(a : ImagetransformtranslateTable, b : ImagetransformtranslateTable) -> ImagetransformtranslateTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_translate_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_translate_table_copy(s : ImagetransformtranslateTable) -> ImagetransformtranslateTable {
+  let result = image_transform_translate_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_translate_table_fill(s : ImagetransformtranslateTable, v : Double) -> ImagetransformtranslateTable {
+  let result = image_transform_translate_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_table_min(s : ImagetransformtranslateTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_table_max(s : ImagetransformtranslateTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_table_to_string(s : ImagetransformtranslateTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ImagetransformtranslateGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_translate_graphn_make(size : Int) -> ImagetransformtranslateGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_translate_graphn_len(s : ImagetransformtranslateGraphN) -> Int { s.size }
+
+pub fn image_transform_translate_graphn_get(s : ImagetransformtranslateGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_translate_graphn_set(s : ImagetransformtranslateGraphN, i : Int, v : Double) -> ImagetransformtranslateGraphN {
+  let result = image_transform_translate_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_graphn_sum(s : ImagetransformtranslateGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_translate_graphn_mean(s : ImagetransformtranslateGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_translate_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_translate_graphn_scale(s : ImagetransformtranslateGraphN, f : Double) -> ImagetransformtranslateGraphN {
+  let result = image_transform_translate_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_translate_graphn_add(a : ImagetransformtranslateGraphN, b : ImagetransformtranslateGraphN) -> ImagetransformtranslateGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_translate_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_translate_graphn_copy(s : ImagetransformtranslateGraphN) -> ImagetransformtranslateGraphN {
+  let result = image_transform_translate_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_translate_graphn_fill(s : ImagetransformtranslateGraphN, v : Double) -> ImagetransformtranslateGraphN {
+  let result = image_transform_translate_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_graphn_min(s : ImagetransformtranslateGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_graphn_max(s : ImagetransformtranslateGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_graphn_to_string(s : ImagetransformtranslateGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ImagetransformtranslateNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_translate_node_make(size : Int) -> ImagetransformtranslateNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_translate_node_len(s : ImagetransformtranslateNode) -> Int { s.size }
+
+pub fn image_transform_translate_node_get(s : ImagetransformtranslateNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_translate_node_set(s : ImagetransformtranslateNode, i : Int, v : Double) -> ImagetransformtranslateNode {
+  let result = image_transform_translate_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_node_sum(s : ImagetransformtranslateNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_translate_node_mean(s : ImagetransformtranslateNode) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_translate_node_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_translate_node_scale(s : ImagetransformtranslateNode, f : Double) -> ImagetransformtranslateNode {
+  let result = image_transform_translate_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_translate_node_add(a : ImagetransformtranslateNode, b : ImagetransformtranslateNode) -> ImagetransformtranslateNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_translate_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_translate_node_copy(s : ImagetransformtranslateNode) -> ImagetransformtranslateNode {
+  let result = image_transform_translate_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_translate_node_fill(s : ImagetransformtranslateNode, v : Double) -> ImagetransformtranslateNode {
+  let result = image_transform_translate_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_node_min(s : ImagetransformtranslateNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_node_max(s : ImagetransformtranslateNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_node_to_string(s : ImagetransformtranslateNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ImagetransformtranslateEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_translate_edge_make(size : Int) -> ImagetransformtranslateEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_translate_edge_len(s : ImagetransformtranslateEdge) -> Int { s.size }
+
+pub fn image_transform_translate_edge_get(s : ImagetransformtranslateEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_translate_edge_set(s : ImagetransformtranslateEdge, i : Int, v : Double) -> ImagetransformtranslateEdge {
+  let result = image_transform_translate_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_edge_sum(s : ImagetransformtranslateEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_translate_edge_mean(s : ImagetransformtranslateEdge) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_translate_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_translate_edge_scale(s : ImagetransformtranslateEdge, f : Double) -> ImagetransformtranslateEdge {
+  let result = image_transform_translate_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_translate_edge_add(a : ImagetransformtranslateEdge, b : ImagetransformtranslateEdge) -> ImagetransformtranslateEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_translate_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_translate_edge_copy(s : ImagetransformtranslateEdge) -> ImagetransformtranslateEdge {
+  let result = image_transform_translate_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_translate_edge_fill(s : ImagetransformtranslateEdge, v : Double) -> ImagetransformtranslateEdge {
+  let result = image_transform_translate_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_edge_min(s : ImagetransformtranslateEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_edge_max(s : ImagetransformtranslateEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_edge_to_string(s : ImagetransformtranslateEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ImagetransformtranslatePath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_translate_path_make(size : Int) -> ImagetransformtranslatePath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_translate_path_len(s : ImagetransformtranslatePath) -> Int { s.size }
+
+pub fn image_transform_translate_path_get(s : ImagetransformtranslatePath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_translate_path_set(s : ImagetransformtranslatePath, i : Int, v : Double) -> ImagetransformtranslatePath {
+  let result = image_transform_translate_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_path_sum(s : ImagetransformtranslatePath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_translate_path_mean(s : ImagetransformtranslatePath) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_translate_path_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_translate_path_scale(s : ImagetransformtranslatePath, f : Double) -> ImagetransformtranslatePath {
+  let result = image_transform_translate_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_translate_path_add(a : ImagetransformtranslatePath, b : ImagetransformtranslatePath) -> ImagetransformtranslatePath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_translate_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_translate_path_copy(s : ImagetransformtranslatePath) -> ImagetransformtranslatePath {
+  let result = image_transform_translate_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_translate_path_fill(s : ImagetransformtranslatePath, v : Double) -> ImagetransformtranslatePath {
+  let result = image_transform_translate_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_path_min(s : ImagetransformtranslatePath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_path_max(s : ImagetransformtranslatePath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_path_to_string(s : ImagetransformtranslatePath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ImagetransformtranslateCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_translate_cluster_make(size : Int) -> ImagetransformtranslateCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_translate_cluster_len(s : ImagetransformtranslateCluster) -> Int { s.size }
+
+pub fn image_transform_translate_cluster_get(s : ImagetransformtranslateCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_translate_cluster_set(s : ImagetransformtranslateCluster, i : Int, v : Double) -> ImagetransformtranslateCluster {
+  let result = image_transform_translate_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_cluster_sum(s : ImagetransformtranslateCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_translate_cluster_mean(s : ImagetransformtranslateCluster) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_translate_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_translate_cluster_scale(s : ImagetransformtranslateCluster, f : Double) -> ImagetransformtranslateCluster {
+  let result = image_transform_translate_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_translate_cluster_add(a : ImagetransformtranslateCluster, b : ImagetransformtranslateCluster) -> ImagetransformtranslateCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_translate_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_translate_cluster_copy(s : ImagetransformtranslateCluster) -> ImagetransformtranslateCluster {
+  let result = image_transform_translate_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_translate_cluster_fill(s : ImagetransformtranslateCluster, v : Double) -> ImagetransformtranslateCluster {
+  let result = image_transform_translate_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_cluster_min(s : ImagetransformtranslateCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_cluster_max(s : ImagetransformtranslateCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_cluster_to_string(s : ImagetransformtranslateCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ImagetransformtranslateModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_translate_model_make(size : Int) -> ImagetransformtranslateModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_translate_model_len(s : ImagetransformtranslateModel) -> Int { s.size }
+
+pub fn image_transform_translate_model_get(s : ImagetransformtranslateModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_translate_model_set(s : ImagetransformtranslateModel, i : Int, v : Double) -> ImagetransformtranslateModel {
+  let result = image_transform_translate_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_model_sum(s : ImagetransformtranslateModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_translate_model_mean(s : ImagetransformtranslateModel) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_translate_model_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_translate_model_scale(s : ImagetransformtranslateModel, f : Double) -> ImagetransformtranslateModel {
+  let result = image_transform_translate_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_translate_model_add(a : ImagetransformtranslateModel, b : ImagetransformtranslateModel) -> ImagetransformtranslateModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_translate_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_translate_model_copy(s : ImagetransformtranslateModel) -> ImagetransformtranslateModel {
+  let result = image_transform_translate_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_translate_model_fill(s : ImagetransformtranslateModel, v : Double) -> ImagetransformtranslateModel {
+  let result = image_transform_translate_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_model_min(s : ImagetransformtranslateModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_model_max(s : ImagetransformtranslateModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_model_to_string(s : ImagetransformtranslateModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ImagetransformtranslateLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_translate_layer_make(size : Int) -> ImagetransformtranslateLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_translate_layer_len(s : ImagetransformtranslateLayer) -> Int { s.size }
+
+pub fn image_transform_translate_layer_get(s : ImagetransformtranslateLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_translate_layer_set(s : ImagetransformtranslateLayer, i : Int, v : Double) -> ImagetransformtranslateLayer {
+  let result = image_transform_translate_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_layer_sum(s : ImagetransformtranslateLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_translate_layer_mean(s : ImagetransformtranslateLayer) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_translate_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_translate_layer_scale(s : ImagetransformtranslateLayer, f : Double) -> ImagetransformtranslateLayer {
+  let result = image_transform_translate_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_translate_layer_add(a : ImagetransformtranslateLayer, b : ImagetransformtranslateLayer) -> ImagetransformtranslateLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_translate_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_translate_layer_copy(s : ImagetransformtranslateLayer) -> ImagetransformtranslateLayer {
+  let result = image_transform_translate_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_translate_layer_fill(s : ImagetransformtranslateLayer, v : Double) -> ImagetransformtranslateLayer {
+  let result = image_transform_translate_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_layer_min(s : ImagetransformtranslateLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_layer_max(s : ImagetransformtranslateLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_layer_to_string(s : ImagetransformtranslateLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ImagetransformtranslateBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_translate_buffer_make(size : Int) -> ImagetransformtranslateBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_translate_buffer_len(s : ImagetransformtranslateBuffer) -> Int { s.size }
+
+pub fn image_transform_translate_buffer_get(s : ImagetransformtranslateBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_translate_buffer_set(s : ImagetransformtranslateBuffer, i : Int, v : Double) -> ImagetransformtranslateBuffer {
+  let result = image_transform_translate_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_buffer_sum(s : ImagetransformtranslateBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_translate_buffer_mean(s : ImagetransformtranslateBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_translate_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_translate_buffer_scale(s : ImagetransformtranslateBuffer, f : Double) -> ImagetransformtranslateBuffer {
+  let result = image_transform_translate_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_translate_buffer_add(a : ImagetransformtranslateBuffer, b : ImagetransformtranslateBuffer) -> ImagetransformtranslateBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_translate_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_translate_buffer_copy(s : ImagetransformtranslateBuffer) -> ImagetransformtranslateBuffer {
+  let result = image_transform_translate_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_translate_buffer_fill(s : ImagetransformtranslateBuffer, v : Double) -> ImagetransformtranslateBuffer {
+  let result = image_transform_translate_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_buffer_min(s : ImagetransformtranslateBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_buffer_max(s : ImagetransformtranslateBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_buffer_to_string(s : ImagetransformtranslateBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ImagetransformtranslateCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_translate_cursor_make(size : Int) -> ImagetransformtranslateCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_translate_cursor_len(s : ImagetransformtranslateCursor) -> Int { s.size }
+
+pub fn image_transform_translate_cursor_get(s : ImagetransformtranslateCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_translate_cursor_set(s : ImagetransformtranslateCursor, i : Int, v : Double) -> ImagetransformtranslateCursor {
+  let result = image_transform_translate_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_cursor_sum(s : ImagetransformtranslateCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_translate_cursor_mean(s : ImagetransformtranslateCursor) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_translate_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_translate_cursor_scale(s : ImagetransformtranslateCursor, f : Double) -> ImagetransformtranslateCursor {
+  let result = image_transform_translate_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_translate_cursor_add(a : ImagetransformtranslateCursor, b : ImagetransformtranslateCursor) -> ImagetransformtranslateCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_translate_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_translate_cursor_copy(s : ImagetransformtranslateCursor) -> ImagetransformtranslateCursor {
+  let result = image_transform_translate_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_translate_cursor_fill(s : ImagetransformtranslateCursor, v : Double) -> ImagetransformtranslateCursor {
+  let result = image_transform_translate_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_cursor_min(s : ImagetransformtranslateCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_cursor_max(s : ImagetransformtranslateCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_cursor_to_string(s : ImagetransformtranslateCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ImagetransformtranslateView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_translate_view_make(size : Int) -> ImagetransformtranslateView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_translate_view_len(s : ImagetransformtranslateView) -> Int { s.size }
+
+pub fn image_transform_translate_view_get(s : ImagetransformtranslateView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_translate_view_set(s : ImagetransformtranslateView, i : Int, v : Double) -> ImagetransformtranslateView {
+  let result = image_transform_translate_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_view_sum(s : ImagetransformtranslateView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_translate_view_mean(s : ImagetransformtranslateView) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_translate_view_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_translate_view_scale(s : ImagetransformtranslateView, f : Double) -> ImagetransformtranslateView {
+  let result = image_transform_translate_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_translate_view_add(a : ImagetransformtranslateView, b : ImagetransformtranslateView) -> ImagetransformtranslateView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_translate_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_translate_view_copy(s : ImagetransformtranslateView) -> ImagetransformtranslateView {
+  let result = image_transform_translate_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_translate_view_fill(s : ImagetransformtranslateView, v : Double) -> ImagetransformtranslateView {
+  let result = image_transform_translate_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_view_min(s : ImagetransformtranslateView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_view_max(s : ImagetransformtranslateView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_view_to_string(s : ImagetransformtranslateView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ImagetransformtranslateRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_translate_range_make(size : Int) -> ImagetransformtranslateRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_translate_range_len(s : ImagetransformtranslateRange) -> Int { s.size }
+
+pub fn image_transform_translate_range_get(s : ImagetransformtranslateRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_translate_range_set(s : ImagetransformtranslateRange, i : Int, v : Double) -> ImagetransformtranslateRange {
+  let result = image_transform_translate_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_range_sum(s : ImagetransformtranslateRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_translate_range_mean(s : ImagetransformtranslateRange) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_translate_range_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_translate_range_scale(s : ImagetransformtranslateRange, f : Double) -> ImagetransformtranslateRange {
+  let result = image_transform_translate_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_translate_range_add(a : ImagetransformtranslateRange, b : ImagetransformtranslateRange) -> ImagetransformtranslateRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_translate_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_translate_range_copy(s : ImagetransformtranslateRange) -> ImagetransformtranslateRange {
+  let result = image_transform_translate_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_translate_range_fill(s : ImagetransformtranslateRange, v : Double) -> ImagetransformtranslateRange {
+  let result = image_transform_translate_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_range_min(s : ImagetransformtranslateRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_range_max(s : ImagetransformtranslateRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_range_to_string(s : ImagetransformtranslateRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ImagetransformtranslateSlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn image_transform_translate_slice_make(size : Int) -> ImagetransformtranslateSlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn image_transform_translate_slice_len(s : ImagetransformtranslateSlice) -> Int { s.size }
+
+pub fn image_transform_translate_slice_get(s : ImagetransformtranslateSlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn image_transform_translate_slice_set(s : ImagetransformtranslateSlice, i : Int, v : Double) -> ImagetransformtranslateSlice {
+  let result = image_transform_translate_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_slice_sum(s : ImagetransformtranslateSlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn image_transform_translate_slice_mean(s : ImagetransformtranslateSlice) -> Double {
+  if s.size == 0 { 0.0 } else { image_transform_translate_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn image_transform_translate_slice_scale(s : ImagetransformtranslateSlice, f : Double) -> ImagetransformtranslateSlice {
+  let result = image_transform_translate_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn image_transform_translate_slice_add(a : ImagetransformtranslateSlice, b : ImagetransformtranslateSlice) -> ImagetransformtranslateSlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = image_transform_translate_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn image_transform_translate_slice_copy(s : ImagetransformtranslateSlice) -> ImagetransformtranslateSlice {
+  let result = image_transform_translate_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn image_transform_translate_slice_fill(s : ImagetransformtranslateSlice, v : Double) -> ImagetransformtranslateSlice {
+  let result = image_transform_translate_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn image_transform_translate_slice_min(s : ImagetransformtranslateSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_slice_max(s : ImagetransformtranslateSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn image_transform_translate_slice_to_string(s : ImagetransformtranslateSlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn image_transform_translate_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn image_transform_translate_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

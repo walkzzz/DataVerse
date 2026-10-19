@@ -1,0 +1,1955 @@
+///===
+/// extcore/physics_em_maxwell
+
+pub(all) struct PhysicsemmaxwellPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn physics_em_maxwell_make_point(x : Double, y : Double) -> PhysicsemmaxwellPoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn physics_em_maxwell_make_point3(x : Double, y : Double, z : Double) -> PhysicsemmaxwellPoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn physics_em_maxwell_point_x(pt : PhysicsemmaxwellPoint) -> Double { pt.x }
+
+pub fn physics_em_maxwell_point_y(pt : PhysicsemmaxwellPoint) -> Double { pt.y }
+
+pub fn physics_em_maxwell_point_z(pt : PhysicsemmaxwellPoint) -> Double { pt.z }
+
+pub fn physics_em_maxwell_point_label(pt : PhysicsemmaxwellPoint) -> Int { pt.label }
+
+pub fn physics_em_maxwell_point_dist(a : PhysicsemmaxwellPoint, b : PhysicsemmaxwellPoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  physics_em_maxwell_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn physics_em_maxwell_point_add(a : PhysicsemmaxwellPoint, b : PhysicsemmaxwellPoint) -> PhysicsemmaxwellPoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn physics_em_maxwell_point_sub(a : PhysicsemmaxwellPoint, b : PhysicsemmaxwellPoint) -> PhysicsemmaxwellPoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn physics_em_maxwell_point_scale(pt : PhysicsemmaxwellPoint, s : Double) -> PhysicsemmaxwellPoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn physics_em_maxwell_point_dot(a : PhysicsemmaxwellPoint, b : PhysicsemmaxwellPoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn physics_em_maxwell_point_cross(a : PhysicsemmaxwellPoint, b : PhysicsemmaxwellPoint) -> PhysicsemmaxwellPoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn physics_em_maxwell_point_norm(pt : PhysicsemmaxwellPoint) -> Double {
+  physics_em_maxwell_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn physics_em_maxwell_point_normalize(pt : PhysicsemmaxwellPoint) -> PhysicsemmaxwellPoint {
+  let n = physics_em_maxwell_point_norm(pt)
+  if n < 0.0000001 { pt } else { physics_em_maxwell_point_scale(pt, 1.0 / n) }
+}
+
+pub fn physics_em_maxwell_point_negate(pt : PhysicsemmaxwellPoint) -> PhysicsemmaxwellPoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn physics_em_maxwell_point_mid(a : PhysicsemmaxwellPoint, b : PhysicsemmaxwellPoint) -> PhysicsemmaxwellPoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn physics_em_maxwell_point_lerp(a : PhysicsemmaxwellPoint, b : PhysicsemmaxwellPoint, t : Double) -> PhysicsemmaxwellPoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn physics_em_maxwell_point_to_string(pt : PhysicsemmaxwellPoint) -> String {
+  "(" + physics_em_maxwell_dbl(pt.x) + ", " + physics_em_maxwell_dbl(pt.y) + ", " + physics_em_maxwell_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct PhysicsemmaxwellSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn physics_em_maxwell_make_series(vals : Array[Double], name : String) -> PhysicsemmaxwellSeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn physics_em_maxwell_series_len(s : PhysicsemmaxwellSeries) -> Int { s.vals.length() }
+
+pub fn physics_em_maxwell_series_sum(s : PhysicsemmaxwellSeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn physics_em_maxwell_series_mean(s : PhysicsemmaxwellSeries) -> Double {
+  let n = physics_em_maxwell_series_len(s)
+  if n == 0 { 0.0 } else { physics_em_maxwell_series_sum(s) / n.to_double() }
+}
+
+pub fn physics_em_maxwell_series_min(s : PhysicsemmaxwellSeries) -> Double {
+  let n = physics_em_maxwell_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_series_max(s : PhysicsemmaxwellSeries) -> Double {
+  let n = physics_em_maxwell_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_series_range(s : PhysicsemmaxwellSeries) -> Double {
+  physics_em_maxwell_series_max(s) - physics_em_maxwell_series_min(s)
+}
+
+pub fn physics_em_maxwell_series_var(s : PhysicsemmaxwellSeries) -> Double {
+  let n = physics_em_maxwell_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = physics_em_maxwell_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_series_std(s : PhysicsemmaxwellSeries) -> Double { physics_em_maxwell_sqrt(physics_em_maxwell_series_var(s)) }
+
+pub fn physics_em_maxwell_series_median(s : PhysicsemmaxwellSeries) -> Double {
+  let n = physics_em_maxwell_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = physics_em_maxwell_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn physics_em_maxwell_series_scale(s : PhysicsemmaxwellSeries, f : Double) -> PhysicsemmaxwellSeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = physics_em_maxwell_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn physics_em_maxwell_series_add(a : PhysicsemmaxwellSeries, b : PhysicsemmaxwellSeries) -> PhysicsemmaxwellSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = physics_em_maxwell_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn physics_em_maxwell_series_sub(a : PhysicsemmaxwellSeries, b : PhysicsemmaxwellSeries) -> PhysicsemmaxwellSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = physics_em_maxwell_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn physics_em_maxwell_series_normalize(s : PhysicsemmaxwellSeries) -> PhysicsemmaxwellSeries {
+  let mn = physics_em_maxwell_series_min(s)
+  let mx = physics_em_maxwell_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = physics_em_maxwell_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn physics_em_maxwell_series_cumsum(s : PhysicsemmaxwellSeries) -> PhysicsemmaxwellSeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = physics_em_maxwell_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn physics_em_maxwell_series_to_string(s : PhysicsemmaxwellSeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + physics_em_maxwell_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct PhysicsemmaxwellMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn physics_em_maxwell_make_matrix(rows : Int, cols : Int, val : Double) -> PhysicsemmaxwellMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn physics_em_maxwell_matrix_identity(n : Int) -> PhysicsemmaxwellMatrix {
+  let m = physics_em_maxwell_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn physics_em_maxwell_matrix_get(m : PhysicsemmaxwellMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn physics_em_maxwell_matrix_transpose(m : PhysicsemmaxwellMatrix) -> PhysicsemmaxwellMatrix {
+  let result = physics_em_maxwell_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn physics_em_maxwell_matrix_add(a : PhysicsemmaxwellMatrix, b : PhysicsemmaxwellMatrix) -> PhysicsemmaxwellMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = physics_em_maxwell_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn physics_em_maxwell_matrix_scale(m : PhysicsemmaxwellMatrix, s : Double) -> PhysicsemmaxwellMatrix {
+  let result = physics_em_maxwell_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn physics_em_maxwell_matrix_multiply(a : PhysicsemmaxwellMatrix, b : PhysicsemmaxwellMatrix) -> PhysicsemmaxwellMatrix {
+  if a.cols != b.rows { return physics_em_maxwell_make_matrix(a.rows, b.cols, 0.0) }
+  let result = physics_em_maxwell_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn physics_em_maxwell_matrix_trace(m : PhysicsemmaxwellMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn physics_em_maxwell_matrix_det(m : PhysicsemmaxwellMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn physics_em_maxwell_matrix_norm(m : PhysicsemmaxwellMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  physics_em_maxwell_sqrt(sum)
+}
+
+pub fn physics_em_maxwell_matrix_to_string(m : PhysicsemmaxwellMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + physics_em_maxwell_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct PhysicsemmaxwellVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn physics_em_maxwell_make_vector(comps : Array[Double]) -> PhysicsemmaxwellVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn physics_em_maxwell_vector_zero(dim : Int) -> PhysicsemmaxwellVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn physics_em_maxwell_vector_add(a : PhysicsemmaxwellVector, b : PhysicsemmaxwellVector) -> PhysicsemmaxwellVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = physics_em_maxwell_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn physics_em_maxwell_vector_sub(a : PhysicsemmaxwellVector, b : PhysicsemmaxwellVector) -> PhysicsemmaxwellVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = physics_em_maxwell_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn physics_em_maxwell_vector_scale(v : PhysicsemmaxwellVector, s : Double) -> PhysicsemmaxwellVector {
+  let mut result = []
+  for i in 0..<v.dim { result = physics_em_maxwell_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn physics_em_maxwell_vector_dot(a : PhysicsemmaxwellVector, b : PhysicsemmaxwellVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn physics_em_maxwell_vector_norm(v : PhysicsemmaxwellVector) -> Double { physics_em_maxwell_sqrt(physics_em_maxwell_vector_dot(v, v)) }
+
+pub fn physics_em_maxwell_vector_normalize(v : PhysicsemmaxwellVector) -> PhysicsemmaxwellVector {
+  let n = physics_em_maxwell_vector_norm(v)
+  if n < 0.0000001 { v } else { physics_em_maxwell_vector_scale(v, 1.0 / n) }
+}
+
+pub fn physics_em_maxwell_vector_dist(a : PhysicsemmaxwellVector, b : PhysicsemmaxwellVector) -> Double {
+  physics_em_maxwell_vector_norm(physics_em_maxwell_vector_sub(a, b))
+}
+
+pub fn physics_em_maxwell_vector_to_string(v : PhysicsemmaxwellVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + physics_em_maxwell_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn physics_em_maxwell_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = physics_em_maxwell_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_std(data : Array[Double]) -> Double { physics_em_maxwell_sqrt(physics_em_maxwell_var(data)) }
+
+pub fn physics_em_maxwell_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = physics_em_maxwell_mean(a); let mb = physics_em_maxwell_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = physics_em_maxwell_std(a); let sb = physics_em_maxwell_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { physics_em_maxwell_cov(a, b) / (sa * sb) }
+}
+
+pub fn physics_em_maxwell_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = physics_em_maxwell_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn physics_em_maxwell_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  physics_em_maxwell_sqrt(physics_em_maxwell_mse(pred, labels))
+}
+
+pub fn physics_em_maxwell_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + physics_em_maxwell_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = physics_em_maxwell_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn physics_em_maxwell_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn physics_em_maxwell_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn physics_em_maxwell_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = physics_em_maxwell_precision(pred, labels, pos); let r = physics_em_maxwell_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn physics_em_maxwell_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn physics_em_maxwell_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = physics_em_maxwell_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn physics_em_maxwell_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn physics_em_maxwell_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn physics_em_maxwell_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = physics_em_maxwell_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn physics_em_maxwell_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn physics_em_maxwell_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn physics_em_maxwell_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = physics_em_maxwell_min(data); let mx = physics_em_maxwell_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn physics_em_maxwell_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = physics_em_maxwell_mean(data); let sd = physics_em_maxwell_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn physics_em_maxwell_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn physics_em_maxwell_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn physics_em_maxwell_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn physics_em_maxwell_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn physics_em_maxwell_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn physics_em_maxwell_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn physics_em_maxwell_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { physics_em_maxwell_int(x) } else { -physics_em_maxwell_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { physics_em_maxwell_int(f * 1000000.0) } else { physics_em_maxwell_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn physics_em_maxwell_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn physics_em_maxwell_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct PhysicsemmaxwellFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn physics_em_maxwell_frame_make(size : Int) -> PhysicsemmaxwellFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn physics_em_maxwell_frame_len(s : PhysicsemmaxwellFrame) -> Int { s.size }
+
+pub fn physics_em_maxwell_frame_get(s : PhysicsemmaxwellFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn physics_em_maxwell_frame_set(s : PhysicsemmaxwellFrame, i : Int, v : Double) -> PhysicsemmaxwellFrame {
+  let result = physics_em_maxwell_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_frame_sum(s : PhysicsemmaxwellFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn physics_em_maxwell_frame_mean(s : PhysicsemmaxwellFrame) -> Double {
+  if s.size == 0 { 0.0 } else { physics_em_maxwell_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn physics_em_maxwell_frame_scale(s : PhysicsemmaxwellFrame, f : Double) -> PhysicsemmaxwellFrame {
+  let result = physics_em_maxwell_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn physics_em_maxwell_frame_add(a : PhysicsemmaxwellFrame, b : PhysicsemmaxwellFrame) -> PhysicsemmaxwellFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = physics_em_maxwell_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_frame_copy(s : PhysicsemmaxwellFrame) -> PhysicsemmaxwellFrame {
+  let result = physics_em_maxwell_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_frame_fill(s : PhysicsemmaxwellFrame, v : Double) -> PhysicsemmaxwellFrame {
+  let result = physics_em_maxwell_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_frame_min(s : PhysicsemmaxwellFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_frame_max(s : PhysicsemmaxwellFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_frame_to_string(s : PhysicsemmaxwellFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct PhysicsemmaxwellTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn physics_em_maxwell_table_make(size : Int) -> PhysicsemmaxwellTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn physics_em_maxwell_table_len(s : PhysicsemmaxwellTable) -> Int { s.size }
+
+pub fn physics_em_maxwell_table_get(s : PhysicsemmaxwellTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn physics_em_maxwell_table_set(s : PhysicsemmaxwellTable, i : Int, v : Double) -> PhysicsemmaxwellTable {
+  let result = physics_em_maxwell_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_table_sum(s : PhysicsemmaxwellTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn physics_em_maxwell_table_mean(s : PhysicsemmaxwellTable) -> Double {
+  if s.size == 0 { 0.0 } else { physics_em_maxwell_table_sum(s) / s.size.to_double() }
+}
+
+pub fn physics_em_maxwell_table_scale(s : PhysicsemmaxwellTable, f : Double) -> PhysicsemmaxwellTable {
+  let result = physics_em_maxwell_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn physics_em_maxwell_table_add(a : PhysicsemmaxwellTable, b : PhysicsemmaxwellTable) -> PhysicsemmaxwellTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = physics_em_maxwell_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_table_copy(s : PhysicsemmaxwellTable) -> PhysicsemmaxwellTable {
+  let result = physics_em_maxwell_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_table_fill(s : PhysicsemmaxwellTable, v : Double) -> PhysicsemmaxwellTable {
+  let result = physics_em_maxwell_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_table_min(s : PhysicsemmaxwellTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_table_max(s : PhysicsemmaxwellTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_table_to_string(s : PhysicsemmaxwellTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct PhysicsemmaxwellGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn physics_em_maxwell_graphn_make(size : Int) -> PhysicsemmaxwellGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn physics_em_maxwell_graphn_len(s : PhysicsemmaxwellGraphN) -> Int { s.size }
+
+pub fn physics_em_maxwell_graphn_get(s : PhysicsemmaxwellGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn physics_em_maxwell_graphn_set(s : PhysicsemmaxwellGraphN, i : Int, v : Double) -> PhysicsemmaxwellGraphN {
+  let result = physics_em_maxwell_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_graphn_sum(s : PhysicsemmaxwellGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn physics_em_maxwell_graphn_mean(s : PhysicsemmaxwellGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { physics_em_maxwell_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn physics_em_maxwell_graphn_scale(s : PhysicsemmaxwellGraphN, f : Double) -> PhysicsemmaxwellGraphN {
+  let result = physics_em_maxwell_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn physics_em_maxwell_graphn_add(a : PhysicsemmaxwellGraphN, b : PhysicsemmaxwellGraphN) -> PhysicsemmaxwellGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = physics_em_maxwell_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_graphn_copy(s : PhysicsemmaxwellGraphN) -> PhysicsemmaxwellGraphN {
+  let result = physics_em_maxwell_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_graphn_fill(s : PhysicsemmaxwellGraphN, v : Double) -> PhysicsemmaxwellGraphN {
+  let result = physics_em_maxwell_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_graphn_min(s : PhysicsemmaxwellGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_graphn_max(s : PhysicsemmaxwellGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_graphn_to_string(s : PhysicsemmaxwellGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct PhysicsemmaxwellNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn physics_em_maxwell_node_make(size : Int) -> PhysicsemmaxwellNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn physics_em_maxwell_node_len(s : PhysicsemmaxwellNode) -> Int { s.size }
+
+pub fn physics_em_maxwell_node_get(s : PhysicsemmaxwellNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn physics_em_maxwell_node_set(s : PhysicsemmaxwellNode, i : Int, v : Double) -> PhysicsemmaxwellNode {
+  let result = physics_em_maxwell_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_node_sum(s : PhysicsemmaxwellNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn physics_em_maxwell_node_mean(s : PhysicsemmaxwellNode) -> Double {
+  if s.size == 0 { 0.0 } else { physics_em_maxwell_node_sum(s) / s.size.to_double() }
+}
+
+pub fn physics_em_maxwell_node_scale(s : PhysicsemmaxwellNode, f : Double) -> PhysicsemmaxwellNode {
+  let result = physics_em_maxwell_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn physics_em_maxwell_node_add(a : PhysicsemmaxwellNode, b : PhysicsemmaxwellNode) -> PhysicsemmaxwellNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = physics_em_maxwell_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_node_copy(s : PhysicsemmaxwellNode) -> PhysicsemmaxwellNode {
+  let result = physics_em_maxwell_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_node_fill(s : PhysicsemmaxwellNode, v : Double) -> PhysicsemmaxwellNode {
+  let result = physics_em_maxwell_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_node_min(s : PhysicsemmaxwellNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_node_max(s : PhysicsemmaxwellNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_node_to_string(s : PhysicsemmaxwellNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct PhysicsemmaxwellEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn physics_em_maxwell_edge_make(size : Int) -> PhysicsemmaxwellEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn physics_em_maxwell_edge_len(s : PhysicsemmaxwellEdge) -> Int { s.size }
+
+pub fn physics_em_maxwell_edge_get(s : PhysicsemmaxwellEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn physics_em_maxwell_edge_set(s : PhysicsemmaxwellEdge, i : Int, v : Double) -> PhysicsemmaxwellEdge {
+  let result = physics_em_maxwell_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_edge_sum(s : PhysicsemmaxwellEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn physics_em_maxwell_edge_mean(s : PhysicsemmaxwellEdge) -> Double {
+  if s.size == 0 { 0.0 } else { physics_em_maxwell_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn physics_em_maxwell_edge_scale(s : PhysicsemmaxwellEdge, f : Double) -> PhysicsemmaxwellEdge {
+  let result = physics_em_maxwell_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn physics_em_maxwell_edge_add(a : PhysicsemmaxwellEdge, b : PhysicsemmaxwellEdge) -> PhysicsemmaxwellEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = physics_em_maxwell_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_edge_copy(s : PhysicsemmaxwellEdge) -> PhysicsemmaxwellEdge {
+  let result = physics_em_maxwell_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_edge_fill(s : PhysicsemmaxwellEdge, v : Double) -> PhysicsemmaxwellEdge {
+  let result = physics_em_maxwell_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_edge_min(s : PhysicsemmaxwellEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_edge_max(s : PhysicsemmaxwellEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_edge_to_string(s : PhysicsemmaxwellEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct PhysicsemmaxwellPath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn physics_em_maxwell_path_make(size : Int) -> PhysicsemmaxwellPath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn physics_em_maxwell_path_len(s : PhysicsemmaxwellPath) -> Int { s.size }
+
+pub fn physics_em_maxwell_path_get(s : PhysicsemmaxwellPath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn physics_em_maxwell_path_set(s : PhysicsemmaxwellPath, i : Int, v : Double) -> PhysicsemmaxwellPath {
+  let result = physics_em_maxwell_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_path_sum(s : PhysicsemmaxwellPath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn physics_em_maxwell_path_mean(s : PhysicsemmaxwellPath) -> Double {
+  if s.size == 0 { 0.0 } else { physics_em_maxwell_path_sum(s) / s.size.to_double() }
+}
+
+pub fn physics_em_maxwell_path_scale(s : PhysicsemmaxwellPath, f : Double) -> PhysicsemmaxwellPath {
+  let result = physics_em_maxwell_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn physics_em_maxwell_path_add(a : PhysicsemmaxwellPath, b : PhysicsemmaxwellPath) -> PhysicsemmaxwellPath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = physics_em_maxwell_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_path_copy(s : PhysicsemmaxwellPath) -> PhysicsemmaxwellPath {
+  let result = physics_em_maxwell_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_path_fill(s : PhysicsemmaxwellPath, v : Double) -> PhysicsemmaxwellPath {
+  let result = physics_em_maxwell_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_path_min(s : PhysicsemmaxwellPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_path_max(s : PhysicsemmaxwellPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_path_to_string(s : PhysicsemmaxwellPath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct PhysicsemmaxwellCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn physics_em_maxwell_cluster_make(size : Int) -> PhysicsemmaxwellCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn physics_em_maxwell_cluster_len(s : PhysicsemmaxwellCluster) -> Int { s.size }
+
+pub fn physics_em_maxwell_cluster_get(s : PhysicsemmaxwellCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn physics_em_maxwell_cluster_set(s : PhysicsemmaxwellCluster, i : Int, v : Double) -> PhysicsemmaxwellCluster {
+  let result = physics_em_maxwell_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_cluster_sum(s : PhysicsemmaxwellCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn physics_em_maxwell_cluster_mean(s : PhysicsemmaxwellCluster) -> Double {
+  if s.size == 0 { 0.0 } else { physics_em_maxwell_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn physics_em_maxwell_cluster_scale(s : PhysicsemmaxwellCluster, f : Double) -> PhysicsemmaxwellCluster {
+  let result = physics_em_maxwell_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn physics_em_maxwell_cluster_add(a : PhysicsemmaxwellCluster, b : PhysicsemmaxwellCluster) -> PhysicsemmaxwellCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = physics_em_maxwell_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_cluster_copy(s : PhysicsemmaxwellCluster) -> PhysicsemmaxwellCluster {
+  let result = physics_em_maxwell_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_cluster_fill(s : PhysicsemmaxwellCluster, v : Double) -> PhysicsemmaxwellCluster {
+  let result = physics_em_maxwell_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_cluster_min(s : PhysicsemmaxwellCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_cluster_max(s : PhysicsemmaxwellCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_cluster_to_string(s : PhysicsemmaxwellCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct PhysicsemmaxwellModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn physics_em_maxwell_model_make(size : Int) -> PhysicsemmaxwellModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn physics_em_maxwell_model_len(s : PhysicsemmaxwellModel) -> Int { s.size }
+
+pub fn physics_em_maxwell_model_get(s : PhysicsemmaxwellModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn physics_em_maxwell_model_set(s : PhysicsemmaxwellModel, i : Int, v : Double) -> PhysicsemmaxwellModel {
+  let result = physics_em_maxwell_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_model_sum(s : PhysicsemmaxwellModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn physics_em_maxwell_model_mean(s : PhysicsemmaxwellModel) -> Double {
+  if s.size == 0 { 0.0 } else { physics_em_maxwell_model_sum(s) / s.size.to_double() }
+}
+
+pub fn physics_em_maxwell_model_scale(s : PhysicsemmaxwellModel, f : Double) -> PhysicsemmaxwellModel {
+  let result = physics_em_maxwell_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn physics_em_maxwell_model_add(a : PhysicsemmaxwellModel, b : PhysicsemmaxwellModel) -> PhysicsemmaxwellModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = physics_em_maxwell_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_model_copy(s : PhysicsemmaxwellModel) -> PhysicsemmaxwellModel {
+  let result = physics_em_maxwell_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_model_fill(s : PhysicsemmaxwellModel, v : Double) -> PhysicsemmaxwellModel {
+  let result = physics_em_maxwell_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_model_min(s : PhysicsemmaxwellModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_model_max(s : PhysicsemmaxwellModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_model_to_string(s : PhysicsemmaxwellModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct PhysicsemmaxwellLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn physics_em_maxwell_layer_make(size : Int) -> PhysicsemmaxwellLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn physics_em_maxwell_layer_len(s : PhysicsemmaxwellLayer) -> Int { s.size }
+
+pub fn physics_em_maxwell_layer_get(s : PhysicsemmaxwellLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn physics_em_maxwell_layer_set(s : PhysicsemmaxwellLayer, i : Int, v : Double) -> PhysicsemmaxwellLayer {
+  let result = physics_em_maxwell_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_layer_sum(s : PhysicsemmaxwellLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn physics_em_maxwell_layer_mean(s : PhysicsemmaxwellLayer) -> Double {
+  if s.size == 0 { 0.0 } else { physics_em_maxwell_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn physics_em_maxwell_layer_scale(s : PhysicsemmaxwellLayer, f : Double) -> PhysicsemmaxwellLayer {
+  let result = physics_em_maxwell_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn physics_em_maxwell_layer_add(a : PhysicsemmaxwellLayer, b : PhysicsemmaxwellLayer) -> PhysicsemmaxwellLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = physics_em_maxwell_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_layer_copy(s : PhysicsemmaxwellLayer) -> PhysicsemmaxwellLayer {
+  let result = physics_em_maxwell_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_layer_fill(s : PhysicsemmaxwellLayer, v : Double) -> PhysicsemmaxwellLayer {
+  let result = physics_em_maxwell_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_layer_min(s : PhysicsemmaxwellLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_layer_max(s : PhysicsemmaxwellLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_layer_to_string(s : PhysicsemmaxwellLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct PhysicsemmaxwellBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn physics_em_maxwell_buffer_make(size : Int) -> PhysicsemmaxwellBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn physics_em_maxwell_buffer_len(s : PhysicsemmaxwellBuffer) -> Int { s.size }
+
+pub fn physics_em_maxwell_buffer_get(s : PhysicsemmaxwellBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn physics_em_maxwell_buffer_set(s : PhysicsemmaxwellBuffer, i : Int, v : Double) -> PhysicsemmaxwellBuffer {
+  let result = physics_em_maxwell_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_buffer_sum(s : PhysicsemmaxwellBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn physics_em_maxwell_buffer_mean(s : PhysicsemmaxwellBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { physics_em_maxwell_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn physics_em_maxwell_buffer_scale(s : PhysicsemmaxwellBuffer, f : Double) -> PhysicsemmaxwellBuffer {
+  let result = physics_em_maxwell_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn physics_em_maxwell_buffer_add(a : PhysicsemmaxwellBuffer, b : PhysicsemmaxwellBuffer) -> PhysicsemmaxwellBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = physics_em_maxwell_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_buffer_copy(s : PhysicsemmaxwellBuffer) -> PhysicsemmaxwellBuffer {
+  let result = physics_em_maxwell_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_buffer_fill(s : PhysicsemmaxwellBuffer, v : Double) -> PhysicsemmaxwellBuffer {
+  let result = physics_em_maxwell_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_buffer_min(s : PhysicsemmaxwellBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_buffer_max(s : PhysicsemmaxwellBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_buffer_to_string(s : PhysicsemmaxwellBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct PhysicsemmaxwellCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn physics_em_maxwell_cursor_make(size : Int) -> PhysicsemmaxwellCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn physics_em_maxwell_cursor_len(s : PhysicsemmaxwellCursor) -> Int { s.size }
+
+pub fn physics_em_maxwell_cursor_get(s : PhysicsemmaxwellCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn physics_em_maxwell_cursor_set(s : PhysicsemmaxwellCursor, i : Int, v : Double) -> PhysicsemmaxwellCursor {
+  let result = physics_em_maxwell_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_cursor_sum(s : PhysicsemmaxwellCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn physics_em_maxwell_cursor_mean(s : PhysicsemmaxwellCursor) -> Double {
+  if s.size == 0 { 0.0 } else { physics_em_maxwell_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn physics_em_maxwell_cursor_scale(s : PhysicsemmaxwellCursor, f : Double) -> PhysicsemmaxwellCursor {
+  let result = physics_em_maxwell_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn physics_em_maxwell_cursor_add(a : PhysicsemmaxwellCursor, b : PhysicsemmaxwellCursor) -> PhysicsemmaxwellCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = physics_em_maxwell_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_cursor_copy(s : PhysicsemmaxwellCursor) -> PhysicsemmaxwellCursor {
+  let result = physics_em_maxwell_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_cursor_fill(s : PhysicsemmaxwellCursor, v : Double) -> PhysicsemmaxwellCursor {
+  let result = physics_em_maxwell_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_cursor_min(s : PhysicsemmaxwellCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_cursor_max(s : PhysicsemmaxwellCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_cursor_to_string(s : PhysicsemmaxwellCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct PhysicsemmaxwellView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn physics_em_maxwell_view_make(size : Int) -> PhysicsemmaxwellView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn physics_em_maxwell_view_len(s : PhysicsemmaxwellView) -> Int { s.size }
+
+pub fn physics_em_maxwell_view_get(s : PhysicsemmaxwellView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn physics_em_maxwell_view_set(s : PhysicsemmaxwellView, i : Int, v : Double) -> PhysicsemmaxwellView {
+  let result = physics_em_maxwell_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_view_sum(s : PhysicsemmaxwellView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn physics_em_maxwell_view_mean(s : PhysicsemmaxwellView) -> Double {
+  if s.size == 0 { 0.0 } else { physics_em_maxwell_view_sum(s) / s.size.to_double() }
+}
+
+pub fn physics_em_maxwell_view_scale(s : PhysicsemmaxwellView, f : Double) -> PhysicsemmaxwellView {
+  let result = physics_em_maxwell_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn physics_em_maxwell_view_add(a : PhysicsemmaxwellView, b : PhysicsemmaxwellView) -> PhysicsemmaxwellView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = physics_em_maxwell_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_view_copy(s : PhysicsemmaxwellView) -> PhysicsemmaxwellView {
+  let result = physics_em_maxwell_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_view_fill(s : PhysicsemmaxwellView, v : Double) -> PhysicsemmaxwellView {
+  let result = physics_em_maxwell_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_view_min(s : PhysicsemmaxwellView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_view_max(s : PhysicsemmaxwellView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_view_to_string(s : PhysicsemmaxwellView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct PhysicsemmaxwellRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn physics_em_maxwell_range_make(size : Int) -> PhysicsemmaxwellRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn physics_em_maxwell_range_len(s : PhysicsemmaxwellRange) -> Int { s.size }
+
+pub fn physics_em_maxwell_range_get(s : PhysicsemmaxwellRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn physics_em_maxwell_range_set(s : PhysicsemmaxwellRange, i : Int, v : Double) -> PhysicsemmaxwellRange {
+  let result = physics_em_maxwell_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_range_sum(s : PhysicsemmaxwellRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn physics_em_maxwell_range_mean(s : PhysicsemmaxwellRange) -> Double {
+  if s.size == 0 { 0.0 } else { physics_em_maxwell_range_sum(s) / s.size.to_double() }
+}
+
+pub fn physics_em_maxwell_range_scale(s : PhysicsemmaxwellRange, f : Double) -> PhysicsemmaxwellRange {
+  let result = physics_em_maxwell_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn physics_em_maxwell_range_add(a : PhysicsemmaxwellRange, b : PhysicsemmaxwellRange) -> PhysicsemmaxwellRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = physics_em_maxwell_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_range_copy(s : PhysicsemmaxwellRange) -> PhysicsemmaxwellRange {
+  let result = physics_em_maxwell_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_range_fill(s : PhysicsemmaxwellRange, v : Double) -> PhysicsemmaxwellRange {
+  let result = physics_em_maxwell_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_range_min(s : PhysicsemmaxwellRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_range_max(s : PhysicsemmaxwellRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_range_to_string(s : PhysicsemmaxwellRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct PhysicsemmaxwellSlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn physics_em_maxwell_slice_make(size : Int) -> PhysicsemmaxwellSlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn physics_em_maxwell_slice_len(s : PhysicsemmaxwellSlice) -> Int { s.size }
+
+pub fn physics_em_maxwell_slice_get(s : PhysicsemmaxwellSlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn physics_em_maxwell_slice_set(s : PhysicsemmaxwellSlice, i : Int, v : Double) -> PhysicsemmaxwellSlice {
+  let result = physics_em_maxwell_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_slice_sum(s : PhysicsemmaxwellSlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn physics_em_maxwell_slice_mean(s : PhysicsemmaxwellSlice) -> Double {
+  if s.size == 0 { 0.0 } else { physics_em_maxwell_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn physics_em_maxwell_slice_scale(s : PhysicsemmaxwellSlice, f : Double) -> PhysicsemmaxwellSlice {
+  let result = physics_em_maxwell_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn physics_em_maxwell_slice_add(a : PhysicsemmaxwellSlice, b : PhysicsemmaxwellSlice) -> PhysicsemmaxwellSlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = physics_em_maxwell_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_slice_copy(s : PhysicsemmaxwellSlice) -> PhysicsemmaxwellSlice {
+  let result = physics_em_maxwell_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn physics_em_maxwell_slice_fill(s : PhysicsemmaxwellSlice, v : Double) -> PhysicsemmaxwellSlice {
+  let result = physics_em_maxwell_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn physics_em_maxwell_slice_min(s : PhysicsemmaxwellSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_slice_max(s : PhysicsemmaxwellSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn physics_em_maxwell_slice_to_string(s : PhysicsemmaxwellSlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn physics_em_maxwell_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn physics_em_maxwell_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

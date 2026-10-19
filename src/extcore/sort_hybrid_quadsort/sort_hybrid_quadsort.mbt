@@ -1,0 +1,1955 @@
+///===
+/// extcore/sort_hybrid_quadsort
+
+pub(all) struct SorthybridquadsortPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn sort_hybrid_quadsort_make_point(x : Double, y : Double) -> SorthybridquadsortPoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn sort_hybrid_quadsort_make_point3(x : Double, y : Double, z : Double) -> SorthybridquadsortPoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn sort_hybrid_quadsort_point_x(pt : SorthybridquadsortPoint) -> Double { pt.x }
+
+pub fn sort_hybrid_quadsort_point_y(pt : SorthybridquadsortPoint) -> Double { pt.y }
+
+pub fn sort_hybrid_quadsort_point_z(pt : SorthybridquadsortPoint) -> Double { pt.z }
+
+pub fn sort_hybrid_quadsort_point_label(pt : SorthybridquadsortPoint) -> Int { pt.label }
+
+pub fn sort_hybrid_quadsort_point_dist(a : SorthybridquadsortPoint, b : SorthybridquadsortPoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  sort_hybrid_quadsort_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn sort_hybrid_quadsort_point_add(a : SorthybridquadsortPoint, b : SorthybridquadsortPoint) -> SorthybridquadsortPoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn sort_hybrid_quadsort_point_sub(a : SorthybridquadsortPoint, b : SorthybridquadsortPoint) -> SorthybridquadsortPoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn sort_hybrid_quadsort_point_scale(pt : SorthybridquadsortPoint, s : Double) -> SorthybridquadsortPoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn sort_hybrid_quadsort_point_dot(a : SorthybridquadsortPoint, b : SorthybridquadsortPoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn sort_hybrid_quadsort_point_cross(a : SorthybridquadsortPoint, b : SorthybridquadsortPoint) -> SorthybridquadsortPoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn sort_hybrid_quadsort_point_norm(pt : SorthybridquadsortPoint) -> Double {
+  sort_hybrid_quadsort_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn sort_hybrid_quadsort_point_normalize(pt : SorthybridquadsortPoint) -> SorthybridquadsortPoint {
+  let n = sort_hybrid_quadsort_point_norm(pt)
+  if n < 0.0000001 { pt } else { sort_hybrid_quadsort_point_scale(pt, 1.0 / n) }
+}
+
+pub fn sort_hybrid_quadsort_point_negate(pt : SorthybridquadsortPoint) -> SorthybridquadsortPoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn sort_hybrid_quadsort_point_mid(a : SorthybridquadsortPoint, b : SorthybridquadsortPoint) -> SorthybridquadsortPoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn sort_hybrid_quadsort_point_lerp(a : SorthybridquadsortPoint, b : SorthybridquadsortPoint, t : Double) -> SorthybridquadsortPoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn sort_hybrid_quadsort_point_to_string(pt : SorthybridquadsortPoint) -> String {
+  "(" + sort_hybrid_quadsort_dbl(pt.x) + ", " + sort_hybrid_quadsort_dbl(pt.y) + ", " + sort_hybrid_quadsort_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct SorthybridquadsortSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn sort_hybrid_quadsort_make_series(vals : Array[Double], name : String) -> SorthybridquadsortSeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn sort_hybrid_quadsort_series_len(s : SorthybridquadsortSeries) -> Int { s.vals.length() }
+
+pub fn sort_hybrid_quadsort_series_sum(s : SorthybridquadsortSeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn sort_hybrid_quadsort_series_mean(s : SorthybridquadsortSeries) -> Double {
+  let n = sort_hybrid_quadsort_series_len(s)
+  if n == 0 { 0.0 } else { sort_hybrid_quadsort_series_sum(s) / n.to_double() }
+}
+
+pub fn sort_hybrid_quadsort_series_min(s : SorthybridquadsortSeries) -> Double {
+  let n = sort_hybrid_quadsort_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_series_max(s : SorthybridquadsortSeries) -> Double {
+  let n = sort_hybrid_quadsort_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_series_range(s : SorthybridquadsortSeries) -> Double {
+  sort_hybrid_quadsort_series_max(s) - sort_hybrid_quadsort_series_min(s)
+}
+
+pub fn sort_hybrid_quadsort_series_var(s : SorthybridquadsortSeries) -> Double {
+  let n = sort_hybrid_quadsort_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = sort_hybrid_quadsort_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_series_std(s : SorthybridquadsortSeries) -> Double { sort_hybrid_quadsort_sqrt(sort_hybrid_quadsort_series_var(s)) }
+
+pub fn sort_hybrid_quadsort_series_median(s : SorthybridquadsortSeries) -> Double {
+  let n = sort_hybrid_quadsort_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = sort_hybrid_quadsort_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn sort_hybrid_quadsort_series_scale(s : SorthybridquadsortSeries, f : Double) -> SorthybridquadsortSeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = sort_hybrid_quadsort_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn sort_hybrid_quadsort_series_add(a : SorthybridquadsortSeries, b : SorthybridquadsortSeries) -> SorthybridquadsortSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = sort_hybrid_quadsort_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn sort_hybrid_quadsort_series_sub(a : SorthybridquadsortSeries, b : SorthybridquadsortSeries) -> SorthybridquadsortSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = sort_hybrid_quadsort_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn sort_hybrid_quadsort_series_normalize(s : SorthybridquadsortSeries) -> SorthybridquadsortSeries {
+  let mn = sort_hybrid_quadsort_series_min(s)
+  let mx = sort_hybrid_quadsort_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = sort_hybrid_quadsort_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn sort_hybrid_quadsort_series_cumsum(s : SorthybridquadsortSeries) -> SorthybridquadsortSeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = sort_hybrid_quadsort_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn sort_hybrid_quadsort_series_to_string(s : SorthybridquadsortSeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + sort_hybrid_quadsort_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct SorthybridquadsortMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn sort_hybrid_quadsort_make_matrix(rows : Int, cols : Int, val : Double) -> SorthybridquadsortMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn sort_hybrid_quadsort_matrix_identity(n : Int) -> SorthybridquadsortMatrix {
+  let m = sort_hybrid_quadsort_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn sort_hybrid_quadsort_matrix_get(m : SorthybridquadsortMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn sort_hybrid_quadsort_matrix_transpose(m : SorthybridquadsortMatrix) -> SorthybridquadsortMatrix {
+  let result = sort_hybrid_quadsort_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn sort_hybrid_quadsort_matrix_add(a : SorthybridquadsortMatrix, b : SorthybridquadsortMatrix) -> SorthybridquadsortMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = sort_hybrid_quadsort_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn sort_hybrid_quadsort_matrix_scale(m : SorthybridquadsortMatrix, s : Double) -> SorthybridquadsortMatrix {
+  let result = sort_hybrid_quadsort_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn sort_hybrid_quadsort_matrix_multiply(a : SorthybridquadsortMatrix, b : SorthybridquadsortMatrix) -> SorthybridquadsortMatrix {
+  if a.cols != b.rows { return sort_hybrid_quadsort_make_matrix(a.rows, b.cols, 0.0) }
+  let result = sort_hybrid_quadsort_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn sort_hybrid_quadsort_matrix_trace(m : SorthybridquadsortMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn sort_hybrid_quadsort_matrix_det(m : SorthybridquadsortMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn sort_hybrid_quadsort_matrix_norm(m : SorthybridquadsortMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  sort_hybrid_quadsort_sqrt(sum)
+}
+
+pub fn sort_hybrid_quadsort_matrix_to_string(m : SorthybridquadsortMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + sort_hybrid_quadsort_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct SorthybridquadsortVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn sort_hybrid_quadsort_make_vector(comps : Array[Double]) -> SorthybridquadsortVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn sort_hybrid_quadsort_vector_zero(dim : Int) -> SorthybridquadsortVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn sort_hybrid_quadsort_vector_add(a : SorthybridquadsortVector, b : SorthybridquadsortVector) -> SorthybridquadsortVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = sort_hybrid_quadsort_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn sort_hybrid_quadsort_vector_sub(a : SorthybridquadsortVector, b : SorthybridquadsortVector) -> SorthybridquadsortVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = sort_hybrid_quadsort_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn sort_hybrid_quadsort_vector_scale(v : SorthybridquadsortVector, s : Double) -> SorthybridquadsortVector {
+  let mut result = []
+  for i in 0..<v.dim { result = sort_hybrid_quadsort_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn sort_hybrid_quadsort_vector_dot(a : SorthybridquadsortVector, b : SorthybridquadsortVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn sort_hybrid_quadsort_vector_norm(v : SorthybridquadsortVector) -> Double { sort_hybrid_quadsort_sqrt(sort_hybrid_quadsort_vector_dot(v, v)) }
+
+pub fn sort_hybrid_quadsort_vector_normalize(v : SorthybridquadsortVector) -> SorthybridquadsortVector {
+  let n = sort_hybrid_quadsort_vector_norm(v)
+  if n < 0.0000001 { v } else { sort_hybrid_quadsort_vector_scale(v, 1.0 / n) }
+}
+
+pub fn sort_hybrid_quadsort_vector_dist(a : SorthybridquadsortVector, b : SorthybridquadsortVector) -> Double {
+  sort_hybrid_quadsort_vector_norm(sort_hybrid_quadsort_vector_sub(a, b))
+}
+
+pub fn sort_hybrid_quadsort_vector_to_string(v : SorthybridquadsortVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + sort_hybrid_quadsort_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn sort_hybrid_quadsort_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = sort_hybrid_quadsort_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_std(data : Array[Double]) -> Double { sort_hybrid_quadsort_sqrt(sort_hybrid_quadsort_var(data)) }
+
+pub fn sort_hybrid_quadsort_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = sort_hybrid_quadsort_mean(a); let mb = sort_hybrid_quadsort_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = sort_hybrid_quadsort_std(a); let sb = sort_hybrid_quadsort_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { sort_hybrid_quadsort_cov(a, b) / (sa * sb) }
+}
+
+pub fn sort_hybrid_quadsort_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = sort_hybrid_quadsort_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn sort_hybrid_quadsort_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  sort_hybrid_quadsort_sqrt(sort_hybrid_quadsort_mse(pred, labels))
+}
+
+pub fn sort_hybrid_quadsort_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + sort_hybrid_quadsort_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = sort_hybrid_quadsort_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn sort_hybrid_quadsort_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn sort_hybrid_quadsort_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn sort_hybrid_quadsort_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = sort_hybrid_quadsort_precision(pred, labels, pos); let r = sort_hybrid_quadsort_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn sort_hybrid_quadsort_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn sort_hybrid_quadsort_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = sort_hybrid_quadsort_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn sort_hybrid_quadsort_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn sort_hybrid_quadsort_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = sort_hybrid_quadsort_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn sort_hybrid_quadsort_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn sort_hybrid_quadsort_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn sort_hybrid_quadsort_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = sort_hybrid_quadsort_min(data); let mx = sort_hybrid_quadsort_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn sort_hybrid_quadsort_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = sort_hybrid_quadsort_mean(data); let sd = sort_hybrid_quadsort_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn sort_hybrid_quadsort_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn sort_hybrid_quadsort_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn sort_hybrid_quadsort_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn sort_hybrid_quadsort_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn sort_hybrid_quadsort_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn sort_hybrid_quadsort_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { sort_hybrid_quadsort_int(x) } else { -sort_hybrid_quadsort_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { sort_hybrid_quadsort_int(f * 1000000.0) } else { sort_hybrid_quadsort_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn sort_hybrid_quadsort_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn sort_hybrid_quadsort_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct SorthybridquadsortFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_hybrid_quadsort_frame_make(size : Int) -> SorthybridquadsortFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_hybrid_quadsort_frame_len(s : SorthybridquadsortFrame) -> Int { s.size }
+
+pub fn sort_hybrid_quadsort_frame_get(s : SorthybridquadsortFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_hybrid_quadsort_frame_set(s : SorthybridquadsortFrame, i : Int, v : Double) -> SorthybridquadsortFrame {
+  let result = sort_hybrid_quadsort_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_frame_sum(s : SorthybridquadsortFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_hybrid_quadsort_frame_mean(s : SorthybridquadsortFrame) -> Double {
+  if s.size == 0 { 0.0 } else { sort_hybrid_quadsort_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_hybrid_quadsort_frame_scale(s : SorthybridquadsortFrame, f : Double) -> SorthybridquadsortFrame {
+  let result = sort_hybrid_quadsort_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_hybrid_quadsort_frame_add(a : SorthybridquadsortFrame, b : SorthybridquadsortFrame) -> SorthybridquadsortFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_hybrid_quadsort_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_frame_copy(s : SorthybridquadsortFrame) -> SorthybridquadsortFrame {
+  let result = sort_hybrid_quadsort_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_frame_fill(s : SorthybridquadsortFrame, v : Double) -> SorthybridquadsortFrame {
+  let result = sort_hybrid_quadsort_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_frame_min(s : SorthybridquadsortFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_frame_max(s : SorthybridquadsortFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_frame_to_string(s : SorthybridquadsortFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SorthybridquadsortTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_hybrid_quadsort_table_make(size : Int) -> SorthybridquadsortTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_hybrid_quadsort_table_len(s : SorthybridquadsortTable) -> Int { s.size }
+
+pub fn sort_hybrid_quadsort_table_get(s : SorthybridquadsortTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_hybrid_quadsort_table_set(s : SorthybridquadsortTable, i : Int, v : Double) -> SorthybridquadsortTable {
+  let result = sort_hybrid_quadsort_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_table_sum(s : SorthybridquadsortTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_hybrid_quadsort_table_mean(s : SorthybridquadsortTable) -> Double {
+  if s.size == 0 { 0.0 } else { sort_hybrid_quadsort_table_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_hybrid_quadsort_table_scale(s : SorthybridquadsortTable, f : Double) -> SorthybridquadsortTable {
+  let result = sort_hybrid_quadsort_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_hybrid_quadsort_table_add(a : SorthybridquadsortTable, b : SorthybridquadsortTable) -> SorthybridquadsortTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_hybrid_quadsort_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_table_copy(s : SorthybridquadsortTable) -> SorthybridquadsortTable {
+  let result = sort_hybrid_quadsort_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_table_fill(s : SorthybridquadsortTable, v : Double) -> SorthybridquadsortTable {
+  let result = sort_hybrid_quadsort_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_table_min(s : SorthybridquadsortTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_table_max(s : SorthybridquadsortTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_table_to_string(s : SorthybridquadsortTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SorthybridquadsortGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_hybrid_quadsort_graphn_make(size : Int) -> SorthybridquadsortGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_hybrid_quadsort_graphn_len(s : SorthybridquadsortGraphN) -> Int { s.size }
+
+pub fn sort_hybrid_quadsort_graphn_get(s : SorthybridquadsortGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_hybrid_quadsort_graphn_set(s : SorthybridquadsortGraphN, i : Int, v : Double) -> SorthybridquadsortGraphN {
+  let result = sort_hybrid_quadsort_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_graphn_sum(s : SorthybridquadsortGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_hybrid_quadsort_graphn_mean(s : SorthybridquadsortGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { sort_hybrid_quadsort_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_hybrid_quadsort_graphn_scale(s : SorthybridquadsortGraphN, f : Double) -> SorthybridquadsortGraphN {
+  let result = sort_hybrid_quadsort_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_hybrid_quadsort_graphn_add(a : SorthybridquadsortGraphN, b : SorthybridquadsortGraphN) -> SorthybridquadsortGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_hybrid_quadsort_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_graphn_copy(s : SorthybridquadsortGraphN) -> SorthybridquadsortGraphN {
+  let result = sort_hybrid_quadsort_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_graphn_fill(s : SorthybridquadsortGraphN, v : Double) -> SorthybridquadsortGraphN {
+  let result = sort_hybrid_quadsort_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_graphn_min(s : SorthybridquadsortGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_graphn_max(s : SorthybridquadsortGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_graphn_to_string(s : SorthybridquadsortGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SorthybridquadsortNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_hybrid_quadsort_node_make(size : Int) -> SorthybridquadsortNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_hybrid_quadsort_node_len(s : SorthybridquadsortNode) -> Int { s.size }
+
+pub fn sort_hybrid_quadsort_node_get(s : SorthybridquadsortNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_hybrid_quadsort_node_set(s : SorthybridquadsortNode, i : Int, v : Double) -> SorthybridquadsortNode {
+  let result = sort_hybrid_quadsort_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_node_sum(s : SorthybridquadsortNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_hybrid_quadsort_node_mean(s : SorthybridquadsortNode) -> Double {
+  if s.size == 0 { 0.0 } else { sort_hybrid_quadsort_node_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_hybrid_quadsort_node_scale(s : SorthybridquadsortNode, f : Double) -> SorthybridquadsortNode {
+  let result = sort_hybrid_quadsort_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_hybrid_quadsort_node_add(a : SorthybridquadsortNode, b : SorthybridquadsortNode) -> SorthybridquadsortNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_hybrid_quadsort_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_node_copy(s : SorthybridquadsortNode) -> SorthybridquadsortNode {
+  let result = sort_hybrid_quadsort_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_node_fill(s : SorthybridquadsortNode, v : Double) -> SorthybridquadsortNode {
+  let result = sort_hybrid_quadsort_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_node_min(s : SorthybridquadsortNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_node_max(s : SorthybridquadsortNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_node_to_string(s : SorthybridquadsortNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SorthybridquadsortEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_hybrid_quadsort_edge_make(size : Int) -> SorthybridquadsortEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_hybrid_quadsort_edge_len(s : SorthybridquadsortEdge) -> Int { s.size }
+
+pub fn sort_hybrid_quadsort_edge_get(s : SorthybridquadsortEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_hybrid_quadsort_edge_set(s : SorthybridquadsortEdge, i : Int, v : Double) -> SorthybridquadsortEdge {
+  let result = sort_hybrid_quadsort_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_edge_sum(s : SorthybridquadsortEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_hybrid_quadsort_edge_mean(s : SorthybridquadsortEdge) -> Double {
+  if s.size == 0 { 0.0 } else { sort_hybrid_quadsort_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_hybrid_quadsort_edge_scale(s : SorthybridquadsortEdge, f : Double) -> SorthybridquadsortEdge {
+  let result = sort_hybrid_quadsort_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_hybrid_quadsort_edge_add(a : SorthybridquadsortEdge, b : SorthybridquadsortEdge) -> SorthybridquadsortEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_hybrid_quadsort_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_edge_copy(s : SorthybridquadsortEdge) -> SorthybridquadsortEdge {
+  let result = sort_hybrid_quadsort_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_edge_fill(s : SorthybridquadsortEdge, v : Double) -> SorthybridquadsortEdge {
+  let result = sort_hybrid_quadsort_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_edge_min(s : SorthybridquadsortEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_edge_max(s : SorthybridquadsortEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_edge_to_string(s : SorthybridquadsortEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SorthybridquadsortPath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_hybrid_quadsort_path_make(size : Int) -> SorthybridquadsortPath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_hybrid_quadsort_path_len(s : SorthybridquadsortPath) -> Int { s.size }
+
+pub fn sort_hybrid_quadsort_path_get(s : SorthybridquadsortPath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_hybrid_quadsort_path_set(s : SorthybridquadsortPath, i : Int, v : Double) -> SorthybridquadsortPath {
+  let result = sort_hybrid_quadsort_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_path_sum(s : SorthybridquadsortPath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_hybrid_quadsort_path_mean(s : SorthybridquadsortPath) -> Double {
+  if s.size == 0 { 0.0 } else { sort_hybrid_quadsort_path_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_hybrid_quadsort_path_scale(s : SorthybridquadsortPath, f : Double) -> SorthybridquadsortPath {
+  let result = sort_hybrid_quadsort_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_hybrid_quadsort_path_add(a : SorthybridquadsortPath, b : SorthybridquadsortPath) -> SorthybridquadsortPath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_hybrid_quadsort_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_path_copy(s : SorthybridquadsortPath) -> SorthybridquadsortPath {
+  let result = sort_hybrid_quadsort_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_path_fill(s : SorthybridquadsortPath, v : Double) -> SorthybridquadsortPath {
+  let result = sort_hybrid_quadsort_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_path_min(s : SorthybridquadsortPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_path_max(s : SorthybridquadsortPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_path_to_string(s : SorthybridquadsortPath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SorthybridquadsortCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_hybrid_quadsort_cluster_make(size : Int) -> SorthybridquadsortCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_hybrid_quadsort_cluster_len(s : SorthybridquadsortCluster) -> Int { s.size }
+
+pub fn sort_hybrid_quadsort_cluster_get(s : SorthybridquadsortCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_hybrid_quadsort_cluster_set(s : SorthybridquadsortCluster, i : Int, v : Double) -> SorthybridquadsortCluster {
+  let result = sort_hybrid_quadsort_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_cluster_sum(s : SorthybridquadsortCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_hybrid_quadsort_cluster_mean(s : SorthybridquadsortCluster) -> Double {
+  if s.size == 0 { 0.0 } else { sort_hybrid_quadsort_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_hybrid_quadsort_cluster_scale(s : SorthybridquadsortCluster, f : Double) -> SorthybridquadsortCluster {
+  let result = sort_hybrid_quadsort_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_hybrid_quadsort_cluster_add(a : SorthybridquadsortCluster, b : SorthybridquadsortCluster) -> SorthybridquadsortCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_hybrid_quadsort_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_cluster_copy(s : SorthybridquadsortCluster) -> SorthybridquadsortCluster {
+  let result = sort_hybrid_quadsort_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_cluster_fill(s : SorthybridquadsortCluster, v : Double) -> SorthybridquadsortCluster {
+  let result = sort_hybrid_quadsort_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_cluster_min(s : SorthybridquadsortCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_cluster_max(s : SorthybridquadsortCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_cluster_to_string(s : SorthybridquadsortCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SorthybridquadsortModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_hybrid_quadsort_model_make(size : Int) -> SorthybridquadsortModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_hybrid_quadsort_model_len(s : SorthybridquadsortModel) -> Int { s.size }
+
+pub fn sort_hybrid_quadsort_model_get(s : SorthybridquadsortModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_hybrid_quadsort_model_set(s : SorthybridquadsortModel, i : Int, v : Double) -> SorthybridquadsortModel {
+  let result = sort_hybrid_quadsort_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_model_sum(s : SorthybridquadsortModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_hybrid_quadsort_model_mean(s : SorthybridquadsortModel) -> Double {
+  if s.size == 0 { 0.0 } else { sort_hybrid_quadsort_model_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_hybrid_quadsort_model_scale(s : SorthybridquadsortModel, f : Double) -> SorthybridquadsortModel {
+  let result = sort_hybrid_quadsort_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_hybrid_quadsort_model_add(a : SorthybridquadsortModel, b : SorthybridquadsortModel) -> SorthybridquadsortModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_hybrid_quadsort_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_model_copy(s : SorthybridquadsortModel) -> SorthybridquadsortModel {
+  let result = sort_hybrid_quadsort_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_model_fill(s : SorthybridquadsortModel, v : Double) -> SorthybridquadsortModel {
+  let result = sort_hybrid_quadsort_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_model_min(s : SorthybridquadsortModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_model_max(s : SorthybridquadsortModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_model_to_string(s : SorthybridquadsortModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SorthybridquadsortLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_hybrid_quadsort_layer_make(size : Int) -> SorthybridquadsortLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_hybrid_quadsort_layer_len(s : SorthybridquadsortLayer) -> Int { s.size }
+
+pub fn sort_hybrid_quadsort_layer_get(s : SorthybridquadsortLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_hybrid_quadsort_layer_set(s : SorthybridquadsortLayer, i : Int, v : Double) -> SorthybridquadsortLayer {
+  let result = sort_hybrid_quadsort_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_layer_sum(s : SorthybridquadsortLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_hybrid_quadsort_layer_mean(s : SorthybridquadsortLayer) -> Double {
+  if s.size == 0 { 0.0 } else { sort_hybrid_quadsort_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_hybrid_quadsort_layer_scale(s : SorthybridquadsortLayer, f : Double) -> SorthybridquadsortLayer {
+  let result = sort_hybrid_quadsort_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_hybrid_quadsort_layer_add(a : SorthybridquadsortLayer, b : SorthybridquadsortLayer) -> SorthybridquadsortLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_hybrid_quadsort_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_layer_copy(s : SorthybridquadsortLayer) -> SorthybridquadsortLayer {
+  let result = sort_hybrid_quadsort_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_layer_fill(s : SorthybridquadsortLayer, v : Double) -> SorthybridquadsortLayer {
+  let result = sort_hybrid_quadsort_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_layer_min(s : SorthybridquadsortLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_layer_max(s : SorthybridquadsortLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_layer_to_string(s : SorthybridquadsortLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SorthybridquadsortBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_hybrid_quadsort_buffer_make(size : Int) -> SorthybridquadsortBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_hybrid_quadsort_buffer_len(s : SorthybridquadsortBuffer) -> Int { s.size }
+
+pub fn sort_hybrid_quadsort_buffer_get(s : SorthybridquadsortBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_hybrid_quadsort_buffer_set(s : SorthybridquadsortBuffer, i : Int, v : Double) -> SorthybridquadsortBuffer {
+  let result = sort_hybrid_quadsort_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_buffer_sum(s : SorthybridquadsortBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_hybrid_quadsort_buffer_mean(s : SorthybridquadsortBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { sort_hybrid_quadsort_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_hybrid_quadsort_buffer_scale(s : SorthybridquadsortBuffer, f : Double) -> SorthybridquadsortBuffer {
+  let result = sort_hybrid_quadsort_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_hybrid_quadsort_buffer_add(a : SorthybridquadsortBuffer, b : SorthybridquadsortBuffer) -> SorthybridquadsortBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_hybrid_quadsort_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_buffer_copy(s : SorthybridquadsortBuffer) -> SorthybridquadsortBuffer {
+  let result = sort_hybrid_quadsort_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_buffer_fill(s : SorthybridquadsortBuffer, v : Double) -> SorthybridquadsortBuffer {
+  let result = sort_hybrid_quadsort_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_buffer_min(s : SorthybridquadsortBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_buffer_max(s : SorthybridquadsortBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_buffer_to_string(s : SorthybridquadsortBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SorthybridquadsortCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_hybrid_quadsort_cursor_make(size : Int) -> SorthybridquadsortCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_hybrid_quadsort_cursor_len(s : SorthybridquadsortCursor) -> Int { s.size }
+
+pub fn sort_hybrid_quadsort_cursor_get(s : SorthybridquadsortCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_hybrid_quadsort_cursor_set(s : SorthybridquadsortCursor, i : Int, v : Double) -> SorthybridquadsortCursor {
+  let result = sort_hybrid_quadsort_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_cursor_sum(s : SorthybridquadsortCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_hybrid_quadsort_cursor_mean(s : SorthybridquadsortCursor) -> Double {
+  if s.size == 0 { 0.0 } else { sort_hybrid_quadsort_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_hybrid_quadsort_cursor_scale(s : SorthybridquadsortCursor, f : Double) -> SorthybridquadsortCursor {
+  let result = sort_hybrid_quadsort_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_hybrid_quadsort_cursor_add(a : SorthybridquadsortCursor, b : SorthybridquadsortCursor) -> SorthybridquadsortCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_hybrid_quadsort_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_cursor_copy(s : SorthybridquadsortCursor) -> SorthybridquadsortCursor {
+  let result = sort_hybrid_quadsort_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_cursor_fill(s : SorthybridquadsortCursor, v : Double) -> SorthybridquadsortCursor {
+  let result = sort_hybrid_quadsort_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_cursor_min(s : SorthybridquadsortCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_cursor_max(s : SorthybridquadsortCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_cursor_to_string(s : SorthybridquadsortCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SorthybridquadsortView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_hybrid_quadsort_view_make(size : Int) -> SorthybridquadsortView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_hybrid_quadsort_view_len(s : SorthybridquadsortView) -> Int { s.size }
+
+pub fn sort_hybrid_quadsort_view_get(s : SorthybridquadsortView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_hybrid_quadsort_view_set(s : SorthybridquadsortView, i : Int, v : Double) -> SorthybridquadsortView {
+  let result = sort_hybrid_quadsort_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_view_sum(s : SorthybridquadsortView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_hybrid_quadsort_view_mean(s : SorthybridquadsortView) -> Double {
+  if s.size == 0 { 0.0 } else { sort_hybrid_quadsort_view_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_hybrid_quadsort_view_scale(s : SorthybridquadsortView, f : Double) -> SorthybridquadsortView {
+  let result = sort_hybrid_quadsort_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_hybrid_quadsort_view_add(a : SorthybridquadsortView, b : SorthybridquadsortView) -> SorthybridquadsortView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_hybrid_quadsort_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_view_copy(s : SorthybridquadsortView) -> SorthybridquadsortView {
+  let result = sort_hybrid_quadsort_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_view_fill(s : SorthybridquadsortView, v : Double) -> SorthybridquadsortView {
+  let result = sort_hybrid_quadsort_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_view_min(s : SorthybridquadsortView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_view_max(s : SorthybridquadsortView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_view_to_string(s : SorthybridquadsortView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SorthybridquadsortRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_hybrid_quadsort_range_make(size : Int) -> SorthybridquadsortRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_hybrid_quadsort_range_len(s : SorthybridquadsortRange) -> Int { s.size }
+
+pub fn sort_hybrid_quadsort_range_get(s : SorthybridquadsortRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_hybrid_quadsort_range_set(s : SorthybridquadsortRange, i : Int, v : Double) -> SorthybridquadsortRange {
+  let result = sort_hybrid_quadsort_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_range_sum(s : SorthybridquadsortRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_hybrid_quadsort_range_mean(s : SorthybridquadsortRange) -> Double {
+  if s.size == 0 { 0.0 } else { sort_hybrid_quadsort_range_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_hybrid_quadsort_range_scale(s : SorthybridquadsortRange, f : Double) -> SorthybridquadsortRange {
+  let result = sort_hybrid_quadsort_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_hybrid_quadsort_range_add(a : SorthybridquadsortRange, b : SorthybridquadsortRange) -> SorthybridquadsortRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_hybrid_quadsort_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_range_copy(s : SorthybridquadsortRange) -> SorthybridquadsortRange {
+  let result = sort_hybrid_quadsort_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_range_fill(s : SorthybridquadsortRange, v : Double) -> SorthybridquadsortRange {
+  let result = sort_hybrid_quadsort_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_range_min(s : SorthybridquadsortRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_range_max(s : SorthybridquadsortRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_range_to_string(s : SorthybridquadsortRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SorthybridquadsortSlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_hybrid_quadsort_slice_make(size : Int) -> SorthybridquadsortSlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_hybrid_quadsort_slice_len(s : SorthybridquadsortSlice) -> Int { s.size }
+
+pub fn sort_hybrid_quadsort_slice_get(s : SorthybridquadsortSlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_hybrid_quadsort_slice_set(s : SorthybridquadsortSlice, i : Int, v : Double) -> SorthybridquadsortSlice {
+  let result = sort_hybrid_quadsort_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_slice_sum(s : SorthybridquadsortSlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_hybrid_quadsort_slice_mean(s : SorthybridquadsortSlice) -> Double {
+  if s.size == 0 { 0.0 } else { sort_hybrid_quadsort_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_hybrid_quadsort_slice_scale(s : SorthybridquadsortSlice, f : Double) -> SorthybridquadsortSlice {
+  let result = sort_hybrid_quadsort_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_hybrid_quadsort_slice_add(a : SorthybridquadsortSlice, b : SorthybridquadsortSlice) -> SorthybridquadsortSlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_hybrid_quadsort_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_slice_copy(s : SorthybridquadsortSlice) -> SorthybridquadsortSlice {
+  let result = sort_hybrid_quadsort_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_hybrid_quadsort_slice_fill(s : SorthybridquadsortSlice, v : Double) -> SorthybridquadsortSlice {
+  let result = sort_hybrid_quadsort_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_hybrid_quadsort_slice_min(s : SorthybridquadsortSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_slice_max(s : SorthybridquadsortSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_hybrid_quadsort_slice_to_string(s : SorthybridquadsortSlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn sort_hybrid_quadsort_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_hybrid_quadsort_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

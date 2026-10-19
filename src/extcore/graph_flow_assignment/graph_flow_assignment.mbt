@@ -1,0 +1,1955 @@
+///===
+/// extcore/graph_flow_assignment
+
+pub(all) struct GraphflowassignmentPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn graph_flow_assignment_make_point(x : Double, y : Double) -> GraphflowassignmentPoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn graph_flow_assignment_make_point3(x : Double, y : Double, z : Double) -> GraphflowassignmentPoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn graph_flow_assignment_point_x(pt : GraphflowassignmentPoint) -> Double { pt.x }
+
+pub fn graph_flow_assignment_point_y(pt : GraphflowassignmentPoint) -> Double { pt.y }
+
+pub fn graph_flow_assignment_point_z(pt : GraphflowassignmentPoint) -> Double { pt.z }
+
+pub fn graph_flow_assignment_point_label(pt : GraphflowassignmentPoint) -> Int { pt.label }
+
+pub fn graph_flow_assignment_point_dist(a : GraphflowassignmentPoint, b : GraphflowassignmentPoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  graph_flow_assignment_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn graph_flow_assignment_point_add(a : GraphflowassignmentPoint, b : GraphflowassignmentPoint) -> GraphflowassignmentPoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn graph_flow_assignment_point_sub(a : GraphflowassignmentPoint, b : GraphflowassignmentPoint) -> GraphflowassignmentPoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn graph_flow_assignment_point_scale(pt : GraphflowassignmentPoint, s : Double) -> GraphflowassignmentPoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn graph_flow_assignment_point_dot(a : GraphflowassignmentPoint, b : GraphflowassignmentPoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn graph_flow_assignment_point_cross(a : GraphflowassignmentPoint, b : GraphflowassignmentPoint) -> GraphflowassignmentPoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn graph_flow_assignment_point_norm(pt : GraphflowassignmentPoint) -> Double {
+  graph_flow_assignment_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn graph_flow_assignment_point_normalize(pt : GraphflowassignmentPoint) -> GraphflowassignmentPoint {
+  let n = graph_flow_assignment_point_norm(pt)
+  if n < 0.0000001 { pt } else { graph_flow_assignment_point_scale(pt, 1.0 / n) }
+}
+
+pub fn graph_flow_assignment_point_negate(pt : GraphflowassignmentPoint) -> GraphflowassignmentPoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn graph_flow_assignment_point_mid(a : GraphflowassignmentPoint, b : GraphflowassignmentPoint) -> GraphflowassignmentPoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn graph_flow_assignment_point_lerp(a : GraphflowassignmentPoint, b : GraphflowassignmentPoint, t : Double) -> GraphflowassignmentPoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn graph_flow_assignment_point_to_string(pt : GraphflowassignmentPoint) -> String {
+  "(" + graph_flow_assignment_dbl(pt.x) + ", " + graph_flow_assignment_dbl(pt.y) + ", " + graph_flow_assignment_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct GraphflowassignmentSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn graph_flow_assignment_make_series(vals : Array[Double], name : String) -> GraphflowassignmentSeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn graph_flow_assignment_series_len(s : GraphflowassignmentSeries) -> Int { s.vals.length() }
+
+pub fn graph_flow_assignment_series_sum(s : GraphflowassignmentSeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn graph_flow_assignment_series_mean(s : GraphflowassignmentSeries) -> Double {
+  let n = graph_flow_assignment_series_len(s)
+  if n == 0 { 0.0 } else { graph_flow_assignment_series_sum(s) / n.to_double() }
+}
+
+pub fn graph_flow_assignment_series_min(s : GraphflowassignmentSeries) -> Double {
+  let n = graph_flow_assignment_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_series_max(s : GraphflowassignmentSeries) -> Double {
+  let n = graph_flow_assignment_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_series_range(s : GraphflowassignmentSeries) -> Double {
+  graph_flow_assignment_series_max(s) - graph_flow_assignment_series_min(s)
+}
+
+pub fn graph_flow_assignment_series_var(s : GraphflowassignmentSeries) -> Double {
+  let n = graph_flow_assignment_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = graph_flow_assignment_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_series_std(s : GraphflowassignmentSeries) -> Double { graph_flow_assignment_sqrt(graph_flow_assignment_series_var(s)) }
+
+pub fn graph_flow_assignment_series_median(s : GraphflowassignmentSeries) -> Double {
+  let n = graph_flow_assignment_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = graph_flow_assignment_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn graph_flow_assignment_series_scale(s : GraphflowassignmentSeries, f : Double) -> GraphflowassignmentSeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = graph_flow_assignment_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn graph_flow_assignment_series_add(a : GraphflowassignmentSeries, b : GraphflowassignmentSeries) -> GraphflowassignmentSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = graph_flow_assignment_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn graph_flow_assignment_series_sub(a : GraphflowassignmentSeries, b : GraphflowassignmentSeries) -> GraphflowassignmentSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = graph_flow_assignment_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn graph_flow_assignment_series_normalize(s : GraphflowassignmentSeries) -> GraphflowassignmentSeries {
+  let mn = graph_flow_assignment_series_min(s)
+  let mx = graph_flow_assignment_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = graph_flow_assignment_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn graph_flow_assignment_series_cumsum(s : GraphflowassignmentSeries) -> GraphflowassignmentSeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = graph_flow_assignment_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn graph_flow_assignment_series_to_string(s : GraphflowassignmentSeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + graph_flow_assignment_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct GraphflowassignmentMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn graph_flow_assignment_make_matrix(rows : Int, cols : Int, val : Double) -> GraphflowassignmentMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn graph_flow_assignment_matrix_identity(n : Int) -> GraphflowassignmentMatrix {
+  let m = graph_flow_assignment_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn graph_flow_assignment_matrix_get(m : GraphflowassignmentMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn graph_flow_assignment_matrix_transpose(m : GraphflowassignmentMatrix) -> GraphflowassignmentMatrix {
+  let result = graph_flow_assignment_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn graph_flow_assignment_matrix_add(a : GraphflowassignmentMatrix, b : GraphflowassignmentMatrix) -> GraphflowassignmentMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = graph_flow_assignment_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn graph_flow_assignment_matrix_scale(m : GraphflowassignmentMatrix, s : Double) -> GraphflowassignmentMatrix {
+  let result = graph_flow_assignment_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn graph_flow_assignment_matrix_multiply(a : GraphflowassignmentMatrix, b : GraphflowassignmentMatrix) -> GraphflowassignmentMatrix {
+  if a.cols != b.rows { return graph_flow_assignment_make_matrix(a.rows, b.cols, 0.0) }
+  let result = graph_flow_assignment_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn graph_flow_assignment_matrix_trace(m : GraphflowassignmentMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn graph_flow_assignment_matrix_det(m : GraphflowassignmentMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn graph_flow_assignment_matrix_norm(m : GraphflowassignmentMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  graph_flow_assignment_sqrt(sum)
+}
+
+pub fn graph_flow_assignment_matrix_to_string(m : GraphflowassignmentMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + graph_flow_assignment_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct GraphflowassignmentVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn graph_flow_assignment_make_vector(comps : Array[Double]) -> GraphflowassignmentVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn graph_flow_assignment_vector_zero(dim : Int) -> GraphflowassignmentVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn graph_flow_assignment_vector_add(a : GraphflowassignmentVector, b : GraphflowassignmentVector) -> GraphflowassignmentVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = graph_flow_assignment_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn graph_flow_assignment_vector_sub(a : GraphflowassignmentVector, b : GraphflowassignmentVector) -> GraphflowassignmentVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = graph_flow_assignment_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn graph_flow_assignment_vector_scale(v : GraphflowassignmentVector, s : Double) -> GraphflowassignmentVector {
+  let mut result = []
+  for i in 0..<v.dim { result = graph_flow_assignment_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn graph_flow_assignment_vector_dot(a : GraphflowassignmentVector, b : GraphflowassignmentVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn graph_flow_assignment_vector_norm(v : GraphflowassignmentVector) -> Double { graph_flow_assignment_sqrt(graph_flow_assignment_vector_dot(v, v)) }
+
+pub fn graph_flow_assignment_vector_normalize(v : GraphflowassignmentVector) -> GraphflowassignmentVector {
+  let n = graph_flow_assignment_vector_norm(v)
+  if n < 0.0000001 { v } else { graph_flow_assignment_vector_scale(v, 1.0 / n) }
+}
+
+pub fn graph_flow_assignment_vector_dist(a : GraphflowassignmentVector, b : GraphflowassignmentVector) -> Double {
+  graph_flow_assignment_vector_norm(graph_flow_assignment_vector_sub(a, b))
+}
+
+pub fn graph_flow_assignment_vector_to_string(v : GraphflowassignmentVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + graph_flow_assignment_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn graph_flow_assignment_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = graph_flow_assignment_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_std(data : Array[Double]) -> Double { graph_flow_assignment_sqrt(graph_flow_assignment_var(data)) }
+
+pub fn graph_flow_assignment_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = graph_flow_assignment_mean(a); let mb = graph_flow_assignment_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = graph_flow_assignment_std(a); let sb = graph_flow_assignment_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { graph_flow_assignment_cov(a, b) / (sa * sb) }
+}
+
+pub fn graph_flow_assignment_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = graph_flow_assignment_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn graph_flow_assignment_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  graph_flow_assignment_sqrt(graph_flow_assignment_mse(pred, labels))
+}
+
+pub fn graph_flow_assignment_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + graph_flow_assignment_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = graph_flow_assignment_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn graph_flow_assignment_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn graph_flow_assignment_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn graph_flow_assignment_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = graph_flow_assignment_precision(pred, labels, pos); let r = graph_flow_assignment_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn graph_flow_assignment_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn graph_flow_assignment_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = graph_flow_assignment_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn graph_flow_assignment_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn graph_flow_assignment_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn graph_flow_assignment_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = graph_flow_assignment_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn graph_flow_assignment_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn graph_flow_assignment_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn graph_flow_assignment_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = graph_flow_assignment_min(data); let mx = graph_flow_assignment_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn graph_flow_assignment_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = graph_flow_assignment_mean(data); let sd = graph_flow_assignment_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn graph_flow_assignment_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn graph_flow_assignment_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn graph_flow_assignment_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn graph_flow_assignment_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn graph_flow_assignment_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn graph_flow_assignment_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn graph_flow_assignment_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { graph_flow_assignment_int(x) } else { -graph_flow_assignment_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { graph_flow_assignment_int(f * 1000000.0) } else { graph_flow_assignment_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn graph_flow_assignment_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn graph_flow_assignment_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct GraphflowassignmentFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_flow_assignment_frame_make(size : Int) -> GraphflowassignmentFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_flow_assignment_frame_len(s : GraphflowassignmentFrame) -> Int { s.size }
+
+pub fn graph_flow_assignment_frame_get(s : GraphflowassignmentFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_flow_assignment_frame_set(s : GraphflowassignmentFrame, i : Int, v : Double) -> GraphflowassignmentFrame {
+  let result = graph_flow_assignment_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_frame_sum(s : GraphflowassignmentFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_flow_assignment_frame_mean(s : GraphflowassignmentFrame) -> Double {
+  if s.size == 0 { 0.0 } else { graph_flow_assignment_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_flow_assignment_frame_scale(s : GraphflowassignmentFrame, f : Double) -> GraphflowassignmentFrame {
+  let result = graph_flow_assignment_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_flow_assignment_frame_add(a : GraphflowassignmentFrame, b : GraphflowassignmentFrame) -> GraphflowassignmentFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_flow_assignment_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_frame_copy(s : GraphflowassignmentFrame) -> GraphflowassignmentFrame {
+  let result = graph_flow_assignment_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_frame_fill(s : GraphflowassignmentFrame, v : Double) -> GraphflowassignmentFrame {
+  let result = graph_flow_assignment_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_frame_min(s : GraphflowassignmentFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_frame_max(s : GraphflowassignmentFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_frame_to_string(s : GraphflowassignmentFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphflowassignmentTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_flow_assignment_table_make(size : Int) -> GraphflowassignmentTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_flow_assignment_table_len(s : GraphflowassignmentTable) -> Int { s.size }
+
+pub fn graph_flow_assignment_table_get(s : GraphflowassignmentTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_flow_assignment_table_set(s : GraphflowassignmentTable, i : Int, v : Double) -> GraphflowassignmentTable {
+  let result = graph_flow_assignment_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_table_sum(s : GraphflowassignmentTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_flow_assignment_table_mean(s : GraphflowassignmentTable) -> Double {
+  if s.size == 0 { 0.0 } else { graph_flow_assignment_table_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_flow_assignment_table_scale(s : GraphflowassignmentTable, f : Double) -> GraphflowassignmentTable {
+  let result = graph_flow_assignment_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_flow_assignment_table_add(a : GraphflowassignmentTable, b : GraphflowassignmentTable) -> GraphflowassignmentTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_flow_assignment_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_table_copy(s : GraphflowassignmentTable) -> GraphflowassignmentTable {
+  let result = graph_flow_assignment_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_table_fill(s : GraphflowassignmentTable, v : Double) -> GraphflowassignmentTable {
+  let result = graph_flow_assignment_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_table_min(s : GraphflowassignmentTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_table_max(s : GraphflowassignmentTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_table_to_string(s : GraphflowassignmentTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphflowassignmentGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_flow_assignment_graphn_make(size : Int) -> GraphflowassignmentGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_flow_assignment_graphn_len(s : GraphflowassignmentGraphN) -> Int { s.size }
+
+pub fn graph_flow_assignment_graphn_get(s : GraphflowassignmentGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_flow_assignment_graphn_set(s : GraphflowassignmentGraphN, i : Int, v : Double) -> GraphflowassignmentGraphN {
+  let result = graph_flow_assignment_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_graphn_sum(s : GraphflowassignmentGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_flow_assignment_graphn_mean(s : GraphflowassignmentGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { graph_flow_assignment_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_flow_assignment_graphn_scale(s : GraphflowassignmentGraphN, f : Double) -> GraphflowassignmentGraphN {
+  let result = graph_flow_assignment_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_flow_assignment_graphn_add(a : GraphflowassignmentGraphN, b : GraphflowassignmentGraphN) -> GraphflowassignmentGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_flow_assignment_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_graphn_copy(s : GraphflowassignmentGraphN) -> GraphflowassignmentGraphN {
+  let result = graph_flow_assignment_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_graphn_fill(s : GraphflowassignmentGraphN, v : Double) -> GraphflowassignmentGraphN {
+  let result = graph_flow_assignment_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_graphn_min(s : GraphflowassignmentGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_graphn_max(s : GraphflowassignmentGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_graphn_to_string(s : GraphflowassignmentGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphflowassignmentNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_flow_assignment_node_make(size : Int) -> GraphflowassignmentNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_flow_assignment_node_len(s : GraphflowassignmentNode) -> Int { s.size }
+
+pub fn graph_flow_assignment_node_get(s : GraphflowassignmentNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_flow_assignment_node_set(s : GraphflowassignmentNode, i : Int, v : Double) -> GraphflowassignmentNode {
+  let result = graph_flow_assignment_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_node_sum(s : GraphflowassignmentNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_flow_assignment_node_mean(s : GraphflowassignmentNode) -> Double {
+  if s.size == 0 { 0.0 } else { graph_flow_assignment_node_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_flow_assignment_node_scale(s : GraphflowassignmentNode, f : Double) -> GraphflowassignmentNode {
+  let result = graph_flow_assignment_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_flow_assignment_node_add(a : GraphflowassignmentNode, b : GraphflowassignmentNode) -> GraphflowassignmentNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_flow_assignment_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_node_copy(s : GraphflowassignmentNode) -> GraphflowassignmentNode {
+  let result = graph_flow_assignment_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_node_fill(s : GraphflowassignmentNode, v : Double) -> GraphflowassignmentNode {
+  let result = graph_flow_assignment_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_node_min(s : GraphflowassignmentNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_node_max(s : GraphflowassignmentNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_node_to_string(s : GraphflowassignmentNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphflowassignmentEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_flow_assignment_edge_make(size : Int) -> GraphflowassignmentEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_flow_assignment_edge_len(s : GraphflowassignmentEdge) -> Int { s.size }
+
+pub fn graph_flow_assignment_edge_get(s : GraphflowassignmentEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_flow_assignment_edge_set(s : GraphflowassignmentEdge, i : Int, v : Double) -> GraphflowassignmentEdge {
+  let result = graph_flow_assignment_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_edge_sum(s : GraphflowassignmentEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_flow_assignment_edge_mean(s : GraphflowassignmentEdge) -> Double {
+  if s.size == 0 { 0.0 } else { graph_flow_assignment_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_flow_assignment_edge_scale(s : GraphflowassignmentEdge, f : Double) -> GraphflowassignmentEdge {
+  let result = graph_flow_assignment_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_flow_assignment_edge_add(a : GraphflowassignmentEdge, b : GraphflowassignmentEdge) -> GraphflowassignmentEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_flow_assignment_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_edge_copy(s : GraphflowassignmentEdge) -> GraphflowassignmentEdge {
+  let result = graph_flow_assignment_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_edge_fill(s : GraphflowassignmentEdge, v : Double) -> GraphflowassignmentEdge {
+  let result = graph_flow_assignment_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_edge_min(s : GraphflowassignmentEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_edge_max(s : GraphflowassignmentEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_edge_to_string(s : GraphflowassignmentEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphflowassignmentPath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_flow_assignment_path_make(size : Int) -> GraphflowassignmentPath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_flow_assignment_path_len(s : GraphflowassignmentPath) -> Int { s.size }
+
+pub fn graph_flow_assignment_path_get(s : GraphflowassignmentPath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_flow_assignment_path_set(s : GraphflowassignmentPath, i : Int, v : Double) -> GraphflowassignmentPath {
+  let result = graph_flow_assignment_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_path_sum(s : GraphflowassignmentPath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_flow_assignment_path_mean(s : GraphflowassignmentPath) -> Double {
+  if s.size == 0 { 0.0 } else { graph_flow_assignment_path_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_flow_assignment_path_scale(s : GraphflowassignmentPath, f : Double) -> GraphflowassignmentPath {
+  let result = graph_flow_assignment_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_flow_assignment_path_add(a : GraphflowassignmentPath, b : GraphflowassignmentPath) -> GraphflowassignmentPath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_flow_assignment_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_path_copy(s : GraphflowassignmentPath) -> GraphflowassignmentPath {
+  let result = graph_flow_assignment_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_path_fill(s : GraphflowassignmentPath, v : Double) -> GraphflowassignmentPath {
+  let result = graph_flow_assignment_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_path_min(s : GraphflowassignmentPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_path_max(s : GraphflowassignmentPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_path_to_string(s : GraphflowassignmentPath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphflowassignmentCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_flow_assignment_cluster_make(size : Int) -> GraphflowassignmentCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_flow_assignment_cluster_len(s : GraphflowassignmentCluster) -> Int { s.size }
+
+pub fn graph_flow_assignment_cluster_get(s : GraphflowassignmentCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_flow_assignment_cluster_set(s : GraphflowassignmentCluster, i : Int, v : Double) -> GraphflowassignmentCluster {
+  let result = graph_flow_assignment_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_cluster_sum(s : GraphflowassignmentCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_flow_assignment_cluster_mean(s : GraphflowassignmentCluster) -> Double {
+  if s.size == 0 { 0.0 } else { graph_flow_assignment_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_flow_assignment_cluster_scale(s : GraphflowassignmentCluster, f : Double) -> GraphflowassignmentCluster {
+  let result = graph_flow_assignment_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_flow_assignment_cluster_add(a : GraphflowassignmentCluster, b : GraphflowassignmentCluster) -> GraphflowassignmentCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_flow_assignment_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_cluster_copy(s : GraphflowassignmentCluster) -> GraphflowassignmentCluster {
+  let result = graph_flow_assignment_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_cluster_fill(s : GraphflowassignmentCluster, v : Double) -> GraphflowassignmentCluster {
+  let result = graph_flow_assignment_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_cluster_min(s : GraphflowassignmentCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_cluster_max(s : GraphflowassignmentCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_cluster_to_string(s : GraphflowassignmentCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphflowassignmentModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_flow_assignment_model_make(size : Int) -> GraphflowassignmentModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_flow_assignment_model_len(s : GraphflowassignmentModel) -> Int { s.size }
+
+pub fn graph_flow_assignment_model_get(s : GraphflowassignmentModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_flow_assignment_model_set(s : GraphflowassignmentModel, i : Int, v : Double) -> GraphflowassignmentModel {
+  let result = graph_flow_assignment_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_model_sum(s : GraphflowassignmentModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_flow_assignment_model_mean(s : GraphflowassignmentModel) -> Double {
+  if s.size == 0 { 0.0 } else { graph_flow_assignment_model_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_flow_assignment_model_scale(s : GraphflowassignmentModel, f : Double) -> GraphflowassignmentModel {
+  let result = graph_flow_assignment_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_flow_assignment_model_add(a : GraphflowassignmentModel, b : GraphflowassignmentModel) -> GraphflowassignmentModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_flow_assignment_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_model_copy(s : GraphflowassignmentModel) -> GraphflowassignmentModel {
+  let result = graph_flow_assignment_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_model_fill(s : GraphflowassignmentModel, v : Double) -> GraphflowassignmentModel {
+  let result = graph_flow_assignment_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_model_min(s : GraphflowassignmentModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_model_max(s : GraphflowassignmentModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_model_to_string(s : GraphflowassignmentModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphflowassignmentLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_flow_assignment_layer_make(size : Int) -> GraphflowassignmentLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_flow_assignment_layer_len(s : GraphflowassignmentLayer) -> Int { s.size }
+
+pub fn graph_flow_assignment_layer_get(s : GraphflowassignmentLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_flow_assignment_layer_set(s : GraphflowassignmentLayer, i : Int, v : Double) -> GraphflowassignmentLayer {
+  let result = graph_flow_assignment_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_layer_sum(s : GraphflowassignmentLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_flow_assignment_layer_mean(s : GraphflowassignmentLayer) -> Double {
+  if s.size == 0 { 0.0 } else { graph_flow_assignment_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_flow_assignment_layer_scale(s : GraphflowassignmentLayer, f : Double) -> GraphflowassignmentLayer {
+  let result = graph_flow_assignment_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_flow_assignment_layer_add(a : GraphflowassignmentLayer, b : GraphflowassignmentLayer) -> GraphflowassignmentLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_flow_assignment_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_layer_copy(s : GraphflowassignmentLayer) -> GraphflowassignmentLayer {
+  let result = graph_flow_assignment_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_layer_fill(s : GraphflowassignmentLayer, v : Double) -> GraphflowassignmentLayer {
+  let result = graph_flow_assignment_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_layer_min(s : GraphflowassignmentLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_layer_max(s : GraphflowassignmentLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_layer_to_string(s : GraphflowassignmentLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphflowassignmentBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_flow_assignment_buffer_make(size : Int) -> GraphflowassignmentBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_flow_assignment_buffer_len(s : GraphflowassignmentBuffer) -> Int { s.size }
+
+pub fn graph_flow_assignment_buffer_get(s : GraphflowassignmentBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_flow_assignment_buffer_set(s : GraphflowassignmentBuffer, i : Int, v : Double) -> GraphflowassignmentBuffer {
+  let result = graph_flow_assignment_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_buffer_sum(s : GraphflowassignmentBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_flow_assignment_buffer_mean(s : GraphflowassignmentBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { graph_flow_assignment_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_flow_assignment_buffer_scale(s : GraphflowassignmentBuffer, f : Double) -> GraphflowassignmentBuffer {
+  let result = graph_flow_assignment_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_flow_assignment_buffer_add(a : GraphflowassignmentBuffer, b : GraphflowassignmentBuffer) -> GraphflowassignmentBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_flow_assignment_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_buffer_copy(s : GraphflowassignmentBuffer) -> GraphflowassignmentBuffer {
+  let result = graph_flow_assignment_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_buffer_fill(s : GraphflowassignmentBuffer, v : Double) -> GraphflowassignmentBuffer {
+  let result = graph_flow_assignment_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_buffer_min(s : GraphflowassignmentBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_buffer_max(s : GraphflowassignmentBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_buffer_to_string(s : GraphflowassignmentBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphflowassignmentCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_flow_assignment_cursor_make(size : Int) -> GraphflowassignmentCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_flow_assignment_cursor_len(s : GraphflowassignmentCursor) -> Int { s.size }
+
+pub fn graph_flow_assignment_cursor_get(s : GraphflowassignmentCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_flow_assignment_cursor_set(s : GraphflowassignmentCursor, i : Int, v : Double) -> GraphflowassignmentCursor {
+  let result = graph_flow_assignment_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_cursor_sum(s : GraphflowassignmentCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_flow_assignment_cursor_mean(s : GraphflowassignmentCursor) -> Double {
+  if s.size == 0 { 0.0 } else { graph_flow_assignment_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_flow_assignment_cursor_scale(s : GraphflowassignmentCursor, f : Double) -> GraphflowassignmentCursor {
+  let result = graph_flow_assignment_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_flow_assignment_cursor_add(a : GraphflowassignmentCursor, b : GraphflowassignmentCursor) -> GraphflowassignmentCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_flow_assignment_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_cursor_copy(s : GraphflowassignmentCursor) -> GraphflowassignmentCursor {
+  let result = graph_flow_assignment_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_cursor_fill(s : GraphflowassignmentCursor, v : Double) -> GraphflowassignmentCursor {
+  let result = graph_flow_assignment_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_cursor_min(s : GraphflowassignmentCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_cursor_max(s : GraphflowassignmentCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_cursor_to_string(s : GraphflowassignmentCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphflowassignmentView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_flow_assignment_view_make(size : Int) -> GraphflowassignmentView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_flow_assignment_view_len(s : GraphflowassignmentView) -> Int { s.size }
+
+pub fn graph_flow_assignment_view_get(s : GraphflowassignmentView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_flow_assignment_view_set(s : GraphflowassignmentView, i : Int, v : Double) -> GraphflowassignmentView {
+  let result = graph_flow_assignment_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_view_sum(s : GraphflowassignmentView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_flow_assignment_view_mean(s : GraphflowassignmentView) -> Double {
+  if s.size == 0 { 0.0 } else { graph_flow_assignment_view_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_flow_assignment_view_scale(s : GraphflowassignmentView, f : Double) -> GraphflowassignmentView {
+  let result = graph_flow_assignment_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_flow_assignment_view_add(a : GraphflowassignmentView, b : GraphflowassignmentView) -> GraphflowassignmentView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_flow_assignment_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_view_copy(s : GraphflowassignmentView) -> GraphflowassignmentView {
+  let result = graph_flow_assignment_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_view_fill(s : GraphflowassignmentView, v : Double) -> GraphflowassignmentView {
+  let result = graph_flow_assignment_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_view_min(s : GraphflowassignmentView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_view_max(s : GraphflowassignmentView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_view_to_string(s : GraphflowassignmentView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphflowassignmentRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_flow_assignment_range_make(size : Int) -> GraphflowassignmentRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_flow_assignment_range_len(s : GraphflowassignmentRange) -> Int { s.size }
+
+pub fn graph_flow_assignment_range_get(s : GraphflowassignmentRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_flow_assignment_range_set(s : GraphflowassignmentRange, i : Int, v : Double) -> GraphflowassignmentRange {
+  let result = graph_flow_assignment_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_range_sum(s : GraphflowassignmentRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_flow_assignment_range_mean(s : GraphflowassignmentRange) -> Double {
+  if s.size == 0 { 0.0 } else { graph_flow_assignment_range_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_flow_assignment_range_scale(s : GraphflowassignmentRange, f : Double) -> GraphflowassignmentRange {
+  let result = graph_flow_assignment_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_flow_assignment_range_add(a : GraphflowassignmentRange, b : GraphflowassignmentRange) -> GraphflowassignmentRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_flow_assignment_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_range_copy(s : GraphflowassignmentRange) -> GraphflowassignmentRange {
+  let result = graph_flow_assignment_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_range_fill(s : GraphflowassignmentRange, v : Double) -> GraphflowassignmentRange {
+  let result = graph_flow_assignment_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_range_min(s : GraphflowassignmentRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_range_max(s : GraphflowassignmentRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_range_to_string(s : GraphflowassignmentRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct GraphflowassignmentSlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn graph_flow_assignment_slice_make(size : Int) -> GraphflowassignmentSlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn graph_flow_assignment_slice_len(s : GraphflowassignmentSlice) -> Int { s.size }
+
+pub fn graph_flow_assignment_slice_get(s : GraphflowassignmentSlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn graph_flow_assignment_slice_set(s : GraphflowassignmentSlice, i : Int, v : Double) -> GraphflowassignmentSlice {
+  let result = graph_flow_assignment_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_slice_sum(s : GraphflowassignmentSlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn graph_flow_assignment_slice_mean(s : GraphflowassignmentSlice) -> Double {
+  if s.size == 0 { 0.0 } else { graph_flow_assignment_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn graph_flow_assignment_slice_scale(s : GraphflowassignmentSlice, f : Double) -> GraphflowassignmentSlice {
+  let result = graph_flow_assignment_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn graph_flow_assignment_slice_add(a : GraphflowassignmentSlice, b : GraphflowassignmentSlice) -> GraphflowassignmentSlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = graph_flow_assignment_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_slice_copy(s : GraphflowassignmentSlice) -> GraphflowassignmentSlice {
+  let result = graph_flow_assignment_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn graph_flow_assignment_slice_fill(s : GraphflowassignmentSlice, v : Double) -> GraphflowassignmentSlice {
+  let result = graph_flow_assignment_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn graph_flow_assignment_slice_min(s : GraphflowassignmentSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_slice_max(s : GraphflowassignmentSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn graph_flow_assignment_slice_to_string(s : GraphflowassignmentSlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn graph_flow_assignment_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn graph_flow_assignment_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

@@ -1,0 +1,1955 @@
+///===
+/// extcore/net_sec_ddos
+
+pub(all) struct NetsecddosPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn net_sec_ddos_make_point(x : Double, y : Double) -> NetsecddosPoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn net_sec_ddos_make_point3(x : Double, y : Double, z : Double) -> NetsecddosPoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn net_sec_ddos_point_x(pt : NetsecddosPoint) -> Double { pt.x }
+
+pub fn net_sec_ddos_point_y(pt : NetsecddosPoint) -> Double { pt.y }
+
+pub fn net_sec_ddos_point_z(pt : NetsecddosPoint) -> Double { pt.z }
+
+pub fn net_sec_ddos_point_label(pt : NetsecddosPoint) -> Int { pt.label }
+
+pub fn net_sec_ddos_point_dist(a : NetsecddosPoint, b : NetsecddosPoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  net_sec_ddos_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn net_sec_ddos_point_add(a : NetsecddosPoint, b : NetsecddosPoint) -> NetsecddosPoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn net_sec_ddos_point_sub(a : NetsecddosPoint, b : NetsecddosPoint) -> NetsecddosPoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn net_sec_ddos_point_scale(pt : NetsecddosPoint, s : Double) -> NetsecddosPoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn net_sec_ddos_point_dot(a : NetsecddosPoint, b : NetsecddosPoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn net_sec_ddos_point_cross(a : NetsecddosPoint, b : NetsecddosPoint) -> NetsecddosPoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn net_sec_ddos_point_norm(pt : NetsecddosPoint) -> Double {
+  net_sec_ddos_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn net_sec_ddos_point_normalize(pt : NetsecddosPoint) -> NetsecddosPoint {
+  let n = net_sec_ddos_point_norm(pt)
+  if n < 0.0000001 { pt } else { net_sec_ddos_point_scale(pt, 1.0 / n) }
+}
+
+pub fn net_sec_ddos_point_negate(pt : NetsecddosPoint) -> NetsecddosPoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn net_sec_ddos_point_mid(a : NetsecddosPoint, b : NetsecddosPoint) -> NetsecddosPoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn net_sec_ddos_point_lerp(a : NetsecddosPoint, b : NetsecddosPoint, t : Double) -> NetsecddosPoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn net_sec_ddos_point_to_string(pt : NetsecddosPoint) -> String {
+  "(" + net_sec_ddos_dbl(pt.x) + ", " + net_sec_ddos_dbl(pt.y) + ", " + net_sec_ddos_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct NetsecddosSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn net_sec_ddos_make_series(vals : Array[Double], name : String) -> NetsecddosSeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn net_sec_ddos_series_len(s : NetsecddosSeries) -> Int { s.vals.length() }
+
+pub fn net_sec_ddos_series_sum(s : NetsecddosSeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn net_sec_ddos_series_mean(s : NetsecddosSeries) -> Double {
+  let n = net_sec_ddos_series_len(s)
+  if n == 0 { 0.0 } else { net_sec_ddos_series_sum(s) / n.to_double() }
+}
+
+pub fn net_sec_ddos_series_min(s : NetsecddosSeries) -> Double {
+  let n = net_sec_ddos_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_series_max(s : NetsecddosSeries) -> Double {
+  let n = net_sec_ddos_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_series_range(s : NetsecddosSeries) -> Double {
+  net_sec_ddos_series_max(s) - net_sec_ddos_series_min(s)
+}
+
+pub fn net_sec_ddos_series_var(s : NetsecddosSeries) -> Double {
+  let n = net_sec_ddos_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = net_sec_ddos_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_series_std(s : NetsecddosSeries) -> Double { net_sec_ddos_sqrt(net_sec_ddos_series_var(s)) }
+
+pub fn net_sec_ddos_series_median(s : NetsecddosSeries) -> Double {
+  let n = net_sec_ddos_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = net_sec_ddos_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn net_sec_ddos_series_scale(s : NetsecddosSeries, f : Double) -> NetsecddosSeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = net_sec_ddos_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn net_sec_ddos_series_add(a : NetsecddosSeries, b : NetsecddosSeries) -> NetsecddosSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = net_sec_ddos_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn net_sec_ddos_series_sub(a : NetsecddosSeries, b : NetsecddosSeries) -> NetsecddosSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = net_sec_ddos_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn net_sec_ddos_series_normalize(s : NetsecddosSeries) -> NetsecddosSeries {
+  let mn = net_sec_ddos_series_min(s)
+  let mx = net_sec_ddos_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = net_sec_ddos_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn net_sec_ddos_series_cumsum(s : NetsecddosSeries) -> NetsecddosSeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = net_sec_ddos_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn net_sec_ddos_series_to_string(s : NetsecddosSeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + net_sec_ddos_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct NetsecddosMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn net_sec_ddos_make_matrix(rows : Int, cols : Int, val : Double) -> NetsecddosMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn net_sec_ddos_matrix_identity(n : Int) -> NetsecddosMatrix {
+  let m = net_sec_ddos_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn net_sec_ddos_matrix_get(m : NetsecddosMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn net_sec_ddos_matrix_transpose(m : NetsecddosMatrix) -> NetsecddosMatrix {
+  let result = net_sec_ddos_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn net_sec_ddos_matrix_add(a : NetsecddosMatrix, b : NetsecddosMatrix) -> NetsecddosMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = net_sec_ddos_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn net_sec_ddos_matrix_scale(m : NetsecddosMatrix, s : Double) -> NetsecddosMatrix {
+  let result = net_sec_ddos_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn net_sec_ddos_matrix_multiply(a : NetsecddosMatrix, b : NetsecddosMatrix) -> NetsecddosMatrix {
+  if a.cols != b.rows { return net_sec_ddos_make_matrix(a.rows, b.cols, 0.0) }
+  let result = net_sec_ddos_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn net_sec_ddos_matrix_trace(m : NetsecddosMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn net_sec_ddos_matrix_det(m : NetsecddosMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn net_sec_ddos_matrix_norm(m : NetsecddosMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  net_sec_ddos_sqrt(sum)
+}
+
+pub fn net_sec_ddos_matrix_to_string(m : NetsecddosMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + net_sec_ddos_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct NetsecddosVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn net_sec_ddos_make_vector(comps : Array[Double]) -> NetsecddosVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn net_sec_ddos_vector_zero(dim : Int) -> NetsecddosVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn net_sec_ddos_vector_add(a : NetsecddosVector, b : NetsecddosVector) -> NetsecddosVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = net_sec_ddos_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn net_sec_ddos_vector_sub(a : NetsecddosVector, b : NetsecddosVector) -> NetsecddosVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = net_sec_ddos_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn net_sec_ddos_vector_scale(v : NetsecddosVector, s : Double) -> NetsecddosVector {
+  let mut result = []
+  for i in 0..<v.dim { result = net_sec_ddos_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn net_sec_ddos_vector_dot(a : NetsecddosVector, b : NetsecddosVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn net_sec_ddos_vector_norm(v : NetsecddosVector) -> Double { net_sec_ddos_sqrt(net_sec_ddos_vector_dot(v, v)) }
+
+pub fn net_sec_ddos_vector_normalize(v : NetsecddosVector) -> NetsecddosVector {
+  let n = net_sec_ddos_vector_norm(v)
+  if n < 0.0000001 { v } else { net_sec_ddos_vector_scale(v, 1.0 / n) }
+}
+
+pub fn net_sec_ddos_vector_dist(a : NetsecddosVector, b : NetsecddosVector) -> Double {
+  net_sec_ddos_vector_norm(net_sec_ddos_vector_sub(a, b))
+}
+
+pub fn net_sec_ddos_vector_to_string(v : NetsecddosVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + net_sec_ddos_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn net_sec_ddos_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = net_sec_ddos_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_std(data : Array[Double]) -> Double { net_sec_ddos_sqrt(net_sec_ddos_var(data)) }
+
+pub fn net_sec_ddos_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = net_sec_ddos_mean(a); let mb = net_sec_ddos_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = net_sec_ddos_std(a); let sb = net_sec_ddos_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { net_sec_ddos_cov(a, b) / (sa * sb) }
+}
+
+pub fn net_sec_ddos_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = net_sec_ddos_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn net_sec_ddos_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  net_sec_ddos_sqrt(net_sec_ddos_mse(pred, labels))
+}
+
+pub fn net_sec_ddos_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + net_sec_ddos_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = net_sec_ddos_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn net_sec_ddos_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn net_sec_ddos_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn net_sec_ddos_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = net_sec_ddos_precision(pred, labels, pos); let r = net_sec_ddos_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn net_sec_ddos_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn net_sec_ddos_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = net_sec_ddos_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn net_sec_ddos_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn net_sec_ddos_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn net_sec_ddos_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = net_sec_ddos_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn net_sec_ddos_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn net_sec_ddos_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn net_sec_ddos_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = net_sec_ddos_min(data); let mx = net_sec_ddos_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn net_sec_ddos_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = net_sec_ddos_mean(data); let sd = net_sec_ddos_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn net_sec_ddos_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn net_sec_ddos_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn net_sec_ddos_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn net_sec_ddos_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn net_sec_ddos_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn net_sec_ddos_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn net_sec_ddos_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { net_sec_ddos_int(x) } else { -net_sec_ddos_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { net_sec_ddos_int(f * 1000000.0) } else { net_sec_ddos_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn net_sec_ddos_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn net_sec_ddos_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct NetsecddosFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn net_sec_ddos_frame_make(size : Int) -> NetsecddosFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn net_sec_ddos_frame_len(s : NetsecddosFrame) -> Int { s.size }
+
+pub fn net_sec_ddos_frame_get(s : NetsecddosFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn net_sec_ddos_frame_set(s : NetsecddosFrame, i : Int, v : Double) -> NetsecddosFrame {
+  let result = net_sec_ddos_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_frame_sum(s : NetsecddosFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn net_sec_ddos_frame_mean(s : NetsecddosFrame) -> Double {
+  if s.size == 0 { 0.0 } else { net_sec_ddos_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn net_sec_ddos_frame_scale(s : NetsecddosFrame, f : Double) -> NetsecddosFrame {
+  let result = net_sec_ddos_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn net_sec_ddos_frame_add(a : NetsecddosFrame, b : NetsecddosFrame) -> NetsecddosFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = net_sec_ddos_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_frame_copy(s : NetsecddosFrame) -> NetsecddosFrame {
+  let result = net_sec_ddos_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_frame_fill(s : NetsecddosFrame, v : Double) -> NetsecddosFrame {
+  let result = net_sec_ddos_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_frame_min(s : NetsecddosFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_frame_max(s : NetsecddosFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_frame_to_string(s : NetsecddosFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NetsecddosTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn net_sec_ddos_table_make(size : Int) -> NetsecddosTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn net_sec_ddos_table_len(s : NetsecddosTable) -> Int { s.size }
+
+pub fn net_sec_ddos_table_get(s : NetsecddosTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn net_sec_ddos_table_set(s : NetsecddosTable, i : Int, v : Double) -> NetsecddosTable {
+  let result = net_sec_ddos_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_table_sum(s : NetsecddosTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn net_sec_ddos_table_mean(s : NetsecddosTable) -> Double {
+  if s.size == 0 { 0.0 } else { net_sec_ddos_table_sum(s) / s.size.to_double() }
+}
+
+pub fn net_sec_ddos_table_scale(s : NetsecddosTable, f : Double) -> NetsecddosTable {
+  let result = net_sec_ddos_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn net_sec_ddos_table_add(a : NetsecddosTable, b : NetsecddosTable) -> NetsecddosTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = net_sec_ddos_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_table_copy(s : NetsecddosTable) -> NetsecddosTable {
+  let result = net_sec_ddos_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_table_fill(s : NetsecddosTable, v : Double) -> NetsecddosTable {
+  let result = net_sec_ddos_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_table_min(s : NetsecddosTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_table_max(s : NetsecddosTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_table_to_string(s : NetsecddosTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NetsecddosGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn net_sec_ddos_graphn_make(size : Int) -> NetsecddosGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn net_sec_ddos_graphn_len(s : NetsecddosGraphN) -> Int { s.size }
+
+pub fn net_sec_ddos_graphn_get(s : NetsecddosGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn net_sec_ddos_graphn_set(s : NetsecddosGraphN, i : Int, v : Double) -> NetsecddosGraphN {
+  let result = net_sec_ddos_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_graphn_sum(s : NetsecddosGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn net_sec_ddos_graphn_mean(s : NetsecddosGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { net_sec_ddos_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn net_sec_ddos_graphn_scale(s : NetsecddosGraphN, f : Double) -> NetsecddosGraphN {
+  let result = net_sec_ddos_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn net_sec_ddos_graphn_add(a : NetsecddosGraphN, b : NetsecddosGraphN) -> NetsecddosGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = net_sec_ddos_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_graphn_copy(s : NetsecddosGraphN) -> NetsecddosGraphN {
+  let result = net_sec_ddos_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_graphn_fill(s : NetsecddosGraphN, v : Double) -> NetsecddosGraphN {
+  let result = net_sec_ddos_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_graphn_min(s : NetsecddosGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_graphn_max(s : NetsecddosGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_graphn_to_string(s : NetsecddosGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NetsecddosNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn net_sec_ddos_node_make(size : Int) -> NetsecddosNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn net_sec_ddos_node_len(s : NetsecddosNode) -> Int { s.size }
+
+pub fn net_sec_ddos_node_get(s : NetsecddosNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn net_sec_ddos_node_set(s : NetsecddosNode, i : Int, v : Double) -> NetsecddosNode {
+  let result = net_sec_ddos_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_node_sum(s : NetsecddosNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn net_sec_ddos_node_mean(s : NetsecddosNode) -> Double {
+  if s.size == 0 { 0.0 } else { net_sec_ddos_node_sum(s) / s.size.to_double() }
+}
+
+pub fn net_sec_ddos_node_scale(s : NetsecddosNode, f : Double) -> NetsecddosNode {
+  let result = net_sec_ddos_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn net_sec_ddos_node_add(a : NetsecddosNode, b : NetsecddosNode) -> NetsecddosNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = net_sec_ddos_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_node_copy(s : NetsecddosNode) -> NetsecddosNode {
+  let result = net_sec_ddos_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_node_fill(s : NetsecddosNode, v : Double) -> NetsecddosNode {
+  let result = net_sec_ddos_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_node_min(s : NetsecddosNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_node_max(s : NetsecddosNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_node_to_string(s : NetsecddosNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NetsecddosEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn net_sec_ddos_edge_make(size : Int) -> NetsecddosEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn net_sec_ddos_edge_len(s : NetsecddosEdge) -> Int { s.size }
+
+pub fn net_sec_ddos_edge_get(s : NetsecddosEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn net_sec_ddos_edge_set(s : NetsecddosEdge, i : Int, v : Double) -> NetsecddosEdge {
+  let result = net_sec_ddos_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_edge_sum(s : NetsecddosEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn net_sec_ddos_edge_mean(s : NetsecddosEdge) -> Double {
+  if s.size == 0 { 0.0 } else { net_sec_ddos_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn net_sec_ddos_edge_scale(s : NetsecddosEdge, f : Double) -> NetsecddosEdge {
+  let result = net_sec_ddos_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn net_sec_ddos_edge_add(a : NetsecddosEdge, b : NetsecddosEdge) -> NetsecddosEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = net_sec_ddos_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_edge_copy(s : NetsecddosEdge) -> NetsecddosEdge {
+  let result = net_sec_ddos_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_edge_fill(s : NetsecddosEdge, v : Double) -> NetsecddosEdge {
+  let result = net_sec_ddos_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_edge_min(s : NetsecddosEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_edge_max(s : NetsecddosEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_edge_to_string(s : NetsecddosEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NetsecddosPath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn net_sec_ddos_path_make(size : Int) -> NetsecddosPath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn net_sec_ddos_path_len(s : NetsecddosPath) -> Int { s.size }
+
+pub fn net_sec_ddos_path_get(s : NetsecddosPath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn net_sec_ddos_path_set(s : NetsecddosPath, i : Int, v : Double) -> NetsecddosPath {
+  let result = net_sec_ddos_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_path_sum(s : NetsecddosPath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn net_sec_ddos_path_mean(s : NetsecddosPath) -> Double {
+  if s.size == 0 { 0.0 } else { net_sec_ddos_path_sum(s) / s.size.to_double() }
+}
+
+pub fn net_sec_ddos_path_scale(s : NetsecddosPath, f : Double) -> NetsecddosPath {
+  let result = net_sec_ddos_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn net_sec_ddos_path_add(a : NetsecddosPath, b : NetsecddosPath) -> NetsecddosPath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = net_sec_ddos_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_path_copy(s : NetsecddosPath) -> NetsecddosPath {
+  let result = net_sec_ddos_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_path_fill(s : NetsecddosPath, v : Double) -> NetsecddosPath {
+  let result = net_sec_ddos_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_path_min(s : NetsecddosPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_path_max(s : NetsecddosPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_path_to_string(s : NetsecddosPath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NetsecddosCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn net_sec_ddos_cluster_make(size : Int) -> NetsecddosCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn net_sec_ddos_cluster_len(s : NetsecddosCluster) -> Int { s.size }
+
+pub fn net_sec_ddos_cluster_get(s : NetsecddosCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn net_sec_ddos_cluster_set(s : NetsecddosCluster, i : Int, v : Double) -> NetsecddosCluster {
+  let result = net_sec_ddos_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_cluster_sum(s : NetsecddosCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn net_sec_ddos_cluster_mean(s : NetsecddosCluster) -> Double {
+  if s.size == 0 { 0.0 } else { net_sec_ddos_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn net_sec_ddos_cluster_scale(s : NetsecddosCluster, f : Double) -> NetsecddosCluster {
+  let result = net_sec_ddos_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn net_sec_ddos_cluster_add(a : NetsecddosCluster, b : NetsecddosCluster) -> NetsecddosCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = net_sec_ddos_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_cluster_copy(s : NetsecddosCluster) -> NetsecddosCluster {
+  let result = net_sec_ddos_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_cluster_fill(s : NetsecddosCluster, v : Double) -> NetsecddosCluster {
+  let result = net_sec_ddos_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_cluster_min(s : NetsecddosCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_cluster_max(s : NetsecddosCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_cluster_to_string(s : NetsecddosCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NetsecddosModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn net_sec_ddos_model_make(size : Int) -> NetsecddosModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn net_sec_ddos_model_len(s : NetsecddosModel) -> Int { s.size }
+
+pub fn net_sec_ddos_model_get(s : NetsecddosModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn net_sec_ddos_model_set(s : NetsecddosModel, i : Int, v : Double) -> NetsecddosModel {
+  let result = net_sec_ddos_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_model_sum(s : NetsecddosModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn net_sec_ddos_model_mean(s : NetsecddosModel) -> Double {
+  if s.size == 0 { 0.0 } else { net_sec_ddos_model_sum(s) / s.size.to_double() }
+}
+
+pub fn net_sec_ddos_model_scale(s : NetsecddosModel, f : Double) -> NetsecddosModel {
+  let result = net_sec_ddos_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn net_sec_ddos_model_add(a : NetsecddosModel, b : NetsecddosModel) -> NetsecddosModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = net_sec_ddos_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_model_copy(s : NetsecddosModel) -> NetsecddosModel {
+  let result = net_sec_ddos_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_model_fill(s : NetsecddosModel, v : Double) -> NetsecddosModel {
+  let result = net_sec_ddos_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_model_min(s : NetsecddosModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_model_max(s : NetsecddosModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_model_to_string(s : NetsecddosModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NetsecddosLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn net_sec_ddos_layer_make(size : Int) -> NetsecddosLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn net_sec_ddos_layer_len(s : NetsecddosLayer) -> Int { s.size }
+
+pub fn net_sec_ddos_layer_get(s : NetsecddosLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn net_sec_ddos_layer_set(s : NetsecddosLayer, i : Int, v : Double) -> NetsecddosLayer {
+  let result = net_sec_ddos_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_layer_sum(s : NetsecddosLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn net_sec_ddos_layer_mean(s : NetsecddosLayer) -> Double {
+  if s.size == 0 { 0.0 } else { net_sec_ddos_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn net_sec_ddos_layer_scale(s : NetsecddosLayer, f : Double) -> NetsecddosLayer {
+  let result = net_sec_ddos_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn net_sec_ddos_layer_add(a : NetsecddosLayer, b : NetsecddosLayer) -> NetsecddosLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = net_sec_ddos_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_layer_copy(s : NetsecddosLayer) -> NetsecddosLayer {
+  let result = net_sec_ddos_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_layer_fill(s : NetsecddosLayer, v : Double) -> NetsecddosLayer {
+  let result = net_sec_ddos_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_layer_min(s : NetsecddosLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_layer_max(s : NetsecddosLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_layer_to_string(s : NetsecddosLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NetsecddosBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn net_sec_ddos_buffer_make(size : Int) -> NetsecddosBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn net_sec_ddos_buffer_len(s : NetsecddosBuffer) -> Int { s.size }
+
+pub fn net_sec_ddos_buffer_get(s : NetsecddosBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn net_sec_ddos_buffer_set(s : NetsecddosBuffer, i : Int, v : Double) -> NetsecddosBuffer {
+  let result = net_sec_ddos_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_buffer_sum(s : NetsecddosBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn net_sec_ddos_buffer_mean(s : NetsecddosBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { net_sec_ddos_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn net_sec_ddos_buffer_scale(s : NetsecddosBuffer, f : Double) -> NetsecddosBuffer {
+  let result = net_sec_ddos_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn net_sec_ddos_buffer_add(a : NetsecddosBuffer, b : NetsecddosBuffer) -> NetsecddosBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = net_sec_ddos_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_buffer_copy(s : NetsecddosBuffer) -> NetsecddosBuffer {
+  let result = net_sec_ddos_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_buffer_fill(s : NetsecddosBuffer, v : Double) -> NetsecddosBuffer {
+  let result = net_sec_ddos_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_buffer_min(s : NetsecddosBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_buffer_max(s : NetsecddosBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_buffer_to_string(s : NetsecddosBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NetsecddosCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn net_sec_ddos_cursor_make(size : Int) -> NetsecddosCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn net_sec_ddos_cursor_len(s : NetsecddosCursor) -> Int { s.size }
+
+pub fn net_sec_ddos_cursor_get(s : NetsecddosCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn net_sec_ddos_cursor_set(s : NetsecddosCursor, i : Int, v : Double) -> NetsecddosCursor {
+  let result = net_sec_ddos_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_cursor_sum(s : NetsecddosCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn net_sec_ddos_cursor_mean(s : NetsecddosCursor) -> Double {
+  if s.size == 0 { 0.0 } else { net_sec_ddos_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn net_sec_ddos_cursor_scale(s : NetsecddosCursor, f : Double) -> NetsecddosCursor {
+  let result = net_sec_ddos_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn net_sec_ddos_cursor_add(a : NetsecddosCursor, b : NetsecddosCursor) -> NetsecddosCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = net_sec_ddos_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_cursor_copy(s : NetsecddosCursor) -> NetsecddosCursor {
+  let result = net_sec_ddos_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_cursor_fill(s : NetsecddosCursor, v : Double) -> NetsecddosCursor {
+  let result = net_sec_ddos_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_cursor_min(s : NetsecddosCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_cursor_max(s : NetsecddosCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_cursor_to_string(s : NetsecddosCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NetsecddosView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn net_sec_ddos_view_make(size : Int) -> NetsecddosView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn net_sec_ddos_view_len(s : NetsecddosView) -> Int { s.size }
+
+pub fn net_sec_ddos_view_get(s : NetsecddosView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn net_sec_ddos_view_set(s : NetsecddosView, i : Int, v : Double) -> NetsecddosView {
+  let result = net_sec_ddos_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_view_sum(s : NetsecddosView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn net_sec_ddos_view_mean(s : NetsecddosView) -> Double {
+  if s.size == 0 { 0.0 } else { net_sec_ddos_view_sum(s) / s.size.to_double() }
+}
+
+pub fn net_sec_ddos_view_scale(s : NetsecddosView, f : Double) -> NetsecddosView {
+  let result = net_sec_ddos_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn net_sec_ddos_view_add(a : NetsecddosView, b : NetsecddosView) -> NetsecddosView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = net_sec_ddos_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_view_copy(s : NetsecddosView) -> NetsecddosView {
+  let result = net_sec_ddos_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_view_fill(s : NetsecddosView, v : Double) -> NetsecddosView {
+  let result = net_sec_ddos_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_view_min(s : NetsecddosView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_view_max(s : NetsecddosView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_view_to_string(s : NetsecddosView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NetsecddosRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn net_sec_ddos_range_make(size : Int) -> NetsecddosRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn net_sec_ddos_range_len(s : NetsecddosRange) -> Int { s.size }
+
+pub fn net_sec_ddos_range_get(s : NetsecddosRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn net_sec_ddos_range_set(s : NetsecddosRange, i : Int, v : Double) -> NetsecddosRange {
+  let result = net_sec_ddos_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_range_sum(s : NetsecddosRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn net_sec_ddos_range_mean(s : NetsecddosRange) -> Double {
+  if s.size == 0 { 0.0 } else { net_sec_ddos_range_sum(s) / s.size.to_double() }
+}
+
+pub fn net_sec_ddos_range_scale(s : NetsecddosRange, f : Double) -> NetsecddosRange {
+  let result = net_sec_ddos_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn net_sec_ddos_range_add(a : NetsecddosRange, b : NetsecddosRange) -> NetsecddosRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = net_sec_ddos_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_range_copy(s : NetsecddosRange) -> NetsecddosRange {
+  let result = net_sec_ddos_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_range_fill(s : NetsecddosRange, v : Double) -> NetsecddosRange {
+  let result = net_sec_ddos_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_range_min(s : NetsecddosRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_range_max(s : NetsecddosRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_range_to_string(s : NetsecddosRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct NetsecddosSlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn net_sec_ddos_slice_make(size : Int) -> NetsecddosSlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn net_sec_ddos_slice_len(s : NetsecddosSlice) -> Int { s.size }
+
+pub fn net_sec_ddos_slice_get(s : NetsecddosSlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn net_sec_ddos_slice_set(s : NetsecddosSlice, i : Int, v : Double) -> NetsecddosSlice {
+  let result = net_sec_ddos_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_slice_sum(s : NetsecddosSlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn net_sec_ddos_slice_mean(s : NetsecddosSlice) -> Double {
+  if s.size == 0 { 0.0 } else { net_sec_ddos_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn net_sec_ddos_slice_scale(s : NetsecddosSlice, f : Double) -> NetsecddosSlice {
+  let result = net_sec_ddos_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn net_sec_ddos_slice_add(a : NetsecddosSlice, b : NetsecddosSlice) -> NetsecddosSlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = net_sec_ddos_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_slice_copy(s : NetsecddosSlice) -> NetsecddosSlice {
+  let result = net_sec_ddos_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn net_sec_ddos_slice_fill(s : NetsecddosSlice, v : Double) -> NetsecddosSlice {
+  let result = net_sec_ddos_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn net_sec_ddos_slice_min(s : NetsecddosSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_slice_max(s : NetsecddosSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn net_sec_ddos_slice_to_string(s : NetsecddosSlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn net_sec_ddos_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn net_sec_ddos_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

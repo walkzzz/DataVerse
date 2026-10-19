@@ -1,0 +1,1955 @@
+///===
+/// extcore/sort_dist_pigeonhole
+
+pub(all) struct SortdistpigeonholePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn sort_dist_pigeonhole_make_point(x : Double, y : Double) -> SortdistpigeonholePoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn sort_dist_pigeonhole_make_point3(x : Double, y : Double, z : Double) -> SortdistpigeonholePoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn sort_dist_pigeonhole_point_x(pt : SortdistpigeonholePoint) -> Double { pt.x }
+
+pub fn sort_dist_pigeonhole_point_y(pt : SortdistpigeonholePoint) -> Double { pt.y }
+
+pub fn sort_dist_pigeonhole_point_z(pt : SortdistpigeonholePoint) -> Double { pt.z }
+
+pub fn sort_dist_pigeonhole_point_label(pt : SortdistpigeonholePoint) -> Int { pt.label }
+
+pub fn sort_dist_pigeonhole_point_dist(a : SortdistpigeonholePoint, b : SortdistpigeonholePoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  sort_dist_pigeonhole_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn sort_dist_pigeonhole_point_add(a : SortdistpigeonholePoint, b : SortdistpigeonholePoint) -> SortdistpigeonholePoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn sort_dist_pigeonhole_point_sub(a : SortdistpigeonholePoint, b : SortdistpigeonholePoint) -> SortdistpigeonholePoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn sort_dist_pigeonhole_point_scale(pt : SortdistpigeonholePoint, s : Double) -> SortdistpigeonholePoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn sort_dist_pigeonhole_point_dot(a : SortdistpigeonholePoint, b : SortdistpigeonholePoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn sort_dist_pigeonhole_point_cross(a : SortdistpigeonholePoint, b : SortdistpigeonholePoint) -> SortdistpigeonholePoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn sort_dist_pigeonhole_point_norm(pt : SortdistpigeonholePoint) -> Double {
+  sort_dist_pigeonhole_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn sort_dist_pigeonhole_point_normalize(pt : SortdistpigeonholePoint) -> SortdistpigeonholePoint {
+  let n = sort_dist_pigeonhole_point_norm(pt)
+  if n < 0.0000001 { pt } else { sort_dist_pigeonhole_point_scale(pt, 1.0 / n) }
+}
+
+pub fn sort_dist_pigeonhole_point_negate(pt : SortdistpigeonholePoint) -> SortdistpigeonholePoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn sort_dist_pigeonhole_point_mid(a : SortdistpigeonholePoint, b : SortdistpigeonholePoint) -> SortdistpigeonholePoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn sort_dist_pigeonhole_point_lerp(a : SortdistpigeonholePoint, b : SortdistpigeonholePoint, t : Double) -> SortdistpigeonholePoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn sort_dist_pigeonhole_point_to_string(pt : SortdistpigeonholePoint) -> String {
+  "(" + sort_dist_pigeonhole_dbl(pt.x) + ", " + sort_dist_pigeonhole_dbl(pt.y) + ", " + sort_dist_pigeonhole_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct SortdistpigeonholeSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn sort_dist_pigeonhole_make_series(vals : Array[Double], name : String) -> SortdistpigeonholeSeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn sort_dist_pigeonhole_series_len(s : SortdistpigeonholeSeries) -> Int { s.vals.length() }
+
+pub fn sort_dist_pigeonhole_series_sum(s : SortdistpigeonholeSeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn sort_dist_pigeonhole_series_mean(s : SortdistpigeonholeSeries) -> Double {
+  let n = sort_dist_pigeonhole_series_len(s)
+  if n == 0 { 0.0 } else { sort_dist_pigeonhole_series_sum(s) / n.to_double() }
+}
+
+pub fn sort_dist_pigeonhole_series_min(s : SortdistpigeonholeSeries) -> Double {
+  let n = sort_dist_pigeonhole_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_series_max(s : SortdistpigeonholeSeries) -> Double {
+  let n = sort_dist_pigeonhole_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_series_range(s : SortdistpigeonholeSeries) -> Double {
+  sort_dist_pigeonhole_series_max(s) - sort_dist_pigeonhole_series_min(s)
+}
+
+pub fn sort_dist_pigeonhole_series_var(s : SortdistpigeonholeSeries) -> Double {
+  let n = sort_dist_pigeonhole_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = sort_dist_pigeonhole_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_series_std(s : SortdistpigeonholeSeries) -> Double { sort_dist_pigeonhole_sqrt(sort_dist_pigeonhole_series_var(s)) }
+
+pub fn sort_dist_pigeonhole_series_median(s : SortdistpigeonholeSeries) -> Double {
+  let n = sort_dist_pigeonhole_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = sort_dist_pigeonhole_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn sort_dist_pigeonhole_series_scale(s : SortdistpigeonholeSeries, f : Double) -> SortdistpigeonholeSeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = sort_dist_pigeonhole_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn sort_dist_pigeonhole_series_add(a : SortdistpigeonholeSeries, b : SortdistpigeonholeSeries) -> SortdistpigeonholeSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = sort_dist_pigeonhole_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn sort_dist_pigeonhole_series_sub(a : SortdistpigeonholeSeries, b : SortdistpigeonholeSeries) -> SortdistpigeonholeSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = sort_dist_pigeonhole_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn sort_dist_pigeonhole_series_normalize(s : SortdistpigeonholeSeries) -> SortdistpigeonholeSeries {
+  let mn = sort_dist_pigeonhole_series_min(s)
+  let mx = sort_dist_pigeonhole_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = sort_dist_pigeonhole_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn sort_dist_pigeonhole_series_cumsum(s : SortdistpigeonholeSeries) -> SortdistpigeonholeSeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = sort_dist_pigeonhole_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn sort_dist_pigeonhole_series_to_string(s : SortdistpigeonholeSeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + sort_dist_pigeonhole_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct SortdistpigeonholeMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn sort_dist_pigeonhole_make_matrix(rows : Int, cols : Int, val : Double) -> SortdistpigeonholeMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn sort_dist_pigeonhole_matrix_identity(n : Int) -> SortdistpigeonholeMatrix {
+  let m = sort_dist_pigeonhole_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn sort_dist_pigeonhole_matrix_get(m : SortdistpigeonholeMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn sort_dist_pigeonhole_matrix_transpose(m : SortdistpigeonholeMatrix) -> SortdistpigeonholeMatrix {
+  let result = sort_dist_pigeonhole_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn sort_dist_pigeonhole_matrix_add(a : SortdistpigeonholeMatrix, b : SortdistpigeonholeMatrix) -> SortdistpigeonholeMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = sort_dist_pigeonhole_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn sort_dist_pigeonhole_matrix_scale(m : SortdistpigeonholeMatrix, s : Double) -> SortdistpigeonholeMatrix {
+  let result = sort_dist_pigeonhole_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn sort_dist_pigeonhole_matrix_multiply(a : SortdistpigeonholeMatrix, b : SortdistpigeonholeMatrix) -> SortdistpigeonholeMatrix {
+  if a.cols != b.rows { return sort_dist_pigeonhole_make_matrix(a.rows, b.cols, 0.0) }
+  let result = sort_dist_pigeonhole_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn sort_dist_pigeonhole_matrix_trace(m : SortdistpigeonholeMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn sort_dist_pigeonhole_matrix_det(m : SortdistpigeonholeMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn sort_dist_pigeonhole_matrix_norm(m : SortdistpigeonholeMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  sort_dist_pigeonhole_sqrt(sum)
+}
+
+pub fn sort_dist_pigeonhole_matrix_to_string(m : SortdistpigeonholeMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + sort_dist_pigeonhole_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct SortdistpigeonholeVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn sort_dist_pigeonhole_make_vector(comps : Array[Double]) -> SortdistpigeonholeVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn sort_dist_pigeonhole_vector_zero(dim : Int) -> SortdistpigeonholeVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn sort_dist_pigeonhole_vector_add(a : SortdistpigeonholeVector, b : SortdistpigeonholeVector) -> SortdistpigeonholeVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = sort_dist_pigeonhole_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn sort_dist_pigeonhole_vector_sub(a : SortdistpigeonholeVector, b : SortdistpigeonholeVector) -> SortdistpigeonholeVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = sort_dist_pigeonhole_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn sort_dist_pigeonhole_vector_scale(v : SortdistpigeonholeVector, s : Double) -> SortdistpigeonholeVector {
+  let mut result = []
+  for i in 0..<v.dim { result = sort_dist_pigeonhole_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn sort_dist_pigeonhole_vector_dot(a : SortdistpigeonholeVector, b : SortdistpigeonholeVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn sort_dist_pigeonhole_vector_norm(v : SortdistpigeonholeVector) -> Double { sort_dist_pigeonhole_sqrt(sort_dist_pigeonhole_vector_dot(v, v)) }
+
+pub fn sort_dist_pigeonhole_vector_normalize(v : SortdistpigeonholeVector) -> SortdistpigeonholeVector {
+  let n = sort_dist_pigeonhole_vector_norm(v)
+  if n < 0.0000001 { v } else { sort_dist_pigeonhole_vector_scale(v, 1.0 / n) }
+}
+
+pub fn sort_dist_pigeonhole_vector_dist(a : SortdistpigeonholeVector, b : SortdistpigeonholeVector) -> Double {
+  sort_dist_pigeonhole_vector_norm(sort_dist_pigeonhole_vector_sub(a, b))
+}
+
+pub fn sort_dist_pigeonhole_vector_to_string(v : SortdistpigeonholeVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + sort_dist_pigeonhole_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn sort_dist_pigeonhole_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = sort_dist_pigeonhole_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_std(data : Array[Double]) -> Double { sort_dist_pigeonhole_sqrt(sort_dist_pigeonhole_var(data)) }
+
+pub fn sort_dist_pigeonhole_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = sort_dist_pigeonhole_mean(a); let mb = sort_dist_pigeonhole_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = sort_dist_pigeonhole_std(a); let sb = sort_dist_pigeonhole_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { sort_dist_pigeonhole_cov(a, b) / (sa * sb) }
+}
+
+pub fn sort_dist_pigeonhole_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = sort_dist_pigeonhole_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn sort_dist_pigeonhole_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  sort_dist_pigeonhole_sqrt(sort_dist_pigeonhole_mse(pred, labels))
+}
+
+pub fn sort_dist_pigeonhole_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + sort_dist_pigeonhole_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = sort_dist_pigeonhole_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn sort_dist_pigeonhole_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn sort_dist_pigeonhole_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn sort_dist_pigeonhole_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = sort_dist_pigeonhole_precision(pred, labels, pos); let r = sort_dist_pigeonhole_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn sort_dist_pigeonhole_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn sort_dist_pigeonhole_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = sort_dist_pigeonhole_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn sort_dist_pigeonhole_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn sort_dist_pigeonhole_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = sort_dist_pigeonhole_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn sort_dist_pigeonhole_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn sort_dist_pigeonhole_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn sort_dist_pigeonhole_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = sort_dist_pigeonhole_min(data); let mx = sort_dist_pigeonhole_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn sort_dist_pigeonhole_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = sort_dist_pigeonhole_mean(data); let sd = sort_dist_pigeonhole_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn sort_dist_pigeonhole_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn sort_dist_pigeonhole_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn sort_dist_pigeonhole_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn sort_dist_pigeonhole_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn sort_dist_pigeonhole_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn sort_dist_pigeonhole_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { sort_dist_pigeonhole_int(x) } else { -sort_dist_pigeonhole_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { sort_dist_pigeonhole_int(f * 1000000.0) } else { sort_dist_pigeonhole_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn sort_dist_pigeonhole_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn sort_dist_pigeonhole_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct SortdistpigeonholeFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_dist_pigeonhole_frame_make(size : Int) -> SortdistpigeonholeFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_dist_pigeonhole_frame_len(s : SortdistpigeonholeFrame) -> Int { s.size }
+
+pub fn sort_dist_pigeonhole_frame_get(s : SortdistpigeonholeFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_dist_pigeonhole_frame_set(s : SortdistpigeonholeFrame, i : Int, v : Double) -> SortdistpigeonholeFrame {
+  let result = sort_dist_pigeonhole_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_frame_sum(s : SortdistpigeonholeFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_dist_pigeonhole_frame_mean(s : SortdistpigeonholeFrame) -> Double {
+  if s.size == 0 { 0.0 } else { sort_dist_pigeonhole_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_dist_pigeonhole_frame_scale(s : SortdistpigeonholeFrame, f : Double) -> SortdistpigeonholeFrame {
+  let result = sort_dist_pigeonhole_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_dist_pigeonhole_frame_add(a : SortdistpigeonholeFrame, b : SortdistpigeonholeFrame) -> SortdistpigeonholeFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_dist_pigeonhole_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_frame_copy(s : SortdistpigeonholeFrame) -> SortdistpigeonholeFrame {
+  let result = sort_dist_pigeonhole_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_frame_fill(s : SortdistpigeonholeFrame, v : Double) -> SortdistpigeonholeFrame {
+  let result = sort_dist_pigeonhole_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_frame_min(s : SortdistpigeonholeFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_frame_max(s : SortdistpigeonholeFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_frame_to_string(s : SortdistpigeonholeFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortdistpigeonholeTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_dist_pigeonhole_table_make(size : Int) -> SortdistpigeonholeTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_dist_pigeonhole_table_len(s : SortdistpigeonholeTable) -> Int { s.size }
+
+pub fn sort_dist_pigeonhole_table_get(s : SortdistpigeonholeTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_dist_pigeonhole_table_set(s : SortdistpigeonholeTable, i : Int, v : Double) -> SortdistpigeonholeTable {
+  let result = sort_dist_pigeonhole_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_table_sum(s : SortdistpigeonholeTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_dist_pigeonhole_table_mean(s : SortdistpigeonholeTable) -> Double {
+  if s.size == 0 { 0.0 } else { sort_dist_pigeonhole_table_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_dist_pigeonhole_table_scale(s : SortdistpigeonholeTable, f : Double) -> SortdistpigeonholeTable {
+  let result = sort_dist_pigeonhole_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_dist_pigeonhole_table_add(a : SortdistpigeonholeTable, b : SortdistpigeonholeTable) -> SortdistpigeonholeTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_dist_pigeonhole_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_table_copy(s : SortdistpigeonholeTable) -> SortdistpigeonholeTable {
+  let result = sort_dist_pigeonhole_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_table_fill(s : SortdistpigeonholeTable, v : Double) -> SortdistpigeonholeTable {
+  let result = sort_dist_pigeonhole_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_table_min(s : SortdistpigeonholeTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_table_max(s : SortdistpigeonholeTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_table_to_string(s : SortdistpigeonholeTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortdistpigeonholeGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_dist_pigeonhole_graphn_make(size : Int) -> SortdistpigeonholeGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_dist_pigeonhole_graphn_len(s : SortdistpigeonholeGraphN) -> Int { s.size }
+
+pub fn sort_dist_pigeonhole_graphn_get(s : SortdistpigeonholeGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_dist_pigeonhole_graphn_set(s : SortdistpigeonholeGraphN, i : Int, v : Double) -> SortdistpigeonholeGraphN {
+  let result = sort_dist_pigeonhole_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_graphn_sum(s : SortdistpigeonholeGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_dist_pigeonhole_graphn_mean(s : SortdistpigeonholeGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { sort_dist_pigeonhole_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_dist_pigeonhole_graphn_scale(s : SortdistpigeonholeGraphN, f : Double) -> SortdistpigeonholeGraphN {
+  let result = sort_dist_pigeonhole_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_dist_pigeonhole_graphn_add(a : SortdistpigeonholeGraphN, b : SortdistpigeonholeGraphN) -> SortdistpigeonholeGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_dist_pigeonhole_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_graphn_copy(s : SortdistpigeonholeGraphN) -> SortdistpigeonholeGraphN {
+  let result = sort_dist_pigeonhole_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_graphn_fill(s : SortdistpigeonholeGraphN, v : Double) -> SortdistpigeonholeGraphN {
+  let result = sort_dist_pigeonhole_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_graphn_min(s : SortdistpigeonholeGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_graphn_max(s : SortdistpigeonholeGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_graphn_to_string(s : SortdistpigeonholeGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortdistpigeonholeNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_dist_pigeonhole_node_make(size : Int) -> SortdistpigeonholeNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_dist_pigeonhole_node_len(s : SortdistpigeonholeNode) -> Int { s.size }
+
+pub fn sort_dist_pigeonhole_node_get(s : SortdistpigeonholeNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_dist_pigeonhole_node_set(s : SortdistpigeonholeNode, i : Int, v : Double) -> SortdistpigeonholeNode {
+  let result = sort_dist_pigeonhole_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_node_sum(s : SortdistpigeonholeNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_dist_pigeonhole_node_mean(s : SortdistpigeonholeNode) -> Double {
+  if s.size == 0 { 0.0 } else { sort_dist_pigeonhole_node_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_dist_pigeonhole_node_scale(s : SortdistpigeonholeNode, f : Double) -> SortdistpigeonholeNode {
+  let result = sort_dist_pigeonhole_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_dist_pigeonhole_node_add(a : SortdistpigeonholeNode, b : SortdistpigeonholeNode) -> SortdistpigeonholeNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_dist_pigeonhole_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_node_copy(s : SortdistpigeonholeNode) -> SortdistpigeonholeNode {
+  let result = sort_dist_pigeonhole_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_node_fill(s : SortdistpigeonholeNode, v : Double) -> SortdistpigeonholeNode {
+  let result = sort_dist_pigeonhole_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_node_min(s : SortdistpigeonholeNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_node_max(s : SortdistpigeonholeNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_node_to_string(s : SortdistpigeonholeNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortdistpigeonholeEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_dist_pigeonhole_edge_make(size : Int) -> SortdistpigeonholeEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_dist_pigeonhole_edge_len(s : SortdistpigeonholeEdge) -> Int { s.size }
+
+pub fn sort_dist_pigeonhole_edge_get(s : SortdistpigeonholeEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_dist_pigeonhole_edge_set(s : SortdistpigeonholeEdge, i : Int, v : Double) -> SortdistpigeonholeEdge {
+  let result = sort_dist_pigeonhole_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_edge_sum(s : SortdistpigeonholeEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_dist_pigeonhole_edge_mean(s : SortdistpigeonholeEdge) -> Double {
+  if s.size == 0 { 0.0 } else { sort_dist_pigeonhole_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_dist_pigeonhole_edge_scale(s : SortdistpigeonholeEdge, f : Double) -> SortdistpigeonholeEdge {
+  let result = sort_dist_pigeonhole_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_dist_pigeonhole_edge_add(a : SortdistpigeonholeEdge, b : SortdistpigeonholeEdge) -> SortdistpigeonholeEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_dist_pigeonhole_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_edge_copy(s : SortdistpigeonholeEdge) -> SortdistpigeonholeEdge {
+  let result = sort_dist_pigeonhole_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_edge_fill(s : SortdistpigeonholeEdge, v : Double) -> SortdistpigeonholeEdge {
+  let result = sort_dist_pigeonhole_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_edge_min(s : SortdistpigeonholeEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_edge_max(s : SortdistpigeonholeEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_edge_to_string(s : SortdistpigeonholeEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortdistpigeonholePath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_dist_pigeonhole_path_make(size : Int) -> SortdistpigeonholePath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_dist_pigeonhole_path_len(s : SortdistpigeonholePath) -> Int { s.size }
+
+pub fn sort_dist_pigeonhole_path_get(s : SortdistpigeonholePath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_dist_pigeonhole_path_set(s : SortdistpigeonholePath, i : Int, v : Double) -> SortdistpigeonholePath {
+  let result = sort_dist_pigeonhole_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_path_sum(s : SortdistpigeonholePath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_dist_pigeonhole_path_mean(s : SortdistpigeonholePath) -> Double {
+  if s.size == 0 { 0.0 } else { sort_dist_pigeonhole_path_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_dist_pigeonhole_path_scale(s : SortdistpigeonholePath, f : Double) -> SortdistpigeonholePath {
+  let result = sort_dist_pigeonhole_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_dist_pigeonhole_path_add(a : SortdistpigeonholePath, b : SortdistpigeonholePath) -> SortdistpigeonholePath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_dist_pigeonhole_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_path_copy(s : SortdistpigeonholePath) -> SortdistpigeonholePath {
+  let result = sort_dist_pigeonhole_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_path_fill(s : SortdistpigeonholePath, v : Double) -> SortdistpigeonholePath {
+  let result = sort_dist_pigeonhole_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_path_min(s : SortdistpigeonholePath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_path_max(s : SortdistpigeonholePath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_path_to_string(s : SortdistpigeonholePath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortdistpigeonholeCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_dist_pigeonhole_cluster_make(size : Int) -> SortdistpigeonholeCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_dist_pigeonhole_cluster_len(s : SortdistpigeonholeCluster) -> Int { s.size }
+
+pub fn sort_dist_pigeonhole_cluster_get(s : SortdistpigeonholeCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_dist_pigeonhole_cluster_set(s : SortdistpigeonholeCluster, i : Int, v : Double) -> SortdistpigeonholeCluster {
+  let result = sort_dist_pigeonhole_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_cluster_sum(s : SortdistpigeonholeCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_dist_pigeonhole_cluster_mean(s : SortdistpigeonholeCluster) -> Double {
+  if s.size == 0 { 0.0 } else { sort_dist_pigeonhole_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_dist_pigeonhole_cluster_scale(s : SortdistpigeonholeCluster, f : Double) -> SortdistpigeonholeCluster {
+  let result = sort_dist_pigeonhole_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_dist_pigeonhole_cluster_add(a : SortdistpigeonholeCluster, b : SortdistpigeonholeCluster) -> SortdistpigeonholeCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_dist_pigeonhole_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_cluster_copy(s : SortdistpigeonholeCluster) -> SortdistpigeonholeCluster {
+  let result = sort_dist_pigeonhole_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_cluster_fill(s : SortdistpigeonholeCluster, v : Double) -> SortdistpigeonholeCluster {
+  let result = sort_dist_pigeonhole_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_cluster_min(s : SortdistpigeonholeCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_cluster_max(s : SortdistpigeonholeCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_cluster_to_string(s : SortdistpigeonholeCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortdistpigeonholeModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_dist_pigeonhole_model_make(size : Int) -> SortdistpigeonholeModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_dist_pigeonhole_model_len(s : SortdistpigeonholeModel) -> Int { s.size }
+
+pub fn sort_dist_pigeonhole_model_get(s : SortdistpigeonholeModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_dist_pigeonhole_model_set(s : SortdistpigeonholeModel, i : Int, v : Double) -> SortdistpigeonholeModel {
+  let result = sort_dist_pigeonhole_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_model_sum(s : SortdistpigeonholeModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_dist_pigeonhole_model_mean(s : SortdistpigeonholeModel) -> Double {
+  if s.size == 0 { 0.0 } else { sort_dist_pigeonhole_model_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_dist_pigeonhole_model_scale(s : SortdistpigeonholeModel, f : Double) -> SortdistpigeonholeModel {
+  let result = sort_dist_pigeonhole_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_dist_pigeonhole_model_add(a : SortdistpigeonholeModel, b : SortdistpigeonholeModel) -> SortdistpigeonholeModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_dist_pigeonhole_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_model_copy(s : SortdistpigeonholeModel) -> SortdistpigeonholeModel {
+  let result = sort_dist_pigeonhole_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_model_fill(s : SortdistpigeonholeModel, v : Double) -> SortdistpigeonholeModel {
+  let result = sort_dist_pigeonhole_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_model_min(s : SortdistpigeonholeModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_model_max(s : SortdistpigeonholeModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_model_to_string(s : SortdistpigeonholeModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortdistpigeonholeLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_dist_pigeonhole_layer_make(size : Int) -> SortdistpigeonholeLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_dist_pigeonhole_layer_len(s : SortdistpigeonholeLayer) -> Int { s.size }
+
+pub fn sort_dist_pigeonhole_layer_get(s : SortdistpigeonholeLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_dist_pigeonhole_layer_set(s : SortdistpigeonholeLayer, i : Int, v : Double) -> SortdistpigeonholeLayer {
+  let result = sort_dist_pigeonhole_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_layer_sum(s : SortdistpigeonholeLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_dist_pigeonhole_layer_mean(s : SortdistpigeonholeLayer) -> Double {
+  if s.size == 0 { 0.0 } else { sort_dist_pigeonhole_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_dist_pigeonhole_layer_scale(s : SortdistpigeonholeLayer, f : Double) -> SortdistpigeonholeLayer {
+  let result = sort_dist_pigeonhole_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_dist_pigeonhole_layer_add(a : SortdistpigeonholeLayer, b : SortdistpigeonholeLayer) -> SortdistpigeonholeLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_dist_pigeonhole_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_layer_copy(s : SortdistpigeonholeLayer) -> SortdistpigeonholeLayer {
+  let result = sort_dist_pigeonhole_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_layer_fill(s : SortdistpigeonholeLayer, v : Double) -> SortdistpigeonholeLayer {
+  let result = sort_dist_pigeonhole_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_layer_min(s : SortdistpigeonholeLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_layer_max(s : SortdistpigeonholeLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_layer_to_string(s : SortdistpigeonholeLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortdistpigeonholeBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_dist_pigeonhole_buffer_make(size : Int) -> SortdistpigeonholeBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_dist_pigeonhole_buffer_len(s : SortdistpigeonholeBuffer) -> Int { s.size }
+
+pub fn sort_dist_pigeonhole_buffer_get(s : SortdistpigeonholeBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_dist_pigeonhole_buffer_set(s : SortdistpigeonholeBuffer, i : Int, v : Double) -> SortdistpigeonholeBuffer {
+  let result = sort_dist_pigeonhole_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_buffer_sum(s : SortdistpigeonholeBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_dist_pigeonhole_buffer_mean(s : SortdistpigeonholeBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { sort_dist_pigeonhole_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_dist_pigeonhole_buffer_scale(s : SortdistpigeonholeBuffer, f : Double) -> SortdistpigeonholeBuffer {
+  let result = sort_dist_pigeonhole_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_dist_pigeonhole_buffer_add(a : SortdistpigeonholeBuffer, b : SortdistpigeonholeBuffer) -> SortdistpigeonholeBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_dist_pigeonhole_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_buffer_copy(s : SortdistpigeonholeBuffer) -> SortdistpigeonholeBuffer {
+  let result = sort_dist_pigeonhole_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_buffer_fill(s : SortdistpigeonholeBuffer, v : Double) -> SortdistpigeonholeBuffer {
+  let result = sort_dist_pigeonhole_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_buffer_min(s : SortdistpigeonholeBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_buffer_max(s : SortdistpigeonholeBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_buffer_to_string(s : SortdistpigeonholeBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortdistpigeonholeCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_dist_pigeonhole_cursor_make(size : Int) -> SortdistpigeonholeCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_dist_pigeonhole_cursor_len(s : SortdistpigeonholeCursor) -> Int { s.size }
+
+pub fn sort_dist_pigeonhole_cursor_get(s : SortdistpigeonholeCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_dist_pigeonhole_cursor_set(s : SortdistpigeonholeCursor, i : Int, v : Double) -> SortdistpigeonholeCursor {
+  let result = sort_dist_pigeonhole_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_cursor_sum(s : SortdistpigeonholeCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_dist_pigeonhole_cursor_mean(s : SortdistpigeonholeCursor) -> Double {
+  if s.size == 0 { 0.0 } else { sort_dist_pigeonhole_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_dist_pigeonhole_cursor_scale(s : SortdistpigeonholeCursor, f : Double) -> SortdistpigeonholeCursor {
+  let result = sort_dist_pigeonhole_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_dist_pigeonhole_cursor_add(a : SortdistpigeonholeCursor, b : SortdistpigeonholeCursor) -> SortdistpigeonholeCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_dist_pigeonhole_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_cursor_copy(s : SortdistpigeonholeCursor) -> SortdistpigeonholeCursor {
+  let result = sort_dist_pigeonhole_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_cursor_fill(s : SortdistpigeonholeCursor, v : Double) -> SortdistpigeonholeCursor {
+  let result = sort_dist_pigeonhole_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_cursor_min(s : SortdistpigeonholeCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_cursor_max(s : SortdistpigeonholeCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_cursor_to_string(s : SortdistpigeonholeCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortdistpigeonholeView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_dist_pigeonhole_view_make(size : Int) -> SortdistpigeonholeView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_dist_pigeonhole_view_len(s : SortdistpigeonholeView) -> Int { s.size }
+
+pub fn sort_dist_pigeonhole_view_get(s : SortdistpigeonholeView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_dist_pigeonhole_view_set(s : SortdistpigeonholeView, i : Int, v : Double) -> SortdistpigeonholeView {
+  let result = sort_dist_pigeonhole_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_view_sum(s : SortdistpigeonholeView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_dist_pigeonhole_view_mean(s : SortdistpigeonholeView) -> Double {
+  if s.size == 0 { 0.0 } else { sort_dist_pigeonhole_view_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_dist_pigeonhole_view_scale(s : SortdistpigeonholeView, f : Double) -> SortdistpigeonholeView {
+  let result = sort_dist_pigeonhole_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_dist_pigeonhole_view_add(a : SortdistpigeonholeView, b : SortdistpigeonholeView) -> SortdistpigeonholeView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_dist_pigeonhole_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_view_copy(s : SortdistpigeonholeView) -> SortdistpigeonholeView {
+  let result = sort_dist_pigeonhole_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_view_fill(s : SortdistpigeonholeView, v : Double) -> SortdistpigeonholeView {
+  let result = sort_dist_pigeonhole_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_view_min(s : SortdistpigeonholeView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_view_max(s : SortdistpigeonholeView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_view_to_string(s : SortdistpigeonholeView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortdistpigeonholeRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_dist_pigeonhole_range_make(size : Int) -> SortdistpigeonholeRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_dist_pigeonhole_range_len(s : SortdistpigeonholeRange) -> Int { s.size }
+
+pub fn sort_dist_pigeonhole_range_get(s : SortdistpigeonholeRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_dist_pigeonhole_range_set(s : SortdistpigeonholeRange, i : Int, v : Double) -> SortdistpigeonholeRange {
+  let result = sort_dist_pigeonhole_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_range_sum(s : SortdistpigeonholeRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_dist_pigeonhole_range_mean(s : SortdistpigeonholeRange) -> Double {
+  if s.size == 0 { 0.0 } else { sort_dist_pigeonhole_range_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_dist_pigeonhole_range_scale(s : SortdistpigeonholeRange, f : Double) -> SortdistpigeonholeRange {
+  let result = sort_dist_pigeonhole_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_dist_pigeonhole_range_add(a : SortdistpigeonholeRange, b : SortdistpigeonholeRange) -> SortdistpigeonholeRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_dist_pigeonhole_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_range_copy(s : SortdistpigeonholeRange) -> SortdistpigeonholeRange {
+  let result = sort_dist_pigeonhole_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_range_fill(s : SortdistpigeonholeRange, v : Double) -> SortdistpigeonholeRange {
+  let result = sort_dist_pigeonhole_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_range_min(s : SortdistpigeonholeRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_range_max(s : SortdistpigeonholeRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_range_to_string(s : SortdistpigeonholeRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct SortdistpigeonholeSlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn sort_dist_pigeonhole_slice_make(size : Int) -> SortdistpigeonholeSlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn sort_dist_pigeonhole_slice_len(s : SortdistpigeonholeSlice) -> Int { s.size }
+
+pub fn sort_dist_pigeonhole_slice_get(s : SortdistpigeonholeSlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn sort_dist_pigeonhole_slice_set(s : SortdistpigeonholeSlice, i : Int, v : Double) -> SortdistpigeonholeSlice {
+  let result = sort_dist_pigeonhole_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_slice_sum(s : SortdistpigeonholeSlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn sort_dist_pigeonhole_slice_mean(s : SortdistpigeonholeSlice) -> Double {
+  if s.size == 0 { 0.0 } else { sort_dist_pigeonhole_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn sort_dist_pigeonhole_slice_scale(s : SortdistpigeonholeSlice, f : Double) -> SortdistpigeonholeSlice {
+  let result = sort_dist_pigeonhole_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn sort_dist_pigeonhole_slice_add(a : SortdistpigeonholeSlice, b : SortdistpigeonholeSlice) -> SortdistpigeonholeSlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = sort_dist_pigeonhole_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_slice_copy(s : SortdistpigeonholeSlice) -> SortdistpigeonholeSlice {
+  let result = sort_dist_pigeonhole_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn sort_dist_pigeonhole_slice_fill(s : SortdistpigeonholeSlice, v : Double) -> SortdistpigeonholeSlice {
+  let result = sort_dist_pigeonhole_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn sort_dist_pigeonhole_slice_min(s : SortdistpigeonholeSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_slice_max(s : SortdistpigeonholeSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn sort_dist_pigeonhole_slice_to_string(s : SortdistpigeonholeSlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn sort_dist_pigeonhole_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn sort_dist_pigeonhole_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

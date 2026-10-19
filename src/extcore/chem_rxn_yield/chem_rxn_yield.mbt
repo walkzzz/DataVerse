@@ -1,0 +1,1955 @@
+///===
+/// extcore/chem_rxn_yield
+
+pub(all) struct ChemrxnyieldPoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn chem_rxn_yield_make_point(x : Double, y : Double) -> ChemrxnyieldPoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn chem_rxn_yield_make_point3(x : Double, y : Double, z : Double) -> ChemrxnyieldPoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn chem_rxn_yield_point_x(pt : ChemrxnyieldPoint) -> Double { pt.x }
+
+pub fn chem_rxn_yield_point_y(pt : ChemrxnyieldPoint) -> Double { pt.y }
+
+pub fn chem_rxn_yield_point_z(pt : ChemrxnyieldPoint) -> Double { pt.z }
+
+pub fn chem_rxn_yield_point_label(pt : ChemrxnyieldPoint) -> Int { pt.label }
+
+pub fn chem_rxn_yield_point_dist(a : ChemrxnyieldPoint, b : ChemrxnyieldPoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  chem_rxn_yield_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn chem_rxn_yield_point_add(a : ChemrxnyieldPoint, b : ChemrxnyieldPoint) -> ChemrxnyieldPoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn chem_rxn_yield_point_sub(a : ChemrxnyieldPoint, b : ChemrxnyieldPoint) -> ChemrxnyieldPoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn chem_rxn_yield_point_scale(pt : ChemrxnyieldPoint, s : Double) -> ChemrxnyieldPoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn chem_rxn_yield_point_dot(a : ChemrxnyieldPoint, b : ChemrxnyieldPoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn chem_rxn_yield_point_cross(a : ChemrxnyieldPoint, b : ChemrxnyieldPoint) -> ChemrxnyieldPoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn chem_rxn_yield_point_norm(pt : ChemrxnyieldPoint) -> Double {
+  chem_rxn_yield_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn chem_rxn_yield_point_normalize(pt : ChemrxnyieldPoint) -> ChemrxnyieldPoint {
+  let n = chem_rxn_yield_point_norm(pt)
+  if n < 0.0000001 { pt } else { chem_rxn_yield_point_scale(pt, 1.0 / n) }
+}
+
+pub fn chem_rxn_yield_point_negate(pt : ChemrxnyieldPoint) -> ChemrxnyieldPoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn chem_rxn_yield_point_mid(a : ChemrxnyieldPoint, b : ChemrxnyieldPoint) -> ChemrxnyieldPoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn chem_rxn_yield_point_lerp(a : ChemrxnyieldPoint, b : ChemrxnyieldPoint, t : Double) -> ChemrxnyieldPoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn chem_rxn_yield_point_to_string(pt : ChemrxnyieldPoint) -> String {
+  "(" + chem_rxn_yield_dbl(pt.x) + ", " + chem_rxn_yield_dbl(pt.y) + ", " + chem_rxn_yield_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct ChemrxnyieldSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn chem_rxn_yield_make_series(vals : Array[Double], name : String) -> ChemrxnyieldSeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn chem_rxn_yield_series_len(s : ChemrxnyieldSeries) -> Int { s.vals.length() }
+
+pub fn chem_rxn_yield_series_sum(s : ChemrxnyieldSeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn chem_rxn_yield_series_mean(s : ChemrxnyieldSeries) -> Double {
+  let n = chem_rxn_yield_series_len(s)
+  if n == 0 { 0.0 } else { chem_rxn_yield_series_sum(s) / n.to_double() }
+}
+
+pub fn chem_rxn_yield_series_min(s : ChemrxnyieldSeries) -> Double {
+  let n = chem_rxn_yield_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_series_max(s : ChemrxnyieldSeries) -> Double {
+  let n = chem_rxn_yield_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_series_range(s : ChemrxnyieldSeries) -> Double {
+  chem_rxn_yield_series_max(s) - chem_rxn_yield_series_min(s)
+}
+
+pub fn chem_rxn_yield_series_var(s : ChemrxnyieldSeries) -> Double {
+  let n = chem_rxn_yield_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = chem_rxn_yield_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_series_std(s : ChemrxnyieldSeries) -> Double { chem_rxn_yield_sqrt(chem_rxn_yield_series_var(s)) }
+
+pub fn chem_rxn_yield_series_median(s : ChemrxnyieldSeries) -> Double {
+  let n = chem_rxn_yield_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = chem_rxn_yield_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn chem_rxn_yield_series_scale(s : ChemrxnyieldSeries, f : Double) -> ChemrxnyieldSeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = chem_rxn_yield_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn chem_rxn_yield_series_add(a : ChemrxnyieldSeries, b : ChemrxnyieldSeries) -> ChemrxnyieldSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = chem_rxn_yield_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn chem_rxn_yield_series_sub(a : ChemrxnyieldSeries, b : ChemrxnyieldSeries) -> ChemrxnyieldSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = chem_rxn_yield_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn chem_rxn_yield_series_normalize(s : ChemrxnyieldSeries) -> ChemrxnyieldSeries {
+  let mn = chem_rxn_yield_series_min(s)
+  let mx = chem_rxn_yield_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = chem_rxn_yield_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn chem_rxn_yield_series_cumsum(s : ChemrxnyieldSeries) -> ChemrxnyieldSeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = chem_rxn_yield_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn chem_rxn_yield_series_to_string(s : ChemrxnyieldSeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + chem_rxn_yield_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct ChemrxnyieldMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn chem_rxn_yield_make_matrix(rows : Int, cols : Int, val : Double) -> ChemrxnyieldMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn chem_rxn_yield_matrix_identity(n : Int) -> ChemrxnyieldMatrix {
+  let m = chem_rxn_yield_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn chem_rxn_yield_matrix_get(m : ChemrxnyieldMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn chem_rxn_yield_matrix_transpose(m : ChemrxnyieldMatrix) -> ChemrxnyieldMatrix {
+  let result = chem_rxn_yield_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn chem_rxn_yield_matrix_add(a : ChemrxnyieldMatrix, b : ChemrxnyieldMatrix) -> ChemrxnyieldMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = chem_rxn_yield_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn chem_rxn_yield_matrix_scale(m : ChemrxnyieldMatrix, s : Double) -> ChemrxnyieldMatrix {
+  let result = chem_rxn_yield_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn chem_rxn_yield_matrix_multiply(a : ChemrxnyieldMatrix, b : ChemrxnyieldMatrix) -> ChemrxnyieldMatrix {
+  if a.cols != b.rows { return chem_rxn_yield_make_matrix(a.rows, b.cols, 0.0) }
+  let result = chem_rxn_yield_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn chem_rxn_yield_matrix_trace(m : ChemrxnyieldMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn chem_rxn_yield_matrix_det(m : ChemrxnyieldMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn chem_rxn_yield_matrix_norm(m : ChemrxnyieldMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  chem_rxn_yield_sqrt(sum)
+}
+
+pub fn chem_rxn_yield_matrix_to_string(m : ChemrxnyieldMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + chem_rxn_yield_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct ChemrxnyieldVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn chem_rxn_yield_make_vector(comps : Array[Double]) -> ChemrxnyieldVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn chem_rxn_yield_vector_zero(dim : Int) -> ChemrxnyieldVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn chem_rxn_yield_vector_add(a : ChemrxnyieldVector, b : ChemrxnyieldVector) -> ChemrxnyieldVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = chem_rxn_yield_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn chem_rxn_yield_vector_sub(a : ChemrxnyieldVector, b : ChemrxnyieldVector) -> ChemrxnyieldVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = chem_rxn_yield_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn chem_rxn_yield_vector_scale(v : ChemrxnyieldVector, s : Double) -> ChemrxnyieldVector {
+  let mut result = []
+  for i in 0..<v.dim { result = chem_rxn_yield_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn chem_rxn_yield_vector_dot(a : ChemrxnyieldVector, b : ChemrxnyieldVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn chem_rxn_yield_vector_norm(v : ChemrxnyieldVector) -> Double { chem_rxn_yield_sqrt(chem_rxn_yield_vector_dot(v, v)) }
+
+pub fn chem_rxn_yield_vector_normalize(v : ChemrxnyieldVector) -> ChemrxnyieldVector {
+  let n = chem_rxn_yield_vector_norm(v)
+  if n < 0.0000001 { v } else { chem_rxn_yield_vector_scale(v, 1.0 / n) }
+}
+
+pub fn chem_rxn_yield_vector_dist(a : ChemrxnyieldVector, b : ChemrxnyieldVector) -> Double {
+  chem_rxn_yield_vector_norm(chem_rxn_yield_vector_sub(a, b))
+}
+
+pub fn chem_rxn_yield_vector_to_string(v : ChemrxnyieldVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + chem_rxn_yield_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn chem_rxn_yield_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = chem_rxn_yield_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_std(data : Array[Double]) -> Double { chem_rxn_yield_sqrt(chem_rxn_yield_var(data)) }
+
+pub fn chem_rxn_yield_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = chem_rxn_yield_mean(a); let mb = chem_rxn_yield_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = chem_rxn_yield_std(a); let sb = chem_rxn_yield_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { chem_rxn_yield_cov(a, b) / (sa * sb) }
+}
+
+pub fn chem_rxn_yield_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = chem_rxn_yield_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn chem_rxn_yield_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  chem_rxn_yield_sqrt(chem_rxn_yield_mse(pred, labels))
+}
+
+pub fn chem_rxn_yield_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + chem_rxn_yield_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = chem_rxn_yield_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn chem_rxn_yield_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn chem_rxn_yield_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn chem_rxn_yield_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = chem_rxn_yield_precision(pred, labels, pos); let r = chem_rxn_yield_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn chem_rxn_yield_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn chem_rxn_yield_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = chem_rxn_yield_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn chem_rxn_yield_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn chem_rxn_yield_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn chem_rxn_yield_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = chem_rxn_yield_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn chem_rxn_yield_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn chem_rxn_yield_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn chem_rxn_yield_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = chem_rxn_yield_min(data); let mx = chem_rxn_yield_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn chem_rxn_yield_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = chem_rxn_yield_mean(data); let sd = chem_rxn_yield_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn chem_rxn_yield_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn chem_rxn_yield_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn chem_rxn_yield_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn chem_rxn_yield_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn chem_rxn_yield_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn chem_rxn_yield_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn chem_rxn_yield_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { chem_rxn_yield_int(x) } else { -chem_rxn_yield_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { chem_rxn_yield_int(f * 1000000.0) } else { chem_rxn_yield_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn chem_rxn_yield_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn chem_rxn_yield_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct ChemrxnyieldFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_yield_frame_make(size : Int) -> ChemrxnyieldFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_yield_frame_len(s : ChemrxnyieldFrame) -> Int { s.size }
+
+pub fn chem_rxn_yield_frame_get(s : ChemrxnyieldFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_yield_frame_set(s : ChemrxnyieldFrame, i : Int, v : Double) -> ChemrxnyieldFrame {
+  let result = chem_rxn_yield_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_frame_sum(s : ChemrxnyieldFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_yield_frame_mean(s : ChemrxnyieldFrame) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_yield_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_yield_frame_scale(s : ChemrxnyieldFrame, f : Double) -> ChemrxnyieldFrame {
+  let result = chem_rxn_yield_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_yield_frame_add(a : ChemrxnyieldFrame, b : ChemrxnyieldFrame) -> ChemrxnyieldFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_yield_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_frame_copy(s : ChemrxnyieldFrame) -> ChemrxnyieldFrame {
+  let result = chem_rxn_yield_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_frame_fill(s : ChemrxnyieldFrame, v : Double) -> ChemrxnyieldFrame {
+  let result = chem_rxn_yield_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_frame_min(s : ChemrxnyieldFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_frame_max(s : ChemrxnyieldFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_frame_to_string(s : ChemrxnyieldFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnyieldTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_yield_table_make(size : Int) -> ChemrxnyieldTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_yield_table_len(s : ChemrxnyieldTable) -> Int { s.size }
+
+pub fn chem_rxn_yield_table_get(s : ChemrxnyieldTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_yield_table_set(s : ChemrxnyieldTable, i : Int, v : Double) -> ChemrxnyieldTable {
+  let result = chem_rxn_yield_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_table_sum(s : ChemrxnyieldTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_yield_table_mean(s : ChemrxnyieldTable) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_yield_table_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_yield_table_scale(s : ChemrxnyieldTable, f : Double) -> ChemrxnyieldTable {
+  let result = chem_rxn_yield_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_yield_table_add(a : ChemrxnyieldTable, b : ChemrxnyieldTable) -> ChemrxnyieldTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_yield_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_table_copy(s : ChemrxnyieldTable) -> ChemrxnyieldTable {
+  let result = chem_rxn_yield_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_table_fill(s : ChemrxnyieldTable, v : Double) -> ChemrxnyieldTable {
+  let result = chem_rxn_yield_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_table_min(s : ChemrxnyieldTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_table_max(s : ChemrxnyieldTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_table_to_string(s : ChemrxnyieldTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnyieldGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_yield_graphn_make(size : Int) -> ChemrxnyieldGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_yield_graphn_len(s : ChemrxnyieldGraphN) -> Int { s.size }
+
+pub fn chem_rxn_yield_graphn_get(s : ChemrxnyieldGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_yield_graphn_set(s : ChemrxnyieldGraphN, i : Int, v : Double) -> ChemrxnyieldGraphN {
+  let result = chem_rxn_yield_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_graphn_sum(s : ChemrxnyieldGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_yield_graphn_mean(s : ChemrxnyieldGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_yield_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_yield_graphn_scale(s : ChemrxnyieldGraphN, f : Double) -> ChemrxnyieldGraphN {
+  let result = chem_rxn_yield_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_yield_graphn_add(a : ChemrxnyieldGraphN, b : ChemrxnyieldGraphN) -> ChemrxnyieldGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_yield_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_graphn_copy(s : ChemrxnyieldGraphN) -> ChemrxnyieldGraphN {
+  let result = chem_rxn_yield_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_graphn_fill(s : ChemrxnyieldGraphN, v : Double) -> ChemrxnyieldGraphN {
+  let result = chem_rxn_yield_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_graphn_min(s : ChemrxnyieldGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_graphn_max(s : ChemrxnyieldGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_graphn_to_string(s : ChemrxnyieldGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnyieldNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_yield_node_make(size : Int) -> ChemrxnyieldNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_yield_node_len(s : ChemrxnyieldNode) -> Int { s.size }
+
+pub fn chem_rxn_yield_node_get(s : ChemrxnyieldNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_yield_node_set(s : ChemrxnyieldNode, i : Int, v : Double) -> ChemrxnyieldNode {
+  let result = chem_rxn_yield_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_node_sum(s : ChemrxnyieldNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_yield_node_mean(s : ChemrxnyieldNode) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_yield_node_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_yield_node_scale(s : ChemrxnyieldNode, f : Double) -> ChemrxnyieldNode {
+  let result = chem_rxn_yield_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_yield_node_add(a : ChemrxnyieldNode, b : ChemrxnyieldNode) -> ChemrxnyieldNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_yield_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_node_copy(s : ChemrxnyieldNode) -> ChemrxnyieldNode {
+  let result = chem_rxn_yield_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_node_fill(s : ChemrxnyieldNode, v : Double) -> ChemrxnyieldNode {
+  let result = chem_rxn_yield_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_node_min(s : ChemrxnyieldNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_node_max(s : ChemrxnyieldNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_node_to_string(s : ChemrxnyieldNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnyieldEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_yield_edge_make(size : Int) -> ChemrxnyieldEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_yield_edge_len(s : ChemrxnyieldEdge) -> Int { s.size }
+
+pub fn chem_rxn_yield_edge_get(s : ChemrxnyieldEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_yield_edge_set(s : ChemrxnyieldEdge, i : Int, v : Double) -> ChemrxnyieldEdge {
+  let result = chem_rxn_yield_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_edge_sum(s : ChemrxnyieldEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_yield_edge_mean(s : ChemrxnyieldEdge) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_yield_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_yield_edge_scale(s : ChemrxnyieldEdge, f : Double) -> ChemrxnyieldEdge {
+  let result = chem_rxn_yield_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_yield_edge_add(a : ChemrxnyieldEdge, b : ChemrxnyieldEdge) -> ChemrxnyieldEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_yield_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_edge_copy(s : ChemrxnyieldEdge) -> ChemrxnyieldEdge {
+  let result = chem_rxn_yield_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_edge_fill(s : ChemrxnyieldEdge, v : Double) -> ChemrxnyieldEdge {
+  let result = chem_rxn_yield_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_edge_min(s : ChemrxnyieldEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_edge_max(s : ChemrxnyieldEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_edge_to_string(s : ChemrxnyieldEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnyieldPath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_yield_path_make(size : Int) -> ChemrxnyieldPath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_yield_path_len(s : ChemrxnyieldPath) -> Int { s.size }
+
+pub fn chem_rxn_yield_path_get(s : ChemrxnyieldPath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_yield_path_set(s : ChemrxnyieldPath, i : Int, v : Double) -> ChemrxnyieldPath {
+  let result = chem_rxn_yield_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_path_sum(s : ChemrxnyieldPath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_yield_path_mean(s : ChemrxnyieldPath) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_yield_path_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_yield_path_scale(s : ChemrxnyieldPath, f : Double) -> ChemrxnyieldPath {
+  let result = chem_rxn_yield_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_yield_path_add(a : ChemrxnyieldPath, b : ChemrxnyieldPath) -> ChemrxnyieldPath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_yield_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_path_copy(s : ChemrxnyieldPath) -> ChemrxnyieldPath {
+  let result = chem_rxn_yield_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_path_fill(s : ChemrxnyieldPath, v : Double) -> ChemrxnyieldPath {
+  let result = chem_rxn_yield_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_path_min(s : ChemrxnyieldPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_path_max(s : ChemrxnyieldPath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_path_to_string(s : ChemrxnyieldPath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnyieldCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_yield_cluster_make(size : Int) -> ChemrxnyieldCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_yield_cluster_len(s : ChemrxnyieldCluster) -> Int { s.size }
+
+pub fn chem_rxn_yield_cluster_get(s : ChemrxnyieldCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_yield_cluster_set(s : ChemrxnyieldCluster, i : Int, v : Double) -> ChemrxnyieldCluster {
+  let result = chem_rxn_yield_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_cluster_sum(s : ChemrxnyieldCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_yield_cluster_mean(s : ChemrxnyieldCluster) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_yield_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_yield_cluster_scale(s : ChemrxnyieldCluster, f : Double) -> ChemrxnyieldCluster {
+  let result = chem_rxn_yield_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_yield_cluster_add(a : ChemrxnyieldCluster, b : ChemrxnyieldCluster) -> ChemrxnyieldCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_yield_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_cluster_copy(s : ChemrxnyieldCluster) -> ChemrxnyieldCluster {
+  let result = chem_rxn_yield_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_cluster_fill(s : ChemrxnyieldCluster, v : Double) -> ChemrxnyieldCluster {
+  let result = chem_rxn_yield_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_cluster_min(s : ChemrxnyieldCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_cluster_max(s : ChemrxnyieldCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_cluster_to_string(s : ChemrxnyieldCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnyieldModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_yield_model_make(size : Int) -> ChemrxnyieldModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_yield_model_len(s : ChemrxnyieldModel) -> Int { s.size }
+
+pub fn chem_rxn_yield_model_get(s : ChemrxnyieldModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_yield_model_set(s : ChemrxnyieldModel, i : Int, v : Double) -> ChemrxnyieldModel {
+  let result = chem_rxn_yield_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_model_sum(s : ChemrxnyieldModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_yield_model_mean(s : ChemrxnyieldModel) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_yield_model_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_yield_model_scale(s : ChemrxnyieldModel, f : Double) -> ChemrxnyieldModel {
+  let result = chem_rxn_yield_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_yield_model_add(a : ChemrxnyieldModel, b : ChemrxnyieldModel) -> ChemrxnyieldModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_yield_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_model_copy(s : ChemrxnyieldModel) -> ChemrxnyieldModel {
+  let result = chem_rxn_yield_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_model_fill(s : ChemrxnyieldModel, v : Double) -> ChemrxnyieldModel {
+  let result = chem_rxn_yield_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_model_min(s : ChemrxnyieldModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_model_max(s : ChemrxnyieldModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_model_to_string(s : ChemrxnyieldModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnyieldLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_yield_layer_make(size : Int) -> ChemrxnyieldLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_yield_layer_len(s : ChemrxnyieldLayer) -> Int { s.size }
+
+pub fn chem_rxn_yield_layer_get(s : ChemrxnyieldLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_yield_layer_set(s : ChemrxnyieldLayer, i : Int, v : Double) -> ChemrxnyieldLayer {
+  let result = chem_rxn_yield_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_layer_sum(s : ChemrxnyieldLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_yield_layer_mean(s : ChemrxnyieldLayer) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_yield_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_yield_layer_scale(s : ChemrxnyieldLayer, f : Double) -> ChemrxnyieldLayer {
+  let result = chem_rxn_yield_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_yield_layer_add(a : ChemrxnyieldLayer, b : ChemrxnyieldLayer) -> ChemrxnyieldLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_yield_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_layer_copy(s : ChemrxnyieldLayer) -> ChemrxnyieldLayer {
+  let result = chem_rxn_yield_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_layer_fill(s : ChemrxnyieldLayer, v : Double) -> ChemrxnyieldLayer {
+  let result = chem_rxn_yield_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_layer_min(s : ChemrxnyieldLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_layer_max(s : ChemrxnyieldLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_layer_to_string(s : ChemrxnyieldLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnyieldBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_yield_buffer_make(size : Int) -> ChemrxnyieldBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_yield_buffer_len(s : ChemrxnyieldBuffer) -> Int { s.size }
+
+pub fn chem_rxn_yield_buffer_get(s : ChemrxnyieldBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_yield_buffer_set(s : ChemrxnyieldBuffer, i : Int, v : Double) -> ChemrxnyieldBuffer {
+  let result = chem_rxn_yield_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_buffer_sum(s : ChemrxnyieldBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_yield_buffer_mean(s : ChemrxnyieldBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_yield_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_yield_buffer_scale(s : ChemrxnyieldBuffer, f : Double) -> ChemrxnyieldBuffer {
+  let result = chem_rxn_yield_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_yield_buffer_add(a : ChemrxnyieldBuffer, b : ChemrxnyieldBuffer) -> ChemrxnyieldBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_yield_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_buffer_copy(s : ChemrxnyieldBuffer) -> ChemrxnyieldBuffer {
+  let result = chem_rxn_yield_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_buffer_fill(s : ChemrxnyieldBuffer, v : Double) -> ChemrxnyieldBuffer {
+  let result = chem_rxn_yield_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_buffer_min(s : ChemrxnyieldBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_buffer_max(s : ChemrxnyieldBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_buffer_to_string(s : ChemrxnyieldBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnyieldCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_yield_cursor_make(size : Int) -> ChemrxnyieldCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_yield_cursor_len(s : ChemrxnyieldCursor) -> Int { s.size }
+
+pub fn chem_rxn_yield_cursor_get(s : ChemrxnyieldCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_yield_cursor_set(s : ChemrxnyieldCursor, i : Int, v : Double) -> ChemrxnyieldCursor {
+  let result = chem_rxn_yield_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_cursor_sum(s : ChemrxnyieldCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_yield_cursor_mean(s : ChemrxnyieldCursor) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_yield_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_yield_cursor_scale(s : ChemrxnyieldCursor, f : Double) -> ChemrxnyieldCursor {
+  let result = chem_rxn_yield_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_yield_cursor_add(a : ChemrxnyieldCursor, b : ChemrxnyieldCursor) -> ChemrxnyieldCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_yield_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_cursor_copy(s : ChemrxnyieldCursor) -> ChemrxnyieldCursor {
+  let result = chem_rxn_yield_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_cursor_fill(s : ChemrxnyieldCursor, v : Double) -> ChemrxnyieldCursor {
+  let result = chem_rxn_yield_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_cursor_min(s : ChemrxnyieldCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_cursor_max(s : ChemrxnyieldCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_cursor_to_string(s : ChemrxnyieldCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnyieldView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_yield_view_make(size : Int) -> ChemrxnyieldView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_yield_view_len(s : ChemrxnyieldView) -> Int { s.size }
+
+pub fn chem_rxn_yield_view_get(s : ChemrxnyieldView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_yield_view_set(s : ChemrxnyieldView, i : Int, v : Double) -> ChemrxnyieldView {
+  let result = chem_rxn_yield_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_view_sum(s : ChemrxnyieldView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_yield_view_mean(s : ChemrxnyieldView) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_yield_view_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_yield_view_scale(s : ChemrxnyieldView, f : Double) -> ChemrxnyieldView {
+  let result = chem_rxn_yield_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_yield_view_add(a : ChemrxnyieldView, b : ChemrxnyieldView) -> ChemrxnyieldView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_yield_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_view_copy(s : ChemrxnyieldView) -> ChemrxnyieldView {
+  let result = chem_rxn_yield_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_view_fill(s : ChemrxnyieldView, v : Double) -> ChemrxnyieldView {
+  let result = chem_rxn_yield_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_view_min(s : ChemrxnyieldView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_view_max(s : ChemrxnyieldView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_view_to_string(s : ChemrxnyieldView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnyieldRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_yield_range_make(size : Int) -> ChemrxnyieldRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_yield_range_len(s : ChemrxnyieldRange) -> Int { s.size }
+
+pub fn chem_rxn_yield_range_get(s : ChemrxnyieldRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_yield_range_set(s : ChemrxnyieldRange, i : Int, v : Double) -> ChemrxnyieldRange {
+  let result = chem_rxn_yield_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_range_sum(s : ChemrxnyieldRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_yield_range_mean(s : ChemrxnyieldRange) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_yield_range_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_yield_range_scale(s : ChemrxnyieldRange, f : Double) -> ChemrxnyieldRange {
+  let result = chem_rxn_yield_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_yield_range_add(a : ChemrxnyieldRange, b : ChemrxnyieldRange) -> ChemrxnyieldRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_yield_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_range_copy(s : ChemrxnyieldRange) -> ChemrxnyieldRange {
+  let result = chem_rxn_yield_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_range_fill(s : ChemrxnyieldRange, v : Double) -> ChemrxnyieldRange {
+  let result = chem_rxn_yield_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_range_min(s : ChemrxnyieldRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_range_max(s : ChemrxnyieldRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_range_to_string(s : ChemrxnyieldRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct ChemrxnyieldSlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn chem_rxn_yield_slice_make(size : Int) -> ChemrxnyieldSlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn chem_rxn_yield_slice_len(s : ChemrxnyieldSlice) -> Int { s.size }
+
+pub fn chem_rxn_yield_slice_get(s : ChemrxnyieldSlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn chem_rxn_yield_slice_set(s : ChemrxnyieldSlice, i : Int, v : Double) -> ChemrxnyieldSlice {
+  let result = chem_rxn_yield_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_slice_sum(s : ChemrxnyieldSlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn chem_rxn_yield_slice_mean(s : ChemrxnyieldSlice) -> Double {
+  if s.size == 0 { 0.0 } else { chem_rxn_yield_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn chem_rxn_yield_slice_scale(s : ChemrxnyieldSlice, f : Double) -> ChemrxnyieldSlice {
+  let result = chem_rxn_yield_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn chem_rxn_yield_slice_add(a : ChemrxnyieldSlice, b : ChemrxnyieldSlice) -> ChemrxnyieldSlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = chem_rxn_yield_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_slice_copy(s : ChemrxnyieldSlice) -> ChemrxnyieldSlice {
+  let result = chem_rxn_yield_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn chem_rxn_yield_slice_fill(s : ChemrxnyieldSlice, v : Double) -> ChemrxnyieldSlice {
+  let result = chem_rxn_yield_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn chem_rxn_yield_slice_min(s : ChemrxnyieldSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_slice_max(s : ChemrxnyieldSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn chem_rxn_yield_slice_to_string(s : ChemrxnyieldSlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn chem_rxn_yield_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn chem_rxn_yield_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

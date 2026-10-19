@@ -1,0 +1,1955 @@
+///===
+/// extcore/opt_meta_de
+
+pub(all) struct OptmetadePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn opt_meta_de_make_point(x : Double, y : Double) -> OptmetadePoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn opt_meta_de_make_point3(x : Double, y : Double, z : Double) -> OptmetadePoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn opt_meta_de_point_x(pt : OptmetadePoint) -> Double { pt.x }
+
+pub fn opt_meta_de_point_y(pt : OptmetadePoint) -> Double { pt.y }
+
+pub fn opt_meta_de_point_z(pt : OptmetadePoint) -> Double { pt.z }
+
+pub fn opt_meta_de_point_label(pt : OptmetadePoint) -> Int { pt.label }
+
+pub fn opt_meta_de_point_dist(a : OptmetadePoint, b : OptmetadePoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  opt_meta_de_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn opt_meta_de_point_add(a : OptmetadePoint, b : OptmetadePoint) -> OptmetadePoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn opt_meta_de_point_sub(a : OptmetadePoint, b : OptmetadePoint) -> OptmetadePoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn opt_meta_de_point_scale(pt : OptmetadePoint, s : Double) -> OptmetadePoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn opt_meta_de_point_dot(a : OptmetadePoint, b : OptmetadePoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn opt_meta_de_point_cross(a : OptmetadePoint, b : OptmetadePoint) -> OptmetadePoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn opt_meta_de_point_norm(pt : OptmetadePoint) -> Double {
+  opt_meta_de_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn opt_meta_de_point_normalize(pt : OptmetadePoint) -> OptmetadePoint {
+  let n = opt_meta_de_point_norm(pt)
+  if n < 0.0000001 { pt } else { opt_meta_de_point_scale(pt, 1.0 / n) }
+}
+
+pub fn opt_meta_de_point_negate(pt : OptmetadePoint) -> OptmetadePoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn opt_meta_de_point_mid(a : OptmetadePoint, b : OptmetadePoint) -> OptmetadePoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn opt_meta_de_point_lerp(a : OptmetadePoint, b : OptmetadePoint, t : Double) -> OptmetadePoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn opt_meta_de_point_to_string(pt : OptmetadePoint) -> String {
+  "(" + opt_meta_de_dbl(pt.x) + ", " + opt_meta_de_dbl(pt.y) + ", " + opt_meta_de_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct OptmetadeSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn opt_meta_de_make_series(vals : Array[Double], name : String) -> OptmetadeSeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn opt_meta_de_series_len(s : OptmetadeSeries) -> Int { s.vals.length() }
+
+pub fn opt_meta_de_series_sum(s : OptmetadeSeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn opt_meta_de_series_mean(s : OptmetadeSeries) -> Double {
+  let n = opt_meta_de_series_len(s)
+  if n == 0 { 0.0 } else { opt_meta_de_series_sum(s) / n.to_double() }
+}
+
+pub fn opt_meta_de_series_min(s : OptmetadeSeries) -> Double {
+  let n = opt_meta_de_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_series_max(s : OptmetadeSeries) -> Double {
+  let n = opt_meta_de_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_series_range(s : OptmetadeSeries) -> Double {
+  opt_meta_de_series_max(s) - opt_meta_de_series_min(s)
+}
+
+pub fn opt_meta_de_series_var(s : OptmetadeSeries) -> Double {
+  let n = opt_meta_de_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = opt_meta_de_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_series_std(s : OptmetadeSeries) -> Double { opt_meta_de_sqrt(opt_meta_de_series_var(s)) }
+
+pub fn opt_meta_de_series_median(s : OptmetadeSeries) -> Double {
+  let n = opt_meta_de_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = opt_meta_de_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn opt_meta_de_series_scale(s : OptmetadeSeries, f : Double) -> OptmetadeSeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = opt_meta_de_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn opt_meta_de_series_add(a : OptmetadeSeries, b : OptmetadeSeries) -> OptmetadeSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = opt_meta_de_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn opt_meta_de_series_sub(a : OptmetadeSeries, b : OptmetadeSeries) -> OptmetadeSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = opt_meta_de_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn opt_meta_de_series_normalize(s : OptmetadeSeries) -> OptmetadeSeries {
+  let mn = opt_meta_de_series_min(s)
+  let mx = opt_meta_de_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = opt_meta_de_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn opt_meta_de_series_cumsum(s : OptmetadeSeries) -> OptmetadeSeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = opt_meta_de_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn opt_meta_de_series_to_string(s : OptmetadeSeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + opt_meta_de_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct OptmetadeMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn opt_meta_de_make_matrix(rows : Int, cols : Int, val : Double) -> OptmetadeMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn opt_meta_de_matrix_identity(n : Int) -> OptmetadeMatrix {
+  let m = opt_meta_de_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn opt_meta_de_matrix_get(m : OptmetadeMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn opt_meta_de_matrix_transpose(m : OptmetadeMatrix) -> OptmetadeMatrix {
+  let result = opt_meta_de_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn opt_meta_de_matrix_add(a : OptmetadeMatrix, b : OptmetadeMatrix) -> OptmetadeMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = opt_meta_de_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn opt_meta_de_matrix_scale(m : OptmetadeMatrix, s : Double) -> OptmetadeMatrix {
+  let result = opt_meta_de_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn opt_meta_de_matrix_multiply(a : OptmetadeMatrix, b : OptmetadeMatrix) -> OptmetadeMatrix {
+  if a.cols != b.rows { return opt_meta_de_make_matrix(a.rows, b.cols, 0.0) }
+  let result = opt_meta_de_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn opt_meta_de_matrix_trace(m : OptmetadeMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn opt_meta_de_matrix_det(m : OptmetadeMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn opt_meta_de_matrix_norm(m : OptmetadeMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  opt_meta_de_sqrt(sum)
+}
+
+pub fn opt_meta_de_matrix_to_string(m : OptmetadeMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + opt_meta_de_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct OptmetadeVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn opt_meta_de_make_vector(comps : Array[Double]) -> OptmetadeVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn opt_meta_de_vector_zero(dim : Int) -> OptmetadeVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn opt_meta_de_vector_add(a : OptmetadeVector, b : OptmetadeVector) -> OptmetadeVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = opt_meta_de_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn opt_meta_de_vector_sub(a : OptmetadeVector, b : OptmetadeVector) -> OptmetadeVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = opt_meta_de_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn opt_meta_de_vector_scale(v : OptmetadeVector, s : Double) -> OptmetadeVector {
+  let mut result = []
+  for i in 0..<v.dim { result = opt_meta_de_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn opt_meta_de_vector_dot(a : OptmetadeVector, b : OptmetadeVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn opt_meta_de_vector_norm(v : OptmetadeVector) -> Double { opt_meta_de_sqrt(opt_meta_de_vector_dot(v, v)) }
+
+pub fn opt_meta_de_vector_normalize(v : OptmetadeVector) -> OptmetadeVector {
+  let n = opt_meta_de_vector_norm(v)
+  if n < 0.0000001 { v } else { opt_meta_de_vector_scale(v, 1.0 / n) }
+}
+
+pub fn opt_meta_de_vector_dist(a : OptmetadeVector, b : OptmetadeVector) -> Double {
+  opt_meta_de_vector_norm(opt_meta_de_vector_sub(a, b))
+}
+
+pub fn opt_meta_de_vector_to_string(v : OptmetadeVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + opt_meta_de_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn opt_meta_de_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = opt_meta_de_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_std(data : Array[Double]) -> Double { opt_meta_de_sqrt(opt_meta_de_var(data)) }
+
+pub fn opt_meta_de_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = opt_meta_de_mean(a); let mb = opt_meta_de_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = opt_meta_de_std(a); let sb = opt_meta_de_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { opt_meta_de_cov(a, b) / (sa * sb) }
+}
+
+pub fn opt_meta_de_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = opt_meta_de_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn opt_meta_de_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  opt_meta_de_sqrt(opt_meta_de_mse(pred, labels))
+}
+
+pub fn opt_meta_de_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + opt_meta_de_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = opt_meta_de_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn opt_meta_de_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn opt_meta_de_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn opt_meta_de_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = opt_meta_de_precision(pred, labels, pos); let r = opt_meta_de_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn opt_meta_de_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn opt_meta_de_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = opt_meta_de_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn opt_meta_de_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn opt_meta_de_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn opt_meta_de_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = opt_meta_de_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn opt_meta_de_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn opt_meta_de_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn opt_meta_de_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = opt_meta_de_min(data); let mx = opt_meta_de_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn opt_meta_de_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = opt_meta_de_mean(data); let sd = opt_meta_de_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn opt_meta_de_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn opt_meta_de_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn opt_meta_de_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn opt_meta_de_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn opt_meta_de_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn opt_meta_de_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn opt_meta_de_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { opt_meta_de_int(x) } else { -opt_meta_de_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { opt_meta_de_int(f * 1000000.0) } else { opt_meta_de_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn opt_meta_de_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn opt_meta_de_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct OptmetadeFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn opt_meta_de_frame_make(size : Int) -> OptmetadeFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn opt_meta_de_frame_len(s : OptmetadeFrame) -> Int { s.size }
+
+pub fn opt_meta_de_frame_get(s : OptmetadeFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn opt_meta_de_frame_set(s : OptmetadeFrame, i : Int, v : Double) -> OptmetadeFrame {
+  let result = opt_meta_de_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_frame_sum(s : OptmetadeFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn opt_meta_de_frame_mean(s : OptmetadeFrame) -> Double {
+  if s.size == 0 { 0.0 } else { opt_meta_de_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn opt_meta_de_frame_scale(s : OptmetadeFrame, f : Double) -> OptmetadeFrame {
+  let result = opt_meta_de_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn opt_meta_de_frame_add(a : OptmetadeFrame, b : OptmetadeFrame) -> OptmetadeFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = opt_meta_de_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn opt_meta_de_frame_copy(s : OptmetadeFrame) -> OptmetadeFrame {
+  let result = opt_meta_de_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn opt_meta_de_frame_fill(s : OptmetadeFrame, v : Double) -> OptmetadeFrame {
+  let result = opt_meta_de_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_frame_min(s : OptmetadeFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_frame_max(s : OptmetadeFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_frame_to_string(s : OptmetadeFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct OptmetadeTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn opt_meta_de_table_make(size : Int) -> OptmetadeTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn opt_meta_de_table_len(s : OptmetadeTable) -> Int { s.size }
+
+pub fn opt_meta_de_table_get(s : OptmetadeTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn opt_meta_de_table_set(s : OptmetadeTable, i : Int, v : Double) -> OptmetadeTable {
+  let result = opt_meta_de_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_table_sum(s : OptmetadeTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn opt_meta_de_table_mean(s : OptmetadeTable) -> Double {
+  if s.size == 0 { 0.0 } else { opt_meta_de_table_sum(s) / s.size.to_double() }
+}
+
+pub fn opt_meta_de_table_scale(s : OptmetadeTable, f : Double) -> OptmetadeTable {
+  let result = opt_meta_de_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn opt_meta_de_table_add(a : OptmetadeTable, b : OptmetadeTable) -> OptmetadeTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = opt_meta_de_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn opt_meta_de_table_copy(s : OptmetadeTable) -> OptmetadeTable {
+  let result = opt_meta_de_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn opt_meta_de_table_fill(s : OptmetadeTable, v : Double) -> OptmetadeTable {
+  let result = opt_meta_de_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_table_min(s : OptmetadeTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_table_max(s : OptmetadeTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_table_to_string(s : OptmetadeTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct OptmetadeGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn opt_meta_de_graphn_make(size : Int) -> OptmetadeGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn opt_meta_de_graphn_len(s : OptmetadeGraphN) -> Int { s.size }
+
+pub fn opt_meta_de_graphn_get(s : OptmetadeGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn opt_meta_de_graphn_set(s : OptmetadeGraphN, i : Int, v : Double) -> OptmetadeGraphN {
+  let result = opt_meta_de_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_graphn_sum(s : OptmetadeGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn opt_meta_de_graphn_mean(s : OptmetadeGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { opt_meta_de_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn opt_meta_de_graphn_scale(s : OptmetadeGraphN, f : Double) -> OptmetadeGraphN {
+  let result = opt_meta_de_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn opt_meta_de_graphn_add(a : OptmetadeGraphN, b : OptmetadeGraphN) -> OptmetadeGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = opt_meta_de_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn opt_meta_de_graphn_copy(s : OptmetadeGraphN) -> OptmetadeGraphN {
+  let result = opt_meta_de_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn opt_meta_de_graphn_fill(s : OptmetadeGraphN, v : Double) -> OptmetadeGraphN {
+  let result = opt_meta_de_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_graphn_min(s : OptmetadeGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_graphn_max(s : OptmetadeGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_graphn_to_string(s : OptmetadeGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct OptmetadeNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn opt_meta_de_node_make(size : Int) -> OptmetadeNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn opt_meta_de_node_len(s : OptmetadeNode) -> Int { s.size }
+
+pub fn opt_meta_de_node_get(s : OptmetadeNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn opt_meta_de_node_set(s : OptmetadeNode, i : Int, v : Double) -> OptmetadeNode {
+  let result = opt_meta_de_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_node_sum(s : OptmetadeNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn opt_meta_de_node_mean(s : OptmetadeNode) -> Double {
+  if s.size == 0 { 0.0 } else { opt_meta_de_node_sum(s) / s.size.to_double() }
+}
+
+pub fn opt_meta_de_node_scale(s : OptmetadeNode, f : Double) -> OptmetadeNode {
+  let result = opt_meta_de_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn opt_meta_de_node_add(a : OptmetadeNode, b : OptmetadeNode) -> OptmetadeNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = opt_meta_de_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn opt_meta_de_node_copy(s : OptmetadeNode) -> OptmetadeNode {
+  let result = opt_meta_de_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn opt_meta_de_node_fill(s : OptmetadeNode, v : Double) -> OptmetadeNode {
+  let result = opt_meta_de_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_node_min(s : OptmetadeNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_node_max(s : OptmetadeNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_node_to_string(s : OptmetadeNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct OptmetadeEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn opt_meta_de_edge_make(size : Int) -> OptmetadeEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn opt_meta_de_edge_len(s : OptmetadeEdge) -> Int { s.size }
+
+pub fn opt_meta_de_edge_get(s : OptmetadeEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn opt_meta_de_edge_set(s : OptmetadeEdge, i : Int, v : Double) -> OptmetadeEdge {
+  let result = opt_meta_de_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_edge_sum(s : OptmetadeEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn opt_meta_de_edge_mean(s : OptmetadeEdge) -> Double {
+  if s.size == 0 { 0.0 } else { opt_meta_de_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn opt_meta_de_edge_scale(s : OptmetadeEdge, f : Double) -> OptmetadeEdge {
+  let result = opt_meta_de_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn opt_meta_de_edge_add(a : OptmetadeEdge, b : OptmetadeEdge) -> OptmetadeEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = opt_meta_de_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn opt_meta_de_edge_copy(s : OptmetadeEdge) -> OptmetadeEdge {
+  let result = opt_meta_de_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn opt_meta_de_edge_fill(s : OptmetadeEdge, v : Double) -> OptmetadeEdge {
+  let result = opt_meta_de_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_edge_min(s : OptmetadeEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_edge_max(s : OptmetadeEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_edge_to_string(s : OptmetadeEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct OptmetadePath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn opt_meta_de_path_make(size : Int) -> OptmetadePath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn opt_meta_de_path_len(s : OptmetadePath) -> Int { s.size }
+
+pub fn opt_meta_de_path_get(s : OptmetadePath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn opt_meta_de_path_set(s : OptmetadePath, i : Int, v : Double) -> OptmetadePath {
+  let result = opt_meta_de_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_path_sum(s : OptmetadePath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn opt_meta_de_path_mean(s : OptmetadePath) -> Double {
+  if s.size == 0 { 0.0 } else { opt_meta_de_path_sum(s) / s.size.to_double() }
+}
+
+pub fn opt_meta_de_path_scale(s : OptmetadePath, f : Double) -> OptmetadePath {
+  let result = opt_meta_de_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn opt_meta_de_path_add(a : OptmetadePath, b : OptmetadePath) -> OptmetadePath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = opt_meta_de_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn opt_meta_de_path_copy(s : OptmetadePath) -> OptmetadePath {
+  let result = opt_meta_de_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn opt_meta_de_path_fill(s : OptmetadePath, v : Double) -> OptmetadePath {
+  let result = opt_meta_de_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_path_min(s : OptmetadePath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_path_max(s : OptmetadePath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_path_to_string(s : OptmetadePath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct OptmetadeCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn opt_meta_de_cluster_make(size : Int) -> OptmetadeCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn opt_meta_de_cluster_len(s : OptmetadeCluster) -> Int { s.size }
+
+pub fn opt_meta_de_cluster_get(s : OptmetadeCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn opt_meta_de_cluster_set(s : OptmetadeCluster, i : Int, v : Double) -> OptmetadeCluster {
+  let result = opt_meta_de_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_cluster_sum(s : OptmetadeCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn opt_meta_de_cluster_mean(s : OptmetadeCluster) -> Double {
+  if s.size == 0 { 0.0 } else { opt_meta_de_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn opt_meta_de_cluster_scale(s : OptmetadeCluster, f : Double) -> OptmetadeCluster {
+  let result = opt_meta_de_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn opt_meta_de_cluster_add(a : OptmetadeCluster, b : OptmetadeCluster) -> OptmetadeCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = opt_meta_de_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn opt_meta_de_cluster_copy(s : OptmetadeCluster) -> OptmetadeCluster {
+  let result = opt_meta_de_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn opt_meta_de_cluster_fill(s : OptmetadeCluster, v : Double) -> OptmetadeCluster {
+  let result = opt_meta_de_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_cluster_min(s : OptmetadeCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_cluster_max(s : OptmetadeCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_cluster_to_string(s : OptmetadeCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct OptmetadeModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn opt_meta_de_model_make(size : Int) -> OptmetadeModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn opt_meta_de_model_len(s : OptmetadeModel) -> Int { s.size }
+
+pub fn opt_meta_de_model_get(s : OptmetadeModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn opt_meta_de_model_set(s : OptmetadeModel, i : Int, v : Double) -> OptmetadeModel {
+  let result = opt_meta_de_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_model_sum(s : OptmetadeModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn opt_meta_de_model_mean(s : OptmetadeModel) -> Double {
+  if s.size == 0 { 0.0 } else { opt_meta_de_model_sum(s) / s.size.to_double() }
+}
+
+pub fn opt_meta_de_model_scale(s : OptmetadeModel, f : Double) -> OptmetadeModel {
+  let result = opt_meta_de_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn opt_meta_de_model_add(a : OptmetadeModel, b : OptmetadeModel) -> OptmetadeModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = opt_meta_de_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn opt_meta_de_model_copy(s : OptmetadeModel) -> OptmetadeModel {
+  let result = opt_meta_de_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn opt_meta_de_model_fill(s : OptmetadeModel, v : Double) -> OptmetadeModel {
+  let result = opt_meta_de_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_model_min(s : OptmetadeModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_model_max(s : OptmetadeModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_model_to_string(s : OptmetadeModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct OptmetadeLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn opt_meta_de_layer_make(size : Int) -> OptmetadeLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn opt_meta_de_layer_len(s : OptmetadeLayer) -> Int { s.size }
+
+pub fn opt_meta_de_layer_get(s : OptmetadeLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn opt_meta_de_layer_set(s : OptmetadeLayer, i : Int, v : Double) -> OptmetadeLayer {
+  let result = opt_meta_de_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_layer_sum(s : OptmetadeLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn opt_meta_de_layer_mean(s : OptmetadeLayer) -> Double {
+  if s.size == 0 { 0.0 } else { opt_meta_de_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn opt_meta_de_layer_scale(s : OptmetadeLayer, f : Double) -> OptmetadeLayer {
+  let result = opt_meta_de_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn opt_meta_de_layer_add(a : OptmetadeLayer, b : OptmetadeLayer) -> OptmetadeLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = opt_meta_de_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn opt_meta_de_layer_copy(s : OptmetadeLayer) -> OptmetadeLayer {
+  let result = opt_meta_de_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn opt_meta_de_layer_fill(s : OptmetadeLayer, v : Double) -> OptmetadeLayer {
+  let result = opt_meta_de_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_layer_min(s : OptmetadeLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_layer_max(s : OptmetadeLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_layer_to_string(s : OptmetadeLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct OptmetadeBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn opt_meta_de_buffer_make(size : Int) -> OptmetadeBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn opt_meta_de_buffer_len(s : OptmetadeBuffer) -> Int { s.size }
+
+pub fn opt_meta_de_buffer_get(s : OptmetadeBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn opt_meta_de_buffer_set(s : OptmetadeBuffer, i : Int, v : Double) -> OptmetadeBuffer {
+  let result = opt_meta_de_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_buffer_sum(s : OptmetadeBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn opt_meta_de_buffer_mean(s : OptmetadeBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { opt_meta_de_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn opt_meta_de_buffer_scale(s : OptmetadeBuffer, f : Double) -> OptmetadeBuffer {
+  let result = opt_meta_de_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn opt_meta_de_buffer_add(a : OptmetadeBuffer, b : OptmetadeBuffer) -> OptmetadeBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = opt_meta_de_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn opt_meta_de_buffer_copy(s : OptmetadeBuffer) -> OptmetadeBuffer {
+  let result = opt_meta_de_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn opt_meta_de_buffer_fill(s : OptmetadeBuffer, v : Double) -> OptmetadeBuffer {
+  let result = opt_meta_de_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_buffer_min(s : OptmetadeBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_buffer_max(s : OptmetadeBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_buffer_to_string(s : OptmetadeBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct OptmetadeCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn opt_meta_de_cursor_make(size : Int) -> OptmetadeCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn opt_meta_de_cursor_len(s : OptmetadeCursor) -> Int { s.size }
+
+pub fn opt_meta_de_cursor_get(s : OptmetadeCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn opt_meta_de_cursor_set(s : OptmetadeCursor, i : Int, v : Double) -> OptmetadeCursor {
+  let result = opt_meta_de_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_cursor_sum(s : OptmetadeCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn opt_meta_de_cursor_mean(s : OptmetadeCursor) -> Double {
+  if s.size == 0 { 0.0 } else { opt_meta_de_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn opt_meta_de_cursor_scale(s : OptmetadeCursor, f : Double) -> OptmetadeCursor {
+  let result = opt_meta_de_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn opt_meta_de_cursor_add(a : OptmetadeCursor, b : OptmetadeCursor) -> OptmetadeCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = opt_meta_de_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn opt_meta_de_cursor_copy(s : OptmetadeCursor) -> OptmetadeCursor {
+  let result = opt_meta_de_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn opt_meta_de_cursor_fill(s : OptmetadeCursor, v : Double) -> OptmetadeCursor {
+  let result = opt_meta_de_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_cursor_min(s : OptmetadeCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_cursor_max(s : OptmetadeCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_cursor_to_string(s : OptmetadeCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct OptmetadeView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn opt_meta_de_view_make(size : Int) -> OptmetadeView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn opt_meta_de_view_len(s : OptmetadeView) -> Int { s.size }
+
+pub fn opt_meta_de_view_get(s : OptmetadeView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn opt_meta_de_view_set(s : OptmetadeView, i : Int, v : Double) -> OptmetadeView {
+  let result = opt_meta_de_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_view_sum(s : OptmetadeView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn opt_meta_de_view_mean(s : OptmetadeView) -> Double {
+  if s.size == 0 { 0.0 } else { opt_meta_de_view_sum(s) / s.size.to_double() }
+}
+
+pub fn opt_meta_de_view_scale(s : OptmetadeView, f : Double) -> OptmetadeView {
+  let result = opt_meta_de_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn opt_meta_de_view_add(a : OptmetadeView, b : OptmetadeView) -> OptmetadeView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = opt_meta_de_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn opt_meta_de_view_copy(s : OptmetadeView) -> OptmetadeView {
+  let result = opt_meta_de_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn opt_meta_de_view_fill(s : OptmetadeView, v : Double) -> OptmetadeView {
+  let result = opt_meta_de_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_view_min(s : OptmetadeView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_view_max(s : OptmetadeView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_view_to_string(s : OptmetadeView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct OptmetadeRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn opt_meta_de_range_make(size : Int) -> OptmetadeRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn opt_meta_de_range_len(s : OptmetadeRange) -> Int { s.size }
+
+pub fn opt_meta_de_range_get(s : OptmetadeRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn opt_meta_de_range_set(s : OptmetadeRange, i : Int, v : Double) -> OptmetadeRange {
+  let result = opt_meta_de_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_range_sum(s : OptmetadeRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn opt_meta_de_range_mean(s : OptmetadeRange) -> Double {
+  if s.size == 0 { 0.0 } else { opt_meta_de_range_sum(s) / s.size.to_double() }
+}
+
+pub fn opt_meta_de_range_scale(s : OptmetadeRange, f : Double) -> OptmetadeRange {
+  let result = opt_meta_de_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn opt_meta_de_range_add(a : OptmetadeRange, b : OptmetadeRange) -> OptmetadeRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = opt_meta_de_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn opt_meta_de_range_copy(s : OptmetadeRange) -> OptmetadeRange {
+  let result = opt_meta_de_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn opt_meta_de_range_fill(s : OptmetadeRange, v : Double) -> OptmetadeRange {
+  let result = opt_meta_de_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_range_min(s : OptmetadeRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_range_max(s : OptmetadeRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_range_to_string(s : OptmetadeRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct OptmetadeSlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn opt_meta_de_slice_make(size : Int) -> OptmetadeSlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn opt_meta_de_slice_len(s : OptmetadeSlice) -> Int { s.size }
+
+pub fn opt_meta_de_slice_get(s : OptmetadeSlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn opt_meta_de_slice_set(s : OptmetadeSlice, i : Int, v : Double) -> OptmetadeSlice {
+  let result = opt_meta_de_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_slice_sum(s : OptmetadeSlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn opt_meta_de_slice_mean(s : OptmetadeSlice) -> Double {
+  if s.size == 0 { 0.0 } else { opt_meta_de_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn opt_meta_de_slice_scale(s : OptmetadeSlice, f : Double) -> OptmetadeSlice {
+  let result = opt_meta_de_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn opt_meta_de_slice_add(a : OptmetadeSlice, b : OptmetadeSlice) -> OptmetadeSlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = opt_meta_de_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn opt_meta_de_slice_copy(s : OptmetadeSlice) -> OptmetadeSlice {
+  let result = opt_meta_de_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn opt_meta_de_slice_fill(s : OptmetadeSlice, v : Double) -> OptmetadeSlice {
+  let result = opt_meta_de_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn opt_meta_de_slice_min(s : OptmetadeSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_slice_max(s : OptmetadeSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn opt_meta_de_slice_to_string(s : OptmetadeSlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn opt_meta_de_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn opt_meta_de_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

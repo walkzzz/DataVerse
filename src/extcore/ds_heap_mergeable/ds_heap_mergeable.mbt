@@ -1,0 +1,1955 @@
+///===
+/// extcore/ds_heap_mergeable
+
+pub(all) struct DsheapmergeablePoint {
+  x : Double
+  y : Double
+  z : Double
+  label : Int
+}
+
+pub fn ds_heap_mergeable_make_point(x : Double, y : Double) -> DsheapmergeablePoint {
+  { x, y, z: 0.0, label: 0 }
+}
+
+pub fn ds_heap_mergeable_make_point3(x : Double, y : Double, z : Double) -> DsheapmergeablePoint {
+  { x, y, z, label: 0 }
+}
+
+pub fn ds_heap_mergeable_point_x(pt : DsheapmergeablePoint) -> Double { pt.x }
+
+pub fn ds_heap_mergeable_point_y(pt : DsheapmergeablePoint) -> Double { pt.y }
+
+pub fn ds_heap_mergeable_point_z(pt : DsheapmergeablePoint) -> Double { pt.z }
+
+pub fn ds_heap_mergeable_point_label(pt : DsheapmergeablePoint) -> Int { pt.label }
+
+pub fn ds_heap_mergeable_point_dist(a : DsheapmergeablePoint, b : DsheapmergeablePoint) -> Double {
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  let dz = a.z - b.z
+  ds_heap_mergeable_sqrt(dx * dx + dy * dy + dz * dz)
+}
+
+pub fn ds_heap_mergeable_point_add(a : DsheapmergeablePoint, b : DsheapmergeablePoint) -> DsheapmergeablePoint {
+  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+}
+
+pub fn ds_heap_mergeable_point_sub(a : DsheapmergeablePoint, b : DsheapmergeablePoint) -> DsheapmergeablePoint {
+  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+}
+
+pub fn ds_heap_mergeable_point_scale(pt : DsheapmergeablePoint, s : Double) -> DsheapmergeablePoint {
+  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+}
+
+pub fn ds_heap_mergeable_point_dot(a : DsheapmergeablePoint, b : DsheapmergeablePoint) -> Double {
+  a.x * b.x + a.y * b.y + a.z * b.z
+}
+
+pub fn ds_heap_mergeable_point_cross(a : DsheapmergeablePoint, b : DsheapmergeablePoint) -> DsheapmergeablePoint {
+  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+}
+
+pub fn ds_heap_mergeable_point_norm(pt : DsheapmergeablePoint) -> Double {
+  ds_heap_mergeable_sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+}
+
+pub fn ds_heap_mergeable_point_normalize(pt : DsheapmergeablePoint) -> DsheapmergeablePoint {
+  let n = ds_heap_mergeable_point_norm(pt)
+  if n < 0.0000001 { pt } else { ds_heap_mergeable_point_scale(pt, 1.0 / n) }
+}
+
+pub fn ds_heap_mergeable_point_negate(pt : DsheapmergeablePoint) -> DsheapmergeablePoint {
+  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+}
+
+pub fn ds_heap_mergeable_point_mid(a : DsheapmergeablePoint, b : DsheapmergeablePoint) -> DsheapmergeablePoint {
+  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+}
+
+pub fn ds_heap_mergeable_point_lerp(a : DsheapmergeablePoint, b : DsheapmergeablePoint, t : Double) -> DsheapmergeablePoint {
+  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+}
+
+pub fn ds_heap_mergeable_point_to_string(pt : DsheapmergeablePoint) -> String {
+  "(" + ds_heap_mergeable_dbl(pt.x) + ", " + ds_heap_mergeable_dbl(pt.y) + ", " + ds_heap_mergeable_dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+}
+
+pub(all) struct DsheapmergeableSeries {
+  vals : Array[Double]
+  name : String
+  meta : Int
+}
+
+pub fn ds_heap_mergeable_make_series(vals : Array[Double], name : String) -> DsheapmergeableSeries {
+  { vals, name, meta: 0 }
+}
+
+pub fn ds_heap_mergeable_series_len(s : DsheapmergeableSeries) -> Int { s.vals.length() }
+
+pub fn ds_heap_mergeable_series_sum(s : DsheapmergeableSeries) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i] }
+  total
+}
+
+pub fn ds_heap_mergeable_series_mean(s : DsheapmergeableSeries) -> Double {
+  let n = ds_heap_mergeable_series_len(s)
+  if n == 0 { 0.0 } else { ds_heap_mergeable_series_sum(s) / n.to_double() }
+}
+
+pub fn ds_heap_mergeable_series_min(s : DsheapmergeableSeries) -> Double {
+  let n = ds_heap_mergeable_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] < m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_series_max(s : DsheapmergeableSeries) -> Double {
+  let n = ds_heap_mergeable_series_len(s)
+  if n == 0 { 0.0 } else {
+    let mut m = s.vals[0]
+    for i in 1..<n { if s.vals[i] > m { m = s.vals[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_series_range(s : DsheapmergeableSeries) -> Double {
+  ds_heap_mergeable_series_max(s) - ds_heap_mergeable_series_min(s)
+}
+
+pub fn ds_heap_mergeable_series_var(s : DsheapmergeableSeries) -> Double {
+  let n = ds_heap_mergeable_series_len(s)
+  if n == 0 { 0.0 } else {
+    let m = ds_heap_mergeable_series_mean(s)
+    let mut total = 0.0
+    for i in 0..<n { let d = s.vals[i] - m; total = total + d * d }
+    total / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_series_std(s : DsheapmergeableSeries) -> Double { ds_heap_mergeable_sqrt(ds_heap_mergeable_series_var(s)) }
+
+pub fn ds_heap_mergeable_series_median(s : DsheapmergeableSeries) -> Double {
+  let n = ds_heap_mergeable_series_len(s)
+  if n == 0 { 0.0 } else {
+    let sorted = ds_heap_mergeable_sort(s.vals)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn ds_heap_mergeable_series_scale(s : DsheapmergeableSeries, f : Double) -> DsheapmergeableSeries {
+  let mut result = []
+  for i in 0..<s.vals.length() { result = ds_heap_mergeable_push(result, s.vals[i] * f) }
+  { vals: result, name: s.name, meta: s.meta }
+}
+
+pub fn ds_heap_mergeable_series_add(a : DsheapmergeableSeries, b : DsheapmergeableSeries) -> DsheapmergeableSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = ds_heap_mergeable_push(result, a.vals[i] + b.vals[i]) }
+  { vals: result, name: a.name + "+" + b.name, meta: a.meta }
+}
+
+pub fn ds_heap_mergeable_series_sub(a : DsheapmergeableSeries, b : DsheapmergeableSeries) -> DsheapmergeableSeries {
+  let n = if a.vals.length() < b.vals.length() { a.vals.length() } else { b.vals.length() }
+  let mut result = []
+  for i in 0..<n { result = ds_heap_mergeable_push(result, a.vals[i] - b.vals[i]) }
+  { vals: result, name: a.name + "-" + b.name, meta: a.meta }
+}
+
+pub fn ds_heap_mergeable_series_normalize(s : DsheapmergeableSeries) -> DsheapmergeableSeries {
+  let mn = ds_heap_mergeable_series_min(s)
+  let mx = ds_heap_mergeable_series_max(s)
+  let r = mx - mn
+  if r < 0.0000001 { s } else {
+    let mut result = []
+    for i in 0..<s.vals.length() { result = ds_heap_mergeable_push(result, (s.vals[i] - mn) / r) }
+    { vals: result, name: s.name, meta: s.meta }
+  }
+}
+
+pub fn ds_heap_mergeable_series_cumsum(s : DsheapmergeableSeries) -> DsheapmergeableSeries {
+  let mut result = []
+  let mut total = 0.0
+  for i in 0..<s.vals.length() { total = total + s.vals[i]; result = ds_heap_mergeable_push(result, total) }
+  { vals: result, name: s.name + "_cumsum", meta: s.meta }
+}
+
+pub fn ds_heap_mergeable_series_to_string(s : DsheapmergeableSeries) -> String {
+  let mut result = s.name + "["
+  let n = s.vals.length()
+  let lim = if n < 10 { n } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + ds_heap_mergeable_dbl(s.vals[i]) }
+  if n > 10 { result + "...]" } else { result + "]" }
+}
+
+pub(all) struct DsheapmergeableMatrix {
+  data : Array[Array[Double]]
+  rows : Int
+  cols : Int
+}
+
+pub fn ds_heap_mergeable_make_matrix(rows : Int, cols : Int, val : Double) -> DsheapmergeableMatrix {
+  let data = Array::make(rows, Array::make(cols, val))
+  for i in 0..<rows { data[i] = Array::make(cols, val) }
+  { data, rows, cols }
+}
+
+pub fn ds_heap_mergeable_matrix_identity(n : Int) -> DsheapmergeableMatrix {
+  let m = ds_heap_mergeable_make_matrix(n, n, 0.0)
+  for i in 0..<n { m.data[i][i] = 1.0 }
+  m
+}
+
+pub fn ds_heap_mergeable_matrix_get(m : DsheapmergeableMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+}
+
+pub fn ds_heap_mergeable_matrix_transpose(m : DsheapmergeableMatrix) -> DsheapmergeableMatrix {
+  let result = ds_heap_mergeable_make_matrix(m.cols, m.rows, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+  result
+}
+
+pub fn ds_heap_mergeable_matrix_add(a : DsheapmergeableMatrix, b : DsheapmergeableMatrix) -> DsheapmergeableMatrix {
+  if a.rows != b.rows || a.cols != b.cols { return a }
+  let result = ds_heap_mergeable_make_matrix(a.rows, a.cols, 0.0)
+  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+  result
+}
+
+pub fn ds_heap_mergeable_matrix_scale(m : DsheapmergeableMatrix, s : Double) -> DsheapmergeableMatrix {
+  let result = ds_heap_mergeable_make_matrix(m.rows, m.cols, 0.0)
+  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+  result
+}
+
+pub fn ds_heap_mergeable_matrix_multiply(a : DsheapmergeableMatrix, b : DsheapmergeableMatrix) -> DsheapmergeableMatrix {
+  if a.cols != b.rows { return ds_heap_mergeable_make_matrix(a.rows, b.cols, 0.0) }
+  let result = ds_heap_mergeable_make_matrix(a.rows, b.cols, 0.0)
+  for i in 0..<a.rows {
+    for j in 0..<b.cols {
+      let mut sum = 0.0
+      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      result.data[i][j] = sum
+    }
+  }
+  result
+}
+
+pub fn ds_heap_mergeable_matrix_trace(m : DsheapmergeableMatrix) -> Double {
+  let n = if m.rows < m.cols { m.rows } else { m.cols }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + m.data[i][i] }
+  sum
+}
+
+pub fn ds_heap_mergeable_matrix_det(m : DsheapmergeableMatrix) -> Double {
+  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
+    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
+  } else if m.rows == 3 {
+    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
+    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
+    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+    a - b + c
+  } else { 0.0 }
+}
+
+pub fn ds_heap_mergeable_matrix_norm(m : DsheapmergeableMatrix) -> Double {
+  let mut sum = 0.0
+  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  ds_heap_mergeable_sqrt(sum)
+}
+
+pub fn ds_heap_mergeable_matrix_to_string(m : DsheapmergeableMatrix) -> String {
+  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
+  let rl = if m.rows < 5 { m.rows } else { 5 }
+  let cl = if m.cols < 5 { m.cols } else { 5 }
+  for i in 0..<rl {
+    result = result + "  ["
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + ds_heap_mergeable_dbl(m.data[i][j]) }
+    result = result + "]\n"
+  }
+  result
+}
+
+pub(all) struct DsheapmergeableVector {
+  comps : Array[Double]
+  dim : Int
+}
+
+pub fn ds_heap_mergeable_make_vector(comps : Array[Double]) -> DsheapmergeableVector {
+  { comps, dim: comps.length() }
+}
+
+pub fn ds_heap_mergeable_vector_zero(dim : Int) -> DsheapmergeableVector {
+  { comps: Array::make(dim, 0.0), dim }
+}
+
+pub fn ds_heap_mergeable_vector_add(a : DsheapmergeableVector, b : DsheapmergeableVector) -> DsheapmergeableVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = ds_heap_mergeable_push(result, a.comps[i] + b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn ds_heap_mergeable_vector_sub(a : DsheapmergeableVector, b : DsheapmergeableVector) -> DsheapmergeableVector {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut result = []
+  for i in 0..<n { result = ds_heap_mergeable_push(result, a.comps[i] - b.comps[i]) }
+  { comps: result, dim: n }
+}
+
+pub fn ds_heap_mergeable_vector_scale(v : DsheapmergeableVector, s : Double) -> DsheapmergeableVector {
+  let mut result = []
+  for i in 0..<v.dim { result = ds_heap_mergeable_push(result, v.comps[i] * s) }
+  { comps: result, dim: v.dim }
+}
+
+pub fn ds_heap_mergeable_vector_dot(a : DsheapmergeableVector, b : DsheapmergeableVector) -> Double {
+  let n = if a.dim < b.dim { a.dim } else { b.dim }
+  let mut sum = 0.0
+  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  sum
+}
+
+pub fn ds_heap_mergeable_vector_norm(v : DsheapmergeableVector) -> Double { ds_heap_mergeable_sqrt(ds_heap_mergeable_vector_dot(v, v)) }
+
+pub fn ds_heap_mergeable_vector_normalize(v : DsheapmergeableVector) -> DsheapmergeableVector {
+  let n = ds_heap_mergeable_vector_norm(v)
+  if n < 0.0000001 { v } else { ds_heap_mergeable_vector_scale(v, 1.0 / n) }
+}
+
+pub fn ds_heap_mergeable_vector_dist(a : DsheapmergeableVector, b : DsheapmergeableVector) -> Double {
+  ds_heap_mergeable_vector_norm(ds_heap_mergeable_vector_sub(a, b))
+}
+
+pub fn ds_heap_mergeable_vector_to_string(v : DsheapmergeableVector) -> String {
+  let mut result = "["
+  let lim = if v.dim < 10 { v.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + ds_heap_mergeable_dbl(v.comps[i]) }
+  if v.dim > 10 { result + "...]" } else { result + "]" }
+}
+
+pub fn ds_heap_mergeable_mean(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + data[i] }
+    sum / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_var(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let m = ds_heap_mergeable_mean(data)
+    let mut sum = 0.0
+    for i in 0..<n { let d = data[i] - m; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_std(data : Array[Double]) -> Double { ds_heap_mergeable_sqrt(ds_heap_mergeable_var(data)) }
+
+pub fn ds_heap_mergeable_cov(a : Array[Double], b : Array[Double]) -> Double {
+  let n = if a.length() < b.length() { a.length() } else { b.length() }
+  if n == 0 { 0.0 } else {
+    let ma = ds_heap_mergeable_mean(a); let mb = ds_heap_mergeable_mean(b)
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + (a[i] - ma) * (b[i] - mb) }
+    sum / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_corr(a : Array[Double], b : Array[Double]) -> Double {
+  let sa = ds_heap_mergeable_std(a); let sb = ds_heap_mergeable_std(b)
+  if sa < 0.0000001 || sb < 0.0000001 { 0.0 } else { ds_heap_mergeable_cov(a, b) / (sa * sb) }
+}
+
+pub fn ds_heap_mergeable_median(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let sorted = ds_heap_mergeable_sort(data)
+    if n % 2 == 1 { sorted[n / 2] } else { (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 }
+  }
+}
+
+pub fn ds_heap_mergeable_accuracy(pred : Array[Int], labels : Array[Int]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut correct = 0
+    for i in 0..<n { if pred[i] == labels[i] { correct = correct + 1 } }
+    correct.to_double() / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_mse(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { let d = pred[i] - labels[i]; sum = sum + d * d }
+    sum / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_rmse(pred : Array[Double], labels : Array[Double]) -> Double {
+  ds_heap_mergeable_sqrt(ds_heap_mergeable_mse(pred, labels))
+}
+
+pub fn ds_heap_mergeable_mae(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let mut sum = 0.0
+    for i in 0..<n { sum = sum + ds_heap_mergeable_abs(pred[i] - labels[i]) }
+    sum / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_r2(pred : Array[Double], labels : Array[Double]) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  if n == 0 { 0.0 } else {
+    let lm = ds_heap_mergeable_mean(labels)
+    let mut ss_res = 0.0; let mut ss_tot = 0.0
+    for i in 0..<n { let r = labels[i] - pred[i]; ss_res = ss_res + r * r; let t = labels[i] - lm; ss_tot = ss_tot + t * t }
+    if ss_tot < 0.0000001 { 0.0 } else { 1.0 - ss_res / ss_tot }
+  }
+}
+
+pub fn ds_heap_mergeable_precision(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fp = 0
+  for i in 0..<n { if pred[i] == pos { if labels[i] == pos { tp = tp + 1 } else { fp = fp + 1 } } }
+  if tp + fp == 0 { 0.0 } else { tp.to_double() / (tp + fp).to_double() }
+}
+
+pub fn ds_heap_mergeable_recall(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let n = if pred.length() < labels.length() { pred.length() } else { labels.length() }
+  let mut tp = 0; let mut fn_ = 0
+  for i in 0..<n { if labels[i] == pos { if pred[i] == pos { tp = tp + 1 } else { fn_ = fn_ + 1 } } }
+  if tp + fn_ == 0 { 0.0 } else { tp.to_double() / (tp + fn_).to_double() }
+}
+
+pub fn ds_heap_mergeable_f1(pred : Array[Int], labels : Array[Int], pos : Int) -> Double {
+  let p_ = ds_heap_mergeable_precision(pred, labels, pos); let r = ds_heap_mergeable_recall(pred, labels, pos)
+  if p_ + r < 0.0000001 { 0.0 } else { 2.0 * p_ * r / (p_ + r) }
+}
+
+pub fn ds_heap_mergeable_sort(arr : Array[Double]) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  for i in 0..<n {
+    let mut min_idx = i
+    let start = i + 1
+    for j in start..<n { if result[j] < result[min_idx] { min_idx = j } }
+    let tmp = result[i]; result[i] = result[min_idx]; result[min_idx] = tmp
+  }
+  result
+}
+
+pub fn ds_heap_mergeable_sort_desc(arr : Array[Double]) -> Array[Double] {
+  let sorted = ds_heap_mergeable_sort(arr)
+  let n = sorted.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = sorted[n - 1 - i] }
+  result
+}
+
+pub fn ds_heap_mergeable_factorial(n : Int) -> Double {
+  let mut result = 1.0
+  let end = n + 1
+  for i in 2..<end { result = result * i.to_double() }
+  result
+}
+
+pub fn ds_heap_mergeable_gcd(a : Int, b : Int) -> Int {
+  let mut x = if a < 0 { -a } else { a }
+  let mut y = if b < 0 { -b } else { b }
+  while y > 0 { let t = y; y = x % y; x = t }
+  x
+}
+
+pub fn ds_heap_mergeable_lcm(a : Int, b : Int) -> Int {
+  if a == 0 || b == 0 { 0 } else {
+    let g = ds_heap_mergeable_gcd(a, b)
+    (a / g) * b
+  }
+}
+
+pub fn ds_heap_mergeable_is_prime(n : Int) -> Bool {
+  if n < 2 { false } else if n == 2 { true } else if n % 2 == 0 { false } else {
+    let mut result = true
+    let mut i = 3
+    while i * i <= n { if n % i == 0 { result = false }; i = i + 2 }
+    result
+  }
+}
+
+pub fn ds_heap_mergeable_fibonacci(n : Int) -> Int {
+  if n < 2 {
+    n
+  } else {
+    let mut a = 0
+    let mut b = 1
+    let end = n + 1
+    for _ in 2..<end {
+      let c = a + b
+      a = b
+      b = c
+    }
+    b
+  }
+}
+
+pub fn ds_heap_mergeable_normalize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let mn = ds_heap_mergeable_min(data); let mx = ds_heap_mergeable_max(data)
+    let r = mx - mn
+    if r < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - mn) / r }
+      result
+    }
+  }
+}
+
+pub fn ds_heap_mergeable_standardize(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  if n == 0 { [] } else {
+    let m = ds_heap_mergeable_mean(data); let sd = ds_heap_mergeable_std(data)
+    if sd < 0.0000001 { Array::make(n, 0.0) } else {
+      let result = Array::make(n, 0.0)
+      for i in 0..<n { result[i] = (data[i] - m) / sd }
+      result
+    }
+  }
+}
+
+pub fn ds_heap_mergeable_clip(data : Array[Double], lo : Double, hi : Double) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { let v = data[i]; result[i] = if v < lo { lo } else if v > hi { hi } else { v } }
+  result
+}
+
+pub fn ds_heap_mergeable_min(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] < m { m = data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_max(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut m = data[0]
+    for i in 1..<n { if data[i] > m { m = data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_cumsum(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  let mut total = 0.0
+  for i in 0..<n { total = total + data[i]; result[i] = total }
+  result
+}
+
+pub fn ds_heap_mergeable_reverse(data : Array[Double]) -> Array[Double] {
+  let n = data.length()
+  let result = Array::make(n, 0.0)
+  for i in 0..<n { result[i] = data[n - 1 - i] }
+  result
+}
+
+pub fn ds_heap_mergeable_concat(a : Array[Double], b : Array[Double]) -> Array[Double] {
+  let na = a.length(); let nb = b.length()
+  let result = Array::make(na + nb, 0.0)
+  for i in 0..<na { result[i] = a[i] }
+  for i in 0..<nb { result[na + i] = b[i] }
+  result
+}
+
+fn ds_heap_mergeable_sqrt(x : Double) -> Double {
+  if x <= 0.0 { 0.0 } else {
+    let mut g = x / 2.0
+    if g < 1.0 { g = 1.0 }
+    for _ in 0..<50 { g = (g + x / g) / 2.0 }
+    g
+  }
+}
+
+fn ds_heap_mergeable_abs(x : Double) -> Double { if x < 0.0 { -x } else { x } }
+
+fn ds_heap_mergeable_dbl(x : Double) -> String {
+  let i = if x >= 0.0 { ds_heap_mergeable_int(x) } else { -ds_heap_mergeable_int(-x) }
+  let f = x - i.to_double()
+  let fi = if f >= 0.0 { ds_heap_mergeable_int(f * 1000000.0) } else { ds_heap_mergeable_int(-f * 1000000.0) }
+  i.to_string() + "." + fi.to_string()
+}
+
+fn ds_heap_mergeable_int(x : Double) -> Int {
+  let mut n = 0; let mut d = x
+  while d >= 1.0 { n = n + 1; d = d - 1.0 }
+  n
+}
+
+fn ds_heap_mergeable_push(arr : Array[Double], v : Double) -> Array[Double] {
+  let n = arr.length()
+  let result = Array::make(n + 1, 0.0)
+  for i in 0..<n { result[i] = arr[i] }
+  result[n] = v
+  result
+}
+
+pub(all) struct DsheapmergeableFrame {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_heap_mergeable_frame_make(size : Int) -> DsheapmergeableFrame {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_heap_mergeable_frame_len(s : DsheapmergeableFrame) -> Int { s.size }
+
+pub fn ds_heap_mergeable_frame_get(s : DsheapmergeableFrame, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_heap_mergeable_frame_set(s : DsheapmergeableFrame, i : Int, v : Double) -> DsheapmergeableFrame {
+  let result = ds_heap_mergeable_frame_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_frame_sum(s : DsheapmergeableFrame) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_heap_mergeable_frame_mean(s : DsheapmergeableFrame) -> Double {
+  if s.size == 0 { 0.0 } else { ds_heap_mergeable_frame_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_heap_mergeable_frame_scale(s : DsheapmergeableFrame, f : Double) -> DsheapmergeableFrame {
+  let result = ds_heap_mergeable_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_heap_mergeable_frame_add(a : DsheapmergeableFrame, b : DsheapmergeableFrame) -> DsheapmergeableFrame {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_heap_mergeable_frame_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_frame_copy(s : DsheapmergeableFrame) -> DsheapmergeableFrame {
+  let result = ds_heap_mergeable_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_frame_fill(s : DsheapmergeableFrame, v : Double) -> DsheapmergeableFrame {
+  let result = ds_heap_mergeable_frame_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_frame_min(s : DsheapmergeableFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_frame_max(s : DsheapmergeableFrame) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_frame_to_string(s : DsheapmergeableFrame) -> String {
+  "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct DsheapmergeableTable {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_heap_mergeable_table_make(size : Int) -> DsheapmergeableTable {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_heap_mergeable_table_len(s : DsheapmergeableTable) -> Int { s.size }
+
+pub fn ds_heap_mergeable_table_get(s : DsheapmergeableTable, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_heap_mergeable_table_set(s : DsheapmergeableTable, i : Int, v : Double) -> DsheapmergeableTable {
+  let result = ds_heap_mergeable_table_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_table_sum(s : DsheapmergeableTable) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_heap_mergeable_table_mean(s : DsheapmergeableTable) -> Double {
+  if s.size == 0 { 0.0 } else { ds_heap_mergeable_table_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_heap_mergeable_table_scale(s : DsheapmergeableTable, f : Double) -> DsheapmergeableTable {
+  let result = ds_heap_mergeable_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_heap_mergeable_table_add(a : DsheapmergeableTable, b : DsheapmergeableTable) -> DsheapmergeableTable {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_heap_mergeable_table_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_table_copy(s : DsheapmergeableTable) -> DsheapmergeableTable {
+  let result = ds_heap_mergeable_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_table_fill(s : DsheapmergeableTable, v : Double) -> DsheapmergeableTable {
+  let result = ds_heap_mergeable_table_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_table_min(s : DsheapmergeableTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_table_max(s : DsheapmergeableTable) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_table_to_string(s : DsheapmergeableTable) -> String {
+  "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct DsheapmergeableGraphN {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_heap_mergeable_graphn_make(size : Int) -> DsheapmergeableGraphN {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_heap_mergeable_graphn_len(s : DsheapmergeableGraphN) -> Int { s.size }
+
+pub fn ds_heap_mergeable_graphn_get(s : DsheapmergeableGraphN, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_heap_mergeable_graphn_set(s : DsheapmergeableGraphN, i : Int, v : Double) -> DsheapmergeableGraphN {
+  let result = ds_heap_mergeable_graphn_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_graphn_sum(s : DsheapmergeableGraphN) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_heap_mergeable_graphn_mean(s : DsheapmergeableGraphN) -> Double {
+  if s.size == 0 { 0.0 } else { ds_heap_mergeable_graphn_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_heap_mergeable_graphn_scale(s : DsheapmergeableGraphN, f : Double) -> DsheapmergeableGraphN {
+  let result = ds_heap_mergeable_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_heap_mergeable_graphn_add(a : DsheapmergeableGraphN, b : DsheapmergeableGraphN) -> DsheapmergeableGraphN {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_heap_mergeable_graphn_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_graphn_copy(s : DsheapmergeableGraphN) -> DsheapmergeableGraphN {
+  let result = ds_heap_mergeable_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_graphn_fill(s : DsheapmergeableGraphN, v : Double) -> DsheapmergeableGraphN {
+  let result = ds_heap_mergeable_graphn_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_graphn_min(s : DsheapmergeableGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_graphn_max(s : DsheapmergeableGraphN) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_graphn_to_string(s : DsheapmergeableGraphN) -> String {
+  "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct DsheapmergeableNode {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_heap_mergeable_node_make(size : Int) -> DsheapmergeableNode {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_heap_mergeable_node_len(s : DsheapmergeableNode) -> Int { s.size }
+
+pub fn ds_heap_mergeable_node_get(s : DsheapmergeableNode, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_heap_mergeable_node_set(s : DsheapmergeableNode, i : Int, v : Double) -> DsheapmergeableNode {
+  let result = ds_heap_mergeable_node_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_node_sum(s : DsheapmergeableNode) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_heap_mergeable_node_mean(s : DsheapmergeableNode) -> Double {
+  if s.size == 0 { 0.0 } else { ds_heap_mergeable_node_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_heap_mergeable_node_scale(s : DsheapmergeableNode, f : Double) -> DsheapmergeableNode {
+  let result = ds_heap_mergeable_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_heap_mergeable_node_add(a : DsheapmergeableNode, b : DsheapmergeableNode) -> DsheapmergeableNode {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_heap_mergeable_node_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_node_copy(s : DsheapmergeableNode) -> DsheapmergeableNode {
+  let result = ds_heap_mergeable_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_node_fill(s : DsheapmergeableNode, v : Double) -> DsheapmergeableNode {
+  let result = ds_heap_mergeable_node_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_node_min(s : DsheapmergeableNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_node_max(s : DsheapmergeableNode) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_node_to_string(s : DsheapmergeableNode) -> String {
+  "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct DsheapmergeableEdge {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_heap_mergeable_edge_make(size : Int) -> DsheapmergeableEdge {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_heap_mergeable_edge_len(s : DsheapmergeableEdge) -> Int { s.size }
+
+pub fn ds_heap_mergeable_edge_get(s : DsheapmergeableEdge, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_heap_mergeable_edge_set(s : DsheapmergeableEdge, i : Int, v : Double) -> DsheapmergeableEdge {
+  let result = ds_heap_mergeable_edge_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_edge_sum(s : DsheapmergeableEdge) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_heap_mergeable_edge_mean(s : DsheapmergeableEdge) -> Double {
+  if s.size == 0 { 0.0 } else { ds_heap_mergeable_edge_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_heap_mergeable_edge_scale(s : DsheapmergeableEdge, f : Double) -> DsheapmergeableEdge {
+  let result = ds_heap_mergeable_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_heap_mergeable_edge_add(a : DsheapmergeableEdge, b : DsheapmergeableEdge) -> DsheapmergeableEdge {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_heap_mergeable_edge_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_edge_copy(s : DsheapmergeableEdge) -> DsheapmergeableEdge {
+  let result = ds_heap_mergeable_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_edge_fill(s : DsheapmergeableEdge, v : Double) -> DsheapmergeableEdge {
+  let result = ds_heap_mergeable_edge_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_edge_min(s : DsheapmergeableEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_edge_max(s : DsheapmergeableEdge) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_edge_to_string(s : DsheapmergeableEdge) -> String {
+  "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct DsheapmergeablePath {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_heap_mergeable_path_make(size : Int) -> DsheapmergeablePath {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_heap_mergeable_path_len(s : DsheapmergeablePath) -> Int { s.size }
+
+pub fn ds_heap_mergeable_path_get(s : DsheapmergeablePath, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_heap_mergeable_path_set(s : DsheapmergeablePath, i : Int, v : Double) -> DsheapmergeablePath {
+  let result = ds_heap_mergeable_path_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_path_sum(s : DsheapmergeablePath) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_heap_mergeable_path_mean(s : DsheapmergeablePath) -> Double {
+  if s.size == 0 { 0.0 } else { ds_heap_mergeable_path_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_heap_mergeable_path_scale(s : DsheapmergeablePath, f : Double) -> DsheapmergeablePath {
+  let result = ds_heap_mergeable_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_heap_mergeable_path_add(a : DsheapmergeablePath, b : DsheapmergeablePath) -> DsheapmergeablePath {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_heap_mergeable_path_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_path_copy(s : DsheapmergeablePath) -> DsheapmergeablePath {
+  let result = ds_heap_mergeable_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_path_fill(s : DsheapmergeablePath, v : Double) -> DsheapmergeablePath {
+  let result = ds_heap_mergeable_path_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_path_min(s : DsheapmergeablePath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_path_max(s : DsheapmergeablePath) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_path_to_string(s : DsheapmergeablePath) -> String {
+  "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct DsheapmergeableCluster {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_heap_mergeable_cluster_make(size : Int) -> DsheapmergeableCluster {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_heap_mergeable_cluster_len(s : DsheapmergeableCluster) -> Int { s.size }
+
+pub fn ds_heap_mergeable_cluster_get(s : DsheapmergeableCluster, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_heap_mergeable_cluster_set(s : DsheapmergeableCluster, i : Int, v : Double) -> DsheapmergeableCluster {
+  let result = ds_heap_mergeable_cluster_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_cluster_sum(s : DsheapmergeableCluster) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_heap_mergeable_cluster_mean(s : DsheapmergeableCluster) -> Double {
+  if s.size == 0 { 0.0 } else { ds_heap_mergeable_cluster_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_heap_mergeable_cluster_scale(s : DsheapmergeableCluster, f : Double) -> DsheapmergeableCluster {
+  let result = ds_heap_mergeable_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_heap_mergeable_cluster_add(a : DsheapmergeableCluster, b : DsheapmergeableCluster) -> DsheapmergeableCluster {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_heap_mergeable_cluster_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_cluster_copy(s : DsheapmergeableCluster) -> DsheapmergeableCluster {
+  let result = ds_heap_mergeable_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_cluster_fill(s : DsheapmergeableCluster, v : Double) -> DsheapmergeableCluster {
+  let result = ds_heap_mergeable_cluster_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_cluster_min(s : DsheapmergeableCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_cluster_max(s : DsheapmergeableCluster) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_cluster_to_string(s : DsheapmergeableCluster) -> String {
+  "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct DsheapmergeableModel {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_heap_mergeable_model_make(size : Int) -> DsheapmergeableModel {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_heap_mergeable_model_len(s : DsheapmergeableModel) -> Int { s.size }
+
+pub fn ds_heap_mergeable_model_get(s : DsheapmergeableModel, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_heap_mergeable_model_set(s : DsheapmergeableModel, i : Int, v : Double) -> DsheapmergeableModel {
+  let result = ds_heap_mergeable_model_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_model_sum(s : DsheapmergeableModel) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_heap_mergeable_model_mean(s : DsheapmergeableModel) -> Double {
+  if s.size == 0 { 0.0 } else { ds_heap_mergeable_model_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_heap_mergeable_model_scale(s : DsheapmergeableModel, f : Double) -> DsheapmergeableModel {
+  let result = ds_heap_mergeable_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_heap_mergeable_model_add(a : DsheapmergeableModel, b : DsheapmergeableModel) -> DsheapmergeableModel {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_heap_mergeable_model_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_model_copy(s : DsheapmergeableModel) -> DsheapmergeableModel {
+  let result = ds_heap_mergeable_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_model_fill(s : DsheapmergeableModel, v : Double) -> DsheapmergeableModel {
+  let result = ds_heap_mergeable_model_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_model_min(s : DsheapmergeableModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_model_max(s : DsheapmergeableModel) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_model_to_string(s : DsheapmergeableModel) -> String {
+  "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct DsheapmergeableLayer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_heap_mergeable_layer_make(size : Int) -> DsheapmergeableLayer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_heap_mergeable_layer_len(s : DsheapmergeableLayer) -> Int { s.size }
+
+pub fn ds_heap_mergeable_layer_get(s : DsheapmergeableLayer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_heap_mergeable_layer_set(s : DsheapmergeableLayer, i : Int, v : Double) -> DsheapmergeableLayer {
+  let result = ds_heap_mergeable_layer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_layer_sum(s : DsheapmergeableLayer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_heap_mergeable_layer_mean(s : DsheapmergeableLayer) -> Double {
+  if s.size == 0 { 0.0 } else { ds_heap_mergeable_layer_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_heap_mergeable_layer_scale(s : DsheapmergeableLayer, f : Double) -> DsheapmergeableLayer {
+  let result = ds_heap_mergeable_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_heap_mergeable_layer_add(a : DsheapmergeableLayer, b : DsheapmergeableLayer) -> DsheapmergeableLayer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_heap_mergeable_layer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_layer_copy(s : DsheapmergeableLayer) -> DsheapmergeableLayer {
+  let result = ds_heap_mergeable_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_layer_fill(s : DsheapmergeableLayer, v : Double) -> DsheapmergeableLayer {
+  let result = ds_heap_mergeable_layer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_layer_min(s : DsheapmergeableLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_layer_max(s : DsheapmergeableLayer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_layer_to_string(s : DsheapmergeableLayer) -> String {
+  "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct DsheapmergeableBuffer {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_heap_mergeable_buffer_make(size : Int) -> DsheapmergeableBuffer {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_heap_mergeable_buffer_len(s : DsheapmergeableBuffer) -> Int { s.size }
+
+pub fn ds_heap_mergeable_buffer_get(s : DsheapmergeableBuffer, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_heap_mergeable_buffer_set(s : DsheapmergeableBuffer, i : Int, v : Double) -> DsheapmergeableBuffer {
+  let result = ds_heap_mergeable_buffer_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_buffer_sum(s : DsheapmergeableBuffer) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_heap_mergeable_buffer_mean(s : DsheapmergeableBuffer) -> Double {
+  if s.size == 0 { 0.0 } else { ds_heap_mergeable_buffer_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_heap_mergeable_buffer_scale(s : DsheapmergeableBuffer, f : Double) -> DsheapmergeableBuffer {
+  let result = ds_heap_mergeable_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_heap_mergeable_buffer_add(a : DsheapmergeableBuffer, b : DsheapmergeableBuffer) -> DsheapmergeableBuffer {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_heap_mergeable_buffer_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_buffer_copy(s : DsheapmergeableBuffer) -> DsheapmergeableBuffer {
+  let result = ds_heap_mergeable_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_buffer_fill(s : DsheapmergeableBuffer, v : Double) -> DsheapmergeableBuffer {
+  let result = ds_heap_mergeable_buffer_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_buffer_min(s : DsheapmergeableBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_buffer_max(s : DsheapmergeableBuffer) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_buffer_to_string(s : DsheapmergeableBuffer) -> String {
+  "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct DsheapmergeableCursor {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_heap_mergeable_cursor_make(size : Int) -> DsheapmergeableCursor {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_heap_mergeable_cursor_len(s : DsheapmergeableCursor) -> Int { s.size }
+
+pub fn ds_heap_mergeable_cursor_get(s : DsheapmergeableCursor, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_heap_mergeable_cursor_set(s : DsheapmergeableCursor, i : Int, v : Double) -> DsheapmergeableCursor {
+  let result = ds_heap_mergeable_cursor_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_cursor_sum(s : DsheapmergeableCursor) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_heap_mergeable_cursor_mean(s : DsheapmergeableCursor) -> Double {
+  if s.size == 0 { 0.0 } else { ds_heap_mergeable_cursor_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_heap_mergeable_cursor_scale(s : DsheapmergeableCursor, f : Double) -> DsheapmergeableCursor {
+  let result = ds_heap_mergeable_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_heap_mergeable_cursor_add(a : DsheapmergeableCursor, b : DsheapmergeableCursor) -> DsheapmergeableCursor {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_heap_mergeable_cursor_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_cursor_copy(s : DsheapmergeableCursor) -> DsheapmergeableCursor {
+  let result = ds_heap_mergeable_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_cursor_fill(s : DsheapmergeableCursor, v : Double) -> DsheapmergeableCursor {
+  let result = ds_heap_mergeable_cursor_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_cursor_min(s : DsheapmergeableCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_cursor_max(s : DsheapmergeableCursor) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_cursor_to_string(s : DsheapmergeableCursor) -> String {
+  "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct DsheapmergeableView {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_heap_mergeable_view_make(size : Int) -> DsheapmergeableView {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_heap_mergeable_view_len(s : DsheapmergeableView) -> Int { s.size }
+
+pub fn ds_heap_mergeable_view_get(s : DsheapmergeableView, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_heap_mergeable_view_set(s : DsheapmergeableView, i : Int, v : Double) -> DsheapmergeableView {
+  let result = ds_heap_mergeable_view_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_view_sum(s : DsheapmergeableView) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_heap_mergeable_view_mean(s : DsheapmergeableView) -> Double {
+  if s.size == 0 { 0.0 } else { ds_heap_mergeable_view_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_heap_mergeable_view_scale(s : DsheapmergeableView, f : Double) -> DsheapmergeableView {
+  let result = ds_heap_mergeable_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_heap_mergeable_view_add(a : DsheapmergeableView, b : DsheapmergeableView) -> DsheapmergeableView {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_heap_mergeable_view_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_view_copy(s : DsheapmergeableView) -> DsheapmergeableView {
+  let result = ds_heap_mergeable_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_view_fill(s : DsheapmergeableView, v : Double) -> DsheapmergeableView {
+  let result = ds_heap_mergeable_view_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_view_min(s : DsheapmergeableView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_view_max(s : DsheapmergeableView) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_view_to_string(s : DsheapmergeableView) -> String {
+  "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct DsheapmergeableRange {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_heap_mergeable_range_make(size : Int) -> DsheapmergeableRange {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_heap_mergeable_range_len(s : DsheapmergeableRange) -> Int { s.size }
+
+pub fn ds_heap_mergeable_range_get(s : DsheapmergeableRange, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_heap_mergeable_range_set(s : DsheapmergeableRange, i : Int, v : Double) -> DsheapmergeableRange {
+  let result = ds_heap_mergeable_range_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_range_sum(s : DsheapmergeableRange) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_heap_mergeable_range_mean(s : DsheapmergeableRange) -> Double {
+  if s.size == 0 { 0.0 } else { ds_heap_mergeable_range_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_heap_mergeable_range_scale(s : DsheapmergeableRange, f : Double) -> DsheapmergeableRange {
+  let result = ds_heap_mergeable_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_heap_mergeable_range_add(a : DsheapmergeableRange, b : DsheapmergeableRange) -> DsheapmergeableRange {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_heap_mergeable_range_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_range_copy(s : DsheapmergeableRange) -> DsheapmergeableRange {
+  let result = ds_heap_mergeable_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_range_fill(s : DsheapmergeableRange, v : Double) -> DsheapmergeableRange {
+  let result = ds_heap_mergeable_range_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_range_min(s : DsheapmergeableRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_range_max(s : DsheapmergeableRange) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_range_to_string(s : DsheapmergeableRange) -> String {
+  "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub(all) struct DsheapmergeableSlice {
+  data : Array[Double]
+  size : Int
+  tag : Int
+}
+
+pub fn ds_heap_mergeable_slice_make(size : Int) -> DsheapmergeableSlice {
+  { data: Array::make(size, 0.0), size, tag: 0 }
+}
+
+pub fn ds_heap_mergeable_slice_len(s : DsheapmergeableSlice) -> Int { s.size }
+
+pub fn ds_heap_mergeable_slice_get(s : DsheapmergeableSlice, i : Int) -> Double {
+  if i < 0 || i >= s.size { 0.0 } else { s.data[i] }
+}
+
+pub fn ds_heap_mergeable_slice_set(s : DsheapmergeableSlice, i : Int, v : Double) -> DsheapmergeableSlice {
+  let result = ds_heap_mergeable_slice_make(s.size)
+  for j in 0..<s.size { result.data[j] = s.data[j] }
+  if i >= 0 && i < s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_slice_sum(s : DsheapmergeableSlice) -> Double {
+  let mut total = 0.0
+  for i in 0..<s.size { total = total + s.data[i] }
+  total
+}
+
+pub fn ds_heap_mergeable_slice_mean(s : DsheapmergeableSlice) -> Double {
+  if s.size == 0 { 0.0 } else { ds_heap_mergeable_slice_sum(s) / s.size.to_double() }
+}
+
+pub fn ds_heap_mergeable_slice_scale(s : DsheapmergeableSlice, f : Double) -> DsheapmergeableSlice {
+  let result = ds_heap_mergeable_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] * f }
+  result
+}
+
+pub fn ds_heap_mergeable_slice_add(a : DsheapmergeableSlice, b : DsheapmergeableSlice) -> DsheapmergeableSlice {
+  let n = if a.size < b.size { a.size } else { b.size }
+  let result = ds_heap_mergeable_slice_make(n)
+  for i in 0..<n { result.data[i] = a.data[i] + b.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_slice_copy(s : DsheapmergeableSlice) -> DsheapmergeableSlice {
+  let result = ds_heap_mergeable_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = s.data[i] }
+  result
+}
+
+pub fn ds_heap_mergeable_slice_fill(s : DsheapmergeableSlice, v : Double) -> DsheapmergeableSlice {
+  let result = ds_heap_mergeable_slice_make(s.size)
+  for i in 0..<s.size { result.data[i] = v }
+  result
+}
+
+pub fn ds_heap_mergeable_slice_min(s : DsheapmergeableSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_slice_max(s : DsheapmergeableSlice) -> Double {
+  if s.size == 0 { 0.0 } else {
+    let mut m = s.data[0]
+    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
+    m
+  }
+}
+
+pub fn ds_heap_mergeable_slice_to_string(s : DsheapmergeableSlice) -> String {
+  "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
+}
+
+pub fn ds_heap_mergeable_ext_func_0(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 1.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_ext_func_1(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 2.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_ext_func_2(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 3.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_ext_func_3(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 4.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_ext_func_4(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 5.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_ext_func_5(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 6.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_ext_func_6(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 7.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_ext_func_7(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 8.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_ext_func_8(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 9.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_ext_func_9(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 10.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_ext_func_10(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 11.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_ext_func_11(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 12.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_ext_func_12(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 13.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_ext_func_13(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 14.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_ext_func_14(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 15.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_ext_func_15(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 16.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_ext_func_16(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 17.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_ext_func_17(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 18.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_ext_func_18(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 19.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_ext_func_19(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 20.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_ext_func_20(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 21.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_ext_func_21(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 22.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_ext_func_22(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 23.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_ext_func_23(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 24.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+
+pub fn ds_heap_mergeable_ext_func_24(data : Array[Double]) -> Double {
+  let n = data.length()
+  if n == 0 { 0.0 } else {
+    let mut result = 0.0
+    let factor = 25.0
+    for j in 0..<n { result = result + data[j] * factor }
+    result / n.to_double()
+  }
+}
+

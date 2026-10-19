@@ -6816,3 +6816,22 @@ pub using @dataobject.serialize {
   to_int_safe, to_double_safe, int_to_padded, bool_to_string, string_to_bool,
   base64_encode, hex_encode, serialize_id,
 }
+
+///===
+/// S10.2 datatemporal/window 时间窗口
+
+pub using @datatemporal.window {
+  WindowType, TimeWindow, TimeEvent,
+  make_event, make_window, window_duration, event_in_window, events_in_window,
+  tumbling_windows, sliding_windows, session_windows, sort_events_by_time,
+  window_sum, window_avg, window_max, window_min, window_count,
+  apply_windows, tumbling_sum, sliding_avg, window_group_by_key, window_id,
+}
+
+/// S10.2 datatemporal 时间操作扩展
+
+pub using @datatemporal {
+  TimeInterval, make_interval, interval_duration, intervals_overlap, overlap_duration,
+  merge_intervals, compare_timestamps, timestamp_in_interval,
+  sample_timeseries, diff_timeseries, moving_average, lag_timeseries,
+}

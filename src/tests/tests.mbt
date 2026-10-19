@@ -9845,3 +9845,194 @@ test "serialize_base64_encode" {
 test "serialize_id" {
   assert_eq(@serialize.serialize_id(), "dataobject/serialize")
 }
+
+///===
+/// S10.2 datatemporal/window 测试
+
+test "window_make_event" {
+  let e = @window.make_event(1.0, 42.0, "a")
+  assert_eq(e.timestamp, 1.0)
+  assert_eq(e.value, 42.0)
+  assert_eq(e.key, "a")
+}
+
+test "window_make_window" {
+  let w = @window.make_window(0.0, 10.0, @window.Tumbling, 10.0, 10.0)
+  assert_eq(@window.window_duration(w), 10.0)
+}
+
+test "window_event_in_window" {
+  let w = @window.make_window(0.0, 10.0, @window.Tumbling, 10.0, 10.0)
+  let e1 = @window.make_event(5.0, 1.0, "a")
+  let e2 = @window.make_event(15.0, 2.0, "b")
+  assert_true(@window.event_in_window(e1, w))
+  assert_false(@window.event_in_window(e2, w))
+}
+
+test "window_tumbling_windows" {
+  let ws = @window.tumbling_windows(0.0, 30.0, 10.0)
+  assert_eq(ws.length(), 3)
+  assert_eq(ws[0].start, 0.0)
+  assert_eq(ws[0].end, 10.0)
+  assert_eq(ws[1].start, 10.0)
+  assert_eq(ws[2].end, 30.0)
+}
+
+test "window_sliding_windows" {
+  let ws = @window.sliding_windows(0.0, 20.0, 10.0, 5.0)
+  assert_eq(ws.length(), 4)
+  assert_eq(ws[0].start, 0.0)
+  assert_eq(ws[1].start, 5.0)
+}
+
+test "window_session_windows" {
+  let events = [
+    @window.make_event(1.0, 1.0, "a"),
+    @window.make_event(2.0, 2.0, "a"),
+    @window.make_event(10.0, 3.0, "a"),
+    @window.make_event(11.0, 4.0, "a"),
+  ]
+  let ws = @window.session_windows(events, 5.0)
+  assert_eq(ws.length(), 2)
+}
+
+test "window_sum" {
+  let events = [
+    @window.make_event(1.0, 10.0, "a"),
+    @window.make_event(5.0, 20.0, "b"),
+    @window.make_event(15.0, 30.0, "c"),
+  ]
+  let w = @window.make_window(0.0, 10.0, @window.Tumbling, 10.0, 10.0)
+  assert_eq(@window.window_sum(events, w), 30.0)
+}
+
+test "window_avg" {
+  let events = [
+    @window.make_event(1.0, 10.0, "a"),
+    @window.make_event(5.0, 20.0, "b"),
+  ]
+  let w = @window.make_window(0.0, 10.0, @window.Tumbling, 10.0, 10.0)
+  assert_eq(@window.window_avg(events, w), 15.0)
+}
+
+test "window_max_min" {
+  let events = [
+    @window.make_event(1.0, 10.0, "a"),
+    @window.make_event(5.0, 20.0, "b"),
+    @window.make_event(8.0, 5.0, "c"),
+  ]
+  let w = @window.make_window(0.0, 10.0, @window.Tumbling, 10.0, 10.0)
+  assert_eq(@window.window_max(events, w), 20.0)
+  assert_eq(@window.window_min(events, w), 5.0)
+}
+
+test "window_count" {
+  let events = [
+    @window.make_event(1.0, 10.0, "a"),
+    @window.make_event(5.0, 20.0, "b"),
+    @window.make_event(15.0, 30.0, "c"),
+  ]
+  let w = @window.make_window(0.0, 10.0, @window.Tumbling, 10.0, 10.0)
+  assert_eq(@window.window_count(events, w), 2)
+}
+
+test "window_tumbling_sum" {
+  let events = [
+    @window.make_event(1.0, 10.0, "a"),
+    @window.make_event(5.0, 20.0, "b"),
+    @window.make_event(15.0, 30.0, "c"),
+  ]
+  let result = @window.tumbling_sum(events, 0.0, 20.0, 10.0)
+  assert_eq(result.length(), 2)
+  assert_eq(result[0], 30.0)
+  assert_eq(result[1], 30.0)
+}
+
+test "window_group_by_key" {
+  let events = [
+    @window.make_event(1.0, 10.0, "a"),
+    @window.make_event(5.0, 20.0, "b"),
+    @window.make_event(8.0, 30.0, "a"),
+  ]
+  let w = @window.make_window(0.0, 10.0, @window.Tumbling, 10.0, 10.0)
+  let groups = @window.window_group_by_key(events, w)
+  assert_eq(groups.length(), 2)
+}
+
+test "window_id" {
+  assert_eq(@window.window_id(), "datatemporal/window")
+}
+
+///===
+/// S10.2 datatemporal 时间操作测试
+
+test "temporal_interval" {
+  let i = @datatemporal.make_interval(0.0, 10.0)
+  assert_eq(@datatemporal.interval_duration(i), 10.0)
+  assert_true(@datatemporal.timestamp_in_interval(5.0, i))
+  assert_false(@datatemporal.timestamp_in_interval(15.0, i))
+}
+
+test "temporal_overlap" {
+  let a = @datatemporal.make_interval(0.0, 10.0)
+  let b = @datatemporal.make_interval(5.0, 15.0)
+  let c = @datatemporal.make_interval(20.0, 30.0)
+  assert_true(@datatemporal.intervals_overlap(a, b))
+  assert_false(@datatemporal.intervals_overlap(a, c))
+  assert_eq(@datatemporal.overlap_duration(a, b), 5.0)
+  assert_eq(@datatemporal.overlap_duration(a, c), 0.0)
+}
+
+test "temporal_merge_intervals" {
+  let intervals = [
+    @datatemporal.make_interval(0.0, 5.0),
+    @datatemporal.make_interval(3.0, 8.0),
+    @datatemporal.make_interval(10.0, 15.0),
+  ]
+  let merged = @datatemporal.merge_intervals(intervals)
+  assert_eq(merged.length(), 2)
+  assert_eq(merged[0].start, 0.0)
+  assert_eq(merged[0].end, 8.0)
+}
+
+test "temporal_compare" {
+  assert_eq(@datatemporal.compare_timestamps(1.0, 2.0), -1)
+  assert_eq(@datatemporal.compare_timestamps(2.0, 1.0), 1)
+  assert_eq(@datatemporal.compare_timestamps(1.0, 1.0), 0)
+}
+
+test "temporal_sample_timeseries" {
+  let values = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
+  let sampled = @datatemporal.sample_timeseries(values, 2)
+  assert_eq(sampled.length(), 3)
+  assert_eq(sampled[0], 1.0)
+  assert_eq(sampled[1], 3.0)
+  assert_eq(sampled[2], 5.0)
+}
+
+test "temporal_diff_timeseries" {
+  let values = [1.0, 3.0, 6.0, 10.0]
+  let diff = @datatemporal.diff_timeseries(values)
+  assert_eq(diff.length(), 3)
+  assert_eq(diff[0], 2.0)
+  assert_eq(diff[1], 3.0)
+  assert_eq(diff[2], 4.0)
+}
+
+test "temporal_moving_average" {
+  let values = [1.0, 2.0, 3.0, 4.0, 5.0]
+  let ma = @datatemporal.moving_average(values, 3)
+  assert_eq(ma.length(), 3)
+  assert_eq(ma[0], 2.0)
+  assert_eq(ma[1], 3.0)
+  assert_eq(ma[2], 4.0)
+}
+
+test "temporal_lag_timeseries" {
+  let values = [1.0, 2.0, 3.0, 4.0, 5.0]
+  let lagged = @datatemporal.lag_timeseries(values, 2)
+  assert_eq(lagged.length(), 3)
+  assert_eq(lagged[0], 3.0)
+  assert_eq(lagged[1], 4.0)
+  assert_eq(lagged[2], 5.0)
+}

@@ -107,4 +107,5 @@ import {
   "dataverse/opcore/pointcloud",
   "dataverse/opcore/remotesensing",
   "dataverse/dataobject/serialize",
+  "dataverse/datatemporal/window",
 }

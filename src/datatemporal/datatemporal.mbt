@@ -39,3 +39,124 @@ pub fn matches(a : Fingerprint, b : Fingerprint) -> Bool {
 pub fn datatemporal_id() -> String {
   "datatemporal"
 }
+///===
+/// S10.2 时间操作扩展 / Time operations
+
+/// 时间戳对 / Timestamp pair.
+pub struct TimeInterval {
+  start : Double
+  end : Double
+}
+
+/// 构造时间区间 / Create time interval.
+pub fn make_interval(start : Double, end : Double) -> TimeInterval {
+  { start: start, end: end }
+}
+
+/// 区间长度 / Interval duration.
+pub fn interval_duration(i : TimeInterval) -> Double {
+  i.end - i.start
+}
+
+/// 区间重叠 / Check interval overlap.
+pub fn intervals_overlap(a : TimeInterval, b : TimeInterval) -> Bool {
+  a.start < b.end && b.start < a.end
+}
+
+/// 重叠长度 / Overlap duration.
+pub fn overlap_duration(a : TimeInterval, b : TimeInterval) -> Double {
+  if not(intervals_overlap(a, b)) {
+    return 0.0
+  }
+  let overlap_start = if a.start > b.start { a.start } else { b.start }
+  let overlap_end = if a.end < b.end { a.end } else { b.end }
+  overlap_end - overlap_start
+}
+
+/// 区间合并 / Merge intervals.
+pub fn merge_intervals(intervals : Array[TimeInterval]) -> Array[TimeInterval] {
+  if intervals.length() == 0 {
+    return []
+  }
+  let sorted = intervals.copy()
+  sorted.sort_by(fn(a, b) { a.start.compare(b.start) })
+  let result : Array[TimeInterval] = [sorted[0]]
+  for i in 1..<sorted.length() {
+    let last = result[result.length() - 1]
+    if sorted[i].start <= last.end {
+      if sorted[i].end > last.end {
+        result[result.length() - 1] = { start: last.start, end: sorted[i].end }
+      }
+    } else {
+      result.push(sorted[i])
+    }
+  }
+  result
+}
+
+/// 时间戳比较 / Compare timestamps.
+pub fn compare_timestamps(a : Double, b : Double) -> Int {
+  if a < b { -1 } else if a > b { 1 } else { 0 }
+}
+
+/// 时间戳在区间内 / Check if timestamp is in interval.
+pub fn timestamp_in_interval(ts : Double, i : TimeInterval) -> Bool {
+  ts >= i.start && ts <= i.end
+}
+
+/// 时间序列采样 / Sample time series at regular intervals.
+pub fn sample_timeseries(
+  values : Array[Double],
+  sample_rate : Int,
+) -> Array[Double] {
+  if sample_rate <= 0 {
+    return values
+  }
+  let result : Array[Double] = []
+  let mut i = 0
+  while i < values.length() {
+    result.push(values[i])
+    i = i + sample_rate
+  }
+  result
+}
+
+/// 时间序列差分 / Time series differencing.
+pub fn diff_timeseries(values : Array[Double]) -> Array[Double] {
+  if values.length() < 2 {
+    return []
+  }
+  let result : Array[Double] = []
+  for i in 1..<values.length() {
+    result.push(values[i] - values[i - 1])
+  }
+  result
+}
+
+/// 时间序列移动平均 / Moving average.
+pub fn moving_average(values : Array[Double], window : Int) -> Array[Double] {
+  if window <= 0 || values.length() < window {
+    return []
+  }
+  let result : Array[Double] = []
+  for i in 0..<(values.length() - window + 1) {
+    let mut sum = 0.0
+    for j in 0..<window {
+      sum = sum + values[i + j]
+    }
+    result.push(sum / window.to_double())
+  }
+  result
+}
+
+/// 时间序列滞后 / Lag time series.
+pub fn lag_timeseries(values : Array[Double], lag : Int) -> Array[Double] {
+  if lag <= 0 || lag >= values.length() {
+    return []
+  }
+  let result : Array[Double] = []
+  for i in 0..<(values.length() - lag) {
+    result.push(values[i + lag])
+  }
+  result
+}

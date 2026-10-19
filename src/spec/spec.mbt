@@ -1336,3 +1336,103 @@ test "spec: clear_short_term keeps non-short" {
   assert_eq(@memory.memory_count_by_type(cleared, @memory.ShortTerm), 0)
   assert_eq(@memory.memory_count_by_type(cleared, @memory.LongTerm), 1)
 }
+
+///|
+/// 性质 121：复数加法交换律 / Complex addition commutativity
+test "spec: complex_add_commutative" {
+  let a = @quantum_comp.make_complex(1.0, 2.0)
+  let b = @quantum_comp.make_complex(3.0, 4.0)
+  let ab = @quantum_comp.cadd(a, b)
+  let ba = @quantum_comp.cadd(b, a)
+  assert_true(ab.re > ba.re - 0.001 && ab.re < ba.re + 0.001)
+  assert_true(ab.im > ba.im - 0.001 && ab.im < ba.im + 0.001)
+}
+
+///|
+/// 性质 122：复数乘法交换律 / Complex multiplication commutativity
+test "spec: complex_mul_commutative" {
+  let a = @quantum_comp.make_complex(1.0, 2.0)
+  let b = @quantum_comp.make_complex(3.0, 4.0)
+  let ab = @quantum_comp.cmul(a, b)
+  let ba = @quantum_comp.cmul(b, a)
+  assert_true(ab.re > ba.re - 0.001 && ab.re < ba.re + 0.001)
+  assert_true(ab.im > ba.im - 0.001 && ab.im < ba.im + 0.001)
+}
+
+///|
+/// 性质 123：复数共轭模相等 / Complex conjugate same modulus
+test "spec: complex_conj_same_abs" {
+  let a = @quantum_comp.make_complex(3.0, 4.0)
+  let ca = @quantum_comp.cconj(a)
+  let abs_a = @quantum_comp.cabs(a)
+  let abs_ca = @quantum_comp.cabs(ca)
+  assert_true(abs_a > abs_ca - 0.001 && abs_a < abs_ca + 0.001)
+}
+
+///|
+/// 性质 124：量子态概率归一化 / Quantum state probability normalization
+test "spec: quantum_state_normalization" {
+  let state = @quantum_comp.ket_plus()
+  let p0 = @quantum_comp.probability(state, 0)
+  let p1 = @quantum_comp.probability(state, 1)
+  let total = p0 + p1
+  assert_true(total > 0.99 && total < 1.01)
+}
+
+///|
+/// 性质 125：Hadamard 门幺正性 / Hadamard gate unitarity
+test "spec: hadamard_preserves_norm" {
+  let state = @quantum_comp.ket0()
+  let gate = @quantum_comp.hadamard_gate()
+  let result = @quantum_comp.apply_gate(gate, state)
+  let p0 = @quantum_comp.probability(result, 0)
+  let p1 = @quantum_comp.probability(result, 1)
+  let total = p0 + p1
+  assert_true(total > 0.99 && total < 1.01)
+}
+
+///|
+/// 性质 126：LTN AND 边界 / LTN AND boundary
+test "spec: ltn_and_boundary" {
+  let r1 = @neuro_symbolic.ltn_and([1.0, 1.0])
+  assert_true(r1 > 0.99 && r1 < 1.01)
+  let r2 = @neuro_symbolic.ltn_and([0.0, 1.0])
+  assert_true(r2 > -0.01 && r2 < 0.01)
+}
+
+///|
+/// 性质 127：LTN OR 边界 / LTN OR boundary
+test "spec: ltn_or_boundary" {
+  let r1 = @neuro_symbolic.ltn_or([1.0, 0.0])
+  assert_true(r1 > 0.99 && r1 < 1.01)
+  let r2 = @neuro_symbolic.ltn_or([0.0, 0.0])
+  assert_true(r2 > -0.01 && r2 < 0.01)
+}
+
+///|
+/// 性质 128：t-norm 对称性 / t-norm symmetry
+test "spec: t_norm_symmetric" {
+  let r1 = @neuro_symbolic.t_norm_product(0.3, 0.7)
+  let r2 = @neuro_symbolic.t_norm_product(0.7, 0.3)
+  assert_true(r1 > r2 - 0.001 && r1 < r2 + 0.001)
+}
+
+///|
+/// 性质 129：对话状态轮数递增 / Dialogue turn increment
+test "spec: dialogue_turn_increment" {
+  let state = @dialogue.make_dialogue_state()
+  let intent = @dialogue.make_intent("test", 0.9)
+  let state1 = @dialogue.update_dialogue_state(state, intent, "input1")
+  assert_eq(state1.turn, state.turn + 1)
+  let state2 = @dialogue.update_dialogue_state(state1, intent, "input2")
+  assert_eq(state2.turn, state1.turn + 1)
+}
+
+///|
+/// 性质 130：元数据实例设置获取一致性 / Metadata set-get consistency
+test "spec: metadata_set_get_consistency" {
+  let inst = @metadata_ext.make_metadata_instance("Test", [])
+  let updated = @metadata_ext.instance_set(inst, "key", "value")
+  let retrieved = @metadata_ext.instance_get(updated, "key")
+  assert_eq(retrieved, "value")
+}

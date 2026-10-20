@@ -16,64 +16,64 @@ pub fn opt_meta_aco_make_point3(x : Double, y : Double, z : Double) -> Optmetaac
   { x, y, z, label: 0 }
 }
 
-pub fn opt_meta_aco_point_x(pt : OptmetaacoPoint) -> Double { pt.x }
+pub fn OptmetaacoPoint::x(self : OptmetaacoPoint) -> Double { self.x }
 
-pub fn opt_meta_aco_point_y(pt : OptmetaacoPoint) -> Double { pt.y }
+pub fn OptmetaacoPoint::y(self : OptmetaacoPoint) -> Double { self.y }
 
-pub fn opt_meta_aco_point_z(pt : OptmetaacoPoint) -> Double { pt.z }
+pub fn OptmetaacoPoint::z(self : OptmetaacoPoint) -> Double { self.z }
 
-pub fn opt_meta_aco_point_label(pt : OptmetaacoPoint) -> Int { pt.label }
+pub fn OptmetaacoPoint::label(self : OptmetaacoPoint) -> Int { self.label }
 
-pub fn opt_meta_aco_point_dist(a : OptmetaacoPoint, b : OptmetaacoPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn OptmetaacoPoint::dist(self : OptmetaacoPoint, other : OptmetaacoPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn opt_meta_aco_point_add(a : OptmetaacoPoint, b : OptmetaacoPoint) -> OptmetaacoPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn OptmetaacoPoint::add(self : OptmetaacoPoint, other : OptmetaacoPoint) -> OptmetaacoPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn opt_meta_aco_point_sub(a : OptmetaacoPoint, b : OptmetaacoPoint) -> OptmetaacoPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn OptmetaacoPoint::sub(self : OptmetaacoPoint, other : OptmetaacoPoint) -> OptmetaacoPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn opt_meta_aco_point_scale(pt : OptmetaacoPoint, s : Double) -> OptmetaacoPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn OptmetaacoPoint::scale(self : OptmetaacoPoint, s : Double) -> OptmetaacoPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn opt_meta_aco_point_dot(a : OptmetaacoPoint, b : OptmetaacoPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn OptmetaacoPoint::dot(self : OptmetaacoPoint, other : OptmetaacoPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn opt_meta_aco_point_cross(a : OptmetaacoPoint, b : OptmetaacoPoint) -> OptmetaacoPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn OptmetaacoPoint::cross(self : OptmetaacoPoint, other : OptmetaacoPoint) -> OptmetaacoPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn opt_meta_aco_point_norm(pt : OptmetaacoPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn OptmetaacoPoint::norm(self : OptmetaacoPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn opt_meta_aco_point_normalize(pt : OptmetaacoPoint) -> OptmetaacoPoint {
-  let n = opt_meta_aco_point_norm(pt)
-  if n < 0.0000001 { pt } else { opt_meta_aco_point_scale(pt, 1.0 / n) }
+pub fn OptmetaacoPoint::normalize(self : OptmetaacoPoint) -> OptmetaacoPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn opt_meta_aco_point_negate(pt : OptmetaacoPoint) -> OptmetaacoPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn OptmetaacoPoint::negate(self : OptmetaacoPoint) -> OptmetaacoPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn opt_meta_aco_point_mid(a : OptmetaacoPoint, b : OptmetaacoPoint) -> OptmetaacoPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn OptmetaacoPoint::mid(self : OptmetaacoPoint, other : OptmetaacoPoint) -> OptmetaacoPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn opt_meta_aco_point_lerp(a : OptmetaacoPoint, b : OptmetaacoPoint, t : Double) -> OptmetaacoPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn OptmetaacoPoint::lerp(self : OptmetaacoPoint, other : OptmetaacoPoint, t : Double) -> OptmetaacoPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn opt_meta_aco_point_to_string(pt : OptmetaacoPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn OptmetaacoPoint::to_string(self : OptmetaacoPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct OptmetaacoSeries {
@@ -86,58 +86,58 @@ pub fn opt_meta_aco_make_series(vals : Array[Double], name : String) -> Optmetaa
   { vals, name, meta: 0 }
 }
 
-pub fn opt_meta_aco_series_len(s : OptmetaacoSeries) -> Int { s.vals.length() }
+pub fn OptmetaacoSeries::len(self : OptmetaacoSeries) -> Int { self.vals.length() }
 
-pub fn opt_meta_aco_series_sum(s : OptmetaacoSeries) -> Double { @_common.sum(s.vals) }
+pub fn OptmetaacoSeries::sum(self : OptmetaacoSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn opt_meta_aco_series_mean(s : OptmetaacoSeries) -> Double { @_common.mean(s.vals) }
+pub fn OptmetaacoSeries::mean(self : OptmetaacoSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn opt_meta_aco_series_min(s : OptmetaacoSeries) -> Double { @_common.min(s.vals) }
+pub fn OptmetaacoSeries::min(self : OptmetaacoSeries) -> Double { @_common.min(self.vals) }
 
-pub fn opt_meta_aco_series_max(s : OptmetaacoSeries) -> Double { @_common.max(s.vals) }
+pub fn OptmetaacoSeries::max(self : OptmetaacoSeries) -> Double { @_common.max(self.vals) }
 
-pub fn opt_meta_aco_series_range(s : OptmetaacoSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn OptmetaacoSeries::range(self : OptmetaacoSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn opt_meta_aco_series_var(s : OptmetaacoSeries) -> Double { @_common.variance(s.vals) }
+pub fn OptmetaacoSeries::variance(self : OptmetaacoSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn opt_meta_aco_series_std(s : OptmetaacoSeries) -> Double { @_common.std(s.vals) }
+pub fn OptmetaacoSeries::std(self : OptmetaacoSeries) -> Double { @_common.std(self.vals) }
 
-pub fn opt_meta_aco_series_median(s : OptmetaacoSeries) -> Double { @_common.median(s.vals) }
+pub fn OptmetaacoSeries::median(self : OptmetaacoSeries) -> Double { @_common.median(self.vals) }
 
-pub fn opt_meta_aco_series_scale(s : OptmetaacoSeries, f : Double) -> OptmetaacoSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn OptmetaacoSeries::scale(self : OptmetaacoSeries, f : Double) -> OptmetaacoSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn opt_meta_aco_series_add(a : OptmetaacoSeries, b : OptmetaacoSeries) -> OptmetaacoSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn OptmetaacoSeries::add(self : OptmetaacoSeries, other : OptmetaacoSeries) -> OptmetaacoSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn opt_meta_aco_series_sub(a : OptmetaacoSeries, b : OptmetaacoSeries) -> OptmetaacoSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn OptmetaacoSeries::sub(self : OptmetaacoSeries, other : OptmetaacoSeries) -> OptmetaacoSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn opt_meta_aco_series_normalize(s : OptmetaacoSeries) -> OptmetaacoSeries {
-  let mn = opt_meta_aco_series_min(s)
-  let mx = opt_meta_aco_series_max(s)
+pub fn OptmetaacoSeries::normalize(self : OptmetaacoSeries) -> OptmetaacoSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn opt_meta_aco_series_cumsum(s : OptmetaacoSeries) -> OptmetaacoSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn OptmetaacoSeries::cumsum(self : OptmetaacoSeries) -> OptmetaacoSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn opt_meta_aco_series_to_string(s : OptmetaacoSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn OptmetaacoSeries::to_string(self : OptmetaacoSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn opt_meta_aco_matrix_identity(n : Int) -> OptmetaacoMatrix {
   m
 }
 
-pub fn opt_meta_aco_matrix_get(m : OptmetaacoMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn OptmetaacoMatrix::get(self : OptmetaacoMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn opt_meta_aco_matrix_transpose(m : OptmetaacoMatrix) -> OptmetaacoMatrix {
-  let result = opt_meta_aco_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn OptmetaacoMatrix::transpose(self : OptmetaacoMatrix) -> OptmetaacoMatrix {
+  let result = opt_meta_aco_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn opt_meta_aco_matrix_add(a : OptmetaacoMatrix, b : OptmetaacoMatrix) -> OptmetaacoMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = opt_meta_aco_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn OptmetaacoMatrix::add(self : OptmetaacoMatrix, other : OptmetaacoMatrix) -> OptmetaacoMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = opt_meta_aco_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn opt_meta_aco_matrix_scale(m : OptmetaacoMatrix, s : Double) -> OptmetaacoMatrix {
-  let result = opt_meta_aco_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn OptmetaacoMatrix::scale(self : OptmetaacoMatrix, s : Double) -> OptmetaacoMatrix {
+  let result = opt_meta_aco_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn opt_meta_aco_matrix_multiply(a : OptmetaacoMatrix, b : OptmetaacoMatrix) -> OptmetaacoMatrix {
-  if a.cols != b.rows { return opt_meta_aco_make_matrix(a.rows, b.cols, 0.0) }
-  let result = opt_meta_aco_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn OptmetaacoMatrix::multiply(self : OptmetaacoMatrix, other : OptmetaacoMatrix) -> OptmetaacoMatrix {
+  if self.cols != other.rows { return opt_meta_aco_make_matrix(self.rows, other.cols, 0.0) }
+  let result = opt_meta_aco_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn opt_meta_aco_matrix_trace(m : OptmetaacoMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn OptmetaacoMatrix::trace(self : OptmetaacoMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn opt_meta_aco_matrix_det(m : OptmetaacoMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn OptmetaacoMatrix::det(self : OptmetaacoMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn opt_meta_aco_matrix_norm(m : OptmetaacoMatrix) -> Double {
+pub fn OptmetaacoMatrix::norm(self : OptmetaacoMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn opt_meta_aco_matrix_to_string(m : OptmetaacoMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn OptmetaacoMatrix::to_string(self : OptmetaacoMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn opt_meta_aco_vector_zero(dim : Int) -> OptmetaacoVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn opt_meta_aco_vector_add(a : OptmetaacoVector, b : OptmetaacoVector) -> OptmetaacoVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn OptmetaacoVector::add(self : OptmetaacoVector, other : OptmetaacoVector) -> OptmetaacoVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn opt_meta_aco_vector_sub(a : OptmetaacoVector, b : OptmetaacoVector) -> OptmetaacoVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn OptmetaacoVector::sub(self : OptmetaacoVector, other : OptmetaacoVector) -> OptmetaacoVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn opt_meta_aco_vector_scale(v : OptmetaacoVector, s : Double) -> OptmetaacoVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn OptmetaacoVector::scale(self : OptmetaacoVector, s : Double) -> OptmetaacoVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn opt_meta_aco_vector_dot(a : OptmetaacoVector, b : OptmetaacoVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn OptmetaacoVector::dot(self : OptmetaacoVector, other : OptmetaacoVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn opt_meta_aco_vector_norm(v : OptmetaacoVector) -> Double { @_common.sqrt(opt_meta_aco_vector_dot(v, v)) }
+pub fn OptmetaacoVector::norm(self : OptmetaacoVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn opt_meta_aco_vector_normalize(v : OptmetaacoVector) -> OptmetaacoVector {
-  let n = opt_meta_aco_vector_norm(v)
-  if n < 0.0000001 { v } else { opt_meta_aco_vector_scale(v, 1.0 / n) }
+pub fn OptmetaacoVector::normalize(self : OptmetaacoVector) -> OptmetaacoVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn opt_meta_aco_vector_dist(a : OptmetaacoVector, b : OptmetaacoVector) -> Double {
-  opt_meta_aco_vector_norm(opt_meta_aco_vector_sub(a, b))
+pub fn OptmetaacoVector::dist(self : OptmetaacoVector, other : OptmetaacoVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn opt_meta_aco_vector_to_string(v : OptmetaacoVector) -> String {
+pub fn OptmetaacoVector::to_string(self : OptmetaacoVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn opt_meta_aco_mean(data : Array[Double]) -> Double { @_common.mean(data) }

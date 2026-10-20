@@ -16,64 +16,64 @@ pub fn sort_dist_msd_make_point3(x : Double, y : Double, z : Double) -> Sortdist
   { x, y, z, label: 0 }
 }
 
-pub fn sort_dist_msd_point_x(pt : SortdistmsdPoint) -> Double { pt.x }
+pub fn SortdistmsdPoint::x(self : SortdistmsdPoint) -> Double { self.x }
 
-pub fn sort_dist_msd_point_y(pt : SortdistmsdPoint) -> Double { pt.y }
+pub fn SortdistmsdPoint::y(self : SortdistmsdPoint) -> Double { self.y }
 
-pub fn sort_dist_msd_point_z(pt : SortdistmsdPoint) -> Double { pt.z }
+pub fn SortdistmsdPoint::z(self : SortdistmsdPoint) -> Double { self.z }
 
-pub fn sort_dist_msd_point_label(pt : SortdistmsdPoint) -> Int { pt.label }
+pub fn SortdistmsdPoint::label(self : SortdistmsdPoint) -> Int { self.label }
 
-pub fn sort_dist_msd_point_dist(a : SortdistmsdPoint, b : SortdistmsdPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn SortdistmsdPoint::dist(self : SortdistmsdPoint, other : SortdistmsdPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn sort_dist_msd_point_add(a : SortdistmsdPoint, b : SortdistmsdPoint) -> SortdistmsdPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn SortdistmsdPoint::add(self : SortdistmsdPoint, other : SortdistmsdPoint) -> SortdistmsdPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn sort_dist_msd_point_sub(a : SortdistmsdPoint, b : SortdistmsdPoint) -> SortdistmsdPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn SortdistmsdPoint::sub(self : SortdistmsdPoint, other : SortdistmsdPoint) -> SortdistmsdPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn sort_dist_msd_point_scale(pt : SortdistmsdPoint, s : Double) -> SortdistmsdPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn SortdistmsdPoint::scale(self : SortdistmsdPoint, s : Double) -> SortdistmsdPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn sort_dist_msd_point_dot(a : SortdistmsdPoint, b : SortdistmsdPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn SortdistmsdPoint::dot(self : SortdistmsdPoint, other : SortdistmsdPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn sort_dist_msd_point_cross(a : SortdistmsdPoint, b : SortdistmsdPoint) -> SortdistmsdPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn SortdistmsdPoint::cross(self : SortdistmsdPoint, other : SortdistmsdPoint) -> SortdistmsdPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn sort_dist_msd_point_norm(pt : SortdistmsdPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn SortdistmsdPoint::norm(self : SortdistmsdPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn sort_dist_msd_point_normalize(pt : SortdistmsdPoint) -> SortdistmsdPoint {
-  let n = sort_dist_msd_point_norm(pt)
-  if n < 0.0000001 { pt } else { sort_dist_msd_point_scale(pt, 1.0 / n) }
+pub fn SortdistmsdPoint::normalize(self : SortdistmsdPoint) -> SortdistmsdPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn sort_dist_msd_point_negate(pt : SortdistmsdPoint) -> SortdistmsdPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn SortdistmsdPoint::negate(self : SortdistmsdPoint) -> SortdistmsdPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn sort_dist_msd_point_mid(a : SortdistmsdPoint, b : SortdistmsdPoint) -> SortdistmsdPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn SortdistmsdPoint::mid(self : SortdistmsdPoint, other : SortdistmsdPoint) -> SortdistmsdPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn sort_dist_msd_point_lerp(a : SortdistmsdPoint, b : SortdistmsdPoint, t : Double) -> SortdistmsdPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn SortdistmsdPoint::lerp(self : SortdistmsdPoint, other : SortdistmsdPoint, t : Double) -> SortdistmsdPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn sort_dist_msd_point_to_string(pt : SortdistmsdPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn SortdistmsdPoint::to_string(self : SortdistmsdPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct SortdistmsdSeries {
@@ -86,58 +86,58 @@ pub fn sort_dist_msd_make_series(vals : Array[Double], name : String) -> Sortdis
   { vals, name, meta: 0 }
 }
 
-pub fn sort_dist_msd_series_len(s : SortdistmsdSeries) -> Int { s.vals.length() }
+pub fn SortdistmsdSeries::len(self : SortdistmsdSeries) -> Int { self.vals.length() }
 
-pub fn sort_dist_msd_series_sum(s : SortdistmsdSeries) -> Double { @_common.sum(s.vals) }
+pub fn SortdistmsdSeries::sum(self : SortdistmsdSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn sort_dist_msd_series_mean(s : SortdistmsdSeries) -> Double { @_common.mean(s.vals) }
+pub fn SortdistmsdSeries::mean(self : SortdistmsdSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn sort_dist_msd_series_min(s : SortdistmsdSeries) -> Double { @_common.min(s.vals) }
+pub fn SortdistmsdSeries::min(self : SortdistmsdSeries) -> Double { @_common.min(self.vals) }
 
-pub fn sort_dist_msd_series_max(s : SortdistmsdSeries) -> Double { @_common.max(s.vals) }
+pub fn SortdistmsdSeries::max(self : SortdistmsdSeries) -> Double { @_common.max(self.vals) }
 
-pub fn sort_dist_msd_series_range(s : SortdistmsdSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn SortdistmsdSeries::range(self : SortdistmsdSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn sort_dist_msd_series_var(s : SortdistmsdSeries) -> Double { @_common.variance(s.vals) }
+pub fn SortdistmsdSeries::variance(self : SortdistmsdSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn sort_dist_msd_series_std(s : SortdistmsdSeries) -> Double { @_common.std(s.vals) }
+pub fn SortdistmsdSeries::std(self : SortdistmsdSeries) -> Double { @_common.std(self.vals) }
 
-pub fn sort_dist_msd_series_median(s : SortdistmsdSeries) -> Double { @_common.median(s.vals) }
+pub fn SortdistmsdSeries::median(self : SortdistmsdSeries) -> Double { @_common.median(self.vals) }
 
-pub fn sort_dist_msd_series_scale(s : SortdistmsdSeries, f : Double) -> SortdistmsdSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn SortdistmsdSeries::scale(self : SortdistmsdSeries, f : Double) -> SortdistmsdSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn sort_dist_msd_series_add(a : SortdistmsdSeries, b : SortdistmsdSeries) -> SortdistmsdSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn SortdistmsdSeries::add(self : SortdistmsdSeries, other : SortdistmsdSeries) -> SortdistmsdSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn sort_dist_msd_series_sub(a : SortdistmsdSeries, b : SortdistmsdSeries) -> SortdistmsdSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn SortdistmsdSeries::sub(self : SortdistmsdSeries, other : SortdistmsdSeries) -> SortdistmsdSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn sort_dist_msd_series_normalize(s : SortdistmsdSeries) -> SortdistmsdSeries {
-  let mn = sort_dist_msd_series_min(s)
-  let mx = sort_dist_msd_series_max(s)
+pub fn SortdistmsdSeries::normalize(self : SortdistmsdSeries) -> SortdistmsdSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn sort_dist_msd_series_cumsum(s : SortdistmsdSeries) -> SortdistmsdSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn SortdistmsdSeries::cumsum(self : SortdistmsdSeries) -> SortdistmsdSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn sort_dist_msd_series_to_string(s : SortdistmsdSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn SortdistmsdSeries::to_string(self : SortdistmsdSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn sort_dist_msd_matrix_identity(n : Int) -> SortdistmsdMatrix {
   m
 }
 
-pub fn sort_dist_msd_matrix_get(m : SortdistmsdMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn SortdistmsdMatrix::get(self : SortdistmsdMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn sort_dist_msd_matrix_transpose(m : SortdistmsdMatrix) -> SortdistmsdMatrix {
-  let result = sort_dist_msd_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn SortdistmsdMatrix::transpose(self : SortdistmsdMatrix) -> SortdistmsdMatrix {
+  let result = sort_dist_msd_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn sort_dist_msd_matrix_add(a : SortdistmsdMatrix, b : SortdistmsdMatrix) -> SortdistmsdMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = sort_dist_msd_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn SortdistmsdMatrix::add(self : SortdistmsdMatrix, other : SortdistmsdMatrix) -> SortdistmsdMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = sort_dist_msd_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn sort_dist_msd_matrix_scale(m : SortdistmsdMatrix, s : Double) -> SortdistmsdMatrix {
-  let result = sort_dist_msd_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn SortdistmsdMatrix::scale(self : SortdistmsdMatrix, s : Double) -> SortdistmsdMatrix {
+  let result = sort_dist_msd_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn sort_dist_msd_matrix_multiply(a : SortdistmsdMatrix, b : SortdistmsdMatrix) -> SortdistmsdMatrix {
-  if a.cols != b.rows { return sort_dist_msd_make_matrix(a.rows, b.cols, 0.0) }
-  let result = sort_dist_msd_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn SortdistmsdMatrix::multiply(self : SortdistmsdMatrix, other : SortdistmsdMatrix) -> SortdistmsdMatrix {
+  if self.cols != other.rows { return sort_dist_msd_make_matrix(self.rows, other.cols, 0.0) }
+  let result = sort_dist_msd_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn sort_dist_msd_matrix_trace(m : SortdistmsdMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn SortdistmsdMatrix::trace(self : SortdistmsdMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn sort_dist_msd_matrix_det(m : SortdistmsdMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn SortdistmsdMatrix::det(self : SortdistmsdMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn sort_dist_msd_matrix_norm(m : SortdistmsdMatrix) -> Double {
+pub fn SortdistmsdMatrix::norm(self : SortdistmsdMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn sort_dist_msd_matrix_to_string(m : SortdistmsdMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn SortdistmsdMatrix::to_string(self : SortdistmsdMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn sort_dist_msd_vector_zero(dim : Int) -> SortdistmsdVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn sort_dist_msd_vector_add(a : SortdistmsdVector, b : SortdistmsdVector) -> SortdistmsdVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn SortdistmsdVector::add(self : SortdistmsdVector, other : SortdistmsdVector) -> SortdistmsdVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn sort_dist_msd_vector_sub(a : SortdistmsdVector, b : SortdistmsdVector) -> SortdistmsdVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn SortdistmsdVector::sub(self : SortdistmsdVector, other : SortdistmsdVector) -> SortdistmsdVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn sort_dist_msd_vector_scale(v : SortdistmsdVector, s : Double) -> SortdistmsdVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn SortdistmsdVector::scale(self : SortdistmsdVector, s : Double) -> SortdistmsdVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn sort_dist_msd_vector_dot(a : SortdistmsdVector, b : SortdistmsdVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn SortdistmsdVector::dot(self : SortdistmsdVector, other : SortdistmsdVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn sort_dist_msd_vector_norm(v : SortdistmsdVector) -> Double { @_common.sqrt(sort_dist_msd_vector_dot(v, v)) }
+pub fn SortdistmsdVector::norm(self : SortdistmsdVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn sort_dist_msd_vector_normalize(v : SortdistmsdVector) -> SortdistmsdVector {
-  let n = sort_dist_msd_vector_norm(v)
-  if n < 0.0000001 { v } else { sort_dist_msd_vector_scale(v, 1.0 / n) }
+pub fn SortdistmsdVector::normalize(self : SortdistmsdVector) -> SortdistmsdVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn sort_dist_msd_vector_dist(a : SortdistmsdVector, b : SortdistmsdVector) -> Double {
-  sort_dist_msd_vector_norm(sort_dist_msd_vector_sub(a, b))
+pub fn SortdistmsdVector::dist(self : SortdistmsdVector, other : SortdistmsdVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn sort_dist_msd_vector_to_string(v : SortdistmsdVector) -> String {
+pub fn SortdistmsdVector::to_string(self : SortdistmsdVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn sort_dist_msd_mean(data : Array[Double]) -> Double { @_common.mean(data) }

@@ -16,64 +16,64 @@ pub fn stats_test_f_make_point3(x : Double, y : Double, z : Double) -> Statstest
   { x, y, z, label: 0 }
 }
 
-pub fn stats_test_f_point_x(pt : StatstestfPoint) -> Double { pt.x }
+pub fn StatstestfPoint::x(self : StatstestfPoint) -> Double { self.x }
 
-pub fn stats_test_f_point_y(pt : StatstestfPoint) -> Double { pt.y }
+pub fn StatstestfPoint::y(self : StatstestfPoint) -> Double { self.y }
 
-pub fn stats_test_f_point_z(pt : StatstestfPoint) -> Double { pt.z }
+pub fn StatstestfPoint::z(self : StatstestfPoint) -> Double { self.z }
 
-pub fn stats_test_f_point_label(pt : StatstestfPoint) -> Int { pt.label }
+pub fn StatstestfPoint::label(self : StatstestfPoint) -> Int { self.label }
 
-pub fn stats_test_f_point_dist(a : StatstestfPoint, b : StatstestfPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn StatstestfPoint::dist(self : StatstestfPoint, other : StatstestfPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn stats_test_f_point_add(a : StatstestfPoint, b : StatstestfPoint) -> StatstestfPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn StatstestfPoint::add(self : StatstestfPoint, other : StatstestfPoint) -> StatstestfPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn stats_test_f_point_sub(a : StatstestfPoint, b : StatstestfPoint) -> StatstestfPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn StatstestfPoint::sub(self : StatstestfPoint, other : StatstestfPoint) -> StatstestfPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn stats_test_f_point_scale(pt : StatstestfPoint, s : Double) -> StatstestfPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn StatstestfPoint::scale(self : StatstestfPoint, s : Double) -> StatstestfPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn stats_test_f_point_dot(a : StatstestfPoint, b : StatstestfPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn StatstestfPoint::dot(self : StatstestfPoint, other : StatstestfPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn stats_test_f_point_cross(a : StatstestfPoint, b : StatstestfPoint) -> StatstestfPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn StatstestfPoint::cross(self : StatstestfPoint, other : StatstestfPoint) -> StatstestfPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn stats_test_f_point_norm(pt : StatstestfPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn StatstestfPoint::norm(self : StatstestfPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn stats_test_f_point_normalize(pt : StatstestfPoint) -> StatstestfPoint {
-  let n = stats_test_f_point_norm(pt)
-  if n < 0.0000001 { pt } else { stats_test_f_point_scale(pt, 1.0 / n) }
+pub fn StatstestfPoint::normalize(self : StatstestfPoint) -> StatstestfPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn stats_test_f_point_negate(pt : StatstestfPoint) -> StatstestfPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn StatstestfPoint::negate(self : StatstestfPoint) -> StatstestfPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn stats_test_f_point_mid(a : StatstestfPoint, b : StatstestfPoint) -> StatstestfPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn StatstestfPoint::mid(self : StatstestfPoint, other : StatstestfPoint) -> StatstestfPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn stats_test_f_point_lerp(a : StatstestfPoint, b : StatstestfPoint, t : Double) -> StatstestfPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn StatstestfPoint::lerp(self : StatstestfPoint, other : StatstestfPoint, t : Double) -> StatstestfPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn stats_test_f_point_to_string(pt : StatstestfPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn StatstestfPoint::to_string(self : StatstestfPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct StatstestfSeries {
@@ -86,58 +86,58 @@ pub fn stats_test_f_make_series(vals : Array[Double], name : String) -> Statstes
   { vals, name, meta: 0 }
 }
 
-pub fn stats_test_f_series_len(s : StatstestfSeries) -> Int { s.vals.length() }
+pub fn StatstestfSeries::len(self : StatstestfSeries) -> Int { self.vals.length() }
 
-pub fn stats_test_f_series_sum(s : StatstestfSeries) -> Double { @_common.sum(s.vals) }
+pub fn StatstestfSeries::sum(self : StatstestfSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn stats_test_f_series_mean(s : StatstestfSeries) -> Double { @_common.mean(s.vals) }
+pub fn StatstestfSeries::mean(self : StatstestfSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn stats_test_f_series_min(s : StatstestfSeries) -> Double { @_common.min(s.vals) }
+pub fn StatstestfSeries::min(self : StatstestfSeries) -> Double { @_common.min(self.vals) }
 
-pub fn stats_test_f_series_max(s : StatstestfSeries) -> Double { @_common.max(s.vals) }
+pub fn StatstestfSeries::max(self : StatstestfSeries) -> Double { @_common.max(self.vals) }
 
-pub fn stats_test_f_series_range(s : StatstestfSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn StatstestfSeries::range(self : StatstestfSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn stats_test_f_series_var(s : StatstestfSeries) -> Double { @_common.variance(s.vals) }
+pub fn StatstestfSeries::variance(self : StatstestfSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn stats_test_f_series_std(s : StatstestfSeries) -> Double { @_common.std(s.vals) }
+pub fn StatstestfSeries::std(self : StatstestfSeries) -> Double { @_common.std(self.vals) }
 
-pub fn stats_test_f_series_median(s : StatstestfSeries) -> Double { @_common.median(s.vals) }
+pub fn StatstestfSeries::median(self : StatstestfSeries) -> Double { @_common.median(self.vals) }
 
-pub fn stats_test_f_series_scale(s : StatstestfSeries, f : Double) -> StatstestfSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn StatstestfSeries::scale(self : StatstestfSeries, f : Double) -> StatstestfSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn stats_test_f_series_add(a : StatstestfSeries, b : StatstestfSeries) -> StatstestfSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn StatstestfSeries::add(self : StatstestfSeries, other : StatstestfSeries) -> StatstestfSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn stats_test_f_series_sub(a : StatstestfSeries, b : StatstestfSeries) -> StatstestfSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn StatstestfSeries::sub(self : StatstestfSeries, other : StatstestfSeries) -> StatstestfSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn stats_test_f_series_normalize(s : StatstestfSeries) -> StatstestfSeries {
-  let mn = stats_test_f_series_min(s)
-  let mx = stats_test_f_series_max(s)
+pub fn StatstestfSeries::normalize(self : StatstestfSeries) -> StatstestfSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn stats_test_f_series_cumsum(s : StatstestfSeries) -> StatstestfSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn StatstestfSeries::cumsum(self : StatstestfSeries) -> StatstestfSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn stats_test_f_series_to_string(s : StatstestfSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn StatstestfSeries::to_string(self : StatstestfSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn stats_test_f_matrix_identity(n : Int) -> StatstestfMatrix {
   m
 }
 
-pub fn stats_test_f_matrix_get(m : StatstestfMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn StatstestfMatrix::get(self : StatstestfMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn stats_test_f_matrix_transpose(m : StatstestfMatrix) -> StatstestfMatrix {
-  let result = stats_test_f_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn StatstestfMatrix::transpose(self : StatstestfMatrix) -> StatstestfMatrix {
+  let result = stats_test_f_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn stats_test_f_matrix_add(a : StatstestfMatrix, b : StatstestfMatrix) -> StatstestfMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = stats_test_f_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn StatstestfMatrix::add(self : StatstestfMatrix, other : StatstestfMatrix) -> StatstestfMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = stats_test_f_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn stats_test_f_matrix_scale(m : StatstestfMatrix, s : Double) -> StatstestfMatrix {
-  let result = stats_test_f_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn StatstestfMatrix::scale(self : StatstestfMatrix, s : Double) -> StatstestfMatrix {
+  let result = stats_test_f_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn stats_test_f_matrix_multiply(a : StatstestfMatrix, b : StatstestfMatrix) -> StatstestfMatrix {
-  if a.cols != b.rows { return stats_test_f_make_matrix(a.rows, b.cols, 0.0) }
-  let result = stats_test_f_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn StatstestfMatrix::multiply(self : StatstestfMatrix, other : StatstestfMatrix) -> StatstestfMatrix {
+  if self.cols != other.rows { return stats_test_f_make_matrix(self.rows, other.cols, 0.0) }
+  let result = stats_test_f_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn stats_test_f_matrix_trace(m : StatstestfMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn StatstestfMatrix::trace(self : StatstestfMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn stats_test_f_matrix_det(m : StatstestfMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn StatstestfMatrix::det(self : StatstestfMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn stats_test_f_matrix_norm(m : StatstestfMatrix) -> Double {
+pub fn StatstestfMatrix::norm(self : StatstestfMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn stats_test_f_matrix_to_string(m : StatstestfMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn StatstestfMatrix::to_string(self : StatstestfMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn stats_test_f_vector_zero(dim : Int) -> StatstestfVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn stats_test_f_vector_add(a : StatstestfVector, b : StatstestfVector) -> StatstestfVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn StatstestfVector::add(self : StatstestfVector, other : StatstestfVector) -> StatstestfVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn stats_test_f_vector_sub(a : StatstestfVector, b : StatstestfVector) -> StatstestfVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn StatstestfVector::sub(self : StatstestfVector, other : StatstestfVector) -> StatstestfVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn stats_test_f_vector_scale(v : StatstestfVector, s : Double) -> StatstestfVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn StatstestfVector::scale(self : StatstestfVector, s : Double) -> StatstestfVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn stats_test_f_vector_dot(a : StatstestfVector, b : StatstestfVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn StatstestfVector::dot(self : StatstestfVector, other : StatstestfVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn stats_test_f_vector_norm(v : StatstestfVector) -> Double { @_common.sqrt(stats_test_f_vector_dot(v, v)) }
+pub fn StatstestfVector::norm(self : StatstestfVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn stats_test_f_vector_normalize(v : StatstestfVector) -> StatstestfVector {
-  let n = stats_test_f_vector_norm(v)
-  if n < 0.0000001 { v } else { stats_test_f_vector_scale(v, 1.0 / n) }
+pub fn StatstestfVector::normalize(self : StatstestfVector) -> StatstestfVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn stats_test_f_vector_dist(a : StatstestfVector, b : StatstestfVector) -> Double {
-  stats_test_f_vector_norm(stats_test_f_vector_sub(a, b))
+pub fn StatstestfVector::dist(self : StatstestfVector, other : StatstestfVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn stats_test_f_vector_to_string(v : StatstestfVector) -> String {
+pub fn StatstestfVector::to_string(self : StatstestfVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn stats_test_f_mean(data : Array[Double]) -> Double { @_common.mean(data) }

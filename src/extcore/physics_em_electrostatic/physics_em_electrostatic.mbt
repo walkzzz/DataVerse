@@ -16,64 +16,64 @@ pub fn physics_em_electrostatic_make_point3(x : Double, y : Double, z : Double) 
   { x, y, z, label: 0 }
 }
 
-pub fn physics_em_electrostatic_point_x(pt : PhysicsemelectrostaticPoint) -> Double { pt.x }
+pub fn PhysicsemelectrostaticPoint::x(self : PhysicsemelectrostaticPoint) -> Double { self.x }
 
-pub fn physics_em_electrostatic_point_y(pt : PhysicsemelectrostaticPoint) -> Double { pt.y }
+pub fn PhysicsemelectrostaticPoint::y(self : PhysicsemelectrostaticPoint) -> Double { self.y }
 
-pub fn physics_em_electrostatic_point_z(pt : PhysicsemelectrostaticPoint) -> Double { pt.z }
+pub fn PhysicsemelectrostaticPoint::z(self : PhysicsemelectrostaticPoint) -> Double { self.z }
 
-pub fn physics_em_electrostatic_point_label(pt : PhysicsemelectrostaticPoint) -> Int { pt.label }
+pub fn PhysicsemelectrostaticPoint::label(self : PhysicsemelectrostaticPoint) -> Int { self.label }
 
-pub fn physics_em_electrostatic_point_dist(a : PhysicsemelectrostaticPoint, b : PhysicsemelectrostaticPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn PhysicsemelectrostaticPoint::dist(self : PhysicsemelectrostaticPoint, other : PhysicsemelectrostaticPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn physics_em_electrostatic_point_add(a : PhysicsemelectrostaticPoint, b : PhysicsemelectrostaticPoint) -> PhysicsemelectrostaticPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn PhysicsemelectrostaticPoint::add(self : PhysicsemelectrostaticPoint, other : PhysicsemelectrostaticPoint) -> PhysicsemelectrostaticPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn physics_em_electrostatic_point_sub(a : PhysicsemelectrostaticPoint, b : PhysicsemelectrostaticPoint) -> PhysicsemelectrostaticPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn PhysicsemelectrostaticPoint::sub(self : PhysicsemelectrostaticPoint, other : PhysicsemelectrostaticPoint) -> PhysicsemelectrostaticPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn physics_em_electrostatic_point_scale(pt : PhysicsemelectrostaticPoint, s : Double) -> PhysicsemelectrostaticPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn PhysicsemelectrostaticPoint::scale(self : PhysicsemelectrostaticPoint, s : Double) -> PhysicsemelectrostaticPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn physics_em_electrostatic_point_dot(a : PhysicsemelectrostaticPoint, b : PhysicsemelectrostaticPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn PhysicsemelectrostaticPoint::dot(self : PhysicsemelectrostaticPoint, other : PhysicsemelectrostaticPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn physics_em_electrostatic_point_cross(a : PhysicsemelectrostaticPoint, b : PhysicsemelectrostaticPoint) -> PhysicsemelectrostaticPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn PhysicsemelectrostaticPoint::cross(self : PhysicsemelectrostaticPoint, other : PhysicsemelectrostaticPoint) -> PhysicsemelectrostaticPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn physics_em_electrostatic_point_norm(pt : PhysicsemelectrostaticPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn PhysicsemelectrostaticPoint::norm(self : PhysicsemelectrostaticPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn physics_em_electrostatic_point_normalize(pt : PhysicsemelectrostaticPoint) -> PhysicsemelectrostaticPoint {
-  let n = physics_em_electrostatic_point_norm(pt)
-  if n < 0.0000001 { pt } else { physics_em_electrostatic_point_scale(pt, 1.0 / n) }
+pub fn PhysicsemelectrostaticPoint::normalize(self : PhysicsemelectrostaticPoint) -> PhysicsemelectrostaticPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn physics_em_electrostatic_point_negate(pt : PhysicsemelectrostaticPoint) -> PhysicsemelectrostaticPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn PhysicsemelectrostaticPoint::negate(self : PhysicsemelectrostaticPoint) -> PhysicsemelectrostaticPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn physics_em_electrostatic_point_mid(a : PhysicsemelectrostaticPoint, b : PhysicsemelectrostaticPoint) -> PhysicsemelectrostaticPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn PhysicsemelectrostaticPoint::mid(self : PhysicsemelectrostaticPoint, other : PhysicsemelectrostaticPoint) -> PhysicsemelectrostaticPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn physics_em_electrostatic_point_lerp(a : PhysicsemelectrostaticPoint, b : PhysicsemelectrostaticPoint, t : Double) -> PhysicsemelectrostaticPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn PhysicsemelectrostaticPoint::lerp(self : PhysicsemelectrostaticPoint, other : PhysicsemelectrostaticPoint, t : Double) -> PhysicsemelectrostaticPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn physics_em_electrostatic_point_to_string(pt : PhysicsemelectrostaticPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn PhysicsemelectrostaticPoint::to_string(self : PhysicsemelectrostaticPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct PhysicsemelectrostaticSeries {
@@ -86,58 +86,58 @@ pub fn physics_em_electrostatic_make_series(vals : Array[Double], name : String)
   { vals, name, meta: 0 }
 }
 
-pub fn physics_em_electrostatic_series_len(s : PhysicsemelectrostaticSeries) -> Int { s.vals.length() }
+pub fn PhysicsemelectrostaticSeries::len(self : PhysicsemelectrostaticSeries) -> Int { self.vals.length() }
 
-pub fn physics_em_electrostatic_series_sum(s : PhysicsemelectrostaticSeries) -> Double { @_common.sum(s.vals) }
+pub fn PhysicsemelectrostaticSeries::sum(self : PhysicsemelectrostaticSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn physics_em_electrostatic_series_mean(s : PhysicsemelectrostaticSeries) -> Double { @_common.mean(s.vals) }
+pub fn PhysicsemelectrostaticSeries::mean(self : PhysicsemelectrostaticSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn physics_em_electrostatic_series_min(s : PhysicsemelectrostaticSeries) -> Double { @_common.min(s.vals) }
+pub fn PhysicsemelectrostaticSeries::min(self : PhysicsemelectrostaticSeries) -> Double { @_common.min(self.vals) }
 
-pub fn physics_em_electrostatic_series_max(s : PhysicsemelectrostaticSeries) -> Double { @_common.max(s.vals) }
+pub fn PhysicsemelectrostaticSeries::max(self : PhysicsemelectrostaticSeries) -> Double { @_common.max(self.vals) }
 
-pub fn physics_em_electrostatic_series_range(s : PhysicsemelectrostaticSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn PhysicsemelectrostaticSeries::range(self : PhysicsemelectrostaticSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn physics_em_electrostatic_series_var(s : PhysicsemelectrostaticSeries) -> Double { @_common.variance(s.vals) }
+pub fn PhysicsemelectrostaticSeries::variance(self : PhysicsemelectrostaticSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn physics_em_electrostatic_series_std(s : PhysicsemelectrostaticSeries) -> Double { @_common.std(s.vals) }
+pub fn PhysicsemelectrostaticSeries::std(self : PhysicsemelectrostaticSeries) -> Double { @_common.std(self.vals) }
 
-pub fn physics_em_electrostatic_series_median(s : PhysicsemelectrostaticSeries) -> Double { @_common.median(s.vals) }
+pub fn PhysicsemelectrostaticSeries::median(self : PhysicsemelectrostaticSeries) -> Double { @_common.median(self.vals) }
 
-pub fn physics_em_electrostatic_series_scale(s : PhysicsemelectrostaticSeries, f : Double) -> PhysicsemelectrostaticSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn PhysicsemelectrostaticSeries::scale(self : PhysicsemelectrostaticSeries, f : Double) -> PhysicsemelectrostaticSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn physics_em_electrostatic_series_add(a : PhysicsemelectrostaticSeries, b : PhysicsemelectrostaticSeries) -> PhysicsemelectrostaticSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn PhysicsemelectrostaticSeries::add(self : PhysicsemelectrostaticSeries, other : PhysicsemelectrostaticSeries) -> PhysicsemelectrostaticSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn physics_em_electrostatic_series_sub(a : PhysicsemelectrostaticSeries, b : PhysicsemelectrostaticSeries) -> PhysicsemelectrostaticSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn PhysicsemelectrostaticSeries::sub(self : PhysicsemelectrostaticSeries, other : PhysicsemelectrostaticSeries) -> PhysicsemelectrostaticSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn physics_em_electrostatic_series_normalize(s : PhysicsemelectrostaticSeries) -> PhysicsemelectrostaticSeries {
-  let mn = physics_em_electrostatic_series_min(s)
-  let mx = physics_em_electrostatic_series_max(s)
+pub fn PhysicsemelectrostaticSeries::normalize(self : PhysicsemelectrostaticSeries) -> PhysicsemelectrostaticSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn physics_em_electrostatic_series_cumsum(s : PhysicsemelectrostaticSeries) -> PhysicsemelectrostaticSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn PhysicsemelectrostaticSeries::cumsum(self : PhysicsemelectrostaticSeries) -> PhysicsemelectrostaticSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn physics_em_electrostatic_series_to_string(s : PhysicsemelectrostaticSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn PhysicsemelectrostaticSeries::to_string(self : PhysicsemelectrostaticSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn physics_em_electrostatic_matrix_identity(n : Int) -> Physicsemelectrostat
   m
 }
 
-pub fn physics_em_electrostatic_matrix_get(m : PhysicsemelectrostaticMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn PhysicsemelectrostaticMatrix::get(self : PhysicsemelectrostaticMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn physics_em_electrostatic_matrix_transpose(m : PhysicsemelectrostaticMatrix) -> PhysicsemelectrostaticMatrix {
-  let result = physics_em_electrostatic_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn PhysicsemelectrostaticMatrix::transpose(self : PhysicsemelectrostaticMatrix) -> PhysicsemelectrostaticMatrix {
+  let result = physics_em_electrostatic_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn physics_em_electrostatic_matrix_add(a : PhysicsemelectrostaticMatrix, b : PhysicsemelectrostaticMatrix) -> PhysicsemelectrostaticMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = physics_em_electrostatic_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn PhysicsemelectrostaticMatrix::add(self : PhysicsemelectrostaticMatrix, other : PhysicsemelectrostaticMatrix) -> PhysicsemelectrostaticMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = physics_em_electrostatic_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn physics_em_electrostatic_matrix_scale(m : PhysicsemelectrostaticMatrix, s : Double) -> PhysicsemelectrostaticMatrix {
-  let result = physics_em_electrostatic_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn PhysicsemelectrostaticMatrix::scale(self : PhysicsemelectrostaticMatrix, s : Double) -> PhysicsemelectrostaticMatrix {
+  let result = physics_em_electrostatic_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn physics_em_electrostatic_matrix_multiply(a : PhysicsemelectrostaticMatrix, b : PhysicsemelectrostaticMatrix) -> PhysicsemelectrostaticMatrix {
-  if a.cols != b.rows { return physics_em_electrostatic_make_matrix(a.rows, b.cols, 0.0) }
-  let result = physics_em_electrostatic_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn PhysicsemelectrostaticMatrix::multiply(self : PhysicsemelectrostaticMatrix, other : PhysicsemelectrostaticMatrix) -> PhysicsemelectrostaticMatrix {
+  if self.cols != other.rows { return physics_em_electrostatic_make_matrix(self.rows, other.cols, 0.0) }
+  let result = physics_em_electrostatic_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn physics_em_electrostatic_matrix_trace(m : PhysicsemelectrostaticMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn PhysicsemelectrostaticMatrix::trace(self : PhysicsemelectrostaticMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn physics_em_electrostatic_matrix_det(m : PhysicsemelectrostaticMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn PhysicsemelectrostaticMatrix::det(self : PhysicsemelectrostaticMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn physics_em_electrostatic_matrix_norm(m : PhysicsemelectrostaticMatrix) -> Double {
+pub fn PhysicsemelectrostaticMatrix::norm(self : PhysicsemelectrostaticMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn physics_em_electrostatic_matrix_to_string(m : PhysicsemelectrostaticMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn PhysicsemelectrostaticMatrix::to_string(self : PhysicsemelectrostaticMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn physics_em_electrostatic_vector_zero(dim : Int) -> Physicsemelectrostatic
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn physics_em_electrostatic_vector_add(a : PhysicsemelectrostaticVector, b : PhysicsemelectrostaticVector) -> PhysicsemelectrostaticVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn PhysicsemelectrostaticVector::add(self : PhysicsemelectrostaticVector, other : PhysicsemelectrostaticVector) -> PhysicsemelectrostaticVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn physics_em_electrostatic_vector_sub(a : PhysicsemelectrostaticVector, b : PhysicsemelectrostaticVector) -> PhysicsemelectrostaticVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn PhysicsemelectrostaticVector::sub(self : PhysicsemelectrostaticVector, other : PhysicsemelectrostaticVector) -> PhysicsemelectrostaticVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn physics_em_electrostatic_vector_scale(v : PhysicsemelectrostaticVector, s : Double) -> PhysicsemelectrostaticVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn PhysicsemelectrostaticVector::scale(self : PhysicsemelectrostaticVector, s : Double) -> PhysicsemelectrostaticVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn physics_em_electrostatic_vector_dot(a : PhysicsemelectrostaticVector, b : PhysicsemelectrostaticVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn PhysicsemelectrostaticVector::dot(self : PhysicsemelectrostaticVector, other : PhysicsemelectrostaticVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn physics_em_electrostatic_vector_norm(v : PhysicsemelectrostaticVector) -> Double { @_common.sqrt(physics_em_electrostatic_vector_dot(v, v)) }
+pub fn PhysicsemelectrostaticVector::norm(self : PhysicsemelectrostaticVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn physics_em_electrostatic_vector_normalize(v : PhysicsemelectrostaticVector) -> PhysicsemelectrostaticVector {
-  let n = physics_em_electrostatic_vector_norm(v)
-  if n < 0.0000001 { v } else { physics_em_electrostatic_vector_scale(v, 1.0 / n) }
+pub fn PhysicsemelectrostaticVector::normalize(self : PhysicsemelectrostaticVector) -> PhysicsemelectrostaticVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn physics_em_electrostatic_vector_dist(a : PhysicsemelectrostaticVector, b : PhysicsemelectrostaticVector) -> Double {
-  physics_em_electrostatic_vector_norm(physics_em_electrostatic_vector_sub(a, b))
+pub fn PhysicsemelectrostaticVector::dist(self : PhysicsemelectrostaticVector, other : PhysicsemelectrostaticVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn physics_em_electrostatic_vector_to_string(v : PhysicsemelectrostaticVector) -> String {
+pub fn PhysicsemelectrostaticVector::to_string(self : PhysicsemelectrostaticVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn physics_em_electrostatic_mean(data : Array[Double]) -> Double { @_common.mean(data) }

@@ -16,64 +16,64 @@ pub fn ml_regress_poly_make_point3(x : Double, y : Double, z : Double) -> Mlregr
   { x, y, z, label: 0 }
 }
 
-pub fn ml_regress_poly_point_x(pt : MlregresspolyPoint) -> Double { pt.x }
+pub fn MlregresspolyPoint::x(self : MlregresspolyPoint) -> Double { self.x }
 
-pub fn ml_regress_poly_point_y(pt : MlregresspolyPoint) -> Double { pt.y }
+pub fn MlregresspolyPoint::y(self : MlregresspolyPoint) -> Double { self.y }
 
-pub fn ml_regress_poly_point_z(pt : MlregresspolyPoint) -> Double { pt.z }
+pub fn MlregresspolyPoint::z(self : MlregresspolyPoint) -> Double { self.z }
 
-pub fn ml_regress_poly_point_label(pt : MlregresspolyPoint) -> Int { pt.label }
+pub fn MlregresspolyPoint::label(self : MlregresspolyPoint) -> Int { self.label }
 
-pub fn ml_regress_poly_point_dist(a : MlregresspolyPoint, b : MlregresspolyPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn MlregresspolyPoint::dist(self : MlregresspolyPoint, other : MlregresspolyPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn ml_regress_poly_point_add(a : MlregresspolyPoint, b : MlregresspolyPoint) -> MlregresspolyPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn MlregresspolyPoint::add(self : MlregresspolyPoint, other : MlregresspolyPoint) -> MlregresspolyPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn ml_regress_poly_point_sub(a : MlregresspolyPoint, b : MlregresspolyPoint) -> MlregresspolyPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn MlregresspolyPoint::sub(self : MlregresspolyPoint, other : MlregresspolyPoint) -> MlregresspolyPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn ml_regress_poly_point_scale(pt : MlregresspolyPoint, s : Double) -> MlregresspolyPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn MlregresspolyPoint::scale(self : MlregresspolyPoint, s : Double) -> MlregresspolyPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn ml_regress_poly_point_dot(a : MlregresspolyPoint, b : MlregresspolyPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn MlregresspolyPoint::dot(self : MlregresspolyPoint, other : MlregresspolyPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn ml_regress_poly_point_cross(a : MlregresspolyPoint, b : MlregresspolyPoint) -> MlregresspolyPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn MlregresspolyPoint::cross(self : MlregresspolyPoint, other : MlregresspolyPoint) -> MlregresspolyPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn ml_regress_poly_point_norm(pt : MlregresspolyPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn MlregresspolyPoint::norm(self : MlregresspolyPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn ml_regress_poly_point_normalize(pt : MlregresspolyPoint) -> MlregresspolyPoint {
-  let n = ml_regress_poly_point_norm(pt)
-  if n < 0.0000001 { pt } else { ml_regress_poly_point_scale(pt, 1.0 / n) }
+pub fn MlregresspolyPoint::normalize(self : MlregresspolyPoint) -> MlregresspolyPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn ml_regress_poly_point_negate(pt : MlregresspolyPoint) -> MlregresspolyPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn MlregresspolyPoint::negate(self : MlregresspolyPoint) -> MlregresspolyPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn ml_regress_poly_point_mid(a : MlregresspolyPoint, b : MlregresspolyPoint) -> MlregresspolyPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn MlregresspolyPoint::mid(self : MlregresspolyPoint, other : MlregresspolyPoint) -> MlregresspolyPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn ml_regress_poly_point_lerp(a : MlregresspolyPoint, b : MlregresspolyPoint, t : Double) -> MlregresspolyPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn MlregresspolyPoint::lerp(self : MlregresspolyPoint, other : MlregresspolyPoint, t : Double) -> MlregresspolyPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn ml_regress_poly_point_to_string(pt : MlregresspolyPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn MlregresspolyPoint::to_string(self : MlregresspolyPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct MlregresspolySeries {
@@ -86,58 +86,58 @@ pub fn ml_regress_poly_make_series(vals : Array[Double], name : String) -> Mlreg
   { vals, name, meta: 0 }
 }
 
-pub fn ml_regress_poly_series_len(s : MlregresspolySeries) -> Int { s.vals.length() }
+pub fn MlregresspolySeries::len(self : MlregresspolySeries) -> Int { self.vals.length() }
 
-pub fn ml_regress_poly_series_sum(s : MlregresspolySeries) -> Double { @_common.sum(s.vals) }
+pub fn MlregresspolySeries::sum(self : MlregresspolySeries) -> Double { @_common.sum(self.vals) }
 
-pub fn ml_regress_poly_series_mean(s : MlregresspolySeries) -> Double { @_common.mean(s.vals) }
+pub fn MlregresspolySeries::mean(self : MlregresspolySeries) -> Double { @_common.mean(self.vals) }
 
-pub fn ml_regress_poly_series_min(s : MlregresspolySeries) -> Double { @_common.min(s.vals) }
+pub fn MlregresspolySeries::min(self : MlregresspolySeries) -> Double { @_common.min(self.vals) }
 
-pub fn ml_regress_poly_series_max(s : MlregresspolySeries) -> Double { @_common.max(s.vals) }
+pub fn MlregresspolySeries::max(self : MlregresspolySeries) -> Double { @_common.max(self.vals) }
 
-pub fn ml_regress_poly_series_range(s : MlregresspolySeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn MlregresspolySeries::range(self : MlregresspolySeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn ml_regress_poly_series_var(s : MlregresspolySeries) -> Double { @_common.variance(s.vals) }
+pub fn MlregresspolySeries::variance(self : MlregresspolySeries) -> Double { @_common.variance(self.vals) }
 
-pub fn ml_regress_poly_series_std(s : MlregresspolySeries) -> Double { @_common.std(s.vals) }
+pub fn MlregresspolySeries::std(self : MlregresspolySeries) -> Double { @_common.std(self.vals) }
 
-pub fn ml_regress_poly_series_median(s : MlregresspolySeries) -> Double { @_common.median(s.vals) }
+pub fn MlregresspolySeries::median(self : MlregresspolySeries) -> Double { @_common.median(self.vals) }
 
-pub fn ml_regress_poly_series_scale(s : MlregresspolySeries, f : Double) -> MlregresspolySeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn MlregresspolySeries::scale(self : MlregresspolySeries, f : Double) -> MlregresspolySeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn ml_regress_poly_series_add(a : MlregresspolySeries, b : MlregresspolySeries) -> MlregresspolySeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn MlregresspolySeries::add(self : MlregresspolySeries, other : MlregresspolySeries) -> MlregresspolySeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn ml_regress_poly_series_sub(a : MlregresspolySeries, b : MlregresspolySeries) -> MlregresspolySeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn MlregresspolySeries::sub(self : MlregresspolySeries, other : MlregresspolySeries) -> MlregresspolySeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn ml_regress_poly_series_normalize(s : MlregresspolySeries) -> MlregresspolySeries {
-  let mn = ml_regress_poly_series_min(s)
-  let mx = ml_regress_poly_series_max(s)
+pub fn MlregresspolySeries::normalize(self : MlregresspolySeries) -> MlregresspolySeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn ml_regress_poly_series_cumsum(s : MlregresspolySeries) -> MlregresspolySeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn MlregresspolySeries::cumsum(self : MlregresspolySeries) -> MlregresspolySeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn ml_regress_poly_series_to_string(s : MlregresspolySeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn MlregresspolySeries::to_string(self : MlregresspolySeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn ml_regress_poly_matrix_identity(n : Int) -> MlregresspolyMatrix {
   m
 }
 
-pub fn ml_regress_poly_matrix_get(m : MlregresspolyMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn MlregresspolyMatrix::get(self : MlregresspolyMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn ml_regress_poly_matrix_transpose(m : MlregresspolyMatrix) -> MlregresspolyMatrix {
-  let result = ml_regress_poly_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn MlregresspolyMatrix::transpose(self : MlregresspolyMatrix) -> MlregresspolyMatrix {
+  let result = ml_regress_poly_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn ml_regress_poly_matrix_add(a : MlregresspolyMatrix, b : MlregresspolyMatrix) -> MlregresspolyMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = ml_regress_poly_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn MlregresspolyMatrix::add(self : MlregresspolyMatrix, other : MlregresspolyMatrix) -> MlregresspolyMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = ml_regress_poly_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn ml_regress_poly_matrix_scale(m : MlregresspolyMatrix, s : Double) -> MlregresspolyMatrix {
-  let result = ml_regress_poly_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn MlregresspolyMatrix::scale(self : MlregresspolyMatrix, s : Double) -> MlregresspolyMatrix {
+  let result = ml_regress_poly_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn ml_regress_poly_matrix_multiply(a : MlregresspolyMatrix, b : MlregresspolyMatrix) -> MlregresspolyMatrix {
-  if a.cols != b.rows { return ml_regress_poly_make_matrix(a.rows, b.cols, 0.0) }
-  let result = ml_regress_poly_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn MlregresspolyMatrix::multiply(self : MlregresspolyMatrix, other : MlregresspolyMatrix) -> MlregresspolyMatrix {
+  if self.cols != other.rows { return ml_regress_poly_make_matrix(self.rows, other.cols, 0.0) }
+  let result = ml_regress_poly_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn ml_regress_poly_matrix_trace(m : MlregresspolyMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn MlregresspolyMatrix::trace(self : MlregresspolyMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn ml_regress_poly_matrix_det(m : MlregresspolyMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn MlregresspolyMatrix::det(self : MlregresspolyMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn ml_regress_poly_matrix_norm(m : MlregresspolyMatrix) -> Double {
+pub fn MlregresspolyMatrix::norm(self : MlregresspolyMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn ml_regress_poly_matrix_to_string(m : MlregresspolyMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn MlregresspolyMatrix::to_string(self : MlregresspolyMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn ml_regress_poly_vector_zero(dim : Int) -> MlregresspolyVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn ml_regress_poly_vector_add(a : MlregresspolyVector, b : MlregresspolyVector) -> MlregresspolyVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn MlregresspolyVector::add(self : MlregresspolyVector, other : MlregresspolyVector) -> MlregresspolyVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn ml_regress_poly_vector_sub(a : MlregresspolyVector, b : MlregresspolyVector) -> MlregresspolyVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn MlregresspolyVector::sub(self : MlregresspolyVector, other : MlregresspolyVector) -> MlregresspolyVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn ml_regress_poly_vector_scale(v : MlregresspolyVector, s : Double) -> MlregresspolyVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn MlregresspolyVector::scale(self : MlregresspolyVector, s : Double) -> MlregresspolyVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn ml_regress_poly_vector_dot(a : MlregresspolyVector, b : MlregresspolyVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn MlregresspolyVector::dot(self : MlregresspolyVector, other : MlregresspolyVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn ml_regress_poly_vector_norm(v : MlregresspolyVector) -> Double { @_common.sqrt(ml_regress_poly_vector_dot(v, v)) }
+pub fn MlregresspolyVector::norm(self : MlregresspolyVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn ml_regress_poly_vector_normalize(v : MlregresspolyVector) -> MlregresspolyVector {
-  let n = ml_regress_poly_vector_norm(v)
-  if n < 0.0000001 { v } else { ml_regress_poly_vector_scale(v, 1.0 / n) }
+pub fn MlregresspolyVector::normalize(self : MlregresspolyVector) -> MlregresspolyVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn ml_regress_poly_vector_dist(a : MlregresspolyVector, b : MlregresspolyVector) -> Double {
-  ml_regress_poly_vector_norm(ml_regress_poly_vector_sub(a, b))
+pub fn MlregresspolyVector::dist(self : MlregresspolyVector, other : MlregresspolyVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn ml_regress_poly_vector_to_string(v : MlregresspolyVector) -> String {
+pub fn MlregresspolyVector::to_string(self : MlregresspolyVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn ml_regress_poly_mean(data : Array[Double]) -> Double { @_common.mean(data) }

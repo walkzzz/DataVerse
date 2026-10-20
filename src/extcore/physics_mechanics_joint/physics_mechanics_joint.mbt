@@ -16,64 +16,64 @@ pub fn physics_mechanics_joint_make_point3(x : Double, y : Double, z : Double) -
   { x, y, z, label: 0 }
 }
 
-pub fn physics_mechanics_joint_point_x(pt : PhysicsmechanicsjointPoint) -> Double { pt.x }
+pub fn PhysicsmechanicsjointPoint::x(self : PhysicsmechanicsjointPoint) -> Double { self.x }
 
-pub fn physics_mechanics_joint_point_y(pt : PhysicsmechanicsjointPoint) -> Double { pt.y }
+pub fn PhysicsmechanicsjointPoint::y(self : PhysicsmechanicsjointPoint) -> Double { self.y }
 
-pub fn physics_mechanics_joint_point_z(pt : PhysicsmechanicsjointPoint) -> Double { pt.z }
+pub fn PhysicsmechanicsjointPoint::z(self : PhysicsmechanicsjointPoint) -> Double { self.z }
 
-pub fn physics_mechanics_joint_point_label(pt : PhysicsmechanicsjointPoint) -> Int { pt.label }
+pub fn PhysicsmechanicsjointPoint::label(self : PhysicsmechanicsjointPoint) -> Int { self.label }
 
-pub fn physics_mechanics_joint_point_dist(a : PhysicsmechanicsjointPoint, b : PhysicsmechanicsjointPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn PhysicsmechanicsjointPoint::dist(self : PhysicsmechanicsjointPoint, other : PhysicsmechanicsjointPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn physics_mechanics_joint_point_add(a : PhysicsmechanicsjointPoint, b : PhysicsmechanicsjointPoint) -> PhysicsmechanicsjointPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn PhysicsmechanicsjointPoint::add(self : PhysicsmechanicsjointPoint, other : PhysicsmechanicsjointPoint) -> PhysicsmechanicsjointPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn physics_mechanics_joint_point_sub(a : PhysicsmechanicsjointPoint, b : PhysicsmechanicsjointPoint) -> PhysicsmechanicsjointPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn PhysicsmechanicsjointPoint::sub(self : PhysicsmechanicsjointPoint, other : PhysicsmechanicsjointPoint) -> PhysicsmechanicsjointPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn physics_mechanics_joint_point_scale(pt : PhysicsmechanicsjointPoint, s : Double) -> PhysicsmechanicsjointPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn PhysicsmechanicsjointPoint::scale(self : PhysicsmechanicsjointPoint, s : Double) -> PhysicsmechanicsjointPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn physics_mechanics_joint_point_dot(a : PhysicsmechanicsjointPoint, b : PhysicsmechanicsjointPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn PhysicsmechanicsjointPoint::dot(self : PhysicsmechanicsjointPoint, other : PhysicsmechanicsjointPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn physics_mechanics_joint_point_cross(a : PhysicsmechanicsjointPoint, b : PhysicsmechanicsjointPoint) -> PhysicsmechanicsjointPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn PhysicsmechanicsjointPoint::cross(self : PhysicsmechanicsjointPoint, other : PhysicsmechanicsjointPoint) -> PhysicsmechanicsjointPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn physics_mechanics_joint_point_norm(pt : PhysicsmechanicsjointPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn PhysicsmechanicsjointPoint::norm(self : PhysicsmechanicsjointPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn physics_mechanics_joint_point_normalize(pt : PhysicsmechanicsjointPoint) -> PhysicsmechanicsjointPoint {
-  let n = physics_mechanics_joint_point_norm(pt)
-  if n < 0.0000001 { pt } else { physics_mechanics_joint_point_scale(pt, 1.0 / n) }
+pub fn PhysicsmechanicsjointPoint::normalize(self : PhysicsmechanicsjointPoint) -> PhysicsmechanicsjointPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn physics_mechanics_joint_point_negate(pt : PhysicsmechanicsjointPoint) -> PhysicsmechanicsjointPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn PhysicsmechanicsjointPoint::negate(self : PhysicsmechanicsjointPoint) -> PhysicsmechanicsjointPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn physics_mechanics_joint_point_mid(a : PhysicsmechanicsjointPoint, b : PhysicsmechanicsjointPoint) -> PhysicsmechanicsjointPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn PhysicsmechanicsjointPoint::mid(self : PhysicsmechanicsjointPoint, other : PhysicsmechanicsjointPoint) -> PhysicsmechanicsjointPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn physics_mechanics_joint_point_lerp(a : PhysicsmechanicsjointPoint, b : PhysicsmechanicsjointPoint, t : Double) -> PhysicsmechanicsjointPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn PhysicsmechanicsjointPoint::lerp(self : PhysicsmechanicsjointPoint, other : PhysicsmechanicsjointPoint, t : Double) -> PhysicsmechanicsjointPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn physics_mechanics_joint_point_to_string(pt : PhysicsmechanicsjointPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn PhysicsmechanicsjointPoint::to_string(self : PhysicsmechanicsjointPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicsjointSeries {
@@ -86,58 +86,58 @@ pub fn physics_mechanics_joint_make_series(vals : Array[Double], name : String) 
   { vals, name, meta: 0 }
 }
 
-pub fn physics_mechanics_joint_series_len(s : PhysicsmechanicsjointSeries) -> Int { s.vals.length() }
+pub fn PhysicsmechanicsjointSeries::len(self : PhysicsmechanicsjointSeries) -> Int { self.vals.length() }
 
-pub fn physics_mechanics_joint_series_sum(s : PhysicsmechanicsjointSeries) -> Double { @_common.sum(s.vals) }
+pub fn PhysicsmechanicsjointSeries::sum(self : PhysicsmechanicsjointSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn physics_mechanics_joint_series_mean(s : PhysicsmechanicsjointSeries) -> Double { @_common.mean(s.vals) }
+pub fn PhysicsmechanicsjointSeries::mean(self : PhysicsmechanicsjointSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn physics_mechanics_joint_series_min(s : PhysicsmechanicsjointSeries) -> Double { @_common.min(s.vals) }
+pub fn PhysicsmechanicsjointSeries::min(self : PhysicsmechanicsjointSeries) -> Double { @_common.min(self.vals) }
 
-pub fn physics_mechanics_joint_series_max(s : PhysicsmechanicsjointSeries) -> Double { @_common.max(s.vals) }
+pub fn PhysicsmechanicsjointSeries::max(self : PhysicsmechanicsjointSeries) -> Double { @_common.max(self.vals) }
 
-pub fn physics_mechanics_joint_series_range(s : PhysicsmechanicsjointSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn PhysicsmechanicsjointSeries::range(self : PhysicsmechanicsjointSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn physics_mechanics_joint_series_var(s : PhysicsmechanicsjointSeries) -> Double { @_common.variance(s.vals) }
+pub fn PhysicsmechanicsjointSeries::variance(self : PhysicsmechanicsjointSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn physics_mechanics_joint_series_std(s : PhysicsmechanicsjointSeries) -> Double { @_common.std(s.vals) }
+pub fn PhysicsmechanicsjointSeries::std(self : PhysicsmechanicsjointSeries) -> Double { @_common.std(self.vals) }
 
-pub fn physics_mechanics_joint_series_median(s : PhysicsmechanicsjointSeries) -> Double { @_common.median(s.vals) }
+pub fn PhysicsmechanicsjointSeries::median(self : PhysicsmechanicsjointSeries) -> Double { @_common.median(self.vals) }
 
-pub fn physics_mechanics_joint_series_scale(s : PhysicsmechanicsjointSeries, f : Double) -> PhysicsmechanicsjointSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn PhysicsmechanicsjointSeries::scale(self : PhysicsmechanicsjointSeries, f : Double) -> PhysicsmechanicsjointSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn physics_mechanics_joint_series_add(a : PhysicsmechanicsjointSeries, b : PhysicsmechanicsjointSeries) -> PhysicsmechanicsjointSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn PhysicsmechanicsjointSeries::add(self : PhysicsmechanicsjointSeries, other : PhysicsmechanicsjointSeries) -> PhysicsmechanicsjointSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn physics_mechanics_joint_series_sub(a : PhysicsmechanicsjointSeries, b : PhysicsmechanicsjointSeries) -> PhysicsmechanicsjointSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn PhysicsmechanicsjointSeries::sub(self : PhysicsmechanicsjointSeries, other : PhysicsmechanicsjointSeries) -> PhysicsmechanicsjointSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn physics_mechanics_joint_series_normalize(s : PhysicsmechanicsjointSeries) -> PhysicsmechanicsjointSeries {
-  let mn = physics_mechanics_joint_series_min(s)
-  let mx = physics_mechanics_joint_series_max(s)
+pub fn PhysicsmechanicsjointSeries::normalize(self : PhysicsmechanicsjointSeries) -> PhysicsmechanicsjointSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn physics_mechanics_joint_series_cumsum(s : PhysicsmechanicsjointSeries) -> PhysicsmechanicsjointSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn PhysicsmechanicsjointSeries::cumsum(self : PhysicsmechanicsjointSeries) -> PhysicsmechanicsjointSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn physics_mechanics_joint_series_to_string(s : PhysicsmechanicsjointSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn PhysicsmechanicsjointSeries::to_string(self : PhysicsmechanicsjointSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn physics_mechanics_joint_matrix_identity(n : Int) -> Physicsmechanicsjoint
   m
 }
 
-pub fn physics_mechanics_joint_matrix_get(m : PhysicsmechanicsjointMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn PhysicsmechanicsjointMatrix::get(self : PhysicsmechanicsjointMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn physics_mechanics_joint_matrix_transpose(m : PhysicsmechanicsjointMatrix) -> PhysicsmechanicsjointMatrix {
-  let result = physics_mechanics_joint_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn PhysicsmechanicsjointMatrix::transpose(self : PhysicsmechanicsjointMatrix) -> PhysicsmechanicsjointMatrix {
+  let result = physics_mechanics_joint_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn physics_mechanics_joint_matrix_add(a : PhysicsmechanicsjointMatrix, b : PhysicsmechanicsjointMatrix) -> PhysicsmechanicsjointMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = physics_mechanics_joint_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn PhysicsmechanicsjointMatrix::add(self : PhysicsmechanicsjointMatrix, other : PhysicsmechanicsjointMatrix) -> PhysicsmechanicsjointMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = physics_mechanics_joint_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn physics_mechanics_joint_matrix_scale(m : PhysicsmechanicsjointMatrix, s : Double) -> PhysicsmechanicsjointMatrix {
-  let result = physics_mechanics_joint_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn PhysicsmechanicsjointMatrix::scale(self : PhysicsmechanicsjointMatrix, s : Double) -> PhysicsmechanicsjointMatrix {
+  let result = physics_mechanics_joint_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn physics_mechanics_joint_matrix_multiply(a : PhysicsmechanicsjointMatrix, b : PhysicsmechanicsjointMatrix) -> PhysicsmechanicsjointMatrix {
-  if a.cols != b.rows { return physics_mechanics_joint_make_matrix(a.rows, b.cols, 0.0) }
-  let result = physics_mechanics_joint_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn PhysicsmechanicsjointMatrix::multiply(self : PhysicsmechanicsjointMatrix, other : PhysicsmechanicsjointMatrix) -> PhysicsmechanicsjointMatrix {
+  if self.cols != other.rows { return physics_mechanics_joint_make_matrix(self.rows, other.cols, 0.0) }
+  let result = physics_mechanics_joint_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn physics_mechanics_joint_matrix_trace(m : PhysicsmechanicsjointMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn PhysicsmechanicsjointMatrix::trace(self : PhysicsmechanicsjointMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn physics_mechanics_joint_matrix_det(m : PhysicsmechanicsjointMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn PhysicsmechanicsjointMatrix::det(self : PhysicsmechanicsjointMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn physics_mechanics_joint_matrix_norm(m : PhysicsmechanicsjointMatrix) -> Double {
+pub fn PhysicsmechanicsjointMatrix::norm(self : PhysicsmechanicsjointMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn physics_mechanics_joint_matrix_to_string(m : PhysicsmechanicsjointMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn PhysicsmechanicsjointMatrix::to_string(self : PhysicsmechanicsjointMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn physics_mechanics_joint_vector_zero(dim : Int) -> PhysicsmechanicsjointVe
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn physics_mechanics_joint_vector_add(a : PhysicsmechanicsjointVector, b : PhysicsmechanicsjointVector) -> PhysicsmechanicsjointVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn PhysicsmechanicsjointVector::add(self : PhysicsmechanicsjointVector, other : PhysicsmechanicsjointVector) -> PhysicsmechanicsjointVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn physics_mechanics_joint_vector_sub(a : PhysicsmechanicsjointVector, b : PhysicsmechanicsjointVector) -> PhysicsmechanicsjointVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn PhysicsmechanicsjointVector::sub(self : PhysicsmechanicsjointVector, other : PhysicsmechanicsjointVector) -> PhysicsmechanicsjointVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn physics_mechanics_joint_vector_scale(v : PhysicsmechanicsjointVector, s : Double) -> PhysicsmechanicsjointVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn PhysicsmechanicsjointVector::scale(self : PhysicsmechanicsjointVector, s : Double) -> PhysicsmechanicsjointVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn physics_mechanics_joint_vector_dot(a : PhysicsmechanicsjointVector, b : PhysicsmechanicsjointVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn PhysicsmechanicsjointVector::dot(self : PhysicsmechanicsjointVector, other : PhysicsmechanicsjointVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn physics_mechanics_joint_vector_norm(v : PhysicsmechanicsjointVector) -> Double { @_common.sqrt(physics_mechanics_joint_vector_dot(v, v)) }
+pub fn PhysicsmechanicsjointVector::norm(self : PhysicsmechanicsjointVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn physics_mechanics_joint_vector_normalize(v : PhysicsmechanicsjointVector) -> PhysicsmechanicsjointVector {
-  let n = physics_mechanics_joint_vector_norm(v)
-  if n < 0.0000001 { v } else { physics_mechanics_joint_vector_scale(v, 1.0 / n) }
+pub fn PhysicsmechanicsjointVector::normalize(self : PhysicsmechanicsjointVector) -> PhysicsmechanicsjointVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn physics_mechanics_joint_vector_dist(a : PhysicsmechanicsjointVector, b : PhysicsmechanicsjointVector) -> Double {
-  physics_mechanics_joint_vector_norm(physics_mechanics_joint_vector_sub(a, b))
+pub fn PhysicsmechanicsjointVector::dist(self : PhysicsmechanicsjointVector, other : PhysicsmechanicsjointVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn physics_mechanics_joint_vector_to_string(v : PhysicsmechanicsjointVector) -> String {
+pub fn PhysicsmechanicsjointVector::to_string(self : PhysicsmechanicsjointVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn physics_mechanics_joint_mean(data : Array[Double]) -> Double { @_common.mean(data) }

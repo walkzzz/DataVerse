@@ -16,64 +16,64 @@ pub fn image_feature_sift_make_point3(x : Double, y : Double, z : Double) -> Ima
   { x, y, z, label: 0 }
 }
 
-pub fn image_feature_sift_point_x(pt : ImagefeaturesiftPoint) -> Double { pt.x }
+pub fn ImagefeaturesiftPoint::x(self : ImagefeaturesiftPoint) -> Double { self.x }
 
-pub fn image_feature_sift_point_y(pt : ImagefeaturesiftPoint) -> Double { pt.y }
+pub fn ImagefeaturesiftPoint::y(self : ImagefeaturesiftPoint) -> Double { self.y }
 
-pub fn image_feature_sift_point_z(pt : ImagefeaturesiftPoint) -> Double { pt.z }
+pub fn ImagefeaturesiftPoint::z(self : ImagefeaturesiftPoint) -> Double { self.z }
 
-pub fn image_feature_sift_point_label(pt : ImagefeaturesiftPoint) -> Int { pt.label }
+pub fn ImagefeaturesiftPoint::label(self : ImagefeaturesiftPoint) -> Int { self.label }
 
-pub fn image_feature_sift_point_dist(a : ImagefeaturesiftPoint, b : ImagefeaturesiftPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn ImagefeaturesiftPoint::dist(self : ImagefeaturesiftPoint, other : ImagefeaturesiftPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn image_feature_sift_point_add(a : ImagefeaturesiftPoint, b : ImagefeaturesiftPoint) -> ImagefeaturesiftPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn ImagefeaturesiftPoint::add(self : ImagefeaturesiftPoint, other : ImagefeaturesiftPoint) -> ImagefeaturesiftPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn image_feature_sift_point_sub(a : ImagefeaturesiftPoint, b : ImagefeaturesiftPoint) -> ImagefeaturesiftPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn ImagefeaturesiftPoint::sub(self : ImagefeaturesiftPoint, other : ImagefeaturesiftPoint) -> ImagefeaturesiftPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn image_feature_sift_point_scale(pt : ImagefeaturesiftPoint, s : Double) -> ImagefeaturesiftPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn ImagefeaturesiftPoint::scale(self : ImagefeaturesiftPoint, s : Double) -> ImagefeaturesiftPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn image_feature_sift_point_dot(a : ImagefeaturesiftPoint, b : ImagefeaturesiftPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn ImagefeaturesiftPoint::dot(self : ImagefeaturesiftPoint, other : ImagefeaturesiftPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn image_feature_sift_point_cross(a : ImagefeaturesiftPoint, b : ImagefeaturesiftPoint) -> ImagefeaturesiftPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn ImagefeaturesiftPoint::cross(self : ImagefeaturesiftPoint, other : ImagefeaturesiftPoint) -> ImagefeaturesiftPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn image_feature_sift_point_norm(pt : ImagefeaturesiftPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn ImagefeaturesiftPoint::norm(self : ImagefeaturesiftPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn image_feature_sift_point_normalize(pt : ImagefeaturesiftPoint) -> ImagefeaturesiftPoint {
-  let n = image_feature_sift_point_norm(pt)
-  if n < 0.0000001 { pt } else { image_feature_sift_point_scale(pt, 1.0 / n) }
+pub fn ImagefeaturesiftPoint::normalize(self : ImagefeaturesiftPoint) -> ImagefeaturesiftPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn image_feature_sift_point_negate(pt : ImagefeaturesiftPoint) -> ImagefeaturesiftPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn ImagefeaturesiftPoint::negate(self : ImagefeaturesiftPoint) -> ImagefeaturesiftPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn image_feature_sift_point_mid(a : ImagefeaturesiftPoint, b : ImagefeaturesiftPoint) -> ImagefeaturesiftPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn ImagefeaturesiftPoint::mid(self : ImagefeaturesiftPoint, other : ImagefeaturesiftPoint) -> ImagefeaturesiftPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn image_feature_sift_point_lerp(a : ImagefeaturesiftPoint, b : ImagefeaturesiftPoint, t : Double) -> ImagefeaturesiftPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn ImagefeaturesiftPoint::lerp(self : ImagefeaturesiftPoint, other : ImagefeaturesiftPoint, t : Double) -> ImagefeaturesiftPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn image_feature_sift_point_to_string(pt : ImagefeaturesiftPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn ImagefeaturesiftPoint::to_string(self : ImagefeaturesiftPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct ImagefeaturesiftSeries {
@@ -86,58 +86,58 @@ pub fn image_feature_sift_make_series(vals : Array[Double], name : String) -> Im
   { vals, name, meta: 0 }
 }
 
-pub fn image_feature_sift_series_len(s : ImagefeaturesiftSeries) -> Int { s.vals.length() }
+pub fn ImagefeaturesiftSeries::len(self : ImagefeaturesiftSeries) -> Int { self.vals.length() }
 
-pub fn image_feature_sift_series_sum(s : ImagefeaturesiftSeries) -> Double { @_common.sum(s.vals) }
+pub fn ImagefeaturesiftSeries::sum(self : ImagefeaturesiftSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn image_feature_sift_series_mean(s : ImagefeaturesiftSeries) -> Double { @_common.mean(s.vals) }
+pub fn ImagefeaturesiftSeries::mean(self : ImagefeaturesiftSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn image_feature_sift_series_min(s : ImagefeaturesiftSeries) -> Double { @_common.min(s.vals) }
+pub fn ImagefeaturesiftSeries::min(self : ImagefeaturesiftSeries) -> Double { @_common.min(self.vals) }
 
-pub fn image_feature_sift_series_max(s : ImagefeaturesiftSeries) -> Double { @_common.max(s.vals) }
+pub fn ImagefeaturesiftSeries::max(self : ImagefeaturesiftSeries) -> Double { @_common.max(self.vals) }
 
-pub fn image_feature_sift_series_range(s : ImagefeaturesiftSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn ImagefeaturesiftSeries::range(self : ImagefeaturesiftSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn image_feature_sift_series_var(s : ImagefeaturesiftSeries) -> Double { @_common.variance(s.vals) }
+pub fn ImagefeaturesiftSeries::variance(self : ImagefeaturesiftSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn image_feature_sift_series_std(s : ImagefeaturesiftSeries) -> Double { @_common.std(s.vals) }
+pub fn ImagefeaturesiftSeries::std(self : ImagefeaturesiftSeries) -> Double { @_common.std(self.vals) }
 
-pub fn image_feature_sift_series_median(s : ImagefeaturesiftSeries) -> Double { @_common.median(s.vals) }
+pub fn ImagefeaturesiftSeries::median(self : ImagefeaturesiftSeries) -> Double { @_common.median(self.vals) }
 
-pub fn image_feature_sift_series_scale(s : ImagefeaturesiftSeries, f : Double) -> ImagefeaturesiftSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn ImagefeaturesiftSeries::scale(self : ImagefeaturesiftSeries, f : Double) -> ImagefeaturesiftSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn image_feature_sift_series_add(a : ImagefeaturesiftSeries, b : ImagefeaturesiftSeries) -> ImagefeaturesiftSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn ImagefeaturesiftSeries::add(self : ImagefeaturesiftSeries, other : ImagefeaturesiftSeries) -> ImagefeaturesiftSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn image_feature_sift_series_sub(a : ImagefeaturesiftSeries, b : ImagefeaturesiftSeries) -> ImagefeaturesiftSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn ImagefeaturesiftSeries::sub(self : ImagefeaturesiftSeries, other : ImagefeaturesiftSeries) -> ImagefeaturesiftSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn image_feature_sift_series_normalize(s : ImagefeaturesiftSeries) -> ImagefeaturesiftSeries {
-  let mn = image_feature_sift_series_min(s)
-  let mx = image_feature_sift_series_max(s)
+pub fn ImagefeaturesiftSeries::normalize(self : ImagefeaturesiftSeries) -> ImagefeaturesiftSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn image_feature_sift_series_cumsum(s : ImagefeaturesiftSeries) -> ImagefeaturesiftSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn ImagefeaturesiftSeries::cumsum(self : ImagefeaturesiftSeries) -> ImagefeaturesiftSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn image_feature_sift_series_to_string(s : ImagefeaturesiftSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn ImagefeaturesiftSeries::to_string(self : ImagefeaturesiftSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn image_feature_sift_matrix_identity(n : Int) -> ImagefeaturesiftMatrix {
   m
 }
 
-pub fn image_feature_sift_matrix_get(m : ImagefeaturesiftMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn ImagefeaturesiftMatrix::get(self : ImagefeaturesiftMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn image_feature_sift_matrix_transpose(m : ImagefeaturesiftMatrix) -> ImagefeaturesiftMatrix {
-  let result = image_feature_sift_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn ImagefeaturesiftMatrix::transpose(self : ImagefeaturesiftMatrix) -> ImagefeaturesiftMatrix {
+  let result = image_feature_sift_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn image_feature_sift_matrix_add(a : ImagefeaturesiftMatrix, b : ImagefeaturesiftMatrix) -> ImagefeaturesiftMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = image_feature_sift_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn ImagefeaturesiftMatrix::add(self : ImagefeaturesiftMatrix, other : ImagefeaturesiftMatrix) -> ImagefeaturesiftMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = image_feature_sift_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn image_feature_sift_matrix_scale(m : ImagefeaturesiftMatrix, s : Double) -> ImagefeaturesiftMatrix {
-  let result = image_feature_sift_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn ImagefeaturesiftMatrix::scale(self : ImagefeaturesiftMatrix, s : Double) -> ImagefeaturesiftMatrix {
+  let result = image_feature_sift_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn image_feature_sift_matrix_multiply(a : ImagefeaturesiftMatrix, b : ImagefeaturesiftMatrix) -> ImagefeaturesiftMatrix {
-  if a.cols != b.rows { return image_feature_sift_make_matrix(a.rows, b.cols, 0.0) }
-  let result = image_feature_sift_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn ImagefeaturesiftMatrix::multiply(self : ImagefeaturesiftMatrix, other : ImagefeaturesiftMatrix) -> ImagefeaturesiftMatrix {
+  if self.cols != other.rows { return image_feature_sift_make_matrix(self.rows, other.cols, 0.0) }
+  let result = image_feature_sift_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn image_feature_sift_matrix_trace(m : ImagefeaturesiftMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn ImagefeaturesiftMatrix::trace(self : ImagefeaturesiftMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn image_feature_sift_matrix_det(m : ImagefeaturesiftMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn ImagefeaturesiftMatrix::det(self : ImagefeaturesiftMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn image_feature_sift_matrix_norm(m : ImagefeaturesiftMatrix) -> Double {
+pub fn ImagefeaturesiftMatrix::norm(self : ImagefeaturesiftMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn image_feature_sift_matrix_to_string(m : ImagefeaturesiftMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn ImagefeaturesiftMatrix::to_string(self : ImagefeaturesiftMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn image_feature_sift_vector_zero(dim : Int) -> ImagefeaturesiftVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn image_feature_sift_vector_add(a : ImagefeaturesiftVector, b : ImagefeaturesiftVector) -> ImagefeaturesiftVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn ImagefeaturesiftVector::add(self : ImagefeaturesiftVector, other : ImagefeaturesiftVector) -> ImagefeaturesiftVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn image_feature_sift_vector_sub(a : ImagefeaturesiftVector, b : ImagefeaturesiftVector) -> ImagefeaturesiftVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn ImagefeaturesiftVector::sub(self : ImagefeaturesiftVector, other : ImagefeaturesiftVector) -> ImagefeaturesiftVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn image_feature_sift_vector_scale(v : ImagefeaturesiftVector, s : Double) -> ImagefeaturesiftVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn ImagefeaturesiftVector::scale(self : ImagefeaturesiftVector, s : Double) -> ImagefeaturesiftVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn image_feature_sift_vector_dot(a : ImagefeaturesiftVector, b : ImagefeaturesiftVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn ImagefeaturesiftVector::dot(self : ImagefeaturesiftVector, other : ImagefeaturesiftVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn image_feature_sift_vector_norm(v : ImagefeaturesiftVector) -> Double { @_common.sqrt(image_feature_sift_vector_dot(v, v)) }
+pub fn ImagefeaturesiftVector::norm(self : ImagefeaturesiftVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn image_feature_sift_vector_normalize(v : ImagefeaturesiftVector) -> ImagefeaturesiftVector {
-  let n = image_feature_sift_vector_norm(v)
-  if n < 0.0000001 { v } else { image_feature_sift_vector_scale(v, 1.0 / n) }
+pub fn ImagefeaturesiftVector::normalize(self : ImagefeaturesiftVector) -> ImagefeaturesiftVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn image_feature_sift_vector_dist(a : ImagefeaturesiftVector, b : ImagefeaturesiftVector) -> Double {
-  image_feature_sift_vector_norm(image_feature_sift_vector_sub(a, b))
+pub fn ImagefeaturesiftVector::dist(self : ImagefeaturesiftVector, other : ImagefeaturesiftVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn image_feature_sift_vector_to_string(v : ImagefeaturesiftVector) -> String {
+pub fn ImagefeaturesiftVector::to_string(self : ImagefeaturesiftVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn image_feature_sift_mean(data : Array[Double]) -> Double { @_common.mean(data) }

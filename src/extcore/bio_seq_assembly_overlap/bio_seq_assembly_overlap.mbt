@@ -16,64 +16,64 @@ pub fn bio_seq_assembly_overlap_make_point3(x : Double, y : Double, z : Double) 
   { x, y, z, label: 0 }
 }
 
-pub fn bio_seq_assembly_overlap_point_x(pt : BioseqassemblyoverlapPoint) -> Double { pt.x }
+pub fn BioseqassemblyoverlapPoint::x(self : BioseqassemblyoverlapPoint) -> Double { self.x }
 
-pub fn bio_seq_assembly_overlap_point_y(pt : BioseqassemblyoverlapPoint) -> Double { pt.y }
+pub fn BioseqassemblyoverlapPoint::y(self : BioseqassemblyoverlapPoint) -> Double { self.y }
 
-pub fn bio_seq_assembly_overlap_point_z(pt : BioseqassemblyoverlapPoint) -> Double { pt.z }
+pub fn BioseqassemblyoverlapPoint::z(self : BioseqassemblyoverlapPoint) -> Double { self.z }
 
-pub fn bio_seq_assembly_overlap_point_label(pt : BioseqassemblyoverlapPoint) -> Int { pt.label }
+pub fn BioseqassemblyoverlapPoint::label(self : BioseqassemblyoverlapPoint) -> Int { self.label }
 
-pub fn bio_seq_assembly_overlap_point_dist(a : BioseqassemblyoverlapPoint, b : BioseqassemblyoverlapPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn BioseqassemblyoverlapPoint::dist(self : BioseqassemblyoverlapPoint, other : BioseqassemblyoverlapPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn bio_seq_assembly_overlap_point_add(a : BioseqassemblyoverlapPoint, b : BioseqassemblyoverlapPoint) -> BioseqassemblyoverlapPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn BioseqassemblyoverlapPoint::add(self : BioseqassemblyoverlapPoint, other : BioseqassemblyoverlapPoint) -> BioseqassemblyoverlapPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn bio_seq_assembly_overlap_point_sub(a : BioseqassemblyoverlapPoint, b : BioseqassemblyoverlapPoint) -> BioseqassemblyoverlapPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn BioseqassemblyoverlapPoint::sub(self : BioseqassemblyoverlapPoint, other : BioseqassemblyoverlapPoint) -> BioseqassemblyoverlapPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn bio_seq_assembly_overlap_point_scale(pt : BioseqassemblyoverlapPoint, s : Double) -> BioseqassemblyoverlapPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn BioseqassemblyoverlapPoint::scale(self : BioseqassemblyoverlapPoint, s : Double) -> BioseqassemblyoverlapPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn bio_seq_assembly_overlap_point_dot(a : BioseqassemblyoverlapPoint, b : BioseqassemblyoverlapPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn BioseqassemblyoverlapPoint::dot(self : BioseqassemblyoverlapPoint, other : BioseqassemblyoverlapPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn bio_seq_assembly_overlap_point_cross(a : BioseqassemblyoverlapPoint, b : BioseqassemblyoverlapPoint) -> BioseqassemblyoverlapPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn BioseqassemblyoverlapPoint::cross(self : BioseqassemblyoverlapPoint, other : BioseqassemblyoverlapPoint) -> BioseqassemblyoverlapPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn bio_seq_assembly_overlap_point_norm(pt : BioseqassemblyoverlapPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn BioseqassemblyoverlapPoint::norm(self : BioseqassemblyoverlapPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn bio_seq_assembly_overlap_point_normalize(pt : BioseqassemblyoverlapPoint) -> BioseqassemblyoverlapPoint {
-  let n = bio_seq_assembly_overlap_point_norm(pt)
-  if n < 0.0000001 { pt } else { bio_seq_assembly_overlap_point_scale(pt, 1.0 / n) }
+pub fn BioseqassemblyoverlapPoint::normalize(self : BioseqassemblyoverlapPoint) -> BioseqassemblyoverlapPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn bio_seq_assembly_overlap_point_negate(pt : BioseqassemblyoverlapPoint) -> BioseqassemblyoverlapPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn BioseqassemblyoverlapPoint::negate(self : BioseqassemblyoverlapPoint) -> BioseqassemblyoverlapPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn bio_seq_assembly_overlap_point_mid(a : BioseqassemblyoverlapPoint, b : BioseqassemblyoverlapPoint) -> BioseqassemblyoverlapPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn BioseqassemblyoverlapPoint::mid(self : BioseqassemblyoverlapPoint, other : BioseqassemblyoverlapPoint) -> BioseqassemblyoverlapPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn bio_seq_assembly_overlap_point_lerp(a : BioseqassemblyoverlapPoint, b : BioseqassemblyoverlapPoint, t : Double) -> BioseqassemblyoverlapPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn BioseqassemblyoverlapPoint::lerp(self : BioseqassemblyoverlapPoint, other : BioseqassemblyoverlapPoint, t : Double) -> BioseqassemblyoverlapPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn bio_seq_assembly_overlap_point_to_string(pt : BioseqassemblyoverlapPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn BioseqassemblyoverlapPoint::to_string(self : BioseqassemblyoverlapPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct BioseqassemblyoverlapSeries {
@@ -86,58 +86,58 @@ pub fn bio_seq_assembly_overlap_make_series(vals : Array[Double], name : String)
   { vals, name, meta: 0 }
 }
 
-pub fn bio_seq_assembly_overlap_series_len(s : BioseqassemblyoverlapSeries) -> Int { s.vals.length() }
+pub fn BioseqassemblyoverlapSeries::len(self : BioseqassemblyoverlapSeries) -> Int { self.vals.length() }
 
-pub fn bio_seq_assembly_overlap_series_sum(s : BioseqassemblyoverlapSeries) -> Double { @_common.sum(s.vals) }
+pub fn BioseqassemblyoverlapSeries::sum(self : BioseqassemblyoverlapSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn bio_seq_assembly_overlap_series_mean(s : BioseqassemblyoverlapSeries) -> Double { @_common.mean(s.vals) }
+pub fn BioseqassemblyoverlapSeries::mean(self : BioseqassemblyoverlapSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn bio_seq_assembly_overlap_series_min(s : BioseqassemblyoverlapSeries) -> Double { @_common.min(s.vals) }
+pub fn BioseqassemblyoverlapSeries::min(self : BioseqassemblyoverlapSeries) -> Double { @_common.min(self.vals) }
 
-pub fn bio_seq_assembly_overlap_series_max(s : BioseqassemblyoverlapSeries) -> Double { @_common.max(s.vals) }
+pub fn BioseqassemblyoverlapSeries::max(self : BioseqassemblyoverlapSeries) -> Double { @_common.max(self.vals) }
 
-pub fn bio_seq_assembly_overlap_series_range(s : BioseqassemblyoverlapSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn BioseqassemblyoverlapSeries::range(self : BioseqassemblyoverlapSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn bio_seq_assembly_overlap_series_var(s : BioseqassemblyoverlapSeries) -> Double { @_common.variance(s.vals) }
+pub fn BioseqassemblyoverlapSeries::variance(self : BioseqassemblyoverlapSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn bio_seq_assembly_overlap_series_std(s : BioseqassemblyoverlapSeries) -> Double { @_common.std(s.vals) }
+pub fn BioseqassemblyoverlapSeries::std(self : BioseqassemblyoverlapSeries) -> Double { @_common.std(self.vals) }
 
-pub fn bio_seq_assembly_overlap_series_median(s : BioseqassemblyoverlapSeries) -> Double { @_common.median(s.vals) }
+pub fn BioseqassemblyoverlapSeries::median(self : BioseqassemblyoverlapSeries) -> Double { @_common.median(self.vals) }
 
-pub fn bio_seq_assembly_overlap_series_scale(s : BioseqassemblyoverlapSeries, f : Double) -> BioseqassemblyoverlapSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn BioseqassemblyoverlapSeries::scale(self : BioseqassemblyoverlapSeries, f : Double) -> BioseqassemblyoverlapSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn bio_seq_assembly_overlap_series_add(a : BioseqassemblyoverlapSeries, b : BioseqassemblyoverlapSeries) -> BioseqassemblyoverlapSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn BioseqassemblyoverlapSeries::add(self : BioseqassemblyoverlapSeries, other : BioseqassemblyoverlapSeries) -> BioseqassemblyoverlapSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn bio_seq_assembly_overlap_series_sub(a : BioseqassemblyoverlapSeries, b : BioseqassemblyoverlapSeries) -> BioseqassemblyoverlapSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn BioseqassemblyoverlapSeries::sub(self : BioseqassemblyoverlapSeries, other : BioseqassemblyoverlapSeries) -> BioseqassemblyoverlapSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn bio_seq_assembly_overlap_series_normalize(s : BioseqassemblyoverlapSeries) -> BioseqassemblyoverlapSeries {
-  let mn = bio_seq_assembly_overlap_series_min(s)
-  let mx = bio_seq_assembly_overlap_series_max(s)
+pub fn BioseqassemblyoverlapSeries::normalize(self : BioseqassemblyoverlapSeries) -> BioseqassemblyoverlapSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn bio_seq_assembly_overlap_series_cumsum(s : BioseqassemblyoverlapSeries) -> BioseqassemblyoverlapSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn BioseqassemblyoverlapSeries::cumsum(self : BioseqassemblyoverlapSeries) -> BioseqassemblyoverlapSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn bio_seq_assembly_overlap_series_to_string(s : BioseqassemblyoverlapSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn BioseqassemblyoverlapSeries::to_string(self : BioseqassemblyoverlapSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn bio_seq_assembly_overlap_matrix_identity(n : Int) -> Bioseqassemblyoverla
   m
 }
 
-pub fn bio_seq_assembly_overlap_matrix_get(m : BioseqassemblyoverlapMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn BioseqassemblyoverlapMatrix::get(self : BioseqassemblyoverlapMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn bio_seq_assembly_overlap_matrix_transpose(m : BioseqassemblyoverlapMatrix) -> BioseqassemblyoverlapMatrix {
-  let result = bio_seq_assembly_overlap_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn BioseqassemblyoverlapMatrix::transpose(self : BioseqassemblyoverlapMatrix) -> BioseqassemblyoverlapMatrix {
+  let result = bio_seq_assembly_overlap_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn bio_seq_assembly_overlap_matrix_add(a : BioseqassemblyoverlapMatrix, b : BioseqassemblyoverlapMatrix) -> BioseqassemblyoverlapMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = bio_seq_assembly_overlap_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn BioseqassemblyoverlapMatrix::add(self : BioseqassemblyoverlapMatrix, other : BioseqassemblyoverlapMatrix) -> BioseqassemblyoverlapMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = bio_seq_assembly_overlap_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn bio_seq_assembly_overlap_matrix_scale(m : BioseqassemblyoverlapMatrix, s : Double) -> BioseqassemblyoverlapMatrix {
-  let result = bio_seq_assembly_overlap_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn BioseqassemblyoverlapMatrix::scale(self : BioseqassemblyoverlapMatrix, s : Double) -> BioseqassemblyoverlapMatrix {
+  let result = bio_seq_assembly_overlap_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn bio_seq_assembly_overlap_matrix_multiply(a : BioseqassemblyoverlapMatrix, b : BioseqassemblyoverlapMatrix) -> BioseqassemblyoverlapMatrix {
-  if a.cols != b.rows { return bio_seq_assembly_overlap_make_matrix(a.rows, b.cols, 0.0) }
-  let result = bio_seq_assembly_overlap_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn BioseqassemblyoverlapMatrix::multiply(self : BioseqassemblyoverlapMatrix, other : BioseqassemblyoverlapMatrix) -> BioseqassemblyoverlapMatrix {
+  if self.cols != other.rows { return bio_seq_assembly_overlap_make_matrix(self.rows, other.cols, 0.0) }
+  let result = bio_seq_assembly_overlap_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn bio_seq_assembly_overlap_matrix_trace(m : BioseqassemblyoverlapMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn BioseqassemblyoverlapMatrix::trace(self : BioseqassemblyoverlapMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn bio_seq_assembly_overlap_matrix_det(m : BioseqassemblyoverlapMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn BioseqassemblyoverlapMatrix::det(self : BioseqassemblyoverlapMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn bio_seq_assembly_overlap_matrix_norm(m : BioseqassemblyoverlapMatrix) -> Double {
+pub fn BioseqassemblyoverlapMatrix::norm(self : BioseqassemblyoverlapMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn bio_seq_assembly_overlap_matrix_to_string(m : BioseqassemblyoverlapMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn BioseqassemblyoverlapMatrix::to_string(self : BioseqassemblyoverlapMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn bio_seq_assembly_overlap_vector_zero(dim : Int) -> BioseqassemblyoverlapV
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn bio_seq_assembly_overlap_vector_add(a : BioseqassemblyoverlapVector, b : BioseqassemblyoverlapVector) -> BioseqassemblyoverlapVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn BioseqassemblyoverlapVector::add(self : BioseqassemblyoverlapVector, other : BioseqassemblyoverlapVector) -> BioseqassemblyoverlapVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn bio_seq_assembly_overlap_vector_sub(a : BioseqassemblyoverlapVector, b : BioseqassemblyoverlapVector) -> BioseqassemblyoverlapVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn BioseqassemblyoverlapVector::sub(self : BioseqassemblyoverlapVector, other : BioseqassemblyoverlapVector) -> BioseqassemblyoverlapVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn bio_seq_assembly_overlap_vector_scale(v : BioseqassemblyoverlapVector, s : Double) -> BioseqassemblyoverlapVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn BioseqassemblyoverlapVector::scale(self : BioseqassemblyoverlapVector, s : Double) -> BioseqassemblyoverlapVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn bio_seq_assembly_overlap_vector_dot(a : BioseqassemblyoverlapVector, b : BioseqassemblyoverlapVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn BioseqassemblyoverlapVector::dot(self : BioseqassemblyoverlapVector, other : BioseqassemblyoverlapVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn bio_seq_assembly_overlap_vector_norm(v : BioseqassemblyoverlapVector) -> Double { @_common.sqrt(bio_seq_assembly_overlap_vector_dot(v, v)) }
+pub fn BioseqassemblyoverlapVector::norm(self : BioseqassemblyoverlapVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn bio_seq_assembly_overlap_vector_normalize(v : BioseqassemblyoverlapVector) -> BioseqassemblyoverlapVector {
-  let n = bio_seq_assembly_overlap_vector_norm(v)
-  if n < 0.0000001 { v } else { bio_seq_assembly_overlap_vector_scale(v, 1.0 / n) }
+pub fn BioseqassemblyoverlapVector::normalize(self : BioseqassemblyoverlapVector) -> BioseqassemblyoverlapVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn bio_seq_assembly_overlap_vector_dist(a : BioseqassemblyoverlapVector, b : BioseqassemblyoverlapVector) -> Double {
-  bio_seq_assembly_overlap_vector_norm(bio_seq_assembly_overlap_vector_sub(a, b))
+pub fn BioseqassemblyoverlapVector::dist(self : BioseqassemblyoverlapVector, other : BioseqassemblyoverlapVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn bio_seq_assembly_overlap_vector_to_string(v : BioseqassemblyoverlapVector) -> String {
+pub fn BioseqassemblyoverlapVector::to_string(self : BioseqassemblyoverlapVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn bio_seq_assembly_overlap_mean(data : Array[Double]) -> Double { @_common.mean(data) }

@@ -16,64 +16,64 @@ pub fn math_special_gamma_make_point3(x : Double, y : Double, z : Double) -> Mat
   { x, y, z, label: 0 }
 }
 
-pub fn math_special_gamma_point_x(pt : MathspecialgammaPoint) -> Double { pt.x }
+pub fn MathspecialgammaPoint::x(self : MathspecialgammaPoint) -> Double { self.x }
 
-pub fn math_special_gamma_point_y(pt : MathspecialgammaPoint) -> Double { pt.y }
+pub fn MathspecialgammaPoint::y(self : MathspecialgammaPoint) -> Double { self.y }
 
-pub fn math_special_gamma_point_z(pt : MathspecialgammaPoint) -> Double { pt.z }
+pub fn MathspecialgammaPoint::z(self : MathspecialgammaPoint) -> Double { self.z }
 
-pub fn math_special_gamma_point_label(pt : MathspecialgammaPoint) -> Int { pt.label }
+pub fn MathspecialgammaPoint::label(self : MathspecialgammaPoint) -> Int { self.label }
 
-pub fn math_special_gamma_point_dist(a : MathspecialgammaPoint, b : MathspecialgammaPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn MathspecialgammaPoint::dist(self : MathspecialgammaPoint, other : MathspecialgammaPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn math_special_gamma_point_add(a : MathspecialgammaPoint, b : MathspecialgammaPoint) -> MathspecialgammaPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn MathspecialgammaPoint::add(self : MathspecialgammaPoint, other : MathspecialgammaPoint) -> MathspecialgammaPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn math_special_gamma_point_sub(a : MathspecialgammaPoint, b : MathspecialgammaPoint) -> MathspecialgammaPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn MathspecialgammaPoint::sub(self : MathspecialgammaPoint, other : MathspecialgammaPoint) -> MathspecialgammaPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn math_special_gamma_point_scale(pt : MathspecialgammaPoint, s : Double) -> MathspecialgammaPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn MathspecialgammaPoint::scale(self : MathspecialgammaPoint, s : Double) -> MathspecialgammaPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn math_special_gamma_point_dot(a : MathspecialgammaPoint, b : MathspecialgammaPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn MathspecialgammaPoint::dot(self : MathspecialgammaPoint, other : MathspecialgammaPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn math_special_gamma_point_cross(a : MathspecialgammaPoint, b : MathspecialgammaPoint) -> MathspecialgammaPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn MathspecialgammaPoint::cross(self : MathspecialgammaPoint, other : MathspecialgammaPoint) -> MathspecialgammaPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn math_special_gamma_point_norm(pt : MathspecialgammaPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn MathspecialgammaPoint::norm(self : MathspecialgammaPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn math_special_gamma_point_normalize(pt : MathspecialgammaPoint) -> MathspecialgammaPoint {
-  let n = math_special_gamma_point_norm(pt)
-  if n < 0.0000001 { pt } else { math_special_gamma_point_scale(pt, 1.0 / n) }
+pub fn MathspecialgammaPoint::normalize(self : MathspecialgammaPoint) -> MathspecialgammaPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn math_special_gamma_point_negate(pt : MathspecialgammaPoint) -> MathspecialgammaPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn MathspecialgammaPoint::negate(self : MathspecialgammaPoint) -> MathspecialgammaPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn math_special_gamma_point_mid(a : MathspecialgammaPoint, b : MathspecialgammaPoint) -> MathspecialgammaPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn MathspecialgammaPoint::mid(self : MathspecialgammaPoint, other : MathspecialgammaPoint) -> MathspecialgammaPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn math_special_gamma_point_lerp(a : MathspecialgammaPoint, b : MathspecialgammaPoint, t : Double) -> MathspecialgammaPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn MathspecialgammaPoint::lerp(self : MathspecialgammaPoint, other : MathspecialgammaPoint, t : Double) -> MathspecialgammaPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn math_special_gamma_point_to_string(pt : MathspecialgammaPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn MathspecialgammaPoint::to_string(self : MathspecialgammaPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct MathspecialgammaSeries {
@@ -86,58 +86,58 @@ pub fn math_special_gamma_make_series(vals : Array[Double], name : String) -> Ma
   { vals, name, meta: 0 }
 }
 
-pub fn math_special_gamma_series_len(s : MathspecialgammaSeries) -> Int { s.vals.length() }
+pub fn MathspecialgammaSeries::len(self : MathspecialgammaSeries) -> Int { self.vals.length() }
 
-pub fn math_special_gamma_series_sum(s : MathspecialgammaSeries) -> Double { @_common.sum(s.vals) }
+pub fn MathspecialgammaSeries::sum(self : MathspecialgammaSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn math_special_gamma_series_mean(s : MathspecialgammaSeries) -> Double { @_common.mean(s.vals) }
+pub fn MathspecialgammaSeries::mean(self : MathspecialgammaSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn math_special_gamma_series_min(s : MathspecialgammaSeries) -> Double { @_common.min(s.vals) }
+pub fn MathspecialgammaSeries::min(self : MathspecialgammaSeries) -> Double { @_common.min(self.vals) }
 
-pub fn math_special_gamma_series_max(s : MathspecialgammaSeries) -> Double { @_common.max(s.vals) }
+pub fn MathspecialgammaSeries::max(self : MathspecialgammaSeries) -> Double { @_common.max(self.vals) }
 
-pub fn math_special_gamma_series_range(s : MathspecialgammaSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn MathspecialgammaSeries::range(self : MathspecialgammaSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn math_special_gamma_series_var(s : MathspecialgammaSeries) -> Double { @_common.variance(s.vals) }
+pub fn MathspecialgammaSeries::variance(self : MathspecialgammaSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn math_special_gamma_series_std(s : MathspecialgammaSeries) -> Double { @_common.std(s.vals) }
+pub fn MathspecialgammaSeries::std(self : MathspecialgammaSeries) -> Double { @_common.std(self.vals) }
 
-pub fn math_special_gamma_series_median(s : MathspecialgammaSeries) -> Double { @_common.median(s.vals) }
+pub fn MathspecialgammaSeries::median(self : MathspecialgammaSeries) -> Double { @_common.median(self.vals) }
 
-pub fn math_special_gamma_series_scale(s : MathspecialgammaSeries, f : Double) -> MathspecialgammaSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn MathspecialgammaSeries::scale(self : MathspecialgammaSeries, f : Double) -> MathspecialgammaSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn math_special_gamma_series_add(a : MathspecialgammaSeries, b : MathspecialgammaSeries) -> MathspecialgammaSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn MathspecialgammaSeries::add(self : MathspecialgammaSeries, other : MathspecialgammaSeries) -> MathspecialgammaSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn math_special_gamma_series_sub(a : MathspecialgammaSeries, b : MathspecialgammaSeries) -> MathspecialgammaSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn MathspecialgammaSeries::sub(self : MathspecialgammaSeries, other : MathspecialgammaSeries) -> MathspecialgammaSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn math_special_gamma_series_normalize(s : MathspecialgammaSeries) -> MathspecialgammaSeries {
-  let mn = math_special_gamma_series_min(s)
-  let mx = math_special_gamma_series_max(s)
+pub fn MathspecialgammaSeries::normalize(self : MathspecialgammaSeries) -> MathspecialgammaSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn math_special_gamma_series_cumsum(s : MathspecialgammaSeries) -> MathspecialgammaSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn MathspecialgammaSeries::cumsum(self : MathspecialgammaSeries) -> MathspecialgammaSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn math_special_gamma_series_to_string(s : MathspecialgammaSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn MathspecialgammaSeries::to_string(self : MathspecialgammaSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn math_special_gamma_matrix_identity(n : Int) -> MathspecialgammaMatrix {
   m
 }
 
-pub fn math_special_gamma_matrix_get(m : MathspecialgammaMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn MathspecialgammaMatrix::get(self : MathspecialgammaMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn math_special_gamma_matrix_transpose(m : MathspecialgammaMatrix) -> MathspecialgammaMatrix {
-  let result = math_special_gamma_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn MathspecialgammaMatrix::transpose(self : MathspecialgammaMatrix) -> MathspecialgammaMatrix {
+  let result = math_special_gamma_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn math_special_gamma_matrix_add(a : MathspecialgammaMatrix, b : MathspecialgammaMatrix) -> MathspecialgammaMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = math_special_gamma_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn MathspecialgammaMatrix::add(self : MathspecialgammaMatrix, other : MathspecialgammaMatrix) -> MathspecialgammaMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = math_special_gamma_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn math_special_gamma_matrix_scale(m : MathspecialgammaMatrix, s : Double) -> MathspecialgammaMatrix {
-  let result = math_special_gamma_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn MathspecialgammaMatrix::scale(self : MathspecialgammaMatrix, s : Double) -> MathspecialgammaMatrix {
+  let result = math_special_gamma_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn math_special_gamma_matrix_multiply(a : MathspecialgammaMatrix, b : MathspecialgammaMatrix) -> MathspecialgammaMatrix {
-  if a.cols != b.rows { return math_special_gamma_make_matrix(a.rows, b.cols, 0.0) }
-  let result = math_special_gamma_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn MathspecialgammaMatrix::multiply(self : MathspecialgammaMatrix, other : MathspecialgammaMatrix) -> MathspecialgammaMatrix {
+  if self.cols != other.rows { return math_special_gamma_make_matrix(self.rows, other.cols, 0.0) }
+  let result = math_special_gamma_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn math_special_gamma_matrix_trace(m : MathspecialgammaMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn MathspecialgammaMatrix::trace(self : MathspecialgammaMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn math_special_gamma_matrix_det(m : MathspecialgammaMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn MathspecialgammaMatrix::det(self : MathspecialgammaMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn math_special_gamma_matrix_norm(m : MathspecialgammaMatrix) -> Double {
+pub fn MathspecialgammaMatrix::norm(self : MathspecialgammaMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn math_special_gamma_matrix_to_string(m : MathspecialgammaMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn MathspecialgammaMatrix::to_string(self : MathspecialgammaMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn math_special_gamma_vector_zero(dim : Int) -> MathspecialgammaVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn math_special_gamma_vector_add(a : MathspecialgammaVector, b : MathspecialgammaVector) -> MathspecialgammaVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn MathspecialgammaVector::add(self : MathspecialgammaVector, other : MathspecialgammaVector) -> MathspecialgammaVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn math_special_gamma_vector_sub(a : MathspecialgammaVector, b : MathspecialgammaVector) -> MathspecialgammaVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn MathspecialgammaVector::sub(self : MathspecialgammaVector, other : MathspecialgammaVector) -> MathspecialgammaVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn math_special_gamma_vector_scale(v : MathspecialgammaVector, s : Double) -> MathspecialgammaVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn MathspecialgammaVector::scale(self : MathspecialgammaVector, s : Double) -> MathspecialgammaVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn math_special_gamma_vector_dot(a : MathspecialgammaVector, b : MathspecialgammaVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn MathspecialgammaVector::dot(self : MathspecialgammaVector, other : MathspecialgammaVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn math_special_gamma_vector_norm(v : MathspecialgammaVector) -> Double { @_common.sqrt(math_special_gamma_vector_dot(v, v)) }
+pub fn MathspecialgammaVector::norm(self : MathspecialgammaVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn math_special_gamma_vector_normalize(v : MathspecialgammaVector) -> MathspecialgammaVector {
-  let n = math_special_gamma_vector_norm(v)
-  if n < 0.0000001 { v } else { math_special_gamma_vector_scale(v, 1.0 / n) }
+pub fn MathspecialgammaVector::normalize(self : MathspecialgammaVector) -> MathspecialgammaVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn math_special_gamma_vector_dist(a : MathspecialgammaVector, b : MathspecialgammaVector) -> Double {
-  math_special_gamma_vector_norm(math_special_gamma_vector_sub(a, b))
+pub fn MathspecialgammaVector::dist(self : MathspecialgammaVector, other : MathspecialgammaVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn math_special_gamma_vector_to_string(v : MathspecialgammaVector) -> String {
+pub fn MathspecialgammaVector::to_string(self : MathspecialgammaVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn math_special_gamma_mean(data : Array[Double]) -> Double { @_common.mean(data) }

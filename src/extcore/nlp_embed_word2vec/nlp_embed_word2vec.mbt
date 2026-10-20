@@ -16,64 +16,64 @@ pub fn nlp_embed_word2vec_make_point3(x : Double, y : Double, z : Double) -> Nlp
   { x, y, z, label: 0 }
 }
 
-pub fn nlp_embed_word2vec_point_x(pt : Nlpembedword2vecPoint) -> Double { pt.x }
+pub fn Nlpembedword2vecPoint::x(self : Nlpembedword2vecPoint) -> Double { self.x }
 
-pub fn nlp_embed_word2vec_point_y(pt : Nlpembedword2vecPoint) -> Double { pt.y }
+pub fn Nlpembedword2vecPoint::y(self : Nlpembedword2vecPoint) -> Double { self.y }
 
-pub fn nlp_embed_word2vec_point_z(pt : Nlpembedword2vecPoint) -> Double { pt.z }
+pub fn Nlpembedword2vecPoint::z(self : Nlpembedword2vecPoint) -> Double { self.z }
 
-pub fn nlp_embed_word2vec_point_label(pt : Nlpembedword2vecPoint) -> Int { pt.label }
+pub fn Nlpembedword2vecPoint::label(self : Nlpembedword2vecPoint) -> Int { self.label }
 
-pub fn nlp_embed_word2vec_point_dist(a : Nlpembedword2vecPoint, b : Nlpembedword2vecPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn Nlpembedword2vecPoint::dist(self : Nlpembedword2vecPoint, other : Nlpembedword2vecPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn nlp_embed_word2vec_point_add(a : Nlpembedword2vecPoint, b : Nlpembedword2vecPoint) -> Nlpembedword2vecPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn Nlpembedword2vecPoint::add(self : Nlpembedword2vecPoint, other : Nlpembedword2vecPoint) -> Nlpembedword2vecPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn nlp_embed_word2vec_point_sub(a : Nlpembedword2vecPoint, b : Nlpembedword2vecPoint) -> Nlpembedword2vecPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn Nlpembedword2vecPoint::sub(self : Nlpembedword2vecPoint, other : Nlpembedword2vecPoint) -> Nlpembedword2vecPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn nlp_embed_word2vec_point_scale(pt : Nlpembedword2vecPoint, s : Double) -> Nlpembedword2vecPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn Nlpembedword2vecPoint::scale(self : Nlpembedword2vecPoint, s : Double) -> Nlpembedword2vecPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn nlp_embed_word2vec_point_dot(a : Nlpembedword2vecPoint, b : Nlpembedword2vecPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn Nlpembedword2vecPoint::dot(self : Nlpembedword2vecPoint, other : Nlpembedword2vecPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn nlp_embed_word2vec_point_cross(a : Nlpembedword2vecPoint, b : Nlpembedword2vecPoint) -> Nlpembedword2vecPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn Nlpembedword2vecPoint::cross(self : Nlpembedword2vecPoint, other : Nlpembedword2vecPoint) -> Nlpembedword2vecPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn nlp_embed_word2vec_point_norm(pt : Nlpembedword2vecPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn Nlpembedword2vecPoint::norm(self : Nlpembedword2vecPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn nlp_embed_word2vec_point_normalize(pt : Nlpembedword2vecPoint) -> Nlpembedword2vecPoint {
-  let n = nlp_embed_word2vec_point_norm(pt)
-  if n < 0.0000001 { pt } else { nlp_embed_word2vec_point_scale(pt, 1.0 / n) }
+pub fn Nlpembedword2vecPoint::normalize(self : Nlpembedword2vecPoint) -> Nlpembedword2vecPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn nlp_embed_word2vec_point_negate(pt : Nlpembedword2vecPoint) -> Nlpembedword2vecPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn Nlpembedword2vecPoint::negate(self : Nlpembedword2vecPoint) -> Nlpembedword2vecPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn nlp_embed_word2vec_point_mid(a : Nlpembedword2vecPoint, b : Nlpembedword2vecPoint) -> Nlpembedword2vecPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn Nlpembedword2vecPoint::mid(self : Nlpembedword2vecPoint, other : Nlpembedword2vecPoint) -> Nlpembedword2vecPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn nlp_embed_word2vec_point_lerp(a : Nlpembedword2vecPoint, b : Nlpembedword2vecPoint, t : Double) -> Nlpembedword2vecPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn Nlpembedword2vecPoint::lerp(self : Nlpembedword2vecPoint, other : Nlpembedword2vecPoint, t : Double) -> Nlpembedword2vecPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn nlp_embed_word2vec_point_to_string(pt : Nlpembedword2vecPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn Nlpembedword2vecPoint::to_string(self : Nlpembedword2vecPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct Nlpembedword2vecSeries {
@@ -86,58 +86,58 @@ pub fn nlp_embed_word2vec_make_series(vals : Array[Double], name : String) -> Nl
   { vals, name, meta: 0 }
 }
 
-pub fn nlp_embed_word2vec_series_len(s : Nlpembedword2vecSeries) -> Int { s.vals.length() }
+pub fn Nlpembedword2vecSeries::len(self : Nlpembedword2vecSeries) -> Int { self.vals.length() }
 
-pub fn nlp_embed_word2vec_series_sum(s : Nlpembedword2vecSeries) -> Double { @_common.sum(s.vals) }
+pub fn Nlpembedword2vecSeries::sum(self : Nlpembedword2vecSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn nlp_embed_word2vec_series_mean(s : Nlpembedword2vecSeries) -> Double { @_common.mean(s.vals) }
+pub fn Nlpembedword2vecSeries::mean(self : Nlpembedword2vecSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn nlp_embed_word2vec_series_min(s : Nlpembedword2vecSeries) -> Double { @_common.min(s.vals) }
+pub fn Nlpembedword2vecSeries::min(self : Nlpembedword2vecSeries) -> Double { @_common.min(self.vals) }
 
-pub fn nlp_embed_word2vec_series_max(s : Nlpembedword2vecSeries) -> Double { @_common.max(s.vals) }
+pub fn Nlpembedword2vecSeries::max(self : Nlpembedword2vecSeries) -> Double { @_common.max(self.vals) }
 
-pub fn nlp_embed_word2vec_series_range(s : Nlpembedword2vecSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn Nlpembedword2vecSeries::range(self : Nlpembedword2vecSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn nlp_embed_word2vec_series_var(s : Nlpembedword2vecSeries) -> Double { @_common.variance(s.vals) }
+pub fn Nlpembedword2vecSeries::variance(self : Nlpembedword2vecSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn nlp_embed_word2vec_series_std(s : Nlpembedword2vecSeries) -> Double { @_common.std(s.vals) }
+pub fn Nlpembedword2vecSeries::std(self : Nlpembedword2vecSeries) -> Double { @_common.std(self.vals) }
 
-pub fn nlp_embed_word2vec_series_median(s : Nlpembedword2vecSeries) -> Double { @_common.median(s.vals) }
+pub fn Nlpembedword2vecSeries::median(self : Nlpembedword2vecSeries) -> Double { @_common.median(self.vals) }
 
-pub fn nlp_embed_word2vec_series_scale(s : Nlpembedword2vecSeries, f : Double) -> Nlpembedword2vecSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn Nlpembedword2vecSeries::scale(self : Nlpembedword2vecSeries, f : Double) -> Nlpembedword2vecSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn nlp_embed_word2vec_series_add(a : Nlpembedword2vecSeries, b : Nlpembedword2vecSeries) -> Nlpembedword2vecSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn Nlpembedword2vecSeries::add(self : Nlpembedword2vecSeries, other : Nlpembedword2vecSeries) -> Nlpembedword2vecSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn nlp_embed_word2vec_series_sub(a : Nlpembedword2vecSeries, b : Nlpembedword2vecSeries) -> Nlpembedword2vecSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn Nlpembedword2vecSeries::sub(self : Nlpembedword2vecSeries, other : Nlpembedword2vecSeries) -> Nlpembedword2vecSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn nlp_embed_word2vec_series_normalize(s : Nlpembedword2vecSeries) -> Nlpembedword2vecSeries {
-  let mn = nlp_embed_word2vec_series_min(s)
-  let mx = nlp_embed_word2vec_series_max(s)
+pub fn Nlpembedword2vecSeries::normalize(self : Nlpembedword2vecSeries) -> Nlpembedword2vecSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn nlp_embed_word2vec_series_cumsum(s : Nlpembedword2vecSeries) -> Nlpembedword2vecSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn Nlpembedword2vecSeries::cumsum(self : Nlpembedword2vecSeries) -> Nlpembedword2vecSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn nlp_embed_word2vec_series_to_string(s : Nlpembedword2vecSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn Nlpembedword2vecSeries::to_string(self : Nlpembedword2vecSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn nlp_embed_word2vec_matrix_identity(n : Int) -> Nlpembedword2vecMatrix {
   m
 }
 
-pub fn nlp_embed_word2vec_matrix_get(m : Nlpembedword2vecMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn Nlpembedword2vecMatrix::get(self : Nlpembedword2vecMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn nlp_embed_word2vec_matrix_transpose(m : Nlpembedword2vecMatrix) -> Nlpembedword2vecMatrix {
-  let result = nlp_embed_word2vec_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn Nlpembedword2vecMatrix::transpose(self : Nlpembedword2vecMatrix) -> Nlpembedword2vecMatrix {
+  let result = nlp_embed_word2vec_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn nlp_embed_word2vec_matrix_add(a : Nlpembedword2vecMatrix, b : Nlpembedword2vecMatrix) -> Nlpembedword2vecMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = nlp_embed_word2vec_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn Nlpembedword2vecMatrix::add(self : Nlpembedword2vecMatrix, other : Nlpembedword2vecMatrix) -> Nlpembedword2vecMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = nlp_embed_word2vec_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn nlp_embed_word2vec_matrix_scale(m : Nlpembedword2vecMatrix, s : Double) -> Nlpembedword2vecMatrix {
-  let result = nlp_embed_word2vec_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn Nlpembedword2vecMatrix::scale(self : Nlpembedword2vecMatrix, s : Double) -> Nlpembedword2vecMatrix {
+  let result = nlp_embed_word2vec_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn nlp_embed_word2vec_matrix_multiply(a : Nlpembedword2vecMatrix, b : Nlpembedword2vecMatrix) -> Nlpembedword2vecMatrix {
-  if a.cols != b.rows { return nlp_embed_word2vec_make_matrix(a.rows, b.cols, 0.0) }
-  let result = nlp_embed_word2vec_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn Nlpembedword2vecMatrix::multiply(self : Nlpembedword2vecMatrix, other : Nlpembedword2vecMatrix) -> Nlpembedword2vecMatrix {
+  if self.cols != other.rows { return nlp_embed_word2vec_make_matrix(self.rows, other.cols, 0.0) }
+  let result = nlp_embed_word2vec_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn nlp_embed_word2vec_matrix_trace(m : Nlpembedword2vecMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn Nlpembedword2vecMatrix::trace(self : Nlpembedword2vecMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn nlp_embed_word2vec_matrix_det(m : Nlpembedword2vecMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn Nlpembedword2vecMatrix::det(self : Nlpembedword2vecMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn nlp_embed_word2vec_matrix_norm(m : Nlpembedword2vecMatrix) -> Double {
+pub fn Nlpembedword2vecMatrix::norm(self : Nlpembedword2vecMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn nlp_embed_word2vec_matrix_to_string(m : Nlpembedword2vecMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn Nlpembedword2vecMatrix::to_string(self : Nlpembedword2vecMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn nlp_embed_word2vec_vector_zero(dim : Int) -> Nlpembedword2vecVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn nlp_embed_word2vec_vector_add(a : Nlpembedword2vecVector, b : Nlpembedword2vecVector) -> Nlpembedword2vecVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn Nlpembedword2vecVector::add(self : Nlpembedword2vecVector, other : Nlpembedword2vecVector) -> Nlpembedword2vecVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn nlp_embed_word2vec_vector_sub(a : Nlpembedword2vecVector, b : Nlpembedword2vecVector) -> Nlpembedword2vecVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn Nlpembedword2vecVector::sub(self : Nlpembedword2vecVector, other : Nlpembedword2vecVector) -> Nlpembedword2vecVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn nlp_embed_word2vec_vector_scale(v : Nlpembedword2vecVector, s : Double) -> Nlpembedword2vecVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn Nlpembedword2vecVector::scale(self : Nlpembedword2vecVector, s : Double) -> Nlpembedword2vecVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn nlp_embed_word2vec_vector_dot(a : Nlpembedword2vecVector, b : Nlpembedword2vecVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn Nlpembedword2vecVector::dot(self : Nlpembedword2vecVector, other : Nlpembedword2vecVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn nlp_embed_word2vec_vector_norm(v : Nlpembedword2vecVector) -> Double { @_common.sqrt(nlp_embed_word2vec_vector_dot(v, v)) }
+pub fn Nlpembedword2vecVector::norm(self : Nlpembedword2vecVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn nlp_embed_word2vec_vector_normalize(v : Nlpembedword2vecVector) -> Nlpembedword2vecVector {
-  let n = nlp_embed_word2vec_vector_norm(v)
-  if n < 0.0000001 { v } else { nlp_embed_word2vec_vector_scale(v, 1.0 / n) }
+pub fn Nlpembedword2vecVector::normalize(self : Nlpembedword2vecVector) -> Nlpembedword2vecVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn nlp_embed_word2vec_vector_dist(a : Nlpembedword2vecVector, b : Nlpembedword2vecVector) -> Double {
-  nlp_embed_word2vec_vector_norm(nlp_embed_word2vec_vector_sub(a, b))
+pub fn Nlpembedword2vecVector::dist(self : Nlpembedword2vecVector, other : Nlpembedword2vecVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn nlp_embed_word2vec_vector_to_string(v : Nlpembedword2vecVector) -> String {
+pub fn Nlpembedword2vecVector::to_string(self : Nlpembedword2vecVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn nlp_embed_word2vec_mean(data : Array[Double]) -> Double { @_common.mean(data) }

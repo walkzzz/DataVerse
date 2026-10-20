@@ -16,64 +16,64 @@ pub fn opt_convex_quasi_newton_make_point3(x : Double, y : Double, z : Double) -
   { x, y, z, label: 0 }
 }
 
-pub fn opt_convex_quasi_newton_point_x(pt : OptconvexquasinewtonPoint) -> Double { pt.x }
+pub fn OptconvexquasinewtonPoint::x(self : OptconvexquasinewtonPoint) -> Double { self.x }
 
-pub fn opt_convex_quasi_newton_point_y(pt : OptconvexquasinewtonPoint) -> Double { pt.y }
+pub fn OptconvexquasinewtonPoint::y(self : OptconvexquasinewtonPoint) -> Double { self.y }
 
-pub fn opt_convex_quasi_newton_point_z(pt : OptconvexquasinewtonPoint) -> Double { pt.z }
+pub fn OptconvexquasinewtonPoint::z(self : OptconvexquasinewtonPoint) -> Double { self.z }
 
-pub fn opt_convex_quasi_newton_point_label(pt : OptconvexquasinewtonPoint) -> Int { pt.label }
+pub fn OptconvexquasinewtonPoint::label(self : OptconvexquasinewtonPoint) -> Int { self.label }
 
-pub fn opt_convex_quasi_newton_point_dist(a : OptconvexquasinewtonPoint, b : OptconvexquasinewtonPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn OptconvexquasinewtonPoint::dist(self : OptconvexquasinewtonPoint, other : OptconvexquasinewtonPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn opt_convex_quasi_newton_point_add(a : OptconvexquasinewtonPoint, b : OptconvexquasinewtonPoint) -> OptconvexquasinewtonPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn OptconvexquasinewtonPoint::add(self : OptconvexquasinewtonPoint, other : OptconvexquasinewtonPoint) -> OptconvexquasinewtonPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn opt_convex_quasi_newton_point_sub(a : OptconvexquasinewtonPoint, b : OptconvexquasinewtonPoint) -> OptconvexquasinewtonPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn OptconvexquasinewtonPoint::sub(self : OptconvexquasinewtonPoint, other : OptconvexquasinewtonPoint) -> OptconvexquasinewtonPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn opt_convex_quasi_newton_point_scale(pt : OptconvexquasinewtonPoint, s : Double) -> OptconvexquasinewtonPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn OptconvexquasinewtonPoint::scale(self : OptconvexquasinewtonPoint, s : Double) -> OptconvexquasinewtonPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn opt_convex_quasi_newton_point_dot(a : OptconvexquasinewtonPoint, b : OptconvexquasinewtonPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn OptconvexquasinewtonPoint::dot(self : OptconvexquasinewtonPoint, other : OptconvexquasinewtonPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn opt_convex_quasi_newton_point_cross(a : OptconvexquasinewtonPoint, b : OptconvexquasinewtonPoint) -> OptconvexquasinewtonPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn OptconvexquasinewtonPoint::cross(self : OptconvexquasinewtonPoint, other : OptconvexquasinewtonPoint) -> OptconvexquasinewtonPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn opt_convex_quasi_newton_point_norm(pt : OptconvexquasinewtonPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn OptconvexquasinewtonPoint::norm(self : OptconvexquasinewtonPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn opt_convex_quasi_newton_point_normalize(pt : OptconvexquasinewtonPoint) -> OptconvexquasinewtonPoint {
-  let n = opt_convex_quasi_newton_point_norm(pt)
-  if n < 0.0000001 { pt } else { opt_convex_quasi_newton_point_scale(pt, 1.0 / n) }
+pub fn OptconvexquasinewtonPoint::normalize(self : OptconvexquasinewtonPoint) -> OptconvexquasinewtonPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn opt_convex_quasi_newton_point_negate(pt : OptconvexquasinewtonPoint) -> OptconvexquasinewtonPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn OptconvexquasinewtonPoint::negate(self : OptconvexquasinewtonPoint) -> OptconvexquasinewtonPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn opt_convex_quasi_newton_point_mid(a : OptconvexquasinewtonPoint, b : OptconvexquasinewtonPoint) -> OptconvexquasinewtonPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn OptconvexquasinewtonPoint::mid(self : OptconvexquasinewtonPoint, other : OptconvexquasinewtonPoint) -> OptconvexquasinewtonPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn opt_convex_quasi_newton_point_lerp(a : OptconvexquasinewtonPoint, b : OptconvexquasinewtonPoint, t : Double) -> OptconvexquasinewtonPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn OptconvexquasinewtonPoint::lerp(self : OptconvexquasinewtonPoint, other : OptconvexquasinewtonPoint, t : Double) -> OptconvexquasinewtonPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn opt_convex_quasi_newton_point_to_string(pt : OptconvexquasinewtonPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn OptconvexquasinewtonPoint::to_string(self : OptconvexquasinewtonPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct OptconvexquasinewtonSeries {
@@ -86,58 +86,58 @@ pub fn opt_convex_quasi_newton_make_series(vals : Array[Double], name : String) 
   { vals, name, meta: 0 }
 }
 
-pub fn opt_convex_quasi_newton_series_len(s : OptconvexquasinewtonSeries) -> Int { s.vals.length() }
+pub fn OptconvexquasinewtonSeries::len(self : OptconvexquasinewtonSeries) -> Int { self.vals.length() }
 
-pub fn opt_convex_quasi_newton_series_sum(s : OptconvexquasinewtonSeries) -> Double { @_common.sum(s.vals) }
+pub fn OptconvexquasinewtonSeries::sum(self : OptconvexquasinewtonSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn opt_convex_quasi_newton_series_mean(s : OptconvexquasinewtonSeries) -> Double { @_common.mean(s.vals) }
+pub fn OptconvexquasinewtonSeries::mean(self : OptconvexquasinewtonSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn opt_convex_quasi_newton_series_min(s : OptconvexquasinewtonSeries) -> Double { @_common.min(s.vals) }
+pub fn OptconvexquasinewtonSeries::min(self : OptconvexquasinewtonSeries) -> Double { @_common.min(self.vals) }
 
-pub fn opt_convex_quasi_newton_series_max(s : OptconvexquasinewtonSeries) -> Double { @_common.max(s.vals) }
+pub fn OptconvexquasinewtonSeries::max(self : OptconvexquasinewtonSeries) -> Double { @_common.max(self.vals) }
 
-pub fn opt_convex_quasi_newton_series_range(s : OptconvexquasinewtonSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn OptconvexquasinewtonSeries::range(self : OptconvexquasinewtonSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn opt_convex_quasi_newton_series_var(s : OptconvexquasinewtonSeries) -> Double { @_common.variance(s.vals) }
+pub fn OptconvexquasinewtonSeries::variance(self : OptconvexquasinewtonSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn opt_convex_quasi_newton_series_std(s : OptconvexquasinewtonSeries) -> Double { @_common.std(s.vals) }
+pub fn OptconvexquasinewtonSeries::std(self : OptconvexquasinewtonSeries) -> Double { @_common.std(self.vals) }
 
-pub fn opt_convex_quasi_newton_series_median(s : OptconvexquasinewtonSeries) -> Double { @_common.median(s.vals) }
+pub fn OptconvexquasinewtonSeries::median(self : OptconvexquasinewtonSeries) -> Double { @_common.median(self.vals) }
 
-pub fn opt_convex_quasi_newton_series_scale(s : OptconvexquasinewtonSeries, f : Double) -> OptconvexquasinewtonSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn OptconvexquasinewtonSeries::scale(self : OptconvexquasinewtonSeries, f : Double) -> OptconvexquasinewtonSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn opt_convex_quasi_newton_series_add(a : OptconvexquasinewtonSeries, b : OptconvexquasinewtonSeries) -> OptconvexquasinewtonSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn OptconvexquasinewtonSeries::add(self : OptconvexquasinewtonSeries, other : OptconvexquasinewtonSeries) -> OptconvexquasinewtonSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn opt_convex_quasi_newton_series_sub(a : OptconvexquasinewtonSeries, b : OptconvexquasinewtonSeries) -> OptconvexquasinewtonSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn OptconvexquasinewtonSeries::sub(self : OptconvexquasinewtonSeries, other : OptconvexquasinewtonSeries) -> OptconvexquasinewtonSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn opt_convex_quasi_newton_series_normalize(s : OptconvexquasinewtonSeries) -> OptconvexquasinewtonSeries {
-  let mn = opt_convex_quasi_newton_series_min(s)
-  let mx = opt_convex_quasi_newton_series_max(s)
+pub fn OptconvexquasinewtonSeries::normalize(self : OptconvexquasinewtonSeries) -> OptconvexquasinewtonSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn opt_convex_quasi_newton_series_cumsum(s : OptconvexquasinewtonSeries) -> OptconvexquasinewtonSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn OptconvexquasinewtonSeries::cumsum(self : OptconvexquasinewtonSeries) -> OptconvexquasinewtonSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn opt_convex_quasi_newton_series_to_string(s : OptconvexquasinewtonSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn OptconvexquasinewtonSeries::to_string(self : OptconvexquasinewtonSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn opt_convex_quasi_newton_matrix_identity(n : Int) -> OptconvexquasinewtonM
   m
 }
 
-pub fn opt_convex_quasi_newton_matrix_get(m : OptconvexquasinewtonMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn OptconvexquasinewtonMatrix::get(self : OptconvexquasinewtonMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn opt_convex_quasi_newton_matrix_transpose(m : OptconvexquasinewtonMatrix) -> OptconvexquasinewtonMatrix {
-  let result = opt_convex_quasi_newton_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn OptconvexquasinewtonMatrix::transpose(self : OptconvexquasinewtonMatrix) -> OptconvexquasinewtonMatrix {
+  let result = opt_convex_quasi_newton_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn opt_convex_quasi_newton_matrix_add(a : OptconvexquasinewtonMatrix, b : OptconvexquasinewtonMatrix) -> OptconvexquasinewtonMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = opt_convex_quasi_newton_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn OptconvexquasinewtonMatrix::add(self : OptconvexquasinewtonMatrix, other : OptconvexquasinewtonMatrix) -> OptconvexquasinewtonMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = opt_convex_quasi_newton_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn opt_convex_quasi_newton_matrix_scale(m : OptconvexquasinewtonMatrix, s : Double) -> OptconvexquasinewtonMatrix {
-  let result = opt_convex_quasi_newton_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn OptconvexquasinewtonMatrix::scale(self : OptconvexquasinewtonMatrix, s : Double) -> OptconvexquasinewtonMatrix {
+  let result = opt_convex_quasi_newton_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn opt_convex_quasi_newton_matrix_multiply(a : OptconvexquasinewtonMatrix, b : OptconvexquasinewtonMatrix) -> OptconvexquasinewtonMatrix {
-  if a.cols != b.rows { return opt_convex_quasi_newton_make_matrix(a.rows, b.cols, 0.0) }
-  let result = opt_convex_quasi_newton_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn OptconvexquasinewtonMatrix::multiply(self : OptconvexquasinewtonMatrix, other : OptconvexquasinewtonMatrix) -> OptconvexquasinewtonMatrix {
+  if self.cols != other.rows { return opt_convex_quasi_newton_make_matrix(self.rows, other.cols, 0.0) }
+  let result = opt_convex_quasi_newton_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn opt_convex_quasi_newton_matrix_trace(m : OptconvexquasinewtonMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn OptconvexquasinewtonMatrix::trace(self : OptconvexquasinewtonMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn opt_convex_quasi_newton_matrix_det(m : OptconvexquasinewtonMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn OptconvexquasinewtonMatrix::det(self : OptconvexquasinewtonMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn opt_convex_quasi_newton_matrix_norm(m : OptconvexquasinewtonMatrix) -> Double {
+pub fn OptconvexquasinewtonMatrix::norm(self : OptconvexquasinewtonMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn opt_convex_quasi_newton_matrix_to_string(m : OptconvexquasinewtonMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn OptconvexquasinewtonMatrix::to_string(self : OptconvexquasinewtonMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn opt_convex_quasi_newton_vector_zero(dim : Int) -> OptconvexquasinewtonVec
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn opt_convex_quasi_newton_vector_add(a : OptconvexquasinewtonVector, b : OptconvexquasinewtonVector) -> OptconvexquasinewtonVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn OptconvexquasinewtonVector::add(self : OptconvexquasinewtonVector, other : OptconvexquasinewtonVector) -> OptconvexquasinewtonVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn opt_convex_quasi_newton_vector_sub(a : OptconvexquasinewtonVector, b : OptconvexquasinewtonVector) -> OptconvexquasinewtonVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn OptconvexquasinewtonVector::sub(self : OptconvexquasinewtonVector, other : OptconvexquasinewtonVector) -> OptconvexquasinewtonVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn opt_convex_quasi_newton_vector_scale(v : OptconvexquasinewtonVector, s : Double) -> OptconvexquasinewtonVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn OptconvexquasinewtonVector::scale(self : OptconvexquasinewtonVector, s : Double) -> OptconvexquasinewtonVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn opt_convex_quasi_newton_vector_dot(a : OptconvexquasinewtonVector, b : OptconvexquasinewtonVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn OptconvexquasinewtonVector::dot(self : OptconvexquasinewtonVector, other : OptconvexquasinewtonVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn opt_convex_quasi_newton_vector_norm(v : OptconvexquasinewtonVector) -> Double { @_common.sqrt(opt_convex_quasi_newton_vector_dot(v, v)) }
+pub fn OptconvexquasinewtonVector::norm(self : OptconvexquasinewtonVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn opt_convex_quasi_newton_vector_normalize(v : OptconvexquasinewtonVector) -> OptconvexquasinewtonVector {
-  let n = opt_convex_quasi_newton_vector_norm(v)
-  if n < 0.0000001 { v } else { opt_convex_quasi_newton_vector_scale(v, 1.0 / n) }
+pub fn OptconvexquasinewtonVector::normalize(self : OptconvexquasinewtonVector) -> OptconvexquasinewtonVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn opt_convex_quasi_newton_vector_dist(a : OptconvexquasinewtonVector, b : OptconvexquasinewtonVector) -> Double {
-  opt_convex_quasi_newton_vector_norm(opt_convex_quasi_newton_vector_sub(a, b))
+pub fn OptconvexquasinewtonVector::dist(self : OptconvexquasinewtonVector, other : OptconvexquasinewtonVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn opt_convex_quasi_newton_vector_to_string(v : OptconvexquasinewtonVector) -> String {
+pub fn OptconvexquasinewtonVector::to_string(self : OptconvexquasinewtonVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn opt_convex_quasi_newton_mean(data : Array[Double]) -> Double { @_common.mean(data) }

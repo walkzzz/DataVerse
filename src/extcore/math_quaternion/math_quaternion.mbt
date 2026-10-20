@@ -16,64 +16,64 @@ pub fn math_quaternion_make_point3(x : Double, y : Double, z : Double) -> Mathqu
   { x, y, z, label: 0 }
 }
 
-pub fn math_quaternion_point_x(pt : MathquaternionPoint) -> Double { pt.x }
+pub fn MathquaternionPoint::x(self : MathquaternionPoint) -> Double { self.x }
 
-pub fn math_quaternion_point_y(pt : MathquaternionPoint) -> Double { pt.y }
+pub fn MathquaternionPoint::y(self : MathquaternionPoint) -> Double { self.y }
 
-pub fn math_quaternion_point_z(pt : MathquaternionPoint) -> Double { pt.z }
+pub fn MathquaternionPoint::z(self : MathquaternionPoint) -> Double { self.z }
 
-pub fn math_quaternion_point_label(pt : MathquaternionPoint) -> Int { pt.label }
+pub fn MathquaternionPoint::label(self : MathquaternionPoint) -> Int { self.label }
 
-pub fn math_quaternion_point_dist(a : MathquaternionPoint, b : MathquaternionPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn MathquaternionPoint::dist(self : MathquaternionPoint, other : MathquaternionPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn math_quaternion_point_add(a : MathquaternionPoint, b : MathquaternionPoint) -> MathquaternionPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn MathquaternionPoint::add(self : MathquaternionPoint, other : MathquaternionPoint) -> MathquaternionPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn math_quaternion_point_sub(a : MathquaternionPoint, b : MathquaternionPoint) -> MathquaternionPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn MathquaternionPoint::sub(self : MathquaternionPoint, other : MathquaternionPoint) -> MathquaternionPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn math_quaternion_point_scale(pt : MathquaternionPoint, s : Double) -> MathquaternionPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn MathquaternionPoint::scale(self : MathquaternionPoint, s : Double) -> MathquaternionPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn math_quaternion_point_dot(a : MathquaternionPoint, b : MathquaternionPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn MathquaternionPoint::dot(self : MathquaternionPoint, other : MathquaternionPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn math_quaternion_point_cross(a : MathquaternionPoint, b : MathquaternionPoint) -> MathquaternionPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn MathquaternionPoint::cross(self : MathquaternionPoint, other : MathquaternionPoint) -> MathquaternionPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn math_quaternion_point_norm(pt : MathquaternionPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn MathquaternionPoint::norm(self : MathquaternionPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn math_quaternion_point_normalize(pt : MathquaternionPoint) -> MathquaternionPoint {
-  let n = math_quaternion_point_norm(pt)
-  if n < 0.0000001 { pt } else { math_quaternion_point_scale(pt, 1.0 / n) }
+pub fn MathquaternionPoint::normalize(self : MathquaternionPoint) -> MathquaternionPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn math_quaternion_point_negate(pt : MathquaternionPoint) -> MathquaternionPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn MathquaternionPoint::negate(self : MathquaternionPoint) -> MathquaternionPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn math_quaternion_point_mid(a : MathquaternionPoint, b : MathquaternionPoint) -> MathquaternionPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn MathquaternionPoint::mid(self : MathquaternionPoint, other : MathquaternionPoint) -> MathquaternionPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn math_quaternion_point_lerp(a : MathquaternionPoint, b : MathquaternionPoint, t : Double) -> MathquaternionPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn MathquaternionPoint::lerp(self : MathquaternionPoint, other : MathquaternionPoint, t : Double) -> MathquaternionPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn math_quaternion_point_to_string(pt : MathquaternionPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn MathquaternionPoint::to_string(self : MathquaternionPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct MathquaternionSeries {
@@ -86,58 +86,58 @@ pub fn math_quaternion_make_series(vals : Array[Double], name : String) -> Mathq
   { vals, name, meta: 0 }
 }
 
-pub fn math_quaternion_series_len(s : MathquaternionSeries) -> Int { s.vals.length() }
+pub fn MathquaternionSeries::len(self : MathquaternionSeries) -> Int { self.vals.length() }
 
-pub fn math_quaternion_series_sum(s : MathquaternionSeries) -> Double { @_common.sum(s.vals) }
+pub fn MathquaternionSeries::sum(self : MathquaternionSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn math_quaternion_series_mean(s : MathquaternionSeries) -> Double { @_common.mean(s.vals) }
+pub fn MathquaternionSeries::mean(self : MathquaternionSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn math_quaternion_series_min(s : MathquaternionSeries) -> Double { @_common.min(s.vals) }
+pub fn MathquaternionSeries::min(self : MathquaternionSeries) -> Double { @_common.min(self.vals) }
 
-pub fn math_quaternion_series_max(s : MathquaternionSeries) -> Double { @_common.max(s.vals) }
+pub fn MathquaternionSeries::max(self : MathquaternionSeries) -> Double { @_common.max(self.vals) }
 
-pub fn math_quaternion_series_range(s : MathquaternionSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn MathquaternionSeries::range(self : MathquaternionSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn math_quaternion_series_var(s : MathquaternionSeries) -> Double { @_common.variance(s.vals) }
+pub fn MathquaternionSeries::variance(self : MathquaternionSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn math_quaternion_series_std(s : MathquaternionSeries) -> Double { @_common.std(s.vals) }
+pub fn MathquaternionSeries::std(self : MathquaternionSeries) -> Double { @_common.std(self.vals) }
 
-pub fn math_quaternion_series_median(s : MathquaternionSeries) -> Double { @_common.median(s.vals) }
+pub fn MathquaternionSeries::median(self : MathquaternionSeries) -> Double { @_common.median(self.vals) }
 
-pub fn math_quaternion_series_scale(s : MathquaternionSeries, f : Double) -> MathquaternionSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn MathquaternionSeries::scale(self : MathquaternionSeries, f : Double) -> MathquaternionSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn math_quaternion_series_add(a : MathquaternionSeries, b : MathquaternionSeries) -> MathquaternionSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn MathquaternionSeries::add(self : MathquaternionSeries, other : MathquaternionSeries) -> MathquaternionSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn math_quaternion_series_sub(a : MathquaternionSeries, b : MathquaternionSeries) -> MathquaternionSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn MathquaternionSeries::sub(self : MathquaternionSeries, other : MathquaternionSeries) -> MathquaternionSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn math_quaternion_series_normalize(s : MathquaternionSeries) -> MathquaternionSeries {
-  let mn = math_quaternion_series_min(s)
-  let mx = math_quaternion_series_max(s)
+pub fn MathquaternionSeries::normalize(self : MathquaternionSeries) -> MathquaternionSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn math_quaternion_series_cumsum(s : MathquaternionSeries) -> MathquaternionSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn MathquaternionSeries::cumsum(self : MathquaternionSeries) -> MathquaternionSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn math_quaternion_series_to_string(s : MathquaternionSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn MathquaternionSeries::to_string(self : MathquaternionSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn math_quaternion_matrix_identity(n : Int) -> MathquaternionMatrix {
   m
 }
 
-pub fn math_quaternion_matrix_get(m : MathquaternionMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn MathquaternionMatrix::get(self : MathquaternionMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn math_quaternion_matrix_transpose(m : MathquaternionMatrix) -> MathquaternionMatrix {
-  let result = math_quaternion_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn MathquaternionMatrix::transpose(self : MathquaternionMatrix) -> MathquaternionMatrix {
+  let result = math_quaternion_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn math_quaternion_matrix_add(a : MathquaternionMatrix, b : MathquaternionMatrix) -> MathquaternionMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = math_quaternion_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn MathquaternionMatrix::add(self : MathquaternionMatrix, other : MathquaternionMatrix) -> MathquaternionMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = math_quaternion_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn math_quaternion_matrix_scale(m : MathquaternionMatrix, s : Double) -> MathquaternionMatrix {
-  let result = math_quaternion_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn MathquaternionMatrix::scale(self : MathquaternionMatrix, s : Double) -> MathquaternionMatrix {
+  let result = math_quaternion_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn math_quaternion_matrix_multiply(a : MathquaternionMatrix, b : MathquaternionMatrix) -> MathquaternionMatrix {
-  if a.cols != b.rows { return math_quaternion_make_matrix(a.rows, b.cols, 0.0) }
-  let result = math_quaternion_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn MathquaternionMatrix::multiply(self : MathquaternionMatrix, other : MathquaternionMatrix) -> MathquaternionMatrix {
+  if self.cols != other.rows { return math_quaternion_make_matrix(self.rows, other.cols, 0.0) }
+  let result = math_quaternion_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn math_quaternion_matrix_trace(m : MathquaternionMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn MathquaternionMatrix::trace(self : MathquaternionMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn math_quaternion_matrix_det(m : MathquaternionMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn MathquaternionMatrix::det(self : MathquaternionMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn math_quaternion_matrix_norm(m : MathquaternionMatrix) -> Double {
+pub fn MathquaternionMatrix::norm(self : MathquaternionMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn math_quaternion_matrix_to_string(m : MathquaternionMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn MathquaternionMatrix::to_string(self : MathquaternionMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn math_quaternion_vector_zero(dim : Int) -> MathquaternionVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn math_quaternion_vector_add(a : MathquaternionVector, b : MathquaternionVector) -> MathquaternionVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn MathquaternionVector::add(self : MathquaternionVector, other : MathquaternionVector) -> MathquaternionVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn math_quaternion_vector_sub(a : MathquaternionVector, b : MathquaternionVector) -> MathquaternionVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn MathquaternionVector::sub(self : MathquaternionVector, other : MathquaternionVector) -> MathquaternionVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn math_quaternion_vector_scale(v : MathquaternionVector, s : Double) -> MathquaternionVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn MathquaternionVector::scale(self : MathquaternionVector, s : Double) -> MathquaternionVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn math_quaternion_vector_dot(a : MathquaternionVector, b : MathquaternionVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn MathquaternionVector::dot(self : MathquaternionVector, other : MathquaternionVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn math_quaternion_vector_norm(v : MathquaternionVector) -> Double { @_common.sqrt(math_quaternion_vector_dot(v, v)) }
+pub fn MathquaternionVector::norm(self : MathquaternionVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn math_quaternion_vector_normalize(v : MathquaternionVector) -> MathquaternionVector {
-  let n = math_quaternion_vector_norm(v)
-  if n < 0.0000001 { v } else { math_quaternion_vector_scale(v, 1.0 / n) }
+pub fn MathquaternionVector::normalize(self : MathquaternionVector) -> MathquaternionVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn math_quaternion_vector_dist(a : MathquaternionVector, b : MathquaternionVector) -> Double {
-  math_quaternion_vector_norm(math_quaternion_vector_sub(a, b))
+pub fn MathquaternionVector::dist(self : MathquaternionVector, other : MathquaternionVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn math_quaternion_vector_to_string(v : MathquaternionVector) -> String {
+pub fn MathquaternionVector::to_string(self : MathquaternionVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn math_quaternion_mean(data : Array[Double]) -> Double { @_common.mean(data) }

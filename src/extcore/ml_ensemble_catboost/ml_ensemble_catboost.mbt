@@ -16,64 +16,64 @@ pub fn ml_ensemble_catboost_make_point3(x : Double, y : Double, z : Double) -> M
   { x, y, z, label: 0 }
 }
 
-pub fn ml_ensemble_catboost_point_x(pt : MlensemblecatboostPoint) -> Double { pt.x }
+pub fn MlensemblecatboostPoint::x(self : MlensemblecatboostPoint) -> Double { self.x }
 
-pub fn ml_ensemble_catboost_point_y(pt : MlensemblecatboostPoint) -> Double { pt.y }
+pub fn MlensemblecatboostPoint::y(self : MlensemblecatboostPoint) -> Double { self.y }
 
-pub fn ml_ensemble_catboost_point_z(pt : MlensemblecatboostPoint) -> Double { pt.z }
+pub fn MlensemblecatboostPoint::z(self : MlensemblecatboostPoint) -> Double { self.z }
 
-pub fn ml_ensemble_catboost_point_label(pt : MlensemblecatboostPoint) -> Int { pt.label }
+pub fn MlensemblecatboostPoint::label(self : MlensemblecatboostPoint) -> Int { self.label }
 
-pub fn ml_ensemble_catboost_point_dist(a : MlensemblecatboostPoint, b : MlensemblecatboostPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn MlensemblecatboostPoint::dist(self : MlensemblecatboostPoint, other : MlensemblecatboostPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn ml_ensemble_catboost_point_add(a : MlensemblecatboostPoint, b : MlensemblecatboostPoint) -> MlensemblecatboostPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn MlensemblecatboostPoint::add(self : MlensemblecatboostPoint, other : MlensemblecatboostPoint) -> MlensemblecatboostPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn ml_ensemble_catboost_point_sub(a : MlensemblecatboostPoint, b : MlensemblecatboostPoint) -> MlensemblecatboostPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn MlensemblecatboostPoint::sub(self : MlensemblecatboostPoint, other : MlensemblecatboostPoint) -> MlensemblecatboostPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn ml_ensemble_catboost_point_scale(pt : MlensemblecatboostPoint, s : Double) -> MlensemblecatboostPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn MlensemblecatboostPoint::scale(self : MlensemblecatboostPoint, s : Double) -> MlensemblecatboostPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn ml_ensemble_catboost_point_dot(a : MlensemblecatboostPoint, b : MlensemblecatboostPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn MlensemblecatboostPoint::dot(self : MlensemblecatboostPoint, other : MlensemblecatboostPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn ml_ensemble_catboost_point_cross(a : MlensemblecatboostPoint, b : MlensemblecatboostPoint) -> MlensemblecatboostPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn MlensemblecatboostPoint::cross(self : MlensemblecatboostPoint, other : MlensemblecatboostPoint) -> MlensemblecatboostPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn ml_ensemble_catboost_point_norm(pt : MlensemblecatboostPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn MlensemblecatboostPoint::norm(self : MlensemblecatboostPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn ml_ensemble_catboost_point_normalize(pt : MlensemblecatboostPoint) -> MlensemblecatboostPoint {
-  let n = ml_ensemble_catboost_point_norm(pt)
-  if n < 0.0000001 { pt } else { ml_ensemble_catboost_point_scale(pt, 1.0 / n) }
+pub fn MlensemblecatboostPoint::normalize(self : MlensemblecatboostPoint) -> MlensemblecatboostPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn ml_ensemble_catboost_point_negate(pt : MlensemblecatboostPoint) -> MlensemblecatboostPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn MlensemblecatboostPoint::negate(self : MlensemblecatboostPoint) -> MlensemblecatboostPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn ml_ensemble_catboost_point_mid(a : MlensemblecatboostPoint, b : MlensemblecatboostPoint) -> MlensemblecatboostPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn MlensemblecatboostPoint::mid(self : MlensemblecatboostPoint, other : MlensemblecatboostPoint) -> MlensemblecatboostPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn ml_ensemble_catboost_point_lerp(a : MlensemblecatboostPoint, b : MlensemblecatboostPoint, t : Double) -> MlensemblecatboostPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn MlensemblecatboostPoint::lerp(self : MlensemblecatboostPoint, other : MlensemblecatboostPoint, t : Double) -> MlensemblecatboostPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn ml_ensemble_catboost_point_to_string(pt : MlensemblecatboostPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn MlensemblecatboostPoint::to_string(self : MlensemblecatboostPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct MlensemblecatboostSeries {
@@ -86,58 +86,58 @@ pub fn ml_ensemble_catboost_make_series(vals : Array[Double], name : String) -> 
   { vals, name, meta: 0 }
 }
 
-pub fn ml_ensemble_catboost_series_len(s : MlensemblecatboostSeries) -> Int { s.vals.length() }
+pub fn MlensemblecatboostSeries::len(self : MlensemblecatboostSeries) -> Int { self.vals.length() }
 
-pub fn ml_ensemble_catboost_series_sum(s : MlensemblecatboostSeries) -> Double { @_common.sum(s.vals) }
+pub fn MlensemblecatboostSeries::sum(self : MlensemblecatboostSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn ml_ensemble_catboost_series_mean(s : MlensemblecatboostSeries) -> Double { @_common.mean(s.vals) }
+pub fn MlensemblecatboostSeries::mean(self : MlensemblecatboostSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn ml_ensemble_catboost_series_min(s : MlensemblecatboostSeries) -> Double { @_common.min(s.vals) }
+pub fn MlensemblecatboostSeries::min(self : MlensemblecatboostSeries) -> Double { @_common.min(self.vals) }
 
-pub fn ml_ensemble_catboost_series_max(s : MlensemblecatboostSeries) -> Double { @_common.max(s.vals) }
+pub fn MlensemblecatboostSeries::max(self : MlensemblecatboostSeries) -> Double { @_common.max(self.vals) }
 
-pub fn ml_ensemble_catboost_series_range(s : MlensemblecatboostSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn MlensemblecatboostSeries::range(self : MlensemblecatboostSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn ml_ensemble_catboost_series_var(s : MlensemblecatboostSeries) -> Double { @_common.variance(s.vals) }
+pub fn MlensemblecatboostSeries::variance(self : MlensemblecatboostSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn ml_ensemble_catboost_series_std(s : MlensemblecatboostSeries) -> Double { @_common.std(s.vals) }
+pub fn MlensemblecatboostSeries::std(self : MlensemblecatboostSeries) -> Double { @_common.std(self.vals) }
 
-pub fn ml_ensemble_catboost_series_median(s : MlensemblecatboostSeries) -> Double { @_common.median(s.vals) }
+pub fn MlensemblecatboostSeries::median(self : MlensemblecatboostSeries) -> Double { @_common.median(self.vals) }
 
-pub fn ml_ensemble_catboost_series_scale(s : MlensemblecatboostSeries, f : Double) -> MlensemblecatboostSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn MlensemblecatboostSeries::scale(self : MlensemblecatboostSeries, f : Double) -> MlensemblecatboostSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn ml_ensemble_catboost_series_add(a : MlensemblecatboostSeries, b : MlensemblecatboostSeries) -> MlensemblecatboostSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn MlensemblecatboostSeries::add(self : MlensemblecatboostSeries, other : MlensemblecatboostSeries) -> MlensemblecatboostSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn ml_ensemble_catboost_series_sub(a : MlensemblecatboostSeries, b : MlensemblecatboostSeries) -> MlensemblecatboostSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn MlensemblecatboostSeries::sub(self : MlensemblecatboostSeries, other : MlensemblecatboostSeries) -> MlensemblecatboostSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn ml_ensemble_catboost_series_normalize(s : MlensemblecatboostSeries) -> MlensemblecatboostSeries {
-  let mn = ml_ensemble_catboost_series_min(s)
-  let mx = ml_ensemble_catboost_series_max(s)
+pub fn MlensemblecatboostSeries::normalize(self : MlensemblecatboostSeries) -> MlensemblecatboostSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn ml_ensemble_catboost_series_cumsum(s : MlensemblecatboostSeries) -> MlensemblecatboostSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn MlensemblecatboostSeries::cumsum(self : MlensemblecatboostSeries) -> MlensemblecatboostSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn ml_ensemble_catboost_series_to_string(s : MlensemblecatboostSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn MlensemblecatboostSeries::to_string(self : MlensemblecatboostSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn ml_ensemble_catboost_matrix_identity(n : Int) -> MlensemblecatboostMatrix
   m
 }
 
-pub fn ml_ensemble_catboost_matrix_get(m : MlensemblecatboostMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn MlensemblecatboostMatrix::get(self : MlensemblecatboostMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn ml_ensemble_catboost_matrix_transpose(m : MlensemblecatboostMatrix) -> MlensemblecatboostMatrix {
-  let result = ml_ensemble_catboost_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn MlensemblecatboostMatrix::transpose(self : MlensemblecatboostMatrix) -> MlensemblecatboostMatrix {
+  let result = ml_ensemble_catboost_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn ml_ensemble_catboost_matrix_add(a : MlensemblecatboostMatrix, b : MlensemblecatboostMatrix) -> MlensemblecatboostMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = ml_ensemble_catboost_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn MlensemblecatboostMatrix::add(self : MlensemblecatboostMatrix, other : MlensemblecatboostMatrix) -> MlensemblecatboostMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = ml_ensemble_catboost_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn ml_ensemble_catboost_matrix_scale(m : MlensemblecatboostMatrix, s : Double) -> MlensemblecatboostMatrix {
-  let result = ml_ensemble_catboost_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn MlensemblecatboostMatrix::scale(self : MlensemblecatboostMatrix, s : Double) -> MlensemblecatboostMatrix {
+  let result = ml_ensemble_catboost_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn ml_ensemble_catboost_matrix_multiply(a : MlensemblecatboostMatrix, b : MlensemblecatboostMatrix) -> MlensemblecatboostMatrix {
-  if a.cols != b.rows { return ml_ensemble_catboost_make_matrix(a.rows, b.cols, 0.0) }
-  let result = ml_ensemble_catboost_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn MlensemblecatboostMatrix::multiply(self : MlensemblecatboostMatrix, other : MlensemblecatboostMatrix) -> MlensemblecatboostMatrix {
+  if self.cols != other.rows { return ml_ensemble_catboost_make_matrix(self.rows, other.cols, 0.0) }
+  let result = ml_ensemble_catboost_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn ml_ensemble_catboost_matrix_trace(m : MlensemblecatboostMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn MlensemblecatboostMatrix::trace(self : MlensemblecatboostMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn ml_ensemble_catboost_matrix_det(m : MlensemblecatboostMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn MlensemblecatboostMatrix::det(self : MlensemblecatboostMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn ml_ensemble_catboost_matrix_norm(m : MlensemblecatboostMatrix) -> Double {
+pub fn MlensemblecatboostMatrix::norm(self : MlensemblecatboostMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn ml_ensemble_catboost_matrix_to_string(m : MlensemblecatboostMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn MlensemblecatboostMatrix::to_string(self : MlensemblecatboostMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn ml_ensemble_catboost_vector_zero(dim : Int) -> MlensemblecatboostVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn ml_ensemble_catboost_vector_add(a : MlensemblecatboostVector, b : MlensemblecatboostVector) -> MlensemblecatboostVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn MlensemblecatboostVector::add(self : MlensemblecatboostVector, other : MlensemblecatboostVector) -> MlensemblecatboostVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn ml_ensemble_catboost_vector_sub(a : MlensemblecatboostVector, b : MlensemblecatboostVector) -> MlensemblecatboostVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn MlensemblecatboostVector::sub(self : MlensemblecatboostVector, other : MlensemblecatboostVector) -> MlensemblecatboostVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn ml_ensemble_catboost_vector_scale(v : MlensemblecatboostVector, s : Double) -> MlensemblecatboostVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn MlensemblecatboostVector::scale(self : MlensemblecatboostVector, s : Double) -> MlensemblecatboostVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn ml_ensemble_catboost_vector_dot(a : MlensemblecatboostVector, b : MlensemblecatboostVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn MlensemblecatboostVector::dot(self : MlensemblecatboostVector, other : MlensemblecatboostVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn ml_ensemble_catboost_vector_norm(v : MlensemblecatboostVector) -> Double { @_common.sqrt(ml_ensemble_catboost_vector_dot(v, v)) }
+pub fn MlensemblecatboostVector::norm(self : MlensemblecatboostVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn ml_ensemble_catboost_vector_normalize(v : MlensemblecatboostVector) -> MlensemblecatboostVector {
-  let n = ml_ensemble_catboost_vector_norm(v)
-  if n < 0.0000001 { v } else { ml_ensemble_catboost_vector_scale(v, 1.0 / n) }
+pub fn MlensemblecatboostVector::normalize(self : MlensemblecatboostVector) -> MlensemblecatboostVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn ml_ensemble_catboost_vector_dist(a : MlensemblecatboostVector, b : MlensemblecatboostVector) -> Double {
-  ml_ensemble_catboost_vector_norm(ml_ensemble_catboost_vector_sub(a, b))
+pub fn MlensemblecatboostVector::dist(self : MlensemblecatboostVector, other : MlensemblecatboostVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn ml_ensemble_catboost_vector_to_string(v : MlensemblecatboostVector) -> String {
+pub fn MlensemblecatboostVector::to_string(self : MlensemblecatboostVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn ml_ensemble_catboost_mean(data : Array[Double]) -> Double { @_common.mean(data) }

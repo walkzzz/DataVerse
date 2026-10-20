@@ -16,64 +16,64 @@ pub fn chem_mol_repr_graph_make_point3(x : Double, y : Double, z : Double) -> Ch
   { x, y, z, label: 0 }
 }
 
-pub fn chem_mol_repr_graph_point_x(pt : ChemmolreprgraphPoint) -> Double { pt.x }
+pub fn ChemmolreprgraphPoint::x(self : ChemmolreprgraphPoint) -> Double { self.x }
 
-pub fn chem_mol_repr_graph_point_y(pt : ChemmolreprgraphPoint) -> Double { pt.y }
+pub fn ChemmolreprgraphPoint::y(self : ChemmolreprgraphPoint) -> Double { self.y }
 
-pub fn chem_mol_repr_graph_point_z(pt : ChemmolreprgraphPoint) -> Double { pt.z }
+pub fn ChemmolreprgraphPoint::z(self : ChemmolreprgraphPoint) -> Double { self.z }
 
-pub fn chem_mol_repr_graph_point_label(pt : ChemmolreprgraphPoint) -> Int { pt.label }
+pub fn ChemmolreprgraphPoint::label(self : ChemmolreprgraphPoint) -> Int { self.label }
 
-pub fn chem_mol_repr_graph_point_dist(a : ChemmolreprgraphPoint, b : ChemmolreprgraphPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn ChemmolreprgraphPoint::dist(self : ChemmolreprgraphPoint, other : ChemmolreprgraphPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn chem_mol_repr_graph_point_add(a : ChemmolreprgraphPoint, b : ChemmolreprgraphPoint) -> ChemmolreprgraphPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn ChemmolreprgraphPoint::add(self : ChemmolreprgraphPoint, other : ChemmolreprgraphPoint) -> ChemmolreprgraphPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn chem_mol_repr_graph_point_sub(a : ChemmolreprgraphPoint, b : ChemmolreprgraphPoint) -> ChemmolreprgraphPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn ChemmolreprgraphPoint::sub(self : ChemmolreprgraphPoint, other : ChemmolreprgraphPoint) -> ChemmolreprgraphPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn chem_mol_repr_graph_point_scale(pt : ChemmolreprgraphPoint, s : Double) -> ChemmolreprgraphPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn ChemmolreprgraphPoint::scale(self : ChemmolreprgraphPoint, s : Double) -> ChemmolreprgraphPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn chem_mol_repr_graph_point_dot(a : ChemmolreprgraphPoint, b : ChemmolreprgraphPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn ChemmolreprgraphPoint::dot(self : ChemmolreprgraphPoint, other : ChemmolreprgraphPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn chem_mol_repr_graph_point_cross(a : ChemmolreprgraphPoint, b : ChemmolreprgraphPoint) -> ChemmolreprgraphPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn ChemmolreprgraphPoint::cross(self : ChemmolreprgraphPoint, other : ChemmolreprgraphPoint) -> ChemmolreprgraphPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn chem_mol_repr_graph_point_norm(pt : ChemmolreprgraphPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn ChemmolreprgraphPoint::norm(self : ChemmolreprgraphPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn chem_mol_repr_graph_point_normalize(pt : ChemmolreprgraphPoint) -> ChemmolreprgraphPoint {
-  let n = chem_mol_repr_graph_point_norm(pt)
-  if n < 0.0000001 { pt } else { chem_mol_repr_graph_point_scale(pt, 1.0 / n) }
+pub fn ChemmolreprgraphPoint::normalize(self : ChemmolreprgraphPoint) -> ChemmolreprgraphPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn chem_mol_repr_graph_point_negate(pt : ChemmolreprgraphPoint) -> ChemmolreprgraphPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn ChemmolreprgraphPoint::negate(self : ChemmolreprgraphPoint) -> ChemmolreprgraphPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn chem_mol_repr_graph_point_mid(a : ChemmolreprgraphPoint, b : ChemmolreprgraphPoint) -> ChemmolreprgraphPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn ChemmolreprgraphPoint::mid(self : ChemmolreprgraphPoint, other : ChemmolreprgraphPoint) -> ChemmolreprgraphPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn chem_mol_repr_graph_point_lerp(a : ChemmolreprgraphPoint, b : ChemmolreprgraphPoint, t : Double) -> ChemmolreprgraphPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn ChemmolreprgraphPoint::lerp(self : ChemmolreprgraphPoint, other : ChemmolreprgraphPoint, t : Double) -> ChemmolreprgraphPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn chem_mol_repr_graph_point_to_string(pt : ChemmolreprgraphPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn ChemmolreprgraphPoint::to_string(self : ChemmolreprgraphPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprgraphSeries {
@@ -86,58 +86,58 @@ pub fn chem_mol_repr_graph_make_series(vals : Array[Double], name : String) -> C
   { vals, name, meta: 0 }
 }
 
-pub fn chem_mol_repr_graph_series_len(s : ChemmolreprgraphSeries) -> Int { s.vals.length() }
+pub fn ChemmolreprgraphSeries::len(self : ChemmolreprgraphSeries) -> Int { self.vals.length() }
 
-pub fn chem_mol_repr_graph_series_sum(s : ChemmolreprgraphSeries) -> Double { @_common.sum(s.vals) }
+pub fn ChemmolreprgraphSeries::sum(self : ChemmolreprgraphSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn chem_mol_repr_graph_series_mean(s : ChemmolreprgraphSeries) -> Double { @_common.mean(s.vals) }
+pub fn ChemmolreprgraphSeries::mean(self : ChemmolreprgraphSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn chem_mol_repr_graph_series_min(s : ChemmolreprgraphSeries) -> Double { @_common.min(s.vals) }
+pub fn ChemmolreprgraphSeries::min(self : ChemmolreprgraphSeries) -> Double { @_common.min(self.vals) }
 
-pub fn chem_mol_repr_graph_series_max(s : ChemmolreprgraphSeries) -> Double { @_common.max(s.vals) }
+pub fn ChemmolreprgraphSeries::max(self : ChemmolreprgraphSeries) -> Double { @_common.max(self.vals) }
 
-pub fn chem_mol_repr_graph_series_range(s : ChemmolreprgraphSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn ChemmolreprgraphSeries::range(self : ChemmolreprgraphSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn chem_mol_repr_graph_series_var(s : ChemmolreprgraphSeries) -> Double { @_common.variance(s.vals) }
+pub fn ChemmolreprgraphSeries::variance(self : ChemmolreprgraphSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn chem_mol_repr_graph_series_std(s : ChemmolreprgraphSeries) -> Double { @_common.std(s.vals) }
+pub fn ChemmolreprgraphSeries::std(self : ChemmolreprgraphSeries) -> Double { @_common.std(self.vals) }
 
-pub fn chem_mol_repr_graph_series_median(s : ChemmolreprgraphSeries) -> Double { @_common.median(s.vals) }
+pub fn ChemmolreprgraphSeries::median(self : ChemmolreprgraphSeries) -> Double { @_common.median(self.vals) }
 
-pub fn chem_mol_repr_graph_series_scale(s : ChemmolreprgraphSeries, f : Double) -> ChemmolreprgraphSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn ChemmolreprgraphSeries::scale(self : ChemmolreprgraphSeries, f : Double) -> ChemmolreprgraphSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn chem_mol_repr_graph_series_add(a : ChemmolreprgraphSeries, b : ChemmolreprgraphSeries) -> ChemmolreprgraphSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn ChemmolreprgraphSeries::add(self : ChemmolreprgraphSeries, other : ChemmolreprgraphSeries) -> ChemmolreprgraphSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn chem_mol_repr_graph_series_sub(a : ChemmolreprgraphSeries, b : ChemmolreprgraphSeries) -> ChemmolreprgraphSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn ChemmolreprgraphSeries::sub(self : ChemmolreprgraphSeries, other : ChemmolreprgraphSeries) -> ChemmolreprgraphSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn chem_mol_repr_graph_series_normalize(s : ChemmolreprgraphSeries) -> ChemmolreprgraphSeries {
-  let mn = chem_mol_repr_graph_series_min(s)
-  let mx = chem_mol_repr_graph_series_max(s)
+pub fn ChemmolreprgraphSeries::normalize(self : ChemmolreprgraphSeries) -> ChemmolreprgraphSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn chem_mol_repr_graph_series_cumsum(s : ChemmolreprgraphSeries) -> ChemmolreprgraphSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn ChemmolreprgraphSeries::cumsum(self : ChemmolreprgraphSeries) -> ChemmolreprgraphSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn chem_mol_repr_graph_series_to_string(s : ChemmolreprgraphSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn ChemmolreprgraphSeries::to_string(self : ChemmolreprgraphSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn chem_mol_repr_graph_matrix_identity(n : Int) -> ChemmolreprgraphMatrix {
   m
 }
 
-pub fn chem_mol_repr_graph_matrix_get(m : ChemmolreprgraphMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn ChemmolreprgraphMatrix::get(self : ChemmolreprgraphMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn chem_mol_repr_graph_matrix_transpose(m : ChemmolreprgraphMatrix) -> ChemmolreprgraphMatrix {
-  let result = chem_mol_repr_graph_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn ChemmolreprgraphMatrix::transpose(self : ChemmolreprgraphMatrix) -> ChemmolreprgraphMatrix {
+  let result = chem_mol_repr_graph_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn chem_mol_repr_graph_matrix_add(a : ChemmolreprgraphMatrix, b : ChemmolreprgraphMatrix) -> ChemmolreprgraphMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = chem_mol_repr_graph_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn ChemmolreprgraphMatrix::add(self : ChemmolreprgraphMatrix, other : ChemmolreprgraphMatrix) -> ChemmolreprgraphMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = chem_mol_repr_graph_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn chem_mol_repr_graph_matrix_scale(m : ChemmolreprgraphMatrix, s : Double) -> ChemmolreprgraphMatrix {
-  let result = chem_mol_repr_graph_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn ChemmolreprgraphMatrix::scale(self : ChemmolreprgraphMatrix, s : Double) -> ChemmolreprgraphMatrix {
+  let result = chem_mol_repr_graph_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn chem_mol_repr_graph_matrix_multiply(a : ChemmolreprgraphMatrix, b : ChemmolreprgraphMatrix) -> ChemmolreprgraphMatrix {
-  if a.cols != b.rows { return chem_mol_repr_graph_make_matrix(a.rows, b.cols, 0.0) }
-  let result = chem_mol_repr_graph_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn ChemmolreprgraphMatrix::multiply(self : ChemmolreprgraphMatrix, other : ChemmolreprgraphMatrix) -> ChemmolreprgraphMatrix {
+  if self.cols != other.rows { return chem_mol_repr_graph_make_matrix(self.rows, other.cols, 0.0) }
+  let result = chem_mol_repr_graph_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn chem_mol_repr_graph_matrix_trace(m : ChemmolreprgraphMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn ChemmolreprgraphMatrix::trace(self : ChemmolreprgraphMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn chem_mol_repr_graph_matrix_det(m : ChemmolreprgraphMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn ChemmolreprgraphMatrix::det(self : ChemmolreprgraphMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn chem_mol_repr_graph_matrix_norm(m : ChemmolreprgraphMatrix) -> Double {
+pub fn ChemmolreprgraphMatrix::norm(self : ChemmolreprgraphMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn chem_mol_repr_graph_matrix_to_string(m : ChemmolreprgraphMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn ChemmolreprgraphMatrix::to_string(self : ChemmolreprgraphMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn chem_mol_repr_graph_vector_zero(dim : Int) -> ChemmolreprgraphVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn chem_mol_repr_graph_vector_add(a : ChemmolreprgraphVector, b : ChemmolreprgraphVector) -> ChemmolreprgraphVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn ChemmolreprgraphVector::add(self : ChemmolreprgraphVector, other : ChemmolreprgraphVector) -> ChemmolreprgraphVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn chem_mol_repr_graph_vector_sub(a : ChemmolreprgraphVector, b : ChemmolreprgraphVector) -> ChemmolreprgraphVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn ChemmolreprgraphVector::sub(self : ChemmolreprgraphVector, other : ChemmolreprgraphVector) -> ChemmolreprgraphVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn chem_mol_repr_graph_vector_scale(v : ChemmolreprgraphVector, s : Double) -> ChemmolreprgraphVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn ChemmolreprgraphVector::scale(self : ChemmolreprgraphVector, s : Double) -> ChemmolreprgraphVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn chem_mol_repr_graph_vector_dot(a : ChemmolreprgraphVector, b : ChemmolreprgraphVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn ChemmolreprgraphVector::dot(self : ChemmolreprgraphVector, other : ChemmolreprgraphVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn chem_mol_repr_graph_vector_norm(v : ChemmolreprgraphVector) -> Double { @_common.sqrt(chem_mol_repr_graph_vector_dot(v, v)) }
+pub fn ChemmolreprgraphVector::norm(self : ChemmolreprgraphVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn chem_mol_repr_graph_vector_normalize(v : ChemmolreprgraphVector) -> ChemmolreprgraphVector {
-  let n = chem_mol_repr_graph_vector_norm(v)
-  if n < 0.0000001 { v } else { chem_mol_repr_graph_vector_scale(v, 1.0 / n) }
+pub fn ChemmolreprgraphVector::normalize(self : ChemmolreprgraphVector) -> ChemmolreprgraphVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn chem_mol_repr_graph_vector_dist(a : ChemmolreprgraphVector, b : ChemmolreprgraphVector) -> Double {
-  chem_mol_repr_graph_vector_norm(chem_mol_repr_graph_vector_sub(a, b))
+pub fn ChemmolreprgraphVector::dist(self : ChemmolreprgraphVector, other : ChemmolreprgraphVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn chem_mol_repr_graph_vector_to_string(v : ChemmolreprgraphVector) -> String {
+pub fn ChemmolreprgraphVector::to_string(self : ChemmolreprgraphVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn chem_mol_repr_graph_mean(data : Array[Double]) -> Double { @_common.mean(data) }

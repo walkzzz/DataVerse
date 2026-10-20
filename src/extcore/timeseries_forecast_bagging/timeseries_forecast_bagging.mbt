@@ -16,64 +16,64 @@ pub fn timeseries_forecast_bagging_make_point3(x : Double, y : Double, z : Doubl
   { x, y, z, label: 0 }
 }
 
-pub fn timeseries_forecast_bagging_point_x(pt : TimeseriesforecastbaggingPoint) -> Double { pt.x }
+pub fn TimeseriesforecastbaggingPoint::x(self : TimeseriesforecastbaggingPoint) -> Double { self.x }
 
-pub fn timeseries_forecast_bagging_point_y(pt : TimeseriesforecastbaggingPoint) -> Double { pt.y }
+pub fn TimeseriesforecastbaggingPoint::y(self : TimeseriesforecastbaggingPoint) -> Double { self.y }
 
-pub fn timeseries_forecast_bagging_point_z(pt : TimeseriesforecastbaggingPoint) -> Double { pt.z }
+pub fn TimeseriesforecastbaggingPoint::z(self : TimeseriesforecastbaggingPoint) -> Double { self.z }
 
-pub fn timeseries_forecast_bagging_point_label(pt : TimeseriesforecastbaggingPoint) -> Int { pt.label }
+pub fn TimeseriesforecastbaggingPoint::label(self : TimeseriesforecastbaggingPoint) -> Int { self.label }
 
-pub fn timeseries_forecast_bagging_point_dist(a : TimeseriesforecastbaggingPoint, b : TimeseriesforecastbaggingPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn TimeseriesforecastbaggingPoint::dist(self : TimeseriesforecastbaggingPoint, other : TimeseriesforecastbaggingPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn timeseries_forecast_bagging_point_add(a : TimeseriesforecastbaggingPoint, b : TimeseriesforecastbaggingPoint) -> TimeseriesforecastbaggingPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn TimeseriesforecastbaggingPoint::add(self : TimeseriesforecastbaggingPoint, other : TimeseriesforecastbaggingPoint) -> TimeseriesforecastbaggingPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn timeseries_forecast_bagging_point_sub(a : TimeseriesforecastbaggingPoint, b : TimeseriesforecastbaggingPoint) -> TimeseriesforecastbaggingPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn TimeseriesforecastbaggingPoint::sub(self : TimeseriesforecastbaggingPoint, other : TimeseriesforecastbaggingPoint) -> TimeseriesforecastbaggingPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn timeseries_forecast_bagging_point_scale(pt : TimeseriesforecastbaggingPoint, s : Double) -> TimeseriesforecastbaggingPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn TimeseriesforecastbaggingPoint::scale(self : TimeseriesforecastbaggingPoint, s : Double) -> TimeseriesforecastbaggingPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn timeseries_forecast_bagging_point_dot(a : TimeseriesforecastbaggingPoint, b : TimeseriesforecastbaggingPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn TimeseriesforecastbaggingPoint::dot(self : TimeseriesforecastbaggingPoint, other : TimeseriesforecastbaggingPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn timeseries_forecast_bagging_point_cross(a : TimeseriesforecastbaggingPoint, b : TimeseriesforecastbaggingPoint) -> TimeseriesforecastbaggingPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn TimeseriesforecastbaggingPoint::cross(self : TimeseriesforecastbaggingPoint, other : TimeseriesforecastbaggingPoint) -> TimeseriesforecastbaggingPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn timeseries_forecast_bagging_point_norm(pt : TimeseriesforecastbaggingPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn TimeseriesforecastbaggingPoint::norm(self : TimeseriesforecastbaggingPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn timeseries_forecast_bagging_point_normalize(pt : TimeseriesforecastbaggingPoint) -> TimeseriesforecastbaggingPoint {
-  let n = timeseries_forecast_bagging_point_norm(pt)
-  if n < 0.0000001 { pt } else { timeseries_forecast_bagging_point_scale(pt, 1.0 / n) }
+pub fn TimeseriesforecastbaggingPoint::normalize(self : TimeseriesforecastbaggingPoint) -> TimeseriesforecastbaggingPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn timeseries_forecast_bagging_point_negate(pt : TimeseriesforecastbaggingPoint) -> TimeseriesforecastbaggingPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn TimeseriesforecastbaggingPoint::negate(self : TimeseriesforecastbaggingPoint) -> TimeseriesforecastbaggingPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn timeseries_forecast_bagging_point_mid(a : TimeseriesforecastbaggingPoint, b : TimeseriesforecastbaggingPoint) -> TimeseriesforecastbaggingPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn TimeseriesforecastbaggingPoint::mid(self : TimeseriesforecastbaggingPoint, other : TimeseriesforecastbaggingPoint) -> TimeseriesforecastbaggingPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn timeseries_forecast_bagging_point_lerp(a : TimeseriesforecastbaggingPoint, b : TimeseriesforecastbaggingPoint, t : Double) -> TimeseriesforecastbaggingPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn TimeseriesforecastbaggingPoint::lerp(self : TimeseriesforecastbaggingPoint, other : TimeseriesforecastbaggingPoint, t : Double) -> TimeseriesforecastbaggingPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn timeseries_forecast_bagging_point_to_string(pt : TimeseriesforecastbaggingPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn TimeseriesforecastbaggingPoint::to_string(self : TimeseriesforecastbaggingPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct TimeseriesforecastbaggingSeries {
@@ -86,58 +86,58 @@ pub fn timeseries_forecast_bagging_make_series(vals : Array[Double], name : Stri
   { vals, name, meta: 0 }
 }
 
-pub fn timeseries_forecast_bagging_series_len(s : TimeseriesforecastbaggingSeries) -> Int { s.vals.length() }
+pub fn TimeseriesforecastbaggingSeries::len(self : TimeseriesforecastbaggingSeries) -> Int { self.vals.length() }
 
-pub fn timeseries_forecast_bagging_series_sum(s : TimeseriesforecastbaggingSeries) -> Double { @_common.sum(s.vals) }
+pub fn TimeseriesforecastbaggingSeries::sum(self : TimeseriesforecastbaggingSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn timeseries_forecast_bagging_series_mean(s : TimeseriesforecastbaggingSeries) -> Double { @_common.mean(s.vals) }
+pub fn TimeseriesforecastbaggingSeries::mean(self : TimeseriesforecastbaggingSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn timeseries_forecast_bagging_series_min(s : TimeseriesforecastbaggingSeries) -> Double { @_common.min(s.vals) }
+pub fn TimeseriesforecastbaggingSeries::min(self : TimeseriesforecastbaggingSeries) -> Double { @_common.min(self.vals) }
 
-pub fn timeseries_forecast_bagging_series_max(s : TimeseriesforecastbaggingSeries) -> Double { @_common.max(s.vals) }
+pub fn TimeseriesforecastbaggingSeries::max(self : TimeseriesforecastbaggingSeries) -> Double { @_common.max(self.vals) }
 
-pub fn timeseries_forecast_bagging_series_range(s : TimeseriesforecastbaggingSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn TimeseriesforecastbaggingSeries::range(self : TimeseriesforecastbaggingSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn timeseries_forecast_bagging_series_var(s : TimeseriesforecastbaggingSeries) -> Double { @_common.variance(s.vals) }
+pub fn TimeseriesforecastbaggingSeries::variance(self : TimeseriesforecastbaggingSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn timeseries_forecast_bagging_series_std(s : TimeseriesforecastbaggingSeries) -> Double { @_common.std(s.vals) }
+pub fn TimeseriesforecastbaggingSeries::std(self : TimeseriesforecastbaggingSeries) -> Double { @_common.std(self.vals) }
 
-pub fn timeseries_forecast_bagging_series_median(s : TimeseriesforecastbaggingSeries) -> Double { @_common.median(s.vals) }
+pub fn TimeseriesforecastbaggingSeries::median(self : TimeseriesforecastbaggingSeries) -> Double { @_common.median(self.vals) }
 
-pub fn timeseries_forecast_bagging_series_scale(s : TimeseriesforecastbaggingSeries, f : Double) -> TimeseriesforecastbaggingSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn TimeseriesforecastbaggingSeries::scale(self : TimeseriesforecastbaggingSeries, f : Double) -> TimeseriesforecastbaggingSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn timeseries_forecast_bagging_series_add(a : TimeseriesforecastbaggingSeries, b : TimeseriesforecastbaggingSeries) -> TimeseriesforecastbaggingSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn TimeseriesforecastbaggingSeries::add(self : TimeseriesforecastbaggingSeries, other : TimeseriesforecastbaggingSeries) -> TimeseriesforecastbaggingSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn timeseries_forecast_bagging_series_sub(a : TimeseriesforecastbaggingSeries, b : TimeseriesforecastbaggingSeries) -> TimeseriesforecastbaggingSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn TimeseriesforecastbaggingSeries::sub(self : TimeseriesforecastbaggingSeries, other : TimeseriesforecastbaggingSeries) -> TimeseriesforecastbaggingSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn timeseries_forecast_bagging_series_normalize(s : TimeseriesforecastbaggingSeries) -> TimeseriesforecastbaggingSeries {
-  let mn = timeseries_forecast_bagging_series_min(s)
-  let mx = timeseries_forecast_bagging_series_max(s)
+pub fn TimeseriesforecastbaggingSeries::normalize(self : TimeseriesforecastbaggingSeries) -> TimeseriesforecastbaggingSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn timeseries_forecast_bagging_series_cumsum(s : TimeseriesforecastbaggingSeries) -> TimeseriesforecastbaggingSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn TimeseriesforecastbaggingSeries::cumsum(self : TimeseriesforecastbaggingSeries) -> TimeseriesforecastbaggingSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn timeseries_forecast_bagging_series_to_string(s : TimeseriesforecastbaggingSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn TimeseriesforecastbaggingSeries::to_string(self : TimeseriesforecastbaggingSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn timeseries_forecast_bagging_matrix_identity(n : Int) -> Timeseriesforecas
   m
 }
 
-pub fn timeseries_forecast_bagging_matrix_get(m : TimeseriesforecastbaggingMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn TimeseriesforecastbaggingMatrix::get(self : TimeseriesforecastbaggingMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn timeseries_forecast_bagging_matrix_transpose(m : TimeseriesforecastbaggingMatrix) -> TimeseriesforecastbaggingMatrix {
-  let result = timeseries_forecast_bagging_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn TimeseriesforecastbaggingMatrix::transpose(self : TimeseriesforecastbaggingMatrix) -> TimeseriesforecastbaggingMatrix {
+  let result = timeseries_forecast_bagging_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn timeseries_forecast_bagging_matrix_add(a : TimeseriesforecastbaggingMatrix, b : TimeseriesforecastbaggingMatrix) -> TimeseriesforecastbaggingMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = timeseries_forecast_bagging_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn TimeseriesforecastbaggingMatrix::add(self : TimeseriesforecastbaggingMatrix, other : TimeseriesforecastbaggingMatrix) -> TimeseriesforecastbaggingMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = timeseries_forecast_bagging_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn timeseries_forecast_bagging_matrix_scale(m : TimeseriesforecastbaggingMatrix, s : Double) -> TimeseriesforecastbaggingMatrix {
-  let result = timeseries_forecast_bagging_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn TimeseriesforecastbaggingMatrix::scale(self : TimeseriesforecastbaggingMatrix, s : Double) -> TimeseriesforecastbaggingMatrix {
+  let result = timeseries_forecast_bagging_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn timeseries_forecast_bagging_matrix_multiply(a : TimeseriesforecastbaggingMatrix, b : TimeseriesforecastbaggingMatrix) -> TimeseriesforecastbaggingMatrix {
-  if a.cols != b.rows { return timeseries_forecast_bagging_make_matrix(a.rows, b.cols, 0.0) }
-  let result = timeseries_forecast_bagging_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn TimeseriesforecastbaggingMatrix::multiply(self : TimeseriesforecastbaggingMatrix, other : TimeseriesforecastbaggingMatrix) -> TimeseriesforecastbaggingMatrix {
+  if self.cols != other.rows { return timeseries_forecast_bagging_make_matrix(self.rows, other.cols, 0.0) }
+  let result = timeseries_forecast_bagging_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn timeseries_forecast_bagging_matrix_trace(m : TimeseriesforecastbaggingMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn TimeseriesforecastbaggingMatrix::trace(self : TimeseriesforecastbaggingMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn timeseries_forecast_bagging_matrix_det(m : TimeseriesforecastbaggingMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn TimeseriesforecastbaggingMatrix::det(self : TimeseriesforecastbaggingMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn timeseries_forecast_bagging_matrix_norm(m : TimeseriesforecastbaggingMatrix) -> Double {
+pub fn TimeseriesforecastbaggingMatrix::norm(self : TimeseriesforecastbaggingMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn timeseries_forecast_bagging_matrix_to_string(m : TimeseriesforecastbaggingMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn TimeseriesforecastbaggingMatrix::to_string(self : TimeseriesforecastbaggingMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn timeseries_forecast_bagging_vector_zero(dim : Int) -> Timeseriesforecastb
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn timeseries_forecast_bagging_vector_add(a : TimeseriesforecastbaggingVector, b : TimeseriesforecastbaggingVector) -> TimeseriesforecastbaggingVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn TimeseriesforecastbaggingVector::add(self : TimeseriesforecastbaggingVector, other : TimeseriesforecastbaggingVector) -> TimeseriesforecastbaggingVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn timeseries_forecast_bagging_vector_sub(a : TimeseriesforecastbaggingVector, b : TimeseriesforecastbaggingVector) -> TimeseriesforecastbaggingVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn TimeseriesforecastbaggingVector::sub(self : TimeseriesforecastbaggingVector, other : TimeseriesforecastbaggingVector) -> TimeseriesforecastbaggingVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn timeseries_forecast_bagging_vector_scale(v : TimeseriesforecastbaggingVector, s : Double) -> TimeseriesforecastbaggingVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn TimeseriesforecastbaggingVector::scale(self : TimeseriesforecastbaggingVector, s : Double) -> TimeseriesforecastbaggingVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn timeseries_forecast_bagging_vector_dot(a : TimeseriesforecastbaggingVector, b : TimeseriesforecastbaggingVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn TimeseriesforecastbaggingVector::dot(self : TimeseriesforecastbaggingVector, other : TimeseriesforecastbaggingVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn timeseries_forecast_bagging_vector_norm(v : TimeseriesforecastbaggingVector) -> Double { @_common.sqrt(timeseries_forecast_bagging_vector_dot(v, v)) }
+pub fn TimeseriesforecastbaggingVector::norm(self : TimeseriesforecastbaggingVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn timeseries_forecast_bagging_vector_normalize(v : TimeseriesforecastbaggingVector) -> TimeseriesforecastbaggingVector {
-  let n = timeseries_forecast_bagging_vector_norm(v)
-  if n < 0.0000001 { v } else { timeseries_forecast_bagging_vector_scale(v, 1.0 / n) }
+pub fn TimeseriesforecastbaggingVector::normalize(self : TimeseriesforecastbaggingVector) -> TimeseriesforecastbaggingVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn timeseries_forecast_bagging_vector_dist(a : TimeseriesforecastbaggingVector, b : TimeseriesforecastbaggingVector) -> Double {
-  timeseries_forecast_bagging_vector_norm(timeseries_forecast_bagging_vector_sub(a, b))
+pub fn TimeseriesforecastbaggingVector::dist(self : TimeseriesforecastbaggingVector, other : TimeseriesforecastbaggingVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn timeseries_forecast_bagging_vector_to_string(v : TimeseriesforecastbaggingVector) -> String {
+pub fn TimeseriesforecastbaggingVector::to_string(self : TimeseriesforecastbaggingVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn timeseries_forecast_bagging_mean(data : Array[Double]) -> Double { @_common.mean(data) }

@@ -16,64 +16,64 @@ pub fn signal_window_planck_make_point3(x : Double, y : Double, z : Double) -> S
   { x, y, z, label: 0 }
 }
 
-pub fn signal_window_planck_point_x(pt : SignalwindowplanckPoint) -> Double { pt.x }
+pub fn SignalwindowplanckPoint::x(self : SignalwindowplanckPoint) -> Double { self.x }
 
-pub fn signal_window_planck_point_y(pt : SignalwindowplanckPoint) -> Double { pt.y }
+pub fn SignalwindowplanckPoint::y(self : SignalwindowplanckPoint) -> Double { self.y }
 
-pub fn signal_window_planck_point_z(pt : SignalwindowplanckPoint) -> Double { pt.z }
+pub fn SignalwindowplanckPoint::z(self : SignalwindowplanckPoint) -> Double { self.z }
 
-pub fn signal_window_planck_point_label(pt : SignalwindowplanckPoint) -> Int { pt.label }
+pub fn SignalwindowplanckPoint::label(self : SignalwindowplanckPoint) -> Int { self.label }
 
-pub fn signal_window_planck_point_dist(a : SignalwindowplanckPoint, b : SignalwindowplanckPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn SignalwindowplanckPoint::dist(self : SignalwindowplanckPoint, other : SignalwindowplanckPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn signal_window_planck_point_add(a : SignalwindowplanckPoint, b : SignalwindowplanckPoint) -> SignalwindowplanckPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn SignalwindowplanckPoint::add(self : SignalwindowplanckPoint, other : SignalwindowplanckPoint) -> SignalwindowplanckPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn signal_window_planck_point_sub(a : SignalwindowplanckPoint, b : SignalwindowplanckPoint) -> SignalwindowplanckPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn SignalwindowplanckPoint::sub(self : SignalwindowplanckPoint, other : SignalwindowplanckPoint) -> SignalwindowplanckPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn signal_window_planck_point_scale(pt : SignalwindowplanckPoint, s : Double) -> SignalwindowplanckPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn SignalwindowplanckPoint::scale(self : SignalwindowplanckPoint, s : Double) -> SignalwindowplanckPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn signal_window_planck_point_dot(a : SignalwindowplanckPoint, b : SignalwindowplanckPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn SignalwindowplanckPoint::dot(self : SignalwindowplanckPoint, other : SignalwindowplanckPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn signal_window_planck_point_cross(a : SignalwindowplanckPoint, b : SignalwindowplanckPoint) -> SignalwindowplanckPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn SignalwindowplanckPoint::cross(self : SignalwindowplanckPoint, other : SignalwindowplanckPoint) -> SignalwindowplanckPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn signal_window_planck_point_norm(pt : SignalwindowplanckPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn SignalwindowplanckPoint::norm(self : SignalwindowplanckPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn signal_window_planck_point_normalize(pt : SignalwindowplanckPoint) -> SignalwindowplanckPoint {
-  let n = signal_window_planck_point_norm(pt)
-  if n < 0.0000001 { pt } else { signal_window_planck_point_scale(pt, 1.0 / n) }
+pub fn SignalwindowplanckPoint::normalize(self : SignalwindowplanckPoint) -> SignalwindowplanckPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn signal_window_planck_point_negate(pt : SignalwindowplanckPoint) -> SignalwindowplanckPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn SignalwindowplanckPoint::negate(self : SignalwindowplanckPoint) -> SignalwindowplanckPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn signal_window_planck_point_mid(a : SignalwindowplanckPoint, b : SignalwindowplanckPoint) -> SignalwindowplanckPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn SignalwindowplanckPoint::mid(self : SignalwindowplanckPoint, other : SignalwindowplanckPoint) -> SignalwindowplanckPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn signal_window_planck_point_lerp(a : SignalwindowplanckPoint, b : SignalwindowplanckPoint, t : Double) -> SignalwindowplanckPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn SignalwindowplanckPoint::lerp(self : SignalwindowplanckPoint, other : SignalwindowplanckPoint, t : Double) -> SignalwindowplanckPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn signal_window_planck_point_to_string(pt : SignalwindowplanckPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn SignalwindowplanckPoint::to_string(self : SignalwindowplanckPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct SignalwindowplanckSeries {
@@ -86,58 +86,58 @@ pub fn signal_window_planck_make_series(vals : Array[Double], name : String) -> 
   { vals, name, meta: 0 }
 }
 
-pub fn signal_window_planck_series_len(s : SignalwindowplanckSeries) -> Int { s.vals.length() }
+pub fn SignalwindowplanckSeries::len(self : SignalwindowplanckSeries) -> Int { self.vals.length() }
 
-pub fn signal_window_planck_series_sum(s : SignalwindowplanckSeries) -> Double { @_common.sum(s.vals) }
+pub fn SignalwindowplanckSeries::sum(self : SignalwindowplanckSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn signal_window_planck_series_mean(s : SignalwindowplanckSeries) -> Double { @_common.mean(s.vals) }
+pub fn SignalwindowplanckSeries::mean(self : SignalwindowplanckSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn signal_window_planck_series_min(s : SignalwindowplanckSeries) -> Double { @_common.min(s.vals) }
+pub fn SignalwindowplanckSeries::min(self : SignalwindowplanckSeries) -> Double { @_common.min(self.vals) }
 
-pub fn signal_window_planck_series_max(s : SignalwindowplanckSeries) -> Double { @_common.max(s.vals) }
+pub fn SignalwindowplanckSeries::max(self : SignalwindowplanckSeries) -> Double { @_common.max(self.vals) }
 
-pub fn signal_window_planck_series_range(s : SignalwindowplanckSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn SignalwindowplanckSeries::range(self : SignalwindowplanckSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn signal_window_planck_series_var(s : SignalwindowplanckSeries) -> Double { @_common.variance(s.vals) }
+pub fn SignalwindowplanckSeries::variance(self : SignalwindowplanckSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn signal_window_planck_series_std(s : SignalwindowplanckSeries) -> Double { @_common.std(s.vals) }
+pub fn SignalwindowplanckSeries::std(self : SignalwindowplanckSeries) -> Double { @_common.std(self.vals) }
 
-pub fn signal_window_planck_series_median(s : SignalwindowplanckSeries) -> Double { @_common.median(s.vals) }
+pub fn SignalwindowplanckSeries::median(self : SignalwindowplanckSeries) -> Double { @_common.median(self.vals) }
 
-pub fn signal_window_planck_series_scale(s : SignalwindowplanckSeries, f : Double) -> SignalwindowplanckSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn SignalwindowplanckSeries::scale(self : SignalwindowplanckSeries, f : Double) -> SignalwindowplanckSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn signal_window_planck_series_add(a : SignalwindowplanckSeries, b : SignalwindowplanckSeries) -> SignalwindowplanckSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn SignalwindowplanckSeries::add(self : SignalwindowplanckSeries, other : SignalwindowplanckSeries) -> SignalwindowplanckSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn signal_window_planck_series_sub(a : SignalwindowplanckSeries, b : SignalwindowplanckSeries) -> SignalwindowplanckSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn SignalwindowplanckSeries::sub(self : SignalwindowplanckSeries, other : SignalwindowplanckSeries) -> SignalwindowplanckSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn signal_window_planck_series_normalize(s : SignalwindowplanckSeries) -> SignalwindowplanckSeries {
-  let mn = signal_window_planck_series_min(s)
-  let mx = signal_window_planck_series_max(s)
+pub fn SignalwindowplanckSeries::normalize(self : SignalwindowplanckSeries) -> SignalwindowplanckSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn signal_window_planck_series_cumsum(s : SignalwindowplanckSeries) -> SignalwindowplanckSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn SignalwindowplanckSeries::cumsum(self : SignalwindowplanckSeries) -> SignalwindowplanckSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn signal_window_planck_series_to_string(s : SignalwindowplanckSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn SignalwindowplanckSeries::to_string(self : SignalwindowplanckSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn signal_window_planck_matrix_identity(n : Int) -> SignalwindowplanckMatrix
   m
 }
 
-pub fn signal_window_planck_matrix_get(m : SignalwindowplanckMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn SignalwindowplanckMatrix::get(self : SignalwindowplanckMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn signal_window_planck_matrix_transpose(m : SignalwindowplanckMatrix) -> SignalwindowplanckMatrix {
-  let result = signal_window_planck_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn SignalwindowplanckMatrix::transpose(self : SignalwindowplanckMatrix) -> SignalwindowplanckMatrix {
+  let result = signal_window_planck_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn signal_window_planck_matrix_add(a : SignalwindowplanckMatrix, b : SignalwindowplanckMatrix) -> SignalwindowplanckMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = signal_window_planck_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn SignalwindowplanckMatrix::add(self : SignalwindowplanckMatrix, other : SignalwindowplanckMatrix) -> SignalwindowplanckMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = signal_window_planck_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn signal_window_planck_matrix_scale(m : SignalwindowplanckMatrix, s : Double) -> SignalwindowplanckMatrix {
-  let result = signal_window_planck_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn SignalwindowplanckMatrix::scale(self : SignalwindowplanckMatrix, s : Double) -> SignalwindowplanckMatrix {
+  let result = signal_window_planck_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn signal_window_planck_matrix_multiply(a : SignalwindowplanckMatrix, b : SignalwindowplanckMatrix) -> SignalwindowplanckMatrix {
-  if a.cols != b.rows { return signal_window_planck_make_matrix(a.rows, b.cols, 0.0) }
-  let result = signal_window_planck_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn SignalwindowplanckMatrix::multiply(self : SignalwindowplanckMatrix, other : SignalwindowplanckMatrix) -> SignalwindowplanckMatrix {
+  if self.cols != other.rows { return signal_window_planck_make_matrix(self.rows, other.cols, 0.0) }
+  let result = signal_window_planck_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn signal_window_planck_matrix_trace(m : SignalwindowplanckMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn SignalwindowplanckMatrix::trace(self : SignalwindowplanckMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn signal_window_planck_matrix_det(m : SignalwindowplanckMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn SignalwindowplanckMatrix::det(self : SignalwindowplanckMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn signal_window_planck_matrix_norm(m : SignalwindowplanckMatrix) -> Double {
+pub fn SignalwindowplanckMatrix::norm(self : SignalwindowplanckMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn signal_window_planck_matrix_to_string(m : SignalwindowplanckMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn SignalwindowplanckMatrix::to_string(self : SignalwindowplanckMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn signal_window_planck_vector_zero(dim : Int) -> SignalwindowplanckVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn signal_window_planck_vector_add(a : SignalwindowplanckVector, b : SignalwindowplanckVector) -> SignalwindowplanckVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn SignalwindowplanckVector::add(self : SignalwindowplanckVector, other : SignalwindowplanckVector) -> SignalwindowplanckVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn signal_window_planck_vector_sub(a : SignalwindowplanckVector, b : SignalwindowplanckVector) -> SignalwindowplanckVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn SignalwindowplanckVector::sub(self : SignalwindowplanckVector, other : SignalwindowplanckVector) -> SignalwindowplanckVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn signal_window_planck_vector_scale(v : SignalwindowplanckVector, s : Double) -> SignalwindowplanckVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn SignalwindowplanckVector::scale(self : SignalwindowplanckVector, s : Double) -> SignalwindowplanckVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn signal_window_planck_vector_dot(a : SignalwindowplanckVector, b : SignalwindowplanckVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn SignalwindowplanckVector::dot(self : SignalwindowplanckVector, other : SignalwindowplanckVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn signal_window_planck_vector_norm(v : SignalwindowplanckVector) -> Double { @_common.sqrt(signal_window_planck_vector_dot(v, v)) }
+pub fn SignalwindowplanckVector::norm(self : SignalwindowplanckVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn signal_window_planck_vector_normalize(v : SignalwindowplanckVector) -> SignalwindowplanckVector {
-  let n = signal_window_planck_vector_norm(v)
-  if n < 0.0000001 { v } else { signal_window_planck_vector_scale(v, 1.0 / n) }
+pub fn SignalwindowplanckVector::normalize(self : SignalwindowplanckVector) -> SignalwindowplanckVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn signal_window_planck_vector_dist(a : SignalwindowplanckVector, b : SignalwindowplanckVector) -> Double {
-  signal_window_planck_vector_norm(signal_window_planck_vector_sub(a, b))
+pub fn SignalwindowplanckVector::dist(self : SignalwindowplanckVector, other : SignalwindowplanckVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn signal_window_planck_vector_to_string(v : SignalwindowplanckVector) -> String {
+pub fn SignalwindowplanckVector::to_string(self : SignalwindowplanckVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn signal_window_planck_mean(data : Array[Double]) -> Double { @_common.mean(data) }

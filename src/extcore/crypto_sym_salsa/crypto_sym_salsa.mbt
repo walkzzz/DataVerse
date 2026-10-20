@@ -16,64 +16,64 @@ pub fn crypto_sym_salsa_make_point3(x : Double, y : Double, z : Double) -> Crypt
   { x, y, z, label: 0 }
 }
 
-pub fn crypto_sym_salsa_point_x(pt : CryptosymsalsaPoint) -> Double { pt.x }
+pub fn CryptosymsalsaPoint::x(self : CryptosymsalsaPoint) -> Double { self.x }
 
-pub fn crypto_sym_salsa_point_y(pt : CryptosymsalsaPoint) -> Double { pt.y }
+pub fn CryptosymsalsaPoint::y(self : CryptosymsalsaPoint) -> Double { self.y }
 
-pub fn crypto_sym_salsa_point_z(pt : CryptosymsalsaPoint) -> Double { pt.z }
+pub fn CryptosymsalsaPoint::z(self : CryptosymsalsaPoint) -> Double { self.z }
 
-pub fn crypto_sym_salsa_point_label(pt : CryptosymsalsaPoint) -> Int { pt.label }
+pub fn CryptosymsalsaPoint::label(self : CryptosymsalsaPoint) -> Int { self.label }
 
-pub fn crypto_sym_salsa_point_dist(a : CryptosymsalsaPoint, b : CryptosymsalsaPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn CryptosymsalsaPoint::dist(self : CryptosymsalsaPoint, other : CryptosymsalsaPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn crypto_sym_salsa_point_add(a : CryptosymsalsaPoint, b : CryptosymsalsaPoint) -> CryptosymsalsaPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn CryptosymsalsaPoint::add(self : CryptosymsalsaPoint, other : CryptosymsalsaPoint) -> CryptosymsalsaPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn crypto_sym_salsa_point_sub(a : CryptosymsalsaPoint, b : CryptosymsalsaPoint) -> CryptosymsalsaPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn CryptosymsalsaPoint::sub(self : CryptosymsalsaPoint, other : CryptosymsalsaPoint) -> CryptosymsalsaPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn crypto_sym_salsa_point_scale(pt : CryptosymsalsaPoint, s : Double) -> CryptosymsalsaPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn CryptosymsalsaPoint::scale(self : CryptosymsalsaPoint, s : Double) -> CryptosymsalsaPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn crypto_sym_salsa_point_dot(a : CryptosymsalsaPoint, b : CryptosymsalsaPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn CryptosymsalsaPoint::dot(self : CryptosymsalsaPoint, other : CryptosymsalsaPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn crypto_sym_salsa_point_cross(a : CryptosymsalsaPoint, b : CryptosymsalsaPoint) -> CryptosymsalsaPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn CryptosymsalsaPoint::cross(self : CryptosymsalsaPoint, other : CryptosymsalsaPoint) -> CryptosymsalsaPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn crypto_sym_salsa_point_norm(pt : CryptosymsalsaPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn CryptosymsalsaPoint::norm(self : CryptosymsalsaPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn crypto_sym_salsa_point_normalize(pt : CryptosymsalsaPoint) -> CryptosymsalsaPoint {
-  let n = crypto_sym_salsa_point_norm(pt)
-  if n < 0.0000001 { pt } else { crypto_sym_salsa_point_scale(pt, 1.0 / n) }
+pub fn CryptosymsalsaPoint::normalize(self : CryptosymsalsaPoint) -> CryptosymsalsaPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn crypto_sym_salsa_point_negate(pt : CryptosymsalsaPoint) -> CryptosymsalsaPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn CryptosymsalsaPoint::negate(self : CryptosymsalsaPoint) -> CryptosymsalsaPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn crypto_sym_salsa_point_mid(a : CryptosymsalsaPoint, b : CryptosymsalsaPoint) -> CryptosymsalsaPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn CryptosymsalsaPoint::mid(self : CryptosymsalsaPoint, other : CryptosymsalsaPoint) -> CryptosymsalsaPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn crypto_sym_salsa_point_lerp(a : CryptosymsalsaPoint, b : CryptosymsalsaPoint, t : Double) -> CryptosymsalsaPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn CryptosymsalsaPoint::lerp(self : CryptosymsalsaPoint, other : CryptosymsalsaPoint, t : Double) -> CryptosymsalsaPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn crypto_sym_salsa_point_to_string(pt : CryptosymsalsaPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn CryptosymsalsaPoint::to_string(self : CryptosymsalsaPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct CryptosymsalsaSeries {
@@ -86,58 +86,58 @@ pub fn crypto_sym_salsa_make_series(vals : Array[Double], name : String) -> Cryp
   { vals, name, meta: 0 }
 }
 
-pub fn crypto_sym_salsa_series_len(s : CryptosymsalsaSeries) -> Int { s.vals.length() }
+pub fn CryptosymsalsaSeries::len(self : CryptosymsalsaSeries) -> Int { self.vals.length() }
 
-pub fn crypto_sym_salsa_series_sum(s : CryptosymsalsaSeries) -> Double { @_common.sum(s.vals) }
+pub fn CryptosymsalsaSeries::sum(self : CryptosymsalsaSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn crypto_sym_salsa_series_mean(s : CryptosymsalsaSeries) -> Double { @_common.mean(s.vals) }
+pub fn CryptosymsalsaSeries::mean(self : CryptosymsalsaSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn crypto_sym_salsa_series_min(s : CryptosymsalsaSeries) -> Double { @_common.min(s.vals) }
+pub fn CryptosymsalsaSeries::min(self : CryptosymsalsaSeries) -> Double { @_common.min(self.vals) }
 
-pub fn crypto_sym_salsa_series_max(s : CryptosymsalsaSeries) -> Double { @_common.max(s.vals) }
+pub fn CryptosymsalsaSeries::max(self : CryptosymsalsaSeries) -> Double { @_common.max(self.vals) }
 
-pub fn crypto_sym_salsa_series_range(s : CryptosymsalsaSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn CryptosymsalsaSeries::range(self : CryptosymsalsaSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn crypto_sym_salsa_series_var(s : CryptosymsalsaSeries) -> Double { @_common.variance(s.vals) }
+pub fn CryptosymsalsaSeries::variance(self : CryptosymsalsaSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn crypto_sym_salsa_series_std(s : CryptosymsalsaSeries) -> Double { @_common.std(s.vals) }
+pub fn CryptosymsalsaSeries::std(self : CryptosymsalsaSeries) -> Double { @_common.std(self.vals) }
 
-pub fn crypto_sym_salsa_series_median(s : CryptosymsalsaSeries) -> Double { @_common.median(s.vals) }
+pub fn CryptosymsalsaSeries::median(self : CryptosymsalsaSeries) -> Double { @_common.median(self.vals) }
 
-pub fn crypto_sym_salsa_series_scale(s : CryptosymsalsaSeries, f : Double) -> CryptosymsalsaSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn CryptosymsalsaSeries::scale(self : CryptosymsalsaSeries, f : Double) -> CryptosymsalsaSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn crypto_sym_salsa_series_add(a : CryptosymsalsaSeries, b : CryptosymsalsaSeries) -> CryptosymsalsaSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn CryptosymsalsaSeries::add(self : CryptosymsalsaSeries, other : CryptosymsalsaSeries) -> CryptosymsalsaSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn crypto_sym_salsa_series_sub(a : CryptosymsalsaSeries, b : CryptosymsalsaSeries) -> CryptosymsalsaSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn CryptosymsalsaSeries::sub(self : CryptosymsalsaSeries, other : CryptosymsalsaSeries) -> CryptosymsalsaSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn crypto_sym_salsa_series_normalize(s : CryptosymsalsaSeries) -> CryptosymsalsaSeries {
-  let mn = crypto_sym_salsa_series_min(s)
-  let mx = crypto_sym_salsa_series_max(s)
+pub fn CryptosymsalsaSeries::normalize(self : CryptosymsalsaSeries) -> CryptosymsalsaSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn crypto_sym_salsa_series_cumsum(s : CryptosymsalsaSeries) -> CryptosymsalsaSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn CryptosymsalsaSeries::cumsum(self : CryptosymsalsaSeries) -> CryptosymsalsaSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn crypto_sym_salsa_series_to_string(s : CryptosymsalsaSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn CryptosymsalsaSeries::to_string(self : CryptosymsalsaSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn crypto_sym_salsa_matrix_identity(n : Int) -> CryptosymsalsaMatrix {
   m
 }
 
-pub fn crypto_sym_salsa_matrix_get(m : CryptosymsalsaMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn CryptosymsalsaMatrix::get(self : CryptosymsalsaMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn crypto_sym_salsa_matrix_transpose(m : CryptosymsalsaMatrix) -> CryptosymsalsaMatrix {
-  let result = crypto_sym_salsa_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn CryptosymsalsaMatrix::transpose(self : CryptosymsalsaMatrix) -> CryptosymsalsaMatrix {
+  let result = crypto_sym_salsa_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn crypto_sym_salsa_matrix_add(a : CryptosymsalsaMatrix, b : CryptosymsalsaMatrix) -> CryptosymsalsaMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = crypto_sym_salsa_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn CryptosymsalsaMatrix::add(self : CryptosymsalsaMatrix, other : CryptosymsalsaMatrix) -> CryptosymsalsaMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = crypto_sym_salsa_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn crypto_sym_salsa_matrix_scale(m : CryptosymsalsaMatrix, s : Double) -> CryptosymsalsaMatrix {
-  let result = crypto_sym_salsa_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn CryptosymsalsaMatrix::scale(self : CryptosymsalsaMatrix, s : Double) -> CryptosymsalsaMatrix {
+  let result = crypto_sym_salsa_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn crypto_sym_salsa_matrix_multiply(a : CryptosymsalsaMatrix, b : CryptosymsalsaMatrix) -> CryptosymsalsaMatrix {
-  if a.cols != b.rows { return crypto_sym_salsa_make_matrix(a.rows, b.cols, 0.0) }
-  let result = crypto_sym_salsa_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn CryptosymsalsaMatrix::multiply(self : CryptosymsalsaMatrix, other : CryptosymsalsaMatrix) -> CryptosymsalsaMatrix {
+  if self.cols != other.rows { return crypto_sym_salsa_make_matrix(self.rows, other.cols, 0.0) }
+  let result = crypto_sym_salsa_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn crypto_sym_salsa_matrix_trace(m : CryptosymsalsaMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn CryptosymsalsaMatrix::trace(self : CryptosymsalsaMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn crypto_sym_salsa_matrix_det(m : CryptosymsalsaMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn CryptosymsalsaMatrix::det(self : CryptosymsalsaMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn crypto_sym_salsa_matrix_norm(m : CryptosymsalsaMatrix) -> Double {
+pub fn CryptosymsalsaMatrix::norm(self : CryptosymsalsaMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn crypto_sym_salsa_matrix_to_string(m : CryptosymsalsaMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn CryptosymsalsaMatrix::to_string(self : CryptosymsalsaMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn crypto_sym_salsa_vector_zero(dim : Int) -> CryptosymsalsaVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn crypto_sym_salsa_vector_add(a : CryptosymsalsaVector, b : CryptosymsalsaVector) -> CryptosymsalsaVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn CryptosymsalsaVector::add(self : CryptosymsalsaVector, other : CryptosymsalsaVector) -> CryptosymsalsaVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn crypto_sym_salsa_vector_sub(a : CryptosymsalsaVector, b : CryptosymsalsaVector) -> CryptosymsalsaVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn CryptosymsalsaVector::sub(self : CryptosymsalsaVector, other : CryptosymsalsaVector) -> CryptosymsalsaVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn crypto_sym_salsa_vector_scale(v : CryptosymsalsaVector, s : Double) -> CryptosymsalsaVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn CryptosymsalsaVector::scale(self : CryptosymsalsaVector, s : Double) -> CryptosymsalsaVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn crypto_sym_salsa_vector_dot(a : CryptosymsalsaVector, b : CryptosymsalsaVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn CryptosymsalsaVector::dot(self : CryptosymsalsaVector, other : CryptosymsalsaVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn crypto_sym_salsa_vector_norm(v : CryptosymsalsaVector) -> Double { @_common.sqrt(crypto_sym_salsa_vector_dot(v, v)) }
+pub fn CryptosymsalsaVector::norm(self : CryptosymsalsaVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn crypto_sym_salsa_vector_normalize(v : CryptosymsalsaVector) -> CryptosymsalsaVector {
-  let n = crypto_sym_salsa_vector_norm(v)
-  if n < 0.0000001 { v } else { crypto_sym_salsa_vector_scale(v, 1.0 / n) }
+pub fn CryptosymsalsaVector::normalize(self : CryptosymsalsaVector) -> CryptosymsalsaVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn crypto_sym_salsa_vector_dist(a : CryptosymsalsaVector, b : CryptosymsalsaVector) -> Double {
-  crypto_sym_salsa_vector_norm(crypto_sym_salsa_vector_sub(a, b))
+pub fn CryptosymsalsaVector::dist(self : CryptosymsalsaVector, other : CryptosymsalsaVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn crypto_sym_salsa_vector_to_string(v : CryptosymsalsaVector) -> String {
+pub fn CryptosymsalsaVector::to_string(self : CryptosymsalsaVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn crypto_sym_salsa_mean(data : Array[Double]) -> Double { @_common.mean(data) }

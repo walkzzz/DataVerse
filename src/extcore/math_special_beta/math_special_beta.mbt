@@ -16,64 +16,64 @@ pub fn math_special_beta_make_point3(x : Double, y : Double, z : Double) -> Math
   { x, y, z, label: 0 }
 }
 
-pub fn math_special_beta_point_x(pt : MathspecialbetaPoint) -> Double { pt.x }
+pub fn MathspecialbetaPoint::x(self : MathspecialbetaPoint) -> Double { self.x }
 
-pub fn math_special_beta_point_y(pt : MathspecialbetaPoint) -> Double { pt.y }
+pub fn MathspecialbetaPoint::y(self : MathspecialbetaPoint) -> Double { self.y }
 
-pub fn math_special_beta_point_z(pt : MathspecialbetaPoint) -> Double { pt.z }
+pub fn MathspecialbetaPoint::z(self : MathspecialbetaPoint) -> Double { self.z }
 
-pub fn math_special_beta_point_label(pt : MathspecialbetaPoint) -> Int { pt.label }
+pub fn MathspecialbetaPoint::label(self : MathspecialbetaPoint) -> Int { self.label }
 
-pub fn math_special_beta_point_dist(a : MathspecialbetaPoint, b : MathspecialbetaPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn MathspecialbetaPoint::dist(self : MathspecialbetaPoint, other : MathspecialbetaPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn math_special_beta_point_add(a : MathspecialbetaPoint, b : MathspecialbetaPoint) -> MathspecialbetaPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn MathspecialbetaPoint::add(self : MathspecialbetaPoint, other : MathspecialbetaPoint) -> MathspecialbetaPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn math_special_beta_point_sub(a : MathspecialbetaPoint, b : MathspecialbetaPoint) -> MathspecialbetaPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn MathspecialbetaPoint::sub(self : MathspecialbetaPoint, other : MathspecialbetaPoint) -> MathspecialbetaPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn math_special_beta_point_scale(pt : MathspecialbetaPoint, s : Double) -> MathspecialbetaPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn MathspecialbetaPoint::scale(self : MathspecialbetaPoint, s : Double) -> MathspecialbetaPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn math_special_beta_point_dot(a : MathspecialbetaPoint, b : MathspecialbetaPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn MathspecialbetaPoint::dot(self : MathspecialbetaPoint, other : MathspecialbetaPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn math_special_beta_point_cross(a : MathspecialbetaPoint, b : MathspecialbetaPoint) -> MathspecialbetaPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn MathspecialbetaPoint::cross(self : MathspecialbetaPoint, other : MathspecialbetaPoint) -> MathspecialbetaPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn math_special_beta_point_norm(pt : MathspecialbetaPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn MathspecialbetaPoint::norm(self : MathspecialbetaPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn math_special_beta_point_normalize(pt : MathspecialbetaPoint) -> MathspecialbetaPoint {
-  let n = math_special_beta_point_norm(pt)
-  if n < 0.0000001 { pt } else { math_special_beta_point_scale(pt, 1.0 / n) }
+pub fn MathspecialbetaPoint::normalize(self : MathspecialbetaPoint) -> MathspecialbetaPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn math_special_beta_point_negate(pt : MathspecialbetaPoint) -> MathspecialbetaPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn MathspecialbetaPoint::negate(self : MathspecialbetaPoint) -> MathspecialbetaPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn math_special_beta_point_mid(a : MathspecialbetaPoint, b : MathspecialbetaPoint) -> MathspecialbetaPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn MathspecialbetaPoint::mid(self : MathspecialbetaPoint, other : MathspecialbetaPoint) -> MathspecialbetaPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn math_special_beta_point_lerp(a : MathspecialbetaPoint, b : MathspecialbetaPoint, t : Double) -> MathspecialbetaPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn MathspecialbetaPoint::lerp(self : MathspecialbetaPoint, other : MathspecialbetaPoint, t : Double) -> MathspecialbetaPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn math_special_beta_point_to_string(pt : MathspecialbetaPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn MathspecialbetaPoint::to_string(self : MathspecialbetaPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct MathspecialbetaSeries {
@@ -86,58 +86,58 @@ pub fn math_special_beta_make_series(vals : Array[Double], name : String) -> Mat
   { vals, name, meta: 0 }
 }
 
-pub fn math_special_beta_series_len(s : MathspecialbetaSeries) -> Int { s.vals.length() }
+pub fn MathspecialbetaSeries::len(self : MathspecialbetaSeries) -> Int { self.vals.length() }
 
-pub fn math_special_beta_series_sum(s : MathspecialbetaSeries) -> Double { @_common.sum(s.vals) }
+pub fn MathspecialbetaSeries::sum(self : MathspecialbetaSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn math_special_beta_series_mean(s : MathspecialbetaSeries) -> Double { @_common.mean(s.vals) }
+pub fn MathspecialbetaSeries::mean(self : MathspecialbetaSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn math_special_beta_series_min(s : MathspecialbetaSeries) -> Double { @_common.min(s.vals) }
+pub fn MathspecialbetaSeries::min(self : MathspecialbetaSeries) -> Double { @_common.min(self.vals) }
 
-pub fn math_special_beta_series_max(s : MathspecialbetaSeries) -> Double { @_common.max(s.vals) }
+pub fn MathspecialbetaSeries::max(self : MathspecialbetaSeries) -> Double { @_common.max(self.vals) }
 
-pub fn math_special_beta_series_range(s : MathspecialbetaSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn MathspecialbetaSeries::range(self : MathspecialbetaSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn math_special_beta_series_var(s : MathspecialbetaSeries) -> Double { @_common.variance(s.vals) }
+pub fn MathspecialbetaSeries::variance(self : MathspecialbetaSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn math_special_beta_series_std(s : MathspecialbetaSeries) -> Double { @_common.std(s.vals) }
+pub fn MathspecialbetaSeries::std(self : MathspecialbetaSeries) -> Double { @_common.std(self.vals) }
 
-pub fn math_special_beta_series_median(s : MathspecialbetaSeries) -> Double { @_common.median(s.vals) }
+pub fn MathspecialbetaSeries::median(self : MathspecialbetaSeries) -> Double { @_common.median(self.vals) }
 
-pub fn math_special_beta_series_scale(s : MathspecialbetaSeries, f : Double) -> MathspecialbetaSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn MathspecialbetaSeries::scale(self : MathspecialbetaSeries, f : Double) -> MathspecialbetaSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn math_special_beta_series_add(a : MathspecialbetaSeries, b : MathspecialbetaSeries) -> MathspecialbetaSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn MathspecialbetaSeries::add(self : MathspecialbetaSeries, other : MathspecialbetaSeries) -> MathspecialbetaSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn math_special_beta_series_sub(a : MathspecialbetaSeries, b : MathspecialbetaSeries) -> MathspecialbetaSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn MathspecialbetaSeries::sub(self : MathspecialbetaSeries, other : MathspecialbetaSeries) -> MathspecialbetaSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn math_special_beta_series_normalize(s : MathspecialbetaSeries) -> MathspecialbetaSeries {
-  let mn = math_special_beta_series_min(s)
-  let mx = math_special_beta_series_max(s)
+pub fn MathspecialbetaSeries::normalize(self : MathspecialbetaSeries) -> MathspecialbetaSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn math_special_beta_series_cumsum(s : MathspecialbetaSeries) -> MathspecialbetaSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn MathspecialbetaSeries::cumsum(self : MathspecialbetaSeries) -> MathspecialbetaSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn math_special_beta_series_to_string(s : MathspecialbetaSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn MathspecialbetaSeries::to_string(self : MathspecialbetaSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn math_special_beta_matrix_identity(n : Int) -> MathspecialbetaMatrix {
   m
 }
 
-pub fn math_special_beta_matrix_get(m : MathspecialbetaMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn MathspecialbetaMatrix::get(self : MathspecialbetaMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn math_special_beta_matrix_transpose(m : MathspecialbetaMatrix) -> MathspecialbetaMatrix {
-  let result = math_special_beta_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn MathspecialbetaMatrix::transpose(self : MathspecialbetaMatrix) -> MathspecialbetaMatrix {
+  let result = math_special_beta_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn math_special_beta_matrix_add(a : MathspecialbetaMatrix, b : MathspecialbetaMatrix) -> MathspecialbetaMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = math_special_beta_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn MathspecialbetaMatrix::add(self : MathspecialbetaMatrix, other : MathspecialbetaMatrix) -> MathspecialbetaMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = math_special_beta_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn math_special_beta_matrix_scale(m : MathspecialbetaMatrix, s : Double) -> MathspecialbetaMatrix {
-  let result = math_special_beta_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn MathspecialbetaMatrix::scale(self : MathspecialbetaMatrix, s : Double) -> MathspecialbetaMatrix {
+  let result = math_special_beta_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn math_special_beta_matrix_multiply(a : MathspecialbetaMatrix, b : MathspecialbetaMatrix) -> MathspecialbetaMatrix {
-  if a.cols != b.rows { return math_special_beta_make_matrix(a.rows, b.cols, 0.0) }
-  let result = math_special_beta_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn MathspecialbetaMatrix::multiply(self : MathspecialbetaMatrix, other : MathspecialbetaMatrix) -> MathspecialbetaMatrix {
+  if self.cols != other.rows { return math_special_beta_make_matrix(self.rows, other.cols, 0.0) }
+  let result = math_special_beta_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn math_special_beta_matrix_trace(m : MathspecialbetaMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn MathspecialbetaMatrix::trace(self : MathspecialbetaMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn math_special_beta_matrix_det(m : MathspecialbetaMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn MathspecialbetaMatrix::det(self : MathspecialbetaMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn math_special_beta_matrix_norm(m : MathspecialbetaMatrix) -> Double {
+pub fn MathspecialbetaMatrix::norm(self : MathspecialbetaMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn math_special_beta_matrix_to_string(m : MathspecialbetaMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn MathspecialbetaMatrix::to_string(self : MathspecialbetaMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn math_special_beta_vector_zero(dim : Int) -> MathspecialbetaVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn math_special_beta_vector_add(a : MathspecialbetaVector, b : MathspecialbetaVector) -> MathspecialbetaVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn MathspecialbetaVector::add(self : MathspecialbetaVector, other : MathspecialbetaVector) -> MathspecialbetaVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn math_special_beta_vector_sub(a : MathspecialbetaVector, b : MathspecialbetaVector) -> MathspecialbetaVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn MathspecialbetaVector::sub(self : MathspecialbetaVector, other : MathspecialbetaVector) -> MathspecialbetaVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn math_special_beta_vector_scale(v : MathspecialbetaVector, s : Double) -> MathspecialbetaVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn MathspecialbetaVector::scale(self : MathspecialbetaVector, s : Double) -> MathspecialbetaVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn math_special_beta_vector_dot(a : MathspecialbetaVector, b : MathspecialbetaVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn MathspecialbetaVector::dot(self : MathspecialbetaVector, other : MathspecialbetaVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn math_special_beta_vector_norm(v : MathspecialbetaVector) -> Double { @_common.sqrt(math_special_beta_vector_dot(v, v)) }
+pub fn MathspecialbetaVector::norm(self : MathspecialbetaVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn math_special_beta_vector_normalize(v : MathspecialbetaVector) -> MathspecialbetaVector {
-  let n = math_special_beta_vector_norm(v)
-  if n < 0.0000001 { v } else { math_special_beta_vector_scale(v, 1.0 / n) }
+pub fn MathspecialbetaVector::normalize(self : MathspecialbetaVector) -> MathspecialbetaVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn math_special_beta_vector_dist(a : MathspecialbetaVector, b : MathspecialbetaVector) -> Double {
-  math_special_beta_vector_norm(math_special_beta_vector_sub(a, b))
+pub fn MathspecialbetaVector::dist(self : MathspecialbetaVector, other : MathspecialbetaVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn math_special_beta_vector_to_string(v : MathspecialbetaVector) -> String {
+pub fn MathspecialbetaVector::to_string(self : MathspecialbetaVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn math_special_beta_mean(data : Array[Double]) -> Double { @_common.mean(data) }

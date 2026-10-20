@@ -16,64 +16,64 @@ pub fn crypto_sign_ring_make_point3(x : Double, y : Double, z : Double) -> Crypt
   { x, y, z, label: 0 }
 }
 
-pub fn crypto_sign_ring_point_x(pt : CryptosignringPoint) -> Double { pt.x }
+pub fn CryptosignringPoint::x(self : CryptosignringPoint) -> Double { self.x }
 
-pub fn crypto_sign_ring_point_y(pt : CryptosignringPoint) -> Double { pt.y }
+pub fn CryptosignringPoint::y(self : CryptosignringPoint) -> Double { self.y }
 
-pub fn crypto_sign_ring_point_z(pt : CryptosignringPoint) -> Double { pt.z }
+pub fn CryptosignringPoint::z(self : CryptosignringPoint) -> Double { self.z }
 
-pub fn crypto_sign_ring_point_label(pt : CryptosignringPoint) -> Int { pt.label }
+pub fn CryptosignringPoint::label(self : CryptosignringPoint) -> Int { self.label }
 
-pub fn crypto_sign_ring_point_dist(a : CryptosignringPoint, b : CryptosignringPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn CryptosignringPoint::dist(self : CryptosignringPoint, other : CryptosignringPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn crypto_sign_ring_point_add(a : CryptosignringPoint, b : CryptosignringPoint) -> CryptosignringPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn CryptosignringPoint::add(self : CryptosignringPoint, other : CryptosignringPoint) -> CryptosignringPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn crypto_sign_ring_point_sub(a : CryptosignringPoint, b : CryptosignringPoint) -> CryptosignringPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn CryptosignringPoint::sub(self : CryptosignringPoint, other : CryptosignringPoint) -> CryptosignringPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn crypto_sign_ring_point_scale(pt : CryptosignringPoint, s : Double) -> CryptosignringPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn CryptosignringPoint::scale(self : CryptosignringPoint, s : Double) -> CryptosignringPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn crypto_sign_ring_point_dot(a : CryptosignringPoint, b : CryptosignringPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn CryptosignringPoint::dot(self : CryptosignringPoint, other : CryptosignringPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn crypto_sign_ring_point_cross(a : CryptosignringPoint, b : CryptosignringPoint) -> CryptosignringPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn CryptosignringPoint::cross(self : CryptosignringPoint, other : CryptosignringPoint) -> CryptosignringPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn crypto_sign_ring_point_norm(pt : CryptosignringPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn CryptosignringPoint::norm(self : CryptosignringPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn crypto_sign_ring_point_normalize(pt : CryptosignringPoint) -> CryptosignringPoint {
-  let n = crypto_sign_ring_point_norm(pt)
-  if n < 0.0000001 { pt } else { crypto_sign_ring_point_scale(pt, 1.0 / n) }
+pub fn CryptosignringPoint::normalize(self : CryptosignringPoint) -> CryptosignringPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn crypto_sign_ring_point_negate(pt : CryptosignringPoint) -> CryptosignringPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn CryptosignringPoint::negate(self : CryptosignringPoint) -> CryptosignringPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn crypto_sign_ring_point_mid(a : CryptosignringPoint, b : CryptosignringPoint) -> CryptosignringPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn CryptosignringPoint::mid(self : CryptosignringPoint, other : CryptosignringPoint) -> CryptosignringPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn crypto_sign_ring_point_lerp(a : CryptosignringPoint, b : CryptosignringPoint, t : Double) -> CryptosignringPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn CryptosignringPoint::lerp(self : CryptosignringPoint, other : CryptosignringPoint, t : Double) -> CryptosignringPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn crypto_sign_ring_point_to_string(pt : CryptosignringPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn CryptosignringPoint::to_string(self : CryptosignringPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct CryptosignringSeries {
@@ -86,58 +86,58 @@ pub fn crypto_sign_ring_make_series(vals : Array[Double], name : String) -> Cryp
   { vals, name, meta: 0 }
 }
 
-pub fn crypto_sign_ring_series_len(s : CryptosignringSeries) -> Int { s.vals.length() }
+pub fn CryptosignringSeries::len(self : CryptosignringSeries) -> Int { self.vals.length() }
 
-pub fn crypto_sign_ring_series_sum(s : CryptosignringSeries) -> Double { @_common.sum(s.vals) }
+pub fn CryptosignringSeries::sum(self : CryptosignringSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn crypto_sign_ring_series_mean(s : CryptosignringSeries) -> Double { @_common.mean(s.vals) }
+pub fn CryptosignringSeries::mean(self : CryptosignringSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn crypto_sign_ring_series_min(s : CryptosignringSeries) -> Double { @_common.min(s.vals) }
+pub fn CryptosignringSeries::min(self : CryptosignringSeries) -> Double { @_common.min(self.vals) }
 
-pub fn crypto_sign_ring_series_max(s : CryptosignringSeries) -> Double { @_common.max(s.vals) }
+pub fn CryptosignringSeries::max(self : CryptosignringSeries) -> Double { @_common.max(self.vals) }
 
-pub fn crypto_sign_ring_series_range(s : CryptosignringSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn CryptosignringSeries::range(self : CryptosignringSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn crypto_sign_ring_series_var(s : CryptosignringSeries) -> Double { @_common.variance(s.vals) }
+pub fn CryptosignringSeries::variance(self : CryptosignringSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn crypto_sign_ring_series_std(s : CryptosignringSeries) -> Double { @_common.std(s.vals) }
+pub fn CryptosignringSeries::std(self : CryptosignringSeries) -> Double { @_common.std(self.vals) }
 
-pub fn crypto_sign_ring_series_median(s : CryptosignringSeries) -> Double { @_common.median(s.vals) }
+pub fn CryptosignringSeries::median(self : CryptosignringSeries) -> Double { @_common.median(self.vals) }
 
-pub fn crypto_sign_ring_series_scale(s : CryptosignringSeries, f : Double) -> CryptosignringSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn CryptosignringSeries::scale(self : CryptosignringSeries, f : Double) -> CryptosignringSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn crypto_sign_ring_series_add(a : CryptosignringSeries, b : CryptosignringSeries) -> CryptosignringSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn CryptosignringSeries::add(self : CryptosignringSeries, other : CryptosignringSeries) -> CryptosignringSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn crypto_sign_ring_series_sub(a : CryptosignringSeries, b : CryptosignringSeries) -> CryptosignringSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn CryptosignringSeries::sub(self : CryptosignringSeries, other : CryptosignringSeries) -> CryptosignringSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn crypto_sign_ring_series_normalize(s : CryptosignringSeries) -> CryptosignringSeries {
-  let mn = crypto_sign_ring_series_min(s)
-  let mx = crypto_sign_ring_series_max(s)
+pub fn CryptosignringSeries::normalize(self : CryptosignringSeries) -> CryptosignringSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn crypto_sign_ring_series_cumsum(s : CryptosignringSeries) -> CryptosignringSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn CryptosignringSeries::cumsum(self : CryptosignringSeries) -> CryptosignringSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn crypto_sign_ring_series_to_string(s : CryptosignringSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn CryptosignringSeries::to_string(self : CryptosignringSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn crypto_sign_ring_matrix_identity(n : Int) -> CryptosignringMatrix {
   m
 }
 
-pub fn crypto_sign_ring_matrix_get(m : CryptosignringMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn CryptosignringMatrix::get(self : CryptosignringMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn crypto_sign_ring_matrix_transpose(m : CryptosignringMatrix) -> CryptosignringMatrix {
-  let result = crypto_sign_ring_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn CryptosignringMatrix::transpose(self : CryptosignringMatrix) -> CryptosignringMatrix {
+  let result = crypto_sign_ring_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn crypto_sign_ring_matrix_add(a : CryptosignringMatrix, b : CryptosignringMatrix) -> CryptosignringMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = crypto_sign_ring_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn CryptosignringMatrix::add(self : CryptosignringMatrix, other : CryptosignringMatrix) -> CryptosignringMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = crypto_sign_ring_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn crypto_sign_ring_matrix_scale(m : CryptosignringMatrix, s : Double) -> CryptosignringMatrix {
-  let result = crypto_sign_ring_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn CryptosignringMatrix::scale(self : CryptosignringMatrix, s : Double) -> CryptosignringMatrix {
+  let result = crypto_sign_ring_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn crypto_sign_ring_matrix_multiply(a : CryptosignringMatrix, b : CryptosignringMatrix) -> CryptosignringMatrix {
-  if a.cols != b.rows { return crypto_sign_ring_make_matrix(a.rows, b.cols, 0.0) }
-  let result = crypto_sign_ring_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn CryptosignringMatrix::multiply(self : CryptosignringMatrix, other : CryptosignringMatrix) -> CryptosignringMatrix {
+  if self.cols != other.rows { return crypto_sign_ring_make_matrix(self.rows, other.cols, 0.0) }
+  let result = crypto_sign_ring_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn crypto_sign_ring_matrix_trace(m : CryptosignringMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn CryptosignringMatrix::trace(self : CryptosignringMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn crypto_sign_ring_matrix_det(m : CryptosignringMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn CryptosignringMatrix::det(self : CryptosignringMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn crypto_sign_ring_matrix_norm(m : CryptosignringMatrix) -> Double {
+pub fn CryptosignringMatrix::norm(self : CryptosignringMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn crypto_sign_ring_matrix_to_string(m : CryptosignringMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn CryptosignringMatrix::to_string(self : CryptosignringMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn crypto_sign_ring_vector_zero(dim : Int) -> CryptosignringVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn crypto_sign_ring_vector_add(a : CryptosignringVector, b : CryptosignringVector) -> CryptosignringVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn CryptosignringVector::add(self : CryptosignringVector, other : CryptosignringVector) -> CryptosignringVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn crypto_sign_ring_vector_sub(a : CryptosignringVector, b : CryptosignringVector) -> CryptosignringVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn CryptosignringVector::sub(self : CryptosignringVector, other : CryptosignringVector) -> CryptosignringVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn crypto_sign_ring_vector_scale(v : CryptosignringVector, s : Double) -> CryptosignringVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn CryptosignringVector::scale(self : CryptosignringVector, s : Double) -> CryptosignringVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn crypto_sign_ring_vector_dot(a : CryptosignringVector, b : CryptosignringVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn CryptosignringVector::dot(self : CryptosignringVector, other : CryptosignringVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn crypto_sign_ring_vector_norm(v : CryptosignringVector) -> Double { @_common.sqrt(crypto_sign_ring_vector_dot(v, v)) }
+pub fn CryptosignringVector::norm(self : CryptosignringVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn crypto_sign_ring_vector_normalize(v : CryptosignringVector) -> CryptosignringVector {
-  let n = crypto_sign_ring_vector_norm(v)
-  if n < 0.0000001 { v } else { crypto_sign_ring_vector_scale(v, 1.0 / n) }
+pub fn CryptosignringVector::normalize(self : CryptosignringVector) -> CryptosignringVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn crypto_sign_ring_vector_dist(a : CryptosignringVector, b : CryptosignringVector) -> Double {
-  crypto_sign_ring_vector_norm(crypto_sign_ring_vector_sub(a, b))
+pub fn CryptosignringVector::dist(self : CryptosignringVector, other : CryptosignringVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn crypto_sign_ring_vector_to_string(v : CryptosignringVector) -> String {
+pub fn CryptosignringVector::to_string(self : CryptosignringVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn crypto_sign_ring_mean(data : Array[Double]) -> Double { @_common.mean(data) }

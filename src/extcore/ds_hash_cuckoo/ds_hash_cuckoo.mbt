@@ -16,64 +16,64 @@ pub fn ds_hash_cuckoo_make_point3(x : Double, y : Double, z : Double) -> Dshashc
   { x, y, z, label: 0 }
 }
 
-pub fn ds_hash_cuckoo_point_x(pt : DshashcuckooPoint) -> Double { pt.x }
+pub fn DshashcuckooPoint::x(self : DshashcuckooPoint) -> Double { self.x }
 
-pub fn ds_hash_cuckoo_point_y(pt : DshashcuckooPoint) -> Double { pt.y }
+pub fn DshashcuckooPoint::y(self : DshashcuckooPoint) -> Double { self.y }
 
-pub fn ds_hash_cuckoo_point_z(pt : DshashcuckooPoint) -> Double { pt.z }
+pub fn DshashcuckooPoint::z(self : DshashcuckooPoint) -> Double { self.z }
 
-pub fn ds_hash_cuckoo_point_label(pt : DshashcuckooPoint) -> Int { pt.label }
+pub fn DshashcuckooPoint::label(self : DshashcuckooPoint) -> Int { self.label }
 
-pub fn ds_hash_cuckoo_point_dist(a : DshashcuckooPoint, b : DshashcuckooPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn DshashcuckooPoint::dist(self : DshashcuckooPoint, other : DshashcuckooPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn ds_hash_cuckoo_point_add(a : DshashcuckooPoint, b : DshashcuckooPoint) -> DshashcuckooPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn DshashcuckooPoint::add(self : DshashcuckooPoint, other : DshashcuckooPoint) -> DshashcuckooPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn ds_hash_cuckoo_point_sub(a : DshashcuckooPoint, b : DshashcuckooPoint) -> DshashcuckooPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn DshashcuckooPoint::sub(self : DshashcuckooPoint, other : DshashcuckooPoint) -> DshashcuckooPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn ds_hash_cuckoo_point_scale(pt : DshashcuckooPoint, s : Double) -> DshashcuckooPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn DshashcuckooPoint::scale(self : DshashcuckooPoint, s : Double) -> DshashcuckooPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn ds_hash_cuckoo_point_dot(a : DshashcuckooPoint, b : DshashcuckooPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn DshashcuckooPoint::dot(self : DshashcuckooPoint, other : DshashcuckooPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn ds_hash_cuckoo_point_cross(a : DshashcuckooPoint, b : DshashcuckooPoint) -> DshashcuckooPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn DshashcuckooPoint::cross(self : DshashcuckooPoint, other : DshashcuckooPoint) -> DshashcuckooPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn ds_hash_cuckoo_point_norm(pt : DshashcuckooPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn DshashcuckooPoint::norm(self : DshashcuckooPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn ds_hash_cuckoo_point_normalize(pt : DshashcuckooPoint) -> DshashcuckooPoint {
-  let n = ds_hash_cuckoo_point_norm(pt)
-  if n < 0.0000001 { pt } else { ds_hash_cuckoo_point_scale(pt, 1.0 / n) }
+pub fn DshashcuckooPoint::normalize(self : DshashcuckooPoint) -> DshashcuckooPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn ds_hash_cuckoo_point_negate(pt : DshashcuckooPoint) -> DshashcuckooPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn DshashcuckooPoint::negate(self : DshashcuckooPoint) -> DshashcuckooPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn ds_hash_cuckoo_point_mid(a : DshashcuckooPoint, b : DshashcuckooPoint) -> DshashcuckooPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn DshashcuckooPoint::mid(self : DshashcuckooPoint, other : DshashcuckooPoint) -> DshashcuckooPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn ds_hash_cuckoo_point_lerp(a : DshashcuckooPoint, b : DshashcuckooPoint, t : Double) -> DshashcuckooPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn DshashcuckooPoint::lerp(self : DshashcuckooPoint, other : DshashcuckooPoint, t : Double) -> DshashcuckooPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn ds_hash_cuckoo_point_to_string(pt : DshashcuckooPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn DshashcuckooPoint::to_string(self : DshashcuckooPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct DshashcuckooSeries {
@@ -86,58 +86,58 @@ pub fn ds_hash_cuckoo_make_series(vals : Array[Double], name : String) -> Dshash
   { vals, name, meta: 0 }
 }
 
-pub fn ds_hash_cuckoo_series_len(s : DshashcuckooSeries) -> Int { s.vals.length() }
+pub fn DshashcuckooSeries::len(self : DshashcuckooSeries) -> Int { self.vals.length() }
 
-pub fn ds_hash_cuckoo_series_sum(s : DshashcuckooSeries) -> Double { @_common.sum(s.vals) }
+pub fn DshashcuckooSeries::sum(self : DshashcuckooSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn ds_hash_cuckoo_series_mean(s : DshashcuckooSeries) -> Double { @_common.mean(s.vals) }
+pub fn DshashcuckooSeries::mean(self : DshashcuckooSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn ds_hash_cuckoo_series_min(s : DshashcuckooSeries) -> Double { @_common.min(s.vals) }
+pub fn DshashcuckooSeries::min(self : DshashcuckooSeries) -> Double { @_common.min(self.vals) }
 
-pub fn ds_hash_cuckoo_series_max(s : DshashcuckooSeries) -> Double { @_common.max(s.vals) }
+pub fn DshashcuckooSeries::max(self : DshashcuckooSeries) -> Double { @_common.max(self.vals) }
 
-pub fn ds_hash_cuckoo_series_range(s : DshashcuckooSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn DshashcuckooSeries::range(self : DshashcuckooSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn ds_hash_cuckoo_series_var(s : DshashcuckooSeries) -> Double { @_common.variance(s.vals) }
+pub fn DshashcuckooSeries::variance(self : DshashcuckooSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn ds_hash_cuckoo_series_std(s : DshashcuckooSeries) -> Double { @_common.std(s.vals) }
+pub fn DshashcuckooSeries::std(self : DshashcuckooSeries) -> Double { @_common.std(self.vals) }
 
-pub fn ds_hash_cuckoo_series_median(s : DshashcuckooSeries) -> Double { @_common.median(s.vals) }
+pub fn DshashcuckooSeries::median(self : DshashcuckooSeries) -> Double { @_common.median(self.vals) }
 
-pub fn ds_hash_cuckoo_series_scale(s : DshashcuckooSeries, f : Double) -> DshashcuckooSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn DshashcuckooSeries::scale(self : DshashcuckooSeries, f : Double) -> DshashcuckooSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn ds_hash_cuckoo_series_add(a : DshashcuckooSeries, b : DshashcuckooSeries) -> DshashcuckooSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn DshashcuckooSeries::add(self : DshashcuckooSeries, other : DshashcuckooSeries) -> DshashcuckooSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn ds_hash_cuckoo_series_sub(a : DshashcuckooSeries, b : DshashcuckooSeries) -> DshashcuckooSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn DshashcuckooSeries::sub(self : DshashcuckooSeries, other : DshashcuckooSeries) -> DshashcuckooSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn ds_hash_cuckoo_series_normalize(s : DshashcuckooSeries) -> DshashcuckooSeries {
-  let mn = ds_hash_cuckoo_series_min(s)
-  let mx = ds_hash_cuckoo_series_max(s)
+pub fn DshashcuckooSeries::normalize(self : DshashcuckooSeries) -> DshashcuckooSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn ds_hash_cuckoo_series_cumsum(s : DshashcuckooSeries) -> DshashcuckooSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn DshashcuckooSeries::cumsum(self : DshashcuckooSeries) -> DshashcuckooSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn ds_hash_cuckoo_series_to_string(s : DshashcuckooSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn DshashcuckooSeries::to_string(self : DshashcuckooSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn ds_hash_cuckoo_matrix_identity(n : Int) -> DshashcuckooMatrix {
   m
 }
 
-pub fn ds_hash_cuckoo_matrix_get(m : DshashcuckooMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn DshashcuckooMatrix::get(self : DshashcuckooMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn ds_hash_cuckoo_matrix_transpose(m : DshashcuckooMatrix) -> DshashcuckooMatrix {
-  let result = ds_hash_cuckoo_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn DshashcuckooMatrix::transpose(self : DshashcuckooMatrix) -> DshashcuckooMatrix {
+  let result = ds_hash_cuckoo_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn ds_hash_cuckoo_matrix_add(a : DshashcuckooMatrix, b : DshashcuckooMatrix) -> DshashcuckooMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = ds_hash_cuckoo_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn DshashcuckooMatrix::add(self : DshashcuckooMatrix, other : DshashcuckooMatrix) -> DshashcuckooMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = ds_hash_cuckoo_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn ds_hash_cuckoo_matrix_scale(m : DshashcuckooMatrix, s : Double) -> DshashcuckooMatrix {
-  let result = ds_hash_cuckoo_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn DshashcuckooMatrix::scale(self : DshashcuckooMatrix, s : Double) -> DshashcuckooMatrix {
+  let result = ds_hash_cuckoo_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn ds_hash_cuckoo_matrix_multiply(a : DshashcuckooMatrix, b : DshashcuckooMatrix) -> DshashcuckooMatrix {
-  if a.cols != b.rows { return ds_hash_cuckoo_make_matrix(a.rows, b.cols, 0.0) }
-  let result = ds_hash_cuckoo_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn DshashcuckooMatrix::multiply(self : DshashcuckooMatrix, other : DshashcuckooMatrix) -> DshashcuckooMatrix {
+  if self.cols != other.rows { return ds_hash_cuckoo_make_matrix(self.rows, other.cols, 0.0) }
+  let result = ds_hash_cuckoo_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn ds_hash_cuckoo_matrix_trace(m : DshashcuckooMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn DshashcuckooMatrix::trace(self : DshashcuckooMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn ds_hash_cuckoo_matrix_det(m : DshashcuckooMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn DshashcuckooMatrix::det(self : DshashcuckooMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn ds_hash_cuckoo_matrix_norm(m : DshashcuckooMatrix) -> Double {
+pub fn DshashcuckooMatrix::norm(self : DshashcuckooMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn ds_hash_cuckoo_matrix_to_string(m : DshashcuckooMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn DshashcuckooMatrix::to_string(self : DshashcuckooMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn ds_hash_cuckoo_vector_zero(dim : Int) -> DshashcuckooVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn ds_hash_cuckoo_vector_add(a : DshashcuckooVector, b : DshashcuckooVector) -> DshashcuckooVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn DshashcuckooVector::add(self : DshashcuckooVector, other : DshashcuckooVector) -> DshashcuckooVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn ds_hash_cuckoo_vector_sub(a : DshashcuckooVector, b : DshashcuckooVector) -> DshashcuckooVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn DshashcuckooVector::sub(self : DshashcuckooVector, other : DshashcuckooVector) -> DshashcuckooVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn ds_hash_cuckoo_vector_scale(v : DshashcuckooVector, s : Double) -> DshashcuckooVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn DshashcuckooVector::scale(self : DshashcuckooVector, s : Double) -> DshashcuckooVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn ds_hash_cuckoo_vector_dot(a : DshashcuckooVector, b : DshashcuckooVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn DshashcuckooVector::dot(self : DshashcuckooVector, other : DshashcuckooVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn ds_hash_cuckoo_vector_norm(v : DshashcuckooVector) -> Double { @_common.sqrt(ds_hash_cuckoo_vector_dot(v, v)) }
+pub fn DshashcuckooVector::norm(self : DshashcuckooVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn ds_hash_cuckoo_vector_normalize(v : DshashcuckooVector) -> DshashcuckooVector {
-  let n = ds_hash_cuckoo_vector_norm(v)
-  if n < 0.0000001 { v } else { ds_hash_cuckoo_vector_scale(v, 1.0 / n) }
+pub fn DshashcuckooVector::normalize(self : DshashcuckooVector) -> DshashcuckooVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn ds_hash_cuckoo_vector_dist(a : DshashcuckooVector, b : DshashcuckooVector) -> Double {
-  ds_hash_cuckoo_vector_norm(ds_hash_cuckoo_vector_sub(a, b))
+pub fn DshashcuckooVector::dist(self : DshashcuckooVector, other : DshashcuckooVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn ds_hash_cuckoo_vector_to_string(v : DshashcuckooVector) -> String {
+pub fn DshashcuckooVector::to_string(self : DshashcuckooVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn ds_hash_cuckoo_mean(data : Array[Double]) -> Double { @_common.mean(data) }

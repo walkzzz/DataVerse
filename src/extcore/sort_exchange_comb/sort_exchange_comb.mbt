@@ -16,64 +16,64 @@ pub fn sort_exchange_comb_make_point3(x : Double, y : Double, z : Double) -> Sor
   { x, y, z, label: 0 }
 }
 
-pub fn sort_exchange_comb_point_x(pt : SortexchangecombPoint) -> Double { pt.x }
+pub fn SortexchangecombPoint::x(self : SortexchangecombPoint) -> Double { self.x }
 
-pub fn sort_exchange_comb_point_y(pt : SortexchangecombPoint) -> Double { pt.y }
+pub fn SortexchangecombPoint::y(self : SortexchangecombPoint) -> Double { self.y }
 
-pub fn sort_exchange_comb_point_z(pt : SortexchangecombPoint) -> Double { pt.z }
+pub fn SortexchangecombPoint::z(self : SortexchangecombPoint) -> Double { self.z }
 
-pub fn sort_exchange_comb_point_label(pt : SortexchangecombPoint) -> Int { pt.label }
+pub fn SortexchangecombPoint::label(self : SortexchangecombPoint) -> Int { self.label }
 
-pub fn sort_exchange_comb_point_dist(a : SortexchangecombPoint, b : SortexchangecombPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn SortexchangecombPoint::dist(self : SortexchangecombPoint, other : SortexchangecombPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn sort_exchange_comb_point_add(a : SortexchangecombPoint, b : SortexchangecombPoint) -> SortexchangecombPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn SortexchangecombPoint::add(self : SortexchangecombPoint, other : SortexchangecombPoint) -> SortexchangecombPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn sort_exchange_comb_point_sub(a : SortexchangecombPoint, b : SortexchangecombPoint) -> SortexchangecombPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn SortexchangecombPoint::sub(self : SortexchangecombPoint, other : SortexchangecombPoint) -> SortexchangecombPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn sort_exchange_comb_point_scale(pt : SortexchangecombPoint, s : Double) -> SortexchangecombPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn SortexchangecombPoint::scale(self : SortexchangecombPoint, s : Double) -> SortexchangecombPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn sort_exchange_comb_point_dot(a : SortexchangecombPoint, b : SortexchangecombPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn SortexchangecombPoint::dot(self : SortexchangecombPoint, other : SortexchangecombPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn sort_exchange_comb_point_cross(a : SortexchangecombPoint, b : SortexchangecombPoint) -> SortexchangecombPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn SortexchangecombPoint::cross(self : SortexchangecombPoint, other : SortexchangecombPoint) -> SortexchangecombPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn sort_exchange_comb_point_norm(pt : SortexchangecombPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn SortexchangecombPoint::norm(self : SortexchangecombPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn sort_exchange_comb_point_normalize(pt : SortexchangecombPoint) -> SortexchangecombPoint {
-  let n = sort_exchange_comb_point_norm(pt)
-  if n < 0.0000001 { pt } else { sort_exchange_comb_point_scale(pt, 1.0 / n) }
+pub fn SortexchangecombPoint::normalize(self : SortexchangecombPoint) -> SortexchangecombPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn sort_exchange_comb_point_negate(pt : SortexchangecombPoint) -> SortexchangecombPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn SortexchangecombPoint::negate(self : SortexchangecombPoint) -> SortexchangecombPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn sort_exchange_comb_point_mid(a : SortexchangecombPoint, b : SortexchangecombPoint) -> SortexchangecombPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn SortexchangecombPoint::mid(self : SortexchangecombPoint, other : SortexchangecombPoint) -> SortexchangecombPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn sort_exchange_comb_point_lerp(a : SortexchangecombPoint, b : SortexchangecombPoint, t : Double) -> SortexchangecombPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn SortexchangecombPoint::lerp(self : SortexchangecombPoint, other : SortexchangecombPoint, t : Double) -> SortexchangecombPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn sort_exchange_comb_point_to_string(pt : SortexchangecombPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn SortexchangecombPoint::to_string(self : SortexchangecombPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct SortexchangecombSeries {
@@ -86,58 +86,58 @@ pub fn sort_exchange_comb_make_series(vals : Array[Double], name : String) -> So
   { vals, name, meta: 0 }
 }
 
-pub fn sort_exchange_comb_series_len(s : SortexchangecombSeries) -> Int { s.vals.length() }
+pub fn SortexchangecombSeries::len(self : SortexchangecombSeries) -> Int { self.vals.length() }
 
-pub fn sort_exchange_comb_series_sum(s : SortexchangecombSeries) -> Double { @_common.sum(s.vals) }
+pub fn SortexchangecombSeries::sum(self : SortexchangecombSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn sort_exchange_comb_series_mean(s : SortexchangecombSeries) -> Double { @_common.mean(s.vals) }
+pub fn SortexchangecombSeries::mean(self : SortexchangecombSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn sort_exchange_comb_series_min(s : SortexchangecombSeries) -> Double { @_common.min(s.vals) }
+pub fn SortexchangecombSeries::min(self : SortexchangecombSeries) -> Double { @_common.min(self.vals) }
 
-pub fn sort_exchange_comb_series_max(s : SortexchangecombSeries) -> Double { @_common.max(s.vals) }
+pub fn SortexchangecombSeries::max(self : SortexchangecombSeries) -> Double { @_common.max(self.vals) }
 
-pub fn sort_exchange_comb_series_range(s : SortexchangecombSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn SortexchangecombSeries::range(self : SortexchangecombSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn sort_exchange_comb_series_var(s : SortexchangecombSeries) -> Double { @_common.variance(s.vals) }
+pub fn SortexchangecombSeries::variance(self : SortexchangecombSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn sort_exchange_comb_series_std(s : SortexchangecombSeries) -> Double { @_common.std(s.vals) }
+pub fn SortexchangecombSeries::std(self : SortexchangecombSeries) -> Double { @_common.std(self.vals) }
 
-pub fn sort_exchange_comb_series_median(s : SortexchangecombSeries) -> Double { @_common.median(s.vals) }
+pub fn SortexchangecombSeries::median(self : SortexchangecombSeries) -> Double { @_common.median(self.vals) }
 
-pub fn sort_exchange_comb_series_scale(s : SortexchangecombSeries, f : Double) -> SortexchangecombSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn SortexchangecombSeries::scale(self : SortexchangecombSeries, f : Double) -> SortexchangecombSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn sort_exchange_comb_series_add(a : SortexchangecombSeries, b : SortexchangecombSeries) -> SortexchangecombSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn SortexchangecombSeries::add(self : SortexchangecombSeries, other : SortexchangecombSeries) -> SortexchangecombSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn sort_exchange_comb_series_sub(a : SortexchangecombSeries, b : SortexchangecombSeries) -> SortexchangecombSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn SortexchangecombSeries::sub(self : SortexchangecombSeries, other : SortexchangecombSeries) -> SortexchangecombSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn sort_exchange_comb_series_normalize(s : SortexchangecombSeries) -> SortexchangecombSeries {
-  let mn = sort_exchange_comb_series_min(s)
-  let mx = sort_exchange_comb_series_max(s)
+pub fn SortexchangecombSeries::normalize(self : SortexchangecombSeries) -> SortexchangecombSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn sort_exchange_comb_series_cumsum(s : SortexchangecombSeries) -> SortexchangecombSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn SortexchangecombSeries::cumsum(self : SortexchangecombSeries) -> SortexchangecombSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn sort_exchange_comb_series_to_string(s : SortexchangecombSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn SortexchangecombSeries::to_string(self : SortexchangecombSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn sort_exchange_comb_matrix_identity(n : Int) -> SortexchangecombMatrix {
   m
 }
 
-pub fn sort_exchange_comb_matrix_get(m : SortexchangecombMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn SortexchangecombMatrix::get(self : SortexchangecombMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn sort_exchange_comb_matrix_transpose(m : SortexchangecombMatrix) -> SortexchangecombMatrix {
-  let result = sort_exchange_comb_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn SortexchangecombMatrix::transpose(self : SortexchangecombMatrix) -> SortexchangecombMatrix {
+  let result = sort_exchange_comb_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn sort_exchange_comb_matrix_add(a : SortexchangecombMatrix, b : SortexchangecombMatrix) -> SortexchangecombMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = sort_exchange_comb_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn SortexchangecombMatrix::add(self : SortexchangecombMatrix, other : SortexchangecombMatrix) -> SortexchangecombMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = sort_exchange_comb_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn sort_exchange_comb_matrix_scale(m : SortexchangecombMatrix, s : Double) -> SortexchangecombMatrix {
-  let result = sort_exchange_comb_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn SortexchangecombMatrix::scale(self : SortexchangecombMatrix, s : Double) -> SortexchangecombMatrix {
+  let result = sort_exchange_comb_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn sort_exchange_comb_matrix_multiply(a : SortexchangecombMatrix, b : SortexchangecombMatrix) -> SortexchangecombMatrix {
-  if a.cols != b.rows { return sort_exchange_comb_make_matrix(a.rows, b.cols, 0.0) }
-  let result = sort_exchange_comb_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn SortexchangecombMatrix::multiply(self : SortexchangecombMatrix, other : SortexchangecombMatrix) -> SortexchangecombMatrix {
+  if self.cols != other.rows { return sort_exchange_comb_make_matrix(self.rows, other.cols, 0.0) }
+  let result = sort_exchange_comb_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn sort_exchange_comb_matrix_trace(m : SortexchangecombMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn SortexchangecombMatrix::trace(self : SortexchangecombMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn sort_exchange_comb_matrix_det(m : SortexchangecombMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn SortexchangecombMatrix::det(self : SortexchangecombMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn sort_exchange_comb_matrix_norm(m : SortexchangecombMatrix) -> Double {
+pub fn SortexchangecombMatrix::norm(self : SortexchangecombMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn sort_exchange_comb_matrix_to_string(m : SortexchangecombMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn SortexchangecombMatrix::to_string(self : SortexchangecombMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn sort_exchange_comb_vector_zero(dim : Int) -> SortexchangecombVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn sort_exchange_comb_vector_add(a : SortexchangecombVector, b : SortexchangecombVector) -> SortexchangecombVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn SortexchangecombVector::add(self : SortexchangecombVector, other : SortexchangecombVector) -> SortexchangecombVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn sort_exchange_comb_vector_sub(a : SortexchangecombVector, b : SortexchangecombVector) -> SortexchangecombVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn SortexchangecombVector::sub(self : SortexchangecombVector, other : SortexchangecombVector) -> SortexchangecombVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn sort_exchange_comb_vector_scale(v : SortexchangecombVector, s : Double) -> SortexchangecombVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn SortexchangecombVector::scale(self : SortexchangecombVector, s : Double) -> SortexchangecombVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn sort_exchange_comb_vector_dot(a : SortexchangecombVector, b : SortexchangecombVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn SortexchangecombVector::dot(self : SortexchangecombVector, other : SortexchangecombVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn sort_exchange_comb_vector_norm(v : SortexchangecombVector) -> Double { @_common.sqrt(sort_exchange_comb_vector_dot(v, v)) }
+pub fn SortexchangecombVector::norm(self : SortexchangecombVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn sort_exchange_comb_vector_normalize(v : SortexchangecombVector) -> SortexchangecombVector {
-  let n = sort_exchange_comb_vector_norm(v)
-  if n < 0.0000001 { v } else { sort_exchange_comb_vector_scale(v, 1.0 / n) }
+pub fn SortexchangecombVector::normalize(self : SortexchangecombVector) -> SortexchangecombVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn sort_exchange_comb_vector_dist(a : SortexchangecombVector, b : SortexchangecombVector) -> Double {
-  sort_exchange_comb_vector_norm(sort_exchange_comb_vector_sub(a, b))
+pub fn SortexchangecombVector::dist(self : SortexchangecombVector, other : SortexchangecombVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn sort_exchange_comb_vector_to_string(v : SortexchangecombVector) -> String {
+pub fn SortexchangecombVector::to_string(self : SortexchangecombVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn sort_exchange_comb_mean(data : Array[Double]) -> Double { @_common.mean(data) }

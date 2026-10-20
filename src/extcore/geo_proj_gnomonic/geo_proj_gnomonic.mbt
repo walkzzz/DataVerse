@@ -16,64 +16,64 @@ pub fn geo_proj_gnomonic_make_point3(x : Double, y : Double, z : Double) -> Geop
   { x, y, z, label: 0 }
 }
 
-pub fn geo_proj_gnomonic_point_x(pt : GeoprojgnomonicPoint) -> Double { pt.x }
+pub fn GeoprojgnomonicPoint::x(self : GeoprojgnomonicPoint) -> Double { self.x }
 
-pub fn geo_proj_gnomonic_point_y(pt : GeoprojgnomonicPoint) -> Double { pt.y }
+pub fn GeoprojgnomonicPoint::y(self : GeoprojgnomonicPoint) -> Double { self.y }
 
-pub fn geo_proj_gnomonic_point_z(pt : GeoprojgnomonicPoint) -> Double { pt.z }
+pub fn GeoprojgnomonicPoint::z(self : GeoprojgnomonicPoint) -> Double { self.z }
 
-pub fn geo_proj_gnomonic_point_label(pt : GeoprojgnomonicPoint) -> Int { pt.label }
+pub fn GeoprojgnomonicPoint::label(self : GeoprojgnomonicPoint) -> Int { self.label }
 
-pub fn geo_proj_gnomonic_point_dist(a : GeoprojgnomonicPoint, b : GeoprojgnomonicPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn GeoprojgnomonicPoint::dist(self : GeoprojgnomonicPoint, other : GeoprojgnomonicPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn geo_proj_gnomonic_point_add(a : GeoprojgnomonicPoint, b : GeoprojgnomonicPoint) -> GeoprojgnomonicPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn GeoprojgnomonicPoint::add(self : GeoprojgnomonicPoint, other : GeoprojgnomonicPoint) -> GeoprojgnomonicPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn geo_proj_gnomonic_point_sub(a : GeoprojgnomonicPoint, b : GeoprojgnomonicPoint) -> GeoprojgnomonicPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn GeoprojgnomonicPoint::sub(self : GeoprojgnomonicPoint, other : GeoprojgnomonicPoint) -> GeoprojgnomonicPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn geo_proj_gnomonic_point_scale(pt : GeoprojgnomonicPoint, s : Double) -> GeoprojgnomonicPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn GeoprojgnomonicPoint::scale(self : GeoprojgnomonicPoint, s : Double) -> GeoprojgnomonicPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn geo_proj_gnomonic_point_dot(a : GeoprojgnomonicPoint, b : GeoprojgnomonicPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn GeoprojgnomonicPoint::dot(self : GeoprojgnomonicPoint, other : GeoprojgnomonicPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn geo_proj_gnomonic_point_cross(a : GeoprojgnomonicPoint, b : GeoprojgnomonicPoint) -> GeoprojgnomonicPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn GeoprojgnomonicPoint::cross(self : GeoprojgnomonicPoint, other : GeoprojgnomonicPoint) -> GeoprojgnomonicPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn geo_proj_gnomonic_point_norm(pt : GeoprojgnomonicPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn GeoprojgnomonicPoint::norm(self : GeoprojgnomonicPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn geo_proj_gnomonic_point_normalize(pt : GeoprojgnomonicPoint) -> GeoprojgnomonicPoint {
-  let n = geo_proj_gnomonic_point_norm(pt)
-  if n < 0.0000001 { pt } else { geo_proj_gnomonic_point_scale(pt, 1.0 / n) }
+pub fn GeoprojgnomonicPoint::normalize(self : GeoprojgnomonicPoint) -> GeoprojgnomonicPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn geo_proj_gnomonic_point_negate(pt : GeoprojgnomonicPoint) -> GeoprojgnomonicPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn GeoprojgnomonicPoint::negate(self : GeoprojgnomonicPoint) -> GeoprojgnomonicPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn geo_proj_gnomonic_point_mid(a : GeoprojgnomonicPoint, b : GeoprojgnomonicPoint) -> GeoprojgnomonicPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn GeoprojgnomonicPoint::mid(self : GeoprojgnomonicPoint, other : GeoprojgnomonicPoint) -> GeoprojgnomonicPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn geo_proj_gnomonic_point_lerp(a : GeoprojgnomonicPoint, b : GeoprojgnomonicPoint, t : Double) -> GeoprojgnomonicPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn GeoprojgnomonicPoint::lerp(self : GeoprojgnomonicPoint, other : GeoprojgnomonicPoint, t : Double) -> GeoprojgnomonicPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn geo_proj_gnomonic_point_to_string(pt : GeoprojgnomonicPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn GeoprojgnomonicPoint::to_string(self : GeoprojgnomonicPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct GeoprojgnomonicSeries {
@@ -86,58 +86,58 @@ pub fn geo_proj_gnomonic_make_series(vals : Array[Double], name : String) -> Geo
   { vals, name, meta: 0 }
 }
 
-pub fn geo_proj_gnomonic_series_len(s : GeoprojgnomonicSeries) -> Int { s.vals.length() }
+pub fn GeoprojgnomonicSeries::len(self : GeoprojgnomonicSeries) -> Int { self.vals.length() }
 
-pub fn geo_proj_gnomonic_series_sum(s : GeoprojgnomonicSeries) -> Double { @_common.sum(s.vals) }
+pub fn GeoprojgnomonicSeries::sum(self : GeoprojgnomonicSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn geo_proj_gnomonic_series_mean(s : GeoprojgnomonicSeries) -> Double { @_common.mean(s.vals) }
+pub fn GeoprojgnomonicSeries::mean(self : GeoprojgnomonicSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn geo_proj_gnomonic_series_min(s : GeoprojgnomonicSeries) -> Double { @_common.min(s.vals) }
+pub fn GeoprojgnomonicSeries::min(self : GeoprojgnomonicSeries) -> Double { @_common.min(self.vals) }
 
-pub fn geo_proj_gnomonic_series_max(s : GeoprojgnomonicSeries) -> Double { @_common.max(s.vals) }
+pub fn GeoprojgnomonicSeries::max(self : GeoprojgnomonicSeries) -> Double { @_common.max(self.vals) }
 
-pub fn geo_proj_gnomonic_series_range(s : GeoprojgnomonicSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn GeoprojgnomonicSeries::range(self : GeoprojgnomonicSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn geo_proj_gnomonic_series_var(s : GeoprojgnomonicSeries) -> Double { @_common.variance(s.vals) }
+pub fn GeoprojgnomonicSeries::variance(self : GeoprojgnomonicSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn geo_proj_gnomonic_series_std(s : GeoprojgnomonicSeries) -> Double { @_common.std(s.vals) }
+pub fn GeoprojgnomonicSeries::std(self : GeoprojgnomonicSeries) -> Double { @_common.std(self.vals) }
 
-pub fn geo_proj_gnomonic_series_median(s : GeoprojgnomonicSeries) -> Double { @_common.median(s.vals) }
+pub fn GeoprojgnomonicSeries::median(self : GeoprojgnomonicSeries) -> Double { @_common.median(self.vals) }
 
-pub fn geo_proj_gnomonic_series_scale(s : GeoprojgnomonicSeries, f : Double) -> GeoprojgnomonicSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn GeoprojgnomonicSeries::scale(self : GeoprojgnomonicSeries, f : Double) -> GeoprojgnomonicSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn geo_proj_gnomonic_series_add(a : GeoprojgnomonicSeries, b : GeoprojgnomonicSeries) -> GeoprojgnomonicSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn GeoprojgnomonicSeries::add(self : GeoprojgnomonicSeries, other : GeoprojgnomonicSeries) -> GeoprojgnomonicSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn geo_proj_gnomonic_series_sub(a : GeoprojgnomonicSeries, b : GeoprojgnomonicSeries) -> GeoprojgnomonicSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn GeoprojgnomonicSeries::sub(self : GeoprojgnomonicSeries, other : GeoprojgnomonicSeries) -> GeoprojgnomonicSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn geo_proj_gnomonic_series_normalize(s : GeoprojgnomonicSeries) -> GeoprojgnomonicSeries {
-  let mn = geo_proj_gnomonic_series_min(s)
-  let mx = geo_proj_gnomonic_series_max(s)
+pub fn GeoprojgnomonicSeries::normalize(self : GeoprojgnomonicSeries) -> GeoprojgnomonicSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn geo_proj_gnomonic_series_cumsum(s : GeoprojgnomonicSeries) -> GeoprojgnomonicSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn GeoprojgnomonicSeries::cumsum(self : GeoprojgnomonicSeries) -> GeoprojgnomonicSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn geo_proj_gnomonic_series_to_string(s : GeoprojgnomonicSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn GeoprojgnomonicSeries::to_string(self : GeoprojgnomonicSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn geo_proj_gnomonic_matrix_identity(n : Int) -> GeoprojgnomonicMatrix {
   m
 }
 
-pub fn geo_proj_gnomonic_matrix_get(m : GeoprojgnomonicMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn GeoprojgnomonicMatrix::get(self : GeoprojgnomonicMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn geo_proj_gnomonic_matrix_transpose(m : GeoprojgnomonicMatrix) -> GeoprojgnomonicMatrix {
-  let result = geo_proj_gnomonic_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn GeoprojgnomonicMatrix::transpose(self : GeoprojgnomonicMatrix) -> GeoprojgnomonicMatrix {
+  let result = geo_proj_gnomonic_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn geo_proj_gnomonic_matrix_add(a : GeoprojgnomonicMatrix, b : GeoprojgnomonicMatrix) -> GeoprojgnomonicMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = geo_proj_gnomonic_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn GeoprojgnomonicMatrix::add(self : GeoprojgnomonicMatrix, other : GeoprojgnomonicMatrix) -> GeoprojgnomonicMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = geo_proj_gnomonic_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn geo_proj_gnomonic_matrix_scale(m : GeoprojgnomonicMatrix, s : Double) -> GeoprojgnomonicMatrix {
-  let result = geo_proj_gnomonic_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn GeoprojgnomonicMatrix::scale(self : GeoprojgnomonicMatrix, s : Double) -> GeoprojgnomonicMatrix {
+  let result = geo_proj_gnomonic_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn geo_proj_gnomonic_matrix_multiply(a : GeoprojgnomonicMatrix, b : GeoprojgnomonicMatrix) -> GeoprojgnomonicMatrix {
-  if a.cols != b.rows { return geo_proj_gnomonic_make_matrix(a.rows, b.cols, 0.0) }
-  let result = geo_proj_gnomonic_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn GeoprojgnomonicMatrix::multiply(self : GeoprojgnomonicMatrix, other : GeoprojgnomonicMatrix) -> GeoprojgnomonicMatrix {
+  if self.cols != other.rows { return geo_proj_gnomonic_make_matrix(self.rows, other.cols, 0.0) }
+  let result = geo_proj_gnomonic_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn geo_proj_gnomonic_matrix_trace(m : GeoprojgnomonicMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn GeoprojgnomonicMatrix::trace(self : GeoprojgnomonicMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn geo_proj_gnomonic_matrix_det(m : GeoprojgnomonicMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn GeoprojgnomonicMatrix::det(self : GeoprojgnomonicMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn geo_proj_gnomonic_matrix_norm(m : GeoprojgnomonicMatrix) -> Double {
+pub fn GeoprojgnomonicMatrix::norm(self : GeoprojgnomonicMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn geo_proj_gnomonic_matrix_to_string(m : GeoprojgnomonicMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn GeoprojgnomonicMatrix::to_string(self : GeoprojgnomonicMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn geo_proj_gnomonic_vector_zero(dim : Int) -> GeoprojgnomonicVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn geo_proj_gnomonic_vector_add(a : GeoprojgnomonicVector, b : GeoprojgnomonicVector) -> GeoprojgnomonicVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn GeoprojgnomonicVector::add(self : GeoprojgnomonicVector, other : GeoprojgnomonicVector) -> GeoprojgnomonicVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn geo_proj_gnomonic_vector_sub(a : GeoprojgnomonicVector, b : GeoprojgnomonicVector) -> GeoprojgnomonicVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn GeoprojgnomonicVector::sub(self : GeoprojgnomonicVector, other : GeoprojgnomonicVector) -> GeoprojgnomonicVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn geo_proj_gnomonic_vector_scale(v : GeoprojgnomonicVector, s : Double) -> GeoprojgnomonicVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn GeoprojgnomonicVector::scale(self : GeoprojgnomonicVector, s : Double) -> GeoprojgnomonicVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn geo_proj_gnomonic_vector_dot(a : GeoprojgnomonicVector, b : GeoprojgnomonicVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn GeoprojgnomonicVector::dot(self : GeoprojgnomonicVector, other : GeoprojgnomonicVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn geo_proj_gnomonic_vector_norm(v : GeoprojgnomonicVector) -> Double { @_common.sqrt(geo_proj_gnomonic_vector_dot(v, v)) }
+pub fn GeoprojgnomonicVector::norm(self : GeoprojgnomonicVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn geo_proj_gnomonic_vector_normalize(v : GeoprojgnomonicVector) -> GeoprojgnomonicVector {
-  let n = geo_proj_gnomonic_vector_norm(v)
-  if n < 0.0000001 { v } else { geo_proj_gnomonic_vector_scale(v, 1.0 / n) }
+pub fn GeoprojgnomonicVector::normalize(self : GeoprojgnomonicVector) -> GeoprojgnomonicVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn geo_proj_gnomonic_vector_dist(a : GeoprojgnomonicVector, b : GeoprojgnomonicVector) -> Double {
-  geo_proj_gnomonic_vector_norm(geo_proj_gnomonic_vector_sub(a, b))
+pub fn GeoprojgnomonicVector::dist(self : GeoprojgnomonicVector, other : GeoprojgnomonicVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn geo_proj_gnomonic_vector_to_string(v : GeoprojgnomonicVector) -> String {
+pub fn GeoprojgnomonicVector::to_string(self : GeoprojgnomonicVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn geo_proj_gnomonic_mean(data : Array[Double]) -> Double { @_common.mean(data) }

@@ -16,64 +16,64 @@ pub fn sort_compare_tim_make_point3(x : Double, y : Double, z : Double) -> Sortc
   { x, y, z, label: 0 }
 }
 
-pub fn sort_compare_tim_point_x(pt : SortcomparetimPoint) -> Double { pt.x }
+pub fn SortcomparetimPoint::x(self : SortcomparetimPoint) -> Double { self.x }
 
-pub fn sort_compare_tim_point_y(pt : SortcomparetimPoint) -> Double { pt.y }
+pub fn SortcomparetimPoint::y(self : SortcomparetimPoint) -> Double { self.y }
 
-pub fn sort_compare_tim_point_z(pt : SortcomparetimPoint) -> Double { pt.z }
+pub fn SortcomparetimPoint::z(self : SortcomparetimPoint) -> Double { self.z }
 
-pub fn sort_compare_tim_point_label(pt : SortcomparetimPoint) -> Int { pt.label }
+pub fn SortcomparetimPoint::label(self : SortcomparetimPoint) -> Int { self.label }
 
-pub fn sort_compare_tim_point_dist(a : SortcomparetimPoint, b : SortcomparetimPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn SortcomparetimPoint::dist(self : SortcomparetimPoint, other : SortcomparetimPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn sort_compare_tim_point_add(a : SortcomparetimPoint, b : SortcomparetimPoint) -> SortcomparetimPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn SortcomparetimPoint::add(self : SortcomparetimPoint, other : SortcomparetimPoint) -> SortcomparetimPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn sort_compare_tim_point_sub(a : SortcomparetimPoint, b : SortcomparetimPoint) -> SortcomparetimPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn SortcomparetimPoint::sub(self : SortcomparetimPoint, other : SortcomparetimPoint) -> SortcomparetimPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn sort_compare_tim_point_scale(pt : SortcomparetimPoint, s : Double) -> SortcomparetimPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn SortcomparetimPoint::scale(self : SortcomparetimPoint, s : Double) -> SortcomparetimPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn sort_compare_tim_point_dot(a : SortcomparetimPoint, b : SortcomparetimPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn SortcomparetimPoint::dot(self : SortcomparetimPoint, other : SortcomparetimPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn sort_compare_tim_point_cross(a : SortcomparetimPoint, b : SortcomparetimPoint) -> SortcomparetimPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn SortcomparetimPoint::cross(self : SortcomparetimPoint, other : SortcomparetimPoint) -> SortcomparetimPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn sort_compare_tim_point_norm(pt : SortcomparetimPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn SortcomparetimPoint::norm(self : SortcomparetimPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn sort_compare_tim_point_normalize(pt : SortcomparetimPoint) -> SortcomparetimPoint {
-  let n = sort_compare_tim_point_norm(pt)
-  if n < 0.0000001 { pt } else { sort_compare_tim_point_scale(pt, 1.0 / n) }
+pub fn SortcomparetimPoint::normalize(self : SortcomparetimPoint) -> SortcomparetimPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn sort_compare_tim_point_negate(pt : SortcomparetimPoint) -> SortcomparetimPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn SortcomparetimPoint::negate(self : SortcomparetimPoint) -> SortcomparetimPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn sort_compare_tim_point_mid(a : SortcomparetimPoint, b : SortcomparetimPoint) -> SortcomparetimPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn SortcomparetimPoint::mid(self : SortcomparetimPoint, other : SortcomparetimPoint) -> SortcomparetimPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn sort_compare_tim_point_lerp(a : SortcomparetimPoint, b : SortcomparetimPoint, t : Double) -> SortcomparetimPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn SortcomparetimPoint::lerp(self : SortcomparetimPoint, other : SortcomparetimPoint, t : Double) -> SortcomparetimPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn sort_compare_tim_point_to_string(pt : SortcomparetimPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn SortcomparetimPoint::to_string(self : SortcomparetimPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct SortcomparetimSeries {
@@ -86,58 +86,58 @@ pub fn sort_compare_tim_make_series(vals : Array[Double], name : String) -> Sort
   { vals, name, meta: 0 }
 }
 
-pub fn sort_compare_tim_series_len(s : SortcomparetimSeries) -> Int { s.vals.length() }
+pub fn SortcomparetimSeries::len(self : SortcomparetimSeries) -> Int { self.vals.length() }
 
-pub fn sort_compare_tim_series_sum(s : SortcomparetimSeries) -> Double { @_common.sum(s.vals) }
+pub fn SortcomparetimSeries::sum(self : SortcomparetimSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn sort_compare_tim_series_mean(s : SortcomparetimSeries) -> Double { @_common.mean(s.vals) }
+pub fn SortcomparetimSeries::mean(self : SortcomparetimSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn sort_compare_tim_series_min(s : SortcomparetimSeries) -> Double { @_common.min(s.vals) }
+pub fn SortcomparetimSeries::min(self : SortcomparetimSeries) -> Double { @_common.min(self.vals) }
 
-pub fn sort_compare_tim_series_max(s : SortcomparetimSeries) -> Double { @_common.max(s.vals) }
+pub fn SortcomparetimSeries::max(self : SortcomparetimSeries) -> Double { @_common.max(self.vals) }
 
-pub fn sort_compare_tim_series_range(s : SortcomparetimSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn SortcomparetimSeries::range(self : SortcomparetimSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn sort_compare_tim_series_var(s : SortcomparetimSeries) -> Double { @_common.variance(s.vals) }
+pub fn SortcomparetimSeries::variance(self : SortcomparetimSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn sort_compare_tim_series_std(s : SortcomparetimSeries) -> Double { @_common.std(s.vals) }
+pub fn SortcomparetimSeries::std(self : SortcomparetimSeries) -> Double { @_common.std(self.vals) }
 
-pub fn sort_compare_tim_series_median(s : SortcomparetimSeries) -> Double { @_common.median(s.vals) }
+pub fn SortcomparetimSeries::median(self : SortcomparetimSeries) -> Double { @_common.median(self.vals) }
 
-pub fn sort_compare_tim_series_scale(s : SortcomparetimSeries, f : Double) -> SortcomparetimSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn SortcomparetimSeries::scale(self : SortcomparetimSeries, f : Double) -> SortcomparetimSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn sort_compare_tim_series_add(a : SortcomparetimSeries, b : SortcomparetimSeries) -> SortcomparetimSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn SortcomparetimSeries::add(self : SortcomparetimSeries, other : SortcomparetimSeries) -> SortcomparetimSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn sort_compare_tim_series_sub(a : SortcomparetimSeries, b : SortcomparetimSeries) -> SortcomparetimSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn SortcomparetimSeries::sub(self : SortcomparetimSeries, other : SortcomparetimSeries) -> SortcomparetimSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn sort_compare_tim_series_normalize(s : SortcomparetimSeries) -> SortcomparetimSeries {
-  let mn = sort_compare_tim_series_min(s)
-  let mx = sort_compare_tim_series_max(s)
+pub fn SortcomparetimSeries::normalize(self : SortcomparetimSeries) -> SortcomparetimSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn sort_compare_tim_series_cumsum(s : SortcomparetimSeries) -> SortcomparetimSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn SortcomparetimSeries::cumsum(self : SortcomparetimSeries) -> SortcomparetimSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn sort_compare_tim_series_to_string(s : SortcomparetimSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn SortcomparetimSeries::to_string(self : SortcomparetimSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn sort_compare_tim_matrix_identity(n : Int) -> SortcomparetimMatrix {
   m
 }
 
-pub fn sort_compare_tim_matrix_get(m : SortcomparetimMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn SortcomparetimMatrix::get(self : SortcomparetimMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn sort_compare_tim_matrix_transpose(m : SortcomparetimMatrix) -> SortcomparetimMatrix {
-  let result = sort_compare_tim_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn SortcomparetimMatrix::transpose(self : SortcomparetimMatrix) -> SortcomparetimMatrix {
+  let result = sort_compare_tim_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn sort_compare_tim_matrix_add(a : SortcomparetimMatrix, b : SortcomparetimMatrix) -> SortcomparetimMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = sort_compare_tim_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn SortcomparetimMatrix::add(self : SortcomparetimMatrix, other : SortcomparetimMatrix) -> SortcomparetimMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = sort_compare_tim_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn sort_compare_tim_matrix_scale(m : SortcomparetimMatrix, s : Double) -> SortcomparetimMatrix {
-  let result = sort_compare_tim_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn SortcomparetimMatrix::scale(self : SortcomparetimMatrix, s : Double) -> SortcomparetimMatrix {
+  let result = sort_compare_tim_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn sort_compare_tim_matrix_multiply(a : SortcomparetimMatrix, b : SortcomparetimMatrix) -> SortcomparetimMatrix {
-  if a.cols != b.rows { return sort_compare_tim_make_matrix(a.rows, b.cols, 0.0) }
-  let result = sort_compare_tim_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn SortcomparetimMatrix::multiply(self : SortcomparetimMatrix, other : SortcomparetimMatrix) -> SortcomparetimMatrix {
+  if self.cols != other.rows { return sort_compare_tim_make_matrix(self.rows, other.cols, 0.0) }
+  let result = sort_compare_tim_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn sort_compare_tim_matrix_trace(m : SortcomparetimMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn SortcomparetimMatrix::trace(self : SortcomparetimMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn sort_compare_tim_matrix_det(m : SortcomparetimMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn SortcomparetimMatrix::det(self : SortcomparetimMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn sort_compare_tim_matrix_norm(m : SortcomparetimMatrix) -> Double {
+pub fn SortcomparetimMatrix::norm(self : SortcomparetimMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn sort_compare_tim_matrix_to_string(m : SortcomparetimMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn SortcomparetimMatrix::to_string(self : SortcomparetimMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn sort_compare_tim_vector_zero(dim : Int) -> SortcomparetimVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn sort_compare_tim_vector_add(a : SortcomparetimVector, b : SortcomparetimVector) -> SortcomparetimVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn SortcomparetimVector::add(self : SortcomparetimVector, other : SortcomparetimVector) -> SortcomparetimVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn sort_compare_tim_vector_sub(a : SortcomparetimVector, b : SortcomparetimVector) -> SortcomparetimVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn SortcomparetimVector::sub(self : SortcomparetimVector, other : SortcomparetimVector) -> SortcomparetimVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn sort_compare_tim_vector_scale(v : SortcomparetimVector, s : Double) -> SortcomparetimVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn SortcomparetimVector::scale(self : SortcomparetimVector, s : Double) -> SortcomparetimVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn sort_compare_tim_vector_dot(a : SortcomparetimVector, b : SortcomparetimVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn SortcomparetimVector::dot(self : SortcomparetimVector, other : SortcomparetimVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn sort_compare_tim_vector_norm(v : SortcomparetimVector) -> Double { @_common.sqrt(sort_compare_tim_vector_dot(v, v)) }
+pub fn SortcomparetimVector::norm(self : SortcomparetimVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn sort_compare_tim_vector_normalize(v : SortcomparetimVector) -> SortcomparetimVector {
-  let n = sort_compare_tim_vector_norm(v)
-  if n < 0.0000001 { v } else { sort_compare_tim_vector_scale(v, 1.0 / n) }
+pub fn SortcomparetimVector::normalize(self : SortcomparetimVector) -> SortcomparetimVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn sort_compare_tim_vector_dist(a : SortcomparetimVector, b : SortcomparetimVector) -> Double {
-  sort_compare_tim_vector_norm(sort_compare_tim_vector_sub(a, b))
+pub fn SortcomparetimVector::dist(self : SortcomparetimVector, other : SortcomparetimVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn sort_compare_tim_vector_to_string(v : SortcomparetimVector) -> String {
+pub fn SortcomparetimVector::to_string(self : SortcomparetimVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn sort_compare_tim_mean(data : Array[Double]) -> Double { @_common.mean(data) }

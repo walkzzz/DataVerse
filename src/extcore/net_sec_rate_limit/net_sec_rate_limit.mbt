@@ -16,64 +16,64 @@ pub fn net_sec_rate_limit_make_point3(x : Double, y : Double, z : Double) -> Net
   { x, y, z, label: 0 }
 }
 
-pub fn net_sec_rate_limit_point_x(pt : NetsecratelimitPoint) -> Double { pt.x }
+pub fn NetsecratelimitPoint::x(self : NetsecratelimitPoint) -> Double { self.x }
 
-pub fn net_sec_rate_limit_point_y(pt : NetsecratelimitPoint) -> Double { pt.y }
+pub fn NetsecratelimitPoint::y(self : NetsecratelimitPoint) -> Double { self.y }
 
-pub fn net_sec_rate_limit_point_z(pt : NetsecratelimitPoint) -> Double { pt.z }
+pub fn NetsecratelimitPoint::z(self : NetsecratelimitPoint) -> Double { self.z }
 
-pub fn net_sec_rate_limit_point_label(pt : NetsecratelimitPoint) -> Int { pt.label }
+pub fn NetsecratelimitPoint::label(self : NetsecratelimitPoint) -> Int { self.label }
 
-pub fn net_sec_rate_limit_point_dist(a : NetsecratelimitPoint, b : NetsecratelimitPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn NetsecratelimitPoint::dist(self : NetsecratelimitPoint, other : NetsecratelimitPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn net_sec_rate_limit_point_add(a : NetsecratelimitPoint, b : NetsecratelimitPoint) -> NetsecratelimitPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn NetsecratelimitPoint::add(self : NetsecratelimitPoint, other : NetsecratelimitPoint) -> NetsecratelimitPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn net_sec_rate_limit_point_sub(a : NetsecratelimitPoint, b : NetsecratelimitPoint) -> NetsecratelimitPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn NetsecratelimitPoint::sub(self : NetsecratelimitPoint, other : NetsecratelimitPoint) -> NetsecratelimitPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn net_sec_rate_limit_point_scale(pt : NetsecratelimitPoint, s : Double) -> NetsecratelimitPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn NetsecratelimitPoint::scale(self : NetsecratelimitPoint, s : Double) -> NetsecratelimitPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn net_sec_rate_limit_point_dot(a : NetsecratelimitPoint, b : NetsecratelimitPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn NetsecratelimitPoint::dot(self : NetsecratelimitPoint, other : NetsecratelimitPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn net_sec_rate_limit_point_cross(a : NetsecratelimitPoint, b : NetsecratelimitPoint) -> NetsecratelimitPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn NetsecratelimitPoint::cross(self : NetsecratelimitPoint, other : NetsecratelimitPoint) -> NetsecratelimitPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn net_sec_rate_limit_point_norm(pt : NetsecratelimitPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn NetsecratelimitPoint::norm(self : NetsecratelimitPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn net_sec_rate_limit_point_normalize(pt : NetsecratelimitPoint) -> NetsecratelimitPoint {
-  let n = net_sec_rate_limit_point_norm(pt)
-  if n < 0.0000001 { pt } else { net_sec_rate_limit_point_scale(pt, 1.0 / n) }
+pub fn NetsecratelimitPoint::normalize(self : NetsecratelimitPoint) -> NetsecratelimitPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn net_sec_rate_limit_point_negate(pt : NetsecratelimitPoint) -> NetsecratelimitPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn NetsecratelimitPoint::negate(self : NetsecratelimitPoint) -> NetsecratelimitPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn net_sec_rate_limit_point_mid(a : NetsecratelimitPoint, b : NetsecratelimitPoint) -> NetsecratelimitPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn NetsecratelimitPoint::mid(self : NetsecratelimitPoint, other : NetsecratelimitPoint) -> NetsecratelimitPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn net_sec_rate_limit_point_lerp(a : NetsecratelimitPoint, b : NetsecratelimitPoint, t : Double) -> NetsecratelimitPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn NetsecratelimitPoint::lerp(self : NetsecratelimitPoint, other : NetsecratelimitPoint, t : Double) -> NetsecratelimitPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn net_sec_rate_limit_point_to_string(pt : NetsecratelimitPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn NetsecratelimitPoint::to_string(self : NetsecratelimitPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct NetsecratelimitSeries {
@@ -86,58 +86,58 @@ pub fn net_sec_rate_limit_make_series(vals : Array[Double], name : String) -> Ne
   { vals, name, meta: 0 }
 }
 
-pub fn net_sec_rate_limit_series_len(s : NetsecratelimitSeries) -> Int { s.vals.length() }
+pub fn NetsecratelimitSeries::len(self : NetsecratelimitSeries) -> Int { self.vals.length() }
 
-pub fn net_sec_rate_limit_series_sum(s : NetsecratelimitSeries) -> Double { @_common.sum(s.vals) }
+pub fn NetsecratelimitSeries::sum(self : NetsecratelimitSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn net_sec_rate_limit_series_mean(s : NetsecratelimitSeries) -> Double { @_common.mean(s.vals) }
+pub fn NetsecratelimitSeries::mean(self : NetsecratelimitSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn net_sec_rate_limit_series_min(s : NetsecratelimitSeries) -> Double { @_common.min(s.vals) }
+pub fn NetsecratelimitSeries::min(self : NetsecratelimitSeries) -> Double { @_common.min(self.vals) }
 
-pub fn net_sec_rate_limit_series_max(s : NetsecratelimitSeries) -> Double { @_common.max(s.vals) }
+pub fn NetsecratelimitSeries::max(self : NetsecratelimitSeries) -> Double { @_common.max(self.vals) }
 
-pub fn net_sec_rate_limit_series_range(s : NetsecratelimitSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn NetsecratelimitSeries::range(self : NetsecratelimitSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn net_sec_rate_limit_series_var(s : NetsecratelimitSeries) -> Double { @_common.variance(s.vals) }
+pub fn NetsecratelimitSeries::variance(self : NetsecratelimitSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn net_sec_rate_limit_series_std(s : NetsecratelimitSeries) -> Double { @_common.std(s.vals) }
+pub fn NetsecratelimitSeries::std(self : NetsecratelimitSeries) -> Double { @_common.std(self.vals) }
 
-pub fn net_sec_rate_limit_series_median(s : NetsecratelimitSeries) -> Double { @_common.median(s.vals) }
+pub fn NetsecratelimitSeries::median(self : NetsecratelimitSeries) -> Double { @_common.median(self.vals) }
 
-pub fn net_sec_rate_limit_series_scale(s : NetsecratelimitSeries, f : Double) -> NetsecratelimitSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn NetsecratelimitSeries::scale(self : NetsecratelimitSeries, f : Double) -> NetsecratelimitSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn net_sec_rate_limit_series_add(a : NetsecratelimitSeries, b : NetsecratelimitSeries) -> NetsecratelimitSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn NetsecratelimitSeries::add(self : NetsecratelimitSeries, other : NetsecratelimitSeries) -> NetsecratelimitSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn net_sec_rate_limit_series_sub(a : NetsecratelimitSeries, b : NetsecratelimitSeries) -> NetsecratelimitSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn NetsecratelimitSeries::sub(self : NetsecratelimitSeries, other : NetsecratelimitSeries) -> NetsecratelimitSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn net_sec_rate_limit_series_normalize(s : NetsecratelimitSeries) -> NetsecratelimitSeries {
-  let mn = net_sec_rate_limit_series_min(s)
-  let mx = net_sec_rate_limit_series_max(s)
+pub fn NetsecratelimitSeries::normalize(self : NetsecratelimitSeries) -> NetsecratelimitSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn net_sec_rate_limit_series_cumsum(s : NetsecratelimitSeries) -> NetsecratelimitSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn NetsecratelimitSeries::cumsum(self : NetsecratelimitSeries) -> NetsecratelimitSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn net_sec_rate_limit_series_to_string(s : NetsecratelimitSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn NetsecratelimitSeries::to_string(self : NetsecratelimitSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn net_sec_rate_limit_matrix_identity(n : Int) -> NetsecratelimitMatrix {
   m
 }
 
-pub fn net_sec_rate_limit_matrix_get(m : NetsecratelimitMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn NetsecratelimitMatrix::get(self : NetsecratelimitMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn net_sec_rate_limit_matrix_transpose(m : NetsecratelimitMatrix) -> NetsecratelimitMatrix {
-  let result = net_sec_rate_limit_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn NetsecratelimitMatrix::transpose(self : NetsecratelimitMatrix) -> NetsecratelimitMatrix {
+  let result = net_sec_rate_limit_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn net_sec_rate_limit_matrix_add(a : NetsecratelimitMatrix, b : NetsecratelimitMatrix) -> NetsecratelimitMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = net_sec_rate_limit_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn NetsecratelimitMatrix::add(self : NetsecratelimitMatrix, other : NetsecratelimitMatrix) -> NetsecratelimitMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = net_sec_rate_limit_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn net_sec_rate_limit_matrix_scale(m : NetsecratelimitMatrix, s : Double) -> NetsecratelimitMatrix {
-  let result = net_sec_rate_limit_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn NetsecratelimitMatrix::scale(self : NetsecratelimitMatrix, s : Double) -> NetsecratelimitMatrix {
+  let result = net_sec_rate_limit_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn net_sec_rate_limit_matrix_multiply(a : NetsecratelimitMatrix, b : NetsecratelimitMatrix) -> NetsecratelimitMatrix {
-  if a.cols != b.rows { return net_sec_rate_limit_make_matrix(a.rows, b.cols, 0.0) }
-  let result = net_sec_rate_limit_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn NetsecratelimitMatrix::multiply(self : NetsecratelimitMatrix, other : NetsecratelimitMatrix) -> NetsecratelimitMatrix {
+  if self.cols != other.rows { return net_sec_rate_limit_make_matrix(self.rows, other.cols, 0.0) }
+  let result = net_sec_rate_limit_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn net_sec_rate_limit_matrix_trace(m : NetsecratelimitMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn NetsecratelimitMatrix::trace(self : NetsecratelimitMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn net_sec_rate_limit_matrix_det(m : NetsecratelimitMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn NetsecratelimitMatrix::det(self : NetsecratelimitMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn net_sec_rate_limit_matrix_norm(m : NetsecratelimitMatrix) -> Double {
+pub fn NetsecratelimitMatrix::norm(self : NetsecratelimitMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn net_sec_rate_limit_matrix_to_string(m : NetsecratelimitMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn NetsecratelimitMatrix::to_string(self : NetsecratelimitMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn net_sec_rate_limit_vector_zero(dim : Int) -> NetsecratelimitVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn net_sec_rate_limit_vector_add(a : NetsecratelimitVector, b : NetsecratelimitVector) -> NetsecratelimitVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn NetsecratelimitVector::add(self : NetsecratelimitVector, other : NetsecratelimitVector) -> NetsecratelimitVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn net_sec_rate_limit_vector_sub(a : NetsecratelimitVector, b : NetsecratelimitVector) -> NetsecratelimitVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn NetsecratelimitVector::sub(self : NetsecratelimitVector, other : NetsecratelimitVector) -> NetsecratelimitVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn net_sec_rate_limit_vector_scale(v : NetsecratelimitVector, s : Double) -> NetsecratelimitVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn NetsecratelimitVector::scale(self : NetsecratelimitVector, s : Double) -> NetsecratelimitVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn net_sec_rate_limit_vector_dot(a : NetsecratelimitVector, b : NetsecratelimitVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn NetsecratelimitVector::dot(self : NetsecratelimitVector, other : NetsecratelimitVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn net_sec_rate_limit_vector_norm(v : NetsecratelimitVector) -> Double { @_common.sqrt(net_sec_rate_limit_vector_dot(v, v)) }
+pub fn NetsecratelimitVector::norm(self : NetsecratelimitVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn net_sec_rate_limit_vector_normalize(v : NetsecratelimitVector) -> NetsecratelimitVector {
-  let n = net_sec_rate_limit_vector_norm(v)
-  if n < 0.0000001 { v } else { net_sec_rate_limit_vector_scale(v, 1.0 / n) }
+pub fn NetsecratelimitVector::normalize(self : NetsecratelimitVector) -> NetsecratelimitVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn net_sec_rate_limit_vector_dist(a : NetsecratelimitVector, b : NetsecratelimitVector) -> Double {
-  net_sec_rate_limit_vector_norm(net_sec_rate_limit_vector_sub(a, b))
+pub fn NetsecratelimitVector::dist(self : NetsecratelimitVector, other : NetsecratelimitVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn net_sec_rate_limit_vector_to_string(v : NetsecratelimitVector) -> String {
+pub fn NetsecratelimitVector::to_string(self : NetsecratelimitVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn net_sec_rate_limit_mean(data : Array[Double]) -> Double { @_common.mean(data) }

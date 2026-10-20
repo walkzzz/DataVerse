@@ -16,64 +16,64 @@ pub fn db_query_parallel_make_point3(x : Double, y : Double, z : Double) -> Dbqu
   { x, y, z, label: 0 }
 }
 
-pub fn db_query_parallel_point_x(pt : DbqueryparallelPoint) -> Double { pt.x }
+pub fn DbqueryparallelPoint::x(self : DbqueryparallelPoint) -> Double { self.x }
 
-pub fn db_query_parallel_point_y(pt : DbqueryparallelPoint) -> Double { pt.y }
+pub fn DbqueryparallelPoint::y(self : DbqueryparallelPoint) -> Double { self.y }
 
-pub fn db_query_parallel_point_z(pt : DbqueryparallelPoint) -> Double { pt.z }
+pub fn DbqueryparallelPoint::z(self : DbqueryparallelPoint) -> Double { self.z }
 
-pub fn db_query_parallel_point_label(pt : DbqueryparallelPoint) -> Int { pt.label }
+pub fn DbqueryparallelPoint::label(self : DbqueryparallelPoint) -> Int { self.label }
 
-pub fn db_query_parallel_point_dist(a : DbqueryparallelPoint, b : DbqueryparallelPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn DbqueryparallelPoint::dist(self : DbqueryparallelPoint, other : DbqueryparallelPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn db_query_parallel_point_add(a : DbqueryparallelPoint, b : DbqueryparallelPoint) -> DbqueryparallelPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn DbqueryparallelPoint::add(self : DbqueryparallelPoint, other : DbqueryparallelPoint) -> DbqueryparallelPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn db_query_parallel_point_sub(a : DbqueryparallelPoint, b : DbqueryparallelPoint) -> DbqueryparallelPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn DbqueryparallelPoint::sub(self : DbqueryparallelPoint, other : DbqueryparallelPoint) -> DbqueryparallelPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn db_query_parallel_point_scale(pt : DbqueryparallelPoint, s : Double) -> DbqueryparallelPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn DbqueryparallelPoint::scale(self : DbqueryparallelPoint, s : Double) -> DbqueryparallelPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn db_query_parallel_point_dot(a : DbqueryparallelPoint, b : DbqueryparallelPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn DbqueryparallelPoint::dot(self : DbqueryparallelPoint, other : DbqueryparallelPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn db_query_parallel_point_cross(a : DbqueryparallelPoint, b : DbqueryparallelPoint) -> DbqueryparallelPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn DbqueryparallelPoint::cross(self : DbqueryparallelPoint, other : DbqueryparallelPoint) -> DbqueryparallelPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn db_query_parallel_point_norm(pt : DbqueryparallelPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn DbqueryparallelPoint::norm(self : DbqueryparallelPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn db_query_parallel_point_normalize(pt : DbqueryparallelPoint) -> DbqueryparallelPoint {
-  let n = db_query_parallel_point_norm(pt)
-  if n < 0.0000001 { pt } else { db_query_parallel_point_scale(pt, 1.0 / n) }
+pub fn DbqueryparallelPoint::normalize(self : DbqueryparallelPoint) -> DbqueryparallelPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn db_query_parallel_point_negate(pt : DbqueryparallelPoint) -> DbqueryparallelPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn DbqueryparallelPoint::negate(self : DbqueryparallelPoint) -> DbqueryparallelPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn db_query_parallel_point_mid(a : DbqueryparallelPoint, b : DbqueryparallelPoint) -> DbqueryparallelPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn DbqueryparallelPoint::mid(self : DbqueryparallelPoint, other : DbqueryparallelPoint) -> DbqueryparallelPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn db_query_parallel_point_lerp(a : DbqueryparallelPoint, b : DbqueryparallelPoint, t : Double) -> DbqueryparallelPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn DbqueryparallelPoint::lerp(self : DbqueryparallelPoint, other : DbqueryparallelPoint, t : Double) -> DbqueryparallelPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn db_query_parallel_point_to_string(pt : DbqueryparallelPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn DbqueryparallelPoint::to_string(self : DbqueryparallelPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct DbqueryparallelSeries {
@@ -86,58 +86,58 @@ pub fn db_query_parallel_make_series(vals : Array[Double], name : String) -> Dbq
   { vals, name, meta: 0 }
 }
 
-pub fn db_query_parallel_series_len(s : DbqueryparallelSeries) -> Int { s.vals.length() }
+pub fn DbqueryparallelSeries::len(self : DbqueryparallelSeries) -> Int { self.vals.length() }
 
-pub fn db_query_parallel_series_sum(s : DbqueryparallelSeries) -> Double { @_common.sum(s.vals) }
+pub fn DbqueryparallelSeries::sum(self : DbqueryparallelSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn db_query_parallel_series_mean(s : DbqueryparallelSeries) -> Double { @_common.mean(s.vals) }
+pub fn DbqueryparallelSeries::mean(self : DbqueryparallelSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn db_query_parallel_series_min(s : DbqueryparallelSeries) -> Double { @_common.min(s.vals) }
+pub fn DbqueryparallelSeries::min(self : DbqueryparallelSeries) -> Double { @_common.min(self.vals) }
 
-pub fn db_query_parallel_series_max(s : DbqueryparallelSeries) -> Double { @_common.max(s.vals) }
+pub fn DbqueryparallelSeries::max(self : DbqueryparallelSeries) -> Double { @_common.max(self.vals) }
 
-pub fn db_query_parallel_series_range(s : DbqueryparallelSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn DbqueryparallelSeries::range(self : DbqueryparallelSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn db_query_parallel_series_var(s : DbqueryparallelSeries) -> Double { @_common.variance(s.vals) }
+pub fn DbqueryparallelSeries::variance(self : DbqueryparallelSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn db_query_parallel_series_std(s : DbqueryparallelSeries) -> Double { @_common.std(s.vals) }
+pub fn DbqueryparallelSeries::std(self : DbqueryparallelSeries) -> Double { @_common.std(self.vals) }
 
-pub fn db_query_parallel_series_median(s : DbqueryparallelSeries) -> Double { @_common.median(s.vals) }
+pub fn DbqueryparallelSeries::median(self : DbqueryparallelSeries) -> Double { @_common.median(self.vals) }
 
-pub fn db_query_parallel_series_scale(s : DbqueryparallelSeries, f : Double) -> DbqueryparallelSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn DbqueryparallelSeries::scale(self : DbqueryparallelSeries, f : Double) -> DbqueryparallelSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn db_query_parallel_series_add(a : DbqueryparallelSeries, b : DbqueryparallelSeries) -> DbqueryparallelSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn DbqueryparallelSeries::add(self : DbqueryparallelSeries, other : DbqueryparallelSeries) -> DbqueryparallelSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn db_query_parallel_series_sub(a : DbqueryparallelSeries, b : DbqueryparallelSeries) -> DbqueryparallelSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn DbqueryparallelSeries::sub(self : DbqueryparallelSeries, other : DbqueryparallelSeries) -> DbqueryparallelSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn db_query_parallel_series_normalize(s : DbqueryparallelSeries) -> DbqueryparallelSeries {
-  let mn = db_query_parallel_series_min(s)
-  let mx = db_query_parallel_series_max(s)
+pub fn DbqueryparallelSeries::normalize(self : DbqueryparallelSeries) -> DbqueryparallelSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn db_query_parallel_series_cumsum(s : DbqueryparallelSeries) -> DbqueryparallelSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn DbqueryparallelSeries::cumsum(self : DbqueryparallelSeries) -> DbqueryparallelSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn db_query_parallel_series_to_string(s : DbqueryparallelSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn DbqueryparallelSeries::to_string(self : DbqueryparallelSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn db_query_parallel_matrix_identity(n : Int) -> DbqueryparallelMatrix {
   m
 }
 
-pub fn db_query_parallel_matrix_get(m : DbqueryparallelMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn DbqueryparallelMatrix::get(self : DbqueryparallelMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn db_query_parallel_matrix_transpose(m : DbqueryparallelMatrix) -> DbqueryparallelMatrix {
-  let result = db_query_parallel_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn DbqueryparallelMatrix::transpose(self : DbqueryparallelMatrix) -> DbqueryparallelMatrix {
+  let result = db_query_parallel_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn db_query_parallel_matrix_add(a : DbqueryparallelMatrix, b : DbqueryparallelMatrix) -> DbqueryparallelMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = db_query_parallel_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn DbqueryparallelMatrix::add(self : DbqueryparallelMatrix, other : DbqueryparallelMatrix) -> DbqueryparallelMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = db_query_parallel_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn db_query_parallel_matrix_scale(m : DbqueryparallelMatrix, s : Double) -> DbqueryparallelMatrix {
-  let result = db_query_parallel_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn DbqueryparallelMatrix::scale(self : DbqueryparallelMatrix, s : Double) -> DbqueryparallelMatrix {
+  let result = db_query_parallel_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn db_query_parallel_matrix_multiply(a : DbqueryparallelMatrix, b : DbqueryparallelMatrix) -> DbqueryparallelMatrix {
-  if a.cols != b.rows { return db_query_parallel_make_matrix(a.rows, b.cols, 0.0) }
-  let result = db_query_parallel_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn DbqueryparallelMatrix::multiply(self : DbqueryparallelMatrix, other : DbqueryparallelMatrix) -> DbqueryparallelMatrix {
+  if self.cols != other.rows { return db_query_parallel_make_matrix(self.rows, other.cols, 0.0) }
+  let result = db_query_parallel_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn db_query_parallel_matrix_trace(m : DbqueryparallelMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn DbqueryparallelMatrix::trace(self : DbqueryparallelMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn db_query_parallel_matrix_det(m : DbqueryparallelMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn DbqueryparallelMatrix::det(self : DbqueryparallelMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn db_query_parallel_matrix_norm(m : DbqueryparallelMatrix) -> Double {
+pub fn DbqueryparallelMatrix::norm(self : DbqueryparallelMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn db_query_parallel_matrix_to_string(m : DbqueryparallelMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn DbqueryparallelMatrix::to_string(self : DbqueryparallelMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn db_query_parallel_vector_zero(dim : Int) -> DbqueryparallelVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn db_query_parallel_vector_add(a : DbqueryparallelVector, b : DbqueryparallelVector) -> DbqueryparallelVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn DbqueryparallelVector::add(self : DbqueryparallelVector, other : DbqueryparallelVector) -> DbqueryparallelVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn db_query_parallel_vector_sub(a : DbqueryparallelVector, b : DbqueryparallelVector) -> DbqueryparallelVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn DbqueryparallelVector::sub(self : DbqueryparallelVector, other : DbqueryparallelVector) -> DbqueryparallelVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn db_query_parallel_vector_scale(v : DbqueryparallelVector, s : Double) -> DbqueryparallelVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn DbqueryparallelVector::scale(self : DbqueryparallelVector, s : Double) -> DbqueryparallelVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn db_query_parallel_vector_dot(a : DbqueryparallelVector, b : DbqueryparallelVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn DbqueryparallelVector::dot(self : DbqueryparallelVector, other : DbqueryparallelVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn db_query_parallel_vector_norm(v : DbqueryparallelVector) -> Double { @_common.sqrt(db_query_parallel_vector_dot(v, v)) }
+pub fn DbqueryparallelVector::norm(self : DbqueryparallelVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn db_query_parallel_vector_normalize(v : DbqueryparallelVector) -> DbqueryparallelVector {
-  let n = db_query_parallel_vector_norm(v)
-  if n < 0.0000001 { v } else { db_query_parallel_vector_scale(v, 1.0 / n) }
+pub fn DbqueryparallelVector::normalize(self : DbqueryparallelVector) -> DbqueryparallelVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn db_query_parallel_vector_dist(a : DbqueryparallelVector, b : DbqueryparallelVector) -> Double {
-  db_query_parallel_vector_norm(db_query_parallel_vector_sub(a, b))
+pub fn DbqueryparallelVector::dist(self : DbqueryparallelVector, other : DbqueryparallelVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn db_query_parallel_vector_to_string(v : DbqueryparallelVector) -> String {
+pub fn DbqueryparallelVector::to_string(self : DbqueryparallelVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn db_query_parallel_mean(data : Array[Double]) -> Double { @_common.mean(data) }

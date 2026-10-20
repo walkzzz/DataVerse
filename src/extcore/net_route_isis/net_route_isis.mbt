@@ -16,64 +16,64 @@ pub fn net_route_isis_make_point3(x : Double, y : Double, z : Double) -> Netrout
   { x, y, z, label: 0 }
 }
 
-pub fn net_route_isis_point_x(pt : NetrouteisisPoint) -> Double { pt.x }
+pub fn NetrouteisisPoint::x(self : NetrouteisisPoint) -> Double { self.x }
 
-pub fn net_route_isis_point_y(pt : NetrouteisisPoint) -> Double { pt.y }
+pub fn NetrouteisisPoint::y(self : NetrouteisisPoint) -> Double { self.y }
 
-pub fn net_route_isis_point_z(pt : NetrouteisisPoint) -> Double { pt.z }
+pub fn NetrouteisisPoint::z(self : NetrouteisisPoint) -> Double { self.z }
 
-pub fn net_route_isis_point_label(pt : NetrouteisisPoint) -> Int { pt.label }
+pub fn NetrouteisisPoint::label(self : NetrouteisisPoint) -> Int { self.label }
 
-pub fn net_route_isis_point_dist(a : NetrouteisisPoint, b : NetrouteisisPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn NetrouteisisPoint::dist(self : NetrouteisisPoint, other : NetrouteisisPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn net_route_isis_point_add(a : NetrouteisisPoint, b : NetrouteisisPoint) -> NetrouteisisPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn NetrouteisisPoint::add(self : NetrouteisisPoint, other : NetrouteisisPoint) -> NetrouteisisPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn net_route_isis_point_sub(a : NetrouteisisPoint, b : NetrouteisisPoint) -> NetrouteisisPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn NetrouteisisPoint::sub(self : NetrouteisisPoint, other : NetrouteisisPoint) -> NetrouteisisPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn net_route_isis_point_scale(pt : NetrouteisisPoint, s : Double) -> NetrouteisisPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn NetrouteisisPoint::scale(self : NetrouteisisPoint, s : Double) -> NetrouteisisPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn net_route_isis_point_dot(a : NetrouteisisPoint, b : NetrouteisisPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn NetrouteisisPoint::dot(self : NetrouteisisPoint, other : NetrouteisisPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn net_route_isis_point_cross(a : NetrouteisisPoint, b : NetrouteisisPoint) -> NetrouteisisPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn NetrouteisisPoint::cross(self : NetrouteisisPoint, other : NetrouteisisPoint) -> NetrouteisisPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn net_route_isis_point_norm(pt : NetrouteisisPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn NetrouteisisPoint::norm(self : NetrouteisisPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn net_route_isis_point_normalize(pt : NetrouteisisPoint) -> NetrouteisisPoint {
-  let n = net_route_isis_point_norm(pt)
-  if n < 0.0000001 { pt } else { net_route_isis_point_scale(pt, 1.0 / n) }
+pub fn NetrouteisisPoint::normalize(self : NetrouteisisPoint) -> NetrouteisisPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn net_route_isis_point_negate(pt : NetrouteisisPoint) -> NetrouteisisPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn NetrouteisisPoint::negate(self : NetrouteisisPoint) -> NetrouteisisPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn net_route_isis_point_mid(a : NetrouteisisPoint, b : NetrouteisisPoint) -> NetrouteisisPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn NetrouteisisPoint::mid(self : NetrouteisisPoint, other : NetrouteisisPoint) -> NetrouteisisPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn net_route_isis_point_lerp(a : NetrouteisisPoint, b : NetrouteisisPoint, t : Double) -> NetrouteisisPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn NetrouteisisPoint::lerp(self : NetrouteisisPoint, other : NetrouteisisPoint, t : Double) -> NetrouteisisPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn net_route_isis_point_to_string(pt : NetrouteisisPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn NetrouteisisPoint::to_string(self : NetrouteisisPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct NetrouteisisSeries {
@@ -86,58 +86,58 @@ pub fn net_route_isis_make_series(vals : Array[Double], name : String) -> Netrou
   { vals, name, meta: 0 }
 }
 
-pub fn net_route_isis_series_len(s : NetrouteisisSeries) -> Int { s.vals.length() }
+pub fn NetrouteisisSeries::len(self : NetrouteisisSeries) -> Int { self.vals.length() }
 
-pub fn net_route_isis_series_sum(s : NetrouteisisSeries) -> Double { @_common.sum(s.vals) }
+pub fn NetrouteisisSeries::sum(self : NetrouteisisSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn net_route_isis_series_mean(s : NetrouteisisSeries) -> Double { @_common.mean(s.vals) }
+pub fn NetrouteisisSeries::mean(self : NetrouteisisSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn net_route_isis_series_min(s : NetrouteisisSeries) -> Double { @_common.min(s.vals) }
+pub fn NetrouteisisSeries::min(self : NetrouteisisSeries) -> Double { @_common.min(self.vals) }
 
-pub fn net_route_isis_series_max(s : NetrouteisisSeries) -> Double { @_common.max(s.vals) }
+pub fn NetrouteisisSeries::max(self : NetrouteisisSeries) -> Double { @_common.max(self.vals) }
 
-pub fn net_route_isis_series_range(s : NetrouteisisSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn NetrouteisisSeries::range(self : NetrouteisisSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn net_route_isis_series_var(s : NetrouteisisSeries) -> Double { @_common.variance(s.vals) }
+pub fn NetrouteisisSeries::variance(self : NetrouteisisSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn net_route_isis_series_std(s : NetrouteisisSeries) -> Double { @_common.std(s.vals) }
+pub fn NetrouteisisSeries::std(self : NetrouteisisSeries) -> Double { @_common.std(self.vals) }
 
-pub fn net_route_isis_series_median(s : NetrouteisisSeries) -> Double { @_common.median(s.vals) }
+pub fn NetrouteisisSeries::median(self : NetrouteisisSeries) -> Double { @_common.median(self.vals) }
 
-pub fn net_route_isis_series_scale(s : NetrouteisisSeries, f : Double) -> NetrouteisisSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn NetrouteisisSeries::scale(self : NetrouteisisSeries, f : Double) -> NetrouteisisSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn net_route_isis_series_add(a : NetrouteisisSeries, b : NetrouteisisSeries) -> NetrouteisisSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn NetrouteisisSeries::add(self : NetrouteisisSeries, other : NetrouteisisSeries) -> NetrouteisisSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn net_route_isis_series_sub(a : NetrouteisisSeries, b : NetrouteisisSeries) -> NetrouteisisSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn NetrouteisisSeries::sub(self : NetrouteisisSeries, other : NetrouteisisSeries) -> NetrouteisisSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn net_route_isis_series_normalize(s : NetrouteisisSeries) -> NetrouteisisSeries {
-  let mn = net_route_isis_series_min(s)
-  let mx = net_route_isis_series_max(s)
+pub fn NetrouteisisSeries::normalize(self : NetrouteisisSeries) -> NetrouteisisSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn net_route_isis_series_cumsum(s : NetrouteisisSeries) -> NetrouteisisSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn NetrouteisisSeries::cumsum(self : NetrouteisisSeries) -> NetrouteisisSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn net_route_isis_series_to_string(s : NetrouteisisSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn NetrouteisisSeries::to_string(self : NetrouteisisSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn net_route_isis_matrix_identity(n : Int) -> NetrouteisisMatrix {
   m
 }
 
-pub fn net_route_isis_matrix_get(m : NetrouteisisMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn NetrouteisisMatrix::get(self : NetrouteisisMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn net_route_isis_matrix_transpose(m : NetrouteisisMatrix) -> NetrouteisisMatrix {
-  let result = net_route_isis_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn NetrouteisisMatrix::transpose(self : NetrouteisisMatrix) -> NetrouteisisMatrix {
+  let result = net_route_isis_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn net_route_isis_matrix_add(a : NetrouteisisMatrix, b : NetrouteisisMatrix) -> NetrouteisisMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = net_route_isis_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn NetrouteisisMatrix::add(self : NetrouteisisMatrix, other : NetrouteisisMatrix) -> NetrouteisisMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = net_route_isis_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn net_route_isis_matrix_scale(m : NetrouteisisMatrix, s : Double) -> NetrouteisisMatrix {
-  let result = net_route_isis_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn NetrouteisisMatrix::scale(self : NetrouteisisMatrix, s : Double) -> NetrouteisisMatrix {
+  let result = net_route_isis_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn net_route_isis_matrix_multiply(a : NetrouteisisMatrix, b : NetrouteisisMatrix) -> NetrouteisisMatrix {
-  if a.cols != b.rows { return net_route_isis_make_matrix(a.rows, b.cols, 0.0) }
-  let result = net_route_isis_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn NetrouteisisMatrix::multiply(self : NetrouteisisMatrix, other : NetrouteisisMatrix) -> NetrouteisisMatrix {
+  if self.cols != other.rows { return net_route_isis_make_matrix(self.rows, other.cols, 0.0) }
+  let result = net_route_isis_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn net_route_isis_matrix_trace(m : NetrouteisisMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn NetrouteisisMatrix::trace(self : NetrouteisisMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn net_route_isis_matrix_det(m : NetrouteisisMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn NetrouteisisMatrix::det(self : NetrouteisisMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn net_route_isis_matrix_norm(m : NetrouteisisMatrix) -> Double {
+pub fn NetrouteisisMatrix::norm(self : NetrouteisisMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn net_route_isis_matrix_to_string(m : NetrouteisisMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn NetrouteisisMatrix::to_string(self : NetrouteisisMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn net_route_isis_vector_zero(dim : Int) -> NetrouteisisVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn net_route_isis_vector_add(a : NetrouteisisVector, b : NetrouteisisVector) -> NetrouteisisVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn NetrouteisisVector::add(self : NetrouteisisVector, other : NetrouteisisVector) -> NetrouteisisVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn net_route_isis_vector_sub(a : NetrouteisisVector, b : NetrouteisisVector) -> NetrouteisisVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn NetrouteisisVector::sub(self : NetrouteisisVector, other : NetrouteisisVector) -> NetrouteisisVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn net_route_isis_vector_scale(v : NetrouteisisVector, s : Double) -> NetrouteisisVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn NetrouteisisVector::scale(self : NetrouteisisVector, s : Double) -> NetrouteisisVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn net_route_isis_vector_dot(a : NetrouteisisVector, b : NetrouteisisVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn NetrouteisisVector::dot(self : NetrouteisisVector, other : NetrouteisisVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn net_route_isis_vector_norm(v : NetrouteisisVector) -> Double { @_common.sqrt(net_route_isis_vector_dot(v, v)) }
+pub fn NetrouteisisVector::norm(self : NetrouteisisVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn net_route_isis_vector_normalize(v : NetrouteisisVector) -> NetrouteisisVector {
-  let n = net_route_isis_vector_norm(v)
-  if n < 0.0000001 { v } else { net_route_isis_vector_scale(v, 1.0 / n) }
+pub fn NetrouteisisVector::normalize(self : NetrouteisisVector) -> NetrouteisisVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn net_route_isis_vector_dist(a : NetrouteisisVector, b : NetrouteisisVector) -> Double {
-  net_route_isis_vector_norm(net_route_isis_vector_sub(a, b))
+pub fn NetrouteisisVector::dist(self : NetrouteisisVector, other : NetrouteisisVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn net_route_isis_vector_to_string(v : NetrouteisisVector) -> String {
+pub fn NetrouteisisVector::to_string(self : NetrouteisisVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn net_route_isis_mean(data : Array[Double]) -> Double { @_common.mean(data) }

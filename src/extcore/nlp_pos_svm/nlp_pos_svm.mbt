@@ -16,64 +16,64 @@ pub fn nlp_pos_svm_make_point3(x : Double, y : Double, z : Double) -> NlppossvmP
   { x, y, z, label: 0 }
 }
 
-pub fn nlp_pos_svm_point_x(pt : NlppossvmPoint) -> Double { pt.x }
+pub fn NlppossvmPoint::x(self : NlppossvmPoint) -> Double { self.x }
 
-pub fn nlp_pos_svm_point_y(pt : NlppossvmPoint) -> Double { pt.y }
+pub fn NlppossvmPoint::y(self : NlppossvmPoint) -> Double { self.y }
 
-pub fn nlp_pos_svm_point_z(pt : NlppossvmPoint) -> Double { pt.z }
+pub fn NlppossvmPoint::z(self : NlppossvmPoint) -> Double { self.z }
 
-pub fn nlp_pos_svm_point_label(pt : NlppossvmPoint) -> Int { pt.label }
+pub fn NlppossvmPoint::label(self : NlppossvmPoint) -> Int { self.label }
 
-pub fn nlp_pos_svm_point_dist(a : NlppossvmPoint, b : NlppossvmPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn NlppossvmPoint::dist(self : NlppossvmPoint, other : NlppossvmPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn nlp_pos_svm_point_add(a : NlppossvmPoint, b : NlppossvmPoint) -> NlppossvmPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn NlppossvmPoint::add(self : NlppossvmPoint, other : NlppossvmPoint) -> NlppossvmPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn nlp_pos_svm_point_sub(a : NlppossvmPoint, b : NlppossvmPoint) -> NlppossvmPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn NlppossvmPoint::sub(self : NlppossvmPoint, other : NlppossvmPoint) -> NlppossvmPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn nlp_pos_svm_point_scale(pt : NlppossvmPoint, s : Double) -> NlppossvmPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn NlppossvmPoint::scale(self : NlppossvmPoint, s : Double) -> NlppossvmPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn nlp_pos_svm_point_dot(a : NlppossvmPoint, b : NlppossvmPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn NlppossvmPoint::dot(self : NlppossvmPoint, other : NlppossvmPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn nlp_pos_svm_point_cross(a : NlppossvmPoint, b : NlppossvmPoint) -> NlppossvmPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn NlppossvmPoint::cross(self : NlppossvmPoint, other : NlppossvmPoint) -> NlppossvmPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn nlp_pos_svm_point_norm(pt : NlppossvmPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn NlppossvmPoint::norm(self : NlppossvmPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn nlp_pos_svm_point_normalize(pt : NlppossvmPoint) -> NlppossvmPoint {
-  let n = nlp_pos_svm_point_norm(pt)
-  if n < 0.0000001 { pt } else { nlp_pos_svm_point_scale(pt, 1.0 / n) }
+pub fn NlppossvmPoint::normalize(self : NlppossvmPoint) -> NlppossvmPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn nlp_pos_svm_point_negate(pt : NlppossvmPoint) -> NlppossvmPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn NlppossvmPoint::negate(self : NlppossvmPoint) -> NlppossvmPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn nlp_pos_svm_point_mid(a : NlppossvmPoint, b : NlppossvmPoint) -> NlppossvmPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn NlppossvmPoint::mid(self : NlppossvmPoint, other : NlppossvmPoint) -> NlppossvmPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn nlp_pos_svm_point_lerp(a : NlppossvmPoint, b : NlppossvmPoint, t : Double) -> NlppossvmPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn NlppossvmPoint::lerp(self : NlppossvmPoint, other : NlppossvmPoint, t : Double) -> NlppossvmPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn nlp_pos_svm_point_to_string(pt : NlppossvmPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn NlppossvmPoint::to_string(self : NlppossvmPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct NlppossvmSeries {
@@ -86,58 +86,58 @@ pub fn nlp_pos_svm_make_series(vals : Array[Double], name : String) -> Nlppossvm
   { vals, name, meta: 0 }
 }
 
-pub fn nlp_pos_svm_series_len(s : NlppossvmSeries) -> Int { s.vals.length() }
+pub fn NlppossvmSeries::len(self : NlppossvmSeries) -> Int { self.vals.length() }
 
-pub fn nlp_pos_svm_series_sum(s : NlppossvmSeries) -> Double { @_common.sum(s.vals) }
+pub fn NlppossvmSeries::sum(self : NlppossvmSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn nlp_pos_svm_series_mean(s : NlppossvmSeries) -> Double { @_common.mean(s.vals) }
+pub fn NlppossvmSeries::mean(self : NlppossvmSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn nlp_pos_svm_series_min(s : NlppossvmSeries) -> Double { @_common.min(s.vals) }
+pub fn NlppossvmSeries::min(self : NlppossvmSeries) -> Double { @_common.min(self.vals) }
 
-pub fn nlp_pos_svm_series_max(s : NlppossvmSeries) -> Double { @_common.max(s.vals) }
+pub fn NlppossvmSeries::max(self : NlppossvmSeries) -> Double { @_common.max(self.vals) }
 
-pub fn nlp_pos_svm_series_range(s : NlppossvmSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn NlppossvmSeries::range(self : NlppossvmSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn nlp_pos_svm_series_var(s : NlppossvmSeries) -> Double { @_common.variance(s.vals) }
+pub fn NlppossvmSeries::variance(self : NlppossvmSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn nlp_pos_svm_series_std(s : NlppossvmSeries) -> Double { @_common.std(s.vals) }
+pub fn NlppossvmSeries::std(self : NlppossvmSeries) -> Double { @_common.std(self.vals) }
 
-pub fn nlp_pos_svm_series_median(s : NlppossvmSeries) -> Double { @_common.median(s.vals) }
+pub fn NlppossvmSeries::median(self : NlppossvmSeries) -> Double { @_common.median(self.vals) }
 
-pub fn nlp_pos_svm_series_scale(s : NlppossvmSeries, f : Double) -> NlppossvmSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn NlppossvmSeries::scale(self : NlppossvmSeries, f : Double) -> NlppossvmSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn nlp_pos_svm_series_add(a : NlppossvmSeries, b : NlppossvmSeries) -> NlppossvmSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn NlppossvmSeries::add(self : NlppossvmSeries, other : NlppossvmSeries) -> NlppossvmSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn nlp_pos_svm_series_sub(a : NlppossvmSeries, b : NlppossvmSeries) -> NlppossvmSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn NlppossvmSeries::sub(self : NlppossvmSeries, other : NlppossvmSeries) -> NlppossvmSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn nlp_pos_svm_series_normalize(s : NlppossvmSeries) -> NlppossvmSeries {
-  let mn = nlp_pos_svm_series_min(s)
-  let mx = nlp_pos_svm_series_max(s)
+pub fn NlppossvmSeries::normalize(self : NlppossvmSeries) -> NlppossvmSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn nlp_pos_svm_series_cumsum(s : NlppossvmSeries) -> NlppossvmSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn NlppossvmSeries::cumsum(self : NlppossvmSeries) -> NlppossvmSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn nlp_pos_svm_series_to_string(s : NlppossvmSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn NlppossvmSeries::to_string(self : NlppossvmSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn nlp_pos_svm_matrix_identity(n : Int) -> NlppossvmMatrix {
   m
 }
 
-pub fn nlp_pos_svm_matrix_get(m : NlppossvmMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn NlppossvmMatrix::get(self : NlppossvmMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn nlp_pos_svm_matrix_transpose(m : NlppossvmMatrix) -> NlppossvmMatrix {
-  let result = nlp_pos_svm_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn NlppossvmMatrix::transpose(self : NlppossvmMatrix) -> NlppossvmMatrix {
+  let result = nlp_pos_svm_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn nlp_pos_svm_matrix_add(a : NlppossvmMatrix, b : NlppossvmMatrix) -> NlppossvmMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = nlp_pos_svm_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn NlppossvmMatrix::add(self : NlppossvmMatrix, other : NlppossvmMatrix) -> NlppossvmMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = nlp_pos_svm_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn nlp_pos_svm_matrix_scale(m : NlppossvmMatrix, s : Double) -> NlppossvmMatrix {
-  let result = nlp_pos_svm_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn NlppossvmMatrix::scale(self : NlppossvmMatrix, s : Double) -> NlppossvmMatrix {
+  let result = nlp_pos_svm_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn nlp_pos_svm_matrix_multiply(a : NlppossvmMatrix, b : NlppossvmMatrix) -> NlppossvmMatrix {
-  if a.cols != b.rows { return nlp_pos_svm_make_matrix(a.rows, b.cols, 0.0) }
-  let result = nlp_pos_svm_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn NlppossvmMatrix::multiply(self : NlppossvmMatrix, other : NlppossvmMatrix) -> NlppossvmMatrix {
+  if self.cols != other.rows { return nlp_pos_svm_make_matrix(self.rows, other.cols, 0.0) }
+  let result = nlp_pos_svm_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn nlp_pos_svm_matrix_trace(m : NlppossvmMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn NlppossvmMatrix::trace(self : NlppossvmMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn nlp_pos_svm_matrix_det(m : NlppossvmMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn NlppossvmMatrix::det(self : NlppossvmMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn nlp_pos_svm_matrix_norm(m : NlppossvmMatrix) -> Double {
+pub fn NlppossvmMatrix::norm(self : NlppossvmMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn nlp_pos_svm_matrix_to_string(m : NlppossvmMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn NlppossvmMatrix::to_string(self : NlppossvmMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn nlp_pos_svm_vector_zero(dim : Int) -> NlppossvmVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn nlp_pos_svm_vector_add(a : NlppossvmVector, b : NlppossvmVector) -> NlppossvmVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn NlppossvmVector::add(self : NlppossvmVector, other : NlppossvmVector) -> NlppossvmVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn nlp_pos_svm_vector_sub(a : NlppossvmVector, b : NlppossvmVector) -> NlppossvmVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn NlppossvmVector::sub(self : NlppossvmVector, other : NlppossvmVector) -> NlppossvmVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn nlp_pos_svm_vector_scale(v : NlppossvmVector, s : Double) -> NlppossvmVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn NlppossvmVector::scale(self : NlppossvmVector, s : Double) -> NlppossvmVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn nlp_pos_svm_vector_dot(a : NlppossvmVector, b : NlppossvmVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn NlppossvmVector::dot(self : NlppossvmVector, other : NlppossvmVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn nlp_pos_svm_vector_norm(v : NlppossvmVector) -> Double { @_common.sqrt(nlp_pos_svm_vector_dot(v, v)) }
+pub fn NlppossvmVector::norm(self : NlppossvmVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn nlp_pos_svm_vector_normalize(v : NlppossvmVector) -> NlppossvmVector {
-  let n = nlp_pos_svm_vector_norm(v)
-  if n < 0.0000001 { v } else { nlp_pos_svm_vector_scale(v, 1.0 / n) }
+pub fn NlppossvmVector::normalize(self : NlppossvmVector) -> NlppossvmVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn nlp_pos_svm_vector_dist(a : NlppossvmVector, b : NlppossvmVector) -> Double {
-  nlp_pos_svm_vector_norm(nlp_pos_svm_vector_sub(a, b))
+pub fn NlppossvmVector::dist(self : NlppossvmVector, other : NlppossvmVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn nlp_pos_svm_vector_to_string(v : NlppossvmVector) -> String {
+pub fn NlppossvmVector::to_string(self : NlppossvmVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn nlp_pos_svm_mean(data : Array[Double]) -> Double { @_common.mean(data) }

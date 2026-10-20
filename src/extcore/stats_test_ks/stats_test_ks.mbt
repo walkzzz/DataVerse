@@ -16,64 +16,64 @@ pub fn stats_test_ks_make_point3(x : Double, y : Double, z : Double) -> Statstes
   { x, y, z, label: 0 }
 }
 
-pub fn stats_test_ks_point_x(pt : StatstestksPoint) -> Double { pt.x }
+pub fn StatstestksPoint::x(self : StatstestksPoint) -> Double { self.x }
 
-pub fn stats_test_ks_point_y(pt : StatstestksPoint) -> Double { pt.y }
+pub fn StatstestksPoint::y(self : StatstestksPoint) -> Double { self.y }
 
-pub fn stats_test_ks_point_z(pt : StatstestksPoint) -> Double { pt.z }
+pub fn StatstestksPoint::z(self : StatstestksPoint) -> Double { self.z }
 
-pub fn stats_test_ks_point_label(pt : StatstestksPoint) -> Int { pt.label }
+pub fn StatstestksPoint::label(self : StatstestksPoint) -> Int { self.label }
 
-pub fn stats_test_ks_point_dist(a : StatstestksPoint, b : StatstestksPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn StatstestksPoint::dist(self : StatstestksPoint, other : StatstestksPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn stats_test_ks_point_add(a : StatstestksPoint, b : StatstestksPoint) -> StatstestksPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn StatstestksPoint::add(self : StatstestksPoint, other : StatstestksPoint) -> StatstestksPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn stats_test_ks_point_sub(a : StatstestksPoint, b : StatstestksPoint) -> StatstestksPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn StatstestksPoint::sub(self : StatstestksPoint, other : StatstestksPoint) -> StatstestksPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn stats_test_ks_point_scale(pt : StatstestksPoint, s : Double) -> StatstestksPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn StatstestksPoint::scale(self : StatstestksPoint, s : Double) -> StatstestksPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn stats_test_ks_point_dot(a : StatstestksPoint, b : StatstestksPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn StatstestksPoint::dot(self : StatstestksPoint, other : StatstestksPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn stats_test_ks_point_cross(a : StatstestksPoint, b : StatstestksPoint) -> StatstestksPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn StatstestksPoint::cross(self : StatstestksPoint, other : StatstestksPoint) -> StatstestksPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn stats_test_ks_point_norm(pt : StatstestksPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn StatstestksPoint::norm(self : StatstestksPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn stats_test_ks_point_normalize(pt : StatstestksPoint) -> StatstestksPoint {
-  let n = stats_test_ks_point_norm(pt)
-  if n < 0.0000001 { pt } else { stats_test_ks_point_scale(pt, 1.0 / n) }
+pub fn StatstestksPoint::normalize(self : StatstestksPoint) -> StatstestksPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn stats_test_ks_point_negate(pt : StatstestksPoint) -> StatstestksPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn StatstestksPoint::negate(self : StatstestksPoint) -> StatstestksPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn stats_test_ks_point_mid(a : StatstestksPoint, b : StatstestksPoint) -> StatstestksPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn StatstestksPoint::mid(self : StatstestksPoint, other : StatstestksPoint) -> StatstestksPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn stats_test_ks_point_lerp(a : StatstestksPoint, b : StatstestksPoint, t : Double) -> StatstestksPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn StatstestksPoint::lerp(self : StatstestksPoint, other : StatstestksPoint, t : Double) -> StatstestksPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn stats_test_ks_point_to_string(pt : StatstestksPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn StatstestksPoint::to_string(self : StatstestksPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct StatstestksSeries {
@@ -86,58 +86,58 @@ pub fn stats_test_ks_make_series(vals : Array[Double], name : String) -> Statste
   { vals, name, meta: 0 }
 }
 
-pub fn stats_test_ks_series_len(s : StatstestksSeries) -> Int { s.vals.length() }
+pub fn StatstestksSeries::len(self : StatstestksSeries) -> Int { self.vals.length() }
 
-pub fn stats_test_ks_series_sum(s : StatstestksSeries) -> Double { @_common.sum(s.vals) }
+pub fn StatstestksSeries::sum(self : StatstestksSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn stats_test_ks_series_mean(s : StatstestksSeries) -> Double { @_common.mean(s.vals) }
+pub fn StatstestksSeries::mean(self : StatstestksSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn stats_test_ks_series_min(s : StatstestksSeries) -> Double { @_common.min(s.vals) }
+pub fn StatstestksSeries::min(self : StatstestksSeries) -> Double { @_common.min(self.vals) }
 
-pub fn stats_test_ks_series_max(s : StatstestksSeries) -> Double { @_common.max(s.vals) }
+pub fn StatstestksSeries::max(self : StatstestksSeries) -> Double { @_common.max(self.vals) }
 
-pub fn stats_test_ks_series_range(s : StatstestksSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn StatstestksSeries::range(self : StatstestksSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn stats_test_ks_series_var(s : StatstestksSeries) -> Double { @_common.variance(s.vals) }
+pub fn StatstestksSeries::variance(self : StatstestksSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn stats_test_ks_series_std(s : StatstestksSeries) -> Double { @_common.std(s.vals) }
+pub fn StatstestksSeries::std(self : StatstestksSeries) -> Double { @_common.std(self.vals) }
 
-pub fn stats_test_ks_series_median(s : StatstestksSeries) -> Double { @_common.median(s.vals) }
+pub fn StatstestksSeries::median(self : StatstestksSeries) -> Double { @_common.median(self.vals) }
 
-pub fn stats_test_ks_series_scale(s : StatstestksSeries, f : Double) -> StatstestksSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn StatstestksSeries::scale(self : StatstestksSeries, f : Double) -> StatstestksSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn stats_test_ks_series_add(a : StatstestksSeries, b : StatstestksSeries) -> StatstestksSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn StatstestksSeries::add(self : StatstestksSeries, other : StatstestksSeries) -> StatstestksSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn stats_test_ks_series_sub(a : StatstestksSeries, b : StatstestksSeries) -> StatstestksSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn StatstestksSeries::sub(self : StatstestksSeries, other : StatstestksSeries) -> StatstestksSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn stats_test_ks_series_normalize(s : StatstestksSeries) -> StatstestksSeries {
-  let mn = stats_test_ks_series_min(s)
-  let mx = stats_test_ks_series_max(s)
+pub fn StatstestksSeries::normalize(self : StatstestksSeries) -> StatstestksSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn stats_test_ks_series_cumsum(s : StatstestksSeries) -> StatstestksSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn StatstestksSeries::cumsum(self : StatstestksSeries) -> StatstestksSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn stats_test_ks_series_to_string(s : StatstestksSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn StatstestksSeries::to_string(self : StatstestksSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn stats_test_ks_matrix_identity(n : Int) -> StatstestksMatrix {
   m
 }
 
-pub fn stats_test_ks_matrix_get(m : StatstestksMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn StatstestksMatrix::get(self : StatstestksMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn stats_test_ks_matrix_transpose(m : StatstestksMatrix) -> StatstestksMatrix {
-  let result = stats_test_ks_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn StatstestksMatrix::transpose(self : StatstestksMatrix) -> StatstestksMatrix {
+  let result = stats_test_ks_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn stats_test_ks_matrix_add(a : StatstestksMatrix, b : StatstestksMatrix) -> StatstestksMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = stats_test_ks_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn StatstestksMatrix::add(self : StatstestksMatrix, other : StatstestksMatrix) -> StatstestksMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = stats_test_ks_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn stats_test_ks_matrix_scale(m : StatstestksMatrix, s : Double) -> StatstestksMatrix {
-  let result = stats_test_ks_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn StatstestksMatrix::scale(self : StatstestksMatrix, s : Double) -> StatstestksMatrix {
+  let result = stats_test_ks_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn stats_test_ks_matrix_multiply(a : StatstestksMatrix, b : StatstestksMatrix) -> StatstestksMatrix {
-  if a.cols != b.rows { return stats_test_ks_make_matrix(a.rows, b.cols, 0.0) }
-  let result = stats_test_ks_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn StatstestksMatrix::multiply(self : StatstestksMatrix, other : StatstestksMatrix) -> StatstestksMatrix {
+  if self.cols != other.rows { return stats_test_ks_make_matrix(self.rows, other.cols, 0.0) }
+  let result = stats_test_ks_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn stats_test_ks_matrix_trace(m : StatstestksMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn StatstestksMatrix::trace(self : StatstestksMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn stats_test_ks_matrix_det(m : StatstestksMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn StatstestksMatrix::det(self : StatstestksMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn stats_test_ks_matrix_norm(m : StatstestksMatrix) -> Double {
+pub fn StatstestksMatrix::norm(self : StatstestksMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn stats_test_ks_matrix_to_string(m : StatstestksMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn StatstestksMatrix::to_string(self : StatstestksMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn stats_test_ks_vector_zero(dim : Int) -> StatstestksVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn stats_test_ks_vector_add(a : StatstestksVector, b : StatstestksVector) -> StatstestksVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn StatstestksVector::add(self : StatstestksVector, other : StatstestksVector) -> StatstestksVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn stats_test_ks_vector_sub(a : StatstestksVector, b : StatstestksVector) -> StatstestksVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn StatstestksVector::sub(self : StatstestksVector, other : StatstestksVector) -> StatstestksVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn stats_test_ks_vector_scale(v : StatstestksVector, s : Double) -> StatstestksVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn StatstestksVector::scale(self : StatstestksVector, s : Double) -> StatstestksVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn stats_test_ks_vector_dot(a : StatstestksVector, b : StatstestksVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn StatstestksVector::dot(self : StatstestksVector, other : StatstestksVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn stats_test_ks_vector_norm(v : StatstestksVector) -> Double { @_common.sqrt(stats_test_ks_vector_dot(v, v)) }
+pub fn StatstestksVector::norm(self : StatstestksVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn stats_test_ks_vector_normalize(v : StatstestksVector) -> StatstestksVector {
-  let n = stats_test_ks_vector_norm(v)
-  if n < 0.0000001 { v } else { stats_test_ks_vector_scale(v, 1.0 / n) }
+pub fn StatstestksVector::normalize(self : StatstestksVector) -> StatstestksVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn stats_test_ks_vector_dist(a : StatstestksVector, b : StatstestksVector) -> Double {
-  stats_test_ks_vector_norm(stats_test_ks_vector_sub(a, b))
+pub fn StatstestksVector::dist(self : StatstestksVector, other : StatstestksVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn stats_test_ks_vector_to_string(v : StatstestksVector) -> String {
+pub fn StatstestksVector::to_string(self : StatstestksVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn stats_test_ks_mean(data : Array[Double]) -> Double { @_common.mean(data) }

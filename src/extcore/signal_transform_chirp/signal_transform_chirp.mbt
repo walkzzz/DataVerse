@@ -16,64 +16,64 @@ pub fn signal_transform_chirp_make_point3(x : Double, y : Double, z : Double) ->
   { x, y, z, label: 0 }
 }
 
-pub fn signal_transform_chirp_point_x(pt : SignaltransformchirpPoint) -> Double { pt.x }
+pub fn SignaltransformchirpPoint::x(self : SignaltransformchirpPoint) -> Double { self.x }
 
-pub fn signal_transform_chirp_point_y(pt : SignaltransformchirpPoint) -> Double { pt.y }
+pub fn SignaltransformchirpPoint::y(self : SignaltransformchirpPoint) -> Double { self.y }
 
-pub fn signal_transform_chirp_point_z(pt : SignaltransformchirpPoint) -> Double { pt.z }
+pub fn SignaltransformchirpPoint::z(self : SignaltransformchirpPoint) -> Double { self.z }
 
-pub fn signal_transform_chirp_point_label(pt : SignaltransformchirpPoint) -> Int { pt.label }
+pub fn SignaltransformchirpPoint::label(self : SignaltransformchirpPoint) -> Int { self.label }
 
-pub fn signal_transform_chirp_point_dist(a : SignaltransformchirpPoint, b : SignaltransformchirpPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn SignaltransformchirpPoint::dist(self : SignaltransformchirpPoint, other : SignaltransformchirpPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn signal_transform_chirp_point_add(a : SignaltransformchirpPoint, b : SignaltransformchirpPoint) -> SignaltransformchirpPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn SignaltransformchirpPoint::add(self : SignaltransformchirpPoint, other : SignaltransformchirpPoint) -> SignaltransformchirpPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn signal_transform_chirp_point_sub(a : SignaltransformchirpPoint, b : SignaltransformchirpPoint) -> SignaltransformchirpPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn SignaltransformchirpPoint::sub(self : SignaltransformchirpPoint, other : SignaltransformchirpPoint) -> SignaltransformchirpPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn signal_transform_chirp_point_scale(pt : SignaltransformchirpPoint, s : Double) -> SignaltransformchirpPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn SignaltransformchirpPoint::scale(self : SignaltransformchirpPoint, s : Double) -> SignaltransformchirpPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn signal_transform_chirp_point_dot(a : SignaltransformchirpPoint, b : SignaltransformchirpPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn SignaltransformchirpPoint::dot(self : SignaltransformchirpPoint, other : SignaltransformchirpPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn signal_transform_chirp_point_cross(a : SignaltransformchirpPoint, b : SignaltransformchirpPoint) -> SignaltransformchirpPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn SignaltransformchirpPoint::cross(self : SignaltransformchirpPoint, other : SignaltransformchirpPoint) -> SignaltransformchirpPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn signal_transform_chirp_point_norm(pt : SignaltransformchirpPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn SignaltransformchirpPoint::norm(self : SignaltransformchirpPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn signal_transform_chirp_point_normalize(pt : SignaltransformchirpPoint) -> SignaltransformchirpPoint {
-  let n = signal_transform_chirp_point_norm(pt)
-  if n < 0.0000001 { pt } else { signal_transform_chirp_point_scale(pt, 1.0 / n) }
+pub fn SignaltransformchirpPoint::normalize(self : SignaltransformchirpPoint) -> SignaltransformchirpPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn signal_transform_chirp_point_negate(pt : SignaltransformchirpPoint) -> SignaltransformchirpPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn SignaltransformchirpPoint::negate(self : SignaltransformchirpPoint) -> SignaltransformchirpPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn signal_transform_chirp_point_mid(a : SignaltransformchirpPoint, b : SignaltransformchirpPoint) -> SignaltransformchirpPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn SignaltransformchirpPoint::mid(self : SignaltransformchirpPoint, other : SignaltransformchirpPoint) -> SignaltransformchirpPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn signal_transform_chirp_point_lerp(a : SignaltransformchirpPoint, b : SignaltransformchirpPoint, t : Double) -> SignaltransformchirpPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn SignaltransformchirpPoint::lerp(self : SignaltransformchirpPoint, other : SignaltransformchirpPoint, t : Double) -> SignaltransformchirpPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn signal_transform_chirp_point_to_string(pt : SignaltransformchirpPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn SignaltransformchirpPoint::to_string(self : SignaltransformchirpPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct SignaltransformchirpSeries {
@@ -86,58 +86,58 @@ pub fn signal_transform_chirp_make_series(vals : Array[Double], name : String) -
   { vals, name, meta: 0 }
 }
 
-pub fn signal_transform_chirp_series_len(s : SignaltransformchirpSeries) -> Int { s.vals.length() }
+pub fn SignaltransformchirpSeries::len(self : SignaltransformchirpSeries) -> Int { self.vals.length() }
 
-pub fn signal_transform_chirp_series_sum(s : SignaltransformchirpSeries) -> Double { @_common.sum(s.vals) }
+pub fn SignaltransformchirpSeries::sum(self : SignaltransformchirpSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn signal_transform_chirp_series_mean(s : SignaltransformchirpSeries) -> Double { @_common.mean(s.vals) }
+pub fn SignaltransformchirpSeries::mean(self : SignaltransformchirpSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn signal_transform_chirp_series_min(s : SignaltransformchirpSeries) -> Double { @_common.min(s.vals) }
+pub fn SignaltransformchirpSeries::min(self : SignaltransformchirpSeries) -> Double { @_common.min(self.vals) }
 
-pub fn signal_transform_chirp_series_max(s : SignaltransformchirpSeries) -> Double { @_common.max(s.vals) }
+pub fn SignaltransformchirpSeries::max(self : SignaltransformchirpSeries) -> Double { @_common.max(self.vals) }
 
-pub fn signal_transform_chirp_series_range(s : SignaltransformchirpSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn SignaltransformchirpSeries::range(self : SignaltransformchirpSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn signal_transform_chirp_series_var(s : SignaltransformchirpSeries) -> Double { @_common.variance(s.vals) }
+pub fn SignaltransformchirpSeries::variance(self : SignaltransformchirpSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn signal_transform_chirp_series_std(s : SignaltransformchirpSeries) -> Double { @_common.std(s.vals) }
+pub fn SignaltransformchirpSeries::std(self : SignaltransformchirpSeries) -> Double { @_common.std(self.vals) }
 
-pub fn signal_transform_chirp_series_median(s : SignaltransformchirpSeries) -> Double { @_common.median(s.vals) }
+pub fn SignaltransformchirpSeries::median(self : SignaltransformchirpSeries) -> Double { @_common.median(self.vals) }
 
-pub fn signal_transform_chirp_series_scale(s : SignaltransformchirpSeries, f : Double) -> SignaltransformchirpSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn SignaltransformchirpSeries::scale(self : SignaltransformchirpSeries, f : Double) -> SignaltransformchirpSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn signal_transform_chirp_series_add(a : SignaltransformchirpSeries, b : SignaltransformchirpSeries) -> SignaltransformchirpSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn SignaltransformchirpSeries::add(self : SignaltransformchirpSeries, other : SignaltransformchirpSeries) -> SignaltransformchirpSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn signal_transform_chirp_series_sub(a : SignaltransformchirpSeries, b : SignaltransformchirpSeries) -> SignaltransformchirpSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn SignaltransformchirpSeries::sub(self : SignaltransformchirpSeries, other : SignaltransformchirpSeries) -> SignaltransformchirpSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn signal_transform_chirp_series_normalize(s : SignaltransformchirpSeries) -> SignaltransformchirpSeries {
-  let mn = signal_transform_chirp_series_min(s)
-  let mx = signal_transform_chirp_series_max(s)
+pub fn SignaltransformchirpSeries::normalize(self : SignaltransformchirpSeries) -> SignaltransformchirpSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn signal_transform_chirp_series_cumsum(s : SignaltransformchirpSeries) -> SignaltransformchirpSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn SignaltransformchirpSeries::cumsum(self : SignaltransformchirpSeries) -> SignaltransformchirpSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn signal_transform_chirp_series_to_string(s : SignaltransformchirpSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn SignaltransformchirpSeries::to_string(self : SignaltransformchirpSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn signal_transform_chirp_matrix_identity(n : Int) -> SignaltransformchirpMa
   m
 }
 
-pub fn signal_transform_chirp_matrix_get(m : SignaltransformchirpMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn SignaltransformchirpMatrix::get(self : SignaltransformchirpMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn signal_transform_chirp_matrix_transpose(m : SignaltransformchirpMatrix) -> SignaltransformchirpMatrix {
-  let result = signal_transform_chirp_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn SignaltransformchirpMatrix::transpose(self : SignaltransformchirpMatrix) -> SignaltransformchirpMatrix {
+  let result = signal_transform_chirp_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn signal_transform_chirp_matrix_add(a : SignaltransformchirpMatrix, b : SignaltransformchirpMatrix) -> SignaltransformchirpMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = signal_transform_chirp_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn SignaltransformchirpMatrix::add(self : SignaltransformchirpMatrix, other : SignaltransformchirpMatrix) -> SignaltransformchirpMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = signal_transform_chirp_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn signal_transform_chirp_matrix_scale(m : SignaltransformchirpMatrix, s : Double) -> SignaltransformchirpMatrix {
-  let result = signal_transform_chirp_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn SignaltransformchirpMatrix::scale(self : SignaltransformchirpMatrix, s : Double) -> SignaltransformchirpMatrix {
+  let result = signal_transform_chirp_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn signal_transform_chirp_matrix_multiply(a : SignaltransformchirpMatrix, b : SignaltransformchirpMatrix) -> SignaltransformchirpMatrix {
-  if a.cols != b.rows { return signal_transform_chirp_make_matrix(a.rows, b.cols, 0.0) }
-  let result = signal_transform_chirp_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn SignaltransformchirpMatrix::multiply(self : SignaltransformchirpMatrix, other : SignaltransformchirpMatrix) -> SignaltransformchirpMatrix {
+  if self.cols != other.rows { return signal_transform_chirp_make_matrix(self.rows, other.cols, 0.0) }
+  let result = signal_transform_chirp_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn signal_transform_chirp_matrix_trace(m : SignaltransformchirpMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn SignaltransformchirpMatrix::trace(self : SignaltransformchirpMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn signal_transform_chirp_matrix_det(m : SignaltransformchirpMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn SignaltransformchirpMatrix::det(self : SignaltransformchirpMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn signal_transform_chirp_matrix_norm(m : SignaltransformchirpMatrix) -> Double {
+pub fn SignaltransformchirpMatrix::norm(self : SignaltransformchirpMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn signal_transform_chirp_matrix_to_string(m : SignaltransformchirpMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn SignaltransformchirpMatrix::to_string(self : SignaltransformchirpMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn signal_transform_chirp_vector_zero(dim : Int) -> SignaltransformchirpVect
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn signal_transform_chirp_vector_add(a : SignaltransformchirpVector, b : SignaltransformchirpVector) -> SignaltransformchirpVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn SignaltransformchirpVector::add(self : SignaltransformchirpVector, other : SignaltransformchirpVector) -> SignaltransformchirpVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn signal_transform_chirp_vector_sub(a : SignaltransformchirpVector, b : SignaltransformchirpVector) -> SignaltransformchirpVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn SignaltransformchirpVector::sub(self : SignaltransformchirpVector, other : SignaltransformchirpVector) -> SignaltransformchirpVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn signal_transform_chirp_vector_scale(v : SignaltransformchirpVector, s : Double) -> SignaltransformchirpVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn SignaltransformchirpVector::scale(self : SignaltransformchirpVector, s : Double) -> SignaltransformchirpVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn signal_transform_chirp_vector_dot(a : SignaltransformchirpVector, b : SignaltransformchirpVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn SignaltransformchirpVector::dot(self : SignaltransformchirpVector, other : SignaltransformchirpVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn signal_transform_chirp_vector_norm(v : SignaltransformchirpVector) -> Double { @_common.sqrt(signal_transform_chirp_vector_dot(v, v)) }
+pub fn SignaltransformchirpVector::norm(self : SignaltransformchirpVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn signal_transform_chirp_vector_normalize(v : SignaltransformchirpVector) -> SignaltransformchirpVector {
-  let n = signal_transform_chirp_vector_norm(v)
-  if n < 0.0000001 { v } else { signal_transform_chirp_vector_scale(v, 1.0 / n) }
+pub fn SignaltransformchirpVector::normalize(self : SignaltransformchirpVector) -> SignaltransformchirpVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn signal_transform_chirp_vector_dist(a : SignaltransformchirpVector, b : SignaltransformchirpVector) -> Double {
-  signal_transform_chirp_vector_norm(signal_transform_chirp_vector_sub(a, b))
+pub fn SignaltransformchirpVector::dist(self : SignaltransformchirpVector, other : SignaltransformchirpVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn signal_transform_chirp_vector_to_string(v : SignaltransformchirpVector) -> String {
+pub fn SignaltransformchirpVector::to_string(self : SignaltransformchirpVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn signal_transform_chirp_mean(data : Array[Double]) -> Double { @_common.mean(data) }

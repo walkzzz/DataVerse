@@ -16,64 +16,64 @@ pub fn timeseries_anomaly_prophet_make_point3(x : Double, y : Double, z : Double
   { x, y, z, label: 0 }
 }
 
-pub fn timeseries_anomaly_prophet_point_x(pt : TimeseriesanomalyprophetPoint) -> Double { pt.x }
+pub fn TimeseriesanomalyprophetPoint::x(self : TimeseriesanomalyprophetPoint) -> Double { self.x }
 
-pub fn timeseries_anomaly_prophet_point_y(pt : TimeseriesanomalyprophetPoint) -> Double { pt.y }
+pub fn TimeseriesanomalyprophetPoint::y(self : TimeseriesanomalyprophetPoint) -> Double { self.y }
 
-pub fn timeseries_anomaly_prophet_point_z(pt : TimeseriesanomalyprophetPoint) -> Double { pt.z }
+pub fn TimeseriesanomalyprophetPoint::z(self : TimeseriesanomalyprophetPoint) -> Double { self.z }
 
-pub fn timeseries_anomaly_prophet_point_label(pt : TimeseriesanomalyprophetPoint) -> Int { pt.label }
+pub fn TimeseriesanomalyprophetPoint::label(self : TimeseriesanomalyprophetPoint) -> Int { self.label }
 
-pub fn timeseries_anomaly_prophet_point_dist(a : TimeseriesanomalyprophetPoint, b : TimeseriesanomalyprophetPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn TimeseriesanomalyprophetPoint::dist(self : TimeseriesanomalyprophetPoint, other : TimeseriesanomalyprophetPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn timeseries_anomaly_prophet_point_add(a : TimeseriesanomalyprophetPoint, b : TimeseriesanomalyprophetPoint) -> TimeseriesanomalyprophetPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn TimeseriesanomalyprophetPoint::add(self : TimeseriesanomalyprophetPoint, other : TimeseriesanomalyprophetPoint) -> TimeseriesanomalyprophetPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn timeseries_anomaly_prophet_point_sub(a : TimeseriesanomalyprophetPoint, b : TimeseriesanomalyprophetPoint) -> TimeseriesanomalyprophetPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn TimeseriesanomalyprophetPoint::sub(self : TimeseriesanomalyprophetPoint, other : TimeseriesanomalyprophetPoint) -> TimeseriesanomalyprophetPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn timeseries_anomaly_prophet_point_scale(pt : TimeseriesanomalyprophetPoint, s : Double) -> TimeseriesanomalyprophetPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn TimeseriesanomalyprophetPoint::scale(self : TimeseriesanomalyprophetPoint, s : Double) -> TimeseriesanomalyprophetPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn timeseries_anomaly_prophet_point_dot(a : TimeseriesanomalyprophetPoint, b : TimeseriesanomalyprophetPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn TimeseriesanomalyprophetPoint::dot(self : TimeseriesanomalyprophetPoint, other : TimeseriesanomalyprophetPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn timeseries_anomaly_prophet_point_cross(a : TimeseriesanomalyprophetPoint, b : TimeseriesanomalyprophetPoint) -> TimeseriesanomalyprophetPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn TimeseriesanomalyprophetPoint::cross(self : TimeseriesanomalyprophetPoint, other : TimeseriesanomalyprophetPoint) -> TimeseriesanomalyprophetPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn timeseries_anomaly_prophet_point_norm(pt : TimeseriesanomalyprophetPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn TimeseriesanomalyprophetPoint::norm(self : TimeseriesanomalyprophetPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn timeseries_anomaly_prophet_point_normalize(pt : TimeseriesanomalyprophetPoint) -> TimeseriesanomalyprophetPoint {
-  let n = timeseries_anomaly_prophet_point_norm(pt)
-  if n < 0.0000001 { pt } else { timeseries_anomaly_prophet_point_scale(pt, 1.0 / n) }
+pub fn TimeseriesanomalyprophetPoint::normalize(self : TimeseriesanomalyprophetPoint) -> TimeseriesanomalyprophetPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn timeseries_anomaly_prophet_point_negate(pt : TimeseriesanomalyprophetPoint) -> TimeseriesanomalyprophetPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn TimeseriesanomalyprophetPoint::negate(self : TimeseriesanomalyprophetPoint) -> TimeseriesanomalyprophetPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn timeseries_anomaly_prophet_point_mid(a : TimeseriesanomalyprophetPoint, b : TimeseriesanomalyprophetPoint) -> TimeseriesanomalyprophetPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn TimeseriesanomalyprophetPoint::mid(self : TimeseriesanomalyprophetPoint, other : TimeseriesanomalyprophetPoint) -> TimeseriesanomalyprophetPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn timeseries_anomaly_prophet_point_lerp(a : TimeseriesanomalyprophetPoint, b : TimeseriesanomalyprophetPoint, t : Double) -> TimeseriesanomalyprophetPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn TimeseriesanomalyprophetPoint::lerp(self : TimeseriesanomalyprophetPoint, other : TimeseriesanomalyprophetPoint, t : Double) -> TimeseriesanomalyprophetPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn timeseries_anomaly_prophet_point_to_string(pt : TimeseriesanomalyprophetPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn TimeseriesanomalyprophetPoint::to_string(self : TimeseriesanomalyprophetPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct TimeseriesanomalyprophetSeries {
@@ -86,58 +86,58 @@ pub fn timeseries_anomaly_prophet_make_series(vals : Array[Double], name : Strin
   { vals, name, meta: 0 }
 }
 
-pub fn timeseries_anomaly_prophet_series_len(s : TimeseriesanomalyprophetSeries) -> Int { s.vals.length() }
+pub fn TimeseriesanomalyprophetSeries::len(self : TimeseriesanomalyprophetSeries) -> Int { self.vals.length() }
 
-pub fn timeseries_anomaly_prophet_series_sum(s : TimeseriesanomalyprophetSeries) -> Double { @_common.sum(s.vals) }
+pub fn TimeseriesanomalyprophetSeries::sum(self : TimeseriesanomalyprophetSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn timeseries_anomaly_prophet_series_mean(s : TimeseriesanomalyprophetSeries) -> Double { @_common.mean(s.vals) }
+pub fn TimeseriesanomalyprophetSeries::mean(self : TimeseriesanomalyprophetSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn timeseries_anomaly_prophet_series_min(s : TimeseriesanomalyprophetSeries) -> Double { @_common.min(s.vals) }
+pub fn TimeseriesanomalyprophetSeries::min(self : TimeseriesanomalyprophetSeries) -> Double { @_common.min(self.vals) }
 
-pub fn timeseries_anomaly_prophet_series_max(s : TimeseriesanomalyprophetSeries) -> Double { @_common.max(s.vals) }
+pub fn TimeseriesanomalyprophetSeries::max(self : TimeseriesanomalyprophetSeries) -> Double { @_common.max(self.vals) }
 
-pub fn timeseries_anomaly_prophet_series_range(s : TimeseriesanomalyprophetSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn TimeseriesanomalyprophetSeries::range(self : TimeseriesanomalyprophetSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn timeseries_anomaly_prophet_series_var(s : TimeseriesanomalyprophetSeries) -> Double { @_common.variance(s.vals) }
+pub fn TimeseriesanomalyprophetSeries::variance(self : TimeseriesanomalyprophetSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn timeseries_anomaly_prophet_series_std(s : TimeseriesanomalyprophetSeries) -> Double { @_common.std(s.vals) }
+pub fn TimeseriesanomalyprophetSeries::std(self : TimeseriesanomalyprophetSeries) -> Double { @_common.std(self.vals) }
 
-pub fn timeseries_anomaly_prophet_series_median(s : TimeseriesanomalyprophetSeries) -> Double { @_common.median(s.vals) }
+pub fn TimeseriesanomalyprophetSeries::median(self : TimeseriesanomalyprophetSeries) -> Double { @_common.median(self.vals) }
 
-pub fn timeseries_anomaly_prophet_series_scale(s : TimeseriesanomalyprophetSeries, f : Double) -> TimeseriesanomalyprophetSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn TimeseriesanomalyprophetSeries::scale(self : TimeseriesanomalyprophetSeries, f : Double) -> TimeseriesanomalyprophetSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn timeseries_anomaly_prophet_series_add(a : TimeseriesanomalyprophetSeries, b : TimeseriesanomalyprophetSeries) -> TimeseriesanomalyprophetSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn TimeseriesanomalyprophetSeries::add(self : TimeseriesanomalyprophetSeries, other : TimeseriesanomalyprophetSeries) -> TimeseriesanomalyprophetSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn timeseries_anomaly_prophet_series_sub(a : TimeseriesanomalyprophetSeries, b : TimeseriesanomalyprophetSeries) -> TimeseriesanomalyprophetSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn TimeseriesanomalyprophetSeries::sub(self : TimeseriesanomalyprophetSeries, other : TimeseriesanomalyprophetSeries) -> TimeseriesanomalyprophetSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn timeseries_anomaly_prophet_series_normalize(s : TimeseriesanomalyprophetSeries) -> TimeseriesanomalyprophetSeries {
-  let mn = timeseries_anomaly_prophet_series_min(s)
-  let mx = timeseries_anomaly_prophet_series_max(s)
+pub fn TimeseriesanomalyprophetSeries::normalize(self : TimeseriesanomalyprophetSeries) -> TimeseriesanomalyprophetSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn timeseries_anomaly_prophet_series_cumsum(s : TimeseriesanomalyprophetSeries) -> TimeseriesanomalyprophetSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn TimeseriesanomalyprophetSeries::cumsum(self : TimeseriesanomalyprophetSeries) -> TimeseriesanomalyprophetSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn timeseries_anomaly_prophet_series_to_string(s : TimeseriesanomalyprophetSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn TimeseriesanomalyprophetSeries::to_string(self : TimeseriesanomalyprophetSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn timeseries_anomaly_prophet_matrix_identity(n : Int) -> Timeseriesanomalyp
   m
 }
 
-pub fn timeseries_anomaly_prophet_matrix_get(m : TimeseriesanomalyprophetMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn TimeseriesanomalyprophetMatrix::get(self : TimeseriesanomalyprophetMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn timeseries_anomaly_prophet_matrix_transpose(m : TimeseriesanomalyprophetMatrix) -> TimeseriesanomalyprophetMatrix {
-  let result = timeseries_anomaly_prophet_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn TimeseriesanomalyprophetMatrix::transpose(self : TimeseriesanomalyprophetMatrix) -> TimeseriesanomalyprophetMatrix {
+  let result = timeseries_anomaly_prophet_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn timeseries_anomaly_prophet_matrix_add(a : TimeseriesanomalyprophetMatrix, b : TimeseriesanomalyprophetMatrix) -> TimeseriesanomalyprophetMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = timeseries_anomaly_prophet_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn TimeseriesanomalyprophetMatrix::add(self : TimeseriesanomalyprophetMatrix, other : TimeseriesanomalyprophetMatrix) -> TimeseriesanomalyprophetMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = timeseries_anomaly_prophet_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn timeseries_anomaly_prophet_matrix_scale(m : TimeseriesanomalyprophetMatrix, s : Double) -> TimeseriesanomalyprophetMatrix {
-  let result = timeseries_anomaly_prophet_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn TimeseriesanomalyprophetMatrix::scale(self : TimeseriesanomalyprophetMatrix, s : Double) -> TimeseriesanomalyprophetMatrix {
+  let result = timeseries_anomaly_prophet_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn timeseries_anomaly_prophet_matrix_multiply(a : TimeseriesanomalyprophetMatrix, b : TimeseriesanomalyprophetMatrix) -> TimeseriesanomalyprophetMatrix {
-  if a.cols != b.rows { return timeseries_anomaly_prophet_make_matrix(a.rows, b.cols, 0.0) }
-  let result = timeseries_anomaly_prophet_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn TimeseriesanomalyprophetMatrix::multiply(self : TimeseriesanomalyprophetMatrix, other : TimeseriesanomalyprophetMatrix) -> TimeseriesanomalyprophetMatrix {
+  if self.cols != other.rows { return timeseries_anomaly_prophet_make_matrix(self.rows, other.cols, 0.0) }
+  let result = timeseries_anomaly_prophet_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn timeseries_anomaly_prophet_matrix_trace(m : TimeseriesanomalyprophetMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn TimeseriesanomalyprophetMatrix::trace(self : TimeseriesanomalyprophetMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn timeseries_anomaly_prophet_matrix_det(m : TimeseriesanomalyprophetMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn TimeseriesanomalyprophetMatrix::det(self : TimeseriesanomalyprophetMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn timeseries_anomaly_prophet_matrix_norm(m : TimeseriesanomalyprophetMatrix) -> Double {
+pub fn TimeseriesanomalyprophetMatrix::norm(self : TimeseriesanomalyprophetMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn timeseries_anomaly_prophet_matrix_to_string(m : TimeseriesanomalyprophetMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn TimeseriesanomalyprophetMatrix::to_string(self : TimeseriesanomalyprophetMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn timeseries_anomaly_prophet_vector_zero(dim : Int) -> Timeseriesanomalypro
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn timeseries_anomaly_prophet_vector_add(a : TimeseriesanomalyprophetVector, b : TimeseriesanomalyprophetVector) -> TimeseriesanomalyprophetVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn TimeseriesanomalyprophetVector::add(self : TimeseriesanomalyprophetVector, other : TimeseriesanomalyprophetVector) -> TimeseriesanomalyprophetVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn timeseries_anomaly_prophet_vector_sub(a : TimeseriesanomalyprophetVector, b : TimeseriesanomalyprophetVector) -> TimeseriesanomalyprophetVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn TimeseriesanomalyprophetVector::sub(self : TimeseriesanomalyprophetVector, other : TimeseriesanomalyprophetVector) -> TimeseriesanomalyprophetVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn timeseries_anomaly_prophet_vector_scale(v : TimeseriesanomalyprophetVector, s : Double) -> TimeseriesanomalyprophetVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn TimeseriesanomalyprophetVector::scale(self : TimeseriesanomalyprophetVector, s : Double) -> TimeseriesanomalyprophetVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn timeseries_anomaly_prophet_vector_dot(a : TimeseriesanomalyprophetVector, b : TimeseriesanomalyprophetVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn TimeseriesanomalyprophetVector::dot(self : TimeseriesanomalyprophetVector, other : TimeseriesanomalyprophetVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn timeseries_anomaly_prophet_vector_norm(v : TimeseriesanomalyprophetVector) -> Double { @_common.sqrt(timeseries_anomaly_prophet_vector_dot(v, v)) }
+pub fn TimeseriesanomalyprophetVector::norm(self : TimeseriesanomalyprophetVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn timeseries_anomaly_prophet_vector_normalize(v : TimeseriesanomalyprophetVector) -> TimeseriesanomalyprophetVector {
-  let n = timeseries_anomaly_prophet_vector_norm(v)
-  if n < 0.0000001 { v } else { timeseries_anomaly_prophet_vector_scale(v, 1.0 / n) }
+pub fn TimeseriesanomalyprophetVector::normalize(self : TimeseriesanomalyprophetVector) -> TimeseriesanomalyprophetVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn timeseries_anomaly_prophet_vector_dist(a : TimeseriesanomalyprophetVector, b : TimeseriesanomalyprophetVector) -> Double {
-  timeseries_anomaly_prophet_vector_norm(timeseries_anomaly_prophet_vector_sub(a, b))
+pub fn TimeseriesanomalyprophetVector::dist(self : TimeseriesanomalyprophetVector, other : TimeseriesanomalyprophetVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn timeseries_anomaly_prophet_vector_to_string(v : TimeseriesanomalyprophetVector) -> String {
+pub fn TimeseriesanomalyprophetVector::to_string(self : TimeseriesanomalyprophetVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn timeseries_anomaly_prophet_mean(data : Array[Double]) -> Double { @_common.mean(data) }

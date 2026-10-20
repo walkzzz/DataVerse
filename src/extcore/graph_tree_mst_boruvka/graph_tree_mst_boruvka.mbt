@@ -16,64 +16,64 @@ pub fn graph_tree_mst_boruvka_make_point3(x : Double, y : Double, z : Double) ->
   { x, y, z, label: 0 }
 }
 
-pub fn graph_tree_mst_boruvka_point_x(pt : GraphtreemstboruvkaPoint) -> Double { pt.x }
+pub fn GraphtreemstboruvkaPoint::x(self : GraphtreemstboruvkaPoint) -> Double { self.x }
 
-pub fn graph_tree_mst_boruvka_point_y(pt : GraphtreemstboruvkaPoint) -> Double { pt.y }
+pub fn GraphtreemstboruvkaPoint::y(self : GraphtreemstboruvkaPoint) -> Double { self.y }
 
-pub fn graph_tree_mst_boruvka_point_z(pt : GraphtreemstboruvkaPoint) -> Double { pt.z }
+pub fn GraphtreemstboruvkaPoint::z(self : GraphtreemstboruvkaPoint) -> Double { self.z }
 
-pub fn graph_tree_mst_boruvka_point_label(pt : GraphtreemstboruvkaPoint) -> Int { pt.label }
+pub fn GraphtreemstboruvkaPoint::label(self : GraphtreemstboruvkaPoint) -> Int { self.label }
 
-pub fn graph_tree_mst_boruvka_point_dist(a : GraphtreemstboruvkaPoint, b : GraphtreemstboruvkaPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn GraphtreemstboruvkaPoint::dist(self : GraphtreemstboruvkaPoint, other : GraphtreemstboruvkaPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn graph_tree_mst_boruvka_point_add(a : GraphtreemstboruvkaPoint, b : GraphtreemstboruvkaPoint) -> GraphtreemstboruvkaPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn GraphtreemstboruvkaPoint::add(self : GraphtreemstboruvkaPoint, other : GraphtreemstboruvkaPoint) -> GraphtreemstboruvkaPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn graph_tree_mst_boruvka_point_sub(a : GraphtreemstboruvkaPoint, b : GraphtreemstboruvkaPoint) -> GraphtreemstboruvkaPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn GraphtreemstboruvkaPoint::sub(self : GraphtreemstboruvkaPoint, other : GraphtreemstboruvkaPoint) -> GraphtreemstboruvkaPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn graph_tree_mst_boruvka_point_scale(pt : GraphtreemstboruvkaPoint, s : Double) -> GraphtreemstboruvkaPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn GraphtreemstboruvkaPoint::scale(self : GraphtreemstboruvkaPoint, s : Double) -> GraphtreemstboruvkaPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn graph_tree_mst_boruvka_point_dot(a : GraphtreemstboruvkaPoint, b : GraphtreemstboruvkaPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn GraphtreemstboruvkaPoint::dot(self : GraphtreemstboruvkaPoint, other : GraphtreemstboruvkaPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn graph_tree_mst_boruvka_point_cross(a : GraphtreemstboruvkaPoint, b : GraphtreemstboruvkaPoint) -> GraphtreemstboruvkaPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn GraphtreemstboruvkaPoint::cross(self : GraphtreemstboruvkaPoint, other : GraphtreemstboruvkaPoint) -> GraphtreemstboruvkaPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn graph_tree_mst_boruvka_point_norm(pt : GraphtreemstboruvkaPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn GraphtreemstboruvkaPoint::norm(self : GraphtreemstboruvkaPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn graph_tree_mst_boruvka_point_normalize(pt : GraphtreemstboruvkaPoint) -> GraphtreemstboruvkaPoint {
-  let n = graph_tree_mst_boruvka_point_norm(pt)
-  if n < 0.0000001 { pt } else { graph_tree_mst_boruvka_point_scale(pt, 1.0 / n) }
+pub fn GraphtreemstboruvkaPoint::normalize(self : GraphtreemstboruvkaPoint) -> GraphtreemstboruvkaPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn graph_tree_mst_boruvka_point_negate(pt : GraphtreemstboruvkaPoint) -> GraphtreemstboruvkaPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn GraphtreemstboruvkaPoint::negate(self : GraphtreemstboruvkaPoint) -> GraphtreemstboruvkaPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn graph_tree_mst_boruvka_point_mid(a : GraphtreemstboruvkaPoint, b : GraphtreemstboruvkaPoint) -> GraphtreemstboruvkaPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn GraphtreemstboruvkaPoint::mid(self : GraphtreemstboruvkaPoint, other : GraphtreemstboruvkaPoint) -> GraphtreemstboruvkaPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn graph_tree_mst_boruvka_point_lerp(a : GraphtreemstboruvkaPoint, b : GraphtreemstboruvkaPoint, t : Double) -> GraphtreemstboruvkaPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn GraphtreemstboruvkaPoint::lerp(self : GraphtreemstboruvkaPoint, other : GraphtreemstboruvkaPoint, t : Double) -> GraphtreemstboruvkaPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn graph_tree_mst_boruvka_point_to_string(pt : GraphtreemstboruvkaPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn GraphtreemstboruvkaPoint::to_string(self : GraphtreemstboruvkaPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct GraphtreemstboruvkaSeries {
@@ -86,58 +86,58 @@ pub fn graph_tree_mst_boruvka_make_series(vals : Array[Double], name : String) -
   { vals, name, meta: 0 }
 }
 
-pub fn graph_tree_mst_boruvka_series_len(s : GraphtreemstboruvkaSeries) -> Int { s.vals.length() }
+pub fn GraphtreemstboruvkaSeries::len(self : GraphtreemstboruvkaSeries) -> Int { self.vals.length() }
 
-pub fn graph_tree_mst_boruvka_series_sum(s : GraphtreemstboruvkaSeries) -> Double { @_common.sum(s.vals) }
+pub fn GraphtreemstboruvkaSeries::sum(self : GraphtreemstboruvkaSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn graph_tree_mst_boruvka_series_mean(s : GraphtreemstboruvkaSeries) -> Double { @_common.mean(s.vals) }
+pub fn GraphtreemstboruvkaSeries::mean(self : GraphtreemstboruvkaSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn graph_tree_mst_boruvka_series_min(s : GraphtreemstboruvkaSeries) -> Double { @_common.min(s.vals) }
+pub fn GraphtreemstboruvkaSeries::min(self : GraphtreemstboruvkaSeries) -> Double { @_common.min(self.vals) }
 
-pub fn graph_tree_mst_boruvka_series_max(s : GraphtreemstboruvkaSeries) -> Double { @_common.max(s.vals) }
+pub fn GraphtreemstboruvkaSeries::max(self : GraphtreemstboruvkaSeries) -> Double { @_common.max(self.vals) }
 
-pub fn graph_tree_mst_boruvka_series_range(s : GraphtreemstboruvkaSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn GraphtreemstboruvkaSeries::range(self : GraphtreemstboruvkaSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn graph_tree_mst_boruvka_series_var(s : GraphtreemstboruvkaSeries) -> Double { @_common.variance(s.vals) }
+pub fn GraphtreemstboruvkaSeries::variance(self : GraphtreemstboruvkaSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn graph_tree_mst_boruvka_series_std(s : GraphtreemstboruvkaSeries) -> Double { @_common.std(s.vals) }
+pub fn GraphtreemstboruvkaSeries::std(self : GraphtreemstboruvkaSeries) -> Double { @_common.std(self.vals) }
 
-pub fn graph_tree_mst_boruvka_series_median(s : GraphtreemstboruvkaSeries) -> Double { @_common.median(s.vals) }
+pub fn GraphtreemstboruvkaSeries::median(self : GraphtreemstboruvkaSeries) -> Double { @_common.median(self.vals) }
 
-pub fn graph_tree_mst_boruvka_series_scale(s : GraphtreemstboruvkaSeries, f : Double) -> GraphtreemstboruvkaSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn GraphtreemstboruvkaSeries::scale(self : GraphtreemstboruvkaSeries, f : Double) -> GraphtreemstboruvkaSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn graph_tree_mst_boruvka_series_add(a : GraphtreemstboruvkaSeries, b : GraphtreemstboruvkaSeries) -> GraphtreemstboruvkaSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn GraphtreemstboruvkaSeries::add(self : GraphtreemstboruvkaSeries, other : GraphtreemstboruvkaSeries) -> GraphtreemstboruvkaSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn graph_tree_mst_boruvka_series_sub(a : GraphtreemstboruvkaSeries, b : GraphtreemstboruvkaSeries) -> GraphtreemstboruvkaSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn GraphtreemstboruvkaSeries::sub(self : GraphtreemstboruvkaSeries, other : GraphtreemstboruvkaSeries) -> GraphtreemstboruvkaSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn graph_tree_mst_boruvka_series_normalize(s : GraphtreemstboruvkaSeries) -> GraphtreemstboruvkaSeries {
-  let mn = graph_tree_mst_boruvka_series_min(s)
-  let mx = graph_tree_mst_boruvka_series_max(s)
+pub fn GraphtreemstboruvkaSeries::normalize(self : GraphtreemstboruvkaSeries) -> GraphtreemstboruvkaSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn graph_tree_mst_boruvka_series_cumsum(s : GraphtreemstboruvkaSeries) -> GraphtreemstboruvkaSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn GraphtreemstboruvkaSeries::cumsum(self : GraphtreemstboruvkaSeries) -> GraphtreemstboruvkaSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn graph_tree_mst_boruvka_series_to_string(s : GraphtreemstboruvkaSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn GraphtreemstboruvkaSeries::to_string(self : GraphtreemstboruvkaSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn graph_tree_mst_boruvka_matrix_identity(n : Int) -> GraphtreemstboruvkaMat
   m
 }
 
-pub fn graph_tree_mst_boruvka_matrix_get(m : GraphtreemstboruvkaMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn GraphtreemstboruvkaMatrix::get(self : GraphtreemstboruvkaMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn graph_tree_mst_boruvka_matrix_transpose(m : GraphtreemstboruvkaMatrix) -> GraphtreemstboruvkaMatrix {
-  let result = graph_tree_mst_boruvka_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn GraphtreemstboruvkaMatrix::transpose(self : GraphtreemstboruvkaMatrix) -> GraphtreemstboruvkaMatrix {
+  let result = graph_tree_mst_boruvka_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn graph_tree_mst_boruvka_matrix_add(a : GraphtreemstboruvkaMatrix, b : GraphtreemstboruvkaMatrix) -> GraphtreemstboruvkaMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = graph_tree_mst_boruvka_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn GraphtreemstboruvkaMatrix::add(self : GraphtreemstboruvkaMatrix, other : GraphtreemstboruvkaMatrix) -> GraphtreemstboruvkaMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = graph_tree_mst_boruvka_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn graph_tree_mst_boruvka_matrix_scale(m : GraphtreemstboruvkaMatrix, s : Double) -> GraphtreemstboruvkaMatrix {
-  let result = graph_tree_mst_boruvka_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn GraphtreemstboruvkaMatrix::scale(self : GraphtreemstboruvkaMatrix, s : Double) -> GraphtreemstboruvkaMatrix {
+  let result = graph_tree_mst_boruvka_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn graph_tree_mst_boruvka_matrix_multiply(a : GraphtreemstboruvkaMatrix, b : GraphtreemstboruvkaMatrix) -> GraphtreemstboruvkaMatrix {
-  if a.cols != b.rows { return graph_tree_mst_boruvka_make_matrix(a.rows, b.cols, 0.0) }
-  let result = graph_tree_mst_boruvka_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn GraphtreemstboruvkaMatrix::multiply(self : GraphtreemstboruvkaMatrix, other : GraphtreemstboruvkaMatrix) -> GraphtreemstboruvkaMatrix {
+  if self.cols != other.rows { return graph_tree_mst_boruvka_make_matrix(self.rows, other.cols, 0.0) }
+  let result = graph_tree_mst_boruvka_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn graph_tree_mst_boruvka_matrix_trace(m : GraphtreemstboruvkaMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn GraphtreemstboruvkaMatrix::trace(self : GraphtreemstboruvkaMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn graph_tree_mst_boruvka_matrix_det(m : GraphtreemstboruvkaMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn GraphtreemstboruvkaMatrix::det(self : GraphtreemstboruvkaMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn graph_tree_mst_boruvka_matrix_norm(m : GraphtreemstboruvkaMatrix) -> Double {
+pub fn GraphtreemstboruvkaMatrix::norm(self : GraphtreemstboruvkaMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn graph_tree_mst_boruvka_matrix_to_string(m : GraphtreemstboruvkaMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn GraphtreemstboruvkaMatrix::to_string(self : GraphtreemstboruvkaMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn graph_tree_mst_boruvka_vector_zero(dim : Int) -> GraphtreemstboruvkaVecto
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn graph_tree_mst_boruvka_vector_add(a : GraphtreemstboruvkaVector, b : GraphtreemstboruvkaVector) -> GraphtreemstboruvkaVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn GraphtreemstboruvkaVector::add(self : GraphtreemstboruvkaVector, other : GraphtreemstboruvkaVector) -> GraphtreemstboruvkaVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn graph_tree_mst_boruvka_vector_sub(a : GraphtreemstboruvkaVector, b : GraphtreemstboruvkaVector) -> GraphtreemstboruvkaVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn GraphtreemstboruvkaVector::sub(self : GraphtreemstboruvkaVector, other : GraphtreemstboruvkaVector) -> GraphtreemstboruvkaVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn graph_tree_mst_boruvka_vector_scale(v : GraphtreemstboruvkaVector, s : Double) -> GraphtreemstboruvkaVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn GraphtreemstboruvkaVector::scale(self : GraphtreemstboruvkaVector, s : Double) -> GraphtreemstboruvkaVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn graph_tree_mst_boruvka_vector_dot(a : GraphtreemstboruvkaVector, b : GraphtreemstboruvkaVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn GraphtreemstboruvkaVector::dot(self : GraphtreemstboruvkaVector, other : GraphtreemstboruvkaVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn graph_tree_mst_boruvka_vector_norm(v : GraphtreemstboruvkaVector) -> Double { @_common.sqrt(graph_tree_mst_boruvka_vector_dot(v, v)) }
+pub fn GraphtreemstboruvkaVector::norm(self : GraphtreemstboruvkaVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn graph_tree_mst_boruvka_vector_normalize(v : GraphtreemstboruvkaVector) -> GraphtreemstboruvkaVector {
-  let n = graph_tree_mst_boruvka_vector_norm(v)
-  if n < 0.0000001 { v } else { graph_tree_mst_boruvka_vector_scale(v, 1.0 / n) }
+pub fn GraphtreemstboruvkaVector::normalize(self : GraphtreemstboruvkaVector) -> GraphtreemstboruvkaVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn graph_tree_mst_boruvka_vector_dist(a : GraphtreemstboruvkaVector, b : GraphtreemstboruvkaVector) -> Double {
-  graph_tree_mst_boruvka_vector_norm(graph_tree_mst_boruvka_vector_sub(a, b))
+pub fn GraphtreemstboruvkaVector::dist(self : GraphtreemstboruvkaVector, other : GraphtreemstboruvkaVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn graph_tree_mst_boruvka_vector_to_string(v : GraphtreemstboruvkaVector) -> String {
+pub fn GraphtreemstboruvkaVector::to_string(self : GraphtreemstboruvkaVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn graph_tree_mst_boruvka_mean(data : Array[Double]) -> Double { @_common.mean(data) }

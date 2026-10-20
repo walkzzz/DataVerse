@@ -16,64 +16,64 @@ pub fn chem_mol_repr_canonical_make_point3(x : Double, y : Double, z : Double) -
   { x, y, z, label: 0 }
 }
 
-pub fn chem_mol_repr_canonical_point_x(pt : ChemmolreprcanonicalPoint) -> Double { pt.x }
+pub fn ChemmolreprcanonicalPoint::x(self : ChemmolreprcanonicalPoint) -> Double { self.x }
 
-pub fn chem_mol_repr_canonical_point_y(pt : ChemmolreprcanonicalPoint) -> Double { pt.y }
+pub fn ChemmolreprcanonicalPoint::y(self : ChemmolreprcanonicalPoint) -> Double { self.y }
 
-pub fn chem_mol_repr_canonical_point_z(pt : ChemmolreprcanonicalPoint) -> Double { pt.z }
+pub fn ChemmolreprcanonicalPoint::z(self : ChemmolreprcanonicalPoint) -> Double { self.z }
 
-pub fn chem_mol_repr_canonical_point_label(pt : ChemmolreprcanonicalPoint) -> Int { pt.label }
+pub fn ChemmolreprcanonicalPoint::label(self : ChemmolreprcanonicalPoint) -> Int { self.label }
 
-pub fn chem_mol_repr_canonical_point_dist(a : ChemmolreprcanonicalPoint, b : ChemmolreprcanonicalPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn ChemmolreprcanonicalPoint::dist(self : ChemmolreprcanonicalPoint, other : ChemmolreprcanonicalPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn chem_mol_repr_canonical_point_add(a : ChemmolreprcanonicalPoint, b : ChemmolreprcanonicalPoint) -> ChemmolreprcanonicalPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn ChemmolreprcanonicalPoint::add(self : ChemmolreprcanonicalPoint, other : ChemmolreprcanonicalPoint) -> ChemmolreprcanonicalPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn chem_mol_repr_canonical_point_sub(a : ChemmolreprcanonicalPoint, b : ChemmolreprcanonicalPoint) -> ChemmolreprcanonicalPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn ChemmolreprcanonicalPoint::sub(self : ChemmolreprcanonicalPoint, other : ChemmolreprcanonicalPoint) -> ChemmolreprcanonicalPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn chem_mol_repr_canonical_point_scale(pt : ChemmolreprcanonicalPoint, s : Double) -> ChemmolreprcanonicalPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn ChemmolreprcanonicalPoint::scale(self : ChemmolreprcanonicalPoint, s : Double) -> ChemmolreprcanonicalPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn chem_mol_repr_canonical_point_dot(a : ChemmolreprcanonicalPoint, b : ChemmolreprcanonicalPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn ChemmolreprcanonicalPoint::dot(self : ChemmolreprcanonicalPoint, other : ChemmolreprcanonicalPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn chem_mol_repr_canonical_point_cross(a : ChemmolreprcanonicalPoint, b : ChemmolreprcanonicalPoint) -> ChemmolreprcanonicalPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn ChemmolreprcanonicalPoint::cross(self : ChemmolreprcanonicalPoint, other : ChemmolreprcanonicalPoint) -> ChemmolreprcanonicalPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn chem_mol_repr_canonical_point_norm(pt : ChemmolreprcanonicalPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn ChemmolreprcanonicalPoint::norm(self : ChemmolreprcanonicalPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn chem_mol_repr_canonical_point_normalize(pt : ChemmolreprcanonicalPoint) -> ChemmolreprcanonicalPoint {
-  let n = chem_mol_repr_canonical_point_norm(pt)
-  if n < 0.0000001 { pt } else { chem_mol_repr_canonical_point_scale(pt, 1.0 / n) }
+pub fn ChemmolreprcanonicalPoint::normalize(self : ChemmolreprcanonicalPoint) -> ChemmolreprcanonicalPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn chem_mol_repr_canonical_point_negate(pt : ChemmolreprcanonicalPoint) -> ChemmolreprcanonicalPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn ChemmolreprcanonicalPoint::negate(self : ChemmolreprcanonicalPoint) -> ChemmolreprcanonicalPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn chem_mol_repr_canonical_point_mid(a : ChemmolreprcanonicalPoint, b : ChemmolreprcanonicalPoint) -> ChemmolreprcanonicalPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn ChemmolreprcanonicalPoint::mid(self : ChemmolreprcanonicalPoint, other : ChemmolreprcanonicalPoint) -> ChemmolreprcanonicalPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn chem_mol_repr_canonical_point_lerp(a : ChemmolreprcanonicalPoint, b : ChemmolreprcanonicalPoint, t : Double) -> ChemmolreprcanonicalPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn ChemmolreprcanonicalPoint::lerp(self : ChemmolreprcanonicalPoint, other : ChemmolreprcanonicalPoint, t : Double) -> ChemmolreprcanonicalPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn chem_mol_repr_canonical_point_to_string(pt : ChemmolreprcanonicalPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn ChemmolreprcanonicalPoint::to_string(self : ChemmolreprcanonicalPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct ChemmolreprcanonicalSeries {
@@ -86,58 +86,58 @@ pub fn chem_mol_repr_canonical_make_series(vals : Array[Double], name : String) 
   { vals, name, meta: 0 }
 }
 
-pub fn chem_mol_repr_canonical_series_len(s : ChemmolreprcanonicalSeries) -> Int { s.vals.length() }
+pub fn ChemmolreprcanonicalSeries::len(self : ChemmolreprcanonicalSeries) -> Int { self.vals.length() }
 
-pub fn chem_mol_repr_canonical_series_sum(s : ChemmolreprcanonicalSeries) -> Double { @_common.sum(s.vals) }
+pub fn ChemmolreprcanonicalSeries::sum(self : ChemmolreprcanonicalSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn chem_mol_repr_canonical_series_mean(s : ChemmolreprcanonicalSeries) -> Double { @_common.mean(s.vals) }
+pub fn ChemmolreprcanonicalSeries::mean(self : ChemmolreprcanonicalSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn chem_mol_repr_canonical_series_min(s : ChemmolreprcanonicalSeries) -> Double { @_common.min(s.vals) }
+pub fn ChemmolreprcanonicalSeries::min(self : ChemmolreprcanonicalSeries) -> Double { @_common.min(self.vals) }
 
-pub fn chem_mol_repr_canonical_series_max(s : ChemmolreprcanonicalSeries) -> Double { @_common.max(s.vals) }
+pub fn ChemmolreprcanonicalSeries::max(self : ChemmolreprcanonicalSeries) -> Double { @_common.max(self.vals) }
 
-pub fn chem_mol_repr_canonical_series_range(s : ChemmolreprcanonicalSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn ChemmolreprcanonicalSeries::range(self : ChemmolreprcanonicalSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn chem_mol_repr_canonical_series_var(s : ChemmolreprcanonicalSeries) -> Double { @_common.variance(s.vals) }
+pub fn ChemmolreprcanonicalSeries::variance(self : ChemmolreprcanonicalSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn chem_mol_repr_canonical_series_std(s : ChemmolreprcanonicalSeries) -> Double { @_common.std(s.vals) }
+pub fn ChemmolreprcanonicalSeries::std(self : ChemmolreprcanonicalSeries) -> Double { @_common.std(self.vals) }
 
-pub fn chem_mol_repr_canonical_series_median(s : ChemmolreprcanonicalSeries) -> Double { @_common.median(s.vals) }
+pub fn ChemmolreprcanonicalSeries::median(self : ChemmolreprcanonicalSeries) -> Double { @_common.median(self.vals) }
 
-pub fn chem_mol_repr_canonical_series_scale(s : ChemmolreprcanonicalSeries, f : Double) -> ChemmolreprcanonicalSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn ChemmolreprcanonicalSeries::scale(self : ChemmolreprcanonicalSeries, f : Double) -> ChemmolreprcanonicalSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn chem_mol_repr_canonical_series_add(a : ChemmolreprcanonicalSeries, b : ChemmolreprcanonicalSeries) -> ChemmolreprcanonicalSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn ChemmolreprcanonicalSeries::add(self : ChemmolreprcanonicalSeries, other : ChemmolreprcanonicalSeries) -> ChemmolreprcanonicalSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn chem_mol_repr_canonical_series_sub(a : ChemmolreprcanonicalSeries, b : ChemmolreprcanonicalSeries) -> ChemmolreprcanonicalSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn ChemmolreprcanonicalSeries::sub(self : ChemmolreprcanonicalSeries, other : ChemmolreprcanonicalSeries) -> ChemmolreprcanonicalSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn chem_mol_repr_canonical_series_normalize(s : ChemmolreprcanonicalSeries) -> ChemmolreprcanonicalSeries {
-  let mn = chem_mol_repr_canonical_series_min(s)
-  let mx = chem_mol_repr_canonical_series_max(s)
+pub fn ChemmolreprcanonicalSeries::normalize(self : ChemmolreprcanonicalSeries) -> ChemmolreprcanonicalSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn chem_mol_repr_canonical_series_cumsum(s : ChemmolreprcanonicalSeries) -> ChemmolreprcanonicalSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn ChemmolreprcanonicalSeries::cumsum(self : ChemmolreprcanonicalSeries) -> ChemmolreprcanonicalSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn chem_mol_repr_canonical_series_to_string(s : ChemmolreprcanonicalSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn ChemmolreprcanonicalSeries::to_string(self : ChemmolreprcanonicalSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn chem_mol_repr_canonical_matrix_identity(n : Int) -> ChemmolreprcanonicalM
   m
 }
 
-pub fn chem_mol_repr_canonical_matrix_get(m : ChemmolreprcanonicalMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn ChemmolreprcanonicalMatrix::get(self : ChemmolreprcanonicalMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn chem_mol_repr_canonical_matrix_transpose(m : ChemmolreprcanonicalMatrix) -> ChemmolreprcanonicalMatrix {
-  let result = chem_mol_repr_canonical_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn ChemmolreprcanonicalMatrix::transpose(self : ChemmolreprcanonicalMatrix) -> ChemmolreprcanonicalMatrix {
+  let result = chem_mol_repr_canonical_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn chem_mol_repr_canonical_matrix_add(a : ChemmolreprcanonicalMatrix, b : ChemmolreprcanonicalMatrix) -> ChemmolreprcanonicalMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = chem_mol_repr_canonical_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn ChemmolreprcanonicalMatrix::add(self : ChemmolreprcanonicalMatrix, other : ChemmolreprcanonicalMatrix) -> ChemmolreprcanonicalMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = chem_mol_repr_canonical_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn chem_mol_repr_canonical_matrix_scale(m : ChemmolreprcanonicalMatrix, s : Double) -> ChemmolreprcanonicalMatrix {
-  let result = chem_mol_repr_canonical_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn ChemmolreprcanonicalMatrix::scale(self : ChemmolreprcanonicalMatrix, s : Double) -> ChemmolreprcanonicalMatrix {
+  let result = chem_mol_repr_canonical_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn chem_mol_repr_canonical_matrix_multiply(a : ChemmolreprcanonicalMatrix, b : ChemmolreprcanonicalMatrix) -> ChemmolreprcanonicalMatrix {
-  if a.cols != b.rows { return chem_mol_repr_canonical_make_matrix(a.rows, b.cols, 0.0) }
-  let result = chem_mol_repr_canonical_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn ChemmolreprcanonicalMatrix::multiply(self : ChemmolreprcanonicalMatrix, other : ChemmolreprcanonicalMatrix) -> ChemmolreprcanonicalMatrix {
+  if self.cols != other.rows { return chem_mol_repr_canonical_make_matrix(self.rows, other.cols, 0.0) }
+  let result = chem_mol_repr_canonical_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn chem_mol_repr_canonical_matrix_trace(m : ChemmolreprcanonicalMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn ChemmolreprcanonicalMatrix::trace(self : ChemmolreprcanonicalMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn chem_mol_repr_canonical_matrix_det(m : ChemmolreprcanonicalMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn ChemmolreprcanonicalMatrix::det(self : ChemmolreprcanonicalMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn chem_mol_repr_canonical_matrix_norm(m : ChemmolreprcanonicalMatrix) -> Double {
+pub fn ChemmolreprcanonicalMatrix::norm(self : ChemmolreprcanonicalMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn chem_mol_repr_canonical_matrix_to_string(m : ChemmolreprcanonicalMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn ChemmolreprcanonicalMatrix::to_string(self : ChemmolreprcanonicalMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn chem_mol_repr_canonical_vector_zero(dim : Int) -> ChemmolreprcanonicalVec
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn chem_mol_repr_canonical_vector_add(a : ChemmolreprcanonicalVector, b : ChemmolreprcanonicalVector) -> ChemmolreprcanonicalVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn ChemmolreprcanonicalVector::add(self : ChemmolreprcanonicalVector, other : ChemmolreprcanonicalVector) -> ChemmolreprcanonicalVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn chem_mol_repr_canonical_vector_sub(a : ChemmolreprcanonicalVector, b : ChemmolreprcanonicalVector) -> ChemmolreprcanonicalVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn ChemmolreprcanonicalVector::sub(self : ChemmolreprcanonicalVector, other : ChemmolreprcanonicalVector) -> ChemmolreprcanonicalVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn chem_mol_repr_canonical_vector_scale(v : ChemmolreprcanonicalVector, s : Double) -> ChemmolreprcanonicalVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn ChemmolreprcanonicalVector::scale(self : ChemmolreprcanonicalVector, s : Double) -> ChemmolreprcanonicalVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn chem_mol_repr_canonical_vector_dot(a : ChemmolreprcanonicalVector, b : ChemmolreprcanonicalVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn ChemmolreprcanonicalVector::dot(self : ChemmolreprcanonicalVector, other : ChemmolreprcanonicalVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn chem_mol_repr_canonical_vector_norm(v : ChemmolreprcanonicalVector) -> Double { @_common.sqrt(chem_mol_repr_canonical_vector_dot(v, v)) }
+pub fn ChemmolreprcanonicalVector::norm(self : ChemmolreprcanonicalVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn chem_mol_repr_canonical_vector_normalize(v : ChemmolreprcanonicalVector) -> ChemmolreprcanonicalVector {
-  let n = chem_mol_repr_canonical_vector_norm(v)
-  if n < 0.0000001 { v } else { chem_mol_repr_canonical_vector_scale(v, 1.0 / n) }
+pub fn ChemmolreprcanonicalVector::normalize(self : ChemmolreprcanonicalVector) -> ChemmolreprcanonicalVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn chem_mol_repr_canonical_vector_dist(a : ChemmolreprcanonicalVector, b : ChemmolreprcanonicalVector) -> Double {
-  chem_mol_repr_canonical_vector_norm(chem_mol_repr_canonical_vector_sub(a, b))
+pub fn ChemmolreprcanonicalVector::dist(self : ChemmolreprcanonicalVector, other : ChemmolreprcanonicalVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn chem_mol_repr_canonical_vector_to_string(v : ChemmolreprcanonicalVector) -> String {
+pub fn ChemmolreprcanonicalVector::to_string(self : ChemmolreprcanonicalVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn chem_mol_repr_canonical_mean(data : Array[Double]) -> Double { @_common.mean(data) }

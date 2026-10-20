@@ -16,64 +16,64 @@ pub fn math_eigenvalue_make_point3(x : Double, y : Double, z : Double) -> Mathei
   { x, y, z, label: 0 }
 }
 
-pub fn math_eigenvalue_point_x(pt : MatheigenvaluePoint) -> Double { pt.x }
+pub fn MatheigenvaluePoint::x(self : MatheigenvaluePoint) -> Double { self.x }
 
-pub fn math_eigenvalue_point_y(pt : MatheigenvaluePoint) -> Double { pt.y }
+pub fn MatheigenvaluePoint::y(self : MatheigenvaluePoint) -> Double { self.y }
 
-pub fn math_eigenvalue_point_z(pt : MatheigenvaluePoint) -> Double { pt.z }
+pub fn MatheigenvaluePoint::z(self : MatheigenvaluePoint) -> Double { self.z }
 
-pub fn math_eigenvalue_point_label(pt : MatheigenvaluePoint) -> Int { pt.label }
+pub fn MatheigenvaluePoint::label(self : MatheigenvaluePoint) -> Int { self.label }
 
-pub fn math_eigenvalue_point_dist(a : MatheigenvaluePoint, b : MatheigenvaluePoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn MatheigenvaluePoint::dist(self : MatheigenvaluePoint, other : MatheigenvaluePoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn math_eigenvalue_point_add(a : MatheigenvaluePoint, b : MatheigenvaluePoint) -> MatheigenvaluePoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn MatheigenvaluePoint::add(self : MatheigenvaluePoint, other : MatheigenvaluePoint) -> MatheigenvaluePoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn math_eigenvalue_point_sub(a : MatheigenvaluePoint, b : MatheigenvaluePoint) -> MatheigenvaluePoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn MatheigenvaluePoint::sub(self : MatheigenvaluePoint, other : MatheigenvaluePoint) -> MatheigenvaluePoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn math_eigenvalue_point_scale(pt : MatheigenvaluePoint, s : Double) -> MatheigenvaluePoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn MatheigenvaluePoint::scale(self : MatheigenvaluePoint, s : Double) -> MatheigenvaluePoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn math_eigenvalue_point_dot(a : MatheigenvaluePoint, b : MatheigenvaluePoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn MatheigenvaluePoint::dot(self : MatheigenvaluePoint, other : MatheigenvaluePoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn math_eigenvalue_point_cross(a : MatheigenvaluePoint, b : MatheigenvaluePoint) -> MatheigenvaluePoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn MatheigenvaluePoint::cross(self : MatheigenvaluePoint, other : MatheigenvaluePoint) -> MatheigenvaluePoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn math_eigenvalue_point_norm(pt : MatheigenvaluePoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn MatheigenvaluePoint::norm(self : MatheigenvaluePoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn math_eigenvalue_point_normalize(pt : MatheigenvaluePoint) -> MatheigenvaluePoint {
-  let n = math_eigenvalue_point_norm(pt)
-  if n < 0.0000001 { pt } else { math_eigenvalue_point_scale(pt, 1.0 / n) }
+pub fn MatheigenvaluePoint::normalize(self : MatheigenvaluePoint) -> MatheigenvaluePoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn math_eigenvalue_point_negate(pt : MatheigenvaluePoint) -> MatheigenvaluePoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn MatheigenvaluePoint::negate(self : MatheigenvaluePoint) -> MatheigenvaluePoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn math_eigenvalue_point_mid(a : MatheigenvaluePoint, b : MatheigenvaluePoint) -> MatheigenvaluePoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn MatheigenvaluePoint::mid(self : MatheigenvaluePoint, other : MatheigenvaluePoint) -> MatheigenvaluePoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn math_eigenvalue_point_lerp(a : MatheigenvaluePoint, b : MatheigenvaluePoint, t : Double) -> MatheigenvaluePoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn MatheigenvaluePoint::lerp(self : MatheigenvaluePoint, other : MatheigenvaluePoint, t : Double) -> MatheigenvaluePoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn math_eigenvalue_point_to_string(pt : MatheigenvaluePoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn MatheigenvaluePoint::to_string(self : MatheigenvaluePoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct MatheigenvalueSeries {
@@ -86,58 +86,58 @@ pub fn math_eigenvalue_make_series(vals : Array[Double], name : String) -> Mathe
   { vals, name, meta: 0 }
 }
 
-pub fn math_eigenvalue_series_len(s : MatheigenvalueSeries) -> Int { s.vals.length() }
+pub fn MatheigenvalueSeries::len(self : MatheigenvalueSeries) -> Int { self.vals.length() }
 
-pub fn math_eigenvalue_series_sum(s : MatheigenvalueSeries) -> Double { @_common.sum(s.vals) }
+pub fn MatheigenvalueSeries::sum(self : MatheigenvalueSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn math_eigenvalue_series_mean(s : MatheigenvalueSeries) -> Double { @_common.mean(s.vals) }
+pub fn MatheigenvalueSeries::mean(self : MatheigenvalueSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn math_eigenvalue_series_min(s : MatheigenvalueSeries) -> Double { @_common.min(s.vals) }
+pub fn MatheigenvalueSeries::min(self : MatheigenvalueSeries) -> Double { @_common.min(self.vals) }
 
-pub fn math_eigenvalue_series_max(s : MatheigenvalueSeries) -> Double { @_common.max(s.vals) }
+pub fn MatheigenvalueSeries::max(self : MatheigenvalueSeries) -> Double { @_common.max(self.vals) }
 
-pub fn math_eigenvalue_series_range(s : MatheigenvalueSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn MatheigenvalueSeries::range(self : MatheigenvalueSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn math_eigenvalue_series_var(s : MatheigenvalueSeries) -> Double { @_common.variance(s.vals) }
+pub fn MatheigenvalueSeries::variance(self : MatheigenvalueSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn math_eigenvalue_series_std(s : MatheigenvalueSeries) -> Double { @_common.std(s.vals) }
+pub fn MatheigenvalueSeries::std(self : MatheigenvalueSeries) -> Double { @_common.std(self.vals) }
 
-pub fn math_eigenvalue_series_median(s : MatheigenvalueSeries) -> Double { @_common.median(s.vals) }
+pub fn MatheigenvalueSeries::median(self : MatheigenvalueSeries) -> Double { @_common.median(self.vals) }
 
-pub fn math_eigenvalue_series_scale(s : MatheigenvalueSeries, f : Double) -> MatheigenvalueSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn MatheigenvalueSeries::scale(self : MatheigenvalueSeries, f : Double) -> MatheigenvalueSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn math_eigenvalue_series_add(a : MatheigenvalueSeries, b : MatheigenvalueSeries) -> MatheigenvalueSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn MatheigenvalueSeries::add(self : MatheigenvalueSeries, other : MatheigenvalueSeries) -> MatheigenvalueSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn math_eigenvalue_series_sub(a : MatheigenvalueSeries, b : MatheigenvalueSeries) -> MatheigenvalueSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn MatheigenvalueSeries::sub(self : MatheigenvalueSeries, other : MatheigenvalueSeries) -> MatheigenvalueSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn math_eigenvalue_series_normalize(s : MatheigenvalueSeries) -> MatheigenvalueSeries {
-  let mn = math_eigenvalue_series_min(s)
-  let mx = math_eigenvalue_series_max(s)
+pub fn MatheigenvalueSeries::normalize(self : MatheigenvalueSeries) -> MatheigenvalueSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn math_eigenvalue_series_cumsum(s : MatheigenvalueSeries) -> MatheigenvalueSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn MatheigenvalueSeries::cumsum(self : MatheigenvalueSeries) -> MatheigenvalueSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn math_eigenvalue_series_to_string(s : MatheigenvalueSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn MatheigenvalueSeries::to_string(self : MatheigenvalueSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn math_eigenvalue_matrix_identity(n : Int) -> MatheigenvalueMatrix {
   m
 }
 
-pub fn math_eigenvalue_matrix_get(m : MatheigenvalueMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn MatheigenvalueMatrix::get(self : MatheigenvalueMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn math_eigenvalue_matrix_transpose(m : MatheigenvalueMatrix) -> MatheigenvalueMatrix {
-  let result = math_eigenvalue_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn MatheigenvalueMatrix::transpose(self : MatheigenvalueMatrix) -> MatheigenvalueMatrix {
+  let result = math_eigenvalue_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn math_eigenvalue_matrix_add(a : MatheigenvalueMatrix, b : MatheigenvalueMatrix) -> MatheigenvalueMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = math_eigenvalue_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn MatheigenvalueMatrix::add(self : MatheigenvalueMatrix, other : MatheigenvalueMatrix) -> MatheigenvalueMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = math_eigenvalue_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn math_eigenvalue_matrix_scale(m : MatheigenvalueMatrix, s : Double) -> MatheigenvalueMatrix {
-  let result = math_eigenvalue_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn MatheigenvalueMatrix::scale(self : MatheigenvalueMatrix, s : Double) -> MatheigenvalueMatrix {
+  let result = math_eigenvalue_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn math_eigenvalue_matrix_multiply(a : MatheigenvalueMatrix, b : MatheigenvalueMatrix) -> MatheigenvalueMatrix {
-  if a.cols != b.rows { return math_eigenvalue_make_matrix(a.rows, b.cols, 0.0) }
-  let result = math_eigenvalue_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn MatheigenvalueMatrix::multiply(self : MatheigenvalueMatrix, other : MatheigenvalueMatrix) -> MatheigenvalueMatrix {
+  if self.cols != other.rows { return math_eigenvalue_make_matrix(self.rows, other.cols, 0.0) }
+  let result = math_eigenvalue_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn math_eigenvalue_matrix_trace(m : MatheigenvalueMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn MatheigenvalueMatrix::trace(self : MatheigenvalueMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn math_eigenvalue_matrix_det(m : MatheigenvalueMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn MatheigenvalueMatrix::det(self : MatheigenvalueMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn math_eigenvalue_matrix_norm(m : MatheigenvalueMatrix) -> Double {
+pub fn MatheigenvalueMatrix::norm(self : MatheigenvalueMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn math_eigenvalue_matrix_to_string(m : MatheigenvalueMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn MatheigenvalueMatrix::to_string(self : MatheigenvalueMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn math_eigenvalue_vector_zero(dim : Int) -> MatheigenvalueVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn math_eigenvalue_vector_add(a : MatheigenvalueVector, b : MatheigenvalueVector) -> MatheigenvalueVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn MatheigenvalueVector::add(self : MatheigenvalueVector, other : MatheigenvalueVector) -> MatheigenvalueVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn math_eigenvalue_vector_sub(a : MatheigenvalueVector, b : MatheigenvalueVector) -> MatheigenvalueVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn MatheigenvalueVector::sub(self : MatheigenvalueVector, other : MatheigenvalueVector) -> MatheigenvalueVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn math_eigenvalue_vector_scale(v : MatheigenvalueVector, s : Double) -> MatheigenvalueVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn MatheigenvalueVector::scale(self : MatheigenvalueVector, s : Double) -> MatheigenvalueVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn math_eigenvalue_vector_dot(a : MatheigenvalueVector, b : MatheigenvalueVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn MatheigenvalueVector::dot(self : MatheigenvalueVector, other : MatheigenvalueVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn math_eigenvalue_vector_norm(v : MatheigenvalueVector) -> Double { @_common.sqrt(math_eigenvalue_vector_dot(v, v)) }
+pub fn MatheigenvalueVector::norm(self : MatheigenvalueVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn math_eigenvalue_vector_normalize(v : MatheigenvalueVector) -> MatheigenvalueVector {
-  let n = math_eigenvalue_vector_norm(v)
-  if n < 0.0000001 { v } else { math_eigenvalue_vector_scale(v, 1.0 / n) }
+pub fn MatheigenvalueVector::normalize(self : MatheigenvalueVector) -> MatheigenvalueVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn math_eigenvalue_vector_dist(a : MatheigenvalueVector, b : MatheigenvalueVector) -> Double {
-  math_eigenvalue_vector_norm(math_eigenvalue_vector_sub(a, b))
+pub fn MatheigenvalueVector::dist(self : MatheigenvalueVector, other : MatheigenvalueVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn math_eigenvalue_vector_to_string(v : MatheigenvalueVector) -> String {
+pub fn MatheigenvalueVector::to_string(self : MatheigenvalueVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn math_eigenvalue_mean(data : Array[Double]) -> Double { @_common.mean(data) }

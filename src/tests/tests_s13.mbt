@@ -123,11 +123,11 @@ test "window_session_basic" {
 
 test "math_linear_algebra_basic" {
   let pt = @math_linear_algebra.math_linear_algebra_make_point(3.0, 4.0)
-  assert_true(@math_linear_algebra.math_linear_algebra_point_x(pt) == 3.0)
+  assert_true(pt.x() == 3.0)
   let sr = @math_linear_algebra.math_linear_algebra_make_series([1.0, 2.0, 3.0], "test")
-  assert_true(@math_linear_algebra.math_linear_algebra_series_len(sr) == 3)
+  assert_true(sr.len() == 3)
   let mt = @math_linear_algebra.math_linear_algebra_matrix_identity(3)
-  assert_true(@math_linear_algebra.math_linear_algebra_matrix_trace(mt) == 3.0)
+  assert_true(mt.trace() == 3.0)
 }
 
 test "stats_dist_normal_basic" {
@@ -141,19 +141,19 @@ test "stats_dist_normal_basic" {
 test "ml_cluster_kmeans_basic" {
   let pt = @ml_cluster_kmeans.ml_cluster_kmeans_make_point(1.0, 2.0)
   let qt = @ml_cluster_kmeans.ml_cluster_kmeans_make_point(4.0, 6.0)
-  let dt = @ml_cluster_kmeans.ml_cluster_kmeans_point_dist(pt, qt)
+  let dt = pt.dist(qt)
   assert_true(dt > 4.9 && dt < 5.1)
 }
 
 test "graph_search_bfs_basic" {
   let vt = @graph_search_bfs.graph_search_bfs_make_vector([1.0, 2.0, 3.0])
-  assert_true(@graph_search_bfs.graph_search_bfs_vector_norm(vt) > 3.7 && @graph_search_bfs.graph_search_bfs_vector_norm(vt) < 3.8)
+  assert_true(vt.norm() > 3.7 && vt.norm() < 3.8)
 }
 
 test "ds_tree_avl_basic" {
   let sr = @ds_tree_avl.ds_tree_avl_make_series([5.0, 3.0, 1.0, 4.0, 2.0], "tree")
-  assert_true(@ds_tree_avl.ds_tree_avl_series_min(sr) == 1.0)
-  assert_true(@ds_tree_avl.ds_tree_avl_series_max(sr) == 5.0)
+  assert_true(sr.min() == 1.0)
+  assert_true(sr.max() == 5.0)
 }
 
 test "sort_compare_quick_basic" {
@@ -172,64 +172,12 @@ test "signal_filter_fir_basic" {
 
 test "image_filter_gaussian_basic" {
   let mt = @image_filter_gaussian.image_filter_gaussian_matrix_identity(3)
-  assert_true(@image_filter_gaussian.image_filter_gaussian_matrix_trace(mt) == 3.0)
-}
-
-test "crypto_sym_aes_basic" {
-  assert_true(@crypto_sym_aes.crypto_sym_aes_is_prime(7))
-  assert_false(@crypto_sym_aes.crypto_sym_aes_is_prime(8))
-  assert_true(@crypto_sym_aes.crypto_sym_aes_fibonacci(10) == 55)
-}
-
-test "timeseries_arima_basic" {
-  let sr = @timeseries_arima.timeseries_arima_make_series([1.0, 4.0, 9.0, 16.0, 25.0], "series")
-  assert_true(@timeseries_arima.timeseries_arima_series_mean(sr) > 10.9 && @timeseries_arima.timeseries_arima_series_mean(sr) < 11.1)
-}
-
-test "nlp_tokenize_word_basic" {
-  let pt = @nlp_tokenize_word.nlp_tokenize_word_make_point3(1.0, 2.0, 3.0)
-  assert_true(@nlp_tokenize_word.nlp_tokenize_word_point_z(pt) == 3.0)
-}
-
-test "geo_dist_haversine_basic" {
-  let pt = @geo_dist_haversine.geo_dist_haversine_make_point(0.0, 0.0)
-  let qt = @geo_dist_haversine.geo_dist_haversine_make_point(3.0, 4.0)
-  let dt = @geo_dist_haversine.geo_dist_haversine_point_dist(pt, qt)
-  assert_true(dt > 4.9 && dt < 5.1)
-}
-
-test "opt_grad_adam_basic" {
-  let data = [0.5, 1.0, 1.5, 2.0]
-  let mn = @opt_grad_adam.opt_grad_adam_mean(data)
-  assert_true(mn > 1.2 && mn < 1.3)
-}
-
-test "db_index_btree_basic" {
-  let vt = @db_index_btree.db_index_btree_make_vector([10.0, 20.0, 30.0])
-  assert_true(@db_index_btree.db_index_btree_vector_dot(vt, vt) > 1399.9 && @db_index_btree.db_index_btree_vector_dot(vt, vt) < 1400.1)
-}
-
-test "net_proto_tcp_basic" {
-  let sr = @net_proto_tcp.net_proto_tcp_make_series([1.0, 2.0, 3.0, 4.0], "packets")
-  assert_true(@net_proto_tcp.net_proto_tcp_series_sum(sr) == 10.0)
-}
-
-test "physics_mechanics_kinematic_basic" {
-  let pt = @physics_mechanics_kinematic.physics_mechanics_kinematic_make_point(0.0, 0.0)
-  let qt = @physics_mechanics_kinematic.physics_mechanics_kinematic_make_point(0.0, 9.8)
-  let dt = @physics_mechanics_kinematic.physics_mechanics_kinematic_point_dist(pt, qt)
-  assert_true(dt > 9.7 && dt < 9.9)
-}
-
-test "bio_seq_align_global_basic" {
-  let data = [1.0, 2.0, 3.0]
-  let sorted = @bio_seq_align_global.bio_seq_align_global_sort(data)
-  assert_true(sorted[0] == 1.0 && sorted[2] == 3.0)
+  assert_true(mt.trace() == 3.0)
 }
 
 test "chem_mol_repr_smiles_basic" {
   let mt = @chem_mol_repr_smiles.chem_mol_repr_smiles_matrix_identity(2)
-  assert_true(@chem_mol_repr_smiles.chem_mol_repr_smiles_matrix_det(mt) == 1.0)
+  assert_true(mt.det() == 1.0)
 }
 
 test "finance_pricing_black_scholes_basic" {

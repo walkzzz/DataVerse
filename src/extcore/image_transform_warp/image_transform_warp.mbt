@@ -16,64 +16,64 @@ pub fn image_transform_warp_make_point3(x : Double, y : Double, z : Double) -> I
   { x, y, z, label: 0 }
 }
 
-pub fn image_transform_warp_point_x(pt : ImagetransformwarpPoint) -> Double { pt.x }
+pub fn ImagetransformwarpPoint::x(self : ImagetransformwarpPoint) -> Double { self.x }
 
-pub fn image_transform_warp_point_y(pt : ImagetransformwarpPoint) -> Double { pt.y }
+pub fn ImagetransformwarpPoint::y(self : ImagetransformwarpPoint) -> Double { self.y }
 
-pub fn image_transform_warp_point_z(pt : ImagetransformwarpPoint) -> Double { pt.z }
+pub fn ImagetransformwarpPoint::z(self : ImagetransformwarpPoint) -> Double { self.z }
 
-pub fn image_transform_warp_point_label(pt : ImagetransformwarpPoint) -> Int { pt.label }
+pub fn ImagetransformwarpPoint::label(self : ImagetransformwarpPoint) -> Int { self.label }
 
-pub fn image_transform_warp_point_dist(a : ImagetransformwarpPoint, b : ImagetransformwarpPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn ImagetransformwarpPoint::dist(self : ImagetransformwarpPoint, other : ImagetransformwarpPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn image_transform_warp_point_add(a : ImagetransformwarpPoint, b : ImagetransformwarpPoint) -> ImagetransformwarpPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn ImagetransformwarpPoint::add(self : ImagetransformwarpPoint, other : ImagetransformwarpPoint) -> ImagetransformwarpPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn image_transform_warp_point_sub(a : ImagetransformwarpPoint, b : ImagetransformwarpPoint) -> ImagetransformwarpPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn ImagetransformwarpPoint::sub(self : ImagetransformwarpPoint, other : ImagetransformwarpPoint) -> ImagetransformwarpPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn image_transform_warp_point_scale(pt : ImagetransformwarpPoint, s : Double) -> ImagetransformwarpPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn ImagetransformwarpPoint::scale(self : ImagetransformwarpPoint, s : Double) -> ImagetransformwarpPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn image_transform_warp_point_dot(a : ImagetransformwarpPoint, b : ImagetransformwarpPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn ImagetransformwarpPoint::dot(self : ImagetransformwarpPoint, other : ImagetransformwarpPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn image_transform_warp_point_cross(a : ImagetransformwarpPoint, b : ImagetransformwarpPoint) -> ImagetransformwarpPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn ImagetransformwarpPoint::cross(self : ImagetransformwarpPoint, other : ImagetransformwarpPoint) -> ImagetransformwarpPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn image_transform_warp_point_norm(pt : ImagetransformwarpPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn ImagetransformwarpPoint::norm(self : ImagetransformwarpPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn image_transform_warp_point_normalize(pt : ImagetransformwarpPoint) -> ImagetransformwarpPoint {
-  let n = image_transform_warp_point_norm(pt)
-  if n < 0.0000001 { pt } else { image_transform_warp_point_scale(pt, 1.0 / n) }
+pub fn ImagetransformwarpPoint::normalize(self : ImagetransformwarpPoint) -> ImagetransformwarpPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn image_transform_warp_point_negate(pt : ImagetransformwarpPoint) -> ImagetransformwarpPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn ImagetransformwarpPoint::negate(self : ImagetransformwarpPoint) -> ImagetransformwarpPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn image_transform_warp_point_mid(a : ImagetransformwarpPoint, b : ImagetransformwarpPoint) -> ImagetransformwarpPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn ImagetransformwarpPoint::mid(self : ImagetransformwarpPoint, other : ImagetransformwarpPoint) -> ImagetransformwarpPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn image_transform_warp_point_lerp(a : ImagetransformwarpPoint, b : ImagetransformwarpPoint, t : Double) -> ImagetransformwarpPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn ImagetransformwarpPoint::lerp(self : ImagetransformwarpPoint, other : ImagetransformwarpPoint, t : Double) -> ImagetransformwarpPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn image_transform_warp_point_to_string(pt : ImagetransformwarpPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn ImagetransformwarpPoint::to_string(self : ImagetransformwarpPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct ImagetransformwarpSeries {
@@ -86,58 +86,58 @@ pub fn image_transform_warp_make_series(vals : Array[Double], name : String) -> 
   { vals, name, meta: 0 }
 }
 
-pub fn image_transform_warp_series_len(s : ImagetransformwarpSeries) -> Int { s.vals.length() }
+pub fn ImagetransformwarpSeries::len(self : ImagetransformwarpSeries) -> Int { self.vals.length() }
 
-pub fn image_transform_warp_series_sum(s : ImagetransformwarpSeries) -> Double { @_common.sum(s.vals) }
+pub fn ImagetransformwarpSeries::sum(self : ImagetransformwarpSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn image_transform_warp_series_mean(s : ImagetransformwarpSeries) -> Double { @_common.mean(s.vals) }
+pub fn ImagetransformwarpSeries::mean(self : ImagetransformwarpSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn image_transform_warp_series_min(s : ImagetransformwarpSeries) -> Double { @_common.min(s.vals) }
+pub fn ImagetransformwarpSeries::min(self : ImagetransformwarpSeries) -> Double { @_common.min(self.vals) }
 
-pub fn image_transform_warp_series_max(s : ImagetransformwarpSeries) -> Double { @_common.max(s.vals) }
+pub fn ImagetransformwarpSeries::max(self : ImagetransformwarpSeries) -> Double { @_common.max(self.vals) }
 
-pub fn image_transform_warp_series_range(s : ImagetransformwarpSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn ImagetransformwarpSeries::range(self : ImagetransformwarpSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn image_transform_warp_series_var(s : ImagetransformwarpSeries) -> Double { @_common.variance(s.vals) }
+pub fn ImagetransformwarpSeries::variance(self : ImagetransformwarpSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn image_transform_warp_series_std(s : ImagetransformwarpSeries) -> Double { @_common.std(s.vals) }
+pub fn ImagetransformwarpSeries::std(self : ImagetransformwarpSeries) -> Double { @_common.std(self.vals) }
 
-pub fn image_transform_warp_series_median(s : ImagetransformwarpSeries) -> Double { @_common.median(s.vals) }
+pub fn ImagetransformwarpSeries::median(self : ImagetransformwarpSeries) -> Double { @_common.median(self.vals) }
 
-pub fn image_transform_warp_series_scale(s : ImagetransformwarpSeries, f : Double) -> ImagetransformwarpSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn ImagetransformwarpSeries::scale(self : ImagetransformwarpSeries, f : Double) -> ImagetransformwarpSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn image_transform_warp_series_add(a : ImagetransformwarpSeries, b : ImagetransformwarpSeries) -> ImagetransformwarpSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn ImagetransformwarpSeries::add(self : ImagetransformwarpSeries, other : ImagetransformwarpSeries) -> ImagetransformwarpSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn image_transform_warp_series_sub(a : ImagetransformwarpSeries, b : ImagetransformwarpSeries) -> ImagetransformwarpSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn ImagetransformwarpSeries::sub(self : ImagetransformwarpSeries, other : ImagetransformwarpSeries) -> ImagetransformwarpSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn image_transform_warp_series_normalize(s : ImagetransformwarpSeries) -> ImagetransformwarpSeries {
-  let mn = image_transform_warp_series_min(s)
-  let mx = image_transform_warp_series_max(s)
+pub fn ImagetransformwarpSeries::normalize(self : ImagetransformwarpSeries) -> ImagetransformwarpSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn image_transform_warp_series_cumsum(s : ImagetransformwarpSeries) -> ImagetransformwarpSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn ImagetransformwarpSeries::cumsum(self : ImagetransformwarpSeries) -> ImagetransformwarpSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn image_transform_warp_series_to_string(s : ImagetransformwarpSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn ImagetransformwarpSeries::to_string(self : ImagetransformwarpSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn image_transform_warp_matrix_identity(n : Int) -> ImagetransformwarpMatrix
   m
 }
 
-pub fn image_transform_warp_matrix_get(m : ImagetransformwarpMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn ImagetransformwarpMatrix::get(self : ImagetransformwarpMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn image_transform_warp_matrix_transpose(m : ImagetransformwarpMatrix) -> ImagetransformwarpMatrix {
-  let result = image_transform_warp_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn ImagetransformwarpMatrix::transpose(self : ImagetransformwarpMatrix) -> ImagetransformwarpMatrix {
+  let result = image_transform_warp_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn image_transform_warp_matrix_add(a : ImagetransformwarpMatrix, b : ImagetransformwarpMatrix) -> ImagetransformwarpMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = image_transform_warp_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn ImagetransformwarpMatrix::add(self : ImagetransformwarpMatrix, other : ImagetransformwarpMatrix) -> ImagetransformwarpMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = image_transform_warp_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn image_transform_warp_matrix_scale(m : ImagetransformwarpMatrix, s : Double) -> ImagetransformwarpMatrix {
-  let result = image_transform_warp_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn ImagetransformwarpMatrix::scale(self : ImagetransformwarpMatrix, s : Double) -> ImagetransformwarpMatrix {
+  let result = image_transform_warp_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn image_transform_warp_matrix_multiply(a : ImagetransformwarpMatrix, b : ImagetransformwarpMatrix) -> ImagetransformwarpMatrix {
-  if a.cols != b.rows { return image_transform_warp_make_matrix(a.rows, b.cols, 0.0) }
-  let result = image_transform_warp_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn ImagetransformwarpMatrix::multiply(self : ImagetransformwarpMatrix, other : ImagetransformwarpMatrix) -> ImagetransformwarpMatrix {
+  if self.cols != other.rows { return image_transform_warp_make_matrix(self.rows, other.cols, 0.0) }
+  let result = image_transform_warp_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn image_transform_warp_matrix_trace(m : ImagetransformwarpMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn ImagetransformwarpMatrix::trace(self : ImagetransformwarpMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn image_transform_warp_matrix_det(m : ImagetransformwarpMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn ImagetransformwarpMatrix::det(self : ImagetransformwarpMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn image_transform_warp_matrix_norm(m : ImagetransformwarpMatrix) -> Double {
+pub fn ImagetransformwarpMatrix::norm(self : ImagetransformwarpMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn image_transform_warp_matrix_to_string(m : ImagetransformwarpMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn ImagetransformwarpMatrix::to_string(self : ImagetransformwarpMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn image_transform_warp_vector_zero(dim : Int) -> ImagetransformwarpVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn image_transform_warp_vector_add(a : ImagetransformwarpVector, b : ImagetransformwarpVector) -> ImagetransformwarpVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn ImagetransformwarpVector::add(self : ImagetransformwarpVector, other : ImagetransformwarpVector) -> ImagetransformwarpVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn image_transform_warp_vector_sub(a : ImagetransformwarpVector, b : ImagetransformwarpVector) -> ImagetransformwarpVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn ImagetransformwarpVector::sub(self : ImagetransformwarpVector, other : ImagetransformwarpVector) -> ImagetransformwarpVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn image_transform_warp_vector_scale(v : ImagetransformwarpVector, s : Double) -> ImagetransformwarpVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn ImagetransformwarpVector::scale(self : ImagetransformwarpVector, s : Double) -> ImagetransformwarpVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn image_transform_warp_vector_dot(a : ImagetransformwarpVector, b : ImagetransformwarpVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn ImagetransformwarpVector::dot(self : ImagetransformwarpVector, other : ImagetransformwarpVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn image_transform_warp_vector_norm(v : ImagetransformwarpVector) -> Double { @_common.sqrt(image_transform_warp_vector_dot(v, v)) }
+pub fn ImagetransformwarpVector::norm(self : ImagetransformwarpVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn image_transform_warp_vector_normalize(v : ImagetransformwarpVector) -> ImagetransformwarpVector {
-  let n = image_transform_warp_vector_norm(v)
-  if n < 0.0000001 { v } else { image_transform_warp_vector_scale(v, 1.0 / n) }
+pub fn ImagetransformwarpVector::normalize(self : ImagetransformwarpVector) -> ImagetransformwarpVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn image_transform_warp_vector_dist(a : ImagetransformwarpVector, b : ImagetransformwarpVector) -> Double {
-  image_transform_warp_vector_norm(image_transform_warp_vector_sub(a, b))
+pub fn ImagetransformwarpVector::dist(self : ImagetransformwarpVector, other : ImagetransformwarpVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn image_transform_warp_vector_to_string(v : ImagetransformwarpVector) -> String {
+pub fn ImagetransformwarpVector::to_string(self : ImagetransformwarpVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn image_transform_warp_mean(data : Array[Double]) -> Double { @_common.mean(data) }

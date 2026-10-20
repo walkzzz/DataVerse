@@ -16,64 +16,64 @@ pub fn math_numerical_integ_make_point3(x : Double, y : Double, z : Double) -> M
   { x, y, z, label: 0 }
 }
 
-pub fn math_numerical_integ_point_x(pt : MathnumericalintegPoint) -> Double { pt.x }
+pub fn MathnumericalintegPoint::x(self : MathnumericalintegPoint) -> Double { self.x }
 
-pub fn math_numerical_integ_point_y(pt : MathnumericalintegPoint) -> Double { pt.y }
+pub fn MathnumericalintegPoint::y(self : MathnumericalintegPoint) -> Double { self.y }
 
-pub fn math_numerical_integ_point_z(pt : MathnumericalintegPoint) -> Double { pt.z }
+pub fn MathnumericalintegPoint::z(self : MathnumericalintegPoint) -> Double { self.z }
 
-pub fn math_numerical_integ_point_label(pt : MathnumericalintegPoint) -> Int { pt.label }
+pub fn MathnumericalintegPoint::label(self : MathnumericalintegPoint) -> Int { self.label }
 
-pub fn math_numerical_integ_point_dist(a : MathnumericalintegPoint, b : MathnumericalintegPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn MathnumericalintegPoint::dist(self : MathnumericalintegPoint, other : MathnumericalintegPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn math_numerical_integ_point_add(a : MathnumericalintegPoint, b : MathnumericalintegPoint) -> MathnumericalintegPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn MathnumericalintegPoint::add(self : MathnumericalintegPoint, other : MathnumericalintegPoint) -> MathnumericalintegPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn math_numerical_integ_point_sub(a : MathnumericalintegPoint, b : MathnumericalintegPoint) -> MathnumericalintegPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn MathnumericalintegPoint::sub(self : MathnumericalintegPoint, other : MathnumericalintegPoint) -> MathnumericalintegPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn math_numerical_integ_point_scale(pt : MathnumericalintegPoint, s : Double) -> MathnumericalintegPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn MathnumericalintegPoint::scale(self : MathnumericalintegPoint, s : Double) -> MathnumericalintegPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn math_numerical_integ_point_dot(a : MathnumericalintegPoint, b : MathnumericalintegPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn MathnumericalintegPoint::dot(self : MathnumericalintegPoint, other : MathnumericalintegPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn math_numerical_integ_point_cross(a : MathnumericalintegPoint, b : MathnumericalintegPoint) -> MathnumericalintegPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn MathnumericalintegPoint::cross(self : MathnumericalintegPoint, other : MathnumericalintegPoint) -> MathnumericalintegPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn math_numerical_integ_point_norm(pt : MathnumericalintegPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn MathnumericalintegPoint::norm(self : MathnumericalintegPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn math_numerical_integ_point_normalize(pt : MathnumericalintegPoint) -> MathnumericalintegPoint {
-  let n = math_numerical_integ_point_norm(pt)
-  if n < 0.0000001 { pt } else { math_numerical_integ_point_scale(pt, 1.0 / n) }
+pub fn MathnumericalintegPoint::normalize(self : MathnumericalintegPoint) -> MathnumericalintegPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn math_numerical_integ_point_negate(pt : MathnumericalintegPoint) -> MathnumericalintegPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn MathnumericalintegPoint::negate(self : MathnumericalintegPoint) -> MathnumericalintegPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn math_numerical_integ_point_mid(a : MathnumericalintegPoint, b : MathnumericalintegPoint) -> MathnumericalintegPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn MathnumericalintegPoint::mid(self : MathnumericalintegPoint, other : MathnumericalintegPoint) -> MathnumericalintegPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn math_numerical_integ_point_lerp(a : MathnumericalintegPoint, b : MathnumericalintegPoint, t : Double) -> MathnumericalintegPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn MathnumericalintegPoint::lerp(self : MathnumericalintegPoint, other : MathnumericalintegPoint, t : Double) -> MathnumericalintegPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn math_numerical_integ_point_to_string(pt : MathnumericalintegPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn MathnumericalintegPoint::to_string(self : MathnumericalintegPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct MathnumericalintegSeries {
@@ -86,58 +86,58 @@ pub fn math_numerical_integ_make_series(vals : Array[Double], name : String) -> 
   { vals, name, meta: 0 }
 }
 
-pub fn math_numerical_integ_series_len(s : MathnumericalintegSeries) -> Int { s.vals.length() }
+pub fn MathnumericalintegSeries::len(self : MathnumericalintegSeries) -> Int { self.vals.length() }
 
-pub fn math_numerical_integ_series_sum(s : MathnumericalintegSeries) -> Double { @_common.sum(s.vals) }
+pub fn MathnumericalintegSeries::sum(self : MathnumericalintegSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn math_numerical_integ_series_mean(s : MathnumericalintegSeries) -> Double { @_common.mean(s.vals) }
+pub fn MathnumericalintegSeries::mean(self : MathnumericalintegSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn math_numerical_integ_series_min(s : MathnumericalintegSeries) -> Double { @_common.min(s.vals) }
+pub fn MathnumericalintegSeries::min(self : MathnumericalintegSeries) -> Double { @_common.min(self.vals) }
 
-pub fn math_numerical_integ_series_max(s : MathnumericalintegSeries) -> Double { @_common.max(s.vals) }
+pub fn MathnumericalintegSeries::max(self : MathnumericalintegSeries) -> Double { @_common.max(self.vals) }
 
-pub fn math_numerical_integ_series_range(s : MathnumericalintegSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn MathnumericalintegSeries::range(self : MathnumericalintegSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn math_numerical_integ_series_var(s : MathnumericalintegSeries) -> Double { @_common.variance(s.vals) }
+pub fn MathnumericalintegSeries::variance(self : MathnumericalintegSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn math_numerical_integ_series_std(s : MathnumericalintegSeries) -> Double { @_common.std(s.vals) }
+pub fn MathnumericalintegSeries::std(self : MathnumericalintegSeries) -> Double { @_common.std(self.vals) }
 
-pub fn math_numerical_integ_series_median(s : MathnumericalintegSeries) -> Double { @_common.median(s.vals) }
+pub fn MathnumericalintegSeries::median(self : MathnumericalintegSeries) -> Double { @_common.median(self.vals) }
 
-pub fn math_numerical_integ_series_scale(s : MathnumericalintegSeries, f : Double) -> MathnumericalintegSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn MathnumericalintegSeries::scale(self : MathnumericalintegSeries, f : Double) -> MathnumericalintegSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn math_numerical_integ_series_add(a : MathnumericalintegSeries, b : MathnumericalintegSeries) -> MathnumericalintegSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn MathnumericalintegSeries::add(self : MathnumericalintegSeries, other : MathnumericalintegSeries) -> MathnumericalintegSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn math_numerical_integ_series_sub(a : MathnumericalintegSeries, b : MathnumericalintegSeries) -> MathnumericalintegSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn MathnumericalintegSeries::sub(self : MathnumericalintegSeries, other : MathnumericalintegSeries) -> MathnumericalintegSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn math_numerical_integ_series_normalize(s : MathnumericalintegSeries) -> MathnumericalintegSeries {
-  let mn = math_numerical_integ_series_min(s)
-  let mx = math_numerical_integ_series_max(s)
+pub fn MathnumericalintegSeries::normalize(self : MathnumericalintegSeries) -> MathnumericalintegSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn math_numerical_integ_series_cumsum(s : MathnumericalintegSeries) -> MathnumericalintegSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn MathnumericalintegSeries::cumsum(self : MathnumericalintegSeries) -> MathnumericalintegSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn math_numerical_integ_series_to_string(s : MathnumericalintegSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn MathnumericalintegSeries::to_string(self : MathnumericalintegSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn math_numerical_integ_matrix_identity(n : Int) -> MathnumericalintegMatrix
   m
 }
 
-pub fn math_numerical_integ_matrix_get(m : MathnumericalintegMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn MathnumericalintegMatrix::get(self : MathnumericalintegMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn math_numerical_integ_matrix_transpose(m : MathnumericalintegMatrix) -> MathnumericalintegMatrix {
-  let result = math_numerical_integ_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn MathnumericalintegMatrix::transpose(self : MathnumericalintegMatrix) -> MathnumericalintegMatrix {
+  let result = math_numerical_integ_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn math_numerical_integ_matrix_add(a : MathnumericalintegMatrix, b : MathnumericalintegMatrix) -> MathnumericalintegMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = math_numerical_integ_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn MathnumericalintegMatrix::add(self : MathnumericalintegMatrix, other : MathnumericalintegMatrix) -> MathnumericalintegMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = math_numerical_integ_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn math_numerical_integ_matrix_scale(m : MathnumericalintegMatrix, s : Double) -> MathnumericalintegMatrix {
-  let result = math_numerical_integ_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn MathnumericalintegMatrix::scale(self : MathnumericalintegMatrix, s : Double) -> MathnumericalintegMatrix {
+  let result = math_numerical_integ_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn math_numerical_integ_matrix_multiply(a : MathnumericalintegMatrix, b : MathnumericalintegMatrix) -> MathnumericalintegMatrix {
-  if a.cols != b.rows { return math_numerical_integ_make_matrix(a.rows, b.cols, 0.0) }
-  let result = math_numerical_integ_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn MathnumericalintegMatrix::multiply(self : MathnumericalintegMatrix, other : MathnumericalintegMatrix) -> MathnumericalintegMatrix {
+  if self.cols != other.rows { return math_numerical_integ_make_matrix(self.rows, other.cols, 0.0) }
+  let result = math_numerical_integ_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn math_numerical_integ_matrix_trace(m : MathnumericalintegMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn MathnumericalintegMatrix::trace(self : MathnumericalintegMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn math_numerical_integ_matrix_det(m : MathnumericalintegMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn MathnumericalintegMatrix::det(self : MathnumericalintegMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn math_numerical_integ_matrix_norm(m : MathnumericalintegMatrix) -> Double {
+pub fn MathnumericalintegMatrix::norm(self : MathnumericalintegMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn math_numerical_integ_matrix_to_string(m : MathnumericalintegMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn MathnumericalintegMatrix::to_string(self : MathnumericalintegMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn math_numerical_integ_vector_zero(dim : Int) -> MathnumericalintegVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn math_numerical_integ_vector_add(a : MathnumericalintegVector, b : MathnumericalintegVector) -> MathnumericalintegVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn MathnumericalintegVector::add(self : MathnumericalintegVector, other : MathnumericalintegVector) -> MathnumericalintegVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn math_numerical_integ_vector_sub(a : MathnumericalintegVector, b : MathnumericalintegVector) -> MathnumericalintegVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn MathnumericalintegVector::sub(self : MathnumericalintegVector, other : MathnumericalintegVector) -> MathnumericalintegVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn math_numerical_integ_vector_scale(v : MathnumericalintegVector, s : Double) -> MathnumericalintegVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn MathnumericalintegVector::scale(self : MathnumericalintegVector, s : Double) -> MathnumericalintegVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn math_numerical_integ_vector_dot(a : MathnumericalintegVector, b : MathnumericalintegVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn MathnumericalintegVector::dot(self : MathnumericalintegVector, other : MathnumericalintegVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn math_numerical_integ_vector_norm(v : MathnumericalintegVector) -> Double { @_common.sqrt(math_numerical_integ_vector_dot(v, v)) }
+pub fn MathnumericalintegVector::norm(self : MathnumericalintegVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn math_numerical_integ_vector_normalize(v : MathnumericalintegVector) -> MathnumericalintegVector {
-  let n = math_numerical_integ_vector_norm(v)
-  if n < 0.0000001 { v } else { math_numerical_integ_vector_scale(v, 1.0 / n) }
+pub fn MathnumericalintegVector::normalize(self : MathnumericalintegVector) -> MathnumericalintegVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn math_numerical_integ_vector_dist(a : MathnumericalintegVector, b : MathnumericalintegVector) -> Double {
-  math_numerical_integ_vector_norm(math_numerical_integ_vector_sub(a, b))
+pub fn MathnumericalintegVector::dist(self : MathnumericalintegVector, other : MathnumericalintegVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn math_numerical_integ_vector_to_string(v : MathnumericalintegVector) -> String {
+pub fn MathnumericalintegVector::to_string(self : MathnumericalintegVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn math_numerical_integ_mean(data : Array[Double]) -> Double { @_common.mean(data) }

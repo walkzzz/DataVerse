@@ -16,64 +16,64 @@ pub fn timeseries_decomp_emd_make_point3(x : Double, y : Double, z : Double) -> 
   { x, y, z, label: 0 }
 }
 
-pub fn timeseries_decomp_emd_point_x(pt : TimeseriesdecompemdPoint) -> Double { pt.x }
+pub fn TimeseriesdecompemdPoint::x(self : TimeseriesdecompemdPoint) -> Double { self.x }
 
-pub fn timeseries_decomp_emd_point_y(pt : TimeseriesdecompemdPoint) -> Double { pt.y }
+pub fn TimeseriesdecompemdPoint::y(self : TimeseriesdecompemdPoint) -> Double { self.y }
 
-pub fn timeseries_decomp_emd_point_z(pt : TimeseriesdecompemdPoint) -> Double { pt.z }
+pub fn TimeseriesdecompemdPoint::z(self : TimeseriesdecompemdPoint) -> Double { self.z }
 
-pub fn timeseries_decomp_emd_point_label(pt : TimeseriesdecompemdPoint) -> Int { pt.label }
+pub fn TimeseriesdecompemdPoint::label(self : TimeseriesdecompemdPoint) -> Int { self.label }
 
-pub fn timeseries_decomp_emd_point_dist(a : TimeseriesdecompemdPoint, b : TimeseriesdecompemdPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn TimeseriesdecompemdPoint::dist(self : TimeseriesdecompemdPoint, other : TimeseriesdecompemdPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn timeseries_decomp_emd_point_add(a : TimeseriesdecompemdPoint, b : TimeseriesdecompemdPoint) -> TimeseriesdecompemdPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn TimeseriesdecompemdPoint::add(self : TimeseriesdecompemdPoint, other : TimeseriesdecompemdPoint) -> TimeseriesdecompemdPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn timeseries_decomp_emd_point_sub(a : TimeseriesdecompemdPoint, b : TimeseriesdecompemdPoint) -> TimeseriesdecompemdPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn TimeseriesdecompemdPoint::sub(self : TimeseriesdecompemdPoint, other : TimeseriesdecompemdPoint) -> TimeseriesdecompemdPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn timeseries_decomp_emd_point_scale(pt : TimeseriesdecompemdPoint, s : Double) -> TimeseriesdecompemdPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn TimeseriesdecompemdPoint::scale(self : TimeseriesdecompemdPoint, s : Double) -> TimeseriesdecompemdPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn timeseries_decomp_emd_point_dot(a : TimeseriesdecompemdPoint, b : TimeseriesdecompemdPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn TimeseriesdecompemdPoint::dot(self : TimeseriesdecompemdPoint, other : TimeseriesdecompemdPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn timeseries_decomp_emd_point_cross(a : TimeseriesdecompemdPoint, b : TimeseriesdecompemdPoint) -> TimeseriesdecompemdPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn TimeseriesdecompemdPoint::cross(self : TimeseriesdecompemdPoint, other : TimeseriesdecompemdPoint) -> TimeseriesdecompemdPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn timeseries_decomp_emd_point_norm(pt : TimeseriesdecompemdPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn TimeseriesdecompemdPoint::norm(self : TimeseriesdecompemdPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn timeseries_decomp_emd_point_normalize(pt : TimeseriesdecompemdPoint) -> TimeseriesdecompemdPoint {
-  let n = timeseries_decomp_emd_point_norm(pt)
-  if n < 0.0000001 { pt } else { timeseries_decomp_emd_point_scale(pt, 1.0 / n) }
+pub fn TimeseriesdecompemdPoint::normalize(self : TimeseriesdecompemdPoint) -> TimeseriesdecompemdPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn timeseries_decomp_emd_point_negate(pt : TimeseriesdecompemdPoint) -> TimeseriesdecompemdPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn TimeseriesdecompemdPoint::negate(self : TimeseriesdecompemdPoint) -> TimeseriesdecompemdPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn timeseries_decomp_emd_point_mid(a : TimeseriesdecompemdPoint, b : TimeseriesdecompemdPoint) -> TimeseriesdecompemdPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn TimeseriesdecompemdPoint::mid(self : TimeseriesdecompemdPoint, other : TimeseriesdecompemdPoint) -> TimeseriesdecompemdPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn timeseries_decomp_emd_point_lerp(a : TimeseriesdecompemdPoint, b : TimeseriesdecompemdPoint, t : Double) -> TimeseriesdecompemdPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn TimeseriesdecompemdPoint::lerp(self : TimeseriesdecompemdPoint, other : TimeseriesdecompemdPoint, t : Double) -> TimeseriesdecompemdPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn timeseries_decomp_emd_point_to_string(pt : TimeseriesdecompemdPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn TimeseriesdecompemdPoint::to_string(self : TimeseriesdecompemdPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct TimeseriesdecompemdSeries {
@@ -86,58 +86,58 @@ pub fn timeseries_decomp_emd_make_series(vals : Array[Double], name : String) ->
   { vals, name, meta: 0 }
 }
 
-pub fn timeseries_decomp_emd_series_len(s : TimeseriesdecompemdSeries) -> Int { s.vals.length() }
+pub fn TimeseriesdecompemdSeries::len(self : TimeseriesdecompemdSeries) -> Int { self.vals.length() }
 
-pub fn timeseries_decomp_emd_series_sum(s : TimeseriesdecompemdSeries) -> Double { @_common.sum(s.vals) }
+pub fn TimeseriesdecompemdSeries::sum(self : TimeseriesdecompemdSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn timeseries_decomp_emd_series_mean(s : TimeseriesdecompemdSeries) -> Double { @_common.mean(s.vals) }
+pub fn TimeseriesdecompemdSeries::mean(self : TimeseriesdecompemdSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn timeseries_decomp_emd_series_min(s : TimeseriesdecompemdSeries) -> Double { @_common.min(s.vals) }
+pub fn TimeseriesdecompemdSeries::min(self : TimeseriesdecompemdSeries) -> Double { @_common.min(self.vals) }
 
-pub fn timeseries_decomp_emd_series_max(s : TimeseriesdecompemdSeries) -> Double { @_common.max(s.vals) }
+pub fn TimeseriesdecompemdSeries::max(self : TimeseriesdecompemdSeries) -> Double { @_common.max(self.vals) }
 
-pub fn timeseries_decomp_emd_series_range(s : TimeseriesdecompemdSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn TimeseriesdecompemdSeries::range(self : TimeseriesdecompemdSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn timeseries_decomp_emd_series_var(s : TimeseriesdecompemdSeries) -> Double { @_common.variance(s.vals) }
+pub fn TimeseriesdecompemdSeries::variance(self : TimeseriesdecompemdSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn timeseries_decomp_emd_series_std(s : TimeseriesdecompemdSeries) -> Double { @_common.std(s.vals) }
+pub fn TimeseriesdecompemdSeries::std(self : TimeseriesdecompemdSeries) -> Double { @_common.std(self.vals) }
 
-pub fn timeseries_decomp_emd_series_median(s : TimeseriesdecompemdSeries) -> Double { @_common.median(s.vals) }
+pub fn TimeseriesdecompemdSeries::median(self : TimeseriesdecompemdSeries) -> Double { @_common.median(self.vals) }
 
-pub fn timeseries_decomp_emd_series_scale(s : TimeseriesdecompemdSeries, f : Double) -> TimeseriesdecompemdSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn TimeseriesdecompemdSeries::scale(self : TimeseriesdecompemdSeries, f : Double) -> TimeseriesdecompemdSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn timeseries_decomp_emd_series_add(a : TimeseriesdecompemdSeries, b : TimeseriesdecompemdSeries) -> TimeseriesdecompemdSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn TimeseriesdecompemdSeries::add(self : TimeseriesdecompemdSeries, other : TimeseriesdecompemdSeries) -> TimeseriesdecompemdSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn timeseries_decomp_emd_series_sub(a : TimeseriesdecompemdSeries, b : TimeseriesdecompemdSeries) -> TimeseriesdecompemdSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn TimeseriesdecompemdSeries::sub(self : TimeseriesdecompemdSeries, other : TimeseriesdecompemdSeries) -> TimeseriesdecompemdSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn timeseries_decomp_emd_series_normalize(s : TimeseriesdecompemdSeries) -> TimeseriesdecompemdSeries {
-  let mn = timeseries_decomp_emd_series_min(s)
-  let mx = timeseries_decomp_emd_series_max(s)
+pub fn TimeseriesdecompemdSeries::normalize(self : TimeseriesdecompemdSeries) -> TimeseriesdecompemdSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn timeseries_decomp_emd_series_cumsum(s : TimeseriesdecompemdSeries) -> TimeseriesdecompemdSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn TimeseriesdecompemdSeries::cumsum(self : TimeseriesdecompemdSeries) -> TimeseriesdecompemdSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn timeseries_decomp_emd_series_to_string(s : TimeseriesdecompemdSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn TimeseriesdecompemdSeries::to_string(self : TimeseriesdecompemdSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn timeseries_decomp_emd_matrix_identity(n : Int) -> TimeseriesdecompemdMatr
   m
 }
 
-pub fn timeseries_decomp_emd_matrix_get(m : TimeseriesdecompemdMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn TimeseriesdecompemdMatrix::get(self : TimeseriesdecompemdMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn timeseries_decomp_emd_matrix_transpose(m : TimeseriesdecompemdMatrix) -> TimeseriesdecompemdMatrix {
-  let result = timeseries_decomp_emd_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn TimeseriesdecompemdMatrix::transpose(self : TimeseriesdecompemdMatrix) -> TimeseriesdecompemdMatrix {
+  let result = timeseries_decomp_emd_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn timeseries_decomp_emd_matrix_add(a : TimeseriesdecompemdMatrix, b : TimeseriesdecompemdMatrix) -> TimeseriesdecompemdMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = timeseries_decomp_emd_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn TimeseriesdecompemdMatrix::add(self : TimeseriesdecompemdMatrix, other : TimeseriesdecompemdMatrix) -> TimeseriesdecompemdMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = timeseries_decomp_emd_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn timeseries_decomp_emd_matrix_scale(m : TimeseriesdecompemdMatrix, s : Double) -> TimeseriesdecompemdMatrix {
-  let result = timeseries_decomp_emd_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn TimeseriesdecompemdMatrix::scale(self : TimeseriesdecompemdMatrix, s : Double) -> TimeseriesdecompemdMatrix {
+  let result = timeseries_decomp_emd_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn timeseries_decomp_emd_matrix_multiply(a : TimeseriesdecompemdMatrix, b : TimeseriesdecompemdMatrix) -> TimeseriesdecompemdMatrix {
-  if a.cols != b.rows { return timeseries_decomp_emd_make_matrix(a.rows, b.cols, 0.0) }
-  let result = timeseries_decomp_emd_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn TimeseriesdecompemdMatrix::multiply(self : TimeseriesdecompemdMatrix, other : TimeseriesdecompemdMatrix) -> TimeseriesdecompemdMatrix {
+  if self.cols != other.rows { return timeseries_decomp_emd_make_matrix(self.rows, other.cols, 0.0) }
+  let result = timeseries_decomp_emd_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn timeseries_decomp_emd_matrix_trace(m : TimeseriesdecompemdMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn TimeseriesdecompemdMatrix::trace(self : TimeseriesdecompemdMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn timeseries_decomp_emd_matrix_det(m : TimeseriesdecompemdMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn TimeseriesdecompemdMatrix::det(self : TimeseriesdecompemdMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn timeseries_decomp_emd_matrix_norm(m : TimeseriesdecompemdMatrix) -> Double {
+pub fn TimeseriesdecompemdMatrix::norm(self : TimeseriesdecompemdMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn timeseries_decomp_emd_matrix_to_string(m : TimeseriesdecompemdMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn TimeseriesdecompemdMatrix::to_string(self : TimeseriesdecompemdMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn timeseries_decomp_emd_vector_zero(dim : Int) -> TimeseriesdecompemdVector
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn timeseries_decomp_emd_vector_add(a : TimeseriesdecompemdVector, b : TimeseriesdecompemdVector) -> TimeseriesdecompemdVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn TimeseriesdecompemdVector::add(self : TimeseriesdecompemdVector, other : TimeseriesdecompemdVector) -> TimeseriesdecompemdVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn timeseries_decomp_emd_vector_sub(a : TimeseriesdecompemdVector, b : TimeseriesdecompemdVector) -> TimeseriesdecompemdVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn TimeseriesdecompemdVector::sub(self : TimeseriesdecompemdVector, other : TimeseriesdecompemdVector) -> TimeseriesdecompemdVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn timeseries_decomp_emd_vector_scale(v : TimeseriesdecompemdVector, s : Double) -> TimeseriesdecompemdVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn TimeseriesdecompemdVector::scale(self : TimeseriesdecompemdVector, s : Double) -> TimeseriesdecompemdVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn timeseries_decomp_emd_vector_dot(a : TimeseriesdecompemdVector, b : TimeseriesdecompemdVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn TimeseriesdecompemdVector::dot(self : TimeseriesdecompemdVector, other : TimeseriesdecompemdVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn timeseries_decomp_emd_vector_norm(v : TimeseriesdecompemdVector) -> Double { @_common.sqrt(timeseries_decomp_emd_vector_dot(v, v)) }
+pub fn TimeseriesdecompemdVector::norm(self : TimeseriesdecompemdVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn timeseries_decomp_emd_vector_normalize(v : TimeseriesdecompemdVector) -> TimeseriesdecompemdVector {
-  let n = timeseries_decomp_emd_vector_norm(v)
-  if n < 0.0000001 { v } else { timeseries_decomp_emd_vector_scale(v, 1.0 / n) }
+pub fn TimeseriesdecompemdVector::normalize(self : TimeseriesdecompemdVector) -> TimeseriesdecompemdVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn timeseries_decomp_emd_vector_dist(a : TimeseriesdecompemdVector, b : TimeseriesdecompemdVector) -> Double {
-  timeseries_decomp_emd_vector_norm(timeseries_decomp_emd_vector_sub(a, b))
+pub fn TimeseriesdecompemdVector::dist(self : TimeseriesdecompemdVector, other : TimeseriesdecompemdVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn timeseries_decomp_emd_vector_to_string(v : TimeseriesdecompemdVector) -> String {
+pub fn TimeseriesdecompemdVector::to_string(self : TimeseriesdecompemdVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn timeseries_decomp_emd_mean(data : Array[Double]) -> Double { @_common.mean(data) }

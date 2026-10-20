@@ -16,64 +16,64 @@ pub fn db_query_join_make_point3(x : Double, y : Double, z : Double) -> Dbqueryj
   { x, y, z, label: 0 }
 }
 
-pub fn db_query_join_point_x(pt : DbqueryjoinPoint) -> Double { pt.x }
+pub fn DbqueryjoinPoint::x(self : DbqueryjoinPoint) -> Double { self.x }
 
-pub fn db_query_join_point_y(pt : DbqueryjoinPoint) -> Double { pt.y }
+pub fn DbqueryjoinPoint::y(self : DbqueryjoinPoint) -> Double { self.y }
 
-pub fn db_query_join_point_z(pt : DbqueryjoinPoint) -> Double { pt.z }
+pub fn DbqueryjoinPoint::z(self : DbqueryjoinPoint) -> Double { self.z }
 
-pub fn db_query_join_point_label(pt : DbqueryjoinPoint) -> Int { pt.label }
+pub fn DbqueryjoinPoint::label(self : DbqueryjoinPoint) -> Int { self.label }
 
-pub fn db_query_join_point_dist(a : DbqueryjoinPoint, b : DbqueryjoinPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn DbqueryjoinPoint::dist(self : DbqueryjoinPoint, other : DbqueryjoinPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn db_query_join_point_add(a : DbqueryjoinPoint, b : DbqueryjoinPoint) -> DbqueryjoinPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn DbqueryjoinPoint::add(self : DbqueryjoinPoint, other : DbqueryjoinPoint) -> DbqueryjoinPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn db_query_join_point_sub(a : DbqueryjoinPoint, b : DbqueryjoinPoint) -> DbqueryjoinPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn DbqueryjoinPoint::sub(self : DbqueryjoinPoint, other : DbqueryjoinPoint) -> DbqueryjoinPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn db_query_join_point_scale(pt : DbqueryjoinPoint, s : Double) -> DbqueryjoinPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn DbqueryjoinPoint::scale(self : DbqueryjoinPoint, s : Double) -> DbqueryjoinPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn db_query_join_point_dot(a : DbqueryjoinPoint, b : DbqueryjoinPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn DbqueryjoinPoint::dot(self : DbqueryjoinPoint, other : DbqueryjoinPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn db_query_join_point_cross(a : DbqueryjoinPoint, b : DbqueryjoinPoint) -> DbqueryjoinPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn DbqueryjoinPoint::cross(self : DbqueryjoinPoint, other : DbqueryjoinPoint) -> DbqueryjoinPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn db_query_join_point_norm(pt : DbqueryjoinPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn DbqueryjoinPoint::norm(self : DbqueryjoinPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn db_query_join_point_normalize(pt : DbqueryjoinPoint) -> DbqueryjoinPoint {
-  let n = db_query_join_point_norm(pt)
-  if n < 0.0000001 { pt } else { db_query_join_point_scale(pt, 1.0 / n) }
+pub fn DbqueryjoinPoint::normalize(self : DbqueryjoinPoint) -> DbqueryjoinPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn db_query_join_point_negate(pt : DbqueryjoinPoint) -> DbqueryjoinPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn DbqueryjoinPoint::negate(self : DbqueryjoinPoint) -> DbqueryjoinPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn db_query_join_point_mid(a : DbqueryjoinPoint, b : DbqueryjoinPoint) -> DbqueryjoinPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn DbqueryjoinPoint::mid(self : DbqueryjoinPoint, other : DbqueryjoinPoint) -> DbqueryjoinPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn db_query_join_point_lerp(a : DbqueryjoinPoint, b : DbqueryjoinPoint, t : Double) -> DbqueryjoinPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn DbqueryjoinPoint::lerp(self : DbqueryjoinPoint, other : DbqueryjoinPoint, t : Double) -> DbqueryjoinPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn db_query_join_point_to_string(pt : DbqueryjoinPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn DbqueryjoinPoint::to_string(self : DbqueryjoinPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct DbqueryjoinSeries {
@@ -86,58 +86,58 @@ pub fn db_query_join_make_series(vals : Array[Double], name : String) -> Dbquery
   { vals, name, meta: 0 }
 }
 
-pub fn db_query_join_series_len(s : DbqueryjoinSeries) -> Int { s.vals.length() }
+pub fn DbqueryjoinSeries::len(self : DbqueryjoinSeries) -> Int { self.vals.length() }
 
-pub fn db_query_join_series_sum(s : DbqueryjoinSeries) -> Double { @_common.sum(s.vals) }
+pub fn DbqueryjoinSeries::sum(self : DbqueryjoinSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn db_query_join_series_mean(s : DbqueryjoinSeries) -> Double { @_common.mean(s.vals) }
+pub fn DbqueryjoinSeries::mean(self : DbqueryjoinSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn db_query_join_series_min(s : DbqueryjoinSeries) -> Double { @_common.min(s.vals) }
+pub fn DbqueryjoinSeries::min(self : DbqueryjoinSeries) -> Double { @_common.min(self.vals) }
 
-pub fn db_query_join_series_max(s : DbqueryjoinSeries) -> Double { @_common.max(s.vals) }
+pub fn DbqueryjoinSeries::max(self : DbqueryjoinSeries) -> Double { @_common.max(self.vals) }
 
-pub fn db_query_join_series_range(s : DbqueryjoinSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn DbqueryjoinSeries::range(self : DbqueryjoinSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn db_query_join_series_var(s : DbqueryjoinSeries) -> Double { @_common.variance(s.vals) }
+pub fn DbqueryjoinSeries::variance(self : DbqueryjoinSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn db_query_join_series_std(s : DbqueryjoinSeries) -> Double { @_common.std(s.vals) }
+pub fn DbqueryjoinSeries::std(self : DbqueryjoinSeries) -> Double { @_common.std(self.vals) }
 
-pub fn db_query_join_series_median(s : DbqueryjoinSeries) -> Double { @_common.median(s.vals) }
+pub fn DbqueryjoinSeries::median(self : DbqueryjoinSeries) -> Double { @_common.median(self.vals) }
 
-pub fn db_query_join_series_scale(s : DbqueryjoinSeries, f : Double) -> DbqueryjoinSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn DbqueryjoinSeries::scale(self : DbqueryjoinSeries, f : Double) -> DbqueryjoinSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn db_query_join_series_add(a : DbqueryjoinSeries, b : DbqueryjoinSeries) -> DbqueryjoinSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn DbqueryjoinSeries::add(self : DbqueryjoinSeries, other : DbqueryjoinSeries) -> DbqueryjoinSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn db_query_join_series_sub(a : DbqueryjoinSeries, b : DbqueryjoinSeries) -> DbqueryjoinSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn DbqueryjoinSeries::sub(self : DbqueryjoinSeries, other : DbqueryjoinSeries) -> DbqueryjoinSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn db_query_join_series_normalize(s : DbqueryjoinSeries) -> DbqueryjoinSeries {
-  let mn = db_query_join_series_min(s)
-  let mx = db_query_join_series_max(s)
+pub fn DbqueryjoinSeries::normalize(self : DbqueryjoinSeries) -> DbqueryjoinSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn db_query_join_series_cumsum(s : DbqueryjoinSeries) -> DbqueryjoinSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn DbqueryjoinSeries::cumsum(self : DbqueryjoinSeries) -> DbqueryjoinSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn db_query_join_series_to_string(s : DbqueryjoinSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn DbqueryjoinSeries::to_string(self : DbqueryjoinSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn db_query_join_matrix_identity(n : Int) -> DbqueryjoinMatrix {
   m
 }
 
-pub fn db_query_join_matrix_get(m : DbqueryjoinMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn DbqueryjoinMatrix::get(self : DbqueryjoinMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn db_query_join_matrix_transpose(m : DbqueryjoinMatrix) -> DbqueryjoinMatrix {
-  let result = db_query_join_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn DbqueryjoinMatrix::transpose(self : DbqueryjoinMatrix) -> DbqueryjoinMatrix {
+  let result = db_query_join_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn db_query_join_matrix_add(a : DbqueryjoinMatrix, b : DbqueryjoinMatrix) -> DbqueryjoinMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = db_query_join_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn DbqueryjoinMatrix::add(self : DbqueryjoinMatrix, other : DbqueryjoinMatrix) -> DbqueryjoinMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = db_query_join_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn db_query_join_matrix_scale(m : DbqueryjoinMatrix, s : Double) -> DbqueryjoinMatrix {
-  let result = db_query_join_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn DbqueryjoinMatrix::scale(self : DbqueryjoinMatrix, s : Double) -> DbqueryjoinMatrix {
+  let result = db_query_join_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn db_query_join_matrix_multiply(a : DbqueryjoinMatrix, b : DbqueryjoinMatrix) -> DbqueryjoinMatrix {
-  if a.cols != b.rows { return db_query_join_make_matrix(a.rows, b.cols, 0.0) }
-  let result = db_query_join_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn DbqueryjoinMatrix::multiply(self : DbqueryjoinMatrix, other : DbqueryjoinMatrix) -> DbqueryjoinMatrix {
+  if self.cols != other.rows { return db_query_join_make_matrix(self.rows, other.cols, 0.0) }
+  let result = db_query_join_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn db_query_join_matrix_trace(m : DbqueryjoinMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn DbqueryjoinMatrix::trace(self : DbqueryjoinMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn db_query_join_matrix_det(m : DbqueryjoinMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn DbqueryjoinMatrix::det(self : DbqueryjoinMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn db_query_join_matrix_norm(m : DbqueryjoinMatrix) -> Double {
+pub fn DbqueryjoinMatrix::norm(self : DbqueryjoinMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn db_query_join_matrix_to_string(m : DbqueryjoinMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn DbqueryjoinMatrix::to_string(self : DbqueryjoinMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn db_query_join_vector_zero(dim : Int) -> DbqueryjoinVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn db_query_join_vector_add(a : DbqueryjoinVector, b : DbqueryjoinVector) -> DbqueryjoinVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn DbqueryjoinVector::add(self : DbqueryjoinVector, other : DbqueryjoinVector) -> DbqueryjoinVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn db_query_join_vector_sub(a : DbqueryjoinVector, b : DbqueryjoinVector) -> DbqueryjoinVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn DbqueryjoinVector::sub(self : DbqueryjoinVector, other : DbqueryjoinVector) -> DbqueryjoinVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn db_query_join_vector_scale(v : DbqueryjoinVector, s : Double) -> DbqueryjoinVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn DbqueryjoinVector::scale(self : DbqueryjoinVector, s : Double) -> DbqueryjoinVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn db_query_join_vector_dot(a : DbqueryjoinVector, b : DbqueryjoinVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn DbqueryjoinVector::dot(self : DbqueryjoinVector, other : DbqueryjoinVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn db_query_join_vector_norm(v : DbqueryjoinVector) -> Double { @_common.sqrt(db_query_join_vector_dot(v, v)) }
+pub fn DbqueryjoinVector::norm(self : DbqueryjoinVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn db_query_join_vector_normalize(v : DbqueryjoinVector) -> DbqueryjoinVector {
-  let n = db_query_join_vector_norm(v)
-  if n < 0.0000001 { v } else { db_query_join_vector_scale(v, 1.0 / n) }
+pub fn DbqueryjoinVector::normalize(self : DbqueryjoinVector) -> DbqueryjoinVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn db_query_join_vector_dist(a : DbqueryjoinVector, b : DbqueryjoinVector) -> Double {
-  db_query_join_vector_norm(db_query_join_vector_sub(a, b))
+pub fn DbqueryjoinVector::dist(self : DbqueryjoinVector, other : DbqueryjoinVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn db_query_join_vector_to_string(v : DbqueryjoinVector) -> String {
+pub fn DbqueryjoinVector::to_string(self : DbqueryjoinVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn db_query_join_mean(data : Array[Double]) -> Double { @_common.mean(data) }

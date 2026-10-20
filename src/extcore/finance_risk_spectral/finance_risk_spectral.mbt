@@ -16,64 +16,64 @@ pub fn finance_risk_spectral_make_point3(x : Double, y : Double, z : Double) -> 
   { x, y, z, label: 0 }
 }
 
-pub fn finance_risk_spectral_point_x(pt : FinanceriskspectralPoint) -> Double { pt.x }
+pub fn FinanceriskspectralPoint::x(self : FinanceriskspectralPoint) -> Double { self.x }
 
-pub fn finance_risk_spectral_point_y(pt : FinanceriskspectralPoint) -> Double { pt.y }
+pub fn FinanceriskspectralPoint::y(self : FinanceriskspectralPoint) -> Double { self.y }
 
-pub fn finance_risk_spectral_point_z(pt : FinanceriskspectralPoint) -> Double { pt.z }
+pub fn FinanceriskspectralPoint::z(self : FinanceriskspectralPoint) -> Double { self.z }
 
-pub fn finance_risk_spectral_point_label(pt : FinanceriskspectralPoint) -> Int { pt.label }
+pub fn FinanceriskspectralPoint::label(self : FinanceriskspectralPoint) -> Int { self.label }
 
-pub fn finance_risk_spectral_point_dist(a : FinanceriskspectralPoint, b : FinanceriskspectralPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn FinanceriskspectralPoint::dist(self : FinanceriskspectralPoint, other : FinanceriskspectralPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn finance_risk_spectral_point_add(a : FinanceriskspectralPoint, b : FinanceriskspectralPoint) -> FinanceriskspectralPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn FinanceriskspectralPoint::add(self : FinanceriskspectralPoint, other : FinanceriskspectralPoint) -> FinanceriskspectralPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn finance_risk_spectral_point_sub(a : FinanceriskspectralPoint, b : FinanceriskspectralPoint) -> FinanceriskspectralPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn FinanceriskspectralPoint::sub(self : FinanceriskspectralPoint, other : FinanceriskspectralPoint) -> FinanceriskspectralPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn finance_risk_spectral_point_scale(pt : FinanceriskspectralPoint, s : Double) -> FinanceriskspectralPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn FinanceriskspectralPoint::scale(self : FinanceriskspectralPoint, s : Double) -> FinanceriskspectralPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn finance_risk_spectral_point_dot(a : FinanceriskspectralPoint, b : FinanceriskspectralPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn FinanceriskspectralPoint::dot(self : FinanceriskspectralPoint, other : FinanceriskspectralPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn finance_risk_spectral_point_cross(a : FinanceriskspectralPoint, b : FinanceriskspectralPoint) -> FinanceriskspectralPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn FinanceriskspectralPoint::cross(self : FinanceriskspectralPoint, other : FinanceriskspectralPoint) -> FinanceriskspectralPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn finance_risk_spectral_point_norm(pt : FinanceriskspectralPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn FinanceriskspectralPoint::norm(self : FinanceriskspectralPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn finance_risk_spectral_point_normalize(pt : FinanceriskspectralPoint) -> FinanceriskspectralPoint {
-  let n = finance_risk_spectral_point_norm(pt)
-  if n < 0.0000001 { pt } else { finance_risk_spectral_point_scale(pt, 1.0 / n) }
+pub fn FinanceriskspectralPoint::normalize(self : FinanceriskspectralPoint) -> FinanceriskspectralPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn finance_risk_spectral_point_negate(pt : FinanceriskspectralPoint) -> FinanceriskspectralPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn FinanceriskspectralPoint::negate(self : FinanceriskspectralPoint) -> FinanceriskspectralPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn finance_risk_spectral_point_mid(a : FinanceriskspectralPoint, b : FinanceriskspectralPoint) -> FinanceriskspectralPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn FinanceriskspectralPoint::mid(self : FinanceriskspectralPoint, other : FinanceriskspectralPoint) -> FinanceriskspectralPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn finance_risk_spectral_point_lerp(a : FinanceriskspectralPoint, b : FinanceriskspectralPoint, t : Double) -> FinanceriskspectralPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn FinanceriskspectralPoint::lerp(self : FinanceriskspectralPoint, other : FinanceriskspectralPoint, t : Double) -> FinanceriskspectralPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn finance_risk_spectral_point_to_string(pt : FinanceriskspectralPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn FinanceriskspectralPoint::to_string(self : FinanceriskspectralPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct FinanceriskspectralSeries {
@@ -86,58 +86,58 @@ pub fn finance_risk_spectral_make_series(vals : Array[Double], name : String) ->
   { vals, name, meta: 0 }
 }
 
-pub fn finance_risk_spectral_series_len(s : FinanceriskspectralSeries) -> Int { s.vals.length() }
+pub fn FinanceriskspectralSeries::len(self : FinanceriskspectralSeries) -> Int { self.vals.length() }
 
-pub fn finance_risk_spectral_series_sum(s : FinanceriskspectralSeries) -> Double { @_common.sum(s.vals) }
+pub fn FinanceriskspectralSeries::sum(self : FinanceriskspectralSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn finance_risk_spectral_series_mean(s : FinanceriskspectralSeries) -> Double { @_common.mean(s.vals) }
+pub fn FinanceriskspectralSeries::mean(self : FinanceriskspectralSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn finance_risk_spectral_series_min(s : FinanceriskspectralSeries) -> Double { @_common.min(s.vals) }
+pub fn FinanceriskspectralSeries::min(self : FinanceriskspectralSeries) -> Double { @_common.min(self.vals) }
 
-pub fn finance_risk_spectral_series_max(s : FinanceriskspectralSeries) -> Double { @_common.max(s.vals) }
+pub fn FinanceriskspectralSeries::max(self : FinanceriskspectralSeries) -> Double { @_common.max(self.vals) }
 
-pub fn finance_risk_spectral_series_range(s : FinanceriskspectralSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn FinanceriskspectralSeries::range(self : FinanceriskspectralSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn finance_risk_spectral_series_var(s : FinanceriskspectralSeries) -> Double { @_common.variance(s.vals) }
+pub fn FinanceriskspectralSeries::variance(self : FinanceriskspectralSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn finance_risk_spectral_series_std(s : FinanceriskspectralSeries) -> Double { @_common.std(s.vals) }
+pub fn FinanceriskspectralSeries::std(self : FinanceriskspectralSeries) -> Double { @_common.std(self.vals) }
 
-pub fn finance_risk_spectral_series_median(s : FinanceriskspectralSeries) -> Double { @_common.median(s.vals) }
+pub fn FinanceriskspectralSeries::median(self : FinanceriskspectralSeries) -> Double { @_common.median(self.vals) }
 
-pub fn finance_risk_spectral_series_scale(s : FinanceriskspectralSeries, f : Double) -> FinanceriskspectralSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn FinanceriskspectralSeries::scale(self : FinanceriskspectralSeries, f : Double) -> FinanceriskspectralSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn finance_risk_spectral_series_add(a : FinanceriskspectralSeries, b : FinanceriskspectralSeries) -> FinanceriskspectralSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn FinanceriskspectralSeries::add(self : FinanceriskspectralSeries, other : FinanceriskspectralSeries) -> FinanceriskspectralSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn finance_risk_spectral_series_sub(a : FinanceriskspectralSeries, b : FinanceriskspectralSeries) -> FinanceriskspectralSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn FinanceriskspectralSeries::sub(self : FinanceriskspectralSeries, other : FinanceriskspectralSeries) -> FinanceriskspectralSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn finance_risk_spectral_series_normalize(s : FinanceriskspectralSeries) -> FinanceriskspectralSeries {
-  let mn = finance_risk_spectral_series_min(s)
-  let mx = finance_risk_spectral_series_max(s)
+pub fn FinanceriskspectralSeries::normalize(self : FinanceriskspectralSeries) -> FinanceriskspectralSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn finance_risk_spectral_series_cumsum(s : FinanceriskspectralSeries) -> FinanceriskspectralSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn FinanceriskspectralSeries::cumsum(self : FinanceriskspectralSeries) -> FinanceriskspectralSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn finance_risk_spectral_series_to_string(s : FinanceriskspectralSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn FinanceriskspectralSeries::to_string(self : FinanceriskspectralSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn finance_risk_spectral_matrix_identity(n : Int) -> FinanceriskspectralMatr
   m
 }
 
-pub fn finance_risk_spectral_matrix_get(m : FinanceriskspectralMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn FinanceriskspectralMatrix::get(self : FinanceriskspectralMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn finance_risk_spectral_matrix_transpose(m : FinanceriskspectralMatrix) -> FinanceriskspectralMatrix {
-  let result = finance_risk_spectral_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn FinanceriskspectralMatrix::transpose(self : FinanceriskspectralMatrix) -> FinanceriskspectralMatrix {
+  let result = finance_risk_spectral_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn finance_risk_spectral_matrix_add(a : FinanceriskspectralMatrix, b : FinanceriskspectralMatrix) -> FinanceriskspectralMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = finance_risk_spectral_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn FinanceriskspectralMatrix::add(self : FinanceriskspectralMatrix, other : FinanceriskspectralMatrix) -> FinanceriskspectralMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = finance_risk_spectral_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn finance_risk_spectral_matrix_scale(m : FinanceriskspectralMatrix, s : Double) -> FinanceriskspectralMatrix {
-  let result = finance_risk_spectral_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn FinanceriskspectralMatrix::scale(self : FinanceriskspectralMatrix, s : Double) -> FinanceriskspectralMatrix {
+  let result = finance_risk_spectral_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn finance_risk_spectral_matrix_multiply(a : FinanceriskspectralMatrix, b : FinanceriskspectralMatrix) -> FinanceriskspectralMatrix {
-  if a.cols != b.rows { return finance_risk_spectral_make_matrix(a.rows, b.cols, 0.0) }
-  let result = finance_risk_spectral_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn FinanceriskspectralMatrix::multiply(self : FinanceriskspectralMatrix, other : FinanceriskspectralMatrix) -> FinanceriskspectralMatrix {
+  if self.cols != other.rows { return finance_risk_spectral_make_matrix(self.rows, other.cols, 0.0) }
+  let result = finance_risk_spectral_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn finance_risk_spectral_matrix_trace(m : FinanceriskspectralMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn FinanceriskspectralMatrix::trace(self : FinanceriskspectralMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn finance_risk_spectral_matrix_det(m : FinanceriskspectralMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn FinanceriskspectralMatrix::det(self : FinanceriskspectralMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn finance_risk_spectral_matrix_norm(m : FinanceriskspectralMatrix) -> Double {
+pub fn FinanceriskspectralMatrix::norm(self : FinanceriskspectralMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn finance_risk_spectral_matrix_to_string(m : FinanceriskspectralMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn FinanceriskspectralMatrix::to_string(self : FinanceriskspectralMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn finance_risk_spectral_vector_zero(dim : Int) -> FinanceriskspectralVector
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn finance_risk_spectral_vector_add(a : FinanceriskspectralVector, b : FinanceriskspectralVector) -> FinanceriskspectralVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn FinanceriskspectralVector::add(self : FinanceriskspectralVector, other : FinanceriskspectralVector) -> FinanceriskspectralVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn finance_risk_spectral_vector_sub(a : FinanceriskspectralVector, b : FinanceriskspectralVector) -> FinanceriskspectralVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn FinanceriskspectralVector::sub(self : FinanceriskspectralVector, other : FinanceriskspectralVector) -> FinanceriskspectralVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn finance_risk_spectral_vector_scale(v : FinanceriskspectralVector, s : Double) -> FinanceriskspectralVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn FinanceriskspectralVector::scale(self : FinanceriskspectralVector, s : Double) -> FinanceriskspectralVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn finance_risk_spectral_vector_dot(a : FinanceriskspectralVector, b : FinanceriskspectralVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn FinanceriskspectralVector::dot(self : FinanceriskspectralVector, other : FinanceriskspectralVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn finance_risk_spectral_vector_norm(v : FinanceriskspectralVector) -> Double { @_common.sqrt(finance_risk_spectral_vector_dot(v, v)) }
+pub fn FinanceriskspectralVector::norm(self : FinanceriskspectralVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn finance_risk_spectral_vector_normalize(v : FinanceriskspectralVector) -> FinanceriskspectralVector {
-  let n = finance_risk_spectral_vector_norm(v)
-  if n < 0.0000001 { v } else { finance_risk_spectral_vector_scale(v, 1.0 / n) }
+pub fn FinanceriskspectralVector::normalize(self : FinanceriskspectralVector) -> FinanceriskspectralVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn finance_risk_spectral_vector_dist(a : FinanceriskspectralVector, b : FinanceriskspectralVector) -> Double {
-  finance_risk_spectral_vector_norm(finance_risk_spectral_vector_sub(a, b))
+pub fn FinanceriskspectralVector::dist(self : FinanceriskspectralVector, other : FinanceriskspectralVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn finance_risk_spectral_vector_to_string(v : FinanceriskspectralVector) -> String {
+pub fn FinanceriskspectralVector::to_string(self : FinanceriskspectralVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn finance_risk_spectral_mean(data : Array[Double]) -> Double { @_common.mean(data) }

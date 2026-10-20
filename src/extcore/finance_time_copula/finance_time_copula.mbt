@@ -16,64 +16,64 @@ pub fn finance_time_copula_make_point3(x : Double, y : Double, z : Double) -> Fi
   { x, y, z, label: 0 }
 }
 
-pub fn finance_time_copula_point_x(pt : FinancetimecopulaPoint) -> Double { pt.x }
+pub fn FinancetimecopulaPoint::x(self : FinancetimecopulaPoint) -> Double { self.x }
 
-pub fn finance_time_copula_point_y(pt : FinancetimecopulaPoint) -> Double { pt.y }
+pub fn FinancetimecopulaPoint::y(self : FinancetimecopulaPoint) -> Double { self.y }
 
-pub fn finance_time_copula_point_z(pt : FinancetimecopulaPoint) -> Double { pt.z }
+pub fn FinancetimecopulaPoint::z(self : FinancetimecopulaPoint) -> Double { self.z }
 
-pub fn finance_time_copula_point_label(pt : FinancetimecopulaPoint) -> Int { pt.label }
+pub fn FinancetimecopulaPoint::label(self : FinancetimecopulaPoint) -> Int { self.label }
 
-pub fn finance_time_copula_point_dist(a : FinancetimecopulaPoint, b : FinancetimecopulaPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn FinancetimecopulaPoint::dist(self : FinancetimecopulaPoint, other : FinancetimecopulaPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn finance_time_copula_point_add(a : FinancetimecopulaPoint, b : FinancetimecopulaPoint) -> FinancetimecopulaPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn FinancetimecopulaPoint::add(self : FinancetimecopulaPoint, other : FinancetimecopulaPoint) -> FinancetimecopulaPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn finance_time_copula_point_sub(a : FinancetimecopulaPoint, b : FinancetimecopulaPoint) -> FinancetimecopulaPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn FinancetimecopulaPoint::sub(self : FinancetimecopulaPoint, other : FinancetimecopulaPoint) -> FinancetimecopulaPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn finance_time_copula_point_scale(pt : FinancetimecopulaPoint, s : Double) -> FinancetimecopulaPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn FinancetimecopulaPoint::scale(self : FinancetimecopulaPoint, s : Double) -> FinancetimecopulaPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn finance_time_copula_point_dot(a : FinancetimecopulaPoint, b : FinancetimecopulaPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn FinancetimecopulaPoint::dot(self : FinancetimecopulaPoint, other : FinancetimecopulaPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn finance_time_copula_point_cross(a : FinancetimecopulaPoint, b : FinancetimecopulaPoint) -> FinancetimecopulaPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn FinancetimecopulaPoint::cross(self : FinancetimecopulaPoint, other : FinancetimecopulaPoint) -> FinancetimecopulaPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn finance_time_copula_point_norm(pt : FinancetimecopulaPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn FinancetimecopulaPoint::norm(self : FinancetimecopulaPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn finance_time_copula_point_normalize(pt : FinancetimecopulaPoint) -> FinancetimecopulaPoint {
-  let n = finance_time_copula_point_norm(pt)
-  if n < 0.0000001 { pt } else { finance_time_copula_point_scale(pt, 1.0 / n) }
+pub fn FinancetimecopulaPoint::normalize(self : FinancetimecopulaPoint) -> FinancetimecopulaPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn finance_time_copula_point_negate(pt : FinancetimecopulaPoint) -> FinancetimecopulaPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn FinancetimecopulaPoint::negate(self : FinancetimecopulaPoint) -> FinancetimecopulaPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn finance_time_copula_point_mid(a : FinancetimecopulaPoint, b : FinancetimecopulaPoint) -> FinancetimecopulaPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn FinancetimecopulaPoint::mid(self : FinancetimecopulaPoint, other : FinancetimecopulaPoint) -> FinancetimecopulaPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn finance_time_copula_point_lerp(a : FinancetimecopulaPoint, b : FinancetimecopulaPoint, t : Double) -> FinancetimecopulaPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn FinancetimecopulaPoint::lerp(self : FinancetimecopulaPoint, other : FinancetimecopulaPoint, t : Double) -> FinancetimecopulaPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn finance_time_copula_point_to_string(pt : FinancetimecopulaPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn FinancetimecopulaPoint::to_string(self : FinancetimecopulaPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct FinancetimecopulaSeries {
@@ -86,58 +86,58 @@ pub fn finance_time_copula_make_series(vals : Array[Double], name : String) -> F
   { vals, name, meta: 0 }
 }
 
-pub fn finance_time_copula_series_len(s : FinancetimecopulaSeries) -> Int { s.vals.length() }
+pub fn FinancetimecopulaSeries::len(self : FinancetimecopulaSeries) -> Int { self.vals.length() }
 
-pub fn finance_time_copula_series_sum(s : FinancetimecopulaSeries) -> Double { @_common.sum(s.vals) }
+pub fn FinancetimecopulaSeries::sum(self : FinancetimecopulaSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn finance_time_copula_series_mean(s : FinancetimecopulaSeries) -> Double { @_common.mean(s.vals) }
+pub fn FinancetimecopulaSeries::mean(self : FinancetimecopulaSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn finance_time_copula_series_min(s : FinancetimecopulaSeries) -> Double { @_common.min(s.vals) }
+pub fn FinancetimecopulaSeries::min(self : FinancetimecopulaSeries) -> Double { @_common.min(self.vals) }
 
-pub fn finance_time_copula_series_max(s : FinancetimecopulaSeries) -> Double { @_common.max(s.vals) }
+pub fn FinancetimecopulaSeries::max(self : FinancetimecopulaSeries) -> Double { @_common.max(self.vals) }
 
-pub fn finance_time_copula_series_range(s : FinancetimecopulaSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn FinancetimecopulaSeries::range(self : FinancetimecopulaSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn finance_time_copula_series_var(s : FinancetimecopulaSeries) -> Double { @_common.variance(s.vals) }
+pub fn FinancetimecopulaSeries::variance(self : FinancetimecopulaSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn finance_time_copula_series_std(s : FinancetimecopulaSeries) -> Double { @_common.std(s.vals) }
+pub fn FinancetimecopulaSeries::std(self : FinancetimecopulaSeries) -> Double { @_common.std(self.vals) }
 
-pub fn finance_time_copula_series_median(s : FinancetimecopulaSeries) -> Double { @_common.median(s.vals) }
+pub fn FinancetimecopulaSeries::median(self : FinancetimecopulaSeries) -> Double { @_common.median(self.vals) }
 
-pub fn finance_time_copula_series_scale(s : FinancetimecopulaSeries, f : Double) -> FinancetimecopulaSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn FinancetimecopulaSeries::scale(self : FinancetimecopulaSeries, f : Double) -> FinancetimecopulaSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn finance_time_copula_series_add(a : FinancetimecopulaSeries, b : FinancetimecopulaSeries) -> FinancetimecopulaSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn FinancetimecopulaSeries::add(self : FinancetimecopulaSeries, other : FinancetimecopulaSeries) -> FinancetimecopulaSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn finance_time_copula_series_sub(a : FinancetimecopulaSeries, b : FinancetimecopulaSeries) -> FinancetimecopulaSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn FinancetimecopulaSeries::sub(self : FinancetimecopulaSeries, other : FinancetimecopulaSeries) -> FinancetimecopulaSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn finance_time_copula_series_normalize(s : FinancetimecopulaSeries) -> FinancetimecopulaSeries {
-  let mn = finance_time_copula_series_min(s)
-  let mx = finance_time_copula_series_max(s)
+pub fn FinancetimecopulaSeries::normalize(self : FinancetimecopulaSeries) -> FinancetimecopulaSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn finance_time_copula_series_cumsum(s : FinancetimecopulaSeries) -> FinancetimecopulaSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn FinancetimecopulaSeries::cumsum(self : FinancetimecopulaSeries) -> FinancetimecopulaSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn finance_time_copula_series_to_string(s : FinancetimecopulaSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn FinancetimecopulaSeries::to_string(self : FinancetimecopulaSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn finance_time_copula_matrix_identity(n : Int) -> FinancetimecopulaMatrix {
   m
 }
 
-pub fn finance_time_copula_matrix_get(m : FinancetimecopulaMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn FinancetimecopulaMatrix::get(self : FinancetimecopulaMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn finance_time_copula_matrix_transpose(m : FinancetimecopulaMatrix) -> FinancetimecopulaMatrix {
-  let result = finance_time_copula_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn FinancetimecopulaMatrix::transpose(self : FinancetimecopulaMatrix) -> FinancetimecopulaMatrix {
+  let result = finance_time_copula_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn finance_time_copula_matrix_add(a : FinancetimecopulaMatrix, b : FinancetimecopulaMatrix) -> FinancetimecopulaMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = finance_time_copula_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn FinancetimecopulaMatrix::add(self : FinancetimecopulaMatrix, other : FinancetimecopulaMatrix) -> FinancetimecopulaMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = finance_time_copula_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn finance_time_copula_matrix_scale(m : FinancetimecopulaMatrix, s : Double) -> FinancetimecopulaMatrix {
-  let result = finance_time_copula_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn FinancetimecopulaMatrix::scale(self : FinancetimecopulaMatrix, s : Double) -> FinancetimecopulaMatrix {
+  let result = finance_time_copula_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn finance_time_copula_matrix_multiply(a : FinancetimecopulaMatrix, b : FinancetimecopulaMatrix) -> FinancetimecopulaMatrix {
-  if a.cols != b.rows { return finance_time_copula_make_matrix(a.rows, b.cols, 0.0) }
-  let result = finance_time_copula_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn FinancetimecopulaMatrix::multiply(self : FinancetimecopulaMatrix, other : FinancetimecopulaMatrix) -> FinancetimecopulaMatrix {
+  if self.cols != other.rows { return finance_time_copula_make_matrix(self.rows, other.cols, 0.0) }
+  let result = finance_time_copula_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn finance_time_copula_matrix_trace(m : FinancetimecopulaMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn FinancetimecopulaMatrix::trace(self : FinancetimecopulaMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn finance_time_copula_matrix_det(m : FinancetimecopulaMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn FinancetimecopulaMatrix::det(self : FinancetimecopulaMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn finance_time_copula_matrix_norm(m : FinancetimecopulaMatrix) -> Double {
+pub fn FinancetimecopulaMatrix::norm(self : FinancetimecopulaMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn finance_time_copula_matrix_to_string(m : FinancetimecopulaMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn FinancetimecopulaMatrix::to_string(self : FinancetimecopulaMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn finance_time_copula_vector_zero(dim : Int) -> FinancetimecopulaVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn finance_time_copula_vector_add(a : FinancetimecopulaVector, b : FinancetimecopulaVector) -> FinancetimecopulaVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn FinancetimecopulaVector::add(self : FinancetimecopulaVector, other : FinancetimecopulaVector) -> FinancetimecopulaVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn finance_time_copula_vector_sub(a : FinancetimecopulaVector, b : FinancetimecopulaVector) -> FinancetimecopulaVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn FinancetimecopulaVector::sub(self : FinancetimecopulaVector, other : FinancetimecopulaVector) -> FinancetimecopulaVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn finance_time_copula_vector_scale(v : FinancetimecopulaVector, s : Double) -> FinancetimecopulaVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn FinancetimecopulaVector::scale(self : FinancetimecopulaVector, s : Double) -> FinancetimecopulaVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn finance_time_copula_vector_dot(a : FinancetimecopulaVector, b : FinancetimecopulaVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn FinancetimecopulaVector::dot(self : FinancetimecopulaVector, other : FinancetimecopulaVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn finance_time_copula_vector_norm(v : FinancetimecopulaVector) -> Double { @_common.sqrt(finance_time_copula_vector_dot(v, v)) }
+pub fn FinancetimecopulaVector::norm(self : FinancetimecopulaVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn finance_time_copula_vector_normalize(v : FinancetimecopulaVector) -> FinancetimecopulaVector {
-  let n = finance_time_copula_vector_norm(v)
-  if n < 0.0000001 { v } else { finance_time_copula_vector_scale(v, 1.0 / n) }
+pub fn FinancetimecopulaVector::normalize(self : FinancetimecopulaVector) -> FinancetimecopulaVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn finance_time_copula_vector_dist(a : FinancetimecopulaVector, b : FinancetimecopulaVector) -> Double {
-  finance_time_copula_vector_norm(finance_time_copula_vector_sub(a, b))
+pub fn FinancetimecopulaVector::dist(self : FinancetimecopulaVector, other : FinancetimecopulaVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn finance_time_copula_vector_to_string(v : FinancetimecopulaVector) -> String {
+pub fn FinancetimecopulaVector::to_string(self : FinancetimecopulaVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn finance_time_copula_mean(data : Array[Double]) -> Double { @_common.mean(data) }

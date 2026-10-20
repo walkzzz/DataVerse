@@ -16,64 +16,64 @@ pub fn physics_heat_radiation_make_point3(x : Double, y : Double, z : Double) ->
   { x, y, z, label: 0 }
 }
 
-pub fn physics_heat_radiation_point_x(pt : PhysicsheatradiationPoint) -> Double { pt.x }
+pub fn PhysicsheatradiationPoint::x(self : PhysicsheatradiationPoint) -> Double { self.x }
 
-pub fn physics_heat_radiation_point_y(pt : PhysicsheatradiationPoint) -> Double { pt.y }
+pub fn PhysicsheatradiationPoint::y(self : PhysicsheatradiationPoint) -> Double { self.y }
 
-pub fn physics_heat_radiation_point_z(pt : PhysicsheatradiationPoint) -> Double { pt.z }
+pub fn PhysicsheatradiationPoint::z(self : PhysicsheatradiationPoint) -> Double { self.z }
 
-pub fn physics_heat_radiation_point_label(pt : PhysicsheatradiationPoint) -> Int { pt.label }
+pub fn PhysicsheatradiationPoint::label(self : PhysicsheatradiationPoint) -> Int { self.label }
 
-pub fn physics_heat_radiation_point_dist(a : PhysicsheatradiationPoint, b : PhysicsheatradiationPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn PhysicsheatradiationPoint::dist(self : PhysicsheatradiationPoint, other : PhysicsheatradiationPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn physics_heat_radiation_point_add(a : PhysicsheatradiationPoint, b : PhysicsheatradiationPoint) -> PhysicsheatradiationPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn PhysicsheatradiationPoint::add(self : PhysicsheatradiationPoint, other : PhysicsheatradiationPoint) -> PhysicsheatradiationPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn physics_heat_radiation_point_sub(a : PhysicsheatradiationPoint, b : PhysicsheatradiationPoint) -> PhysicsheatradiationPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn PhysicsheatradiationPoint::sub(self : PhysicsheatradiationPoint, other : PhysicsheatradiationPoint) -> PhysicsheatradiationPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn physics_heat_radiation_point_scale(pt : PhysicsheatradiationPoint, s : Double) -> PhysicsheatradiationPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn PhysicsheatradiationPoint::scale(self : PhysicsheatradiationPoint, s : Double) -> PhysicsheatradiationPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn physics_heat_radiation_point_dot(a : PhysicsheatradiationPoint, b : PhysicsheatradiationPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn PhysicsheatradiationPoint::dot(self : PhysicsheatradiationPoint, other : PhysicsheatradiationPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn physics_heat_radiation_point_cross(a : PhysicsheatradiationPoint, b : PhysicsheatradiationPoint) -> PhysicsheatradiationPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn PhysicsheatradiationPoint::cross(self : PhysicsheatradiationPoint, other : PhysicsheatradiationPoint) -> PhysicsheatradiationPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn physics_heat_radiation_point_norm(pt : PhysicsheatradiationPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn PhysicsheatradiationPoint::norm(self : PhysicsheatradiationPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn physics_heat_radiation_point_normalize(pt : PhysicsheatradiationPoint) -> PhysicsheatradiationPoint {
-  let n = physics_heat_radiation_point_norm(pt)
-  if n < 0.0000001 { pt } else { physics_heat_radiation_point_scale(pt, 1.0 / n) }
+pub fn PhysicsheatradiationPoint::normalize(self : PhysicsheatradiationPoint) -> PhysicsheatradiationPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn physics_heat_radiation_point_negate(pt : PhysicsheatradiationPoint) -> PhysicsheatradiationPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn PhysicsheatradiationPoint::negate(self : PhysicsheatradiationPoint) -> PhysicsheatradiationPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn physics_heat_radiation_point_mid(a : PhysicsheatradiationPoint, b : PhysicsheatradiationPoint) -> PhysicsheatradiationPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn PhysicsheatradiationPoint::mid(self : PhysicsheatradiationPoint, other : PhysicsheatradiationPoint) -> PhysicsheatradiationPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn physics_heat_radiation_point_lerp(a : PhysicsheatradiationPoint, b : PhysicsheatradiationPoint, t : Double) -> PhysicsheatradiationPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn PhysicsheatradiationPoint::lerp(self : PhysicsheatradiationPoint, other : PhysicsheatradiationPoint, t : Double) -> PhysicsheatradiationPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn physics_heat_radiation_point_to_string(pt : PhysicsheatradiationPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn PhysicsheatradiationPoint::to_string(self : PhysicsheatradiationPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct PhysicsheatradiationSeries {
@@ -86,58 +86,58 @@ pub fn physics_heat_radiation_make_series(vals : Array[Double], name : String) -
   { vals, name, meta: 0 }
 }
 
-pub fn physics_heat_radiation_series_len(s : PhysicsheatradiationSeries) -> Int { s.vals.length() }
+pub fn PhysicsheatradiationSeries::len(self : PhysicsheatradiationSeries) -> Int { self.vals.length() }
 
-pub fn physics_heat_radiation_series_sum(s : PhysicsheatradiationSeries) -> Double { @_common.sum(s.vals) }
+pub fn PhysicsheatradiationSeries::sum(self : PhysicsheatradiationSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn physics_heat_radiation_series_mean(s : PhysicsheatradiationSeries) -> Double { @_common.mean(s.vals) }
+pub fn PhysicsheatradiationSeries::mean(self : PhysicsheatradiationSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn physics_heat_radiation_series_min(s : PhysicsheatradiationSeries) -> Double { @_common.min(s.vals) }
+pub fn PhysicsheatradiationSeries::min(self : PhysicsheatradiationSeries) -> Double { @_common.min(self.vals) }
 
-pub fn physics_heat_radiation_series_max(s : PhysicsheatradiationSeries) -> Double { @_common.max(s.vals) }
+pub fn PhysicsheatradiationSeries::max(self : PhysicsheatradiationSeries) -> Double { @_common.max(self.vals) }
 
-pub fn physics_heat_radiation_series_range(s : PhysicsheatradiationSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn PhysicsheatradiationSeries::range(self : PhysicsheatradiationSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn physics_heat_radiation_series_var(s : PhysicsheatradiationSeries) -> Double { @_common.variance(s.vals) }
+pub fn PhysicsheatradiationSeries::variance(self : PhysicsheatradiationSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn physics_heat_radiation_series_std(s : PhysicsheatradiationSeries) -> Double { @_common.std(s.vals) }
+pub fn PhysicsheatradiationSeries::std(self : PhysicsheatradiationSeries) -> Double { @_common.std(self.vals) }
 
-pub fn physics_heat_radiation_series_median(s : PhysicsheatradiationSeries) -> Double { @_common.median(s.vals) }
+pub fn PhysicsheatradiationSeries::median(self : PhysicsheatradiationSeries) -> Double { @_common.median(self.vals) }
 
-pub fn physics_heat_radiation_series_scale(s : PhysicsheatradiationSeries, f : Double) -> PhysicsheatradiationSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn PhysicsheatradiationSeries::scale(self : PhysicsheatradiationSeries, f : Double) -> PhysicsheatradiationSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn physics_heat_radiation_series_add(a : PhysicsheatradiationSeries, b : PhysicsheatradiationSeries) -> PhysicsheatradiationSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn PhysicsheatradiationSeries::add(self : PhysicsheatradiationSeries, other : PhysicsheatradiationSeries) -> PhysicsheatradiationSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn physics_heat_radiation_series_sub(a : PhysicsheatradiationSeries, b : PhysicsheatradiationSeries) -> PhysicsheatradiationSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn PhysicsheatradiationSeries::sub(self : PhysicsheatradiationSeries, other : PhysicsheatradiationSeries) -> PhysicsheatradiationSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn physics_heat_radiation_series_normalize(s : PhysicsheatradiationSeries) -> PhysicsheatradiationSeries {
-  let mn = physics_heat_radiation_series_min(s)
-  let mx = physics_heat_radiation_series_max(s)
+pub fn PhysicsheatradiationSeries::normalize(self : PhysicsheatradiationSeries) -> PhysicsheatradiationSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn physics_heat_radiation_series_cumsum(s : PhysicsheatradiationSeries) -> PhysicsheatradiationSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn PhysicsheatradiationSeries::cumsum(self : PhysicsheatradiationSeries) -> PhysicsheatradiationSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn physics_heat_radiation_series_to_string(s : PhysicsheatradiationSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn PhysicsheatradiationSeries::to_string(self : PhysicsheatradiationSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn physics_heat_radiation_matrix_identity(n : Int) -> PhysicsheatradiationMa
   m
 }
 
-pub fn physics_heat_radiation_matrix_get(m : PhysicsheatradiationMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn PhysicsheatradiationMatrix::get(self : PhysicsheatradiationMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn physics_heat_radiation_matrix_transpose(m : PhysicsheatradiationMatrix) -> PhysicsheatradiationMatrix {
-  let result = physics_heat_radiation_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn PhysicsheatradiationMatrix::transpose(self : PhysicsheatradiationMatrix) -> PhysicsheatradiationMatrix {
+  let result = physics_heat_radiation_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn physics_heat_radiation_matrix_add(a : PhysicsheatradiationMatrix, b : PhysicsheatradiationMatrix) -> PhysicsheatradiationMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = physics_heat_radiation_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn PhysicsheatradiationMatrix::add(self : PhysicsheatradiationMatrix, other : PhysicsheatradiationMatrix) -> PhysicsheatradiationMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = physics_heat_radiation_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn physics_heat_radiation_matrix_scale(m : PhysicsheatradiationMatrix, s : Double) -> PhysicsheatradiationMatrix {
-  let result = physics_heat_radiation_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn PhysicsheatradiationMatrix::scale(self : PhysicsheatradiationMatrix, s : Double) -> PhysicsheatradiationMatrix {
+  let result = physics_heat_radiation_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn physics_heat_radiation_matrix_multiply(a : PhysicsheatradiationMatrix, b : PhysicsheatradiationMatrix) -> PhysicsheatradiationMatrix {
-  if a.cols != b.rows { return physics_heat_radiation_make_matrix(a.rows, b.cols, 0.0) }
-  let result = physics_heat_radiation_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn PhysicsheatradiationMatrix::multiply(self : PhysicsheatradiationMatrix, other : PhysicsheatradiationMatrix) -> PhysicsheatradiationMatrix {
+  if self.cols != other.rows { return physics_heat_radiation_make_matrix(self.rows, other.cols, 0.0) }
+  let result = physics_heat_radiation_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn physics_heat_radiation_matrix_trace(m : PhysicsheatradiationMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn PhysicsheatradiationMatrix::trace(self : PhysicsheatradiationMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn physics_heat_radiation_matrix_det(m : PhysicsheatradiationMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn PhysicsheatradiationMatrix::det(self : PhysicsheatradiationMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn physics_heat_radiation_matrix_norm(m : PhysicsheatradiationMatrix) -> Double {
+pub fn PhysicsheatradiationMatrix::norm(self : PhysicsheatradiationMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn physics_heat_radiation_matrix_to_string(m : PhysicsheatradiationMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn PhysicsheatradiationMatrix::to_string(self : PhysicsheatradiationMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn physics_heat_radiation_vector_zero(dim : Int) -> PhysicsheatradiationVect
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn physics_heat_radiation_vector_add(a : PhysicsheatradiationVector, b : PhysicsheatradiationVector) -> PhysicsheatradiationVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn PhysicsheatradiationVector::add(self : PhysicsheatradiationVector, other : PhysicsheatradiationVector) -> PhysicsheatradiationVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn physics_heat_radiation_vector_sub(a : PhysicsheatradiationVector, b : PhysicsheatradiationVector) -> PhysicsheatradiationVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn PhysicsheatradiationVector::sub(self : PhysicsheatradiationVector, other : PhysicsheatradiationVector) -> PhysicsheatradiationVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn physics_heat_radiation_vector_scale(v : PhysicsheatradiationVector, s : Double) -> PhysicsheatradiationVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn PhysicsheatradiationVector::scale(self : PhysicsheatradiationVector, s : Double) -> PhysicsheatradiationVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn physics_heat_radiation_vector_dot(a : PhysicsheatradiationVector, b : PhysicsheatradiationVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn PhysicsheatradiationVector::dot(self : PhysicsheatradiationVector, other : PhysicsheatradiationVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn physics_heat_radiation_vector_norm(v : PhysicsheatradiationVector) -> Double { @_common.sqrt(physics_heat_radiation_vector_dot(v, v)) }
+pub fn PhysicsheatradiationVector::norm(self : PhysicsheatradiationVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn physics_heat_radiation_vector_normalize(v : PhysicsheatradiationVector) -> PhysicsheatradiationVector {
-  let n = physics_heat_radiation_vector_norm(v)
-  if n < 0.0000001 { v } else { physics_heat_radiation_vector_scale(v, 1.0 / n) }
+pub fn PhysicsheatradiationVector::normalize(self : PhysicsheatradiationVector) -> PhysicsheatradiationVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn physics_heat_radiation_vector_dist(a : PhysicsheatradiationVector, b : PhysicsheatradiationVector) -> Double {
-  physics_heat_radiation_vector_norm(physics_heat_radiation_vector_sub(a, b))
+pub fn PhysicsheatradiationVector::dist(self : PhysicsheatradiationVector, other : PhysicsheatradiationVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn physics_heat_radiation_vector_to_string(v : PhysicsheatradiationVector) -> String {
+pub fn PhysicsheatradiationVector::to_string(self : PhysicsheatradiationVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn physics_heat_radiation_mean(data : Array[Double]) -> Double { @_common.mean(data) }

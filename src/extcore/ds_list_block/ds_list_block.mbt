@@ -16,64 +16,64 @@ pub fn ds_list_block_make_point3(x : Double, y : Double, z : Double) -> Dslistbl
   { x, y, z, label: 0 }
 }
 
-pub fn ds_list_block_point_x(pt : DslistblockPoint) -> Double { pt.x }
+pub fn DslistblockPoint::x(self : DslistblockPoint) -> Double { self.x }
 
-pub fn ds_list_block_point_y(pt : DslistblockPoint) -> Double { pt.y }
+pub fn DslistblockPoint::y(self : DslistblockPoint) -> Double { self.y }
 
-pub fn ds_list_block_point_z(pt : DslistblockPoint) -> Double { pt.z }
+pub fn DslistblockPoint::z(self : DslistblockPoint) -> Double { self.z }
 
-pub fn ds_list_block_point_label(pt : DslistblockPoint) -> Int { pt.label }
+pub fn DslistblockPoint::label(self : DslistblockPoint) -> Int { self.label }
 
-pub fn ds_list_block_point_dist(a : DslistblockPoint, b : DslistblockPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn DslistblockPoint::dist(self : DslistblockPoint, other : DslistblockPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn ds_list_block_point_add(a : DslistblockPoint, b : DslistblockPoint) -> DslistblockPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn DslistblockPoint::add(self : DslistblockPoint, other : DslistblockPoint) -> DslistblockPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn ds_list_block_point_sub(a : DslistblockPoint, b : DslistblockPoint) -> DslistblockPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn DslistblockPoint::sub(self : DslistblockPoint, other : DslistblockPoint) -> DslistblockPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn ds_list_block_point_scale(pt : DslistblockPoint, s : Double) -> DslistblockPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn DslistblockPoint::scale(self : DslistblockPoint, s : Double) -> DslistblockPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn ds_list_block_point_dot(a : DslistblockPoint, b : DslistblockPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn DslistblockPoint::dot(self : DslistblockPoint, other : DslistblockPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn ds_list_block_point_cross(a : DslistblockPoint, b : DslistblockPoint) -> DslistblockPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn DslistblockPoint::cross(self : DslistblockPoint, other : DslistblockPoint) -> DslistblockPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn ds_list_block_point_norm(pt : DslistblockPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn DslistblockPoint::norm(self : DslistblockPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn ds_list_block_point_normalize(pt : DslistblockPoint) -> DslistblockPoint {
-  let n = ds_list_block_point_norm(pt)
-  if n < 0.0000001 { pt } else { ds_list_block_point_scale(pt, 1.0 / n) }
+pub fn DslistblockPoint::normalize(self : DslistblockPoint) -> DslistblockPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn ds_list_block_point_negate(pt : DslistblockPoint) -> DslistblockPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn DslistblockPoint::negate(self : DslistblockPoint) -> DslistblockPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn ds_list_block_point_mid(a : DslistblockPoint, b : DslistblockPoint) -> DslistblockPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn DslistblockPoint::mid(self : DslistblockPoint, other : DslistblockPoint) -> DslistblockPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn ds_list_block_point_lerp(a : DslistblockPoint, b : DslistblockPoint, t : Double) -> DslistblockPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn DslistblockPoint::lerp(self : DslistblockPoint, other : DslistblockPoint, t : Double) -> DslistblockPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn ds_list_block_point_to_string(pt : DslistblockPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn DslistblockPoint::to_string(self : DslistblockPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct DslistblockSeries {
@@ -86,58 +86,58 @@ pub fn ds_list_block_make_series(vals : Array[Double], name : String) -> Dslistb
   { vals, name, meta: 0 }
 }
 
-pub fn ds_list_block_series_len(s : DslistblockSeries) -> Int { s.vals.length() }
+pub fn DslistblockSeries::len(self : DslistblockSeries) -> Int { self.vals.length() }
 
-pub fn ds_list_block_series_sum(s : DslistblockSeries) -> Double { @_common.sum(s.vals) }
+pub fn DslistblockSeries::sum(self : DslistblockSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn ds_list_block_series_mean(s : DslistblockSeries) -> Double { @_common.mean(s.vals) }
+pub fn DslistblockSeries::mean(self : DslistblockSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn ds_list_block_series_min(s : DslistblockSeries) -> Double { @_common.min(s.vals) }
+pub fn DslistblockSeries::min(self : DslistblockSeries) -> Double { @_common.min(self.vals) }
 
-pub fn ds_list_block_series_max(s : DslistblockSeries) -> Double { @_common.max(s.vals) }
+pub fn DslistblockSeries::max(self : DslistblockSeries) -> Double { @_common.max(self.vals) }
 
-pub fn ds_list_block_series_range(s : DslistblockSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn DslistblockSeries::range(self : DslistblockSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn ds_list_block_series_var(s : DslistblockSeries) -> Double { @_common.variance(s.vals) }
+pub fn DslistblockSeries::variance(self : DslistblockSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn ds_list_block_series_std(s : DslistblockSeries) -> Double { @_common.std(s.vals) }
+pub fn DslistblockSeries::std(self : DslistblockSeries) -> Double { @_common.std(self.vals) }
 
-pub fn ds_list_block_series_median(s : DslistblockSeries) -> Double { @_common.median(s.vals) }
+pub fn DslistblockSeries::median(self : DslistblockSeries) -> Double { @_common.median(self.vals) }
 
-pub fn ds_list_block_series_scale(s : DslistblockSeries, f : Double) -> DslistblockSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn DslistblockSeries::scale(self : DslistblockSeries, f : Double) -> DslistblockSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn ds_list_block_series_add(a : DslistblockSeries, b : DslistblockSeries) -> DslistblockSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn DslistblockSeries::add(self : DslistblockSeries, other : DslistblockSeries) -> DslistblockSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn ds_list_block_series_sub(a : DslistblockSeries, b : DslistblockSeries) -> DslistblockSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn DslistblockSeries::sub(self : DslistblockSeries, other : DslistblockSeries) -> DslistblockSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn ds_list_block_series_normalize(s : DslistblockSeries) -> DslistblockSeries {
-  let mn = ds_list_block_series_min(s)
-  let mx = ds_list_block_series_max(s)
+pub fn DslistblockSeries::normalize(self : DslistblockSeries) -> DslistblockSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn ds_list_block_series_cumsum(s : DslistblockSeries) -> DslistblockSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn DslistblockSeries::cumsum(self : DslistblockSeries) -> DslistblockSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn ds_list_block_series_to_string(s : DslistblockSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn DslistblockSeries::to_string(self : DslistblockSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn ds_list_block_matrix_identity(n : Int) -> DslistblockMatrix {
   m
 }
 
-pub fn ds_list_block_matrix_get(m : DslistblockMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn DslistblockMatrix::get(self : DslistblockMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn ds_list_block_matrix_transpose(m : DslistblockMatrix) -> DslistblockMatrix {
-  let result = ds_list_block_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn DslistblockMatrix::transpose(self : DslistblockMatrix) -> DslistblockMatrix {
+  let result = ds_list_block_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn ds_list_block_matrix_add(a : DslistblockMatrix, b : DslistblockMatrix) -> DslistblockMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = ds_list_block_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn DslistblockMatrix::add(self : DslistblockMatrix, other : DslistblockMatrix) -> DslistblockMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = ds_list_block_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn ds_list_block_matrix_scale(m : DslistblockMatrix, s : Double) -> DslistblockMatrix {
-  let result = ds_list_block_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn DslistblockMatrix::scale(self : DslistblockMatrix, s : Double) -> DslistblockMatrix {
+  let result = ds_list_block_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn ds_list_block_matrix_multiply(a : DslistblockMatrix, b : DslistblockMatrix) -> DslistblockMatrix {
-  if a.cols != b.rows { return ds_list_block_make_matrix(a.rows, b.cols, 0.0) }
-  let result = ds_list_block_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn DslistblockMatrix::multiply(self : DslistblockMatrix, other : DslistblockMatrix) -> DslistblockMatrix {
+  if self.cols != other.rows { return ds_list_block_make_matrix(self.rows, other.cols, 0.0) }
+  let result = ds_list_block_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn ds_list_block_matrix_trace(m : DslistblockMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn DslistblockMatrix::trace(self : DslistblockMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn ds_list_block_matrix_det(m : DslistblockMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn DslistblockMatrix::det(self : DslistblockMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn ds_list_block_matrix_norm(m : DslistblockMatrix) -> Double {
+pub fn DslistblockMatrix::norm(self : DslistblockMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn ds_list_block_matrix_to_string(m : DslistblockMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn DslistblockMatrix::to_string(self : DslistblockMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn ds_list_block_vector_zero(dim : Int) -> DslistblockVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn ds_list_block_vector_add(a : DslistblockVector, b : DslistblockVector) -> DslistblockVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn DslistblockVector::add(self : DslistblockVector, other : DslistblockVector) -> DslistblockVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn ds_list_block_vector_sub(a : DslistblockVector, b : DslistblockVector) -> DslistblockVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn DslistblockVector::sub(self : DslistblockVector, other : DslistblockVector) -> DslistblockVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn ds_list_block_vector_scale(v : DslistblockVector, s : Double) -> DslistblockVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn DslistblockVector::scale(self : DslistblockVector, s : Double) -> DslistblockVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn ds_list_block_vector_dot(a : DslistblockVector, b : DslistblockVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn DslistblockVector::dot(self : DslistblockVector, other : DslistblockVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn ds_list_block_vector_norm(v : DslistblockVector) -> Double { @_common.sqrt(ds_list_block_vector_dot(v, v)) }
+pub fn DslistblockVector::norm(self : DslistblockVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn ds_list_block_vector_normalize(v : DslistblockVector) -> DslistblockVector {
-  let n = ds_list_block_vector_norm(v)
-  if n < 0.0000001 { v } else { ds_list_block_vector_scale(v, 1.0 / n) }
+pub fn DslistblockVector::normalize(self : DslistblockVector) -> DslistblockVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn ds_list_block_vector_dist(a : DslistblockVector, b : DslistblockVector) -> Double {
-  ds_list_block_vector_norm(ds_list_block_vector_sub(a, b))
+pub fn DslistblockVector::dist(self : DslistblockVector, other : DslistblockVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn ds_list_block_vector_to_string(v : DslistblockVector) -> String {
+pub fn DslistblockVector::to_string(self : DslistblockVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn ds_list_block_mean(data : Array[Double]) -> Double { @_common.mean(data) }

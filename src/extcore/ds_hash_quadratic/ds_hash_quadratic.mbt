@@ -16,64 +16,64 @@ pub fn ds_hash_quadratic_make_point3(x : Double, y : Double, z : Double) -> Dsha
   { x, y, z, label: 0 }
 }
 
-pub fn ds_hash_quadratic_point_x(pt : DshashquadraticPoint) -> Double { pt.x }
+pub fn DshashquadraticPoint::x(self : DshashquadraticPoint) -> Double { self.x }
 
-pub fn ds_hash_quadratic_point_y(pt : DshashquadraticPoint) -> Double { pt.y }
+pub fn DshashquadraticPoint::y(self : DshashquadraticPoint) -> Double { self.y }
 
-pub fn ds_hash_quadratic_point_z(pt : DshashquadraticPoint) -> Double { pt.z }
+pub fn DshashquadraticPoint::z(self : DshashquadraticPoint) -> Double { self.z }
 
-pub fn ds_hash_quadratic_point_label(pt : DshashquadraticPoint) -> Int { pt.label }
+pub fn DshashquadraticPoint::label(self : DshashquadraticPoint) -> Int { self.label }
 
-pub fn ds_hash_quadratic_point_dist(a : DshashquadraticPoint, b : DshashquadraticPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn DshashquadraticPoint::dist(self : DshashquadraticPoint, other : DshashquadraticPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn ds_hash_quadratic_point_add(a : DshashquadraticPoint, b : DshashquadraticPoint) -> DshashquadraticPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn DshashquadraticPoint::add(self : DshashquadraticPoint, other : DshashquadraticPoint) -> DshashquadraticPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn ds_hash_quadratic_point_sub(a : DshashquadraticPoint, b : DshashquadraticPoint) -> DshashquadraticPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn DshashquadraticPoint::sub(self : DshashquadraticPoint, other : DshashquadraticPoint) -> DshashquadraticPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn ds_hash_quadratic_point_scale(pt : DshashquadraticPoint, s : Double) -> DshashquadraticPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn DshashquadraticPoint::scale(self : DshashquadraticPoint, s : Double) -> DshashquadraticPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn ds_hash_quadratic_point_dot(a : DshashquadraticPoint, b : DshashquadraticPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn DshashquadraticPoint::dot(self : DshashquadraticPoint, other : DshashquadraticPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn ds_hash_quadratic_point_cross(a : DshashquadraticPoint, b : DshashquadraticPoint) -> DshashquadraticPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn DshashquadraticPoint::cross(self : DshashquadraticPoint, other : DshashquadraticPoint) -> DshashquadraticPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn ds_hash_quadratic_point_norm(pt : DshashquadraticPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn DshashquadraticPoint::norm(self : DshashquadraticPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn ds_hash_quadratic_point_normalize(pt : DshashquadraticPoint) -> DshashquadraticPoint {
-  let n = ds_hash_quadratic_point_norm(pt)
-  if n < 0.0000001 { pt } else { ds_hash_quadratic_point_scale(pt, 1.0 / n) }
+pub fn DshashquadraticPoint::normalize(self : DshashquadraticPoint) -> DshashquadraticPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn ds_hash_quadratic_point_negate(pt : DshashquadraticPoint) -> DshashquadraticPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn DshashquadraticPoint::negate(self : DshashquadraticPoint) -> DshashquadraticPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn ds_hash_quadratic_point_mid(a : DshashquadraticPoint, b : DshashquadraticPoint) -> DshashquadraticPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn DshashquadraticPoint::mid(self : DshashquadraticPoint, other : DshashquadraticPoint) -> DshashquadraticPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn ds_hash_quadratic_point_lerp(a : DshashquadraticPoint, b : DshashquadraticPoint, t : Double) -> DshashquadraticPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn DshashquadraticPoint::lerp(self : DshashquadraticPoint, other : DshashquadraticPoint, t : Double) -> DshashquadraticPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn ds_hash_quadratic_point_to_string(pt : DshashquadraticPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn DshashquadraticPoint::to_string(self : DshashquadraticPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct DshashquadraticSeries {
@@ -86,58 +86,58 @@ pub fn ds_hash_quadratic_make_series(vals : Array[Double], name : String) -> Dsh
   { vals, name, meta: 0 }
 }
 
-pub fn ds_hash_quadratic_series_len(s : DshashquadraticSeries) -> Int { s.vals.length() }
+pub fn DshashquadraticSeries::len(self : DshashquadraticSeries) -> Int { self.vals.length() }
 
-pub fn ds_hash_quadratic_series_sum(s : DshashquadraticSeries) -> Double { @_common.sum(s.vals) }
+pub fn DshashquadraticSeries::sum(self : DshashquadraticSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn ds_hash_quadratic_series_mean(s : DshashquadraticSeries) -> Double { @_common.mean(s.vals) }
+pub fn DshashquadraticSeries::mean(self : DshashquadraticSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn ds_hash_quadratic_series_min(s : DshashquadraticSeries) -> Double { @_common.min(s.vals) }
+pub fn DshashquadraticSeries::min(self : DshashquadraticSeries) -> Double { @_common.min(self.vals) }
 
-pub fn ds_hash_quadratic_series_max(s : DshashquadraticSeries) -> Double { @_common.max(s.vals) }
+pub fn DshashquadraticSeries::max(self : DshashquadraticSeries) -> Double { @_common.max(self.vals) }
 
-pub fn ds_hash_quadratic_series_range(s : DshashquadraticSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn DshashquadraticSeries::range(self : DshashquadraticSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn ds_hash_quadratic_series_var(s : DshashquadraticSeries) -> Double { @_common.variance(s.vals) }
+pub fn DshashquadraticSeries::variance(self : DshashquadraticSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn ds_hash_quadratic_series_std(s : DshashquadraticSeries) -> Double { @_common.std(s.vals) }
+pub fn DshashquadraticSeries::std(self : DshashquadraticSeries) -> Double { @_common.std(self.vals) }
 
-pub fn ds_hash_quadratic_series_median(s : DshashquadraticSeries) -> Double { @_common.median(s.vals) }
+pub fn DshashquadraticSeries::median(self : DshashquadraticSeries) -> Double { @_common.median(self.vals) }
 
-pub fn ds_hash_quadratic_series_scale(s : DshashquadraticSeries, f : Double) -> DshashquadraticSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn DshashquadraticSeries::scale(self : DshashquadraticSeries, f : Double) -> DshashquadraticSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn ds_hash_quadratic_series_add(a : DshashquadraticSeries, b : DshashquadraticSeries) -> DshashquadraticSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn DshashquadraticSeries::add(self : DshashquadraticSeries, other : DshashquadraticSeries) -> DshashquadraticSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn ds_hash_quadratic_series_sub(a : DshashquadraticSeries, b : DshashquadraticSeries) -> DshashquadraticSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn DshashquadraticSeries::sub(self : DshashquadraticSeries, other : DshashquadraticSeries) -> DshashquadraticSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn ds_hash_quadratic_series_normalize(s : DshashquadraticSeries) -> DshashquadraticSeries {
-  let mn = ds_hash_quadratic_series_min(s)
-  let mx = ds_hash_quadratic_series_max(s)
+pub fn DshashquadraticSeries::normalize(self : DshashquadraticSeries) -> DshashquadraticSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn ds_hash_quadratic_series_cumsum(s : DshashquadraticSeries) -> DshashquadraticSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn DshashquadraticSeries::cumsum(self : DshashquadraticSeries) -> DshashquadraticSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn ds_hash_quadratic_series_to_string(s : DshashquadraticSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn DshashquadraticSeries::to_string(self : DshashquadraticSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn ds_hash_quadratic_matrix_identity(n : Int) -> DshashquadraticMatrix {
   m
 }
 
-pub fn ds_hash_quadratic_matrix_get(m : DshashquadraticMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn DshashquadraticMatrix::get(self : DshashquadraticMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn ds_hash_quadratic_matrix_transpose(m : DshashquadraticMatrix) -> DshashquadraticMatrix {
-  let result = ds_hash_quadratic_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn DshashquadraticMatrix::transpose(self : DshashquadraticMatrix) -> DshashquadraticMatrix {
+  let result = ds_hash_quadratic_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn ds_hash_quadratic_matrix_add(a : DshashquadraticMatrix, b : DshashquadraticMatrix) -> DshashquadraticMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = ds_hash_quadratic_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn DshashquadraticMatrix::add(self : DshashquadraticMatrix, other : DshashquadraticMatrix) -> DshashquadraticMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = ds_hash_quadratic_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn ds_hash_quadratic_matrix_scale(m : DshashquadraticMatrix, s : Double) -> DshashquadraticMatrix {
-  let result = ds_hash_quadratic_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn DshashquadraticMatrix::scale(self : DshashquadraticMatrix, s : Double) -> DshashquadraticMatrix {
+  let result = ds_hash_quadratic_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn ds_hash_quadratic_matrix_multiply(a : DshashquadraticMatrix, b : DshashquadraticMatrix) -> DshashquadraticMatrix {
-  if a.cols != b.rows { return ds_hash_quadratic_make_matrix(a.rows, b.cols, 0.0) }
-  let result = ds_hash_quadratic_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn DshashquadraticMatrix::multiply(self : DshashquadraticMatrix, other : DshashquadraticMatrix) -> DshashquadraticMatrix {
+  if self.cols != other.rows { return ds_hash_quadratic_make_matrix(self.rows, other.cols, 0.0) }
+  let result = ds_hash_quadratic_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn ds_hash_quadratic_matrix_trace(m : DshashquadraticMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn DshashquadraticMatrix::trace(self : DshashquadraticMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn ds_hash_quadratic_matrix_det(m : DshashquadraticMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn DshashquadraticMatrix::det(self : DshashquadraticMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn ds_hash_quadratic_matrix_norm(m : DshashquadraticMatrix) -> Double {
+pub fn DshashquadraticMatrix::norm(self : DshashquadraticMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn ds_hash_quadratic_matrix_to_string(m : DshashquadraticMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn DshashquadraticMatrix::to_string(self : DshashquadraticMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn ds_hash_quadratic_vector_zero(dim : Int) -> DshashquadraticVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn ds_hash_quadratic_vector_add(a : DshashquadraticVector, b : DshashquadraticVector) -> DshashquadraticVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn DshashquadraticVector::add(self : DshashquadraticVector, other : DshashquadraticVector) -> DshashquadraticVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn ds_hash_quadratic_vector_sub(a : DshashquadraticVector, b : DshashquadraticVector) -> DshashquadraticVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn DshashquadraticVector::sub(self : DshashquadraticVector, other : DshashquadraticVector) -> DshashquadraticVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn ds_hash_quadratic_vector_scale(v : DshashquadraticVector, s : Double) -> DshashquadraticVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn DshashquadraticVector::scale(self : DshashquadraticVector, s : Double) -> DshashquadraticVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn ds_hash_quadratic_vector_dot(a : DshashquadraticVector, b : DshashquadraticVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn DshashquadraticVector::dot(self : DshashquadraticVector, other : DshashquadraticVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn ds_hash_quadratic_vector_norm(v : DshashquadraticVector) -> Double { @_common.sqrt(ds_hash_quadratic_vector_dot(v, v)) }
+pub fn DshashquadraticVector::norm(self : DshashquadraticVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn ds_hash_quadratic_vector_normalize(v : DshashquadraticVector) -> DshashquadraticVector {
-  let n = ds_hash_quadratic_vector_norm(v)
-  if n < 0.0000001 { v } else { ds_hash_quadratic_vector_scale(v, 1.0 / n) }
+pub fn DshashquadraticVector::normalize(self : DshashquadraticVector) -> DshashquadraticVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn ds_hash_quadratic_vector_dist(a : DshashquadraticVector, b : DshashquadraticVector) -> Double {
-  ds_hash_quadratic_vector_norm(ds_hash_quadratic_vector_sub(a, b))
+pub fn DshashquadraticVector::dist(self : DshashquadraticVector, other : DshashquadraticVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn ds_hash_quadratic_vector_to_string(v : DshashquadraticVector) -> String {
+pub fn DshashquadraticVector::to_string(self : DshashquadraticVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn ds_hash_quadratic_mean(data : Array[Double]) -> Double { @_common.mean(data) }

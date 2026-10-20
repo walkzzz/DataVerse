@@ -16,64 +16,64 @@ pub fn math_linear_prog_make_point3(x : Double, y : Double, z : Double) -> Mathl
   { x, y, z, label: 0 }
 }
 
-pub fn math_linear_prog_point_x(pt : MathlinearprogPoint) -> Double { pt.x }
+pub fn MathlinearprogPoint::x(self : MathlinearprogPoint) -> Double { self.x }
 
-pub fn math_linear_prog_point_y(pt : MathlinearprogPoint) -> Double { pt.y }
+pub fn MathlinearprogPoint::y(self : MathlinearprogPoint) -> Double { self.y }
 
-pub fn math_linear_prog_point_z(pt : MathlinearprogPoint) -> Double { pt.z }
+pub fn MathlinearprogPoint::z(self : MathlinearprogPoint) -> Double { self.z }
 
-pub fn math_linear_prog_point_label(pt : MathlinearprogPoint) -> Int { pt.label }
+pub fn MathlinearprogPoint::label(self : MathlinearprogPoint) -> Int { self.label }
 
-pub fn math_linear_prog_point_dist(a : MathlinearprogPoint, b : MathlinearprogPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn MathlinearprogPoint::dist(self : MathlinearprogPoint, other : MathlinearprogPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn math_linear_prog_point_add(a : MathlinearprogPoint, b : MathlinearprogPoint) -> MathlinearprogPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn MathlinearprogPoint::add(self : MathlinearprogPoint, other : MathlinearprogPoint) -> MathlinearprogPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn math_linear_prog_point_sub(a : MathlinearprogPoint, b : MathlinearprogPoint) -> MathlinearprogPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn MathlinearprogPoint::sub(self : MathlinearprogPoint, other : MathlinearprogPoint) -> MathlinearprogPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn math_linear_prog_point_scale(pt : MathlinearprogPoint, s : Double) -> MathlinearprogPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn MathlinearprogPoint::scale(self : MathlinearprogPoint, s : Double) -> MathlinearprogPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn math_linear_prog_point_dot(a : MathlinearprogPoint, b : MathlinearprogPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn MathlinearprogPoint::dot(self : MathlinearprogPoint, other : MathlinearprogPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn math_linear_prog_point_cross(a : MathlinearprogPoint, b : MathlinearprogPoint) -> MathlinearprogPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn MathlinearprogPoint::cross(self : MathlinearprogPoint, other : MathlinearprogPoint) -> MathlinearprogPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn math_linear_prog_point_norm(pt : MathlinearprogPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn MathlinearprogPoint::norm(self : MathlinearprogPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn math_linear_prog_point_normalize(pt : MathlinearprogPoint) -> MathlinearprogPoint {
-  let n = math_linear_prog_point_norm(pt)
-  if n < 0.0000001 { pt } else { math_linear_prog_point_scale(pt, 1.0 / n) }
+pub fn MathlinearprogPoint::normalize(self : MathlinearprogPoint) -> MathlinearprogPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn math_linear_prog_point_negate(pt : MathlinearprogPoint) -> MathlinearprogPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn MathlinearprogPoint::negate(self : MathlinearprogPoint) -> MathlinearprogPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn math_linear_prog_point_mid(a : MathlinearprogPoint, b : MathlinearprogPoint) -> MathlinearprogPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn MathlinearprogPoint::mid(self : MathlinearprogPoint, other : MathlinearprogPoint) -> MathlinearprogPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn math_linear_prog_point_lerp(a : MathlinearprogPoint, b : MathlinearprogPoint, t : Double) -> MathlinearprogPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn MathlinearprogPoint::lerp(self : MathlinearprogPoint, other : MathlinearprogPoint, t : Double) -> MathlinearprogPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn math_linear_prog_point_to_string(pt : MathlinearprogPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn MathlinearprogPoint::to_string(self : MathlinearprogPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct MathlinearprogSeries {
@@ -86,58 +86,58 @@ pub fn math_linear_prog_make_series(vals : Array[Double], name : String) -> Math
   { vals, name, meta: 0 }
 }
 
-pub fn math_linear_prog_series_len(s : MathlinearprogSeries) -> Int { s.vals.length() }
+pub fn MathlinearprogSeries::len(self : MathlinearprogSeries) -> Int { self.vals.length() }
 
-pub fn math_linear_prog_series_sum(s : MathlinearprogSeries) -> Double { @_common.sum(s.vals) }
+pub fn MathlinearprogSeries::sum(self : MathlinearprogSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn math_linear_prog_series_mean(s : MathlinearprogSeries) -> Double { @_common.mean(s.vals) }
+pub fn MathlinearprogSeries::mean(self : MathlinearprogSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn math_linear_prog_series_min(s : MathlinearprogSeries) -> Double { @_common.min(s.vals) }
+pub fn MathlinearprogSeries::min(self : MathlinearprogSeries) -> Double { @_common.min(self.vals) }
 
-pub fn math_linear_prog_series_max(s : MathlinearprogSeries) -> Double { @_common.max(s.vals) }
+pub fn MathlinearprogSeries::max(self : MathlinearprogSeries) -> Double { @_common.max(self.vals) }
 
-pub fn math_linear_prog_series_range(s : MathlinearprogSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn MathlinearprogSeries::range(self : MathlinearprogSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn math_linear_prog_series_var(s : MathlinearprogSeries) -> Double { @_common.variance(s.vals) }
+pub fn MathlinearprogSeries::variance(self : MathlinearprogSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn math_linear_prog_series_std(s : MathlinearprogSeries) -> Double { @_common.std(s.vals) }
+pub fn MathlinearprogSeries::std(self : MathlinearprogSeries) -> Double { @_common.std(self.vals) }
 
-pub fn math_linear_prog_series_median(s : MathlinearprogSeries) -> Double { @_common.median(s.vals) }
+pub fn MathlinearprogSeries::median(self : MathlinearprogSeries) -> Double { @_common.median(self.vals) }
 
-pub fn math_linear_prog_series_scale(s : MathlinearprogSeries, f : Double) -> MathlinearprogSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn MathlinearprogSeries::scale(self : MathlinearprogSeries, f : Double) -> MathlinearprogSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn math_linear_prog_series_add(a : MathlinearprogSeries, b : MathlinearprogSeries) -> MathlinearprogSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn MathlinearprogSeries::add(self : MathlinearprogSeries, other : MathlinearprogSeries) -> MathlinearprogSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn math_linear_prog_series_sub(a : MathlinearprogSeries, b : MathlinearprogSeries) -> MathlinearprogSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn MathlinearprogSeries::sub(self : MathlinearprogSeries, other : MathlinearprogSeries) -> MathlinearprogSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn math_linear_prog_series_normalize(s : MathlinearprogSeries) -> MathlinearprogSeries {
-  let mn = math_linear_prog_series_min(s)
-  let mx = math_linear_prog_series_max(s)
+pub fn MathlinearprogSeries::normalize(self : MathlinearprogSeries) -> MathlinearprogSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn math_linear_prog_series_cumsum(s : MathlinearprogSeries) -> MathlinearprogSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn MathlinearprogSeries::cumsum(self : MathlinearprogSeries) -> MathlinearprogSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn math_linear_prog_series_to_string(s : MathlinearprogSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn MathlinearprogSeries::to_string(self : MathlinearprogSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn math_linear_prog_matrix_identity(n : Int) -> MathlinearprogMatrix {
   m
 }
 
-pub fn math_linear_prog_matrix_get(m : MathlinearprogMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn MathlinearprogMatrix::get(self : MathlinearprogMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn math_linear_prog_matrix_transpose(m : MathlinearprogMatrix) -> MathlinearprogMatrix {
-  let result = math_linear_prog_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn MathlinearprogMatrix::transpose(self : MathlinearprogMatrix) -> MathlinearprogMatrix {
+  let result = math_linear_prog_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn math_linear_prog_matrix_add(a : MathlinearprogMatrix, b : MathlinearprogMatrix) -> MathlinearprogMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = math_linear_prog_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn MathlinearprogMatrix::add(self : MathlinearprogMatrix, other : MathlinearprogMatrix) -> MathlinearprogMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = math_linear_prog_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn math_linear_prog_matrix_scale(m : MathlinearprogMatrix, s : Double) -> MathlinearprogMatrix {
-  let result = math_linear_prog_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn MathlinearprogMatrix::scale(self : MathlinearprogMatrix, s : Double) -> MathlinearprogMatrix {
+  let result = math_linear_prog_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn math_linear_prog_matrix_multiply(a : MathlinearprogMatrix, b : MathlinearprogMatrix) -> MathlinearprogMatrix {
-  if a.cols != b.rows { return math_linear_prog_make_matrix(a.rows, b.cols, 0.0) }
-  let result = math_linear_prog_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn MathlinearprogMatrix::multiply(self : MathlinearprogMatrix, other : MathlinearprogMatrix) -> MathlinearprogMatrix {
+  if self.cols != other.rows { return math_linear_prog_make_matrix(self.rows, other.cols, 0.0) }
+  let result = math_linear_prog_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn math_linear_prog_matrix_trace(m : MathlinearprogMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn MathlinearprogMatrix::trace(self : MathlinearprogMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn math_linear_prog_matrix_det(m : MathlinearprogMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn MathlinearprogMatrix::det(self : MathlinearprogMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn math_linear_prog_matrix_norm(m : MathlinearprogMatrix) -> Double {
+pub fn MathlinearprogMatrix::norm(self : MathlinearprogMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn math_linear_prog_matrix_to_string(m : MathlinearprogMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn MathlinearprogMatrix::to_string(self : MathlinearprogMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn math_linear_prog_vector_zero(dim : Int) -> MathlinearprogVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn math_linear_prog_vector_add(a : MathlinearprogVector, b : MathlinearprogVector) -> MathlinearprogVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn MathlinearprogVector::add(self : MathlinearprogVector, other : MathlinearprogVector) -> MathlinearprogVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn math_linear_prog_vector_sub(a : MathlinearprogVector, b : MathlinearprogVector) -> MathlinearprogVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn MathlinearprogVector::sub(self : MathlinearprogVector, other : MathlinearprogVector) -> MathlinearprogVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn math_linear_prog_vector_scale(v : MathlinearprogVector, s : Double) -> MathlinearprogVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn MathlinearprogVector::scale(self : MathlinearprogVector, s : Double) -> MathlinearprogVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn math_linear_prog_vector_dot(a : MathlinearprogVector, b : MathlinearprogVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn MathlinearprogVector::dot(self : MathlinearprogVector, other : MathlinearprogVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn math_linear_prog_vector_norm(v : MathlinearprogVector) -> Double { @_common.sqrt(math_linear_prog_vector_dot(v, v)) }
+pub fn MathlinearprogVector::norm(self : MathlinearprogVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn math_linear_prog_vector_normalize(v : MathlinearprogVector) -> MathlinearprogVector {
-  let n = math_linear_prog_vector_norm(v)
-  if n < 0.0000001 { v } else { math_linear_prog_vector_scale(v, 1.0 / n) }
+pub fn MathlinearprogVector::normalize(self : MathlinearprogVector) -> MathlinearprogVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn math_linear_prog_vector_dist(a : MathlinearprogVector, b : MathlinearprogVector) -> Double {
-  math_linear_prog_vector_norm(math_linear_prog_vector_sub(a, b))
+pub fn MathlinearprogVector::dist(self : MathlinearprogVector, other : MathlinearprogVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn math_linear_prog_vector_to_string(v : MathlinearprogVector) -> String {
+pub fn MathlinearprogVector::to_string(self : MathlinearprogVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn math_linear_prog_mean(data : Array[Double]) -> Double { @_common.mean(data) }

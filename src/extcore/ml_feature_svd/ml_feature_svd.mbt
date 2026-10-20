@@ -16,64 +16,64 @@ pub fn ml_feature_svd_make_point3(x : Double, y : Double, z : Double) -> Mlfeatu
   { x, y, z, label: 0 }
 }
 
-pub fn ml_feature_svd_point_x(pt : MlfeaturesvdPoint) -> Double { pt.x }
+pub fn MlfeaturesvdPoint::x(self : MlfeaturesvdPoint) -> Double { self.x }
 
-pub fn ml_feature_svd_point_y(pt : MlfeaturesvdPoint) -> Double { pt.y }
+pub fn MlfeaturesvdPoint::y(self : MlfeaturesvdPoint) -> Double { self.y }
 
-pub fn ml_feature_svd_point_z(pt : MlfeaturesvdPoint) -> Double { pt.z }
+pub fn MlfeaturesvdPoint::z(self : MlfeaturesvdPoint) -> Double { self.z }
 
-pub fn ml_feature_svd_point_label(pt : MlfeaturesvdPoint) -> Int { pt.label }
+pub fn MlfeaturesvdPoint::label(self : MlfeaturesvdPoint) -> Int { self.label }
 
-pub fn ml_feature_svd_point_dist(a : MlfeaturesvdPoint, b : MlfeaturesvdPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn MlfeaturesvdPoint::dist(self : MlfeaturesvdPoint, other : MlfeaturesvdPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn ml_feature_svd_point_add(a : MlfeaturesvdPoint, b : MlfeaturesvdPoint) -> MlfeaturesvdPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn MlfeaturesvdPoint::add(self : MlfeaturesvdPoint, other : MlfeaturesvdPoint) -> MlfeaturesvdPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn ml_feature_svd_point_sub(a : MlfeaturesvdPoint, b : MlfeaturesvdPoint) -> MlfeaturesvdPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn MlfeaturesvdPoint::sub(self : MlfeaturesvdPoint, other : MlfeaturesvdPoint) -> MlfeaturesvdPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn ml_feature_svd_point_scale(pt : MlfeaturesvdPoint, s : Double) -> MlfeaturesvdPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn MlfeaturesvdPoint::scale(self : MlfeaturesvdPoint, s : Double) -> MlfeaturesvdPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn ml_feature_svd_point_dot(a : MlfeaturesvdPoint, b : MlfeaturesvdPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn MlfeaturesvdPoint::dot(self : MlfeaturesvdPoint, other : MlfeaturesvdPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn ml_feature_svd_point_cross(a : MlfeaturesvdPoint, b : MlfeaturesvdPoint) -> MlfeaturesvdPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn MlfeaturesvdPoint::cross(self : MlfeaturesvdPoint, other : MlfeaturesvdPoint) -> MlfeaturesvdPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn ml_feature_svd_point_norm(pt : MlfeaturesvdPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn MlfeaturesvdPoint::norm(self : MlfeaturesvdPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn ml_feature_svd_point_normalize(pt : MlfeaturesvdPoint) -> MlfeaturesvdPoint {
-  let n = ml_feature_svd_point_norm(pt)
-  if n < 0.0000001 { pt } else { ml_feature_svd_point_scale(pt, 1.0 / n) }
+pub fn MlfeaturesvdPoint::normalize(self : MlfeaturesvdPoint) -> MlfeaturesvdPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn ml_feature_svd_point_negate(pt : MlfeaturesvdPoint) -> MlfeaturesvdPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn MlfeaturesvdPoint::negate(self : MlfeaturesvdPoint) -> MlfeaturesvdPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn ml_feature_svd_point_mid(a : MlfeaturesvdPoint, b : MlfeaturesvdPoint) -> MlfeaturesvdPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn MlfeaturesvdPoint::mid(self : MlfeaturesvdPoint, other : MlfeaturesvdPoint) -> MlfeaturesvdPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn ml_feature_svd_point_lerp(a : MlfeaturesvdPoint, b : MlfeaturesvdPoint, t : Double) -> MlfeaturesvdPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn MlfeaturesvdPoint::lerp(self : MlfeaturesvdPoint, other : MlfeaturesvdPoint, t : Double) -> MlfeaturesvdPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn ml_feature_svd_point_to_string(pt : MlfeaturesvdPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn MlfeaturesvdPoint::to_string(self : MlfeaturesvdPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct MlfeaturesvdSeries {
@@ -86,58 +86,58 @@ pub fn ml_feature_svd_make_series(vals : Array[Double], name : String) -> Mlfeat
   { vals, name, meta: 0 }
 }
 
-pub fn ml_feature_svd_series_len(s : MlfeaturesvdSeries) -> Int { s.vals.length() }
+pub fn MlfeaturesvdSeries::len(self : MlfeaturesvdSeries) -> Int { self.vals.length() }
 
-pub fn ml_feature_svd_series_sum(s : MlfeaturesvdSeries) -> Double { @_common.sum(s.vals) }
+pub fn MlfeaturesvdSeries::sum(self : MlfeaturesvdSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn ml_feature_svd_series_mean(s : MlfeaturesvdSeries) -> Double { @_common.mean(s.vals) }
+pub fn MlfeaturesvdSeries::mean(self : MlfeaturesvdSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn ml_feature_svd_series_min(s : MlfeaturesvdSeries) -> Double { @_common.min(s.vals) }
+pub fn MlfeaturesvdSeries::min(self : MlfeaturesvdSeries) -> Double { @_common.min(self.vals) }
 
-pub fn ml_feature_svd_series_max(s : MlfeaturesvdSeries) -> Double { @_common.max(s.vals) }
+pub fn MlfeaturesvdSeries::max(self : MlfeaturesvdSeries) -> Double { @_common.max(self.vals) }
 
-pub fn ml_feature_svd_series_range(s : MlfeaturesvdSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn MlfeaturesvdSeries::range(self : MlfeaturesvdSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn ml_feature_svd_series_var(s : MlfeaturesvdSeries) -> Double { @_common.variance(s.vals) }
+pub fn MlfeaturesvdSeries::variance(self : MlfeaturesvdSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn ml_feature_svd_series_std(s : MlfeaturesvdSeries) -> Double { @_common.std(s.vals) }
+pub fn MlfeaturesvdSeries::std(self : MlfeaturesvdSeries) -> Double { @_common.std(self.vals) }
 
-pub fn ml_feature_svd_series_median(s : MlfeaturesvdSeries) -> Double { @_common.median(s.vals) }
+pub fn MlfeaturesvdSeries::median(self : MlfeaturesvdSeries) -> Double { @_common.median(self.vals) }
 
-pub fn ml_feature_svd_series_scale(s : MlfeaturesvdSeries, f : Double) -> MlfeaturesvdSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn MlfeaturesvdSeries::scale(self : MlfeaturesvdSeries, f : Double) -> MlfeaturesvdSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn ml_feature_svd_series_add(a : MlfeaturesvdSeries, b : MlfeaturesvdSeries) -> MlfeaturesvdSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn MlfeaturesvdSeries::add(self : MlfeaturesvdSeries, other : MlfeaturesvdSeries) -> MlfeaturesvdSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn ml_feature_svd_series_sub(a : MlfeaturesvdSeries, b : MlfeaturesvdSeries) -> MlfeaturesvdSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn MlfeaturesvdSeries::sub(self : MlfeaturesvdSeries, other : MlfeaturesvdSeries) -> MlfeaturesvdSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn ml_feature_svd_series_normalize(s : MlfeaturesvdSeries) -> MlfeaturesvdSeries {
-  let mn = ml_feature_svd_series_min(s)
-  let mx = ml_feature_svd_series_max(s)
+pub fn MlfeaturesvdSeries::normalize(self : MlfeaturesvdSeries) -> MlfeaturesvdSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn ml_feature_svd_series_cumsum(s : MlfeaturesvdSeries) -> MlfeaturesvdSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn MlfeaturesvdSeries::cumsum(self : MlfeaturesvdSeries) -> MlfeaturesvdSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn ml_feature_svd_series_to_string(s : MlfeaturesvdSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn MlfeaturesvdSeries::to_string(self : MlfeaturesvdSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn ml_feature_svd_matrix_identity(n : Int) -> MlfeaturesvdMatrix {
   m
 }
 
-pub fn ml_feature_svd_matrix_get(m : MlfeaturesvdMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn MlfeaturesvdMatrix::get(self : MlfeaturesvdMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn ml_feature_svd_matrix_transpose(m : MlfeaturesvdMatrix) -> MlfeaturesvdMatrix {
-  let result = ml_feature_svd_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn MlfeaturesvdMatrix::transpose(self : MlfeaturesvdMatrix) -> MlfeaturesvdMatrix {
+  let result = ml_feature_svd_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn ml_feature_svd_matrix_add(a : MlfeaturesvdMatrix, b : MlfeaturesvdMatrix) -> MlfeaturesvdMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = ml_feature_svd_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn MlfeaturesvdMatrix::add(self : MlfeaturesvdMatrix, other : MlfeaturesvdMatrix) -> MlfeaturesvdMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = ml_feature_svd_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn ml_feature_svd_matrix_scale(m : MlfeaturesvdMatrix, s : Double) -> MlfeaturesvdMatrix {
-  let result = ml_feature_svd_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn MlfeaturesvdMatrix::scale(self : MlfeaturesvdMatrix, s : Double) -> MlfeaturesvdMatrix {
+  let result = ml_feature_svd_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn ml_feature_svd_matrix_multiply(a : MlfeaturesvdMatrix, b : MlfeaturesvdMatrix) -> MlfeaturesvdMatrix {
-  if a.cols != b.rows { return ml_feature_svd_make_matrix(a.rows, b.cols, 0.0) }
-  let result = ml_feature_svd_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn MlfeaturesvdMatrix::multiply(self : MlfeaturesvdMatrix, other : MlfeaturesvdMatrix) -> MlfeaturesvdMatrix {
+  if self.cols != other.rows { return ml_feature_svd_make_matrix(self.rows, other.cols, 0.0) }
+  let result = ml_feature_svd_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn ml_feature_svd_matrix_trace(m : MlfeaturesvdMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn MlfeaturesvdMatrix::trace(self : MlfeaturesvdMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn ml_feature_svd_matrix_det(m : MlfeaturesvdMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn MlfeaturesvdMatrix::det(self : MlfeaturesvdMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn ml_feature_svd_matrix_norm(m : MlfeaturesvdMatrix) -> Double {
+pub fn MlfeaturesvdMatrix::norm(self : MlfeaturesvdMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn ml_feature_svd_matrix_to_string(m : MlfeaturesvdMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn MlfeaturesvdMatrix::to_string(self : MlfeaturesvdMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn ml_feature_svd_vector_zero(dim : Int) -> MlfeaturesvdVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn ml_feature_svd_vector_add(a : MlfeaturesvdVector, b : MlfeaturesvdVector) -> MlfeaturesvdVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn MlfeaturesvdVector::add(self : MlfeaturesvdVector, other : MlfeaturesvdVector) -> MlfeaturesvdVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn ml_feature_svd_vector_sub(a : MlfeaturesvdVector, b : MlfeaturesvdVector) -> MlfeaturesvdVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn MlfeaturesvdVector::sub(self : MlfeaturesvdVector, other : MlfeaturesvdVector) -> MlfeaturesvdVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn ml_feature_svd_vector_scale(v : MlfeaturesvdVector, s : Double) -> MlfeaturesvdVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn MlfeaturesvdVector::scale(self : MlfeaturesvdVector, s : Double) -> MlfeaturesvdVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn ml_feature_svd_vector_dot(a : MlfeaturesvdVector, b : MlfeaturesvdVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn MlfeaturesvdVector::dot(self : MlfeaturesvdVector, other : MlfeaturesvdVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn ml_feature_svd_vector_norm(v : MlfeaturesvdVector) -> Double { @_common.sqrt(ml_feature_svd_vector_dot(v, v)) }
+pub fn MlfeaturesvdVector::norm(self : MlfeaturesvdVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn ml_feature_svd_vector_normalize(v : MlfeaturesvdVector) -> MlfeaturesvdVector {
-  let n = ml_feature_svd_vector_norm(v)
-  if n < 0.0000001 { v } else { ml_feature_svd_vector_scale(v, 1.0 / n) }
+pub fn MlfeaturesvdVector::normalize(self : MlfeaturesvdVector) -> MlfeaturesvdVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn ml_feature_svd_vector_dist(a : MlfeaturesvdVector, b : MlfeaturesvdVector) -> Double {
-  ml_feature_svd_vector_norm(ml_feature_svd_vector_sub(a, b))
+pub fn MlfeaturesvdVector::dist(self : MlfeaturesvdVector, other : MlfeaturesvdVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn ml_feature_svd_vector_to_string(v : MlfeaturesvdVector) -> String {
+pub fn MlfeaturesvdVector::to_string(self : MlfeaturesvdVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn ml_feature_svd_mean(data : Array[Double]) -> Double { @_common.mean(data) }

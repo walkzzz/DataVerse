@@ -16,64 +16,64 @@ pub fn net_flow_scheduling_make_point3(x : Double, y : Double, z : Double) -> Ne
   { x, y, z, label: 0 }
 }
 
-pub fn net_flow_scheduling_point_x(pt : NetflowschedulingPoint) -> Double { pt.x }
+pub fn NetflowschedulingPoint::x(self : NetflowschedulingPoint) -> Double { self.x }
 
-pub fn net_flow_scheduling_point_y(pt : NetflowschedulingPoint) -> Double { pt.y }
+pub fn NetflowschedulingPoint::y(self : NetflowschedulingPoint) -> Double { self.y }
 
-pub fn net_flow_scheduling_point_z(pt : NetflowschedulingPoint) -> Double { pt.z }
+pub fn NetflowschedulingPoint::z(self : NetflowschedulingPoint) -> Double { self.z }
 
-pub fn net_flow_scheduling_point_label(pt : NetflowschedulingPoint) -> Int { pt.label }
+pub fn NetflowschedulingPoint::label(self : NetflowschedulingPoint) -> Int { self.label }
 
-pub fn net_flow_scheduling_point_dist(a : NetflowschedulingPoint, b : NetflowschedulingPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn NetflowschedulingPoint::dist(self : NetflowschedulingPoint, other : NetflowschedulingPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn net_flow_scheduling_point_add(a : NetflowschedulingPoint, b : NetflowschedulingPoint) -> NetflowschedulingPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn NetflowschedulingPoint::add(self : NetflowschedulingPoint, other : NetflowschedulingPoint) -> NetflowschedulingPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn net_flow_scheduling_point_sub(a : NetflowschedulingPoint, b : NetflowschedulingPoint) -> NetflowschedulingPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn NetflowschedulingPoint::sub(self : NetflowschedulingPoint, other : NetflowschedulingPoint) -> NetflowschedulingPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn net_flow_scheduling_point_scale(pt : NetflowschedulingPoint, s : Double) -> NetflowschedulingPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn NetflowschedulingPoint::scale(self : NetflowschedulingPoint, s : Double) -> NetflowschedulingPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn net_flow_scheduling_point_dot(a : NetflowschedulingPoint, b : NetflowschedulingPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn NetflowschedulingPoint::dot(self : NetflowschedulingPoint, other : NetflowschedulingPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn net_flow_scheduling_point_cross(a : NetflowschedulingPoint, b : NetflowschedulingPoint) -> NetflowschedulingPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn NetflowschedulingPoint::cross(self : NetflowschedulingPoint, other : NetflowschedulingPoint) -> NetflowschedulingPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn net_flow_scheduling_point_norm(pt : NetflowschedulingPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn NetflowschedulingPoint::norm(self : NetflowschedulingPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn net_flow_scheduling_point_normalize(pt : NetflowschedulingPoint) -> NetflowschedulingPoint {
-  let n = net_flow_scheduling_point_norm(pt)
-  if n < 0.0000001 { pt } else { net_flow_scheduling_point_scale(pt, 1.0 / n) }
+pub fn NetflowschedulingPoint::normalize(self : NetflowschedulingPoint) -> NetflowschedulingPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn net_flow_scheduling_point_negate(pt : NetflowschedulingPoint) -> NetflowschedulingPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn NetflowschedulingPoint::negate(self : NetflowschedulingPoint) -> NetflowschedulingPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn net_flow_scheduling_point_mid(a : NetflowschedulingPoint, b : NetflowschedulingPoint) -> NetflowschedulingPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn NetflowschedulingPoint::mid(self : NetflowschedulingPoint, other : NetflowschedulingPoint) -> NetflowschedulingPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn net_flow_scheduling_point_lerp(a : NetflowschedulingPoint, b : NetflowschedulingPoint, t : Double) -> NetflowschedulingPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn NetflowschedulingPoint::lerp(self : NetflowschedulingPoint, other : NetflowschedulingPoint, t : Double) -> NetflowschedulingPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn net_flow_scheduling_point_to_string(pt : NetflowschedulingPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn NetflowschedulingPoint::to_string(self : NetflowschedulingPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct NetflowschedulingSeries {
@@ -86,58 +86,58 @@ pub fn net_flow_scheduling_make_series(vals : Array[Double], name : String) -> N
   { vals, name, meta: 0 }
 }
 
-pub fn net_flow_scheduling_series_len(s : NetflowschedulingSeries) -> Int { s.vals.length() }
+pub fn NetflowschedulingSeries::len(self : NetflowschedulingSeries) -> Int { self.vals.length() }
 
-pub fn net_flow_scheduling_series_sum(s : NetflowschedulingSeries) -> Double { @_common.sum(s.vals) }
+pub fn NetflowschedulingSeries::sum(self : NetflowschedulingSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn net_flow_scheduling_series_mean(s : NetflowschedulingSeries) -> Double { @_common.mean(s.vals) }
+pub fn NetflowschedulingSeries::mean(self : NetflowschedulingSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn net_flow_scheduling_series_min(s : NetflowschedulingSeries) -> Double { @_common.min(s.vals) }
+pub fn NetflowschedulingSeries::min(self : NetflowschedulingSeries) -> Double { @_common.min(self.vals) }
 
-pub fn net_flow_scheduling_series_max(s : NetflowschedulingSeries) -> Double { @_common.max(s.vals) }
+pub fn NetflowschedulingSeries::max(self : NetflowschedulingSeries) -> Double { @_common.max(self.vals) }
 
-pub fn net_flow_scheduling_series_range(s : NetflowschedulingSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn NetflowschedulingSeries::range(self : NetflowschedulingSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn net_flow_scheduling_series_var(s : NetflowschedulingSeries) -> Double { @_common.variance(s.vals) }
+pub fn NetflowschedulingSeries::variance(self : NetflowschedulingSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn net_flow_scheduling_series_std(s : NetflowschedulingSeries) -> Double { @_common.std(s.vals) }
+pub fn NetflowschedulingSeries::std(self : NetflowschedulingSeries) -> Double { @_common.std(self.vals) }
 
-pub fn net_flow_scheduling_series_median(s : NetflowschedulingSeries) -> Double { @_common.median(s.vals) }
+pub fn NetflowschedulingSeries::median(self : NetflowschedulingSeries) -> Double { @_common.median(self.vals) }
 
-pub fn net_flow_scheduling_series_scale(s : NetflowschedulingSeries, f : Double) -> NetflowschedulingSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn NetflowschedulingSeries::scale(self : NetflowschedulingSeries, f : Double) -> NetflowschedulingSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn net_flow_scheduling_series_add(a : NetflowschedulingSeries, b : NetflowschedulingSeries) -> NetflowschedulingSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn NetflowschedulingSeries::add(self : NetflowschedulingSeries, other : NetflowschedulingSeries) -> NetflowschedulingSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn net_flow_scheduling_series_sub(a : NetflowschedulingSeries, b : NetflowschedulingSeries) -> NetflowschedulingSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn NetflowschedulingSeries::sub(self : NetflowschedulingSeries, other : NetflowschedulingSeries) -> NetflowschedulingSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn net_flow_scheduling_series_normalize(s : NetflowschedulingSeries) -> NetflowschedulingSeries {
-  let mn = net_flow_scheduling_series_min(s)
-  let mx = net_flow_scheduling_series_max(s)
+pub fn NetflowschedulingSeries::normalize(self : NetflowschedulingSeries) -> NetflowschedulingSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn net_flow_scheduling_series_cumsum(s : NetflowschedulingSeries) -> NetflowschedulingSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn NetflowschedulingSeries::cumsum(self : NetflowschedulingSeries) -> NetflowschedulingSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn net_flow_scheduling_series_to_string(s : NetflowschedulingSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn NetflowschedulingSeries::to_string(self : NetflowschedulingSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn net_flow_scheduling_matrix_identity(n : Int) -> NetflowschedulingMatrix {
   m
 }
 
-pub fn net_flow_scheduling_matrix_get(m : NetflowschedulingMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn NetflowschedulingMatrix::get(self : NetflowschedulingMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn net_flow_scheduling_matrix_transpose(m : NetflowschedulingMatrix) -> NetflowschedulingMatrix {
-  let result = net_flow_scheduling_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn NetflowschedulingMatrix::transpose(self : NetflowschedulingMatrix) -> NetflowschedulingMatrix {
+  let result = net_flow_scheduling_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn net_flow_scheduling_matrix_add(a : NetflowschedulingMatrix, b : NetflowschedulingMatrix) -> NetflowschedulingMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = net_flow_scheduling_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn NetflowschedulingMatrix::add(self : NetflowschedulingMatrix, other : NetflowschedulingMatrix) -> NetflowschedulingMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = net_flow_scheduling_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn net_flow_scheduling_matrix_scale(m : NetflowschedulingMatrix, s : Double) -> NetflowschedulingMatrix {
-  let result = net_flow_scheduling_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn NetflowschedulingMatrix::scale(self : NetflowschedulingMatrix, s : Double) -> NetflowschedulingMatrix {
+  let result = net_flow_scheduling_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn net_flow_scheduling_matrix_multiply(a : NetflowschedulingMatrix, b : NetflowschedulingMatrix) -> NetflowschedulingMatrix {
-  if a.cols != b.rows { return net_flow_scheduling_make_matrix(a.rows, b.cols, 0.0) }
-  let result = net_flow_scheduling_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn NetflowschedulingMatrix::multiply(self : NetflowschedulingMatrix, other : NetflowschedulingMatrix) -> NetflowschedulingMatrix {
+  if self.cols != other.rows { return net_flow_scheduling_make_matrix(self.rows, other.cols, 0.0) }
+  let result = net_flow_scheduling_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn net_flow_scheduling_matrix_trace(m : NetflowschedulingMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn NetflowschedulingMatrix::trace(self : NetflowschedulingMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn net_flow_scheduling_matrix_det(m : NetflowschedulingMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn NetflowschedulingMatrix::det(self : NetflowschedulingMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn net_flow_scheduling_matrix_norm(m : NetflowschedulingMatrix) -> Double {
+pub fn NetflowschedulingMatrix::norm(self : NetflowschedulingMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn net_flow_scheduling_matrix_to_string(m : NetflowschedulingMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn NetflowschedulingMatrix::to_string(self : NetflowschedulingMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn net_flow_scheduling_vector_zero(dim : Int) -> NetflowschedulingVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn net_flow_scheduling_vector_add(a : NetflowschedulingVector, b : NetflowschedulingVector) -> NetflowschedulingVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn NetflowschedulingVector::add(self : NetflowschedulingVector, other : NetflowschedulingVector) -> NetflowschedulingVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn net_flow_scheduling_vector_sub(a : NetflowschedulingVector, b : NetflowschedulingVector) -> NetflowschedulingVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn NetflowschedulingVector::sub(self : NetflowschedulingVector, other : NetflowschedulingVector) -> NetflowschedulingVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn net_flow_scheduling_vector_scale(v : NetflowschedulingVector, s : Double) -> NetflowschedulingVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn NetflowschedulingVector::scale(self : NetflowschedulingVector, s : Double) -> NetflowschedulingVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn net_flow_scheduling_vector_dot(a : NetflowschedulingVector, b : NetflowschedulingVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn NetflowschedulingVector::dot(self : NetflowschedulingVector, other : NetflowschedulingVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn net_flow_scheduling_vector_norm(v : NetflowschedulingVector) -> Double { @_common.sqrt(net_flow_scheduling_vector_dot(v, v)) }
+pub fn NetflowschedulingVector::norm(self : NetflowschedulingVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn net_flow_scheduling_vector_normalize(v : NetflowschedulingVector) -> NetflowschedulingVector {
-  let n = net_flow_scheduling_vector_norm(v)
-  if n < 0.0000001 { v } else { net_flow_scheduling_vector_scale(v, 1.0 / n) }
+pub fn NetflowschedulingVector::normalize(self : NetflowschedulingVector) -> NetflowschedulingVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn net_flow_scheduling_vector_dist(a : NetflowschedulingVector, b : NetflowschedulingVector) -> Double {
-  net_flow_scheduling_vector_norm(net_flow_scheduling_vector_sub(a, b))
+pub fn NetflowschedulingVector::dist(self : NetflowschedulingVector, other : NetflowschedulingVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn net_flow_scheduling_vector_to_string(v : NetflowschedulingVector) -> String {
+pub fn NetflowschedulingVector::to_string(self : NetflowschedulingVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn net_flow_scheduling_mean(data : Array[Double]) -> Double { @_common.mean(data) }

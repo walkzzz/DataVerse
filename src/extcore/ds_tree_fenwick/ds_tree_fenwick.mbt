@@ -16,64 +16,64 @@ pub fn ds_tree_fenwick_make_point3(x : Double, y : Double, z : Double) -> Dstree
   { x, y, z, label: 0 }
 }
 
-pub fn ds_tree_fenwick_point_x(pt : DstreefenwickPoint) -> Double { pt.x }
+pub fn DstreefenwickPoint::x(self : DstreefenwickPoint) -> Double { self.x }
 
-pub fn ds_tree_fenwick_point_y(pt : DstreefenwickPoint) -> Double { pt.y }
+pub fn DstreefenwickPoint::y(self : DstreefenwickPoint) -> Double { self.y }
 
-pub fn ds_tree_fenwick_point_z(pt : DstreefenwickPoint) -> Double { pt.z }
+pub fn DstreefenwickPoint::z(self : DstreefenwickPoint) -> Double { self.z }
 
-pub fn ds_tree_fenwick_point_label(pt : DstreefenwickPoint) -> Int { pt.label }
+pub fn DstreefenwickPoint::label(self : DstreefenwickPoint) -> Int { self.label }
 
-pub fn ds_tree_fenwick_point_dist(a : DstreefenwickPoint, b : DstreefenwickPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn DstreefenwickPoint::dist(self : DstreefenwickPoint, other : DstreefenwickPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn ds_tree_fenwick_point_add(a : DstreefenwickPoint, b : DstreefenwickPoint) -> DstreefenwickPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn DstreefenwickPoint::add(self : DstreefenwickPoint, other : DstreefenwickPoint) -> DstreefenwickPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn ds_tree_fenwick_point_sub(a : DstreefenwickPoint, b : DstreefenwickPoint) -> DstreefenwickPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn DstreefenwickPoint::sub(self : DstreefenwickPoint, other : DstreefenwickPoint) -> DstreefenwickPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn ds_tree_fenwick_point_scale(pt : DstreefenwickPoint, s : Double) -> DstreefenwickPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn DstreefenwickPoint::scale(self : DstreefenwickPoint, s : Double) -> DstreefenwickPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn ds_tree_fenwick_point_dot(a : DstreefenwickPoint, b : DstreefenwickPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn DstreefenwickPoint::dot(self : DstreefenwickPoint, other : DstreefenwickPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn ds_tree_fenwick_point_cross(a : DstreefenwickPoint, b : DstreefenwickPoint) -> DstreefenwickPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn DstreefenwickPoint::cross(self : DstreefenwickPoint, other : DstreefenwickPoint) -> DstreefenwickPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn ds_tree_fenwick_point_norm(pt : DstreefenwickPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn DstreefenwickPoint::norm(self : DstreefenwickPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn ds_tree_fenwick_point_normalize(pt : DstreefenwickPoint) -> DstreefenwickPoint {
-  let n = ds_tree_fenwick_point_norm(pt)
-  if n < 0.0000001 { pt } else { ds_tree_fenwick_point_scale(pt, 1.0 / n) }
+pub fn DstreefenwickPoint::normalize(self : DstreefenwickPoint) -> DstreefenwickPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn ds_tree_fenwick_point_negate(pt : DstreefenwickPoint) -> DstreefenwickPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn DstreefenwickPoint::negate(self : DstreefenwickPoint) -> DstreefenwickPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn ds_tree_fenwick_point_mid(a : DstreefenwickPoint, b : DstreefenwickPoint) -> DstreefenwickPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn DstreefenwickPoint::mid(self : DstreefenwickPoint, other : DstreefenwickPoint) -> DstreefenwickPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn ds_tree_fenwick_point_lerp(a : DstreefenwickPoint, b : DstreefenwickPoint, t : Double) -> DstreefenwickPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn DstreefenwickPoint::lerp(self : DstreefenwickPoint, other : DstreefenwickPoint, t : Double) -> DstreefenwickPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn ds_tree_fenwick_point_to_string(pt : DstreefenwickPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn DstreefenwickPoint::to_string(self : DstreefenwickPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct DstreefenwickSeries {
@@ -86,58 +86,58 @@ pub fn ds_tree_fenwick_make_series(vals : Array[Double], name : String) -> Dstre
   { vals, name, meta: 0 }
 }
 
-pub fn ds_tree_fenwick_series_len(s : DstreefenwickSeries) -> Int { s.vals.length() }
+pub fn DstreefenwickSeries::len(self : DstreefenwickSeries) -> Int { self.vals.length() }
 
-pub fn ds_tree_fenwick_series_sum(s : DstreefenwickSeries) -> Double { @_common.sum(s.vals) }
+pub fn DstreefenwickSeries::sum(self : DstreefenwickSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn ds_tree_fenwick_series_mean(s : DstreefenwickSeries) -> Double { @_common.mean(s.vals) }
+pub fn DstreefenwickSeries::mean(self : DstreefenwickSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn ds_tree_fenwick_series_min(s : DstreefenwickSeries) -> Double { @_common.min(s.vals) }
+pub fn DstreefenwickSeries::min(self : DstreefenwickSeries) -> Double { @_common.min(self.vals) }
 
-pub fn ds_tree_fenwick_series_max(s : DstreefenwickSeries) -> Double { @_common.max(s.vals) }
+pub fn DstreefenwickSeries::max(self : DstreefenwickSeries) -> Double { @_common.max(self.vals) }
 
-pub fn ds_tree_fenwick_series_range(s : DstreefenwickSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn DstreefenwickSeries::range(self : DstreefenwickSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn ds_tree_fenwick_series_var(s : DstreefenwickSeries) -> Double { @_common.variance(s.vals) }
+pub fn DstreefenwickSeries::variance(self : DstreefenwickSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn ds_tree_fenwick_series_std(s : DstreefenwickSeries) -> Double { @_common.std(s.vals) }
+pub fn DstreefenwickSeries::std(self : DstreefenwickSeries) -> Double { @_common.std(self.vals) }
 
-pub fn ds_tree_fenwick_series_median(s : DstreefenwickSeries) -> Double { @_common.median(s.vals) }
+pub fn DstreefenwickSeries::median(self : DstreefenwickSeries) -> Double { @_common.median(self.vals) }
 
-pub fn ds_tree_fenwick_series_scale(s : DstreefenwickSeries, f : Double) -> DstreefenwickSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn DstreefenwickSeries::scale(self : DstreefenwickSeries, f : Double) -> DstreefenwickSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn ds_tree_fenwick_series_add(a : DstreefenwickSeries, b : DstreefenwickSeries) -> DstreefenwickSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn DstreefenwickSeries::add(self : DstreefenwickSeries, other : DstreefenwickSeries) -> DstreefenwickSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn ds_tree_fenwick_series_sub(a : DstreefenwickSeries, b : DstreefenwickSeries) -> DstreefenwickSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn DstreefenwickSeries::sub(self : DstreefenwickSeries, other : DstreefenwickSeries) -> DstreefenwickSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn ds_tree_fenwick_series_normalize(s : DstreefenwickSeries) -> DstreefenwickSeries {
-  let mn = ds_tree_fenwick_series_min(s)
-  let mx = ds_tree_fenwick_series_max(s)
+pub fn DstreefenwickSeries::normalize(self : DstreefenwickSeries) -> DstreefenwickSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn ds_tree_fenwick_series_cumsum(s : DstreefenwickSeries) -> DstreefenwickSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn DstreefenwickSeries::cumsum(self : DstreefenwickSeries) -> DstreefenwickSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn ds_tree_fenwick_series_to_string(s : DstreefenwickSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn DstreefenwickSeries::to_string(self : DstreefenwickSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn ds_tree_fenwick_matrix_identity(n : Int) -> DstreefenwickMatrix {
   m
 }
 
-pub fn ds_tree_fenwick_matrix_get(m : DstreefenwickMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn DstreefenwickMatrix::get(self : DstreefenwickMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn ds_tree_fenwick_matrix_transpose(m : DstreefenwickMatrix) -> DstreefenwickMatrix {
-  let result = ds_tree_fenwick_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn DstreefenwickMatrix::transpose(self : DstreefenwickMatrix) -> DstreefenwickMatrix {
+  let result = ds_tree_fenwick_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn ds_tree_fenwick_matrix_add(a : DstreefenwickMatrix, b : DstreefenwickMatrix) -> DstreefenwickMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = ds_tree_fenwick_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn DstreefenwickMatrix::add(self : DstreefenwickMatrix, other : DstreefenwickMatrix) -> DstreefenwickMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = ds_tree_fenwick_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn ds_tree_fenwick_matrix_scale(m : DstreefenwickMatrix, s : Double) -> DstreefenwickMatrix {
-  let result = ds_tree_fenwick_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn DstreefenwickMatrix::scale(self : DstreefenwickMatrix, s : Double) -> DstreefenwickMatrix {
+  let result = ds_tree_fenwick_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn ds_tree_fenwick_matrix_multiply(a : DstreefenwickMatrix, b : DstreefenwickMatrix) -> DstreefenwickMatrix {
-  if a.cols != b.rows { return ds_tree_fenwick_make_matrix(a.rows, b.cols, 0.0) }
-  let result = ds_tree_fenwick_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn DstreefenwickMatrix::multiply(self : DstreefenwickMatrix, other : DstreefenwickMatrix) -> DstreefenwickMatrix {
+  if self.cols != other.rows { return ds_tree_fenwick_make_matrix(self.rows, other.cols, 0.0) }
+  let result = ds_tree_fenwick_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn ds_tree_fenwick_matrix_trace(m : DstreefenwickMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn DstreefenwickMatrix::trace(self : DstreefenwickMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn ds_tree_fenwick_matrix_det(m : DstreefenwickMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn DstreefenwickMatrix::det(self : DstreefenwickMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn ds_tree_fenwick_matrix_norm(m : DstreefenwickMatrix) -> Double {
+pub fn DstreefenwickMatrix::norm(self : DstreefenwickMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn ds_tree_fenwick_matrix_to_string(m : DstreefenwickMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn DstreefenwickMatrix::to_string(self : DstreefenwickMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn ds_tree_fenwick_vector_zero(dim : Int) -> DstreefenwickVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn ds_tree_fenwick_vector_add(a : DstreefenwickVector, b : DstreefenwickVector) -> DstreefenwickVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn DstreefenwickVector::add(self : DstreefenwickVector, other : DstreefenwickVector) -> DstreefenwickVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn ds_tree_fenwick_vector_sub(a : DstreefenwickVector, b : DstreefenwickVector) -> DstreefenwickVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn DstreefenwickVector::sub(self : DstreefenwickVector, other : DstreefenwickVector) -> DstreefenwickVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn ds_tree_fenwick_vector_scale(v : DstreefenwickVector, s : Double) -> DstreefenwickVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn DstreefenwickVector::scale(self : DstreefenwickVector, s : Double) -> DstreefenwickVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn ds_tree_fenwick_vector_dot(a : DstreefenwickVector, b : DstreefenwickVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn DstreefenwickVector::dot(self : DstreefenwickVector, other : DstreefenwickVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn ds_tree_fenwick_vector_norm(v : DstreefenwickVector) -> Double { @_common.sqrt(ds_tree_fenwick_vector_dot(v, v)) }
+pub fn DstreefenwickVector::norm(self : DstreefenwickVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn ds_tree_fenwick_vector_normalize(v : DstreefenwickVector) -> DstreefenwickVector {
-  let n = ds_tree_fenwick_vector_norm(v)
-  if n < 0.0000001 { v } else { ds_tree_fenwick_vector_scale(v, 1.0 / n) }
+pub fn DstreefenwickVector::normalize(self : DstreefenwickVector) -> DstreefenwickVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn ds_tree_fenwick_vector_dist(a : DstreefenwickVector, b : DstreefenwickVector) -> Double {
-  ds_tree_fenwick_vector_norm(ds_tree_fenwick_vector_sub(a, b))
+pub fn DstreefenwickVector::dist(self : DstreefenwickVector, other : DstreefenwickVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn ds_tree_fenwick_vector_to_string(v : DstreefenwickVector) -> String {
+pub fn DstreefenwickVector::to_string(self : DstreefenwickVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn ds_tree_fenwick_mean(data : Array[Double]) -> Double { @_common.mean(data) }

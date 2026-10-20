@@ -16,64 +16,64 @@ pub fn signal_filter_fir_make_point3(x : Double, y : Double, z : Double) -> Sign
   { x, y, z, label: 0 }
 }
 
-pub fn signal_filter_fir_point_x(pt : SignalfilterfirPoint) -> Double { pt.x }
+pub fn SignalfilterfirPoint::x(self : SignalfilterfirPoint) -> Double { self.x }
 
-pub fn signal_filter_fir_point_y(pt : SignalfilterfirPoint) -> Double { pt.y }
+pub fn SignalfilterfirPoint::y(self : SignalfilterfirPoint) -> Double { self.y }
 
-pub fn signal_filter_fir_point_z(pt : SignalfilterfirPoint) -> Double { pt.z }
+pub fn SignalfilterfirPoint::z(self : SignalfilterfirPoint) -> Double { self.z }
 
-pub fn signal_filter_fir_point_label(pt : SignalfilterfirPoint) -> Int { pt.label }
+pub fn SignalfilterfirPoint::label(self : SignalfilterfirPoint) -> Int { self.label }
 
-pub fn signal_filter_fir_point_dist(a : SignalfilterfirPoint, b : SignalfilterfirPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn SignalfilterfirPoint::dist(self : SignalfilterfirPoint, other : SignalfilterfirPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn signal_filter_fir_point_add(a : SignalfilterfirPoint, b : SignalfilterfirPoint) -> SignalfilterfirPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn SignalfilterfirPoint::add(self : SignalfilterfirPoint, other : SignalfilterfirPoint) -> SignalfilterfirPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn signal_filter_fir_point_sub(a : SignalfilterfirPoint, b : SignalfilterfirPoint) -> SignalfilterfirPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn SignalfilterfirPoint::sub(self : SignalfilterfirPoint, other : SignalfilterfirPoint) -> SignalfilterfirPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn signal_filter_fir_point_scale(pt : SignalfilterfirPoint, s : Double) -> SignalfilterfirPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn SignalfilterfirPoint::scale(self : SignalfilterfirPoint, s : Double) -> SignalfilterfirPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn signal_filter_fir_point_dot(a : SignalfilterfirPoint, b : SignalfilterfirPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn SignalfilterfirPoint::dot(self : SignalfilterfirPoint, other : SignalfilterfirPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn signal_filter_fir_point_cross(a : SignalfilterfirPoint, b : SignalfilterfirPoint) -> SignalfilterfirPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn SignalfilterfirPoint::cross(self : SignalfilterfirPoint, other : SignalfilterfirPoint) -> SignalfilterfirPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn signal_filter_fir_point_norm(pt : SignalfilterfirPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn SignalfilterfirPoint::norm(self : SignalfilterfirPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn signal_filter_fir_point_normalize(pt : SignalfilterfirPoint) -> SignalfilterfirPoint {
-  let n = signal_filter_fir_point_norm(pt)
-  if n < 0.0000001 { pt } else { signal_filter_fir_point_scale(pt, 1.0 / n) }
+pub fn SignalfilterfirPoint::normalize(self : SignalfilterfirPoint) -> SignalfilterfirPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn signal_filter_fir_point_negate(pt : SignalfilterfirPoint) -> SignalfilterfirPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn SignalfilterfirPoint::negate(self : SignalfilterfirPoint) -> SignalfilterfirPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn signal_filter_fir_point_mid(a : SignalfilterfirPoint, b : SignalfilterfirPoint) -> SignalfilterfirPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn SignalfilterfirPoint::mid(self : SignalfilterfirPoint, other : SignalfilterfirPoint) -> SignalfilterfirPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn signal_filter_fir_point_lerp(a : SignalfilterfirPoint, b : SignalfilterfirPoint, t : Double) -> SignalfilterfirPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn SignalfilterfirPoint::lerp(self : SignalfilterfirPoint, other : SignalfilterfirPoint, t : Double) -> SignalfilterfirPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn signal_filter_fir_point_to_string(pt : SignalfilterfirPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn SignalfilterfirPoint::to_string(self : SignalfilterfirPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct SignalfilterfirSeries {
@@ -86,58 +86,58 @@ pub fn signal_filter_fir_make_series(vals : Array[Double], name : String) -> Sig
   { vals, name, meta: 0 }
 }
 
-pub fn signal_filter_fir_series_len(s : SignalfilterfirSeries) -> Int { s.vals.length() }
+pub fn SignalfilterfirSeries::len(self : SignalfilterfirSeries) -> Int { self.vals.length() }
 
-pub fn signal_filter_fir_series_sum(s : SignalfilterfirSeries) -> Double { @_common.sum(s.vals) }
+pub fn SignalfilterfirSeries::sum(self : SignalfilterfirSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn signal_filter_fir_series_mean(s : SignalfilterfirSeries) -> Double { @_common.mean(s.vals) }
+pub fn SignalfilterfirSeries::mean(self : SignalfilterfirSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn signal_filter_fir_series_min(s : SignalfilterfirSeries) -> Double { @_common.min(s.vals) }
+pub fn SignalfilterfirSeries::min(self : SignalfilterfirSeries) -> Double { @_common.min(self.vals) }
 
-pub fn signal_filter_fir_series_max(s : SignalfilterfirSeries) -> Double { @_common.max(s.vals) }
+pub fn SignalfilterfirSeries::max(self : SignalfilterfirSeries) -> Double { @_common.max(self.vals) }
 
-pub fn signal_filter_fir_series_range(s : SignalfilterfirSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn SignalfilterfirSeries::range(self : SignalfilterfirSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn signal_filter_fir_series_var(s : SignalfilterfirSeries) -> Double { @_common.variance(s.vals) }
+pub fn SignalfilterfirSeries::variance(self : SignalfilterfirSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn signal_filter_fir_series_std(s : SignalfilterfirSeries) -> Double { @_common.std(s.vals) }
+pub fn SignalfilterfirSeries::std(self : SignalfilterfirSeries) -> Double { @_common.std(self.vals) }
 
-pub fn signal_filter_fir_series_median(s : SignalfilterfirSeries) -> Double { @_common.median(s.vals) }
+pub fn SignalfilterfirSeries::median(self : SignalfilterfirSeries) -> Double { @_common.median(self.vals) }
 
-pub fn signal_filter_fir_series_scale(s : SignalfilterfirSeries, f : Double) -> SignalfilterfirSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn SignalfilterfirSeries::scale(self : SignalfilterfirSeries, f : Double) -> SignalfilterfirSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn signal_filter_fir_series_add(a : SignalfilterfirSeries, b : SignalfilterfirSeries) -> SignalfilterfirSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn SignalfilterfirSeries::add(self : SignalfilterfirSeries, other : SignalfilterfirSeries) -> SignalfilterfirSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn signal_filter_fir_series_sub(a : SignalfilterfirSeries, b : SignalfilterfirSeries) -> SignalfilterfirSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn SignalfilterfirSeries::sub(self : SignalfilterfirSeries, other : SignalfilterfirSeries) -> SignalfilterfirSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn signal_filter_fir_series_normalize(s : SignalfilterfirSeries) -> SignalfilterfirSeries {
-  let mn = signal_filter_fir_series_min(s)
-  let mx = signal_filter_fir_series_max(s)
+pub fn SignalfilterfirSeries::normalize(self : SignalfilterfirSeries) -> SignalfilterfirSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn signal_filter_fir_series_cumsum(s : SignalfilterfirSeries) -> SignalfilterfirSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn SignalfilterfirSeries::cumsum(self : SignalfilterfirSeries) -> SignalfilterfirSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn signal_filter_fir_series_to_string(s : SignalfilterfirSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn SignalfilterfirSeries::to_string(self : SignalfilterfirSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn signal_filter_fir_matrix_identity(n : Int) -> SignalfilterfirMatrix {
   m
 }
 
-pub fn signal_filter_fir_matrix_get(m : SignalfilterfirMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn SignalfilterfirMatrix::get(self : SignalfilterfirMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn signal_filter_fir_matrix_transpose(m : SignalfilterfirMatrix) -> SignalfilterfirMatrix {
-  let result = signal_filter_fir_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn SignalfilterfirMatrix::transpose(self : SignalfilterfirMatrix) -> SignalfilterfirMatrix {
+  let result = signal_filter_fir_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn signal_filter_fir_matrix_add(a : SignalfilterfirMatrix, b : SignalfilterfirMatrix) -> SignalfilterfirMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = signal_filter_fir_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn SignalfilterfirMatrix::add(self : SignalfilterfirMatrix, other : SignalfilterfirMatrix) -> SignalfilterfirMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = signal_filter_fir_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn signal_filter_fir_matrix_scale(m : SignalfilterfirMatrix, s : Double) -> SignalfilterfirMatrix {
-  let result = signal_filter_fir_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn SignalfilterfirMatrix::scale(self : SignalfilterfirMatrix, s : Double) -> SignalfilterfirMatrix {
+  let result = signal_filter_fir_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn signal_filter_fir_matrix_multiply(a : SignalfilterfirMatrix, b : SignalfilterfirMatrix) -> SignalfilterfirMatrix {
-  if a.cols != b.rows { return signal_filter_fir_make_matrix(a.rows, b.cols, 0.0) }
-  let result = signal_filter_fir_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn SignalfilterfirMatrix::multiply(self : SignalfilterfirMatrix, other : SignalfilterfirMatrix) -> SignalfilterfirMatrix {
+  if self.cols != other.rows { return signal_filter_fir_make_matrix(self.rows, other.cols, 0.0) }
+  let result = signal_filter_fir_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn signal_filter_fir_matrix_trace(m : SignalfilterfirMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn SignalfilterfirMatrix::trace(self : SignalfilterfirMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn signal_filter_fir_matrix_det(m : SignalfilterfirMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn SignalfilterfirMatrix::det(self : SignalfilterfirMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn signal_filter_fir_matrix_norm(m : SignalfilterfirMatrix) -> Double {
+pub fn SignalfilterfirMatrix::norm(self : SignalfilterfirMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn signal_filter_fir_matrix_to_string(m : SignalfilterfirMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn SignalfilterfirMatrix::to_string(self : SignalfilterfirMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn signal_filter_fir_vector_zero(dim : Int) -> SignalfilterfirVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn signal_filter_fir_vector_add(a : SignalfilterfirVector, b : SignalfilterfirVector) -> SignalfilterfirVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn SignalfilterfirVector::add(self : SignalfilterfirVector, other : SignalfilterfirVector) -> SignalfilterfirVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn signal_filter_fir_vector_sub(a : SignalfilterfirVector, b : SignalfilterfirVector) -> SignalfilterfirVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn SignalfilterfirVector::sub(self : SignalfilterfirVector, other : SignalfilterfirVector) -> SignalfilterfirVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn signal_filter_fir_vector_scale(v : SignalfilterfirVector, s : Double) -> SignalfilterfirVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn SignalfilterfirVector::scale(self : SignalfilterfirVector, s : Double) -> SignalfilterfirVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn signal_filter_fir_vector_dot(a : SignalfilterfirVector, b : SignalfilterfirVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn SignalfilterfirVector::dot(self : SignalfilterfirVector, other : SignalfilterfirVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn signal_filter_fir_vector_norm(v : SignalfilterfirVector) -> Double { @_common.sqrt(signal_filter_fir_vector_dot(v, v)) }
+pub fn SignalfilterfirVector::norm(self : SignalfilterfirVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn signal_filter_fir_vector_normalize(v : SignalfilterfirVector) -> SignalfilterfirVector {
-  let n = signal_filter_fir_vector_norm(v)
-  if n < 0.0000001 { v } else { signal_filter_fir_vector_scale(v, 1.0 / n) }
+pub fn SignalfilterfirVector::normalize(self : SignalfilterfirVector) -> SignalfilterfirVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn signal_filter_fir_vector_dist(a : SignalfilterfirVector, b : SignalfilterfirVector) -> Double {
-  signal_filter_fir_vector_norm(signal_filter_fir_vector_sub(a, b))
+pub fn SignalfilterfirVector::dist(self : SignalfilterfirVector, other : SignalfilterfirVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn signal_filter_fir_vector_to_string(v : SignalfilterfirVector) -> String {
+pub fn SignalfilterfirVector::to_string(self : SignalfilterfirVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn signal_filter_fir_mean(data : Array[Double]) -> Double { @_common.mean(data) }

@@ -16,64 +16,64 @@ pub fn bio_struct_contact_make_point3(x : Double, y : Double, z : Double) -> Bio
   { x, y, z, label: 0 }
 }
 
-pub fn bio_struct_contact_point_x(pt : BiostructcontactPoint) -> Double { pt.x }
+pub fn BiostructcontactPoint::x(self : BiostructcontactPoint) -> Double { self.x }
 
-pub fn bio_struct_contact_point_y(pt : BiostructcontactPoint) -> Double { pt.y }
+pub fn BiostructcontactPoint::y(self : BiostructcontactPoint) -> Double { self.y }
 
-pub fn bio_struct_contact_point_z(pt : BiostructcontactPoint) -> Double { pt.z }
+pub fn BiostructcontactPoint::z(self : BiostructcontactPoint) -> Double { self.z }
 
-pub fn bio_struct_contact_point_label(pt : BiostructcontactPoint) -> Int { pt.label }
+pub fn BiostructcontactPoint::label(self : BiostructcontactPoint) -> Int { self.label }
 
-pub fn bio_struct_contact_point_dist(a : BiostructcontactPoint, b : BiostructcontactPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn BiostructcontactPoint::dist(self : BiostructcontactPoint, other : BiostructcontactPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn bio_struct_contact_point_add(a : BiostructcontactPoint, b : BiostructcontactPoint) -> BiostructcontactPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn BiostructcontactPoint::add(self : BiostructcontactPoint, other : BiostructcontactPoint) -> BiostructcontactPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn bio_struct_contact_point_sub(a : BiostructcontactPoint, b : BiostructcontactPoint) -> BiostructcontactPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn BiostructcontactPoint::sub(self : BiostructcontactPoint, other : BiostructcontactPoint) -> BiostructcontactPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn bio_struct_contact_point_scale(pt : BiostructcontactPoint, s : Double) -> BiostructcontactPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn BiostructcontactPoint::scale(self : BiostructcontactPoint, s : Double) -> BiostructcontactPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn bio_struct_contact_point_dot(a : BiostructcontactPoint, b : BiostructcontactPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn BiostructcontactPoint::dot(self : BiostructcontactPoint, other : BiostructcontactPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn bio_struct_contact_point_cross(a : BiostructcontactPoint, b : BiostructcontactPoint) -> BiostructcontactPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn BiostructcontactPoint::cross(self : BiostructcontactPoint, other : BiostructcontactPoint) -> BiostructcontactPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn bio_struct_contact_point_norm(pt : BiostructcontactPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn BiostructcontactPoint::norm(self : BiostructcontactPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn bio_struct_contact_point_normalize(pt : BiostructcontactPoint) -> BiostructcontactPoint {
-  let n = bio_struct_contact_point_norm(pt)
-  if n < 0.0000001 { pt } else { bio_struct_contact_point_scale(pt, 1.0 / n) }
+pub fn BiostructcontactPoint::normalize(self : BiostructcontactPoint) -> BiostructcontactPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn bio_struct_contact_point_negate(pt : BiostructcontactPoint) -> BiostructcontactPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn BiostructcontactPoint::negate(self : BiostructcontactPoint) -> BiostructcontactPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn bio_struct_contact_point_mid(a : BiostructcontactPoint, b : BiostructcontactPoint) -> BiostructcontactPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn BiostructcontactPoint::mid(self : BiostructcontactPoint, other : BiostructcontactPoint) -> BiostructcontactPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn bio_struct_contact_point_lerp(a : BiostructcontactPoint, b : BiostructcontactPoint, t : Double) -> BiostructcontactPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn BiostructcontactPoint::lerp(self : BiostructcontactPoint, other : BiostructcontactPoint, t : Double) -> BiostructcontactPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn bio_struct_contact_point_to_string(pt : BiostructcontactPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn BiostructcontactPoint::to_string(self : BiostructcontactPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct BiostructcontactSeries {
@@ -86,58 +86,58 @@ pub fn bio_struct_contact_make_series(vals : Array[Double], name : String) -> Bi
   { vals, name, meta: 0 }
 }
 
-pub fn bio_struct_contact_series_len(s : BiostructcontactSeries) -> Int { s.vals.length() }
+pub fn BiostructcontactSeries::len(self : BiostructcontactSeries) -> Int { self.vals.length() }
 
-pub fn bio_struct_contact_series_sum(s : BiostructcontactSeries) -> Double { @_common.sum(s.vals) }
+pub fn BiostructcontactSeries::sum(self : BiostructcontactSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn bio_struct_contact_series_mean(s : BiostructcontactSeries) -> Double { @_common.mean(s.vals) }
+pub fn BiostructcontactSeries::mean(self : BiostructcontactSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn bio_struct_contact_series_min(s : BiostructcontactSeries) -> Double { @_common.min(s.vals) }
+pub fn BiostructcontactSeries::min(self : BiostructcontactSeries) -> Double { @_common.min(self.vals) }
 
-pub fn bio_struct_contact_series_max(s : BiostructcontactSeries) -> Double { @_common.max(s.vals) }
+pub fn BiostructcontactSeries::max(self : BiostructcontactSeries) -> Double { @_common.max(self.vals) }
 
-pub fn bio_struct_contact_series_range(s : BiostructcontactSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn BiostructcontactSeries::range(self : BiostructcontactSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn bio_struct_contact_series_var(s : BiostructcontactSeries) -> Double { @_common.variance(s.vals) }
+pub fn BiostructcontactSeries::variance(self : BiostructcontactSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn bio_struct_contact_series_std(s : BiostructcontactSeries) -> Double { @_common.std(s.vals) }
+pub fn BiostructcontactSeries::std(self : BiostructcontactSeries) -> Double { @_common.std(self.vals) }
 
-pub fn bio_struct_contact_series_median(s : BiostructcontactSeries) -> Double { @_common.median(s.vals) }
+pub fn BiostructcontactSeries::median(self : BiostructcontactSeries) -> Double { @_common.median(self.vals) }
 
-pub fn bio_struct_contact_series_scale(s : BiostructcontactSeries, f : Double) -> BiostructcontactSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn BiostructcontactSeries::scale(self : BiostructcontactSeries, f : Double) -> BiostructcontactSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn bio_struct_contact_series_add(a : BiostructcontactSeries, b : BiostructcontactSeries) -> BiostructcontactSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn BiostructcontactSeries::add(self : BiostructcontactSeries, other : BiostructcontactSeries) -> BiostructcontactSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn bio_struct_contact_series_sub(a : BiostructcontactSeries, b : BiostructcontactSeries) -> BiostructcontactSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn BiostructcontactSeries::sub(self : BiostructcontactSeries, other : BiostructcontactSeries) -> BiostructcontactSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn bio_struct_contact_series_normalize(s : BiostructcontactSeries) -> BiostructcontactSeries {
-  let mn = bio_struct_contact_series_min(s)
-  let mx = bio_struct_contact_series_max(s)
+pub fn BiostructcontactSeries::normalize(self : BiostructcontactSeries) -> BiostructcontactSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn bio_struct_contact_series_cumsum(s : BiostructcontactSeries) -> BiostructcontactSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn BiostructcontactSeries::cumsum(self : BiostructcontactSeries) -> BiostructcontactSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn bio_struct_contact_series_to_string(s : BiostructcontactSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn BiostructcontactSeries::to_string(self : BiostructcontactSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn bio_struct_contact_matrix_identity(n : Int) -> BiostructcontactMatrix {
   m
 }
 
-pub fn bio_struct_contact_matrix_get(m : BiostructcontactMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn BiostructcontactMatrix::get(self : BiostructcontactMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn bio_struct_contact_matrix_transpose(m : BiostructcontactMatrix) -> BiostructcontactMatrix {
-  let result = bio_struct_contact_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn BiostructcontactMatrix::transpose(self : BiostructcontactMatrix) -> BiostructcontactMatrix {
+  let result = bio_struct_contact_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn bio_struct_contact_matrix_add(a : BiostructcontactMatrix, b : BiostructcontactMatrix) -> BiostructcontactMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = bio_struct_contact_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn BiostructcontactMatrix::add(self : BiostructcontactMatrix, other : BiostructcontactMatrix) -> BiostructcontactMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = bio_struct_contact_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn bio_struct_contact_matrix_scale(m : BiostructcontactMatrix, s : Double) -> BiostructcontactMatrix {
-  let result = bio_struct_contact_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn BiostructcontactMatrix::scale(self : BiostructcontactMatrix, s : Double) -> BiostructcontactMatrix {
+  let result = bio_struct_contact_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn bio_struct_contact_matrix_multiply(a : BiostructcontactMatrix, b : BiostructcontactMatrix) -> BiostructcontactMatrix {
-  if a.cols != b.rows { return bio_struct_contact_make_matrix(a.rows, b.cols, 0.0) }
-  let result = bio_struct_contact_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn BiostructcontactMatrix::multiply(self : BiostructcontactMatrix, other : BiostructcontactMatrix) -> BiostructcontactMatrix {
+  if self.cols != other.rows { return bio_struct_contact_make_matrix(self.rows, other.cols, 0.0) }
+  let result = bio_struct_contact_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn bio_struct_contact_matrix_trace(m : BiostructcontactMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn BiostructcontactMatrix::trace(self : BiostructcontactMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn bio_struct_contact_matrix_det(m : BiostructcontactMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn BiostructcontactMatrix::det(self : BiostructcontactMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn bio_struct_contact_matrix_norm(m : BiostructcontactMatrix) -> Double {
+pub fn BiostructcontactMatrix::norm(self : BiostructcontactMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn bio_struct_contact_matrix_to_string(m : BiostructcontactMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn BiostructcontactMatrix::to_string(self : BiostructcontactMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn bio_struct_contact_vector_zero(dim : Int) -> BiostructcontactVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn bio_struct_contact_vector_add(a : BiostructcontactVector, b : BiostructcontactVector) -> BiostructcontactVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn BiostructcontactVector::add(self : BiostructcontactVector, other : BiostructcontactVector) -> BiostructcontactVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn bio_struct_contact_vector_sub(a : BiostructcontactVector, b : BiostructcontactVector) -> BiostructcontactVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn BiostructcontactVector::sub(self : BiostructcontactVector, other : BiostructcontactVector) -> BiostructcontactVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn bio_struct_contact_vector_scale(v : BiostructcontactVector, s : Double) -> BiostructcontactVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn BiostructcontactVector::scale(self : BiostructcontactVector, s : Double) -> BiostructcontactVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn bio_struct_contact_vector_dot(a : BiostructcontactVector, b : BiostructcontactVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn BiostructcontactVector::dot(self : BiostructcontactVector, other : BiostructcontactVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn bio_struct_contact_vector_norm(v : BiostructcontactVector) -> Double { @_common.sqrt(bio_struct_contact_vector_dot(v, v)) }
+pub fn BiostructcontactVector::norm(self : BiostructcontactVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn bio_struct_contact_vector_normalize(v : BiostructcontactVector) -> BiostructcontactVector {
-  let n = bio_struct_contact_vector_norm(v)
-  if n < 0.0000001 { v } else { bio_struct_contact_vector_scale(v, 1.0 / n) }
+pub fn BiostructcontactVector::normalize(self : BiostructcontactVector) -> BiostructcontactVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn bio_struct_contact_vector_dist(a : BiostructcontactVector, b : BiostructcontactVector) -> Double {
-  bio_struct_contact_vector_norm(bio_struct_contact_vector_sub(a, b))
+pub fn BiostructcontactVector::dist(self : BiostructcontactVector, other : BiostructcontactVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn bio_struct_contact_vector_to_string(v : BiostructcontactVector) -> String {
+pub fn BiostructcontactVector::to_string(self : BiostructcontactVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn bio_struct_contact_mean(data : Array[Double]) -> Double { @_common.mean(data) }

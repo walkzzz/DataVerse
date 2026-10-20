@@ -16,64 +16,64 @@ pub fn crypto_sign_ecdsa_make_point3(x : Double, y : Double, z : Double) -> Cryp
   { x, y, z, label: 0 }
 }
 
-pub fn crypto_sign_ecdsa_point_x(pt : CryptosignecdsaPoint) -> Double { pt.x }
+pub fn CryptosignecdsaPoint::x(self : CryptosignecdsaPoint) -> Double { self.x }
 
-pub fn crypto_sign_ecdsa_point_y(pt : CryptosignecdsaPoint) -> Double { pt.y }
+pub fn CryptosignecdsaPoint::y(self : CryptosignecdsaPoint) -> Double { self.y }
 
-pub fn crypto_sign_ecdsa_point_z(pt : CryptosignecdsaPoint) -> Double { pt.z }
+pub fn CryptosignecdsaPoint::z(self : CryptosignecdsaPoint) -> Double { self.z }
 
-pub fn crypto_sign_ecdsa_point_label(pt : CryptosignecdsaPoint) -> Int { pt.label }
+pub fn CryptosignecdsaPoint::label(self : CryptosignecdsaPoint) -> Int { self.label }
 
-pub fn crypto_sign_ecdsa_point_dist(a : CryptosignecdsaPoint, b : CryptosignecdsaPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn CryptosignecdsaPoint::dist(self : CryptosignecdsaPoint, other : CryptosignecdsaPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn crypto_sign_ecdsa_point_add(a : CryptosignecdsaPoint, b : CryptosignecdsaPoint) -> CryptosignecdsaPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn CryptosignecdsaPoint::add(self : CryptosignecdsaPoint, other : CryptosignecdsaPoint) -> CryptosignecdsaPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn crypto_sign_ecdsa_point_sub(a : CryptosignecdsaPoint, b : CryptosignecdsaPoint) -> CryptosignecdsaPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn CryptosignecdsaPoint::sub(self : CryptosignecdsaPoint, other : CryptosignecdsaPoint) -> CryptosignecdsaPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn crypto_sign_ecdsa_point_scale(pt : CryptosignecdsaPoint, s : Double) -> CryptosignecdsaPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn CryptosignecdsaPoint::scale(self : CryptosignecdsaPoint, s : Double) -> CryptosignecdsaPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn crypto_sign_ecdsa_point_dot(a : CryptosignecdsaPoint, b : CryptosignecdsaPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn CryptosignecdsaPoint::dot(self : CryptosignecdsaPoint, other : CryptosignecdsaPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn crypto_sign_ecdsa_point_cross(a : CryptosignecdsaPoint, b : CryptosignecdsaPoint) -> CryptosignecdsaPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn CryptosignecdsaPoint::cross(self : CryptosignecdsaPoint, other : CryptosignecdsaPoint) -> CryptosignecdsaPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn crypto_sign_ecdsa_point_norm(pt : CryptosignecdsaPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn CryptosignecdsaPoint::norm(self : CryptosignecdsaPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn crypto_sign_ecdsa_point_normalize(pt : CryptosignecdsaPoint) -> CryptosignecdsaPoint {
-  let n = crypto_sign_ecdsa_point_norm(pt)
-  if n < 0.0000001 { pt } else { crypto_sign_ecdsa_point_scale(pt, 1.0 / n) }
+pub fn CryptosignecdsaPoint::normalize(self : CryptosignecdsaPoint) -> CryptosignecdsaPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn crypto_sign_ecdsa_point_negate(pt : CryptosignecdsaPoint) -> CryptosignecdsaPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn CryptosignecdsaPoint::negate(self : CryptosignecdsaPoint) -> CryptosignecdsaPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn crypto_sign_ecdsa_point_mid(a : CryptosignecdsaPoint, b : CryptosignecdsaPoint) -> CryptosignecdsaPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn CryptosignecdsaPoint::mid(self : CryptosignecdsaPoint, other : CryptosignecdsaPoint) -> CryptosignecdsaPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn crypto_sign_ecdsa_point_lerp(a : CryptosignecdsaPoint, b : CryptosignecdsaPoint, t : Double) -> CryptosignecdsaPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn CryptosignecdsaPoint::lerp(self : CryptosignecdsaPoint, other : CryptosignecdsaPoint, t : Double) -> CryptosignecdsaPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn crypto_sign_ecdsa_point_to_string(pt : CryptosignecdsaPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn CryptosignecdsaPoint::to_string(self : CryptosignecdsaPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct CryptosignecdsaSeries {
@@ -86,58 +86,58 @@ pub fn crypto_sign_ecdsa_make_series(vals : Array[Double], name : String) -> Cry
   { vals, name, meta: 0 }
 }
 
-pub fn crypto_sign_ecdsa_series_len(s : CryptosignecdsaSeries) -> Int { s.vals.length() }
+pub fn CryptosignecdsaSeries::len(self : CryptosignecdsaSeries) -> Int { self.vals.length() }
 
-pub fn crypto_sign_ecdsa_series_sum(s : CryptosignecdsaSeries) -> Double { @_common.sum(s.vals) }
+pub fn CryptosignecdsaSeries::sum(self : CryptosignecdsaSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn crypto_sign_ecdsa_series_mean(s : CryptosignecdsaSeries) -> Double { @_common.mean(s.vals) }
+pub fn CryptosignecdsaSeries::mean(self : CryptosignecdsaSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn crypto_sign_ecdsa_series_min(s : CryptosignecdsaSeries) -> Double { @_common.min(s.vals) }
+pub fn CryptosignecdsaSeries::min(self : CryptosignecdsaSeries) -> Double { @_common.min(self.vals) }
 
-pub fn crypto_sign_ecdsa_series_max(s : CryptosignecdsaSeries) -> Double { @_common.max(s.vals) }
+pub fn CryptosignecdsaSeries::max(self : CryptosignecdsaSeries) -> Double { @_common.max(self.vals) }
 
-pub fn crypto_sign_ecdsa_series_range(s : CryptosignecdsaSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn CryptosignecdsaSeries::range(self : CryptosignecdsaSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn crypto_sign_ecdsa_series_var(s : CryptosignecdsaSeries) -> Double { @_common.variance(s.vals) }
+pub fn CryptosignecdsaSeries::variance(self : CryptosignecdsaSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn crypto_sign_ecdsa_series_std(s : CryptosignecdsaSeries) -> Double { @_common.std(s.vals) }
+pub fn CryptosignecdsaSeries::std(self : CryptosignecdsaSeries) -> Double { @_common.std(self.vals) }
 
-pub fn crypto_sign_ecdsa_series_median(s : CryptosignecdsaSeries) -> Double { @_common.median(s.vals) }
+pub fn CryptosignecdsaSeries::median(self : CryptosignecdsaSeries) -> Double { @_common.median(self.vals) }
 
-pub fn crypto_sign_ecdsa_series_scale(s : CryptosignecdsaSeries, f : Double) -> CryptosignecdsaSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn CryptosignecdsaSeries::scale(self : CryptosignecdsaSeries, f : Double) -> CryptosignecdsaSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn crypto_sign_ecdsa_series_add(a : CryptosignecdsaSeries, b : CryptosignecdsaSeries) -> CryptosignecdsaSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn CryptosignecdsaSeries::add(self : CryptosignecdsaSeries, other : CryptosignecdsaSeries) -> CryptosignecdsaSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn crypto_sign_ecdsa_series_sub(a : CryptosignecdsaSeries, b : CryptosignecdsaSeries) -> CryptosignecdsaSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn CryptosignecdsaSeries::sub(self : CryptosignecdsaSeries, other : CryptosignecdsaSeries) -> CryptosignecdsaSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn crypto_sign_ecdsa_series_normalize(s : CryptosignecdsaSeries) -> CryptosignecdsaSeries {
-  let mn = crypto_sign_ecdsa_series_min(s)
-  let mx = crypto_sign_ecdsa_series_max(s)
+pub fn CryptosignecdsaSeries::normalize(self : CryptosignecdsaSeries) -> CryptosignecdsaSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn crypto_sign_ecdsa_series_cumsum(s : CryptosignecdsaSeries) -> CryptosignecdsaSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn CryptosignecdsaSeries::cumsum(self : CryptosignecdsaSeries) -> CryptosignecdsaSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn crypto_sign_ecdsa_series_to_string(s : CryptosignecdsaSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn CryptosignecdsaSeries::to_string(self : CryptosignecdsaSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn crypto_sign_ecdsa_matrix_identity(n : Int) -> CryptosignecdsaMatrix {
   m
 }
 
-pub fn crypto_sign_ecdsa_matrix_get(m : CryptosignecdsaMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn CryptosignecdsaMatrix::get(self : CryptosignecdsaMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn crypto_sign_ecdsa_matrix_transpose(m : CryptosignecdsaMatrix) -> CryptosignecdsaMatrix {
-  let result = crypto_sign_ecdsa_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn CryptosignecdsaMatrix::transpose(self : CryptosignecdsaMatrix) -> CryptosignecdsaMatrix {
+  let result = crypto_sign_ecdsa_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn crypto_sign_ecdsa_matrix_add(a : CryptosignecdsaMatrix, b : CryptosignecdsaMatrix) -> CryptosignecdsaMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = crypto_sign_ecdsa_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn CryptosignecdsaMatrix::add(self : CryptosignecdsaMatrix, other : CryptosignecdsaMatrix) -> CryptosignecdsaMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = crypto_sign_ecdsa_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn crypto_sign_ecdsa_matrix_scale(m : CryptosignecdsaMatrix, s : Double) -> CryptosignecdsaMatrix {
-  let result = crypto_sign_ecdsa_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn CryptosignecdsaMatrix::scale(self : CryptosignecdsaMatrix, s : Double) -> CryptosignecdsaMatrix {
+  let result = crypto_sign_ecdsa_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn crypto_sign_ecdsa_matrix_multiply(a : CryptosignecdsaMatrix, b : CryptosignecdsaMatrix) -> CryptosignecdsaMatrix {
-  if a.cols != b.rows { return crypto_sign_ecdsa_make_matrix(a.rows, b.cols, 0.0) }
-  let result = crypto_sign_ecdsa_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn CryptosignecdsaMatrix::multiply(self : CryptosignecdsaMatrix, other : CryptosignecdsaMatrix) -> CryptosignecdsaMatrix {
+  if self.cols != other.rows { return crypto_sign_ecdsa_make_matrix(self.rows, other.cols, 0.0) }
+  let result = crypto_sign_ecdsa_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn crypto_sign_ecdsa_matrix_trace(m : CryptosignecdsaMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn CryptosignecdsaMatrix::trace(self : CryptosignecdsaMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn crypto_sign_ecdsa_matrix_det(m : CryptosignecdsaMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn CryptosignecdsaMatrix::det(self : CryptosignecdsaMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn crypto_sign_ecdsa_matrix_norm(m : CryptosignecdsaMatrix) -> Double {
+pub fn CryptosignecdsaMatrix::norm(self : CryptosignecdsaMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn crypto_sign_ecdsa_matrix_to_string(m : CryptosignecdsaMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn CryptosignecdsaMatrix::to_string(self : CryptosignecdsaMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn crypto_sign_ecdsa_vector_zero(dim : Int) -> CryptosignecdsaVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn crypto_sign_ecdsa_vector_add(a : CryptosignecdsaVector, b : CryptosignecdsaVector) -> CryptosignecdsaVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn CryptosignecdsaVector::add(self : CryptosignecdsaVector, other : CryptosignecdsaVector) -> CryptosignecdsaVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn crypto_sign_ecdsa_vector_sub(a : CryptosignecdsaVector, b : CryptosignecdsaVector) -> CryptosignecdsaVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn CryptosignecdsaVector::sub(self : CryptosignecdsaVector, other : CryptosignecdsaVector) -> CryptosignecdsaVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn crypto_sign_ecdsa_vector_scale(v : CryptosignecdsaVector, s : Double) -> CryptosignecdsaVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn CryptosignecdsaVector::scale(self : CryptosignecdsaVector, s : Double) -> CryptosignecdsaVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn crypto_sign_ecdsa_vector_dot(a : CryptosignecdsaVector, b : CryptosignecdsaVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn CryptosignecdsaVector::dot(self : CryptosignecdsaVector, other : CryptosignecdsaVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn crypto_sign_ecdsa_vector_norm(v : CryptosignecdsaVector) -> Double { @_common.sqrt(crypto_sign_ecdsa_vector_dot(v, v)) }
+pub fn CryptosignecdsaVector::norm(self : CryptosignecdsaVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn crypto_sign_ecdsa_vector_normalize(v : CryptosignecdsaVector) -> CryptosignecdsaVector {
-  let n = crypto_sign_ecdsa_vector_norm(v)
-  if n < 0.0000001 { v } else { crypto_sign_ecdsa_vector_scale(v, 1.0 / n) }
+pub fn CryptosignecdsaVector::normalize(self : CryptosignecdsaVector) -> CryptosignecdsaVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn crypto_sign_ecdsa_vector_dist(a : CryptosignecdsaVector, b : CryptosignecdsaVector) -> Double {
-  crypto_sign_ecdsa_vector_norm(crypto_sign_ecdsa_vector_sub(a, b))
+pub fn CryptosignecdsaVector::dist(self : CryptosignecdsaVector, other : CryptosignecdsaVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn crypto_sign_ecdsa_vector_to_string(v : CryptosignecdsaVector) -> String {
+pub fn CryptosignecdsaVector::to_string(self : CryptosignecdsaVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn crypto_sign_ecdsa_mean(data : Array[Double]) -> Double { @_common.mean(data) }

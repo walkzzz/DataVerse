@@ -16,64 +16,64 @@ pub fn crypto_sym_twofish_make_point3(x : Double, y : Double, z : Double) -> Cry
   { x, y, z, label: 0 }
 }
 
-pub fn crypto_sym_twofish_point_x(pt : CryptosymtwofishPoint) -> Double { pt.x }
+pub fn CryptosymtwofishPoint::x(self : CryptosymtwofishPoint) -> Double { self.x }
 
-pub fn crypto_sym_twofish_point_y(pt : CryptosymtwofishPoint) -> Double { pt.y }
+pub fn CryptosymtwofishPoint::y(self : CryptosymtwofishPoint) -> Double { self.y }
 
-pub fn crypto_sym_twofish_point_z(pt : CryptosymtwofishPoint) -> Double { pt.z }
+pub fn CryptosymtwofishPoint::z(self : CryptosymtwofishPoint) -> Double { self.z }
 
-pub fn crypto_sym_twofish_point_label(pt : CryptosymtwofishPoint) -> Int { pt.label }
+pub fn CryptosymtwofishPoint::label(self : CryptosymtwofishPoint) -> Int { self.label }
 
-pub fn crypto_sym_twofish_point_dist(a : CryptosymtwofishPoint, b : CryptosymtwofishPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn CryptosymtwofishPoint::dist(self : CryptosymtwofishPoint, other : CryptosymtwofishPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn crypto_sym_twofish_point_add(a : CryptosymtwofishPoint, b : CryptosymtwofishPoint) -> CryptosymtwofishPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn CryptosymtwofishPoint::add(self : CryptosymtwofishPoint, other : CryptosymtwofishPoint) -> CryptosymtwofishPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn crypto_sym_twofish_point_sub(a : CryptosymtwofishPoint, b : CryptosymtwofishPoint) -> CryptosymtwofishPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn CryptosymtwofishPoint::sub(self : CryptosymtwofishPoint, other : CryptosymtwofishPoint) -> CryptosymtwofishPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn crypto_sym_twofish_point_scale(pt : CryptosymtwofishPoint, s : Double) -> CryptosymtwofishPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn CryptosymtwofishPoint::scale(self : CryptosymtwofishPoint, s : Double) -> CryptosymtwofishPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn crypto_sym_twofish_point_dot(a : CryptosymtwofishPoint, b : CryptosymtwofishPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn CryptosymtwofishPoint::dot(self : CryptosymtwofishPoint, other : CryptosymtwofishPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn crypto_sym_twofish_point_cross(a : CryptosymtwofishPoint, b : CryptosymtwofishPoint) -> CryptosymtwofishPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn CryptosymtwofishPoint::cross(self : CryptosymtwofishPoint, other : CryptosymtwofishPoint) -> CryptosymtwofishPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn crypto_sym_twofish_point_norm(pt : CryptosymtwofishPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn CryptosymtwofishPoint::norm(self : CryptosymtwofishPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn crypto_sym_twofish_point_normalize(pt : CryptosymtwofishPoint) -> CryptosymtwofishPoint {
-  let n = crypto_sym_twofish_point_norm(pt)
-  if n < 0.0000001 { pt } else { crypto_sym_twofish_point_scale(pt, 1.0 / n) }
+pub fn CryptosymtwofishPoint::normalize(self : CryptosymtwofishPoint) -> CryptosymtwofishPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn crypto_sym_twofish_point_negate(pt : CryptosymtwofishPoint) -> CryptosymtwofishPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn CryptosymtwofishPoint::negate(self : CryptosymtwofishPoint) -> CryptosymtwofishPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn crypto_sym_twofish_point_mid(a : CryptosymtwofishPoint, b : CryptosymtwofishPoint) -> CryptosymtwofishPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn CryptosymtwofishPoint::mid(self : CryptosymtwofishPoint, other : CryptosymtwofishPoint) -> CryptosymtwofishPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn crypto_sym_twofish_point_lerp(a : CryptosymtwofishPoint, b : CryptosymtwofishPoint, t : Double) -> CryptosymtwofishPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn CryptosymtwofishPoint::lerp(self : CryptosymtwofishPoint, other : CryptosymtwofishPoint, t : Double) -> CryptosymtwofishPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn crypto_sym_twofish_point_to_string(pt : CryptosymtwofishPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn CryptosymtwofishPoint::to_string(self : CryptosymtwofishPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct CryptosymtwofishSeries {
@@ -86,58 +86,58 @@ pub fn crypto_sym_twofish_make_series(vals : Array[Double], name : String) -> Cr
   { vals, name, meta: 0 }
 }
 
-pub fn crypto_sym_twofish_series_len(s : CryptosymtwofishSeries) -> Int { s.vals.length() }
+pub fn CryptosymtwofishSeries::len(self : CryptosymtwofishSeries) -> Int { self.vals.length() }
 
-pub fn crypto_sym_twofish_series_sum(s : CryptosymtwofishSeries) -> Double { @_common.sum(s.vals) }
+pub fn CryptosymtwofishSeries::sum(self : CryptosymtwofishSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn crypto_sym_twofish_series_mean(s : CryptosymtwofishSeries) -> Double { @_common.mean(s.vals) }
+pub fn CryptosymtwofishSeries::mean(self : CryptosymtwofishSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn crypto_sym_twofish_series_min(s : CryptosymtwofishSeries) -> Double { @_common.min(s.vals) }
+pub fn CryptosymtwofishSeries::min(self : CryptosymtwofishSeries) -> Double { @_common.min(self.vals) }
 
-pub fn crypto_sym_twofish_series_max(s : CryptosymtwofishSeries) -> Double { @_common.max(s.vals) }
+pub fn CryptosymtwofishSeries::max(self : CryptosymtwofishSeries) -> Double { @_common.max(self.vals) }
 
-pub fn crypto_sym_twofish_series_range(s : CryptosymtwofishSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn CryptosymtwofishSeries::range(self : CryptosymtwofishSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn crypto_sym_twofish_series_var(s : CryptosymtwofishSeries) -> Double { @_common.variance(s.vals) }
+pub fn CryptosymtwofishSeries::variance(self : CryptosymtwofishSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn crypto_sym_twofish_series_std(s : CryptosymtwofishSeries) -> Double { @_common.std(s.vals) }
+pub fn CryptosymtwofishSeries::std(self : CryptosymtwofishSeries) -> Double { @_common.std(self.vals) }
 
-pub fn crypto_sym_twofish_series_median(s : CryptosymtwofishSeries) -> Double { @_common.median(s.vals) }
+pub fn CryptosymtwofishSeries::median(self : CryptosymtwofishSeries) -> Double { @_common.median(self.vals) }
 
-pub fn crypto_sym_twofish_series_scale(s : CryptosymtwofishSeries, f : Double) -> CryptosymtwofishSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn CryptosymtwofishSeries::scale(self : CryptosymtwofishSeries, f : Double) -> CryptosymtwofishSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn crypto_sym_twofish_series_add(a : CryptosymtwofishSeries, b : CryptosymtwofishSeries) -> CryptosymtwofishSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn CryptosymtwofishSeries::add(self : CryptosymtwofishSeries, other : CryptosymtwofishSeries) -> CryptosymtwofishSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn crypto_sym_twofish_series_sub(a : CryptosymtwofishSeries, b : CryptosymtwofishSeries) -> CryptosymtwofishSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn CryptosymtwofishSeries::sub(self : CryptosymtwofishSeries, other : CryptosymtwofishSeries) -> CryptosymtwofishSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn crypto_sym_twofish_series_normalize(s : CryptosymtwofishSeries) -> CryptosymtwofishSeries {
-  let mn = crypto_sym_twofish_series_min(s)
-  let mx = crypto_sym_twofish_series_max(s)
+pub fn CryptosymtwofishSeries::normalize(self : CryptosymtwofishSeries) -> CryptosymtwofishSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn crypto_sym_twofish_series_cumsum(s : CryptosymtwofishSeries) -> CryptosymtwofishSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn CryptosymtwofishSeries::cumsum(self : CryptosymtwofishSeries) -> CryptosymtwofishSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn crypto_sym_twofish_series_to_string(s : CryptosymtwofishSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn CryptosymtwofishSeries::to_string(self : CryptosymtwofishSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn crypto_sym_twofish_matrix_identity(n : Int) -> CryptosymtwofishMatrix {
   m
 }
 
-pub fn crypto_sym_twofish_matrix_get(m : CryptosymtwofishMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn CryptosymtwofishMatrix::get(self : CryptosymtwofishMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn crypto_sym_twofish_matrix_transpose(m : CryptosymtwofishMatrix) -> CryptosymtwofishMatrix {
-  let result = crypto_sym_twofish_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn CryptosymtwofishMatrix::transpose(self : CryptosymtwofishMatrix) -> CryptosymtwofishMatrix {
+  let result = crypto_sym_twofish_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn crypto_sym_twofish_matrix_add(a : CryptosymtwofishMatrix, b : CryptosymtwofishMatrix) -> CryptosymtwofishMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = crypto_sym_twofish_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn CryptosymtwofishMatrix::add(self : CryptosymtwofishMatrix, other : CryptosymtwofishMatrix) -> CryptosymtwofishMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = crypto_sym_twofish_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn crypto_sym_twofish_matrix_scale(m : CryptosymtwofishMatrix, s : Double) -> CryptosymtwofishMatrix {
-  let result = crypto_sym_twofish_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn CryptosymtwofishMatrix::scale(self : CryptosymtwofishMatrix, s : Double) -> CryptosymtwofishMatrix {
+  let result = crypto_sym_twofish_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn crypto_sym_twofish_matrix_multiply(a : CryptosymtwofishMatrix, b : CryptosymtwofishMatrix) -> CryptosymtwofishMatrix {
-  if a.cols != b.rows { return crypto_sym_twofish_make_matrix(a.rows, b.cols, 0.0) }
-  let result = crypto_sym_twofish_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn CryptosymtwofishMatrix::multiply(self : CryptosymtwofishMatrix, other : CryptosymtwofishMatrix) -> CryptosymtwofishMatrix {
+  if self.cols != other.rows { return crypto_sym_twofish_make_matrix(self.rows, other.cols, 0.0) }
+  let result = crypto_sym_twofish_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn crypto_sym_twofish_matrix_trace(m : CryptosymtwofishMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn CryptosymtwofishMatrix::trace(self : CryptosymtwofishMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn crypto_sym_twofish_matrix_det(m : CryptosymtwofishMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn CryptosymtwofishMatrix::det(self : CryptosymtwofishMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn crypto_sym_twofish_matrix_norm(m : CryptosymtwofishMatrix) -> Double {
+pub fn CryptosymtwofishMatrix::norm(self : CryptosymtwofishMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn crypto_sym_twofish_matrix_to_string(m : CryptosymtwofishMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn CryptosymtwofishMatrix::to_string(self : CryptosymtwofishMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn crypto_sym_twofish_vector_zero(dim : Int) -> CryptosymtwofishVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn crypto_sym_twofish_vector_add(a : CryptosymtwofishVector, b : CryptosymtwofishVector) -> CryptosymtwofishVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn CryptosymtwofishVector::add(self : CryptosymtwofishVector, other : CryptosymtwofishVector) -> CryptosymtwofishVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn crypto_sym_twofish_vector_sub(a : CryptosymtwofishVector, b : CryptosymtwofishVector) -> CryptosymtwofishVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn CryptosymtwofishVector::sub(self : CryptosymtwofishVector, other : CryptosymtwofishVector) -> CryptosymtwofishVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn crypto_sym_twofish_vector_scale(v : CryptosymtwofishVector, s : Double) -> CryptosymtwofishVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn CryptosymtwofishVector::scale(self : CryptosymtwofishVector, s : Double) -> CryptosymtwofishVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn crypto_sym_twofish_vector_dot(a : CryptosymtwofishVector, b : CryptosymtwofishVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn CryptosymtwofishVector::dot(self : CryptosymtwofishVector, other : CryptosymtwofishVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn crypto_sym_twofish_vector_norm(v : CryptosymtwofishVector) -> Double { @_common.sqrt(crypto_sym_twofish_vector_dot(v, v)) }
+pub fn CryptosymtwofishVector::norm(self : CryptosymtwofishVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn crypto_sym_twofish_vector_normalize(v : CryptosymtwofishVector) -> CryptosymtwofishVector {
-  let n = crypto_sym_twofish_vector_norm(v)
-  if n < 0.0000001 { v } else { crypto_sym_twofish_vector_scale(v, 1.0 / n) }
+pub fn CryptosymtwofishVector::normalize(self : CryptosymtwofishVector) -> CryptosymtwofishVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn crypto_sym_twofish_vector_dist(a : CryptosymtwofishVector, b : CryptosymtwofishVector) -> Double {
-  crypto_sym_twofish_vector_norm(crypto_sym_twofish_vector_sub(a, b))
+pub fn CryptosymtwofishVector::dist(self : CryptosymtwofishVector, other : CryptosymtwofishVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn crypto_sym_twofish_vector_to_string(v : CryptosymtwofishVector) -> String {
+pub fn CryptosymtwofishVector::to_string(self : CryptosymtwofishVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn crypto_sym_twofish_mean(data : Array[Double]) -> Double { @_common.mean(data) }

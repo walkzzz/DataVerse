@@ -16,64 +16,64 @@ pub fn db_index_lsm_make_point3(x : Double, y : Double, z : Double) -> Dbindexls
   { x, y, z, label: 0 }
 }
 
-pub fn db_index_lsm_point_x(pt : DbindexlsmPoint) -> Double { pt.x }
+pub fn DbindexlsmPoint::x(self : DbindexlsmPoint) -> Double { self.x }
 
-pub fn db_index_lsm_point_y(pt : DbindexlsmPoint) -> Double { pt.y }
+pub fn DbindexlsmPoint::y(self : DbindexlsmPoint) -> Double { self.y }
 
-pub fn db_index_lsm_point_z(pt : DbindexlsmPoint) -> Double { pt.z }
+pub fn DbindexlsmPoint::z(self : DbindexlsmPoint) -> Double { self.z }
 
-pub fn db_index_lsm_point_label(pt : DbindexlsmPoint) -> Int { pt.label }
+pub fn DbindexlsmPoint::label(self : DbindexlsmPoint) -> Int { self.label }
 
-pub fn db_index_lsm_point_dist(a : DbindexlsmPoint, b : DbindexlsmPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn DbindexlsmPoint::dist(self : DbindexlsmPoint, other : DbindexlsmPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn db_index_lsm_point_add(a : DbindexlsmPoint, b : DbindexlsmPoint) -> DbindexlsmPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn DbindexlsmPoint::add(self : DbindexlsmPoint, other : DbindexlsmPoint) -> DbindexlsmPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn db_index_lsm_point_sub(a : DbindexlsmPoint, b : DbindexlsmPoint) -> DbindexlsmPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn DbindexlsmPoint::sub(self : DbindexlsmPoint, other : DbindexlsmPoint) -> DbindexlsmPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn db_index_lsm_point_scale(pt : DbindexlsmPoint, s : Double) -> DbindexlsmPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn DbindexlsmPoint::scale(self : DbindexlsmPoint, s : Double) -> DbindexlsmPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn db_index_lsm_point_dot(a : DbindexlsmPoint, b : DbindexlsmPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn DbindexlsmPoint::dot(self : DbindexlsmPoint, other : DbindexlsmPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn db_index_lsm_point_cross(a : DbindexlsmPoint, b : DbindexlsmPoint) -> DbindexlsmPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn DbindexlsmPoint::cross(self : DbindexlsmPoint, other : DbindexlsmPoint) -> DbindexlsmPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn db_index_lsm_point_norm(pt : DbindexlsmPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn DbindexlsmPoint::norm(self : DbindexlsmPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn db_index_lsm_point_normalize(pt : DbindexlsmPoint) -> DbindexlsmPoint {
-  let n = db_index_lsm_point_norm(pt)
-  if n < 0.0000001 { pt } else { db_index_lsm_point_scale(pt, 1.0 / n) }
+pub fn DbindexlsmPoint::normalize(self : DbindexlsmPoint) -> DbindexlsmPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn db_index_lsm_point_negate(pt : DbindexlsmPoint) -> DbindexlsmPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn DbindexlsmPoint::negate(self : DbindexlsmPoint) -> DbindexlsmPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn db_index_lsm_point_mid(a : DbindexlsmPoint, b : DbindexlsmPoint) -> DbindexlsmPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn DbindexlsmPoint::mid(self : DbindexlsmPoint, other : DbindexlsmPoint) -> DbindexlsmPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn db_index_lsm_point_lerp(a : DbindexlsmPoint, b : DbindexlsmPoint, t : Double) -> DbindexlsmPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn DbindexlsmPoint::lerp(self : DbindexlsmPoint, other : DbindexlsmPoint, t : Double) -> DbindexlsmPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn db_index_lsm_point_to_string(pt : DbindexlsmPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn DbindexlsmPoint::to_string(self : DbindexlsmPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct DbindexlsmSeries {
@@ -86,58 +86,58 @@ pub fn db_index_lsm_make_series(vals : Array[Double], name : String) -> Dbindexl
   { vals, name, meta: 0 }
 }
 
-pub fn db_index_lsm_series_len(s : DbindexlsmSeries) -> Int { s.vals.length() }
+pub fn DbindexlsmSeries::len(self : DbindexlsmSeries) -> Int { self.vals.length() }
 
-pub fn db_index_lsm_series_sum(s : DbindexlsmSeries) -> Double { @_common.sum(s.vals) }
+pub fn DbindexlsmSeries::sum(self : DbindexlsmSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn db_index_lsm_series_mean(s : DbindexlsmSeries) -> Double { @_common.mean(s.vals) }
+pub fn DbindexlsmSeries::mean(self : DbindexlsmSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn db_index_lsm_series_min(s : DbindexlsmSeries) -> Double { @_common.min(s.vals) }
+pub fn DbindexlsmSeries::min(self : DbindexlsmSeries) -> Double { @_common.min(self.vals) }
 
-pub fn db_index_lsm_series_max(s : DbindexlsmSeries) -> Double { @_common.max(s.vals) }
+pub fn DbindexlsmSeries::max(self : DbindexlsmSeries) -> Double { @_common.max(self.vals) }
 
-pub fn db_index_lsm_series_range(s : DbindexlsmSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn DbindexlsmSeries::range(self : DbindexlsmSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn db_index_lsm_series_var(s : DbindexlsmSeries) -> Double { @_common.variance(s.vals) }
+pub fn DbindexlsmSeries::variance(self : DbindexlsmSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn db_index_lsm_series_std(s : DbindexlsmSeries) -> Double { @_common.std(s.vals) }
+pub fn DbindexlsmSeries::std(self : DbindexlsmSeries) -> Double { @_common.std(self.vals) }
 
-pub fn db_index_lsm_series_median(s : DbindexlsmSeries) -> Double { @_common.median(s.vals) }
+pub fn DbindexlsmSeries::median(self : DbindexlsmSeries) -> Double { @_common.median(self.vals) }
 
-pub fn db_index_lsm_series_scale(s : DbindexlsmSeries, f : Double) -> DbindexlsmSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn DbindexlsmSeries::scale(self : DbindexlsmSeries, f : Double) -> DbindexlsmSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn db_index_lsm_series_add(a : DbindexlsmSeries, b : DbindexlsmSeries) -> DbindexlsmSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn DbindexlsmSeries::add(self : DbindexlsmSeries, other : DbindexlsmSeries) -> DbindexlsmSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn db_index_lsm_series_sub(a : DbindexlsmSeries, b : DbindexlsmSeries) -> DbindexlsmSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn DbindexlsmSeries::sub(self : DbindexlsmSeries, other : DbindexlsmSeries) -> DbindexlsmSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn db_index_lsm_series_normalize(s : DbindexlsmSeries) -> DbindexlsmSeries {
-  let mn = db_index_lsm_series_min(s)
-  let mx = db_index_lsm_series_max(s)
+pub fn DbindexlsmSeries::normalize(self : DbindexlsmSeries) -> DbindexlsmSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn db_index_lsm_series_cumsum(s : DbindexlsmSeries) -> DbindexlsmSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn DbindexlsmSeries::cumsum(self : DbindexlsmSeries) -> DbindexlsmSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn db_index_lsm_series_to_string(s : DbindexlsmSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn DbindexlsmSeries::to_string(self : DbindexlsmSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn db_index_lsm_matrix_identity(n : Int) -> DbindexlsmMatrix {
   m
 }
 
-pub fn db_index_lsm_matrix_get(m : DbindexlsmMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn DbindexlsmMatrix::get(self : DbindexlsmMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn db_index_lsm_matrix_transpose(m : DbindexlsmMatrix) -> DbindexlsmMatrix {
-  let result = db_index_lsm_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn DbindexlsmMatrix::transpose(self : DbindexlsmMatrix) -> DbindexlsmMatrix {
+  let result = db_index_lsm_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn db_index_lsm_matrix_add(a : DbindexlsmMatrix, b : DbindexlsmMatrix) -> DbindexlsmMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = db_index_lsm_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn DbindexlsmMatrix::add(self : DbindexlsmMatrix, other : DbindexlsmMatrix) -> DbindexlsmMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = db_index_lsm_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn db_index_lsm_matrix_scale(m : DbindexlsmMatrix, s : Double) -> DbindexlsmMatrix {
-  let result = db_index_lsm_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn DbindexlsmMatrix::scale(self : DbindexlsmMatrix, s : Double) -> DbindexlsmMatrix {
+  let result = db_index_lsm_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn db_index_lsm_matrix_multiply(a : DbindexlsmMatrix, b : DbindexlsmMatrix) -> DbindexlsmMatrix {
-  if a.cols != b.rows { return db_index_lsm_make_matrix(a.rows, b.cols, 0.0) }
-  let result = db_index_lsm_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn DbindexlsmMatrix::multiply(self : DbindexlsmMatrix, other : DbindexlsmMatrix) -> DbindexlsmMatrix {
+  if self.cols != other.rows { return db_index_lsm_make_matrix(self.rows, other.cols, 0.0) }
+  let result = db_index_lsm_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn db_index_lsm_matrix_trace(m : DbindexlsmMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn DbindexlsmMatrix::trace(self : DbindexlsmMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn db_index_lsm_matrix_det(m : DbindexlsmMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn DbindexlsmMatrix::det(self : DbindexlsmMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn db_index_lsm_matrix_norm(m : DbindexlsmMatrix) -> Double {
+pub fn DbindexlsmMatrix::norm(self : DbindexlsmMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn db_index_lsm_matrix_to_string(m : DbindexlsmMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn DbindexlsmMatrix::to_string(self : DbindexlsmMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn db_index_lsm_vector_zero(dim : Int) -> DbindexlsmVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn db_index_lsm_vector_add(a : DbindexlsmVector, b : DbindexlsmVector) -> DbindexlsmVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn DbindexlsmVector::add(self : DbindexlsmVector, other : DbindexlsmVector) -> DbindexlsmVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn db_index_lsm_vector_sub(a : DbindexlsmVector, b : DbindexlsmVector) -> DbindexlsmVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn DbindexlsmVector::sub(self : DbindexlsmVector, other : DbindexlsmVector) -> DbindexlsmVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn db_index_lsm_vector_scale(v : DbindexlsmVector, s : Double) -> DbindexlsmVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn DbindexlsmVector::scale(self : DbindexlsmVector, s : Double) -> DbindexlsmVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn db_index_lsm_vector_dot(a : DbindexlsmVector, b : DbindexlsmVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn DbindexlsmVector::dot(self : DbindexlsmVector, other : DbindexlsmVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn db_index_lsm_vector_norm(v : DbindexlsmVector) -> Double { @_common.sqrt(db_index_lsm_vector_dot(v, v)) }
+pub fn DbindexlsmVector::norm(self : DbindexlsmVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn db_index_lsm_vector_normalize(v : DbindexlsmVector) -> DbindexlsmVector {
-  let n = db_index_lsm_vector_norm(v)
-  if n < 0.0000001 { v } else { db_index_lsm_vector_scale(v, 1.0 / n) }
+pub fn DbindexlsmVector::normalize(self : DbindexlsmVector) -> DbindexlsmVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn db_index_lsm_vector_dist(a : DbindexlsmVector, b : DbindexlsmVector) -> Double {
-  db_index_lsm_vector_norm(db_index_lsm_vector_sub(a, b))
+pub fn DbindexlsmVector::dist(self : DbindexlsmVector, other : DbindexlsmVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn db_index_lsm_vector_to_string(v : DbindexlsmVector) -> String {
+pub fn DbindexlsmVector::to_string(self : DbindexlsmVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn db_index_lsm_mean(data : Array[Double]) -> Double { @_common.mean(data) }

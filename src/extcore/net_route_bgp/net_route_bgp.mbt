@@ -16,64 +16,64 @@ pub fn net_route_bgp_make_point3(x : Double, y : Double, z : Double) -> Netroute
   { x, y, z, label: 0 }
 }
 
-pub fn net_route_bgp_point_x(pt : NetroutebgpPoint) -> Double { pt.x }
+pub fn NetroutebgpPoint::x(self : NetroutebgpPoint) -> Double { self.x }
 
-pub fn net_route_bgp_point_y(pt : NetroutebgpPoint) -> Double { pt.y }
+pub fn NetroutebgpPoint::y(self : NetroutebgpPoint) -> Double { self.y }
 
-pub fn net_route_bgp_point_z(pt : NetroutebgpPoint) -> Double { pt.z }
+pub fn NetroutebgpPoint::z(self : NetroutebgpPoint) -> Double { self.z }
 
-pub fn net_route_bgp_point_label(pt : NetroutebgpPoint) -> Int { pt.label }
+pub fn NetroutebgpPoint::label(self : NetroutebgpPoint) -> Int { self.label }
 
-pub fn net_route_bgp_point_dist(a : NetroutebgpPoint, b : NetroutebgpPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn NetroutebgpPoint::dist(self : NetroutebgpPoint, other : NetroutebgpPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn net_route_bgp_point_add(a : NetroutebgpPoint, b : NetroutebgpPoint) -> NetroutebgpPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn NetroutebgpPoint::add(self : NetroutebgpPoint, other : NetroutebgpPoint) -> NetroutebgpPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn net_route_bgp_point_sub(a : NetroutebgpPoint, b : NetroutebgpPoint) -> NetroutebgpPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn NetroutebgpPoint::sub(self : NetroutebgpPoint, other : NetroutebgpPoint) -> NetroutebgpPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn net_route_bgp_point_scale(pt : NetroutebgpPoint, s : Double) -> NetroutebgpPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn NetroutebgpPoint::scale(self : NetroutebgpPoint, s : Double) -> NetroutebgpPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn net_route_bgp_point_dot(a : NetroutebgpPoint, b : NetroutebgpPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn NetroutebgpPoint::dot(self : NetroutebgpPoint, other : NetroutebgpPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn net_route_bgp_point_cross(a : NetroutebgpPoint, b : NetroutebgpPoint) -> NetroutebgpPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn NetroutebgpPoint::cross(self : NetroutebgpPoint, other : NetroutebgpPoint) -> NetroutebgpPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn net_route_bgp_point_norm(pt : NetroutebgpPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn NetroutebgpPoint::norm(self : NetroutebgpPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn net_route_bgp_point_normalize(pt : NetroutebgpPoint) -> NetroutebgpPoint {
-  let n = net_route_bgp_point_norm(pt)
-  if n < 0.0000001 { pt } else { net_route_bgp_point_scale(pt, 1.0 / n) }
+pub fn NetroutebgpPoint::normalize(self : NetroutebgpPoint) -> NetroutebgpPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn net_route_bgp_point_negate(pt : NetroutebgpPoint) -> NetroutebgpPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn NetroutebgpPoint::negate(self : NetroutebgpPoint) -> NetroutebgpPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn net_route_bgp_point_mid(a : NetroutebgpPoint, b : NetroutebgpPoint) -> NetroutebgpPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn NetroutebgpPoint::mid(self : NetroutebgpPoint, other : NetroutebgpPoint) -> NetroutebgpPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn net_route_bgp_point_lerp(a : NetroutebgpPoint, b : NetroutebgpPoint, t : Double) -> NetroutebgpPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn NetroutebgpPoint::lerp(self : NetroutebgpPoint, other : NetroutebgpPoint, t : Double) -> NetroutebgpPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn net_route_bgp_point_to_string(pt : NetroutebgpPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn NetroutebgpPoint::to_string(self : NetroutebgpPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct NetroutebgpSeries {
@@ -86,58 +86,58 @@ pub fn net_route_bgp_make_series(vals : Array[Double], name : String) -> Netrout
   { vals, name, meta: 0 }
 }
 
-pub fn net_route_bgp_series_len(s : NetroutebgpSeries) -> Int { s.vals.length() }
+pub fn NetroutebgpSeries::len(self : NetroutebgpSeries) -> Int { self.vals.length() }
 
-pub fn net_route_bgp_series_sum(s : NetroutebgpSeries) -> Double { @_common.sum(s.vals) }
+pub fn NetroutebgpSeries::sum(self : NetroutebgpSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn net_route_bgp_series_mean(s : NetroutebgpSeries) -> Double { @_common.mean(s.vals) }
+pub fn NetroutebgpSeries::mean(self : NetroutebgpSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn net_route_bgp_series_min(s : NetroutebgpSeries) -> Double { @_common.min(s.vals) }
+pub fn NetroutebgpSeries::min(self : NetroutebgpSeries) -> Double { @_common.min(self.vals) }
 
-pub fn net_route_bgp_series_max(s : NetroutebgpSeries) -> Double { @_common.max(s.vals) }
+pub fn NetroutebgpSeries::max(self : NetroutebgpSeries) -> Double { @_common.max(self.vals) }
 
-pub fn net_route_bgp_series_range(s : NetroutebgpSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn NetroutebgpSeries::range(self : NetroutebgpSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn net_route_bgp_series_var(s : NetroutebgpSeries) -> Double { @_common.variance(s.vals) }
+pub fn NetroutebgpSeries::variance(self : NetroutebgpSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn net_route_bgp_series_std(s : NetroutebgpSeries) -> Double { @_common.std(s.vals) }
+pub fn NetroutebgpSeries::std(self : NetroutebgpSeries) -> Double { @_common.std(self.vals) }
 
-pub fn net_route_bgp_series_median(s : NetroutebgpSeries) -> Double { @_common.median(s.vals) }
+pub fn NetroutebgpSeries::median(self : NetroutebgpSeries) -> Double { @_common.median(self.vals) }
 
-pub fn net_route_bgp_series_scale(s : NetroutebgpSeries, f : Double) -> NetroutebgpSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn NetroutebgpSeries::scale(self : NetroutebgpSeries, f : Double) -> NetroutebgpSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn net_route_bgp_series_add(a : NetroutebgpSeries, b : NetroutebgpSeries) -> NetroutebgpSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn NetroutebgpSeries::add(self : NetroutebgpSeries, other : NetroutebgpSeries) -> NetroutebgpSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn net_route_bgp_series_sub(a : NetroutebgpSeries, b : NetroutebgpSeries) -> NetroutebgpSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn NetroutebgpSeries::sub(self : NetroutebgpSeries, other : NetroutebgpSeries) -> NetroutebgpSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn net_route_bgp_series_normalize(s : NetroutebgpSeries) -> NetroutebgpSeries {
-  let mn = net_route_bgp_series_min(s)
-  let mx = net_route_bgp_series_max(s)
+pub fn NetroutebgpSeries::normalize(self : NetroutebgpSeries) -> NetroutebgpSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn net_route_bgp_series_cumsum(s : NetroutebgpSeries) -> NetroutebgpSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn NetroutebgpSeries::cumsum(self : NetroutebgpSeries) -> NetroutebgpSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn net_route_bgp_series_to_string(s : NetroutebgpSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn NetroutebgpSeries::to_string(self : NetroutebgpSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn net_route_bgp_matrix_identity(n : Int) -> NetroutebgpMatrix {
   m
 }
 
-pub fn net_route_bgp_matrix_get(m : NetroutebgpMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn NetroutebgpMatrix::get(self : NetroutebgpMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn net_route_bgp_matrix_transpose(m : NetroutebgpMatrix) -> NetroutebgpMatrix {
-  let result = net_route_bgp_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn NetroutebgpMatrix::transpose(self : NetroutebgpMatrix) -> NetroutebgpMatrix {
+  let result = net_route_bgp_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn net_route_bgp_matrix_add(a : NetroutebgpMatrix, b : NetroutebgpMatrix) -> NetroutebgpMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = net_route_bgp_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn NetroutebgpMatrix::add(self : NetroutebgpMatrix, other : NetroutebgpMatrix) -> NetroutebgpMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = net_route_bgp_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn net_route_bgp_matrix_scale(m : NetroutebgpMatrix, s : Double) -> NetroutebgpMatrix {
-  let result = net_route_bgp_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn NetroutebgpMatrix::scale(self : NetroutebgpMatrix, s : Double) -> NetroutebgpMatrix {
+  let result = net_route_bgp_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn net_route_bgp_matrix_multiply(a : NetroutebgpMatrix, b : NetroutebgpMatrix) -> NetroutebgpMatrix {
-  if a.cols != b.rows { return net_route_bgp_make_matrix(a.rows, b.cols, 0.0) }
-  let result = net_route_bgp_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn NetroutebgpMatrix::multiply(self : NetroutebgpMatrix, other : NetroutebgpMatrix) -> NetroutebgpMatrix {
+  if self.cols != other.rows { return net_route_bgp_make_matrix(self.rows, other.cols, 0.0) }
+  let result = net_route_bgp_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn net_route_bgp_matrix_trace(m : NetroutebgpMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn NetroutebgpMatrix::trace(self : NetroutebgpMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn net_route_bgp_matrix_det(m : NetroutebgpMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn NetroutebgpMatrix::det(self : NetroutebgpMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn net_route_bgp_matrix_norm(m : NetroutebgpMatrix) -> Double {
+pub fn NetroutebgpMatrix::norm(self : NetroutebgpMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn net_route_bgp_matrix_to_string(m : NetroutebgpMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn NetroutebgpMatrix::to_string(self : NetroutebgpMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn net_route_bgp_vector_zero(dim : Int) -> NetroutebgpVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn net_route_bgp_vector_add(a : NetroutebgpVector, b : NetroutebgpVector) -> NetroutebgpVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn NetroutebgpVector::add(self : NetroutebgpVector, other : NetroutebgpVector) -> NetroutebgpVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn net_route_bgp_vector_sub(a : NetroutebgpVector, b : NetroutebgpVector) -> NetroutebgpVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn NetroutebgpVector::sub(self : NetroutebgpVector, other : NetroutebgpVector) -> NetroutebgpVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn net_route_bgp_vector_scale(v : NetroutebgpVector, s : Double) -> NetroutebgpVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn NetroutebgpVector::scale(self : NetroutebgpVector, s : Double) -> NetroutebgpVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn net_route_bgp_vector_dot(a : NetroutebgpVector, b : NetroutebgpVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn NetroutebgpVector::dot(self : NetroutebgpVector, other : NetroutebgpVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn net_route_bgp_vector_norm(v : NetroutebgpVector) -> Double { @_common.sqrt(net_route_bgp_vector_dot(v, v)) }
+pub fn NetroutebgpVector::norm(self : NetroutebgpVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn net_route_bgp_vector_normalize(v : NetroutebgpVector) -> NetroutebgpVector {
-  let n = net_route_bgp_vector_norm(v)
-  if n < 0.0000001 { v } else { net_route_bgp_vector_scale(v, 1.0 / n) }
+pub fn NetroutebgpVector::normalize(self : NetroutebgpVector) -> NetroutebgpVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn net_route_bgp_vector_dist(a : NetroutebgpVector, b : NetroutebgpVector) -> Double {
-  net_route_bgp_vector_norm(net_route_bgp_vector_sub(a, b))
+pub fn NetroutebgpVector::dist(self : NetroutebgpVector, other : NetroutebgpVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn net_route_bgp_vector_to_string(v : NetroutebgpVector) -> String {
+pub fn NetroutebgpVector::to_string(self : NetroutebgpVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn net_route_bgp_mean(data : Array[Double]) -> Double { @_common.mean(data) }

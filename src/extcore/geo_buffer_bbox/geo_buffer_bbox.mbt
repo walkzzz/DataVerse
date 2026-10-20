@@ -16,64 +16,64 @@ pub fn geo_buffer_bbox_make_point3(x : Double, y : Double, z : Double) -> Geobuf
   { x, y, z, label: 0 }
 }
 
-pub fn geo_buffer_bbox_point_x(pt : GeobufferbboxPoint) -> Double { pt.x }
+pub fn GeobufferbboxPoint::x(self : GeobufferbboxPoint) -> Double { self.x }
 
-pub fn geo_buffer_bbox_point_y(pt : GeobufferbboxPoint) -> Double { pt.y }
+pub fn GeobufferbboxPoint::y(self : GeobufferbboxPoint) -> Double { self.y }
 
-pub fn geo_buffer_bbox_point_z(pt : GeobufferbboxPoint) -> Double { pt.z }
+pub fn GeobufferbboxPoint::z(self : GeobufferbboxPoint) -> Double { self.z }
 
-pub fn geo_buffer_bbox_point_label(pt : GeobufferbboxPoint) -> Int { pt.label }
+pub fn GeobufferbboxPoint::label(self : GeobufferbboxPoint) -> Int { self.label }
 
-pub fn geo_buffer_bbox_point_dist(a : GeobufferbboxPoint, b : GeobufferbboxPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn GeobufferbboxPoint::dist(self : GeobufferbboxPoint, other : GeobufferbboxPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn geo_buffer_bbox_point_add(a : GeobufferbboxPoint, b : GeobufferbboxPoint) -> GeobufferbboxPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn GeobufferbboxPoint::add(self : GeobufferbboxPoint, other : GeobufferbboxPoint) -> GeobufferbboxPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn geo_buffer_bbox_point_sub(a : GeobufferbboxPoint, b : GeobufferbboxPoint) -> GeobufferbboxPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn GeobufferbboxPoint::sub(self : GeobufferbboxPoint, other : GeobufferbboxPoint) -> GeobufferbboxPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn geo_buffer_bbox_point_scale(pt : GeobufferbboxPoint, s : Double) -> GeobufferbboxPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn GeobufferbboxPoint::scale(self : GeobufferbboxPoint, s : Double) -> GeobufferbboxPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn geo_buffer_bbox_point_dot(a : GeobufferbboxPoint, b : GeobufferbboxPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn GeobufferbboxPoint::dot(self : GeobufferbboxPoint, other : GeobufferbboxPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn geo_buffer_bbox_point_cross(a : GeobufferbboxPoint, b : GeobufferbboxPoint) -> GeobufferbboxPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn GeobufferbboxPoint::cross(self : GeobufferbboxPoint, other : GeobufferbboxPoint) -> GeobufferbboxPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn geo_buffer_bbox_point_norm(pt : GeobufferbboxPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn GeobufferbboxPoint::norm(self : GeobufferbboxPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn geo_buffer_bbox_point_normalize(pt : GeobufferbboxPoint) -> GeobufferbboxPoint {
-  let n = geo_buffer_bbox_point_norm(pt)
-  if n < 0.0000001 { pt } else { geo_buffer_bbox_point_scale(pt, 1.0 / n) }
+pub fn GeobufferbboxPoint::normalize(self : GeobufferbboxPoint) -> GeobufferbboxPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn geo_buffer_bbox_point_negate(pt : GeobufferbboxPoint) -> GeobufferbboxPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn GeobufferbboxPoint::negate(self : GeobufferbboxPoint) -> GeobufferbboxPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn geo_buffer_bbox_point_mid(a : GeobufferbboxPoint, b : GeobufferbboxPoint) -> GeobufferbboxPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn GeobufferbboxPoint::mid(self : GeobufferbboxPoint, other : GeobufferbboxPoint) -> GeobufferbboxPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn geo_buffer_bbox_point_lerp(a : GeobufferbboxPoint, b : GeobufferbboxPoint, t : Double) -> GeobufferbboxPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn GeobufferbboxPoint::lerp(self : GeobufferbboxPoint, other : GeobufferbboxPoint, t : Double) -> GeobufferbboxPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn geo_buffer_bbox_point_to_string(pt : GeobufferbboxPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn GeobufferbboxPoint::to_string(self : GeobufferbboxPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct GeobufferbboxSeries {
@@ -86,58 +86,58 @@ pub fn geo_buffer_bbox_make_series(vals : Array[Double], name : String) -> Geobu
   { vals, name, meta: 0 }
 }
 
-pub fn geo_buffer_bbox_series_len(s : GeobufferbboxSeries) -> Int { s.vals.length() }
+pub fn GeobufferbboxSeries::len(self : GeobufferbboxSeries) -> Int { self.vals.length() }
 
-pub fn geo_buffer_bbox_series_sum(s : GeobufferbboxSeries) -> Double { @_common.sum(s.vals) }
+pub fn GeobufferbboxSeries::sum(self : GeobufferbboxSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn geo_buffer_bbox_series_mean(s : GeobufferbboxSeries) -> Double { @_common.mean(s.vals) }
+pub fn GeobufferbboxSeries::mean(self : GeobufferbboxSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn geo_buffer_bbox_series_min(s : GeobufferbboxSeries) -> Double { @_common.min(s.vals) }
+pub fn GeobufferbboxSeries::min(self : GeobufferbboxSeries) -> Double { @_common.min(self.vals) }
 
-pub fn geo_buffer_bbox_series_max(s : GeobufferbboxSeries) -> Double { @_common.max(s.vals) }
+pub fn GeobufferbboxSeries::max(self : GeobufferbboxSeries) -> Double { @_common.max(self.vals) }
 
-pub fn geo_buffer_bbox_series_range(s : GeobufferbboxSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn GeobufferbboxSeries::range(self : GeobufferbboxSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn geo_buffer_bbox_series_var(s : GeobufferbboxSeries) -> Double { @_common.variance(s.vals) }
+pub fn GeobufferbboxSeries::variance(self : GeobufferbboxSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn geo_buffer_bbox_series_std(s : GeobufferbboxSeries) -> Double { @_common.std(s.vals) }
+pub fn GeobufferbboxSeries::std(self : GeobufferbboxSeries) -> Double { @_common.std(self.vals) }
 
-pub fn geo_buffer_bbox_series_median(s : GeobufferbboxSeries) -> Double { @_common.median(s.vals) }
+pub fn GeobufferbboxSeries::median(self : GeobufferbboxSeries) -> Double { @_common.median(self.vals) }
 
-pub fn geo_buffer_bbox_series_scale(s : GeobufferbboxSeries, f : Double) -> GeobufferbboxSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn GeobufferbboxSeries::scale(self : GeobufferbboxSeries, f : Double) -> GeobufferbboxSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn geo_buffer_bbox_series_add(a : GeobufferbboxSeries, b : GeobufferbboxSeries) -> GeobufferbboxSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn GeobufferbboxSeries::add(self : GeobufferbboxSeries, other : GeobufferbboxSeries) -> GeobufferbboxSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn geo_buffer_bbox_series_sub(a : GeobufferbboxSeries, b : GeobufferbboxSeries) -> GeobufferbboxSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn GeobufferbboxSeries::sub(self : GeobufferbboxSeries, other : GeobufferbboxSeries) -> GeobufferbboxSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn geo_buffer_bbox_series_normalize(s : GeobufferbboxSeries) -> GeobufferbboxSeries {
-  let mn = geo_buffer_bbox_series_min(s)
-  let mx = geo_buffer_bbox_series_max(s)
+pub fn GeobufferbboxSeries::normalize(self : GeobufferbboxSeries) -> GeobufferbboxSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn geo_buffer_bbox_series_cumsum(s : GeobufferbboxSeries) -> GeobufferbboxSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn GeobufferbboxSeries::cumsum(self : GeobufferbboxSeries) -> GeobufferbboxSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn geo_buffer_bbox_series_to_string(s : GeobufferbboxSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn GeobufferbboxSeries::to_string(self : GeobufferbboxSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn geo_buffer_bbox_matrix_identity(n : Int) -> GeobufferbboxMatrix {
   m
 }
 
-pub fn geo_buffer_bbox_matrix_get(m : GeobufferbboxMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn GeobufferbboxMatrix::get(self : GeobufferbboxMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn geo_buffer_bbox_matrix_transpose(m : GeobufferbboxMatrix) -> GeobufferbboxMatrix {
-  let result = geo_buffer_bbox_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn GeobufferbboxMatrix::transpose(self : GeobufferbboxMatrix) -> GeobufferbboxMatrix {
+  let result = geo_buffer_bbox_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn geo_buffer_bbox_matrix_add(a : GeobufferbboxMatrix, b : GeobufferbboxMatrix) -> GeobufferbboxMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = geo_buffer_bbox_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn GeobufferbboxMatrix::add(self : GeobufferbboxMatrix, other : GeobufferbboxMatrix) -> GeobufferbboxMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = geo_buffer_bbox_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn geo_buffer_bbox_matrix_scale(m : GeobufferbboxMatrix, s : Double) -> GeobufferbboxMatrix {
-  let result = geo_buffer_bbox_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn GeobufferbboxMatrix::scale(self : GeobufferbboxMatrix, s : Double) -> GeobufferbboxMatrix {
+  let result = geo_buffer_bbox_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn geo_buffer_bbox_matrix_multiply(a : GeobufferbboxMatrix, b : GeobufferbboxMatrix) -> GeobufferbboxMatrix {
-  if a.cols != b.rows { return geo_buffer_bbox_make_matrix(a.rows, b.cols, 0.0) }
-  let result = geo_buffer_bbox_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn GeobufferbboxMatrix::multiply(self : GeobufferbboxMatrix, other : GeobufferbboxMatrix) -> GeobufferbboxMatrix {
+  if self.cols != other.rows { return geo_buffer_bbox_make_matrix(self.rows, other.cols, 0.0) }
+  let result = geo_buffer_bbox_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn geo_buffer_bbox_matrix_trace(m : GeobufferbboxMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn GeobufferbboxMatrix::trace(self : GeobufferbboxMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn geo_buffer_bbox_matrix_det(m : GeobufferbboxMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn GeobufferbboxMatrix::det(self : GeobufferbboxMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn geo_buffer_bbox_matrix_norm(m : GeobufferbboxMatrix) -> Double {
+pub fn GeobufferbboxMatrix::norm(self : GeobufferbboxMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn geo_buffer_bbox_matrix_to_string(m : GeobufferbboxMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn GeobufferbboxMatrix::to_string(self : GeobufferbboxMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn geo_buffer_bbox_vector_zero(dim : Int) -> GeobufferbboxVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn geo_buffer_bbox_vector_add(a : GeobufferbboxVector, b : GeobufferbboxVector) -> GeobufferbboxVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn GeobufferbboxVector::add(self : GeobufferbboxVector, other : GeobufferbboxVector) -> GeobufferbboxVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn geo_buffer_bbox_vector_sub(a : GeobufferbboxVector, b : GeobufferbboxVector) -> GeobufferbboxVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn GeobufferbboxVector::sub(self : GeobufferbboxVector, other : GeobufferbboxVector) -> GeobufferbboxVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn geo_buffer_bbox_vector_scale(v : GeobufferbboxVector, s : Double) -> GeobufferbboxVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn GeobufferbboxVector::scale(self : GeobufferbboxVector, s : Double) -> GeobufferbboxVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn geo_buffer_bbox_vector_dot(a : GeobufferbboxVector, b : GeobufferbboxVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn GeobufferbboxVector::dot(self : GeobufferbboxVector, other : GeobufferbboxVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn geo_buffer_bbox_vector_norm(v : GeobufferbboxVector) -> Double { @_common.sqrt(geo_buffer_bbox_vector_dot(v, v)) }
+pub fn GeobufferbboxVector::norm(self : GeobufferbboxVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn geo_buffer_bbox_vector_normalize(v : GeobufferbboxVector) -> GeobufferbboxVector {
-  let n = geo_buffer_bbox_vector_norm(v)
-  if n < 0.0000001 { v } else { geo_buffer_bbox_vector_scale(v, 1.0 / n) }
+pub fn GeobufferbboxVector::normalize(self : GeobufferbboxVector) -> GeobufferbboxVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn geo_buffer_bbox_vector_dist(a : GeobufferbboxVector, b : GeobufferbboxVector) -> Double {
-  geo_buffer_bbox_vector_norm(geo_buffer_bbox_vector_sub(a, b))
+pub fn GeobufferbboxVector::dist(self : GeobufferbboxVector, other : GeobufferbboxVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn geo_buffer_bbox_vector_to_string(v : GeobufferbboxVector) -> String {
+pub fn GeobufferbboxVector::to_string(self : GeobufferbboxVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn geo_buffer_bbox_mean(data : Array[Double]) -> Double { @_common.mean(data) }

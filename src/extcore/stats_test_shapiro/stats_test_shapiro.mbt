@@ -16,64 +16,64 @@ pub fn stats_test_shapiro_make_point3(x : Double, y : Double, z : Double) -> Sta
   { x, y, z, label: 0 }
 }
 
-pub fn stats_test_shapiro_point_x(pt : StatstestshapiroPoint) -> Double { pt.x }
+pub fn StatstestshapiroPoint::x(self : StatstestshapiroPoint) -> Double { self.x }
 
-pub fn stats_test_shapiro_point_y(pt : StatstestshapiroPoint) -> Double { pt.y }
+pub fn StatstestshapiroPoint::y(self : StatstestshapiroPoint) -> Double { self.y }
 
-pub fn stats_test_shapiro_point_z(pt : StatstestshapiroPoint) -> Double { pt.z }
+pub fn StatstestshapiroPoint::z(self : StatstestshapiroPoint) -> Double { self.z }
 
-pub fn stats_test_shapiro_point_label(pt : StatstestshapiroPoint) -> Int { pt.label }
+pub fn StatstestshapiroPoint::label(self : StatstestshapiroPoint) -> Int { self.label }
 
-pub fn stats_test_shapiro_point_dist(a : StatstestshapiroPoint, b : StatstestshapiroPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn StatstestshapiroPoint::dist(self : StatstestshapiroPoint, other : StatstestshapiroPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn stats_test_shapiro_point_add(a : StatstestshapiroPoint, b : StatstestshapiroPoint) -> StatstestshapiroPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn StatstestshapiroPoint::add(self : StatstestshapiroPoint, other : StatstestshapiroPoint) -> StatstestshapiroPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn stats_test_shapiro_point_sub(a : StatstestshapiroPoint, b : StatstestshapiroPoint) -> StatstestshapiroPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn StatstestshapiroPoint::sub(self : StatstestshapiroPoint, other : StatstestshapiroPoint) -> StatstestshapiroPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn stats_test_shapiro_point_scale(pt : StatstestshapiroPoint, s : Double) -> StatstestshapiroPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn StatstestshapiroPoint::scale(self : StatstestshapiroPoint, s : Double) -> StatstestshapiroPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn stats_test_shapiro_point_dot(a : StatstestshapiroPoint, b : StatstestshapiroPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn StatstestshapiroPoint::dot(self : StatstestshapiroPoint, other : StatstestshapiroPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn stats_test_shapiro_point_cross(a : StatstestshapiroPoint, b : StatstestshapiroPoint) -> StatstestshapiroPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn StatstestshapiroPoint::cross(self : StatstestshapiroPoint, other : StatstestshapiroPoint) -> StatstestshapiroPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn stats_test_shapiro_point_norm(pt : StatstestshapiroPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn StatstestshapiroPoint::norm(self : StatstestshapiroPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn stats_test_shapiro_point_normalize(pt : StatstestshapiroPoint) -> StatstestshapiroPoint {
-  let n = stats_test_shapiro_point_norm(pt)
-  if n < 0.0000001 { pt } else { stats_test_shapiro_point_scale(pt, 1.0 / n) }
+pub fn StatstestshapiroPoint::normalize(self : StatstestshapiroPoint) -> StatstestshapiroPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn stats_test_shapiro_point_negate(pt : StatstestshapiroPoint) -> StatstestshapiroPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn StatstestshapiroPoint::negate(self : StatstestshapiroPoint) -> StatstestshapiroPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn stats_test_shapiro_point_mid(a : StatstestshapiroPoint, b : StatstestshapiroPoint) -> StatstestshapiroPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn StatstestshapiroPoint::mid(self : StatstestshapiroPoint, other : StatstestshapiroPoint) -> StatstestshapiroPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn stats_test_shapiro_point_lerp(a : StatstestshapiroPoint, b : StatstestshapiroPoint, t : Double) -> StatstestshapiroPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn StatstestshapiroPoint::lerp(self : StatstestshapiroPoint, other : StatstestshapiroPoint, t : Double) -> StatstestshapiroPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn stats_test_shapiro_point_to_string(pt : StatstestshapiroPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn StatstestshapiroPoint::to_string(self : StatstestshapiroPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct StatstestshapiroSeries {
@@ -86,58 +86,58 @@ pub fn stats_test_shapiro_make_series(vals : Array[Double], name : String) -> St
   { vals, name, meta: 0 }
 }
 
-pub fn stats_test_shapiro_series_len(s : StatstestshapiroSeries) -> Int { s.vals.length() }
+pub fn StatstestshapiroSeries::len(self : StatstestshapiroSeries) -> Int { self.vals.length() }
 
-pub fn stats_test_shapiro_series_sum(s : StatstestshapiroSeries) -> Double { @_common.sum(s.vals) }
+pub fn StatstestshapiroSeries::sum(self : StatstestshapiroSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn stats_test_shapiro_series_mean(s : StatstestshapiroSeries) -> Double { @_common.mean(s.vals) }
+pub fn StatstestshapiroSeries::mean(self : StatstestshapiroSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn stats_test_shapiro_series_min(s : StatstestshapiroSeries) -> Double { @_common.min(s.vals) }
+pub fn StatstestshapiroSeries::min(self : StatstestshapiroSeries) -> Double { @_common.min(self.vals) }
 
-pub fn stats_test_shapiro_series_max(s : StatstestshapiroSeries) -> Double { @_common.max(s.vals) }
+pub fn StatstestshapiroSeries::max(self : StatstestshapiroSeries) -> Double { @_common.max(self.vals) }
 
-pub fn stats_test_shapiro_series_range(s : StatstestshapiroSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn StatstestshapiroSeries::range(self : StatstestshapiroSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn stats_test_shapiro_series_var(s : StatstestshapiroSeries) -> Double { @_common.variance(s.vals) }
+pub fn StatstestshapiroSeries::variance(self : StatstestshapiroSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn stats_test_shapiro_series_std(s : StatstestshapiroSeries) -> Double { @_common.std(s.vals) }
+pub fn StatstestshapiroSeries::std(self : StatstestshapiroSeries) -> Double { @_common.std(self.vals) }
 
-pub fn stats_test_shapiro_series_median(s : StatstestshapiroSeries) -> Double { @_common.median(s.vals) }
+pub fn StatstestshapiroSeries::median(self : StatstestshapiroSeries) -> Double { @_common.median(self.vals) }
 
-pub fn stats_test_shapiro_series_scale(s : StatstestshapiroSeries, f : Double) -> StatstestshapiroSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn StatstestshapiroSeries::scale(self : StatstestshapiroSeries, f : Double) -> StatstestshapiroSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn stats_test_shapiro_series_add(a : StatstestshapiroSeries, b : StatstestshapiroSeries) -> StatstestshapiroSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn StatstestshapiroSeries::add(self : StatstestshapiroSeries, other : StatstestshapiroSeries) -> StatstestshapiroSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn stats_test_shapiro_series_sub(a : StatstestshapiroSeries, b : StatstestshapiroSeries) -> StatstestshapiroSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn StatstestshapiroSeries::sub(self : StatstestshapiroSeries, other : StatstestshapiroSeries) -> StatstestshapiroSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn stats_test_shapiro_series_normalize(s : StatstestshapiroSeries) -> StatstestshapiroSeries {
-  let mn = stats_test_shapiro_series_min(s)
-  let mx = stats_test_shapiro_series_max(s)
+pub fn StatstestshapiroSeries::normalize(self : StatstestshapiroSeries) -> StatstestshapiroSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn stats_test_shapiro_series_cumsum(s : StatstestshapiroSeries) -> StatstestshapiroSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn StatstestshapiroSeries::cumsum(self : StatstestshapiroSeries) -> StatstestshapiroSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn stats_test_shapiro_series_to_string(s : StatstestshapiroSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn StatstestshapiroSeries::to_string(self : StatstestshapiroSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn stats_test_shapiro_matrix_identity(n : Int) -> StatstestshapiroMatrix {
   m
 }
 
-pub fn stats_test_shapiro_matrix_get(m : StatstestshapiroMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn StatstestshapiroMatrix::get(self : StatstestshapiroMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn stats_test_shapiro_matrix_transpose(m : StatstestshapiroMatrix) -> StatstestshapiroMatrix {
-  let result = stats_test_shapiro_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn StatstestshapiroMatrix::transpose(self : StatstestshapiroMatrix) -> StatstestshapiroMatrix {
+  let result = stats_test_shapiro_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn stats_test_shapiro_matrix_add(a : StatstestshapiroMatrix, b : StatstestshapiroMatrix) -> StatstestshapiroMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = stats_test_shapiro_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn StatstestshapiroMatrix::add(self : StatstestshapiroMatrix, other : StatstestshapiroMatrix) -> StatstestshapiroMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = stats_test_shapiro_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn stats_test_shapiro_matrix_scale(m : StatstestshapiroMatrix, s : Double) -> StatstestshapiroMatrix {
-  let result = stats_test_shapiro_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn StatstestshapiroMatrix::scale(self : StatstestshapiroMatrix, s : Double) -> StatstestshapiroMatrix {
+  let result = stats_test_shapiro_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn stats_test_shapiro_matrix_multiply(a : StatstestshapiroMatrix, b : StatstestshapiroMatrix) -> StatstestshapiroMatrix {
-  if a.cols != b.rows { return stats_test_shapiro_make_matrix(a.rows, b.cols, 0.0) }
-  let result = stats_test_shapiro_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn StatstestshapiroMatrix::multiply(self : StatstestshapiroMatrix, other : StatstestshapiroMatrix) -> StatstestshapiroMatrix {
+  if self.cols != other.rows { return stats_test_shapiro_make_matrix(self.rows, other.cols, 0.0) }
+  let result = stats_test_shapiro_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn stats_test_shapiro_matrix_trace(m : StatstestshapiroMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn StatstestshapiroMatrix::trace(self : StatstestshapiroMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn stats_test_shapiro_matrix_det(m : StatstestshapiroMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn StatstestshapiroMatrix::det(self : StatstestshapiroMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn stats_test_shapiro_matrix_norm(m : StatstestshapiroMatrix) -> Double {
+pub fn StatstestshapiroMatrix::norm(self : StatstestshapiroMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn stats_test_shapiro_matrix_to_string(m : StatstestshapiroMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn StatstestshapiroMatrix::to_string(self : StatstestshapiroMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn stats_test_shapiro_vector_zero(dim : Int) -> StatstestshapiroVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn stats_test_shapiro_vector_add(a : StatstestshapiroVector, b : StatstestshapiroVector) -> StatstestshapiroVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn StatstestshapiroVector::add(self : StatstestshapiroVector, other : StatstestshapiroVector) -> StatstestshapiroVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn stats_test_shapiro_vector_sub(a : StatstestshapiroVector, b : StatstestshapiroVector) -> StatstestshapiroVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn StatstestshapiroVector::sub(self : StatstestshapiroVector, other : StatstestshapiroVector) -> StatstestshapiroVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn stats_test_shapiro_vector_scale(v : StatstestshapiroVector, s : Double) -> StatstestshapiroVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn StatstestshapiroVector::scale(self : StatstestshapiroVector, s : Double) -> StatstestshapiroVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn stats_test_shapiro_vector_dot(a : StatstestshapiroVector, b : StatstestshapiroVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn StatstestshapiroVector::dot(self : StatstestshapiroVector, other : StatstestshapiroVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn stats_test_shapiro_vector_norm(v : StatstestshapiroVector) -> Double { @_common.sqrt(stats_test_shapiro_vector_dot(v, v)) }
+pub fn StatstestshapiroVector::norm(self : StatstestshapiroVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn stats_test_shapiro_vector_normalize(v : StatstestshapiroVector) -> StatstestshapiroVector {
-  let n = stats_test_shapiro_vector_norm(v)
-  if n < 0.0000001 { v } else { stats_test_shapiro_vector_scale(v, 1.0 / n) }
+pub fn StatstestshapiroVector::normalize(self : StatstestshapiroVector) -> StatstestshapiroVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn stats_test_shapiro_vector_dist(a : StatstestshapiroVector, b : StatstestshapiroVector) -> Double {
-  stats_test_shapiro_vector_norm(stats_test_shapiro_vector_sub(a, b))
+pub fn StatstestshapiroVector::dist(self : StatstestshapiroVector, other : StatstestshapiroVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn stats_test_shapiro_vector_to_string(v : StatstestshapiroVector) -> String {
+pub fn StatstestshapiroVector::to_string(self : StatstestshapiroVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn stats_test_shapiro_mean(data : Array[Double]) -> Double { @_common.mean(data) }

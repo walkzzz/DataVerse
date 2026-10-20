@@ -16,64 +16,64 @@ pub fn chem_rxn_type_make_point3(x : Double, y : Double, z : Double) -> Chemrxnt
   { x, y, z, label: 0 }
 }
 
-pub fn chem_rxn_type_point_x(pt : ChemrxntypePoint) -> Double { pt.x }
+pub fn ChemrxntypePoint::x(self : ChemrxntypePoint) -> Double { self.x }
 
-pub fn chem_rxn_type_point_y(pt : ChemrxntypePoint) -> Double { pt.y }
+pub fn ChemrxntypePoint::y(self : ChemrxntypePoint) -> Double { self.y }
 
-pub fn chem_rxn_type_point_z(pt : ChemrxntypePoint) -> Double { pt.z }
+pub fn ChemrxntypePoint::z(self : ChemrxntypePoint) -> Double { self.z }
 
-pub fn chem_rxn_type_point_label(pt : ChemrxntypePoint) -> Int { pt.label }
+pub fn ChemrxntypePoint::label(self : ChemrxntypePoint) -> Int { self.label }
 
-pub fn chem_rxn_type_point_dist(a : ChemrxntypePoint, b : ChemrxntypePoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn ChemrxntypePoint::dist(self : ChemrxntypePoint, other : ChemrxntypePoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn chem_rxn_type_point_add(a : ChemrxntypePoint, b : ChemrxntypePoint) -> ChemrxntypePoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn ChemrxntypePoint::add(self : ChemrxntypePoint, other : ChemrxntypePoint) -> ChemrxntypePoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn chem_rxn_type_point_sub(a : ChemrxntypePoint, b : ChemrxntypePoint) -> ChemrxntypePoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn ChemrxntypePoint::sub(self : ChemrxntypePoint, other : ChemrxntypePoint) -> ChemrxntypePoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn chem_rxn_type_point_scale(pt : ChemrxntypePoint, s : Double) -> ChemrxntypePoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn ChemrxntypePoint::scale(self : ChemrxntypePoint, s : Double) -> ChemrxntypePoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn chem_rxn_type_point_dot(a : ChemrxntypePoint, b : ChemrxntypePoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn ChemrxntypePoint::dot(self : ChemrxntypePoint, other : ChemrxntypePoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn chem_rxn_type_point_cross(a : ChemrxntypePoint, b : ChemrxntypePoint) -> ChemrxntypePoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn ChemrxntypePoint::cross(self : ChemrxntypePoint, other : ChemrxntypePoint) -> ChemrxntypePoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn chem_rxn_type_point_norm(pt : ChemrxntypePoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn ChemrxntypePoint::norm(self : ChemrxntypePoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn chem_rxn_type_point_normalize(pt : ChemrxntypePoint) -> ChemrxntypePoint {
-  let n = chem_rxn_type_point_norm(pt)
-  if n < 0.0000001 { pt } else { chem_rxn_type_point_scale(pt, 1.0 / n) }
+pub fn ChemrxntypePoint::normalize(self : ChemrxntypePoint) -> ChemrxntypePoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn chem_rxn_type_point_negate(pt : ChemrxntypePoint) -> ChemrxntypePoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn ChemrxntypePoint::negate(self : ChemrxntypePoint) -> ChemrxntypePoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn chem_rxn_type_point_mid(a : ChemrxntypePoint, b : ChemrxntypePoint) -> ChemrxntypePoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn ChemrxntypePoint::mid(self : ChemrxntypePoint, other : ChemrxntypePoint) -> ChemrxntypePoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn chem_rxn_type_point_lerp(a : ChemrxntypePoint, b : ChemrxntypePoint, t : Double) -> ChemrxntypePoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn ChemrxntypePoint::lerp(self : ChemrxntypePoint, other : ChemrxntypePoint, t : Double) -> ChemrxntypePoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn chem_rxn_type_point_to_string(pt : ChemrxntypePoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn ChemrxntypePoint::to_string(self : ChemrxntypePoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct ChemrxntypeSeries {
@@ -86,58 +86,58 @@ pub fn chem_rxn_type_make_series(vals : Array[Double], name : String) -> Chemrxn
   { vals, name, meta: 0 }
 }
 
-pub fn chem_rxn_type_series_len(s : ChemrxntypeSeries) -> Int { s.vals.length() }
+pub fn ChemrxntypeSeries::len(self : ChemrxntypeSeries) -> Int { self.vals.length() }
 
-pub fn chem_rxn_type_series_sum(s : ChemrxntypeSeries) -> Double { @_common.sum(s.vals) }
+pub fn ChemrxntypeSeries::sum(self : ChemrxntypeSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn chem_rxn_type_series_mean(s : ChemrxntypeSeries) -> Double { @_common.mean(s.vals) }
+pub fn ChemrxntypeSeries::mean(self : ChemrxntypeSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn chem_rxn_type_series_min(s : ChemrxntypeSeries) -> Double { @_common.min(s.vals) }
+pub fn ChemrxntypeSeries::min(self : ChemrxntypeSeries) -> Double { @_common.min(self.vals) }
 
-pub fn chem_rxn_type_series_max(s : ChemrxntypeSeries) -> Double { @_common.max(s.vals) }
+pub fn ChemrxntypeSeries::max(self : ChemrxntypeSeries) -> Double { @_common.max(self.vals) }
 
-pub fn chem_rxn_type_series_range(s : ChemrxntypeSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn ChemrxntypeSeries::range(self : ChemrxntypeSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn chem_rxn_type_series_var(s : ChemrxntypeSeries) -> Double { @_common.variance(s.vals) }
+pub fn ChemrxntypeSeries::variance(self : ChemrxntypeSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn chem_rxn_type_series_std(s : ChemrxntypeSeries) -> Double { @_common.std(s.vals) }
+pub fn ChemrxntypeSeries::std(self : ChemrxntypeSeries) -> Double { @_common.std(self.vals) }
 
-pub fn chem_rxn_type_series_median(s : ChemrxntypeSeries) -> Double { @_common.median(s.vals) }
+pub fn ChemrxntypeSeries::median(self : ChemrxntypeSeries) -> Double { @_common.median(self.vals) }
 
-pub fn chem_rxn_type_series_scale(s : ChemrxntypeSeries, f : Double) -> ChemrxntypeSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn ChemrxntypeSeries::scale(self : ChemrxntypeSeries, f : Double) -> ChemrxntypeSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn chem_rxn_type_series_add(a : ChemrxntypeSeries, b : ChemrxntypeSeries) -> ChemrxntypeSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn ChemrxntypeSeries::add(self : ChemrxntypeSeries, other : ChemrxntypeSeries) -> ChemrxntypeSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn chem_rxn_type_series_sub(a : ChemrxntypeSeries, b : ChemrxntypeSeries) -> ChemrxntypeSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn ChemrxntypeSeries::sub(self : ChemrxntypeSeries, other : ChemrxntypeSeries) -> ChemrxntypeSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn chem_rxn_type_series_normalize(s : ChemrxntypeSeries) -> ChemrxntypeSeries {
-  let mn = chem_rxn_type_series_min(s)
-  let mx = chem_rxn_type_series_max(s)
+pub fn ChemrxntypeSeries::normalize(self : ChemrxntypeSeries) -> ChemrxntypeSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn chem_rxn_type_series_cumsum(s : ChemrxntypeSeries) -> ChemrxntypeSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn ChemrxntypeSeries::cumsum(self : ChemrxntypeSeries) -> ChemrxntypeSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn chem_rxn_type_series_to_string(s : ChemrxntypeSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn ChemrxntypeSeries::to_string(self : ChemrxntypeSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn chem_rxn_type_matrix_identity(n : Int) -> ChemrxntypeMatrix {
   m
 }
 
-pub fn chem_rxn_type_matrix_get(m : ChemrxntypeMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn ChemrxntypeMatrix::get(self : ChemrxntypeMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn chem_rxn_type_matrix_transpose(m : ChemrxntypeMatrix) -> ChemrxntypeMatrix {
-  let result = chem_rxn_type_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn ChemrxntypeMatrix::transpose(self : ChemrxntypeMatrix) -> ChemrxntypeMatrix {
+  let result = chem_rxn_type_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn chem_rxn_type_matrix_add(a : ChemrxntypeMatrix, b : ChemrxntypeMatrix) -> ChemrxntypeMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = chem_rxn_type_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn ChemrxntypeMatrix::add(self : ChemrxntypeMatrix, other : ChemrxntypeMatrix) -> ChemrxntypeMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = chem_rxn_type_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn chem_rxn_type_matrix_scale(m : ChemrxntypeMatrix, s : Double) -> ChemrxntypeMatrix {
-  let result = chem_rxn_type_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn ChemrxntypeMatrix::scale(self : ChemrxntypeMatrix, s : Double) -> ChemrxntypeMatrix {
+  let result = chem_rxn_type_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn chem_rxn_type_matrix_multiply(a : ChemrxntypeMatrix, b : ChemrxntypeMatrix) -> ChemrxntypeMatrix {
-  if a.cols != b.rows { return chem_rxn_type_make_matrix(a.rows, b.cols, 0.0) }
-  let result = chem_rxn_type_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn ChemrxntypeMatrix::multiply(self : ChemrxntypeMatrix, other : ChemrxntypeMatrix) -> ChemrxntypeMatrix {
+  if self.cols != other.rows { return chem_rxn_type_make_matrix(self.rows, other.cols, 0.0) }
+  let result = chem_rxn_type_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn chem_rxn_type_matrix_trace(m : ChemrxntypeMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn ChemrxntypeMatrix::trace(self : ChemrxntypeMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn chem_rxn_type_matrix_det(m : ChemrxntypeMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn ChemrxntypeMatrix::det(self : ChemrxntypeMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn chem_rxn_type_matrix_norm(m : ChemrxntypeMatrix) -> Double {
+pub fn ChemrxntypeMatrix::norm(self : ChemrxntypeMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn chem_rxn_type_matrix_to_string(m : ChemrxntypeMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn ChemrxntypeMatrix::to_string(self : ChemrxntypeMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn chem_rxn_type_vector_zero(dim : Int) -> ChemrxntypeVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn chem_rxn_type_vector_add(a : ChemrxntypeVector, b : ChemrxntypeVector) -> ChemrxntypeVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn ChemrxntypeVector::add(self : ChemrxntypeVector, other : ChemrxntypeVector) -> ChemrxntypeVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn chem_rxn_type_vector_sub(a : ChemrxntypeVector, b : ChemrxntypeVector) -> ChemrxntypeVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn ChemrxntypeVector::sub(self : ChemrxntypeVector, other : ChemrxntypeVector) -> ChemrxntypeVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn chem_rxn_type_vector_scale(v : ChemrxntypeVector, s : Double) -> ChemrxntypeVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn ChemrxntypeVector::scale(self : ChemrxntypeVector, s : Double) -> ChemrxntypeVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn chem_rxn_type_vector_dot(a : ChemrxntypeVector, b : ChemrxntypeVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn ChemrxntypeVector::dot(self : ChemrxntypeVector, other : ChemrxntypeVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn chem_rxn_type_vector_norm(v : ChemrxntypeVector) -> Double { @_common.sqrt(chem_rxn_type_vector_dot(v, v)) }
+pub fn ChemrxntypeVector::norm(self : ChemrxntypeVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn chem_rxn_type_vector_normalize(v : ChemrxntypeVector) -> ChemrxntypeVector {
-  let n = chem_rxn_type_vector_norm(v)
-  if n < 0.0000001 { v } else { chem_rxn_type_vector_scale(v, 1.0 / n) }
+pub fn ChemrxntypeVector::normalize(self : ChemrxntypeVector) -> ChemrxntypeVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn chem_rxn_type_vector_dist(a : ChemrxntypeVector, b : ChemrxntypeVector) -> Double {
-  chem_rxn_type_vector_norm(chem_rxn_type_vector_sub(a, b))
+pub fn ChemrxntypeVector::dist(self : ChemrxntypeVector, other : ChemrxntypeVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn chem_rxn_type_vector_to_string(v : ChemrxntypeVector) -> String {
+pub fn ChemrxntypeVector::to_string(self : ChemrxntypeVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn chem_rxn_type_mean(data : Array[Double]) -> Double { @_common.mean(data) }

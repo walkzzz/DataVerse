@@ -16,64 +16,64 @@ pub fn opt_grad_adam_make_point3(x : Double, y : Double, z : Double) -> Optgrada
   { x, y, z, label: 0 }
 }
 
-pub fn opt_grad_adam_point_x(pt : OptgradadamPoint) -> Double { pt.x }
+pub fn OptgradadamPoint::x(self : OptgradadamPoint) -> Double { self.x }
 
-pub fn opt_grad_adam_point_y(pt : OptgradadamPoint) -> Double { pt.y }
+pub fn OptgradadamPoint::y(self : OptgradadamPoint) -> Double { self.y }
 
-pub fn opt_grad_adam_point_z(pt : OptgradadamPoint) -> Double { pt.z }
+pub fn OptgradadamPoint::z(self : OptgradadamPoint) -> Double { self.z }
 
-pub fn opt_grad_adam_point_label(pt : OptgradadamPoint) -> Int { pt.label }
+pub fn OptgradadamPoint::label(self : OptgradadamPoint) -> Int { self.label }
 
-pub fn opt_grad_adam_point_dist(a : OptgradadamPoint, b : OptgradadamPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn OptgradadamPoint::dist(self : OptgradadamPoint, other : OptgradadamPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn opt_grad_adam_point_add(a : OptgradadamPoint, b : OptgradadamPoint) -> OptgradadamPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn OptgradadamPoint::add(self : OptgradadamPoint, other : OptgradadamPoint) -> OptgradadamPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn opt_grad_adam_point_sub(a : OptgradadamPoint, b : OptgradadamPoint) -> OptgradadamPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn OptgradadamPoint::sub(self : OptgradadamPoint, other : OptgradadamPoint) -> OptgradadamPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn opt_grad_adam_point_scale(pt : OptgradadamPoint, s : Double) -> OptgradadamPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn OptgradadamPoint::scale(self : OptgradadamPoint, s : Double) -> OptgradadamPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn opt_grad_adam_point_dot(a : OptgradadamPoint, b : OptgradadamPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn OptgradadamPoint::dot(self : OptgradadamPoint, other : OptgradadamPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn opt_grad_adam_point_cross(a : OptgradadamPoint, b : OptgradadamPoint) -> OptgradadamPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn OptgradadamPoint::cross(self : OptgradadamPoint, other : OptgradadamPoint) -> OptgradadamPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn opt_grad_adam_point_norm(pt : OptgradadamPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn OptgradadamPoint::norm(self : OptgradadamPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn opt_grad_adam_point_normalize(pt : OptgradadamPoint) -> OptgradadamPoint {
-  let n = opt_grad_adam_point_norm(pt)
-  if n < 0.0000001 { pt } else { opt_grad_adam_point_scale(pt, 1.0 / n) }
+pub fn OptgradadamPoint::normalize(self : OptgradadamPoint) -> OptgradadamPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn opt_grad_adam_point_negate(pt : OptgradadamPoint) -> OptgradadamPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn OptgradadamPoint::negate(self : OptgradadamPoint) -> OptgradadamPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn opt_grad_adam_point_mid(a : OptgradadamPoint, b : OptgradadamPoint) -> OptgradadamPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn OptgradadamPoint::mid(self : OptgradadamPoint, other : OptgradadamPoint) -> OptgradadamPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn opt_grad_adam_point_lerp(a : OptgradadamPoint, b : OptgradadamPoint, t : Double) -> OptgradadamPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn OptgradadamPoint::lerp(self : OptgradadamPoint, other : OptgradadamPoint, t : Double) -> OptgradadamPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn opt_grad_adam_point_to_string(pt : OptgradadamPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn OptgradadamPoint::to_string(self : OptgradadamPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct OptgradadamSeries {
@@ -86,58 +86,58 @@ pub fn opt_grad_adam_make_series(vals : Array[Double], name : String) -> Optgrad
   { vals, name, meta: 0 }
 }
 
-pub fn opt_grad_adam_series_len(s : OptgradadamSeries) -> Int { s.vals.length() }
+pub fn OptgradadamSeries::len(self : OptgradadamSeries) -> Int { self.vals.length() }
 
-pub fn opt_grad_adam_series_sum(s : OptgradadamSeries) -> Double { @_common.sum(s.vals) }
+pub fn OptgradadamSeries::sum(self : OptgradadamSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn opt_grad_adam_series_mean(s : OptgradadamSeries) -> Double { @_common.mean(s.vals) }
+pub fn OptgradadamSeries::mean(self : OptgradadamSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn opt_grad_adam_series_min(s : OptgradadamSeries) -> Double { @_common.min(s.vals) }
+pub fn OptgradadamSeries::min(self : OptgradadamSeries) -> Double { @_common.min(self.vals) }
 
-pub fn opt_grad_adam_series_max(s : OptgradadamSeries) -> Double { @_common.max(s.vals) }
+pub fn OptgradadamSeries::max(self : OptgradadamSeries) -> Double { @_common.max(self.vals) }
 
-pub fn opt_grad_adam_series_range(s : OptgradadamSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn OptgradadamSeries::range(self : OptgradadamSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn opt_grad_adam_series_var(s : OptgradadamSeries) -> Double { @_common.variance(s.vals) }
+pub fn OptgradadamSeries::variance(self : OptgradadamSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn opt_grad_adam_series_std(s : OptgradadamSeries) -> Double { @_common.std(s.vals) }
+pub fn OptgradadamSeries::std(self : OptgradadamSeries) -> Double { @_common.std(self.vals) }
 
-pub fn opt_grad_adam_series_median(s : OptgradadamSeries) -> Double { @_common.median(s.vals) }
+pub fn OptgradadamSeries::median(self : OptgradadamSeries) -> Double { @_common.median(self.vals) }
 
-pub fn opt_grad_adam_series_scale(s : OptgradadamSeries, f : Double) -> OptgradadamSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn OptgradadamSeries::scale(self : OptgradadamSeries, f : Double) -> OptgradadamSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn opt_grad_adam_series_add(a : OptgradadamSeries, b : OptgradadamSeries) -> OptgradadamSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn OptgradadamSeries::add(self : OptgradadamSeries, other : OptgradadamSeries) -> OptgradadamSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn opt_grad_adam_series_sub(a : OptgradadamSeries, b : OptgradadamSeries) -> OptgradadamSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn OptgradadamSeries::sub(self : OptgradadamSeries, other : OptgradadamSeries) -> OptgradadamSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn opt_grad_adam_series_normalize(s : OptgradadamSeries) -> OptgradadamSeries {
-  let mn = opt_grad_adam_series_min(s)
-  let mx = opt_grad_adam_series_max(s)
+pub fn OptgradadamSeries::normalize(self : OptgradadamSeries) -> OptgradadamSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn opt_grad_adam_series_cumsum(s : OptgradadamSeries) -> OptgradadamSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn OptgradadamSeries::cumsum(self : OptgradadamSeries) -> OptgradadamSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn opt_grad_adam_series_to_string(s : OptgradadamSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn OptgradadamSeries::to_string(self : OptgradadamSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn opt_grad_adam_matrix_identity(n : Int) -> OptgradadamMatrix {
   m
 }
 
-pub fn opt_grad_adam_matrix_get(m : OptgradadamMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn OptgradadamMatrix::get(self : OptgradadamMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn opt_grad_adam_matrix_transpose(m : OptgradadamMatrix) -> OptgradadamMatrix {
-  let result = opt_grad_adam_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn OptgradadamMatrix::transpose(self : OptgradadamMatrix) -> OptgradadamMatrix {
+  let result = opt_grad_adam_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn opt_grad_adam_matrix_add(a : OptgradadamMatrix, b : OptgradadamMatrix) -> OptgradadamMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = opt_grad_adam_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn OptgradadamMatrix::add(self : OptgradadamMatrix, other : OptgradadamMatrix) -> OptgradadamMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = opt_grad_adam_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn opt_grad_adam_matrix_scale(m : OptgradadamMatrix, s : Double) -> OptgradadamMatrix {
-  let result = opt_grad_adam_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn OptgradadamMatrix::scale(self : OptgradadamMatrix, s : Double) -> OptgradadamMatrix {
+  let result = opt_grad_adam_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn opt_grad_adam_matrix_multiply(a : OptgradadamMatrix, b : OptgradadamMatrix) -> OptgradadamMatrix {
-  if a.cols != b.rows { return opt_grad_adam_make_matrix(a.rows, b.cols, 0.0) }
-  let result = opt_grad_adam_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn OptgradadamMatrix::multiply(self : OptgradadamMatrix, other : OptgradadamMatrix) -> OptgradadamMatrix {
+  if self.cols != other.rows { return opt_grad_adam_make_matrix(self.rows, other.cols, 0.0) }
+  let result = opt_grad_adam_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn opt_grad_adam_matrix_trace(m : OptgradadamMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn OptgradadamMatrix::trace(self : OptgradadamMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn opt_grad_adam_matrix_det(m : OptgradadamMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn OptgradadamMatrix::det(self : OptgradadamMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn opt_grad_adam_matrix_norm(m : OptgradadamMatrix) -> Double {
+pub fn OptgradadamMatrix::norm(self : OptgradadamMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn opt_grad_adam_matrix_to_string(m : OptgradadamMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn OptgradadamMatrix::to_string(self : OptgradadamMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn opt_grad_adam_vector_zero(dim : Int) -> OptgradadamVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn opt_grad_adam_vector_add(a : OptgradadamVector, b : OptgradadamVector) -> OptgradadamVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn OptgradadamVector::add(self : OptgradadamVector, other : OptgradadamVector) -> OptgradadamVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn opt_grad_adam_vector_sub(a : OptgradadamVector, b : OptgradadamVector) -> OptgradadamVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn OptgradadamVector::sub(self : OptgradadamVector, other : OptgradadamVector) -> OptgradadamVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn opt_grad_adam_vector_scale(v : OptgradadamVector, s : Double) -> OptgradadamVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn OptgradadamVector::scale(self : OptgradadamVector, s : Double) -> OptgradadamVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn opt_grad_adam_vector_dot(a : OptgradadamVector, b : OptgradadamVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn OptgradadamVector::dot(self : OptgradadamVector, other : OptgradadamVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn opt_grad_adam_vector_norm(v : OptgradadamVector) -> Double { @_common.sqrt(opt_grad_adam_vector_dot(v, v)) }
+pub fn OptgradadamVector::norm(self : OptgradadamVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn opt_grad_adam_vector_normalize(v : OptgradadamVector) -> OptgradadamVector {
-  let n = opt_grad_adam_vector_norm(v)
-  if n < 0.0000001 { v } else { opt_grad_adam_vector_scale(v, 1.0 / n) }
+pub fn OptgradadamVector::normalize(self : OptgradadamVector) -> OptgradadamVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn opt_grad_adam_vector_dist(a : OptgradadamVector, b : OptgradadamVector) -> Double {
-  opt_grad_adam_vector_norm(opt_grad_adam_vector_sub(a, b))
+pub fn OptgradadamVector::dist(self : OptgradadamVector, other : OptgradadamVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn opt_grad_adam_vector_to_string(v : OptgradadamVector) -> String {
+pub fn OptgradadamVector::to_string(self : OptgradadamVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn opt_grad_adam_mean(data : Array[Double]) -> Double { @_common.mean(data) }

@@ -16,64 +16,64 @@ pub fn graph_flow_evacuation_make_point3(x : Double, y : Double, z : Double) -> 
   { x, y, z, label: 0 }
 }
 
-pub fn graph_flow_evacuation_point_x(pt : GraphflowevacuationPoint) -> Double { pt.x }
+pub fn GraphflowevacuationPoint::x(self : GraphflowevacuationPoint) -> Double { self.x }
 
-pub fn graph_flow_evacuation_point_y(pt : GraphflowevacuationPoint) -> Double { pt.y }
+pub fn GraphflowevacuationPoint::y(self : GraphflowevacuationPoint) -> Double { self.y }
 
-pub fn graph_flow_evacuation_point_z(pt : GraphflowevacuationPoint) -> Double { pt.z }
+pub fn GraphflowevacuationPoint::z(self : GraphflowevacuationPoint) -> Double { self.z }
 
-pub fn graph_flow_evacuation_point_label(pt : GraphflowevacuationPoint) -> Int { pt.label }
+pub fn GraphflowevacuationPoint::label(self : GraphflowevacuationPoint) -> Int { self.label }
 
-pub fn graph_flow_evacuation_point_dist(a : GraphflowevacuationPoint, b : GraphflowevacuationPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn GraphflowevacuationPoint::dist(self : GraphflowevacuationPoint, other : GraphflowevacuationPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn graph_flow_evacuation_point_add(a : GraphflowevacuationPoint, b : GraphflowevacuationPoint) -> GraphflowevacuationPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn GraphflowevacuationPoint::add(self : GraphflowevacuationPoint, other : GraphflowevacuationPoint) -> GraphflowevacuationPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn graph_flow_evacuation_point_sub(a : GraphflowevacuationPoint, b : GraphflowevacuationPoint) -> GraphflowevacuationPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn GraphflowevacuationPoint::sub(self : GraphflowevacuationPoint, other : GraphflowevacuationPoint) -> GraphflowevacuationPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn graph_flow_evacuation_point_scale(pt : GraphflowevacuationPoint, s : Double) -> GraphflowevacuationPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn GraphflowevacuationPoint::scale(self : GraphflowevacuationPoint, s : Double) -> GraphflowevacuationPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn graph_flow_evacuation_point_dot(a : GraphflowevacuationPoint, b : GraphflowevacuationPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn GraphflowevacuationPoint::dot(self : GraphflowevacuationPoint, other : GraphflowevacuationPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn graph_flow_evacuation_point_cross(a : GraphflowevacuationPoint, b : GraphflowevacuationPoint) -> GraphflowevacuationPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn GraphflowevacuationPoint::cross(self : GraphflowevacuationPoint, other : GraphflowevacuationPoint) -> GraphflowevacuationPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn graph_flow_evacuation_point_norm(pt : GraphflowevacuationPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn GraphflowevacuationPoint::norm(self : GraphflowevacuationPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn graph_flow_evacuation_point_normalize(pt : GraphflowevacuationPoint) -> GraphflowevacuationPoint {
-  let n = graph_flow_evacuation_point_norm(pt)
-  if n < 0.0000001 { pt } else { graph_flow_evacuation_point_scale(pt, 1.0 / n) }
+pub fn GraphflowevacuationPoint::normalize(self : GraphflowevacuationPoint) -> GraphflowevacuationPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn graph_flow_evacuation_point_negate(pt : GraphflowevacuationPoint) -> GraphflowevacuationPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn GraphflowevacuationPoint::negate(self : GraphflowevacuationPoint) -> GraphflowevacuationPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn graph_flow_evacuation_point_mid(a : GraphflowevacuationPoint, b : GraphflowevacuationPoint) -> GraphflowevacuationPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn GraphflowevacuationPoint::mid(self : GraphflowevacuationPoint, other : GraphflowevacuationPoint) -> GraphflowevacuationPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn graph_flow_evacuation_point_lerp(a : GraphflowevacuationPoint, b : GraphflowevacuationPoint, t : Double) -> GraphflowevacuationPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn GraphflowevacuationPoint::lerp(self : GraphflowevacuationPoint, other : GraphflowevacuationPoint, t : Double) -> GraphflowevacuationPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn graph_flow_evacuation_point_to_string(pt : GraphflowevacuationPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn GraphflowevacuationPoint::to_string(self : GraphflowevacuationPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct GraphflowevacuationSeries {
@@ -86,58 +86,58 @@ pub fn graph_flow_evacuation_make_series(vals : Array[Double], name : String) ->
   { vals, name, meta: 0 }
 }
 
-pub fn graph_flow_evacuation_series_len(s : GraphflowevacuationSeries) -> Int { s.vals.length() }
+pub fn GraphflowevacuationSeries::len(self : GraphflowevacuationSeries) -> Int { self.vals.length() }
 
-pub fn graph_flow_evacuation_series_sum(s : GraphflowevacuationSeries) -> Double { @_common.sum(s.vals) }
+pub fn GraphflowevacuationSeries::sum(self : GraphflowevacuationSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn graph_flow_evacuation_series_mean(s : GraphflowevacuationSeries) -> Double { @_common.mean(s.vals) }
+pub fn GraphflowevacuationSeries::mean(self : GraphflowevacuationSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn graph_flow_evacuation_series_min(s : GraphflowevacuationSeries) -> Double { @_common.min(s.vals) }
+pub fn GraphflowevacuationSeries::min(self : GraphflowevacuationSeries) -> Double { @_common.min(self.vals) }
 
-pub fn graph_flow_evacuation_series_max(s : GraphflowevacuationSeries) -> Double { @_common.max(s.vals) }
+pub fn GraphflowevacuationSeries::max(self : GraphflowevacuationSeries) -> Double { @_common.max(self.vals) }
 
-pub fn graph_flow_evacuation_series_range(s : GraphflowevacuationSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn GraphflowevacuationSeries::range(self : GraphflowevacuationSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn graph_flow_evacuation_series_var(s : GraphflowevacuationSeries) -> Double { @_common.variance(s.vals) }
+pub fn GraphflowevacuationSeries::variance(self : GraphflowevacuationSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn graph_flow_evacuation_series_std(s : GraphflowevacuationSeries) -> Double { @_common.std(s.vals) }
+pub fn GraphflowevacuationSeries::std(self : GraphflowevacuationSeries) -> Double { @_common.std(self.vals) }
 
-pub fn graph_flow_evacuation_series_median(s : GraphflowevacuationSeries) -> Double { @_common.median(s.vals) }
+pub fn GraphflowevacuationSeries::median(self : GraphflowevacuationSeries) -> Double { @_common.median(self.vals) }
 
-pub fn graph_flow_evacuation_series_scale(s : GraphflowevacuationSeries, f : Double) -> GraphflowevacuationSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn GraphflowevacuationSeries::scale(self : GraphflowevacuationSeries, f : Double) -> GraphflowevacuationSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn graph_flow_evacuation_series_add(a : GraphflowevacuationSeries, b : GraphflowevacuationSeries) -> GraphflowevacuationSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn GraphflowevacuationSeries::add(self : GraphflowevacuationSeries, other : GraphflowevacuationSeries) -> GraphflowevacuationSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn graph_flow_evacuation_series_sub(a : GraphflowevacuationSeries, b : GraphflowevacuationSeries) -> GraphflowevacuationSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn GraphflowevacuationSeries::sub(self : GraphflowevacuationSeries, other : GraphflowevacuationSeries) -> GraphflowevacuationSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn graph_flow_evacuation_series_normalize(s : GraphflowevacuationSeries) -> GraphflowevacuationSeries {
-  let mn = graph_flow_evacuation_series_min(s)
-  let mx = graph_flow_evacuation_series_max(s)
+pub fn GraphflowevacuationSeries::normalize(self : GraphflowevacuationSeries) -> GraphflowevacuationSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn graph_flow_evacuation_series_cumsum(s : GraphflowevacuationSeries) -> GraphflowevacuationSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn GraphflowevacuationSeries::cumsum(self : GraphflowevacuationSeries) -> GraphflowevacuationSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn graph_flow_evacuation_series_to_string(s : GraphflowevacuationSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn GraphflowevacuationSeries::to_string(self : GraphflowevacuationSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn graph_flow_evacuation_matrix_identity(n : Int) -> GraphflowevacuationMatr
   m
 }
 
-pub fn graph_flow_evacuation_matrix_get(m : GraphflowevacuationMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn GraphflowevacuationMatrix::get(self : GraphflowevacuationMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn graph_flow_evacuation_matrix_transpose(m : GraphflowevacuationMatrix) -> GraphflowevacuationMatrix {
-  let result = graph_flow_evacuation_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn GraphflowevacuationMatrix::transpose(self : GraphflowevacuationMatrix) -> GraphflowevacuationMatrix {
+  let result = graph_flow_evacuation_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn graph_flow_evacuation_matrix_add(a : GraphflowevacuationMatrix, b : GraphflowevacuationMatrix) -> GraphflowevacuationMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = graph_flow_evacuation_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn GraphflowevacuationMatrix::add(self : GraphflowevacuationMatrix, other : GraphflowevacuationMatrix) -> GraphflowevacuationMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = graph_flow_evacuation_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn graph_flow_evacuation_matrix_scale(m : GraphflowevacuationMatrix, s : Double) -> GraphflowevacuationMatrix {
-  let result = graph_flow_evacuation_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn GraphflowevacuationMatrix::scale(self : GraphflowevacuationMatrix, s : Double) -> GraphflowevacuationMatrix {
+  let result = graph_flow_evacuation_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn graph_flow_evacuation_matrix_multiply(a : GraphflowevacuationMatrix, b : GraphflowevacuationMatrix) -> GraphflowevacuationMatrix {
-  if a.cols != b.rows { return graph_flow_evacuation_make_matrix(a.rows, b.cols, 0.0) }
-  let result = graph_flow_evacuation_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn GraphflowevacuationMatrix::multiply(self : GraphflowevacuationMatrix, other : GraphflowevacuationMatrix) -> GraphflowevacuationMatrix {
+  if self.cols != other.rows { return graph_flow_evacuation_make_matrix(self.rows, other.cols, 0.0) }
+  let result = graph_flow_evacuation_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn graph_flow_evacuation_matrix_trace(m : GraphflowevacuationMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn GraphflowevacuationMatrix::trace(self : GraphflowevacuationMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn graph_flow_evacuation_matrix_det(m : GraphflowevacuationMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn GraphflowevacuationMatrix::det(self : GraphflowevacuationMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn graph_flow_evacuation_matrix_norm(m : GraphflowevacuationMatrix) -> Double {
+pub fn GraphflowevacuationMatrix::norm(self : GraphflowevacuationMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn graph_flow_evacuation_matrix_to_string(m : GraphflowevacuationMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn GraphflowevacuationMatrix::to_string(self : GraphflowevacuationMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn graph_flow_evacuation_vector_zero(dim : Int) -> GraphflowevacuationVector
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn graph_flow_evacuation_vector_add(a : GraphflowevacuationVector, b : GraphflowevacuationVector) -> GraphflowevacuationVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn GraphflowevacuationVector::add(self : GraphflowevacuationVector, other : GraphflowevacuationVector) -> GraphflowevacuationVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn graph_flow_evacuation_vector_sub(a : GraphflowevacuationVector, b : GraphflowevacuationVector) -> GraphflowevacuationVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn GraphflowevacuationVector::sub(self : GraphflowevacuationVector, other : GraphflowevacuationVector) -> GraphflowevacuationVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn graph_flow_evacuation_vector_scale(v : GraphflowevacuationVector, s : Double) -> GraphflowevacuationVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn GraphflowevacuationVector::scale(self : GraphflowevacuationVector, s : Double) -> GraphflowevacuationVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn graph_flow_evacuation_vector_dot(a : GraphflowevacuationVector, b : GraphflowevacuationVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn GraphflowevacuationVector::dot(self : GraphflowevacuationVector, other : GraphflowevacuationVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn graph_flow_evacuation_vector_norm(v : GraphflowevacuationVector) -> Double { @_common.sqrt(graph_flow_evacuation_vector_dot(v, v)) }
+pub fn GraphflowevacuationVector::norm(self : GraphflowevacuationVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn graph_flow_evacuation_vector_normalize(v : GraphflowevacuationVector) -> GraphflowevacuationVector {
-  let n = graph_flow_evacuation_vector_norm(v)
-  if n < 0.0000001 { v } else { graph_flow_evacuation_vector_scale(v, 1.0 / n) }
+pub fn GraphflowevacuationVector::normalize(self : GraphflowevacuationVector) -> GraphflowevacuationVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn graph_flow_evacuation_vector_dist(a : GraphflowevacuationVector, b : GraphflowevacuationVector) -> Double {
-  graph_flow_evacuation_vector_norm(graph_flow_evacuation_vector_sub(a, b))
+pub fn GraphflowevacuationVector::dist(self : GraphflowevacuationVector, other : GraphflowevacuationVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn graph_flow_evacuation_vector_to_string(v : GraphflowevacuationVector) -> String {
+pub fn GraphflowevacuationVector::to_string(self : GraphflowevacuationVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn graph_flow_evacuation_mean(data : Array[Double]) -> Double { @_common.mean(data) }

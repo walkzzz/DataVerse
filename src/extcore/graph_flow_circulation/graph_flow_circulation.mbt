@@ -16,64 +16,64 @@ pub fn graph_flow_circulation_make_point3(x : Double, y : Double, z : Double) ->
   { x, y, z, label: 0 }
 }
 
-pub fn graph_flow_circulation_point_x(pt : GraphflowcirculationPoint) -> Double { pt.x }
+pub fn GraphflowcirculationPoint::x(self : GraphflowcirculationPoint) -> Double { self.x }
 
-pub fn graph_flow_circulation_point_y(pt : GraphflowcirculationPoint) -> Double { pt.y }
+pub fn GraphflowcirculationPoint::y(self : GraphflowcirculationPoint) -> Double { self.y }
 
-pub fn graph_flow_circulation_point_z(pt : GraphflowcirculationPoint) -> Double { pt.z }
+pub fn GraphflowcirculationPoint::z(self : GraphflowcirculationPoint) -> Double { self.z }
 
-pub fn graph_flow_circulation_point_label(pt : GraphflowcirculationPoint) -> Int { pt.label }
+pub fn GraphflowcirculationPoint::label(self : GraphflowcirculationPoint) -> Int { self.label }
 
-pub fn graph_flow_circulation_point_dist(a : GraphflowcirculationPoint, b : GraphflowcirculationPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn GraphflowcirculationPoint::dist(self : GraphflowcirculationPoint, other : GraphflowcirculationPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn graph_flow_circulation_point_add(a : GraphflowcirculationPoint, b : GraphflowcirculationPoint) -> GraphflowcirculationPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn GraphflowcirculationPoint::add(self : GraphflowcirculationPoint, other : GraphflowcirculationPoint) -> GraphflowcirculationPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn graph_flow_circulation_point_sub(a : GraphflowcirculationPoint, b : GraphflowcirculationPoint) -> GraphflowcirculationPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn GraphflowcirculationPoint::sub(self : GraphflowcirculationPoint, other : GraphflowcirculationPoint) -> GraphflowcirculationPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn graph_flow_circulation_point_scale(pt : GraphflowcirculationPoint, s : Double) -> GraphflowcirculationPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn GraphflowcirculationPoint::scale(self : GraphflowcirculationPoint, s : Double) -> GraphflowcirculationPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn graph_flow_circulation_point_dot(a : GraphflowcirculationPoint, b : GraphflowcirculationPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn GraphflowcirculationPoint::dot(self : GraphflowcirculationPoint, other : GraphflowcirculationPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn graph_flow_circulation_point_cross(a : GraphflowcirculationPoint, b : GraphflowcirculationPoint) -> GraphflowcirculationPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn GraphflowcirculationPoint::cross(self : GraphflowcirculationPoint, other : GraphflowcirculationPoint) -> GraphflowcirculationPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn graph_flow_circulation_point_norm(pt : GraphflowcirculationPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn GraphflowcirculationPoint::norm(self : GraphflowcirculationPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn graph_flow_circulation_point_normalize(pt : GraphflowcirculationPoint) -> GraphflowcirculationPoint {
-  let n = graph_flow_circulation_point_norm(pt)
-  if n < 0.0000001 { pt } else { graph_flow_circulation_point_scale(pt, 1.0 / n) }
+pub fn GraphflowcirculationPoint::normalize(self : GraphflowcirculationPoint) -> GraphflowcirculationPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn graph_flow_circulation_point_negate(pt : GraphflowcirculationPoint) -> GraphflowcirculationPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn GraphflowcirculationPoint::negate(self : GraphflowcirculationPoint) -> GraphflowcirculationPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn graph_flow_circulation_point_mid(a : GraphflowcirculationPoint, b : GraphflowcirculationPoint) -> GraphflowcirculationPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn GraphflowcirculationPoint::mid(self : GraphflowcirculationPoint, other : GraphflowcirculationPoint) -> GraphflowcirculationPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn graph_flow_circulation_point_lerp(a : GraphflowcirculationPoint, b : GraphflowcirculationPoint, t : Double) -> GraphflowcirculationPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn GraphflowcirculationPoint::lerp(self : GraphflowcirculationPoint, other : GraphflowcirculationPoint, t : Double) -> GraphflowcirculationPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn graph_flow_circulation_point_to_string(pt : GraphflowcirculationPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn GraphflowcirculationPoint::to_string(self : GraphflowcirculationPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct GraphflowcirculationSeries {
@@ -86,58 +86,58 @@ pub fn graph_flow_circulation_make_series(vals : Array[Double], name : String) -
   { vals, name, meta: 0 }
 }
 
-pub fn graph_flow_circulation_series_len(s : GraphflowcirculationSeries) -> Int { s.vals.length() }
+pub fn GraphflowcirculationSeries::len(self : GraphflowcirculationSeries) -> Int { self.vals.length() }
 
-pub fn graph_flow_circulation_series_sum(s : GraphflowcirculationSeries) -> Double { @_common.sum(s.vals) }
+pub fn GraphflowcirculationSeries::sum(self : GraphflowcirculationSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn graph_flow_circulation_series_mean(s : GraphflowcirculationSeries) -> Double { @_common.mean(s.vals) }
+pub fn GraphflowcirculationSeries::mean(self : GraphflowcirculationSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn graph_flow_circulation_series_min(s : GraphflowcirculationSeries) -> Double { @_common.min(s.vals) }
+pub fn GraphflowcirculationSeries::min(self : GraphflowcirculationSeries) -> Double { @_common.min(self.vals) }
 
-pub fn graph_flow_circulation_series_max(s : GraphflowcirculationSeries) -> Double { @_common.max(s.vals) }
+pub fn GraphflowcirculationSeries::max(self : GraphflowcirculationSeries) -> Double { @_common.max(self.vals) }
 
-pub fn graph_flow_circulation_series_range(s : GraphflowcirculationSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn GraphflowcirculationSeries::range(self : GraphflowcirculationSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn graph_flow_circulation_series_var(s : GraphflowcirculationSeries) -> Double { @_common.variance(s.vals) }
+pub fn GraphflowcirculationSeries::variance(self : GraphflowcirculationSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn graph_flow_circulation_series_std(s : GraphflowcirculationSeries) -> Double { @_common.std(s.vals) }
+pub fn GraphflowcirculationSeries::std(self : GraphflowcirculationSeries) -> Double { @_common.std(self.vals) }
 
-pub fn graph_flow_circulation_series_median(s : GraphflowcirculationSeries) -> Double { @_common.median(s.vals) }
+pub fn GraphflowcirculationSeries::median(self : GraphflowcirculationSeries) -> Double { @_common.median(self.vals) }
 
-pub fn graph_flow_circulation_series_scale(s : GraphflowcirculationSeries, f : Double) -> GraphflowcirculationSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn GraphflowcirculationSeries::scale(self : GraphflowcirculationSeries, f : Double) -> GraphflowcirculationSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn graph_flow_circulation_series_add(a : GraphflowcirculationSeries, b : GraphflowcirculationSeries) -> GraphflowcirculationSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn GraphflowcirculationSeries::add(self : GraphflowcirculationSeries, other : GraphflowcirculationSeries) -> GraphflowcirculationSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn graph_flow_circulation_series_sub(a : GraphflowcirculationSeries, b : GraphflowcirculationSeries) -> GraphflowcirculationSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn GraphflowcirculationSeries::sub(self : GraphflowcirculationSeries, other : GraphflowcirculationSeries) -> GraphflowcirculationSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn graph_flow_circulation_series_normalize(s : GraphflowcirculationSeries) -> GraphflowcirculationSeries {
-  let mn = graph_flow_circulation_series_min(s)
-  let mx = graph_flow_circulation_series_max(s)
+pub fn GraphflowcirculationSeries::normalize(self : GraphflowcirculationSeries) -> GraphflowcirculationSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn graph_flow_circulation_series_cumsum(s : GraphflowcirculationSeries) -> GraphflowcirculationSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn GraphflowcirculationSeries::cumsum(self : GraphflowcirculationSeries) -> GraphflowcirculationSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn graph_flow_circulation_series_to_string(s : GraphflowcirculationSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn GraphflowcirculationSeries::to_string(self : GraphflowcirculationSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn graph_flow_circulation_matrix_identity(n : Int) -> GraphflowcirculationMa
   m
 }
 
-pub fn graph_flow_circulation_matrix_get(m : GraphflowcirculationMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn GraphflowcirculationMatrix::get(self : GraphflowcirculationMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn graph_flow_circulation_matrix_transpose(m : GraphflowcirculationMatrix) -> GraphflowcirculationMatrix {
-  let result = graph_flow_circulation_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn GraphflowcirculationMatrix::transpose(self : GraphflowcirculationMatrix) -> GraphflowcirculationMatrix {
+  let result = graph_flow_circulation_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn graph_flow_circulation_matrix_add(a : GraphflowcirculationMatrix, b : GraphflowcirculationMatrix) -> GraphflowcirculationMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = graph_flow_circulation_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn GraphflowcirculationMatrix::add(self : GraphflowcirculationMatrix, other : GraphflowcirculationMatrix) -> GraphflowcirculationMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = graph_flow_circulation_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn graph_flow_circulation_matrix_scale(m : GraphflowcirculationMatrix, s : Double) -> GraphflowcirculationMatrix {
-  let result = graph_flow_circulation_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn GraphflowcirculationMatrix::scale(self : GraphflowcirculationMatrix, s : Double) -> GraphflowcirculationMatrix {
+  let result = graph_flow_circulation_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn graph_flow_circulation_matrix_multiply(a : GraphflowcirculationMatrix, b : GraphflowcirculationMatrix) -> GraphflowcirculationMatrix {
-  if a.cols != b.rows { return graph_flow_circulation_make_matrix(a.rows, b.cols, 0.0) }
-  let result = graph_flow_circulation_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn GraphflowcirculationMatrix::multiply(self : GraphflowcirculationMatrix, other : GraphflowcirculationMatrix) -> GraphflowcirculationMatrix {
+  if self.cols != other.rows { return graph_flow_circulation_make_matrix(self.rows, other.cols, 0.0) }
+  let result = graph_flow_circulation_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn graph_flow_circulation_matrix_trace(m : GraphflowcirculationMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn GraphflowcirculationMatrix::trace(self : GraphflowcirculationMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn graph_flow_circulation_matrix_det(m : GraphflowcirculationMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn GraphflowcirculationMatrix::det(self : GraphflowcirculationMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn graph_flow_circulation_matrix_norm(m : GraphflowcirculationMatrix) -> Double {
+pub fn GraphflowcirculationMatrix::norm(self : GraphflowcirculationMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn graph_flow_circulation_matrix_to_string(m : GraphflowcirculationMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn GraphflowcirculationMatrix::to_string(self : GraphflowcirculationMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn graph_flow_circulation_vector_zero(dim : Int) -> GraphflowcirculationVect
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn graph_flow_circulation_vector_add(a : GraphflowcirculationVector, b : GraphflowcirculationVector) -> GraphflowcirculationVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn GraphflowcirculationVector::add(self : GraphflowcirculationVector, other : GraphflowcirculationVector) -> GraphflowcirculationVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn graph_flow_circulation_vector_sub(a : GraphflowcirculationVector, b : GraphflowcirculationVector) -> GraphflowcirculationVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn GraphflowcirculationVector::sub(self : GraphflowcirculationVector, other : GraphflowcirculationVector) -> GraphflowcirculationVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn graph_flow_circulation_vector_scale(v : GraphflowcirculationVector, s : Double) -> GraphflowcirculationVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn GraphflowcirculationVector::scale(self : GraphflowcirculationVector, s : Double) -> GraphflowcirculationVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn graph_flow_circulation_vector_dot(a : GraphflowcirculationVector, b : GraphflowcirculationVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn GraphflowcirculationVector::dot(self : GraphflowcirculationVector, other : GraphflowcirculationVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn graph_flow_circulation_vector_norm(v : GraphflowcirculationVector) -> Double { @_common.sqrt(graph_flow_circulation_vector_dot(v, v)) }
+pub fn GraphflowcirculationVector::norm(self : GraphflowcirculationVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn graph_flow_circulation_vector_normalize(v : GraphflowcirculationVector) -> GraphflowcirculationVector {
-  let n = graph_flow_circulation_vector_norm(v)
-  if n < 0.0000001 { v } else { graph_flow_circulation_vector_scale(v, 1.0 / n) }
+pub fn GraphflowcirculationVector::normalize(self : GraphflowcirculationVector) -> GraphflowcirculationVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn graph_flow_circulation_vector_dist(a : GraphflowcirculationVector, b : GraphflowcirculationVector) -> Double {
-  graph_flow_circulation_vector_norm(graph_flow_circulation_vector_sub(a, b))
+pub fn GraphflowcirculationVector::dist(self : GraphflowcirculationVector, other : GraphflowcirculationVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn graph_flow_circulation_vector_to_string(v : GraphflowcirculationVector) -> String {
+pub fn GraphflowcirculationVector::to_string(self : GraphflowcirculationVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn graph_flow_circulation_mean(data : Array[Double]) -> Double { @_common.mean(data) }

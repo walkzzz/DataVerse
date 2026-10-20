@@ -16,64 +16,64 @@ pub fn math_sparse_matrix_make_point3(x : Double, y : Double, z : Double) -> Mat
   { x, y, z, label: 0 }
 }
 
-pub fn math_sparse_matrix_point_x(pt : MathsparsematrixPoint) -> Double { pt.x }
+pub fn MathsparsematrixPoint::x(self : MathsparsematrixPoint) -> Double { self.x }
 
-pub fn math_sparse_matrix_point_y(pt : MathsparsematrixPoint) -> Double { pt.y }
+pub fn MathsparsematrixPoint::y(self : MathsparsematrixPoint) -> Double { self.y }
 
-pub fn math_sparse_matrix_point_z(pt : MathsparsematrixPoint) -> Double { pt.z }
+pub fn MathsparsematrixPoint::z(self : MathsparsematrixPoint) -> Double { self.z }
 
-pub fn math_sparse_matrix_point_label(pt : MathsparsematrixPoint) -> Int { pt.label }
+pub fn MathsparsematrixPoint::label(self : MathsparsematrixPoint) -> Int { self.label }
 
-pub fn math_sparse_matrix_point_dist(a : MathsparsematrixPoint, b : MathsparsematrixPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn MathsparsematrixPoint::dist(self : MathsparsematrixPoint, other : MathsparsematrixPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn math_sparse_matrix_point_add(a : MathsparsematrixPoint, b : MathsparsematrixPoint) -> MathsparsematrixPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn MathsparsematrixPoint::add(self : MathsparsematrixPoint, other : MathsparsematrixPoint) -> MathsparsematrixPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn math_sparse_matrix_point_sub(a : MathsparsematrixPoint, b : MathsparsematrixPoint) -> MathsparsematrixPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn MathsparsematrixPoint::sub(self : MathsparsematrixPoint, other : MathsparsematrixPoint) -> MathsparsematrixPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn math_sparse_matrix_point_scale(pt : MathsparsematrixPoint, s : Double) -> MathsparsematrixPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn MathsparsematrixPoint::scale(self : MathsparsematrixPoint, s : Double) -> MathsparsematrixPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn math_sparse_matrix_point_dot(a : MathsparsematrixPoint, b : MathsparsematrixPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn MathsparsematrixPoint::dot(self : MathsparsematrixPoint, other : MathsparsematrixPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn math_sparse_matrix_point_cross(a : MathsparsematrixPoint, b : MathsparsematrixPoint) -> MathsparsematrixPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn MathsparsematrixPoint::cross(self : MathsparsematrixPoint, other : MathsparsematrixPoint) -> MathsparsematrixPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn math_sparse_matrix_point_norm(pt : MathsparsematrixPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn MathsparsematrixPoint::norm(self : MathsparsematrixPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn math_sparse_matrix_point_normalize(pt : MathsparsematrixPoint) -> MathsparsematrixPoint {
-  let n = math_sparse_matrix_point_norm(pt)
-  if n < 0.0000001 { pt } else { math_sparse_matrix_point_scale(pt, 1.0 / n) }
+pub fn MathsparsematrixPoint::normalize(self : MathsparsematrixPoint) -> MathsparsematrixPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn math_sparse_matrix_point_negate(pt : MathsparsematrixPoint) -> MathsparsematrixPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn MathsparsematrixPoint::negate(self : MathsparsematrixPoint) -> MathsparsematrixPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn math_sparse_matrix_point_mid(a : MathsparsematrixPoint, b : MathsparsematrixPoint) -> MathsparsematrixPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn MathsparsematrixPoint::mid(self : MathsparsematrixPoint, other : MathsparsematrixPoint) -> MathsparsematrixPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn math_sparse_matrix_point_lerp(a : MathsparsematrixPoint, b : MathsparsematrixPoint, t : Double) -> MathsparsematrixPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn MathsparsematrixPoint::lerp(self : MathsparsematrixPoint, other : MathsparsematrixPoint, t : Double) -> MathsparsematrixPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn math_sparse_matrix_point_to_string(pt : MathsparsematrixPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn MathsparsematrixPoint::to_string(self : MathsparsematrixPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct MathsparsematrixSeries {
@@ -86,58 +86,58 @@ pub fn math_sparse_matrix_make_series(vals : Array[Double], name : String) -> Ma
   { vals, name, meta: 0 }
 }
 
-pub fn math_sparse_matrix_series_len(s : MathsparsematrixSeries) -> Int { s.vals.length() }
+pub fn MathsparsematrixSeries::len(self : MathsparsematrixSeries) -> Int { self.vals.length() }
 
-pub fn math_sparse_matrix_series_sum(s : MathsparsematrixSeries) -> Double { @_common.sum(s.vals) }
+pub fn MathsparsematrixSeries::sum(self : MathsparsematrixSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn math_sparse_matrix_series_mean(s : MathsparsematrixSeries) -> Double { @_common.mean(s.vals) }
+pub fn MathsparsematrixSeries::mean(self : MathsparsematrixSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn math_sparse_matrix_series_min(s : MathsparsematrixSeries) -> Double { @_common.min(s.vals) }
+pub fn MathsparsematrixSeries::min(self : MathsparsematrixSeries) -> Double { @_common.min(self.vals) }
 
-pub fn math_sparse_matrix_series_max(s : MathsparsematrixSeries) -> Double { @_common.max(s.vals) }
+pub fn MathsparsematrixSeries::max(self : MathsparsematrixSeries) -> Double { @_common.max(self.vals) }
 
-pub fn math_sparse_matrix_series_range(s : MathsparsematrixSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn MathsparsematrixSeries::range(self : MathsparsematrixSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn math_sparse_matrix_series_var(s : MathsparsematrixSeries) -> Double { @_common.variance(s.vals) }
+pub fn MathsparsematrixSeries::variance(self : MathsparsematrixSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn math_sparse_matrix_series_std(s : MathsparsematrixSeries) -> Double { @_common.std(s.vals) }
+pub fn MathsparsematrixSeries::std(self : MathsparsematrixSeries) -> Double { @_common.std(self.vals) }
 
-pub fn math_sparse_matrix_series_median(s : MathsparsematrixSeries) -> Double { @_common.median(s.vals) }
+pub fn MathsparsematrixSeries::median(self : MathsparsematrixSeries) -> Double { @_common.median(self.vals) }
 
-pub fn math_sparse_matrix_series_scale(s : MathsparsematrixSeries, f : Double) -> MathsparsematrixSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn MathsparsematrixSeries::scale(self : MathsparsematrixSeries, f : Double) -> MathsparsematrixSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn math_sparse_matrix_series_add(a : MathsparsematrixSeries, b : MathsparsematrixSeries) -> MathsparsematrixSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn MathsparsematrixSeries::add(self : MathsparsematrixSeries, other : MathsparsematrixSeries) -> MathsparsematrixSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn math_sparse_matrix_series_sub(a : MathsparsematrixSeries, b : MathsparsematrixSeries) -> MathsparsematrixSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn MathsparsematrixSeries::sub(self : MathsparsematrixSeries, other : MathsparsematrixSeries) -> MathsparsematrixSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn math_sparse_matrix_series_normalize(s : MathsparsematrixSeries) -> MathsparsematrixSeries {
-  let mn = math_sparse_matrix_series_min(s)
-  let mx = math_sparse_matrix_series_max(s)
+pub fn MathsparsematrixSeries::normalize(self : MathsparsematrixSeries) -> MathsparsematrixSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn math_sparse_matrix_series_cumsum(s : MathsparsematrixSeries) -> MathsparsematrixSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn MathsparsematrixSeries::cumsum(self : MathsparsematrixSeries) -> MathsparsematrixSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn math_sparse_matrix_series_to_string(s : MathsparsematrixSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn MathsparsematrixSeries::to_string(self : MathsparsematrixSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn math_sparse_matrix_matrix_identity(n : Int) -> MathsparsematrixMatrix {
   m
 }
 
-pub fn math_sparse_matrix_matrix_get(m : MathsparsematrixMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn MathsparsematrixMatrix::get(self : MathsparsematrixMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn math_sparse_matrix_matrix_transpose(m : MathsparsematrixMatrix) -> MathsparsematrixMatrix {
-  let result = math_sparse_matrix_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn MathsparsematrixMatrix::transpose(self : MathsparsematrixMatrix) -> MathsparsematrixMatrix {
+  let result = math_sparse_matrix_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn math_sparse_matrix_matrix_add(a : MathsparsematrixMatrix, b : MathsparsematrixMatrix) -> MathsparsematrixMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = math_sparse_matrix_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn MathsparsematrixMatrix::add(self : MathsparsematrixMatrix, other : MathsparsematrixMatrix) -> MathsparsematrixMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = math_sparse_matrix_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn math_sparse_matrix_matrix_scale(m : MathsparsematrixMatrix, s : Double) -> MathsparsematrixMatrix {
-  let result = math_sparse_matrix_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn MathsparsematrixMatrix::scale(self : MathsparsematrixMatrix, s : Double) -> MathsparsematrixMatrix {
+  let result = math_sparse_matrix_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn math_sparse_matrix_matrix_multiply(a : MathsparsematrixMatrix, b : MathsparsematrixMatrix) -> MathsparsematrixMatrix {
-  if a.cols != b.rows { return math_sparse_matrix_make_matrix(a.rows, b.cols, 0.0) }
-  let result = math_sparse_matrix_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn MathsparsematrixMatrix::multiply(self : MathsparsematrixMatrix, other : MathsparsematrixMatrix) -> MathsparsematrixMatrix {
+  if self.cols != other.rows { return math_sparse_matrix_make_matrix(self.rows, other.cols, 0.0) }
+  let result = math_sparse_matrix_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn math_sparse_matrix_matrix_trace(m : MathsparsematrixMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn MathsparsematrixMatrix::trace(self : MathsparsematrixMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn math_sparse_matrix_matrix_det(m : MathsparsematrixMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn MathsparsematrixMatrix::det(self : MathsparsematrixMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn math_sparse_matrix_matrix_norm(m : MathsparsematrixMatrix) -> Double {
+pub fn MathsparsematrixMatrix::norm(self : MathsparsematrixMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn math_sparse_matrix_matrix_to_string(m : MathsparsematrixMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn MathsparsematrixMatrix::to_string(self : MathsparsematrixMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn math_sparse_matrix_vector_zero(dim : Int) -> MathsparsematrixVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn math_sparse_matrix_vector_add(a : MathsparsematrixVector, b : MathsparsematrixVector) -> MathsparsematrixVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn MathsparsematrixVector::add(self : MathsparsematrixVector, other : MathsparsematrixVector) -> MathsparsematrixVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn math_sparse_matrix_vector_sub(a : MathsparsematrixVector, b : MathsparsematrixVector) -> MathsparsematrixVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn MathsparsematrixVector::sub(self : MathsparsematrixVector, other : MathsparsematrixVector) -> MathsparsematrixVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn math_sparse_matrix_vector_scale(v : MathsparsematrixVector, s : Double) -> MathsparsematrixVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn MathsparsematrixVector::scale(self : MathsparsematrixVector, s : Double) -> MathsparsematrixVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn math_sparse_matrix_vector_dot(a : MathsparsematrixVector, b : MathsparsematrixVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn MathsparsematrixVector::dot(self : MathsparsematrixVector, other : MathsparsematrixVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn math_sparse_matrix_vector_norm(v : MathsparsematrixVector) -> Double { @_common.sqrt(math_sparse_matrix_vector_dot(v, v)) }
+pub fn MathsparsematrixVector::norm(self : MathsparsematrixVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn math_sparse_matrix_vector_normalize(v : MathsparsematrixVector) -> MathsparsematrixVector {
-  let n = math_sparse_matrix_vector_norm(v)
-  if n < 0.0000001 { v } else { math_sparse_matrix_vector_scale(v, 1.0 / n) }
+pub fn MathsparsematrixVector::normalize(self : MathsparsematrixVector) -> MathsparsematrixVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn math_sparse_matrix_vector_dist(a : MathsparsematrixVector, b : MathsparsematrixVector) -> Double {
-  math_sparse_matrix_vector_norm(math_sparse_matrix_vector_sub(a, b))
+pub fn MathsparsematrixVector::dist(self : MathsparsematrixVector, other : MathsparsematrixVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn math_sparse_matrix_vector_to_string(v : MathsparsematrixVector) -> String {
+pub fn MathsparsematrixVector::to_string(self : MathsparsematrixVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn math_sparse_matrix_mean(data : Array[Double]) -> Double { @_common.mean(data) }

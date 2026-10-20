@@ -16,64 +16,64 @@ pub fn nlp_pos_brill_make_point3(x : Double, y : Double, z : Double) -> Nlpposbr
   { x, y, z, label: 0 }
 }
 
-pub fn nlp_pos_brill_point_x(pt : NlpposbrillPoint) -> Double { pt.x }
+pub fn NlpposbrillPoint::x(self : NlpposbrillPoint) -> Double { self.x }
 
-pub fn nlp_pos_brill_point_y(pt : NlpposbrillPoint) -> Double { pt.y }
+pub fn NlpposbrillPoint::y(self : NlpposbrillPoint) -> Double { self.y }
 
-pub fn nlp_pos_brill_point_z(pt : NlpposbrillPoint) -> Double { pt.z }
+pub fn NlpposbrillPoint::z(self : NlpposbrillPoint) -> Double { self.z }
 
-pub fn nlp_pos_brill_point_label(pt : NlpposbrillPoint) -> Int { pt.label }
+pub fn NlpposbrillPoint::label(self : NlpposbrillPoint) -> Int { self.label }
 
-pub fn nlp_pos_brill_point_dist(a : NlpposbrillPoint, b : NlpposbrillPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn NlpposbrillPoint::dist(self : NlpposbrillPoint, other : NlpposbrillPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn nlp_pos_brill_point_add(a : NlpposbrillPoint, b : NlpposbrillPoint) -> NlpposbrillPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn NlpposbrillPoint::add(self : NlpposbrillPoint, other : NlpposbrillPoint) -> NlpposbrillPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn nlp_pos_brill_point_sub(a : NlpposbrillPoint, b : NlpposbrillPoint) -> NlpposbrillPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn NlpposbrillPoint::sub(self : NlpposbrillPoint, other : NlpposbrillPoint) -> NlpposbrillPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn nlp_pos_brill_point_scale(pt : NlpposbrillPoint, s : Double) -> NlpposbrillPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn NlpposbrillPoint::scale(self : NlpposbrillPoint, s : Double) -> NlpposbrillPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn nlp_pos_brill_point_dot(a : NlpposbrillPoint, b : NlpposbrillPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn NlpposbrillPoint::dot(self : NlpposbrillPoint, other : NlpposbrillPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn nlp_pos_brill_point_cross(a : NlpposbrillPoint, b : NlpposbrillPoint) -> NlpposbrillPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn NlpposbrillPoint::cross(self : NlpposbrillPoint, other : NlpposbrillPoint) -> NlpposbrillPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn nlp_pos_brill_point_norm(pt : NlpposbrillPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn NlpposbrillPoint::norm(self : NlpposbrillPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn nlp_pos_brill_point_normalize(pt : NlpposbrillPoint) -> NlpposbrillPoint {
-  let n = nlp_pos_brill_point_norm(pt)
-  if n < 0.0000001 { pt } else { nlp_pos_brill_point_scale(pt, 1.0 / n) }
+pub fn NlpposbrillPoint::normalize(self : NlpposbrillPoint) -> NlpposbrillPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn nlp_pos_brill_point_negate(pt : NlpposbrillPoint) -> NlpposbrillPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn NlpposbrillPoint::negate(self : NlpposbrillPoint) -> NlpposbrillPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn nlp_pos_brill_point_mid(a : NlpposbrillPoint, b : NlpposbrillPoint) -> NlpposbrillPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn NlpposbrillPoint::mid(self : NlpposbrillPoint, other : NlpposbrillPoint) -> NlpposbrillPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn nlp_pos_brill_point_lerp(a : NlpposbrillPoint, b : NlpposbrillPoint, t : Double) -> NlpposbrillPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn NlpposbrillPoint::lerp(self : NlpposbrillPoint, other : NlpposbrillPoint, t : Double) -> NlpposbrillPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn nlp_pos_brill_point_to_string(pt : NlpposbrillPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn NlpposbrillPoint::to_string(self : NlpposbrillPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct NlpposbrillSeries {
@@ -86,58 +86,58 @@ pub fn nlp_pos_brill_make_series(vals : Array[Double], name : String) -> Nlpposb
   { vals, name, meta: 0 }
 }
 
-pub fn nlp_pos_brill_series_len(s : NlpposbrillSeries) -> Int { s.vals.length() }
+pub fn NlpposbrillSeries::len(self : NlpposbrillSeries) -> Int { self.vals.length() }
 
-pub fn nlp_pos_brill_series_sum(s : NlpposbrillSeries) -> Double { @_common.sum(s.vals) }
+pub fn NlpposbrillSeries::sum(self : NlpposbrillSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn nlp_pos_brill_series_mean(s : NlpposbrillSeries) -> Double { @_common.mean(s.vals) }
+pub fn NlpposbrillSeries::mean(self : NlpposbrillSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn nlp_pos_brill_series_min(s : NlpposbrillSeries) -> Double { @_common.min(s.vals) }
+pub fn NlpposbrillSeries::min(self : NlpposbrillSeries) -> Double { @_common.min(self.vals) }
 
-pub fn nlp_pos_brill_series_max(s : NlpposbrillSeries) -> Double { @_common.max(s.vals) }
+pub fn NlpposbrillSeries::max(self : NlpposbrillSeries) -> Double { @_common.max(self.vals) }
 
-pub fn nlp_pos_brill_series_range(s : NlpposbrillSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn NlpposbrillSeries::range(self : NlpposbrillSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn nlp_pos_brill_series_var(s : NlpposbrillSeries) -> Double { @_common.variance(s.vals) }
+pub fn NlpposbrillSeries::variance(self : NlpposbrillSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn nlp_pos_brill_series_std(s : NlpposbrillSeries) -> Double { @_common.std(s.vals) }
+pub fn NlpposbrillSeries::std(self : NlpposbrillSeries) -> Double { @_common.std(self.vals) }
 
-pub fn nlp_pos_brill_series_median(s : NlpposbrillSeries) -> Double { @_common.median(s.vals) }
+pub fn NlpposbrillSeries::median(self : NlpposbrillSeries) -> Double { @_common.median(self.vals) }
 
-pub fn nlp_pos_brill_series_scale(s : NlpposbrillSeries, f : Double) -> NlpposbrillSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn NlpposbrillSeries::scale(self : NlpposbrillSeries, f : Double) -> NlpposbrillSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn nlp_pos_brill_series_add(a : NlpposbrillSeries, b : NlpposbrillSeries) -> NlpposbrillSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn NlpposbrillSeries::add(self : NlpposbrillSeries, other : NlpposbrillSeries) -> NlpposbrillSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn nlp_pos_brill_series_sub(a : NlpposbrillSeries, b : NlpposbrillSeries) -> NlpposbrillSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn NlpposbrillSeries::sub(self : NlpposbrillSeries, other : NlpposbrillSeries) -> NlpposbrillSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn nlp_pos_brill_series_normalize(s : NlpposbrillSeries) -> NlpposbrillSeries {
-  let mn = nlp_pos_brill_series_min(s)
-  let mx = nlp_pos_brill_series_max(s)
+pub fn NlpposbrillSeries::normalize(self : NlpposbrillSeries) -> NlpposbrillSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn nlp_pos_brill_series_cumsum(s : NlpposbrillSeries) -> NlpposbrillSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn NlpposbrillSeries::cumsum(self : NlpposbrillSeries) -> NlpposbrillSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn nlp_pos_brill_series_to_string(s : NlpposbrillSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn NlpposbrillSeries::to_string(self : NlpposbrillSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn nlp_pos_brill_matrix_identity(n : Int) -> NlpposbrillMatrix {
   m
 }
 
-pub fn nlp_pos_brill_matrix_get(m : NlpposbrillMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn NlpposbrillMatrix::get(self : NlpposbrillMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn nlp_pos_brill_matrix_transpose(m : NlpposbrillMatrix) -> NlpposbrillMatrix {
-  let result = nlp_pos_brill_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn NlpposbrillMatrix::transpose(self : NlpposbrillMatrix) -> NlpposbrillMatrix {
+  let result = nlp_pos_brill_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn nlp_pos_brill_matrix_add(a : NlpposbrillMatrix, b : NlpposbrillMatrix) -> NlpposbrillMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = nlp_pos_brill_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn NlpposbrillMatrix::add(self : NlpposbrillMatrix, other : NlpposbrillMatrix) -> NlpposbrillMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = nlp_pos_brill_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn nlp_pos_brill_matrix_scale(m : NlpposbrillMatrix, s : Double) -> NlpposbrillMatrix {
-  let result = nlp_pos_brill_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn NlpposbrillMatrix::scale(self : NlpposbrillMatrix, s : Double) -> NlpposbrillMatrix {
+  let result = nlp_pos_brill_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn nlp_pos_brill_matrix_multiply(a : NlpposbrillMatrix, b : NlpposbrillMatrix) -> NlpposbrillMatrix {
-  if a.cols != b.rows { return nlp_pos_brill_make_matrix(a.rows, b.cols, 0.0) }
-  let result = nlp_pos_brill_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn NlpposbrillMatrix::multiply(self : NlpposbrillMatrix, other : NlpposbrillMatrix) -> NlpposbrillMatrix {
+  if self.cols != other.rows { return nlp_pos_brill_make_matrix(self.rows, other.cols, 0.0) }
+  let result = nlp_pos_brill_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn nlp_pos_brill_matrix_trace(m : NlpposbrillMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn NlpposbrillMatrix::trace(self : NlpposbrillMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn nlp_pos_brill_matrix_det(m : NlpposbrillMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn NlpposbrillMatrix::det(self : NlpposbrillMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn nlp_pos_brill_matrix_norm(m : NlpposbrillMatrix) -> Double {
+pub fn NlpposbrillMatrix::norm(self : NlpposbrillMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn nlp_pos_brill_matrix_to_string(m : NlpposbrillMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn NlpposbrillMatrix::to_string(self : NlpposbrillMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn nlp_pos_brill_vector_zero(dim : Int) -> NlpposbrillVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn nlp_pos_brill_vector_add(a : NlpposbrillVector, b : NlpposbrillVector) -> NlpposbrillVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn NlpposbrillVector::add(self : NlpposbrillVector, other : NlpposbrillVector) -> NlpposbrillVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn nlp_pos_brill_vector_sub(a : NlpposbrillVector, b : NlpposbrillVector) -> NlpposbrillVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn NlpposbrillVector::sub(self : NlpposbrillVector, other : NlpposbrillVector) -> NlpposbrillVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn nlp_pos_brill_vector_scale(v : NlpposbrillVector, s : Double) -> NlpposbrillVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn NlpposbrillVector::scale(self : NlpposbrillVector, s : Double) -> NlpposbrillVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn nlp_pos_brill_vector_dot(a : NlpposbrillVector, b : NlpposbrillVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn NlpposbrillVector::dot(self : NlpposbrillVector, other : NlpposbrillVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn nlp_pos_brill_vector_norm(v : NlpposbrillVector) -> Double { @_common.sqrt(nlp_pos_brill_vector_dot(v, v)) }
+pub fn NlpposbrillVector::norm(self : NlpposbrillVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn nlp_pos_brill_vector_normalize(v : NlpposbrillVector) -> NlpposbrillVector {
-  let n = nlp_pos_brill_vector_norm(v)
-  if n < 0.0000001 { v } else { nlp_pos_brill_vector_scale(v, 1.0 / n) }
+pub fn NlpposbrillVector::normalize(self : NlpposbrillVector) -> NlpposbrillVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn nlp_pos_brill_vector_dist(a : NlpposbrillVector, b : NlpposbrillVector) -> Double {
-  nlp_pos_brill_vector_norm(nlp_pos_brill_vector_sub(a, b))
+pub fn NlpposbrillVector::dist(self : NlpposbrillVector, other : NlpposbrillVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn nlp_pos_brill_vector_to_string(v : NlpposbrillVector) -> String {
+pub fn NlpposbrillVector::to_string(self : NlpposbrillVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn nlp_pos_brill_mean(data : Array[Double]) -> Double { @_common.mean(data) }

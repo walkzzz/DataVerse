@@ -16,64 +16,64 @@ pub fn stats_test_independence_make_point3(x : Double, y : Double, z : Double) -
   { x, y, z, label: 0 }
 }
 
-pub fn stats_test_independence_point_x(pt : StatstestindependencePoint) -> Double { pt.x }
+pub fn StatstestindependencePoint::x(self : StatstestindependencePoint) -> Double { self.x }
 
-pub fn stats_test_independence_point_y(pt : StatstestindependencePoint) -> Double { pt.y }
+pub fn StatstestindependencePoint::y(self : StatstestindependencePoint) -> Double { self.y }
 
-pub fn stats_test_independence_point_z(pt : StatstestindependencePoint) -> Double { pt.z }
+pub fn StatstestindependencePoint::z(self : StatstestindependencePoint) -> Double { self.z }
 
-pub fn stats_test_independence_point_label(pt : StatstestindependencePoint) -> Int { pt.label }
+pub fn StatstestindependencePoint::label(self : StatstestindependencePoint) -> Int { self.label }
 
-pub fn stats_test_independence_point_dist(a : StatstestindependencePoint, b : StatstestindependencePoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn StatstestindependencePoint::dist(self : StatstestindependencePoint, other : StatstestindependencePoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn stats_test_independence_point_add(a : StatstestindependencePoint, b : StatstestindependencePoint) -> StatstestindependencePoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn StatstestindependencePoint::add(self : StatstestindependencePoint, other : StatstestindependencePoint) -> StatstestindependencePoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn stats_test_independence_point_sub(a : StatstestindependencePoint, b : StatstestindependencePoint) -> StatstestindependencePoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn StatstestindependencePoint::sub(self : StatstestindependencePoint, other : StatstestindependencePoint) -> StatstestindependencePoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn stats_test_independence_point_scale(pt : StatstestindependencePoint, s : Double) -> StatstestindependencePoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn StatstestindependencePoint::scale(self : StatstestindependencePoint, s : Double) -> StatstestindependencePoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn stats_test_independence_point_dot(a : StatstestindependencePoint, b : StatstestindependencePoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn StatstestindependencePoint::dot(self : StatstestindependencePoint, other : StatstestindependencePoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn stats_test_independence_point_cross(a : StatstestindependencePoint, b : StatstestindependencePoint) -> StatstestindependencePoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn StatstestindependencePoint::cross(self : StatstestindependencePoint, other : StatstestindependencePoint) -> StatstestindependencePoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn stats_test_independence_point_norm(pt : StatstestindependencePoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn StatstestindependencePoint::norm(self : StatstestindependencePoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn stats_test_independence_point_normalize(pt : StatstestindependencePoint) -> StatstestindependencePoint {
-  let n = stats_test_independence_point_norm(pt)
-  if n < 0.0000001 { pt } else { stats_test_independence_point_scale(pt, 1.0 / n) }
+pub fn StatstestindependencePoint::normalize(self : StatstestindependencePoint) -> StatstestindependencePoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn stats_test_independence_point_negate(pt : StatstestindependencePoint) -> StatstestindependencePoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn StatstestindependencePoint::negate(self : StatstestindependencePoint) -> StatstestindependencePoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn stats_test_independence_point_mid(a : StatstestindependencePoint, b : StatstestindependencePoint) -> StatstestindependencePoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn StatstestindependencePoint::mid(self : StatstestindependencePoint, other : StatstestindependencePoint) -> StatstestindependencePoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn stats_test_independence_point_lerp(a : StatstestindependencePoint, b : StatstestindependencePoint, t : Double) -> StatstestindependencePoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn StatstestindependencePoint::lerp(self : StatstestindependencePoint, other : StatstestindependencePoint, t : Double) -> StatstestindependencePoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn stats_test_independence_point_to_string(pt : StatstestindependencePoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn StatstestindependencePoint::to_string(self : StatstestindependencePoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct StatstestindependenceSeries {
@@ -86,58 +86,58 @@ pub fn stats_test_independence_make_series(vals : Array[Double], name : String) 
   { vals, name, meta: 0 }
 }
 
-pub fn stats_test_independence_series_len(s : StatstestindependenceSeries) -> Int { s.vals.length() }
+pub fn StatstestindependenceSeries::len(self : StatstestindependenceSeries) -> Int { self.vals.length() }
 
-pub fn stats_test_independence_series_sum(s : StatstestindependenceSeries) -> Double { @_common.sum(s.vals) }
+pub fn StatstestindependenceSeries::sum(self : StatstestindependenceSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn stats_test_independence_series_mean(s : StatstestindependenceSeries) -> Double { @_common.mean(s.vals) }
+pub fn StatstestindependenceSeries::mean(self : StatstestindependenceSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn stats_test_independence_series_min(s : StatstestindependenceSeries) -> Double { @_common.min(s.vals) }
+pub fn StatstestindependenceSeries::min(self : StatstestindependenceSeries) -> Double { @_common.min(self.vals) }
 
-pub fn stats_test_independence_series_max(s : StatstestindependenceSeries) -> Double { @_common.max(s.vals) }
+pub fn StatstestindependenceSeries::max(self : StatstestindependenceSeries) -> Double { @_common.max(self.vals) }
 
-pub fn stats_test_independence_series_range(s : StatstestindependenceSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn StatstestindependenceSeries::range(self : StatstestindependenceSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn stats_test_independence_series_var(s : StatstestindependenceSeries) -> Double { @_common.variance(s.vals) }
+pub fn StatstestindependenceSeries::variance(self : StatstestindependenceSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn stats_test_independence_series_std(s : StatstestindependenceSeries) -> Double { @_common.std(s.vals) }
+pub fn StatstestindependenceSeries::std(self : StatstestindependenceSeries) -> Double { @_common.std(self.vals) }
 
-pub fn stats_test_independence_series_median(s : StatstestindependenceSeries) -> Double { @_common.median(s.vals) }
+pub fn StatstestindependenceSeries::median(self : StatstestindependenceSeries) -> Double { @_common.median(self.vals) }
 
-pub fn stats_test_independence_series_scale(s : StatstestindependenceSeries, f : Double) -> StatstestindependenceSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn StatstestindependenceSeries::scale(self : StatstestindependenceSeries, f : Double) -> StatstestindependenceSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn stats_test_independence_series_add(a : StatstestindependenceSeries, b : StatstestindependenceSeries) -> StatstestindependenceSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn StatstestindependenceSeries::add(self : StatstestindependenceSeries, other : StatstestindependenceSeries) -> StatstestindependenceSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn stats_test_independence_series_sub(a : StatstestindependenceSeries, b : StatstestindependenceSeries) -> StatstestindependenceSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn StatstestindependenceSeries::sub(self : StatstestindependenceSeries, other : StatstestindependenceSeries) -> StatstestindependenceSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn stats_test_independence_series_normalize(s : StatstestindependenceSeries) -> StatstestindependenceSeries {
-  let mn = stats_test_independence_series_min(s)
-  let mx = stats_test_independence_series_max(s)
+pub fn StatstestindependenceSeries::normalize(self : StatstestindependenceSeries) -> StatstestindependenceSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn stats_test_independence_series_cumsum(s : StatstestindependenceSeries) -> StatstestindependenceSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn StatstestindependenceSeries::cumsum(self : StatstestindependenceSeries) -> StatstestindependenceSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn stats_test_independence_series_to_string(s : StatstestindependenceSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn StatstestindependenceSeries::to_string(self : StatstestindependenceSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn stats_test_independence_matrix_identity(n : Int) -> Statstestindependence
   m
 }
 
-pub fn stats_test_independence_matrix_get(m : StatstestindependenceMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn StatstestindependenceMatrix::get(self : StatstestindependenceMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn stats_test_independence_matrix_transpose(m : StatstestindependenceMatrix) -> StatstestindependenceMatrix {
-  let result = stats_test_independence_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn StatstestindependenceMatrix::transpose(self : StatstestindependenceMatrix) -> StatstestindependenceMatrix {
+  let result = stats_test_independence_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn stats_test_independence_matrix_add(a : StatstestindependenceMatrix, b : StatstestindependenceMatrix) -> StatstestindependenceMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = stats_test_independence_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn StatstestindependenceMatrix::add(self : StatstestindependenceMatrix, other : StatstestindependenceMatrix) -> StatstestindependenceMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = stats_test_independence_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn stats_test_independence_matrix_scale(m : StatstestindependenceMatrix, s : Double) -> StatstestindependenceMatrix {
-  let result = stats_test_independence_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn StatstestindependenceMatrix::scale(self : StatstestindependenceMatrix, s : Double) -> StatstestindependenceMatrix {
+  let result = stats_test_independence_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn stats_test_independence_matrix_multiply(a : StatstestindependenceMatrix, b : StatstestindependenceMatrix) -> StatstestindependenceMatrix {
-  if a.cols != b.rows { return stats_test_independence_make_matrix(a.rows, b.cols, 0.0) }
-  let result = stats_test_independence_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn StatstestindependenceMatrix::multiply(self : StatstestindependenceMatrix, other : StatstestindependenceMatrix) -> StatstestindependenceMatrix {
+  if self.cols != other.rows { return stats_test_independence_make_matrix(self.rows, other.cols, 0.0) }
+  let result = stats_test_independence_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn stats_test_independence_matrix_trace(m : StatstestindependenceMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn StatstestindependenceMatrix::trace(self : StatstestindependenceMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn stats_test_independence_matrix_det(m : StatstestindependenceMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn StatstestindependenceMatrix::det(self : StatstestindependenceMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn stats_test_independence_matrix_norm(m : StatstestindependenceMatrix) -> Double {
+pub fn StatstestindependenceMatrix::norm(self : StatstestindependenceMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn stats_test_independence_matrix_to_string(m : StatstestindependenceMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn StatstestindependenceMatrix::to_string(self : StatstestindependenceMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn stats_test_independence_vector_zero(dim : Int) -> StatstestindependenceVe
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn stats_test_independence_vector_add(a : StatstestindependenceVector, b : StatstestindependenceVector) -> StatstestindependenceVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn StatstestindependenceVector::add(self : StatstestindependenceVector, other : StatstestindependenceVector) -> StatstestindependenceVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn stats_test_independence_vector_sub(a : StatstestindependenceVector, b : StatstestindependenceVector) -> StatstestindependenceVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn StatstestindependenceVector::sub(self : StatstestindependenceVector, other : StatstestindependenceVector) -> StatstestindependenceVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn stats_test_independence_vector_scale(v : StatstestindependenceVector, s : Double) -> StatstestindependenceVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn StatstestindependenceVector::scale(self : StatstestindependenceVector, s : Double) -> StatstestindependenceVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn stats_test_independence_vector_dot(a : StatstestindependenceVector, b : StatstestindependenceVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn StatstestindependenceVector::dot(self : StatstestindependenceVector, other : StatstestindependenceVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn stats_test_independence_vector_norm(v : StatstestindependenceVector) -> Double { @_common.sqrt(stats_test_independence_vector_dot(v, v)) }
+pub fn StatstestindependenceVector::norm(self : StatstestindependenceVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn stats_test_independence_vector_normalize(v : StatstestindependenceVector) -> StatstestindependenceVector {
-  let n = stats_test_independence_vector_norm(v)
-  if n < 0.0000001 { v } else { stats_test_independence_vector_scale(v, 1.0 / n) }
+pub fn StatstestindependenceVector::normalize(self : StatstestindependenceVector) -> StatstestindependenceVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn stats_test_independence_vector_dist(a : StatstestindependenceVector, b : StatstestindependenceVector) -> Double {
-  stats_test_independence_vector_norm(stats_test_independence_vector_sub(a, b))
+pub fn StatstestindependenceVector::dist(self : StatstestindependenceVector, other : StatstestindependenceVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn stats_test_independence_vector_to_string(v : StatstestindependenceVector) -> String {
+pub fn StatstestindependenceVector::to_string(self : StatstestindependenceVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn stats_test_independence_mean(data : Array[Double]) -> Double { @_common.mean(data) }

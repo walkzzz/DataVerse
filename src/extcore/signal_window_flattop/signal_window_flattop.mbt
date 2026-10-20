@@ -16,64 +16,64 @@ pub fn signal_window_flattop_make_point3(x : Double, y : Double, z : Double) -> 
   { x, y, z, label: 0 }
 }
 
-pub fn signal_window_flattop_point_x(pt : SignalwindowflattopPoint) -> Double { pt.x }
+pub fn SignalwindowflattopPoint::x(self : SignalwindowflattopPoint) -> Double { self.x }
 
-pub fn signal_window_flattop_point_y(pt : SignalwindowflattopPoint) -> Double { pt.y }
+pub fn SignalwindowflattopPoint::y(self : SignalwindowflattopPoint) -> Double { self.y }
 
-pub fn signal_window_flattop_point_z(pt : SignalwindowflattopPoint) -> Double { pt.z }
+pub fn SignalwindowflattopPoint::z(self : SignalwindowflattopPoint) -> Double { self.z }
 
-pub fn signal_window_flattop_point_label(pt : SignalwindowflattopPoint) -> Int { pt.label }
+pub fn SignalwindowflattopPoint::label(self : SignalwindowflattopPoint) -> Int { self.label }
 
-pub fn signal_window_flattop_point_dist(a : SignalwindowflattopPoint, b : SignalwindowflattopPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn SignalwindowflattopPoint::dist(self : SignalwindowflattopPoint, other : SignalwindowflattopPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn signal_window_flattop_point_add(a : SignalwindowflattopPoint, b : SignalwindowflattopPoint) -> SignalwindowflattopPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn SignalwindowflattopPoint::add(self : SignalwindowflattopPoint, other : SignalwindowflattopPoint) -> SignalwindowflattopPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn signal_window_flattop_point_sub(a : SignalwindowflattopPoint, b : SignalwindowflattopPoint) -> SignalwindowflattopPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn SignalwindowflattopPoint::sub(self : SignalwindowflattopPoint, other : SignalwindowflattopPoint) -> SignalwindowflattopPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn signal_window_flattop_point_scale(pt : SignalwindowflattopPoint, s : Double) -> SignalwindowflattopPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn SignalwindowflattopPoint::scale(self : SignalwindowflattopPoint, s : Double) -> SignalwindowflattopPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn signal_window_flattop_point_dot(a : SignalwindowflattopPoint, b : SignalwindowflattopPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn SignalwindowflattopPoint::dot(self : SignalwindowflattopPoint, other : SignalwindowflattopPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn signal_window_flattop_point_cross(a : SignalwindowflattopPoint, b : SignalwindowflattopPoint) -> SignalwindowflattopPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn SignalwindowflattopPoint::cross(self : SignalwindowflattopPoint, other : SignalwindowflattopPoint) -> SignalwindowflattopPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn signal_window_flattop_point_norm(pt : SignalwindowflattopPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn SignalwindowflattopPoint::norm(self : SignalwindowflattopPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn signal_window_flattop_point_normalize(pt : SignalwindowflattopPoint) -> SignalwindowflattopPoint {
-  let n = signal_window_flattop_point_norm(pt)
-  if n < 0.0000001 { pt } else { signal_window_flattop_point_scale(pt, 1.0 / n) }
+pub fn SignalwindowflattopPoint::normalize(self : SignalwindowflattopPoint) -> SignalwindowflattopPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn signal_window_flattop_point_negate(pt : SignalwindowflattopPoint) -> SignalwindowflattopPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn SignalwindowflattopPoint::negate(self : SignalwindowflattopPoint) -> SignalwindowflattopPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn signal_window_flattop_point_mid(a : SignalwindowflattopPoint, b : SignalwindowflattopPoint) -> SignalwindowflattopPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn SignalwindowflattopPoint::mid(self : SignalwindowflattopPoint, other : SignalwindowflattopPoint) -> SignalwindowflattopPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn signal_window_flattop_point_lerp(a : SignalwindowflattopPoint, b : SignalwindowflattopPoint, t : Double) -> SignalwindowflattopPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn SignalwindowflattopPoint::lerp(self : SignalwindowflattopPoint, other : SignalwindowflattopPoint, t : Double) -> SignalwindowflattopPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn signal_window_flattop_point_to_string(pt : SignalwindowflattopPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn SignalwindowflattopPoint::to_string(self : SignalwindowflattopPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct SignalwindowflattopSeries {
@@ -86,58 +86,58 @@ pub fn signal_window_flattop_make_series(vals : Array[Double], name : String) ->
   { vals, name, meta: 0 }
 }
 
-pub fn signal_window_flattop_series_len(s : SignalwindowflattopSeries) -> Int { s.vals.length() }
+pub fn SignalwindowflattopSeries::len(self : SignalwindowflattopSeries) -> Int { self.vals.length() }
 
-pub fn signal_window_flattop_series_sum(s : SignalwindowflattopSeries) -> Double { @_common.sum(s.vals) }
+pub fn SignalwindowflattopSeries::sum(self : SignalwindowflattopSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn signal_window_flattop_series_mean(s : SignalwindowflattopSeries) -> Double { @_common.mean(s.vals) }
+pub fn SignalwindowflattopSeries::mean(self : SignalwindowflattopSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn signal_window_flattop_series_min(s : SignalwindowflattopSeries) -> Double { @_common.min(s.vals) }
+pub fn SignalwindowflattopSeries::min(self : SignalwindowflattopSeries) -> Double { @_common.min(self.vals) }
 
-pub fn signal_window_flattop_series_max(s : SignalwindowflattopSeries) -> Double { @_common.max(s.vals) }
+pub fn SignalwindowflattopSeries::max(self : SignalwindowflattopSeries) -> Double { @_common.max(self.vals) }
 
-pub fn signal_window_flattop_series_range(s : SignalwindowflattopSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn SignalwindowflattopSeries::range(self : SignalwindowflattopSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn signal_window_flattop_series_var(s : SignalwindowflattopSeries) -> Double { @_common.variance(s.vals) }
+pub fn SignalwindowflattopSeries::variance(self : SignalwindowflattopSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn signal_window_flattop_series_std(s : SignalwindowflattopSeries) -> Double { @_common.std(s.vals) }
+pub fn SignalwindowflattopSeries::std(self : SignalwindowflattopSeries) -> Double { @_common.std(self.vals) }
 
-pub fn signal_window_flattop_series_median(s : SignalwindowflattopSeries) -> Double { @_common.median(s.vals) }
+pub fn SignalwindowflattopSeries::median(self : SignalwindowflattopSeries) -> Double { @_common.median(self.vals) }
 
-pub fn signal_window_flattop_series_scale(s : SignalwindowflattopSeries, f : Double) -> SignalwindowflattopSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn SignalwindowflattopSeries::scale(self : SignalwindowflattopSeries, f : Double) -> SignalwindowflattopSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn signal_window_flattop_series_add(a : SignalwindowflattopSeries, b : SignalwindowflattopSeries) -> SignalwindowflattopSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn SignalwindowflattopSeries::add(self : SignalwindowflattopSeries, other : SignalwindowflattopSeries) -> SignalwindowflattopSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn signal_window_flattop_series_sub(a : SignalwindowflattopSeries, b : SignalwindowflattopSeries) -> SignalwindowflattopSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn SignalwindowflattopSeries::sub(self : SignalwindowflattopSeries, other : SignalwindowflattopSeries) -> SignalwindowflattopSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn signal_window_flattop_series_normalize(s : SignalwindowflattopSeries) -> SignalwindowflattopSeries {
-  let mn = signal_window_flattop_series_min(s)
-  let mx = signal_window_flattop_series_max(s)
+pub fn SignalwindowflattopSeries::normalize(self : SignalwindowflattopSeries) -> SignalwindowflattopSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn signal_window_flattop_series_cumsum(s : SignalwindowflattopSeries) -> SignalwindowflattopSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn SignalwindowflattopSeries::cumsum(self : SignalwindowflattopSeries) -> SignalwindowflattopSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn signal_window_flattop_series_to_string(s : SignalwindowflattopSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn SignalwindowflattopSeries::to_string(self : SignalwindowflattopSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn signal_window_flattop_matrix_identity(n : Int) -> SignalwindowflattopMatr
   m
 }
 
-pub fn signal_window_flattop_matrix_get(m : SignalwindowflattopMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn SignalwindowflattopMatrix::get(self : SignalwindowflattopMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn signal_window_flattop_matrix_transpose(m : SignalwindowflattopMatrix) -> SignalwindowflattopMatrix {
-  let result = signal_window_flattop_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn SignalwindowflattopMatrix::transpose(self : SignalwindowflattopMatrix) -> SignalwindowflattopMatrix {
+  let result = signal_window_flattop_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn signal_window_flattop_matrix_add(a : SignalwindowflattopMatrix, b : SignalwindowflattopMatrix) -> SignalwindowflattopMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = signal_window_flattop_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn SignalwindowflattopMatrix::add(self : SignalwindowflattopMatrix, other : SignalwindowflattopMatrix) -> SignalwindowflattopMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = signal_window_flattop_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn signal_window_flattop_matrix_scale(m : SignalwindowflattopMatrix, s : Double) -> SignalwindowflattopMatrix {
-  let result = signal_window_flattop_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn SignalwindowflattopMatrix::scale(self : SignalwindowflattopMatrix, s : Double) -> SignalwindowflattopMatrix {
+  let result = signal_window_flattop_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn signal_window_flattop_matrix_multiply(a : SignalwindowflattopMatrix, b : SignalwindowflattopMatrix) -> SignalwindowflattopMatrix {
-  if a.cols != b.rows { return signal_window_flattop_make_matrix(a.rows, b.cols, 0.0) }
-  let result = signal_window_flattop_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn SignalwindowflattopMatrix::multiply(self : SignalwindowflattopMatrix, other : SignalwindowflattopMatrix) -> SignalwindowflattopMatrix {
+  if self.cols != other.rows { return signal_window_flattop_make_matrix(self.rows, other.cols, 0.0) }
+  let result = signal_window_flattop_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn signal_window_flattop_matrix_trace(m : SignalwindowflattopMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn SignalwindowflattopMatrix::trace(self : SignalwindowflattopMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn signal_window_flattop_matrix_det(m : SignalwindowflattopMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn SignalwindowflattopMatrix::det(self : SignalwindowflattopMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn signal_window_flattop_matrix_norm(m : SignalwindowflattopMatrix) -> Double {
+pub fn SignalwindowflattopMatrix::norm(self : SignalwindowflattopMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn signal_window_flattop_matrix_to_string(m : SignalwindowflattopMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn SignalwindowflattopMatrix::to_string(self : SignalwindowflattopMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn signal_window_flattop_vector_zero(dim : Int) -> SignalwindowflattopVector
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn signal_window_flattop_vector_add(a : SignalwindowflattopVector, b : SignalwindowflattopVector) -> SignalwindowflattopVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn SignalwindowflattopVector::add(self : SignalwindowflattopVector, other : SignalwindowflattopVector) -> SignalwindowflattopVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn signal_window_flattop_vector_sub(a : SignalwindowflattopVector, b : SignalwindowflattopVector) -> SignalwindowflattopVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn SignalwindowflattopVector::sub(self : SignalwindowflattopVector, other : SignalwindowflattopVector) -> SignalwindowflattopVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn signal_window_flattop_vector_scale(v : SignalwindowflattopVector, s : Double) -> SignalwindowflattopVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn SignalwindowflattopVector::scale(self : SignalwindowflattopVector, s : Double) -> SignalwindowflattopVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn signal_window_flattop_vector_dot(a : SignalwindowflattopVector, b : SignalwindowflattopVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn SignalwindowflattopVector::dot(self : SignalwindowflattopVector, other : SignalwindowflattopVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn signal_window_flattop_vector_norm(v : SignalwindowflattopVector) -> Double { @_common.sqrt(signal_window_flattop_vector_dot(v, v)) }
+pub fn SignalwindowflattopVector::norm(self : SignalwindowflattopVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn signal_window_flattop_vector_normalize(v : SignalwindowflattopVector) -> SignalwindowflattopVector {
-  let n = signal_window_flattop_vector_norm(v)
-  if n < 0.0000001 { v } else { signal_window_flattop_vector_scale(v, 1.0 / n) }
+pub fn SignalwindowflattopVector::normalize(self : SignalwindowflattopVector) -> SignalwindowflattopVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn signal_window_flattop_vector_dist(a : SignalwindowflattopVector, b : SignalwindowflattopVector) -> Double {
-  signal_window_flattop_vector_norm(signal_window_flattop_vector_sub(a, b))
+pub fn SignalwindowflattopVector::dist(self : SignalwindowflattopVector, other : SignalwindowflattopVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn signal_window_flattop_vector_to_string(v : SignalwindowflattopVector) -> String {
+pub fn SignalwindowflattopVector::to_string(self : SignalwindowflattopVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn signal_window_flattop_mean(data : Array[Double]) -> Double { @_common.mean(data) }

@@ -16,64 +16,64 @@ pub fn nlp_pos_transformer_make_point3(x : Double, y : Double, z : Double) -> Nl
   { x, y, z, label: 0 }
 }
 
-pub fn nlp_pos_transformer_point_x(pt : NlppostransformerPoint) -> Double { pt.x }
+pub fn NlppostransformerPoint::x(self : NlppostransformerPoint) -> Double { self.x }
 
-pub fn nlp_pos_transformer_point_y(pt : NlppostransformerPoint) -> Double { pt.y }
+pub fn NlppostransformerPoint::y(self : NlppostransformerPoint) -> Double { self.y }
 
-pub fn nlp_pos_transformer_point_z(pt : NlppostransformerPoint) -> Double { pt.z }
+pub fn NlppostransformerPoint::z(self : NlppostransformerPoint) -> Double { self.z }
 
-pub fn nlp_pos_transformer_point_label(pt : NlppostransformerPoint) -> Int { pt.label }
+pub fn NlppostransformerPoint::label(self : NlppostransformerPoint) -> Int { self.label }
 
-pub fn nlp_pos_transformer_point_dist(a : NlppostransformerPoint, b : NlppostransformerPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn NlppostransformerPoint::dist(self : NlppostransformerPoint, other : NlppostransformerPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn nlp_pos_transformer_point_add(a : NlppostransformerPoint, b : NlppostransformerPoint) -> NlppostransformerPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn NlppostransformerPoint::add(self : NlppostransformerPoint, other : NlppostransformerPoint) -> NlppostransformerPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn nlp_pos_transformer_point_sub(a : NlppostransformerPoint, b : NlppostransformerPoint) -> NlppostransformerPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn NlppostransformerPoint::sub(self : NlppostransformerPoint, other : NlppostransformerPoint) -> NlppostransformerPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn nlp_pos_transformer_point_scale(pt : NlppostransformerPoint, s : Double) -> NlppostransformerPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn NlppostransformerPoint::scale(self : NlppostransformerPoint, s : Double) -> NlppostransformerPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn nlp_pos_transformer_point_dot(a : NlppostransformerPoint, b : NlppostransformerPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn NlppostransformerPoint::dot(self : NlppostransformerPoint, other : NlppostransformerPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn nlp_pos_transformer_point_cross(a : NlppostransformerPoint, b : NlppostransformerPoint) -> NlppostransformerPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn NlppostransformerPoint::cross(self : NlppostransformerPoint, other : NlppostransformerPoint) -> NlppostransformerPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn nlp_pos_transformer_point_norm(pt : NlppostransformerPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn NlppostransformerPoint::norm(self : NlppostransformerPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn nlp_pos_transformer_point_normalize(pt : NlppostransformerPoint) -> NlppostransformerPoint {
-  let n = nlp_pos_transformer_point_norm(pt)
-  if n < 0.0000001 { pt } else { nlp_pos_transformer_point_scale(pt, 1.0 / n) }
+pub fn NlppostransformerPoint::normalize(self : NlppostransformerPoint) -> NlppostransformerPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn nlp_pos_transformer_point_negate(pt : NlppostransformerPoint) -> NlppostransformerPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn NlppostransformerPoint::negate(self : NlppostransformerPoint) -> NlppostransformerPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn nlp_pos_transformer_point_mid(a : NlppostransformerPoint, b : NlppostransformerPoint) -> NlppostransformerPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn NlppostransformerPoint::mid(self : NlppostransformerPoint, other : NlppostransformerPoint) -> NlppostransformerPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn nlp_pos_transformer_point_lerp(a : NlppostransformerPoint, b : NlppostransformerPoint, t : Double) -> NlppostransformerPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn NlppostransformerPoint::lerp(self : NlppostransformerPoint, other : NlppostransformerPoint, t : Double) -> NlppostransformerPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn nlp_pos_transformer_point_to_string(pt : NlppostransformerPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn NlppostransformerPoint::to_string(self : NlppostransformerPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct NlppostransformerSeries {
@@ -86,58 +86,58 @@ pub fn nlp_pos_transformer_make_series(vals : Array[Double], name : String) -> N
   { vals, name, meta: 0 }
 }
 
-pub fn nlp_pos_transformer_series_len(s : NlppostransformerSeries) -> Int { s.vals.length() }
+pub fn NlppostransformerSeries::len(self : NlppostransformerSeries) -> Int { self.vals.length() }
 
-pub fn nlp_pos_transformer_series_sum(s : NlppostransformerSeries) -> Double { @_common.sum(s.vals) }
+pub fn NlppostransformerSeries::sum(self : NlppostransformerSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn nlp_pos_transformer_series_mean(s : NlppostransformerSeries) -> Double { @_common.mean(s.vals) }
+pub fn NlppostransformerSeries::mean(self : NlppostransformerSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn nlp_pos_transformer_series_min(s : NlppostransformerSeries) -> Double { @_common.min(s.vals) }
+pub fn NlppostransformerSeries::min(self : NlppostransformerSeries) -> Double { @_common.min(self.vals) }
 
-pub fn nlp_pos_transformer_series_max(s : NlppostransformerSeries) -> Double { @_common.max(s.vals) }
+pub fn NlppostransformerSeries::max(self : NlppostransformerSeries) -> Double { @_common.max(self.vals) }
 
-pub fn nlp_pos_transformer_series_range(s : NlppostransformerSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn NlppostransformerSeries::range(self : NlppostransformerSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn nlp_pos_transformer_series_var(s : NlppostransformerSeries) -> Double { @_common.variance(s.vals) }
+pub fn NlppostransformerSeries::variance(self : NlppostransformerSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn nlp_pos_transformer_series_std(s : NlppostransformerSeries) -> Double { @_common.std(s.vals) }
+pub fn NlppostransformerSeries::std(self : NlppostransformerSeries) -> Double { @_common.std(self.vals) }
 
-pub fn nlp_pos_transformer_series_median(s : NlppostransformerSeries) -> Double { @_common.median(s.vals) }
+pub fn NlppostransformerSeries::median(self : NlppostransformerSeries) -> Double { @_common.median(self.vals) }
 
-pub fn nlp_pos_transformer_series_scale(s : NlppostransformerSeries, f : Double) -> NlppostransformerSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn NlppostransformerSeries::scale(self : NlppostransformerSeries, f : Double) -> NlppostransformerSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn nlp_pos_transformer_series_add(a : NlppostransformerSeries, b : NlppostransformerSeries) -> NlppostransformerSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn NlppostransformerSeries::add(self : NlppostransformerSeries, other : NlppostransformerSeries) -> NlppostransformerSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn nlp_pos_transformer_series_sub(a : NlppostransformerSeries, b : NlppostransformerSeries) -> NlppostransformerSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn NlppostransformerSeries::sub(self : NlppostransformerSeries, other : NlppostransformerSeries) -> NlppostransformerSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn nlp_pos_transformer_series_normalize(s : NlppostransformerSeries) -> NlppostransformerSeries {
-  let mn = nlp_pos_transformer_series_min(s)
-  let mx = nlp_pos_transformer_series_max(s)
+pub fn NlppostransformerSeries::normalize(self : NlppostransformerSeries) -> NlppostransformerSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn nlp_pos_transformer_series_cumsum(s : NlppostransformerSeries) -> NlppostransformerSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn NlppostransformerSeries::cumsum(self : NlppostransformerSeries) -> NlppostransformerSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn nlp_pos_transformer_series_to_string(s : NlppostransformerSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn NlppostransformerSeries::to_string(self : NlppostransformerSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn nlp_pos_transformer_matrix_identity(n : Int) -> NlppostransformerMatrix {
   m
 }
 
-pub fn nlp_pos_transformer_matrix_get(m : NlppostransformerMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn NlppostransformerMatrix::get(self : NlppostransformerMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn nlp_pos_transformer_matrix_transpose(m : NlppostransformerMatrix) -> NlppostransformerMatrix {
-  let result = nlp_pos_transformer_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn NlppostransformerMatrix::transpose(self : NlppostransformerMatrix) -> NlppostransformerMatrix {
+  let result = nlp_pos_transformer_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn nlp_pos_transformer_matrix_add(a : NlppostransformerMatrix, b : NlppostransformerMatrix) -> NlppostransformerMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = nlp_pos_transformer_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn NlppostransformerMatrix::add(self : NlppostransformerMatrix, other : NlppostransformerMatrix) -> NlppostransformerMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = nlp_pos_transformer_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn nlp_pos_transformer_matrix_scale(m : NlppostransformerMatrix, s : Double) -> NlppostransformerMatrix {
-  let result = nlp_pos_transformer_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn NlppostransformerMatrix::scale(self : NlppostransformerMatrix, s : Double) -> NlppostransformerMatrix {
+  let result = nlp_pos_transformer_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn nlp_pos_transformer_matrix_multiply(a : NlppostransformerMatrix, b : NlppostransformerMatrix) -> NlppostransformerMatrix {
-  if a.cols != b.rows { return nlp_pos_transformer_make_matrix(a.rows, b.cols, 0.0) }
-  let result = nlp_pos_transformer_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn NlppostransformerMatrix::multiply(self : NlppostransformerMatrix, other : NlppostransformerMatrix) -> NlppostransformerMatrix {
+  if self.cols != other.rows { return nlp_pos_transformer_make_matrix(self.rows, other.cols, 0.0) }
+  let result = nlp_pos_transformer_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn nlp_pos_transformer_matrix_trace(m : NlppostransformerMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn NlppostransformerMatrix::trace(self : NlppostransformerMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn nlp_pos_transformer_matrix_det(m : NlppostransformerMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn NlppostransformerMatrix::det(self : NlppostransformerMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn nlp_pos_transformer_matrix_norm(m : NlppostransformerMatrix) -> Double {
+pub fn NlppostransformerMatrix::norm(self : NlppostransformerMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn nlp_pos_transformer_matrix_to_string(m : NlppostransformerMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn NlppostransformerMatrix::to_string(self : NlppostransformerMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn nlp_pos_transformer_vector_zero(dim : Int) -> NlppostransformerVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn nlp_pos_transformer_vector_add(a : NlppostransformerVector, b : NlppostransformerVector) -> NlppostransformerVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn NlppostransformerVector::add(self : NlppostransformerVector, other : NlppostransformerVector) -> NlppostransformerVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn nlp_pos_transformer_vector_sub(a : NlppostransformerVector, b : NlppostransformerVector) -> NlppostransformerVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn NlppostransformerVector::sub(self : NlppostransformerVector, other : NlppostransformerVector) -> NlppostransformerVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn nlp_pos_transformer_vector_scale(v : NlppostransformerVector, s : Double) -> NlppostransformerVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn NlppostransformerVector::scale(self : NlppostransformerVector, s : Double) -> NlppostransformerVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn nlp_pos_transformer_vector_dot(a : NlppostransformerVector, b : NlppostransformerVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn NlppostransformerVector::dot(self : NlppostransformerVector, other : NlppostransformerVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn nlp_pos_transformer_vector_norm(v : NlppostransformerVector) -> Double { @_common.sqrt(nlp_pos_transformer_vector_dot(v, v)) }
+pub fn NlppostransformerVector::norm(self : NlppostransformerVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn nlp_pos_transformer_vector_normalize(v : NlppostransformerVector) -> NlppostransformerVector {
-  let n = nlp_pos_transformer_vector_norm(v)
-  if n < 0.0000001 { v } else { nlp_pos_transformer_vector_scale(v, 1.0 / n) }
+pub fn NlppostransformerVector::normalize(self : NlppostransformerVector) -> NlppostransformerVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn nlp_pos_transformer_vector_dist(a : NlppostransformerVector, b : NlppostransformerVector) -> Double {
-  nlp_pos_transformer_vector_norm(nlp_pos_transformer_vector_sub(a, b))
+pub fn NlppostransformerVector::dist(self : NlppostransformerVector, other : NlppostransformerVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn nlp_pos_transformer_vector_to_string(v : NlppostransformerVector) -> String {
+pub fn NlppostransformerVector::to_string(self : NlppostransformerVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn nlp_pos_transformer_mean(data : Array[Double]) -> Double { @_common.mean(data) }

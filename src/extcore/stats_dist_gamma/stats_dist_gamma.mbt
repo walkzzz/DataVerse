@@ -16,64 +16,64 @@ pub fn stats_dist_gamma_make_point3(x : Double, y : Double, z : Double) -> Stats
   { x, y, z, label: 0 }
 }
 
-pub fn stats_dist_gamma_point_x(pt : StatsdistgammaPoint) -> Double { pt.x }
+pub fn StatsdistgammaPoint::x(self : StatsdistgammaPoint) -> Double { self.x }
 
-pub fn stats_dist_gamma_point_y(pt : StatsdistgammaPoint) -> Double { pt.y }
+pub fn StatsdistgammaPoint::y(self : StatsdistgammaPoint) -> Double { self.y }
 
-pub fn stats_dist_gamma_point_z(pt : StatsdistgammaPoint) -> Double { pt.z }
+pub fn StatsdistgammaPoint::z(self : StatsdistgammaPoint) -> Double { self.z }
 
-pub fn stats_dist_gamma_point_label(pt : StatsdistgammaPoint) -> Int { pt.label }
+pub fn StatsdistgammaPoint::label(self : StatsdistgammaPoint) -> Int { self.label }
 
-pub fn stats_dist_gamma_point_dist(a : StatsdistgammaPoint, b : StatsdistgammaPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn StatsdistgammaPoint::dist(self : StatsdistgammaPoint, other : StatsdistgammaPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn stats_dist_gamma_point_add(a : StatsdistgammaPoint, b : StatsdistgammaPoint) -> StatsdistgammaPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn StatsdistgammaPoint::add(self : StatsdistgammaPoint, other : StatsdistgammaPoint) -> StatsdistgammaPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn stats_dist_gamma_point_sub(a : StatsdistgammaPoint, b : StatsdistgammaPoint) -> StatsdistgammaPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn StatsdistgammaPoint::sub(self : StatsdistgammaPoint, other : StatsdistgammaPoint) -> StatsdistgammaPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn stats_dist_gamma_point_scale(pt : StatsdistgammaPoint, s : Double) -> StatsdistgammaPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn StatsdistgammaPoint::scale(self : StatsdistgammaPoint, s : Double) -> StatsdistgammaPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn stats_dist_gamma_point_dot(a : StatsdistgammaPoint, b : StatsdistgammaPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn StatsdistgammaPoint::dot(self : StatsdistgammaPoint, other : StatsdistgammaPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn stats_dist_gamma_point_cross(a : StatsdistgammaPoint, b : StatsdistgammaPoint) -> StatsdistgammaPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn StatsdistgammaPoint::cross(self : StatsdistgammaPoint, other : StatsdistgammaPoint) -> StatsdistgammaPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn stats_dist_gamma_point_norm(pt : StatsdistgammaPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn StatsdistgammaPoint::norm(self : StatsdistgammaPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn stats_dist_gamma_point_normalize(pt : StatsdistgammaPoint) -> StatsdistgammaPoint {
-  let n = stats_dist_gamma_point_norm(pt)
-  if n < 0.0000001 { pt } else { stats_dist_gamma_point_scale(pt, 1.0 / n) }
+pub fn StatsdistgammaPoint::normalize(self : StatsdistgammaPoint) -> StatsdistgammaPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn stats_dist_gamma_point_negate(pt : StatsdistgammaPoint) -> StatsdistgammaPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn StatsdistgammaPoint::negate(self : StatsdistgammaPoint) -> StatsdistgammaPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn stats_dist_gamma_point_mid(a : StatsdistgammaPoint, b : StatsdistgammaPoint) -> StatsdistgammaPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn StatsdistgammaPoint::mid(self : StatsdistgammaPoint, other : StatsdistgammaPoint) -> StatsdistgammaPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn stats_dist_gamma_point_lerp(a : StatsdistgammaPoint, b : StatsdistgammaPoint, t : Double) -> StatsdistgammaPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn StatsdistgammaPoint::lerp(self : StatsdistgammaPoint, other : StatsdistgammaPoint, t : Double) -> StatsdistgammaPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn stats_dist_gamma_point_to_string(pt : StatsdistgammaPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn StatsdistgammaPoint::to_string(self : StatsdistgammaPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct StatsdistgammaSeries {
@@ -86,58 +86,58 @@ pub fn stats_dist_gamma_make_series(vals : Array[Double], name : String) -> Stat
   { vals, name, meta: 0 }
 }
 
-pub fn stats_dist_gamma_series_len(s : StatsdistgammaSeries) -> Int { s.vals.length() }
+pub fn StatsdistgammaSeries::len(self : StatsdistgammaSeries) -> Int { self.vals.length() }
 
-pub fn stats_dist_gamma_series_sum(s : StatsdistgammaSeries) -> Double { @_common.sum(s.vals) }
+pub fn StatsdistgammaSeries::sum(self : StatsdistgammaSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn stats_dist_gamma_series_mean(s : StatsdistgammaSeries) -> Double { @_common.mean(s.vals) }
+pub fn StatsdistgammaSeries::mean(self : StatsdistgammaSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn stats_dist_gamma_series_min(s : StatsdistgammaSeries) -> Double { @_common.min(s.vals) }
+pub fn StatsdistgammaSeries::min(self : StatsdistgammaSeries) -> Double { @_common.min(self.vals) }
 
-pub fn stats_dist_gamma_series_max(s : StatsdistgammaSeries) -> Double { @_common.max(s.vals) }
+pub fn StatsdistgammaSeries::max(self : StatsdistgammaSeries) -> Double { @_common.max(self.vals) }
 
-pub fn stats_dist_gamma_series_range(s : StatsdistgammaSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn StatsdistgammaSeries::range(self : StatsdistgammaSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn stats_dist_gamma_series_var(s : StatsdistgammaSeries) -> Double { @_common.variance(s.vals) }
+pub fn StatsdistgammaSeries::variance(self : StatsdistgammaSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn stats_dist_gamma_series_std(s : StatsdistgammaSeries) -> Double { @_common.std(s.vals) }
+pub fn StatsdistgammaSeries::std(self : StatsdistgammaSeries) -> Double { @_common.std(self.vals) }
 
-pub fn stats_dist_gamma_series_median(s : StatsdistgammaSeries) -> Double { @_common.median(s.vals) }
+pub fn StatsdistgammaSeries::median(self : StatsdistgammaSeries) -> Double { @_common.median(self.vals) }
 
-pub fn stats_dist_gamma_series_scale(s : StatsdistgammaSeries, f : Double) -> StatsdistgammaSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn StatsdistgammaSeries::scale(self : StatsdistgammaSeries, f : Double) -> StatsdistgammaSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn stats_dist_gamma_series_add(a : StatsdistgammaSeries, b : StatsdistgammaSeries) -> StatsdistgammaSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn StatsdistgammaSeries::add(self : StatsdistgammaSeries, other : StatsdistgammaSeries) -> StatsdistgammaSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn stats_dist_gamma_series_sub(a : StatsdistgammaSeries, b : StatsdistgammaSeries) -> StatsdistgammaSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn StatsdistgammaSeries::sub(self : StatsdistgammaSeries, other : StatsdistgammaSeries) -> StatsdistgammaSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn stats_dist_gamma_series_normalize(s : StatsdistgammaSeries) -> StatsdistgammaSeries {
-  let mn = stats_dist_gamma_series_min(s)
-  let mx = stats_dist_gamma_series_max(s)
+pub fn StatsdistgammaSeries::normalize(self : StatsdistgammaSeries) -> StatsdistgammaSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn stats_dist_gamma_series_cumsum(s : StatsdistgammaSeries) -> StatsdistgammaSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn StatsdistgammaSeries::cumsum(self : StatsdistgammaSeries) -> StatsdistgammaSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn stats_dist_gamma_series_to_string(s : StatsdistgammaSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn StatsdistgammaSeries::to_string(self : StatsdistgammaSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn stats_dist_gamma_matrix_identity(n : Int) -> StatsdistgammaMatrix {
   m
 }
 
-pub fn stats_dist_gamma_matrix_get(m : StatsdistgammaMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn StatsdistgammaMatrix::get(self : StatsdistgammaMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn stats_dist_gamma_matrix_transpose(m : StatsdistgammaMatrix) -> StatsdistgammaMatrix {
-  let result = stats_dist_gamma_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn StatsdistgammaMatrix::transpose(self : StatsdistgammaMatrix) -> StatsdistgammaMatrix {
+  let result = stats_dist_gamma_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn stats_dist_gamma_matrix_add(a : StatsdistgammaMatrix, b : StatsdistgammaMatrix) -> StatsdistgammaMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = stats_dist_gamma_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn StatsdistgammaMatrix::add(self : StatsdistgammaMatrix, other : StatsdistgammaMatrix) -> StatsdistgammaMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = stats_dist_gamma_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn stats_dist_gamma_matrix_scale(m : StatsdistgammaMatrix, s : Double) -> StatsdistgammaMatrix {
-  let result = stats_dist_gamma_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn StatsdistgammaMatrix::scale(self : StatsdistgammaMatrix, s : Double) -> StatsdistgammaMatrix {
+  let result = stats_dist_gamma_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn stats_dist_gamma_matrix_multiply(a : StatsdistgammaMatrix, b : StatsdistgammaMatrix) -> StatsdistgammaMatrix {
-  if a.cols != b.rows { return stats_dist_gamma_make_matrix(a.rows, b.cols, 0.0) }
-  let result = stats_dist_gamma_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn StatsdistgammaMatrix::multiply(self : StatsdistgammaMatrix, other : StatsdistgammaMatrix) -> StatsdistgammaMatrix {
+  if self.cols != other.rows { return stats_dist_gamma_make_matrix(self.rows, other.cols, 0.0) }
+  let result = stats_dist_gamma_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn stats_dist_gamma_matrix_trace(m : StatsdistgammaMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn StatsdistgammaMatrix::trace(self : StatsdistgammaMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn stats_dist_gamma_matrix_det(m : StatsdistgammaMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn StatsdistgammaMatrix::det(self : StatsdistgammaMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn stats_dist_gamma_matrix_norm(m : StatsdistgammaMatrix) -> Double {
+pub fn StatsdistgammaMatrix::norm(self : StatsdistgammaMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn stats_dist_gamma_matrix_to_string(m : StatsdistgammaMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn StatsdistgammaMatrix::to_string(self : StatsdistgammaMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn stats_dist_gamma_vector_zero(dim : Int) -> StatsdistgammaVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn stats_dist_gamma_vector_add(a : StatsdistgammaVector, b : StatsdistgammaVector) -> StatsdistgammaVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn StatsdistgammaVector::add(self : StatsdistgammaVector, other : StatsdistgammaVector) -> StatsdistgammaVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn stats_dist_gamma_vector_sub(a : StatsdistgammaVector, b : StatsdistgammaVector) -> StatsdistgammaVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn StatsdistgammaVector::sub(self : StatsdistgammaVector, other : StatsdistgammaVector) -> StatsdistgammaVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn stats_dist_gamma_vector_scale(v : StatsdistgammaVector, s : Double) -> StatsdistgammaVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn StatsdistgammaVector::scale(self : StatsdistgammaVector, s : Double) -> StatsdistgammaVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn stats_dist_gamma_vector_dot(a : StatsdistgammaVector, b : StatsdistgammaVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn StatsdistgammaVector::dot(self : StatsdistgammaVector, other : StatsdistgammaVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn stats_dist_gamma_vector_norm(v : StatsdistgammaVector) -> Double { @_common.sqrt(stats_dist_gamma_vector_dot(v, v)) }
+pub fn StatsdistgammaVector::norm(self : StatsdistgammaVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn stats_dist_gamma_vector_normalize(v : StatsdistgammaVector) -> StatsdistgammaVector {
-  let n = stats_dist_gamma_vector_norm(v)
-  if n < 0.0000001 { v } else { stats_dist_gamma_vector_scale(v, 1.0 / n) }
+pub fn StatsdistgammaVector::normalize(self : StatsdistgammaVector) -> StatsdistgammaVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn stats_dist_gamma_vector_dist(a : StatsdistgammaVector, b : StatsdistgammaVector) -> Double {
-  stats_dist_gamma_vector_norm(stats_dist_gamma_vector_sub(a, b))
+pub fn StatsdistgammaVector::dist(self : StatsdistgammaVector, other : StatsdistgammaVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn stats_dist_gamma_vector_to_string(v : StatsdistgammaVector) -> String {
+pub fn StatsdistgammaVector::to_string(self : StatsdistgammaVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn stats_dist_gamma_mean(data : Array[Double]) -> Double { @_common.mean(data) }

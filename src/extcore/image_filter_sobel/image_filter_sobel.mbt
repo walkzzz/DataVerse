@@ -16,64 +16,64 @@ pub fn image_filter_sobel_make_point3(x : Double, y : Double, z : Double) -> Ima
   { x, y, z, label: 0 }
 }
 
-pub fn image_filter_sobel_point_x(pt : ImagefiltersobelPoint) -> Double { pt.x }
+pub fn ImagefiltersobelPoint::x(self : ImagefiltersobelPoint) -> Double { self.x }
 
-pub fn image_filter_sobel_point_y(pt : ImagefiltersobelPoint) -> Double { pt.y }
+pub fn ImagefiltersobelPoint::y(self : ImagefiltersobelPoint) -> Double { self.y }
 
-pub fn image_filter_sobel_point_z(pt : ImagefiltersobelPoint) -> Double { pt.z }
+pub fn ImagefiltersobelPoint::z(self : ImagefiltersobelPoint) -> Double { self.z }
 
-pub fn image_filter_sobel_point_label(pt : ImagefiltersobelPoint) -> Int { pt.label }
+pub fn ImagefiltersobelPoint::label(self : ImagefiltersobelPoint) -> Int { self.label }
 
-pub fn image_filter_sobel_point_dist(a : ImagefiltersobelPoint, b : ImagefiltersobelPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn ImagefiltersobelPoint::dist(self : ImagefiltersobelPoint, other : ImagefiltersobelPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn image_filter_sobel_point_add(a : ImagefiltersobelPoint, b : ImagefiltersobelPoint) -> ImagefiltersobelPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn ImagefiltersobelPoint::add(self : ImagefiltersobelPoint, other : ImagefiltersobelPoint) -> ImagefiltersobelPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn image_filter_sobel_point_sub(a : ImagefiltersobelPoint, b : ImagefiltersobelPoint) -> ImagefiltersobelPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn ImagefiltersobelPoint::sub(self : ImagefiltersobelPoint, other : ImagefiltersobelPoint) -> ImagefiltersobelPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn image_filter_sobel_point_scale(pt : ImagefiltersobelPoint, s : Double) -> ImagefiltersobelPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn ImagefiltersobelPoint::scale(self : ImagefiltersobelPoint, s : Double) -> ImagefiltersobelPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn image_filter_sobel_point_dot(a : ImagefiltersobelPoint, b : ImagefiltersobelPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn ImagefiltersobelPoint::dot(self : ImagefiltersobelPoint, other : ImagefiltersobelPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn image_filter_sobel_point_cross(a : ImagefiltersobelPoint, b : ImagefiltersobelPoint) -> ImagefiltersobelPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn ImagefiltersobelPoint::cross(self : ImagefiltersobelPoint, other : ImagefiltersobelPoint) -> ImagefiltersobelPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn image_filter_sobel_point_norm(pt : ImagefiltersobelPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn ImagefiltersobelPoint::norm(self : ImagefiltersobelPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn image_filter_sobel_point_normalize(pt : ImagefiltersobelPoint) -> ImagefiltersobelPoint {
-  let n = image_filter_sobel_point_norm(pt)
-  if n < 0.0000001 { pt } else { image_filter_sobel_point_scale(pt, 1.0 / n) }
+pub fn ImagefiltersobelPoint::normalize(self : ImagefiltersobelPoint) -> ImagefiltersobelPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn image_filter_sobel_point_negate(pt : ImagefiltersobelPoint) -> ImagefiltersobelPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn ImagefiltersobelPoint::negate(self : ImagefiltersobelPoint) -> ImagefiltersobelPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn image_filter_sobel_point_mid(a : ImagefiltersobelPoint, b : ImagefiltersobelPoint) -> ImagefiltersobelPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn ImagefiltersobelPoint::mid(self : ImagefiltersobelPoint, other : ImagefiltersobelPoint) -> ImagefiltersobelPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn image_filter_sobel_point_lerp(a : ImagefiltersobelPoint, b : ImagefiltersobelPoint, t : Double) -> ImagefiltersobelPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn ImagefiltersobelPoint::lerp(self : ImagefiltersobelPoint, other : ImagefiltersobelPoint, t : Double) -> ImagefiltersobelPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn image_filter_sobel_point_to_string(pt : ImagefiltersobelPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn ImagefiltersobelPoint::to_string(self : ImagefiltersobelPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct ImagefiltersobelSeries {
@@ -86,58 +86,58 @@ pub fn image_filter_sobel_make_series(vals : Array[Double], name : String) -> Im
   { vals, name, meta: 0 }
 }
 
-pub fn image_filter_sobel_series_len(s : ImagefiltersobelSeries) -> Int { s.vals.length() }
+pub fn ImagefiltersobelSeries::len(self : ImagefiltersobelSeries) -> Int { self.vals.length() }
 
-pub fn image_filter_sobel_series_sum(s : ImagefiltersobelSeries) -> Double { @_common.sum(s.vals) }
+pub fn ImagefiltersobelSeries::sum(self : ImagefiltersobelSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn image_filter_sobel_series_mean(s : ImagefiltersobelSeries) -> Double { @_common.mean(s.vals) }
+pub fn ImagefiltersobelSeries::mean(self : ImagefiltersobelSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn image_filter_sobel_series_min(s : ImagefiltersobelSeries) -> Double { @_common.min(s.vals) }
+pub fn ImagefiltersobelSeries::min(self : ImagefiltersobelSeries) -> Double { @_common.min(self.vals) }
 
-pub fn image_filter_sobel_series_max(s : ImagefiltersobelSeries) -> Double { @_common.max(s.vals) }
+pub fn ImagefiltersobelSeries::max(self : ImagefiltersobelSeries) -> Double { @_common.max(self.vals) }
 
-pub fn image_filter_sobel_series_range(s : ImagefiltersobelSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn ImagefiltersobelSeries::range(self : ImagefiltersobelSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn image_filter_sobel_series_var(s : ImagefiltersobelSeries) -> Double { @_common.variance(s.vals) }
+pub fn ImagefiltersobelSeries::variance(self : ImagefiltersobelSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn image_filter_sobel_series_std(s : ImagefiltersobelSeries) -> Double { @_common.std(s.vals) }
+pub fn ImagefiltersobelSeries::std(self : ImagefiltersobelSeries) -> Double { @_common.std(self.vals) }
 
-pub fn image_filter_sobel_series_median(s : ImagefiltersobelSeries) -> Double { @_common.median(s.vals) }
+pub fn ImagefiltersobelSeries::median(self : ImagefiltersobelSeries) -> Double { @_common.median(self.vals) }
 
-pub fn image_filter_sobel_series_scale(s : ImagefiltersobelSeries, f : Double) -> ImagefiltersobelSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn ImagefiltersobelSeries::scale(self : ImagefiltersobelSeries, f : Double) -> ImagefiltersobelSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn image_filter_sobel_series_add(a : ImagefiltersobelSeries, b : ImagefiltersobelSeries) -> ImagefiltersobelSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn ImagefiltersobelSeries::add(self : ImagefiltersobelSeries, other : ImagefiltersobelSeries) -> ImagefiltersobelSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn image_filter_sobel_series_sub(a : ImagefiltersobelSeries, b : ImagefiltersobelSeries) -> ImagefiltersobelSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn ImagefiltersobelSeries::sub(self : ImagefiltersobelSeries, other : ImagefiltersobelSeries) -> ImagefiltersobelSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn image_filter_sobel_series_normalize(s : ImagefiltersobelSeries) -> ImagefiltersobelSeries {
-  let mn = image_filter_sobel_series_min(s)
-  let mx = image_filter_sobel_series_max(s)
+pub fn ImagefiltersobelSeries::normalize(self : ImagefiltersobelSeries) -> ImagefiltersobelSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn image_filter_sobel_series_cumsum(s : ImagefiltersobelSeries) -> ImagefiltersobelSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn ImagefiltersobelSeries::cumsum(self : ImagefiltersobelSeries) -> ImagefiltersobelSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn image_filter_sobel_series_to_string(s : ImagefiltersobelSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn ImagefiltersobelSeries::to_string(self : ImagefiltersobelSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn image_filter_sobel_matrix_identity(n : Int) -> ImagefiltersobelMatrix {
   m
 }
 
-pub fn image_filter_sobel_matrix_get(m : ImagefiltersobelMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn ImagefiltersobelMatrix::get(self : ImagefiltersobelMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn image_filter_sobel_matrix_transpose(m : ImagefiltersobelMatrix) -> ImagefiltersobelMatrix {
-  let result = image_filter_sobel_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn ImagefiltersobelMatrix::transpose(self : ImagefiltersobelMatrix) -> ImagefiltersobelMatrix {
+  let result = image_filter_sobel_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn image_filter_sobel_matrix_add(a : ImagefiltersobelMatrix, b : ImagefiltersobelMatrix) -> ImagefiltersobelMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = image_filter_sobel_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn ImagefiltersobelMatrix::add(self : ImagefiltersobelMatrix, other : ImagefiltersobelMatrix) -> ImagefiltersobelMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = image_filter_sobel_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn image_filter_sobel_matrix_scale(m : ImagefiltersobelMatrix, s : Double) -> ImagefiltersobelMatrix {
-  let result = image_filter_sobel_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn ImagefiltersobelMatrix::scale(self : ImagefiltersobelMatrix, s : Double) -> ImagefiltersobelMatrix {
+  let result = image_filter_sobel_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn image_filter_sobel_matrix_multiply(a : ImagefiltersobelMatrix, b : ImagefiltersobelMatrix) -> ImagefiltersobelMatrix {
-  if a.cols != b.rows { return image_filter_sobel_make_matrix(a.rows, b.cols, 0.0) }
-  let result = image_filter_sobel_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn ImagefiltersobelMatrix::multiply(self : ImagefiltersobelMatrix, other : ImagefiltersobelMatrix) -> ImagefiltersobelMatrix {
+  if self.cols != other.rows { return image_filter_sobel_make_matrix(self.rows, other.cols, 0.0) }
+  let result = image_filter_sobel_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn image_filter_sobel_matrix_trace(m : ImagefiltersobelMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn ImagefiltersobelMatrix::trace(self : ImagefiltersobelMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn image_filter_sobel_matrix_det(m : ImagefiltersobelMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn ImagefiltersobelMatrix::det(self : ImagefiltersobelMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn image_filter_sobel_matrix_norm(m : ImagefiltersobelMatrix) -> Double {
+pub fn ImagefiltersobelMatrix::norm(self : ImagefiltersobelMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn image_filter_sobel_matrix_to_string(m : ImagefiltersobelMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn ImagefiltersobelMatrix::to_string(self : ImagefiltersobelMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn image_filter_sobel_vector_zero(dim : Int) -> ImagefiltersobelVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn image_filter_sobel_vector_add(a : ImagefiltersobelVector, b : ImagefiltersobelVector) -> ImagefiltersobelVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn ImagefiltersobelVector::add(self : ImagefiltersobelVector, other : ImagefiltersobelVector) -> ImagefiltersobelVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn image_filter_sobel_vector_sub(a : ImagefiltersobelVector, b : ImagefiltersobelVector) -> ImagefiltersobelVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn ImagefiltersobelVector::sub(self : ImagefiltersobelVector, other : ImagefiltersobelVector) -> ImagefiltersobelVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn image_filter_sobel_vector_scale(v : ImagefiltersobelVector, s : Double) -> ImagefiltersobelVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn ImagefiltersobelVector::scale(self : ImagefiltersobelVector, s : Double) -> ImagefiltersobelVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn image_filter_sobel_vector_dot(a : ImagefiltersobelVector, b : ImagefiltersobelVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn ImagefiltersobelVector::dot(self : ImagefiltersobelVector, other : ImagefiltersobelVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn image_filter_sobel_vector_norm(v : ImagefiltersobelVector) -> Double { @_common.sqrt(image_filter_sobel_vector_dot(v, v)) }
+pub fn ImagefiltersobelVector::norm(self : ImagefiltersobelVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn image_filter_sobel_vector_normalize(v : ImagefiltersobelVector) -> ImagefiltersobelVector {
-  let n = image_filter_sobel_vector_norm(v)
-  if n < 0.0000001 { v } else { image_filter_sobel_vector_scale(v, 1.0 / n) }
+pub fn ImagefiltersobelVector::normalize(self : ImagefiltersobelVector) -> ImagefiltersobelVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn image_filter_sobel_vector_dist(a : ImagefiltersobelVector, b : ImagefiltersobelVector) -> Double {
-  image_filter_sobel_vector_norm(image_filter_sobel_vector_sub(a, b))
+pub fn ImagefiltersobelVector::dist(self : ImagefiltersobelVector, other : ImagefiltersobelVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn image_filter_sobel_vector_to_string(v : ImagefiltersobelVector) -> String {
+pub fn ImagefiltersobelVector::to_string(self : ImagefiltersobelVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn image_filter_sobel_mean(data : Array[Double]) -> Double { @_common.mean(data) }

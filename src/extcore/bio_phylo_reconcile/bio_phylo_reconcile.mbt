@@ -16,64 +16,64 @@ pub fn bio_phylo_reconcile_make_point3(x : Double, y : Double, z : Double) -> Bi
   { x, y, z, label: 0 }
 }
 
-pub fn bio_phylo_reconcile_point_x(pt : BiophyloreconcilePoint) -> Double { pt.x }
+pub fn BiophyloreconcilePoint::x(self : BiophyloreconcilePoint) -> Double { self.x }
 
-pub fn bio_phylo_reconcile_point_y(pt : BiophyloreconcilePoint) -> Double { pt.y }
+pub fn BiophyloreconcilePoint::y(self : BiophyloreconcilePoint) -> Double { self.y }
 
-pub fn bio_phylo_reconcile_point_z(pt : BiophyloreconcilePoint) -> Double { pt.z }
+pub fn BiophyloreconcilePoint::z(self : BiophyloreconcilePoint) -> Double { self.z }
 
-pub fn bio_phylo_reconcile_point_label(pt : BiophyloreconcilePoint) -> Int { pt.label }
+pub fn BiophyloreconcilePoint::label(self : BiophyloreconcilePoint) -> Int { self.label }
 
-pub fn bio_phylo_reconcile_point_dist(a : BiophyloreconcilePoint, b : BiophyloreconcilePoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn BiophyloreconcilePoint::dist(self : BiophyloreconcilePoint, other : BiophyloreconcilePoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn bio_phylo_reconcile_point_add(a : BiophyloreconcilePoint, b : BiophyloreconcilePoint) -> BiophyloreconcilePoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn BiophyloreconcilePoint::add(self : BiophyloreconcilePoint, other : BiophyloreconcilePoint) -> BiophyloreconcilePoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn bio_phylo_reconcile_point_sub(a : BiophyloreconcilePoint, b : BiophyloreconcilePoint) -> BiophyloreconcilePoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn BiophyloreconcilePoint::sub(self : BiophyloreconcilePoint, other : BiophyloreconcilePoint) -> BiophyloreconcilePoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn bio_phylo_reconcile_point_scale(pt : BiophyloreconcilePoint, s : Double) -> BiophyloreconcilePoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn BiophyloreconcilePoint::scale(self : BiophyloreconcilePoint, s : Double) -> BiophyloreconcilePoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn bio_phylo_reconcile_point_dot(a : BiophyloreconcilePoint, b : BiophyloreconcilePoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn BiophyloreconcilePoint::dot(self : BiophyloreconcilePoint, other : BiophyloreconcilePoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn bio_phylo_reconcile_point_cross(a : BiophyloreconcilePoint, b : BiophyloreconcilePoint) -> BiophyloreconcilePoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn BiophyloreconcilePoint::cross(self : BiophyloreconcilePoint, other : BiophyloreconcilePoint) -> BiophyloreconcilePoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn bio_phylo_reconcile_point_norm(pt : BiophyloreconcilePoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn BiophyloreconcilePoint::norm(self : BiophyloreconcilePoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn bio_phylo_reconcile_point_normalize(pt : BiophyloreconcilePoint) -> BiophyloreconcilePoint {
-  let n = bio_phylo_reconcile_point_norm(pt)
-  if n < 0.0000001 { pt } else { bio_phylo_reconcile_point_scale(pt, 1.0 / n) }
+pub fn BiophyloreconcilePoint::normalize(self : BiophyloreconcilePoint) -> BiophyloreconcilePoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn bio_phylo_reconcile_point_negate(pt : BiophyloreconcilePoint) -> BiophyloreconcilePoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn BiophyloreconcilePoint::negate(self : BiophyloreconcilePoint) -> BiophyloreconcilePoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn bio_phylo_reconcile_point_mid(a : BiophyloreconcilePoint, b : BiophyloreconcilePoint) -> BiophyloreconcilePoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn BiophyloreconcilePoint::mid(self : BiophyloreconcilePoint, other : BiophyloreconcilePoint) -> BiophyloreconcilePoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn bio_phylo_reconcile_point_lerp(a : BiophyloreconcilePoint, b : BiophyloreconcilePoint, t : Double) -> BiophyloreconcilePoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn BiophyloreconcilePoint::lerp(self : BiophyloreconcilePoint, other : BiophyloreconcilePoint, t : Double) -> BiophyloreconcilePoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn bio_phylo_reconcile_point_to_string(pt : BiophyloreconcilePoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn BiophyloreconcilePoint::to_string(self : BiophyloreconcilePoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct BiophyloreconcileSeries {
@@ -86,58 +86,58 @@ pub fn bio_phylo_reconcile_make_series(vals : Array[Double], name : String) -> B
   { vals, name, meta: 0 }
 }
 
-pub fn bio_phylo_reconcile_series_len(s : BiophyloreconcileSeries) -> Int { s.vals.length() }
+pub fn BiophyloreconcileSeries::len(self : BiophyloreconcileSeries) -> Int { self.vals.length() }
 
-pub fn bio_phylo_reconcile_series_sum(s : BiophyloreconcileSeries) -> Double { @_common.sum(s.vals) }
+pub fn BiophyloreconcileSeries::sum(self : BiophyloreconcileSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn bio_phylo_reconcile_series_mean(s : BiophyloreconcileSeries) -> Double { @_common.mean(s.vals) }
+pub fn BiophyloreconcileSeries::mean(self : BiophyloreconcileSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn bio_phylo_reconcile_series_min(s : BiophyloreconcileSeries) -> Double { @_common.min(s.vals) }
+pub fn BiophyloreconcileSeries::min(self : BiophyloreconcileSeries) -> Double { @_common.min(self.vals) }
 
-pub fn bio_phylo_reconcile_series_max(s : BiophyloreconcileSeries) -> Double { @_common.max(s.vals) }
+pub fn BiophyloreconcileSeries::max(self : BiophyloreconcileSeries) -> Double { @_common.max(self.vals) }
 
-pub fn bio_phylo_reconcile_series_range(s : BiophyloreconcileSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn BiophyloreconcileSeries::range(self : BiophyloreconcileSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn bio_phylo_reconcile_series_var(s : BiophyloreconcileSeries) -> Double { @_common.variance(s.vals) }
+pub fn BiophyloreconcileSeries::variance(self : BiophyloreconcileSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn bio_phylo_reconcile_series_std(s : BiophyloreconcileSeries) -> Double { @_common.std(s.vals) }
+pub fn BiophyloreconcileSeries::std(self : BiophyloreconcileSeries) -> Double { @_common.std(self.vals) }
 
-pub fn bio_phylo_reconcile_series_median(s : BiophyloreconcileSeries) -> Double { @_common.median(s.vals) }
+pub fn BiophyloreconcileSeries::median(self : BiophyloreconcileSeries) -> Double { @_common.median(self.vals) }
 
-pub fn bio_phylo_reconcile_series_scale(s : BiophyloreconcileSeries, f : Double) -> BiophyloreconcileSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn BiophyloreconcileSeries::scale(self : BiophyloreconcileSeries, f : Double) -> BiophyloreconcileSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn bio_phylo_reconcile_series_add(a : BiophyloreconcileSeries, b : BiophyloreconcileSeries) -> BiophyloreconcileSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn BiophyloreconcileSeries::add(self : BiophyloreconcileSeries, other : BiophyloreconcileSeries) -> BiophyloreconcileSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn bio_phylo_reconcile_series_sub(a : BiophyloreconcileSeries, b : BiophyloreconcileSeries) -> BiophyloreconcileSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn BiophyloreconcileSeries::sub(self : BiophyloreconcileSeries, other : BiophyloreconcileSeries) -> BiophyloreconcileSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn bio_phylo_reconcile_series_normalize(s : BiophyloreconcileSeries) -> BiophyloreconcileSeries {
-  let mn = bio_phylo_reconcile_series_min(s)
-  let mx = bio_phylo_reconcile_series_max(s)
+pub fn BiophyloreconcileSeries::normalize(self : BiophyloreconcileSeries) -> BiophyloreconcileSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn bio_phylo_reconcile_series_cumsum(s : BiophyloreconcileSeries) -> BiophyloreconcileSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn BiophyloreconcileSeries::cumsum(self : BiophyloreconcileSeries) -> BiophyloreconcileSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn bio_phylo_reconcile_series_to_string(s : BiophyloreconcileSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn BiophyloreconcileSeries::to_string(self : BiophyloreconcileSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn bio_phylo_reconcile_matrix_identity(n : Int) -> BiophyloreconcileMatrix {
   m
 }
 
-pub fn bio_phylo_reconcile_matrix_get(m : BiophyloreconcileMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn BiophyloreconcileMatrix::get(self : BiophyloreconcileMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn bio_phylo_reconcile_matrix_transpose(m : BiophyloreconcileMatrix) -> BiophyloreconcileMatrix {
-  let result = bio_phylo_reconcile_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn BiophyloreconcileMatrix::transpose(self : BiophyloreconcileMatrix) -> BiophyloreconcileMatrix {
+  let result = bio_phylo_reconcile_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn bio_phylo_reconcile_matrix_add(a : BiophyloreconcileMatrix, b : BiophyloreconcileMatrix) -> BiophyloreconcileMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = bio_phylo_reconcile_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn BiophyloreconcileMatrix::add(self : BiophyloreconcileMatrix, other : BiophyloreconcileMatrix) -> BiophyloreconcileMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = bio_phylo_reconcile_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn bio_phylo_reconcile_matrix_scale(m : BiophyloreconcileMatrix, s : Double) -> BiophyloreconcileMatrix {
-  let result = bio_phylo_reconcile_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn BiophyloreconcileMatrix::scale(self : BiophyloreconcileMatrix, s : Double) -> BiophyloreconcileMatrix {
+  let result = bio_phylo_reconcile_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn bio_phylo_reconcile_matrix_multiply(a : BiophyloreconcileMatrix, b : BiophyloreconcileMatrix) -> BiophyloreconcileMatrix {
-  if a.cols != b.rows { return bio_phylo_reconcile_make_matrix(a.rows, b.cols, 0.0) }
-  let result = bio_phylo_reconcile_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn BiophyloreconcileMatrix::multiply(self : BiophyloreconcileMatrix, other : BiophyloreconcileMatrix) -> BiophyloreconcileMatrix {
+  if self.cols != other.rows { return bio_phylo_reconcile_make_matrix(self.rows, other.cols, 0.0) }
+  let result = bio_phylo_reconcile_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn bio_phylo_reconcile_matrix_trace(m : BiophyloreconcileMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn BiophyloreconcileMatrix::trace(self : BiophyloreconcileMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn bio_phylo_reconcile_matrix_det(m : BiophyloreconcileMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn BiophyloreconcileMatrix::det(self : BiophyloreconcileMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn bio_phylo_reconcile_matrix_norm(m : BiophyloreconcileMatrix) -> Double {
+pub fn BiophyloreconcileMatrix::norm(self : BiophyloreconcileMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn bio_phylo_reconcile_matrix_to_string(m : BiophyloreconcileMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn BiophyloreconcileMatrix::to_string(self : BiophyloreconcileMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn bio_phylo_reconcile_vector_zero(dim : Int) -> BiophyloreconcileVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn bio_phylo_reconcile_vector_add(a : BiophyloreconcileVector, b : BiophyloreconcileVector) -> BiophyloreconcileVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn BiophyloreconcileVector::add(self : BiophyloreconcileVector, other : BiophyloreconcileVector) -> BiophyloreconcileVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn bio_phylo_reconcile_vector_sub(a : BiophyloreconcileVector, b : BiophyloreconcileVector) -> BiophyloreconcileVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn BiophyloreconcileVector::sub(self : BiophyloreconcileVector, other : BiophyloreconcileVector) -> BiophyloreconcileVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn bio_phylo_reconcile_vector_scale(v : BiophyloreconcileVector, s : Double) -> BiophyloreconcileVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn BiophyloreconcileVector::scale(self : BiophyloreconcileVector, s : Double) -> BiophyloreconcileVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn bio_phylo_reconcile_vector_dot(a : BiophyloreconcileVector, b : BiophyloreconcileVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn BiophyloreconcileVector::dot(self : BiophyloreconcileVector, other : BiophyloreconcileVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn bio_phylo_reconcile_vector_norm(v : BiophyloreconcileVector) -> Double { @_common.sqrt(bio_phylo_reconcile_vector_dot(v, v)) }
+pub fn BiophyloreconcileVector::norm(self : BiophyloreconcileVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn bio_phylo_reconcile_vector_normalize(v : BiophyloreconcileVector) -> BiophyloreconcileVector {
-  let n = bio_phylo_reconcile_vector_norm(v)
-  if n < 0.0000001 { v } else { bio_phylo_reconcile_vector_scale(v, 1.0 / n) }
+pub fn BiophyloreconcileVector::normalize(self : BiophyloreconcileVector) -> BiophyloreconcileVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn bio_phylo_reconcile_vector_dist(a : BiophyloreconcileVector, b : BiophyloreconcileVector) -> Double {
-  bio_phylo_reconcile_vector_norm(bio_phylo_reconcile_vector_sub(a, b))
+pub fn BiophyloreconcileVector::dist(self : BiophyloreconcileVector, other : BiophyloreconcileVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn bio_phylo_reconcile_vector_to_string(v : BiophyloreconcileVector) -> String {
+pub fn BiophyloreconcileVector::to_string(self : BiophyloreconcileVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn bio_phylo_reconcile_mean(data : Array[Double]) -> Double { @_common.mean(data) }

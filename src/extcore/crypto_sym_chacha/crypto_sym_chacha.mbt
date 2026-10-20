@@ -16,64 +16,64 @@ pub fn crypto_sym_chacha_make_point3(x : Double, y : Double, z : Double) -> Cryp
   { x, y, z, label: 0 }
 }
 
-pub fn crypto_sym_chacha_point_x(pt : CryptosymchachaPoint) -> Double { pt.x }
+pub fn CryptosymchachaPoint::x(self : CryptosymchachaPoint) -> Double { self.x }
 
-pub fn crypto_sym_chacha_point_y(pt : CryptosymchachaPoint) -> Double { pt.y }
+pub fn CryptosymchachaPoint::y(self : CryptosymchachaPoint) -> Double { self.y }
 
-pub fn crypto_sym_chacha_point_z(pt : CryptosymchachaPoint) -> Double { pt.z }
+pub fn CryptosymchachaPoint::z(self : CryptosymchachaPoint) -> Double { self.z }
 
-pub fn crypto_sym_chacha_point_label(pt : CryptosymchachaPoint) -> Int { pt.label }
+pub fn CryptosymchachaPoint::label(self : CryptosymchachaPoint) -> Int { self.label }
 
-pub fn crypto_sym_chacha_point_dist(a : CryptosymchachaPoint, b : CryptosymchachaPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn CryptosymchachaPoint::dist(self : CryptosymchachaPoint, other : CryptosymchachaPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn crypto_sym_chacha_point_add(a : CryptosymchachaPoint, b : CryptosymchachaPoint) -> CryptosymchachaPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn CryptosymchachaPoint::add(self : CryptosymchachaPoint, other : CryptosymchachaPoint) -> CryptosymchachaPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn crypto_sym_chacha_point_sub(a : CryptosymchachaPoint, b : CryptosymchachaPoint) -> CryptosymchachaPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn CryptosymchachaPoint::sub(self : CryptosymchachaPoint, other : CryptosymchachaPoint) -> CryptosymchachaPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn crypto_sym_chacha_point_scale(pt : CryptosymchachaPoint, s : Double) -> CryptosymchachaPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn CryptosymchachaPoint::scale(self : CryptosymchachaPoint, s : Double) -> CryptosymchachaPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn crypto_sym_chacha_point_dot(a : CryptosymchachaPoint, b : CryptosymchachaPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn CryptosymchachaPoint::dot(self : CryptosymchachaPoint, other : CryptosymchachaPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn crypto_sym_chacha_point_cross(a : CryptosymchachaPoint, b : CryptosymchachaPoint) -> CryptosymchachaPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn CryptosymchachaPoint::cross(self : CryptosymchachaPoint, other : CryptosymchachaPoint) -> CryptosymchachaPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn crypto_sym_chacha_point_norm(pt : CryptosymchachaPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn CryptosymchachaPoint::norm(self : CryptosymchachaPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn crypto_sym_chacha_point_normalize(pt : CryptosymchachaPoint) -> CryptosymchachaPoint {
-  let n = crypto_sym_chacha_point_norm(pt)
-  if n < 0.0000001 { pt } else { crypto_sym_chacha_point_scale(pt, 1.0 / n) }
+pub fn CryptosymchachaPoint::normalize(self : CryptosymchachaPoint) -> CryptosymchachaPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn crypto_sym_chacha_point_negate(pt : CryptosymchachaPoint) -> CryptosymchachaPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn CryptosymchachaPoint::negate(self : CryptosymchachaPoint) -> CryptosymchachaPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn crypto_sym_chacha_point_mid(a : CryptosymchachaPoint, b : CryptosymchachaPoint) -> CryptosymchachaPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn CryptosymchachaPoint::mid(self : CryptosymchachaPoint, other : CryptosymchachaPoint) -> CryptosymchachaPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn crypto_sym_chacha_point_lerp(a : CryptosymchachaPoint, b : CryptosymchachaPoint, t : Double) -> CryptosymchachaPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn CryptosymchachaPoint::lerp(self : CryptosymchachaPoint, other : CryptosymchachaPoint, t : Double) -> CryptosymchachaPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn crypto_sym_chacha_point_to_string(pt : CryptosymchachaPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn CryptosymchachaPoint::to_string(self : CryptosymchachaPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct CryptosymchachaSeries {
@@ -86,58 +86,58 @@ pub fn crypto_sym_chacha_make_series(vals : Array[Double], name : String) -> Cry
   { vals, name, meta: 0 }
 }
 
-pub fn crypto_sym_chacha_series_len(s : CryptosymchachaSeries) -> Int { s.vals.length() }
+pub fn CryptosymchachaSeries::len(self : CryptosymchachaSeries) -> Int { self.vals.length() }
 
-pub fn crypto_sym_chacha_series_sum(s : CryptosymchachaSeries) -> Double { @_common.sum(s.vals) }
+pub fn CryptosymchachaSeries::sum(self : CryptosymchachaSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn crypto_sym_chacha_series_mean(s : CryptosymchachaSeries) -> Double { @_common.mean(s.vals) }
+pub fn CryptosymchachaSeries::mean(self : CryptosymchachaSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn crypto_sym_chacha_series_min(s : CryptosymchachaSeries) -> Double { @_common.min(s.vals) }
+pub fn CryptosymchachaSeries::min(self : CryptosymchachaSeries) -> Double { @_common.min(self.vals) }
 
-pub fn crypto_sym_chacha_series_max(s : CryptosymchachaSeries) -> Double { @_common.max(s.vals) }
+pub fn CryptosymchachaSeries::max(self : CryptosymchachaSeries) -> Double { @_common.max(self.vals) }
 
-pub fn crypto_sym_chacha_series_range(s : CryptosymchachaSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn CryptosymchachaSeries::range(self : CryptosymchachaSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn crypto_sym_chacha_series_var(s : CryptosymchachaSeries) -> Double { @_common.variance(s.vals) }
+pub fn CryptosymchachaSeries::variance(self : CryptosymchachaSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn crypto_sym_chacha_series_std(s : CryptosymchachaSeries) -> Double { @_common.std(s.vals) }
+pub fn CryptosymchachaSeries::std(self : CryptosymchachaSeries) -> Double { @_common.std(self.vals) }
 
-pub fn crypto_sym_chacha_series_median(s : CryptosymchachaSeries) -> Double { @_common.median(s.vals) }
+pub fn CryptosymchachaSeries::median(self : CryptosymchachaSeries) -> Double { @_common.median(self.vals) }
 
-pub fn crypto_sym_chacha_series_scale(s : CryptosymchachaSeries, f : Double) -> CryptosymchachaSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn CryptosymchachaSeries::scale(self : CryptosymchachaSeries, f : Double) -> CryptosymchachaSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn crypto_sym_chacha_series_add(a : CryptosymchachaSeries, b : CryptosymchachaSeries) -> CryptosymchachaSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn CryptosymchachaSeries::add(self : CryptosymchachaSeries, other : CryptosymchachaSeries) -> CryptosymchachaSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn crypto_sym_chacha_series_sub(a : CryptosymchachaSeries, b : CryptosymchachaSeries) -> CryptosymchachaSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn CryptosymchachaSeries::sub(self : CryptosymchachaSeries, other : CryptosymchachaSeries) -> CryptosymchachaSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn crypto_sym_chacha_series_normalize(s : CryptosymchachaSeries) -> CryptosymchachaSeries {
-  let mn = crypto_sym_chacha_series_min(s)
-  let mx = crypto_sym_chacha_series_max(s)
+pub fn CryptosymchachaSeries::normalize(self : CryptosymchachaSeries) -> CryptosymchachaSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn crypto_sym_chacha_series_cumsum(s : CryptosymchachaSeries) -> CryptosymchachaSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn CryptosymchachaSeries::cumsum(self : CryptosymchachaSeries) -> CryptosymchachaSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn crypto_sym_chacha_series_to_string(s : CryptosymchachaSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn CryptosymchachaSeries::to_string(self : CryptosymchachaSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn crypto_sym_chacha_matrix_identity(n : Int) -> CryptosymchachaMatrix {
   m
 }
 
-pub fn crypto_sym_chacha_matrix_get(m : CryptosymchachaMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn CryptosymchachaMatrix::get(self : CryptosymchachaMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn crypto_sym_chacha_matrix_transpose(m : CryptosymchachaMatrix) -> CryptosymchachaMatrix {
-  let result = crypto_sym_chacha_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn CryptosymchachaMatrix::transpose(self : CryptosymchachaMatrix) -> CryptosymchachaMatrix {
+  let result = crypto_sym_chacha_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn crypto_sym_chacha_matrix_add(a : CryptosymchachaMatrix, b : CryptosymchachaMatrix) -> CryptosymchachaMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = crypto_sym_chacha_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn CryptosymchachaMatrix::add(self : CryptosymchachaMatrix, other : CryptosymchachaMatrix) -> CryptosymchachaMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = crypto_sym_chacha_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn crypto_sym_chacha_matrix_scale(m : CryptosymchachaMatrix, s : Double) -> CryptosymchachaMatrix {
-  let result = crypto_sym_chacha_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn CryptosymchachaMatrix::scale(self : CryptosymchachaMatrix, s : Double) -> CryptosymchachaMatrix {
+  let result = crypto_sym_chacha_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn crypto_sym_chacha_matrix_multiply(a : CryptosymchachaMatrix, b : CryptosymchachaMatrix) -> CryptosymchachaMatrix {
-  if a.cols != b.rows { return crypto_sym_chacha_make_matrix(a.rows, b.cols, 0.0) }
-  let result = crypto_sym_chacha_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn CryptosymchachaMatrix::multiply(self : CryptosymchachaMatrix, other : CryptosymchachaMatrix) -> CryptosymchachaMatrix {
+  if self.cols != other.rows { return crypto_sym_chacha_make_matrix(self.rows, other.cols, 0.0) }
+  let result = crypto_sym_chacha_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn crypto_sym_chacha_matrix_trace(m : CryptosymchachaMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn CryptosymchachaMatrix::trace(self : CryptosymchachaMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn crypto_sym_chacha_matrix_det(m : CryptosymchachaMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn CryptosymchachaMatrix::det(self : CryptosymchachaMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn crypto_sym_chacha_matrix_norm(m : CryptosymchachaMatrix) -> Double {
+pub fn CryptosymchachaMatrix::norm(self : CryptosymchachaMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn crypto_sym_chacha_matrix_to_string(m : CryptosymchachaMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn CryptosymchachaMatrix::to_string(self : CryptosymchachaMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn crypto_sym_chacha_vector_zero(dim : Int) -> CryptosymchachaVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn crypto_sym_chacha_vector_add(a : CryptosymchachaVector, b : CryptosymchachaVector) -> CryptosymchachaVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn CryptosymchachaVector::add(self : CryptosymchachaVector, other : CryptosymchachaVector) -> CryptosymchachaVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn crypto_sym_chacha_vector_sub(a : CryptosymchachaVector, b : CryptosymchachaVector) -> CryptosymchachaVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn CryptosymchachaVector::sub(self : CryptosymchachaVector, other : CryptosymchachaVector) -> CryptosymchachaVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn crypto_sym_chacha_vector_scale(v : CryptosymchachaVector, s : Double) -> CryptosymchachaVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn CryptosymchachaVector::scale(self : CryptosymchachaVector, s : Double) -> CryptosymchachaVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn crypto_sym_chacha_vector_dot(a : CryptosymchachaVector, b : CryptosymchachaVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn CryptosymchachaVector::dot(self : CryptosymchachaVector, other : CryptosymchachaVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn crypto_sym_chacha_vector_norm(v : CryptosymchachaVector) -> Double { @_common.sqrt(crypto_sym_chacha_vector_dot(v, v)) }
+pub fn CryptosymchachaVector::norm(self : CryptosymchachaVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn crypto_sym_chacha_vector_normalize(v : CryptosymchachaVector) -> CryptosymchachaVector {
-  let n = crypto_sym_chacha_vector_norm(v)
-  if n < 0.0000001 { v } else { crypto_sym_chacha_vector_scale(v, 1.0 / n) }
+pub fn CryptosymchachaVector::normalize(self : CryptosymchachaVector) -> CryptosymchachaVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn crypto_sym_chacha_vector_dist(a : CryptosymchachaVector, b : CryptosymchachaVector) -> Double {
-  crypto_sym_chacha_vector_norm(crypto_sym_chacha_vector_sub(a, b))
+pub fn CryptosymchachaVector::dist(self : CryptosymchachaVector, other : CryptosymchachaVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn crypto_sym_chacha_vector_to_string(v : CryptosymchachaVector) -> String {
+pub fn CryptosymchachaVector::to_string(self : CryptosymchachaVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn crypto_sym_chacha_mean(data : Array[Double]) -> Double { @_common.mean(data) }

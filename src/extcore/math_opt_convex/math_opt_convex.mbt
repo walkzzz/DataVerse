@@ -16,64 +16,64 @@ pub fn math_opt_convex_make_point3(x : Double, y : Double, z : Double) -> Mathop
   { x, y, z, label: 0 }
 }
 
-pub fn math_opt_convex_point_x(pt : MathoptconvexPoint) -> Double { pt.x }
+pub fn MathoptconvexPoint::x(self : MathoptconvexPoint) -> Double { self.x }
 
-pub fn math_opt_convex_point_y(pt : MathoptconvexPoint) -> Double { pt.y }
+pub fn MathoptconvexPoint::y(self : MathoptconvexPoint) -> Double { self.y }
 
-pub fn math_opt_convex_point_z(pt : MathoptconvexPoint) -> Double { pt.z }
+pub fn MathoptconvexPoint::z(self : MathoptconvexPoint) -> Double { self.z }
 
-pub fn math_opt_convex_point_label(pt : MathoptconvexPoint) -> Int { pt.label }
+pub fn MathoptconvexPoint::label(self : MathoptconvexPoint) -> Int { self.label }
 
-pub fn math_opt_convex_point_dist(a : MathoptconvexPoint, b : MathoptconvexPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn MathoptconvexPoint::dist(self : MathoptconvexPoint, other : MathoptconvexPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn math_opt_convex_point_add(a : MathoptconvexPoint, b : MathoptconvexPoint) -> MathoptconvexPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn MathoptconvexPoint::add(self : MathoptconvexPoint, other : MathoptconvexPoint) -> MathoptconvexPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn math_opt_convex_point_sub(a : MathoptconvexPoint, b : MathoptconvexPoint) -> MathoptconvexPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn MathoptconvexPoint::sub(self : MathoptconvexPoint, other : MathoptconvexPoint) -> MathoptconvexPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn math_opt_convex_point_scale(pt : MathoptconvexPoint, s : Double) -> MathoptconvexPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn MathoptconvexPoint::scale(self : MathoptconvexPoint, s : Double) -> MathoptconvexPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn math_opt_convex_point_dot(a : MathoptconvexPoint, b : MathoptconvexPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn MathoptconvexPoint::dot(self : MathoptconvexPoint, other : MathoptconvexPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn math_opt_convex_point_cross(a : MathoptconvexPoint, b : MathoptconvexPoint) -> MathoptconvexPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn MathoptconvexPoint::cross(self : MathoptconvexPoint, other : MathoptconvexPoint) -> MathoptconvexPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn math_opt_convex_point_norm(pt : MathoptconvexPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn MathoptconvexPoint::norm(self : MathoptconvexPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn math_opt_convex_point_normalize(pt : MathoptconvexPoint) -> MathoptconvexPoint {
-  let n = math_opt_convex_point_norm(pt)
-  if n < 0.0000001 { pt } else { math_opt_convex_point_scale(pt, 1.0 / n) }
+pub fn MathoptconvexPoint::normalize(self : MathoptconvexPoint) -> MathoptconvexPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn math_opt_convex_point_negate(pt : MathoptconvexPoint) -> MathoptconvexPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn MathoptconvexPoint::negate(self : MathoptconvexPoint) -> MathoptconvexPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn math_opt_convex_point_mid(a : MathoptconvexPoint, b : MathoptconvexPoint) -> MathoptconvexPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn MathoptconvexPoint::mid(self : MathoptconvexPoint, other : MathoptconvexPoint) -> MathoptconvexPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn math_opt_convex_point_lerp(a : MathoptconvexPoint, b : MathoptconvexPoint, t : Double) -> MathoptconvexPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn MathoptconvexPoint::lerp(self : MathoptconvexPoint, other : MathoptconvexPoint, t : Double) -> MathoptconvexPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn math_opt_convex_point_to_string(pt : MathoptconvexPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn MathoptconvexPoint::to_string(self : MathoptconvexPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct MathoptconvexSeries {
@@ -86,58 +86,58 @@ pub fn math_opt_convex_make_series(vals : Array[Double], name : String) -> Matho
   { vals, name, meta: 0 }
 }
 
-pub fn math_opt_convex_series_len(s : MathoptconvexSeries) -> Int { s.vals.length() }
+pub fn MathoptconvexSeries::len(self : MathoptconvexSeries) -> Int { self.vals.length() }
 
-pub fn math_opt_convex_series_sum(s : MathoptconvexSeries) -> Double { @_common.sum(s.vals) }
+pub fn MathoptconvexSeries::sum(self : MathoptconvexSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn math_opt_convex_series_mean(s : MathoptconvexSeries) -> Double { @_common.mean(s.vals) }
+pub fn MathoptconvexSeries::mean(self : MathoptconvexSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn math_opt_convex_series_min(s : MathoptconvexSeries) -> Double { @_common.min(s.vals) }
+pub fn MathoptconvexSeries::min(self : MathoptconvexSeries) -> Double { @_common.min(self.vals) }
 
-pub fn math_opt_convex_series_max(s : MathoptconvexSeries) -> Double { @_common.max(s.vals) }
+pub fn MathoptconvexSeries::max(self : MathoptconvexSeries) -> Double { @_common.max(self.vals) }
 
-pub fn math_opt_convex_series_range(s : MathoptconvexSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn MathoptconvexSeries::range(self : MathoptconvexSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn math_opt_convex_series_var(s : MathoptconvexSeries) -> Double { @_common.variance(s.vals) }
+pub fn MathoptconvexSeries::variance(self : MathoptconvexSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn math_opt_convex_series_std(s : MathoptconvexSeries) -> Double { @_common.std(s.vals) }
+pub fn MathoptconvexSeries::std(self : MathoptconvexSeries) -> Double { @_common.std(self.vals) }
 
-pub fn math_opt_convex_series_median(s : MathoptconvexSeries) -> Double { @_common.median(s.vals) }
+pub fn MathoptconvexSeries::median(self : MathoptconvexSeries) -> Double { @_common.median(self.vals) }
 
-pub fn math_opt_convex_series_scale(s : MathoptconvexSeries, f : Double) -> MathoptconvexSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn MathoptconvexSeries::scale(self : MathoptconvexSeries, f : Double) -> MathoptconvexSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn math_opt_convex_series_add(a : MathoptconvexSeries, b : MathoptconvexSeries) -> MathoptconvexSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn MathoptconvexSeries::add(self : MathoptconvexSeries, other : MathoptconvexSeries) -> MathoptconvexSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn math_opt_convex_series_sub(a : MathoptconvexSeries, b : MathoptconvexSeries) -> MathoptconvexSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn MathoptconvexSeries::sub(self : MathoptconvexSeries, other : MathoptconvexSeries) -> MathoptconvexSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn math_opt_convex_series_normalize(s : MathoptconvexSeries) -> MathoptconvexSeries {
-  let mn = math_opt_convex_series_min(s)
-  let mx = math_opt_convex_series_max(s)
+pub fn MathoptconvexSeries::normalize(self : MathoptconvexSeries) -> MathoptconvexSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn math_opt_convex_series_cumsum(s : MathoptconvexSeries) -> MathoptconvexSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn MathoptconvexSeries::cumsum(self : MathoptconvexSeries) -> MathoptconvexSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn math_opt_convex_series_to_string(s : MathoptconvexSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn MathoptconvexSeries::to_string(self : MathoptconvexSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn math_opt_convex_matrix_identity(n : Int) -> MathoptconvexMatrix {
   m
 }
 
-pub fn math_opt_convex_matrix_get(m : MathoptconvexMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn MathoptconvexMatrix::get(self : MathoptconvexMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn math_opt_convex_matrix_transpose(m : MathoptconvexMatrix) -> MathoptconvexMatrix {
-  let result = math_opt_convex_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn MathoptconvexMatrix::transpose(self : MathoptconvexMatrix) -> MathoptconvexMatrix {
+  let result = math_opt_convex_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn math_opt_convex_matrix_add(a : MathoptconvexMatrix, b : MathoptconvexMatrix) -> MathoptconvexMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = math_opt_convex_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn MathoptconvexMatrix::add(self : MathoptconvexMatrix, other : MathoptconvexMatrix) -> MathoptconvexMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = math_opt_convex_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn math_opt_convex_matrix_scale(m : MathoptconvexMatrix, s : Double) -> MathoptconvexMatrix {
-  let result = math_opt_convex_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn MathoptconvexMatrix::scale(self : MathoptconvexMatrix, s : Double) -> MathoptconvexMatrix {
+  let result = math_opt_convex_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn math_opt_convex_matrix_multiply(a : MathoptconvexMatrix, b : MathoptconvexMatrix) -> MathoptconvexMatrix {
-  if a.cols != b.rows { return math_opt_convex_make_matrix(a.rows, b.cols, 0.0) }
-  let result = math_opt_convex_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn MathoptconvexMatrix::multiply(self : MathoptconvexMatrix, other : MathoptconvexMatrix) -> MathoptconvexMatrix {
+  if self.cols != other.rows { return math_opt_convex_make_matrix(self.rows, other.cols, 0.0) }
+  let result = math_opt_convex_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn math_opt_convex_matrix_trace(m : MathoptconvexMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn MathoptconvexMatrix::trace(self : MathoptconvexMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn math_opt_convex_matrix_det(m : MathoptconvexMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn MathoptconvexMatrix::det(self : MathoptconvexMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn math_opt_convex_matrix_norm(m : MathoptconvexMatrix) -> Double {
+pub fn MathoptconvexMatrix::norm(self : MathoptconvexMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn math_opt_convex_matrix_to_string(m : MathoptconvexMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn MathoptconvexMatrix::to_string(self : MathoptconvexMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn math_opt_convex_vector_zero(dim : Int) -> MathoptconvexVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn math_opt_convex_vector_add(a : MathoptconvexVector, b : MathoptconvexVector) -> MathoptconvexVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn MathoptconvexVector::add(self : MathoptconvexVector, other : MathoptconvexVector) -> MathoptconvexVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn math_opt_convex_vector_sub(a : MathoptconvexVector, b : MathoptconvexVector) -> MathoptconvexVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn MathoptconvexVector::sub(self : MathoptconvexVector, other : MathoptconvexVector) -> MathoptconvexVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn math_opt_convex_vector_scale(v : MathoptconvexVector, s : Double) -> MathoptconvexVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn MathoptconvexVector::scale(self : MathoptconvexVector, s : Double) -> MathoptconvexVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn math_opt_convex_vector_dot(a : MathoptconvexVector, b : MathoptconvexVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn MathoptconvexVector::dot(self : MathoptconvexVector, other : MathoptconvexVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn math_opt_convex_vector_norm(v : MathoptconvexVector) -> Double { @_common.sqrt(math_opt_convex_vector_dot(v, v)) }
+pub fn MathoptconvexVector::norm(self : MathoptconvexVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn math_opt_convex_vector_normalize(v : MathoptconvexVector) -> MathoptconvexVector {
-  let n = math_opt_convex_vector_norm(v)
-  if n < 0.0000001 { v } else { math_opt_convex_vector_scale(v, 1.0 / n) }
+pub fn MathoptconvexVector::normalize(self : MathoptconvexVector) -> MathoptconvexVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn math_opt_convex_vector_dist(a : MathoptconvexVector, b : MathoptconvexVector) -> Double {
-  math_opt_convex_vector_norm(math_opt_convex_vector_sub(a, b))
+pub fn MathoptconvexVector::dist(self : MathoptconvexVector, other : MathoptconvexVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn math_opt_convex_vector_to_string(v : MathoptconvexVector) -> String {
+pub fn MathoptconvexVector::to_string(self : MathoptconvexVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn math_opt_convex_mean(data : Array[Double]) -> Double { @_common.mean(data) }

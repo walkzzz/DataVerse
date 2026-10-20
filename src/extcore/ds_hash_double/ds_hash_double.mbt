@@ -16,64 +16,64 @@ pub fn ds_hash_double_make_point3(x : Double, y : Double, z : Double) -> Dshashd
   { x, y, z, label: 0 }
 }
 
-pub fn ds_hash_double_point_x(pt : DshashdoublePoint) -> Double { pt.x }
+pub fn DshashdoublePoint::x(self : DshashdoublePoint) -> Double { self.x }
 
-pub fn ds_hash_double_point_y(pt : DshashdoublePoint) -> Double { pt.y }
+pub fn DshashdoublePoint::y(self : DshashdoublePoint) -> Double { self.y }
 
-pub fn ds_hash_double_point_z(pt : DshashdoublePoint) -> Double { pt.z }
+pub fn DshashdoublePoint::z(self : DshashdoublePoint) -> Double { self.z }
 
-pub fn ds_hash_double_point_label(pt : DshashdoublePoint) -> Int { pt.label }
+pub fn DshashdoublePoint::label(self : DshashdoublePoint) -> Int { self.label }
 
-pub fn ds_hash_double_point_dist(a : DshashdoublePoint, b : DshashdoublePoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn DshashdoublePoint::dist(self : DshashdoublePoint, other : DshashdoublePoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn ds_hash_double_point_add(a : DshashdoublePoint, b : DshashdoublePoint) -> DshashdoublePoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn DshashdoublePoint::add(self : DshashdoublePoint, other : DshashdoublePoint) -> DshashdoublePoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn ds_hash_double_point_sub(a : DshashdoublePoint, b : DshashdoublePoint) -> DshashdoublePoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn DshashdoublePoint::sub(self : DshashdoublePoint, other : DshashdoublePoint) -> DshashdoublePoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn ds_hash_double_point_scale(pt : DshashdoublePoint, s : Double) -> DshashdoublePoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn DshashdoublePoint::scale(self : DshashdoublePoint, s : Double) -> DshashdoublePoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn ds_hash_double_point_dot(a : DshashdoublePoint, b : DshashdoublePoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn DshashdoublePoint::dot(self : DshashdoublePoint, other : DshashdoublePoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn ds_hash_double_point_cross(a : DshashdoublePoint, b : DshashdoublePoint) -> DshashdoublePoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn DshashdoublePoint::cross(self : DshashdoublePoint, other : DshashdoublePoint) -> DshashdoublePoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn ds_hash_double_point_norm(pt : DshashdoublePoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn DshashdoublePoint::norm(self : DshashdoublePoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn ds_hash_double_point_normalize(pt : DshashdoublePoint) -> DshashdoublePoint {
-  let n = ds_hash_double_point_norm(pt)
-  if n < 0.0000001 { pt } else { ds_hash_double_point_scale(pt, 1.0 / n) }
+pub fn DshashdoublePoint::normalize(self : DshashdoublePoint) -> DshashdoublePoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn ds_hash_double_point_negate(pt : DshashdoublePoint) -> DshashdoublePoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn DshashdoublePoint::negate(self : DshashdoublePoint) -> DshashdoublePoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn ds_hash_double_point_mid(a : DshashdoublePoint, b : DshashdoublePoint) -> DshashdoublePoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn DshashdoublePoint::mid(self : DshashdoublePoint, other : DshashdoublePoint) -> DshashdoublePoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn ds_hash_double_point_lerp(a : DshashdoublePoint, b : DshashdoublePoint, t : Double) -> DshashdoublePoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn DshashdoublePoint::lerp(self : DshashdoublePoint, other : DshashdoublePoint, t : Double) -> DshashdoublePoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn ds_hash_double_point_to_string(pt : DshashdoublePoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn DshashdoublePoint::to_string(self : DshashdoublePoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct DshashdoubleSeries {
@@ -86,58 +86,58 @@ pub fn ds_hash_double_make_series(vals : Array[Double], name : String) -> Dshash
   { vals, name, meta: 0 }
 }
 
-pub fn ds_hash_double_series_len(s : DshashdoubleSeries) -> Int { s.vals.length() }
+pub fn DshashdoubleSeries::len(self : DshashdoubleSeries) -> Int { self.vals.length() }
 
-pub fn ds_hash_double_series_sum(s : DshashdoubleSeries) -> Double { @_common.sum(s.vals) }
+pub fn DshashdoubleSeries::sum(self : DshashdoubleSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn ds_hash_double_series_mean(s : DshashdoubleSeries) -> Double { @_common.mean(s.vals) }
+pub fn DshashdoubleSeries::mean(self : DshashdoubleSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn ds_hash_double_series_min(s : DshashdoubleSeries) -> Double { @_common.min(s.vals) }
+pub fn DshashdoubleSeries::min(self : DshashdoubleSeries) -> Double { @_common.min(self.vals) }
 
-pub fn ds_hash_double_series_max(s : DshashdoubleSeries) -> Double { @_common.max(s.vals) }
+pub fn DshashdoubleSeries::max(self : DshashdoubleSeries) -> Double { @_common.max(self.vals) }
 
-pub fn ds_hash_double_series_range(s : DshashdoubleSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn DshashdoubleSeries::range(self : DshashdoubleSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn ds_hash_double_series_var(s : DshashdoubleSeries) -> Double { @_common.variance(s.vals) }
+pub fn DshashdoubleSeries::variance(self : DshashdoubleSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn ds_hash_double_series_std(s : DshashdoubleSeries) -> Double { @_common.std(s.vals) }
+pub fn DshashdoubleSeries::std(self : DshashdoubleSeries) -> Double { @_common.std(self.vals) }
 
-pub fn ds_hash_double_series_median(s : DshashdoubleSeries) -> Double { @_common.median(s.vals) }
+pub fn DshashdoubleSeries::median(self : DshashdoubleSeries) -> Double { @_common.median(self.vals) }
 
-pub fn ds_hash_double_series_scale(s : DshashdoubleSeries, f : Double) -> DshashdoubleSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn DshashdoubleSeries::scale(self : DshashdoubleSeries, f : Double) -> DshashdoubleSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn ds_hash_double_series_add(a : DshashdoubleSeries, b : DshashdoubleSeries) -> DshashdoubleSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn DshashdoubleSeries::add(self : DshashdoubleSeries, other : DshashdoubleSeries) -> DshashdoubleSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn ds_hash_double_series_sub(a : DshashdoubleSeries, b : DshashdoubleSeries) -> DshashdoubleSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn DshashdoubleSeries::sub(self : DshashdoubleSeries, other : DshashdoubleSeries) -> DshashdoubleSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn ds_hash_double_series_normalize(s : DshashdoubleSeries) -> DshashdoubleSeries {
-  let mn = ds_hash_double_series_min(s)
-  let mx = ds_hash_double_series_max(s)
+pub fn DshashdoubleSeries::normalize(self : DshashdoubleSeries) -> DshashdoubleSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn ds_hash_double_series_cumsum(s : DshashdoubleSeries) -> DshashdoubleSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn DshashdoubleSeries::cumsum(self : DshashdoubleSeries) -> DshashdoubleSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn ds_hash_double_series_to_string(s : DshashdoubleSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn DshashdoubleSeries::to_string(self : DshashdoubleSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn ds_hash_double_matrix_identity(n : Int) -> DshashdoubleMatrix {
   m
 }
 
-pub fn ds_hash_double_matrix_get(m : DshashdoubleMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn DshashdoubleMatrix::get(self : DshashdoubleMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn ds_hash_double_matrix_transpose(m : DshashdoubleMatrix) -> DshashdoubleMatrix {
-  let result = ds_hash_double_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn DshashdoubleMatrix::transpose(self : DshashdoubleMatrix) -> DshashdoubleMatrix {
+  let result = ds_hash_double_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn ds_hash_double_matrix_add(a : DshashdoubleMatrix, b : DshashdoubleMatrix) -> DshashdoubleMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = ds_hash_double_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn DshashdoubleMatrix::add(self : DshashdoubleMatrix, other : DshashdoubleMatrix) -> DshashdoubleMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = ds_hash_double_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn ds_hash_double_matrix_scale(m : DshashdoubleMatrix, s : Double) -> DshashdoubleMatrix {
-  let result = ds_hash_double_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn DshashdoubleMatrix::scale(self : DshashdoubleMatrix, s : Double) -> DshashdoubleMatrix {
+  let result = ds_hash_double_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn ds_hash_double_matrix_multiply(a : DshashdoubleMatrix, b : DshashdoubleMatrix) -> DshashdoubleMatrix {
-  if a.cols != b.rows { return ds_hash_double_make_matrix(a.rows, b.cols, 0.0) }
-  let result = ds_hash_double_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn DshashdoubleMatrix::multiply(self : DshashdoubleMatrix, other : DshashdoubleMatrix) -> DshashdoubleMatrix {
+  if self.cols != other.rows { return ds_hash_double_make_matrix(self.rows, other.cols, 0.0) }
+  let result = ds_hash_double_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn ds_hash_double_matrix_trace(m : DshashdoubleMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn DshashdoubleMatrix::trace(self : DshashdoubleMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn ds_hash_double_matrix_det(m : DshashdoubleMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn DshashdoubleMatrix::det(self : DshashdoubleMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn ds_hash_double_matrix_norm(m : DshashdoubleMatrix) -> Double {
+pub fn DshashdoubleMatrix::norm(self : DshashdoubleMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn ds_hash_double_matrix_to_string(m : DshashdoubleMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn DshashdoubleMatrix::to_string(self : DshashdoubleMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn ds_hash_double_vector_zero(dim : Int) -> DshashdoubleVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn ds_hash_double_vector_add(a : DshashdoubleVector, b : DshashdoubleVector) -> DshashdoubleVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn DshashdoubleVector::add(self : DshashdoubleVector, other : DshashdoubleVector) -> DshashdoubleVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn ds_hash_double_vector_sub(a : DshashdoubleVector, b : DshashdoubleVector) -> DshashdoubleVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn DshashdoubleVector::sub(self : DshashdoubleVector, other : DshashdoubleVector) -> DshashdoubleVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn ds_hash_double_vector_scale(v : DshashdoubleVector, s : Double) -> DshashdoubleVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn DshashdoubleVector::scale(self : DshashdoubleVector, s : Double) -> DshashdoubleVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn ds_hash_double_vector_dot(a : DshashdoubleVector, b : DshashdoubleVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn DshashdoubleVector::dot(self : DshashdoubleVector, other : DshashdoubleVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn ds_hash_double_vector_norm(v : DshashdoubleVector) -> Double { @_common.sqrt(ds_hash_double_vector_dot(v, v)) }
+pub fn DshashdoubleVector::norm(self : DshashdoubleVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn ds_hash_double_vector_normalize(v : DshashdoubleVector) -> DshashdoubleVector {
-  let n = ds_hash_double_vector_norm(v)
-  if n < 0.0000001 { v } else { ds_hash_double_vector_scale(v, 1.0 / n) }
+pub fn DshashdoubleVector::normalize(self : DshashdoubleVector) -> DshashdoubleVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn ds_hash_double_vector_dist(a : DshashdoubleVector, b : DshashdoubleVector) -> Double {
-  ds_hash_double_vector_norm(ds_hash_double_vector_sub(a, b))
+pub fn DshashdoubleVector::dist(self : DshashdoubleVector, other : DshashdoubleVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn ds_hash_double_vector_to_string(v : DshashdoubleVector) -> String {
+pub fn DshashdoubleVector::to_string(self : DshashdoubleVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn ds_hash_double_mean(data : Array[Double]) -> Double { @_common.mean(data) }

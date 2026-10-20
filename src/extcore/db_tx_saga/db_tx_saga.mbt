@@ -16,64 +16,64 @@ pub fn db_tx_saga_make_point3(x : Double, y : Double, z : Double) -> DbtxsagaPoi
   { x, y, z, label: 0 }
 }
 
-pub fn db_tx_saga_point_x(pt : DbtxsagaPoint) -> Double { pt.x }
+pub fn DbtxsagaPoint::x(self : DbtxsagaPoint) -> Double { self.x }
 
-pub fn db_tx_saga_point_y(pt : DbtxsagaPoint) -> Double { pt.y }
+pub fn DbtxsagaPoint::y(self : DbtxsagaPoint) -> Double { self.y }
 
-pub fn db_tx_saga_point_z(pt : DbtxsagaPoint) -> Double { pt.z }
+pub fn DbtxsagaPoint::z(self : DbtxsagaPoint) -> Double { self.z }
 
-pub fn db_tx_saga_point_label(pt : DbtxsagaPoint) -> Int { pt.label }
+pub fn DbtxsagaPoint::label(self : DbtxsagaPoint) -> Int { self.label }
 
-pub fn db_tx_saga_point_dist(a : DbtxsagaPoint, b : DbtxsagaPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn DbtxsagaPoint::dist(self : DbtxsagaPoint, other : DbtxsagaPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn db_tx_saga_point_add(a : DbtxsagaPoint, b : DbtxsagaPoint) -> DbtxsagaPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn DbtxsagaPoint::add(self : DbtxsagaPoint, other : DbtxsagaPoint) -> DbtxsagaPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn db_tx_saga_point_sub(a : DbtxsagaPoint, b : DbtxsagaPoint) -> DbtxsagaPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn DbtxsagaPoint::sub(self : DbtxsagaPoint, other : DbtxsagaPoint) -> DbtxsagaPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn db_tx_saga_point_scale(pt : DbtxsagaPoint, s : Double) -> DbtxsagaPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn DbtxsagaPoint::scale(self : DbtxsagaPoint, s : Double) -> DbtxsagaPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn db_tx_saga_point_dot(a : DbtxsagaPoint, b : DbtxsagaPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn DbtxsagaPoint::dot(self : DbtxsagaPoint, other : DbtxsagaPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn db_tx_saga_point_cross(a : DbtxsagaPoint, b : DbtxsagaPoint) -> DbtxsagaPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn DbtxsagaPoint::cross(self : DbtxsagaPoint, other : DbtxsagaPoint) -> DbtxsagaPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn db_tx_saga_point_norm(pt : DbtxsagaPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn DbtxsagaPoint::norm(self : DbtxsagaPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn db_tx_saga_point_normalize(pt : DbtxsagaPoint) -> DbtxsagaPoint {
-  let n = db_tx_saga_point_norm(pt)
-  if n < 0.0000001 { pt } else { db_tx_saga_point_scale(pt, 1.0 / n) }
+pub fn DbtxsagaPoint::normalize(self : DbtxsagaPoint) -> DbtxsagaPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn db_tx_saga_point_negate(pt : DbtxsagaPoint) -> DbtxsagaPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn DbtxsagaPoint::negate(self : DbtxsagaPoint) -> DbtxsagaPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn db_tx_saga_point_mid(a : DbtxsagaPoint, b : DbtxsagaPoint) -> DbtxsagaPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn DbtxsagaPoint::mid(self : DbtxsagaPoint, other : DbtxsagaPoint) -> DbtxsagaPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn db_tx_saga_point_lerp(a : DbtxsagaPoint, b : DbtxsagaPoint, t : Double) -> DbtxsagaPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn DbtxsagaPoint::lerp(self : DbtxsagaPoint, other : DbtxsagaPoint, t : Double) -> DbtxsagaPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn db_tx_saga_point_to_string(pt : DbtxsagaPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn DbtxsagaPoint::to_string(self : DbtxsagaPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct DbtxsagaSeries {
@@ -86,58 +86,58 @@ pub fn db_tx_saga_make_series(vals : Array[Double], name : String) -> DbtxsagaSe
   { vals, name, meta: 0 }
 }
 
-pub fn db_tx_saga_series_len(s : DbtxsagaSeries) -> Int { s.vals.length() }
+pub fn DbtxsagaSeries::len(self : DbtxsagaSeries) -> Int { self.vals.length() }
 
-pub fn db_tx_saga_series_sum(s : DbtxsagaSeries) -> Double { @_common.sum(s.vals) }
+pub fn DbtxsagaSeries::sum(self : DbtxsagaSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn db_tx_saga_series_mean(s : DbtxsagaSeries) -> Double { @_common.mean(s.vals) }
+pub fn DbtxsagaSeries::mean(self : DbtxsagaSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn db_tx_saga_series_min(s : DbtxsagaSeries) -> Double { @_common.min(s.vals) }
+pub fn DbtxsagaSeries::min(self : DbtxsagaSeries) -> Double { @_common.min(self.vals) }
 
-pub fn db_tx_saga_series_max(s : DbtxsagaSeries) -> Double { @_common.max(s.vals) }
+pub fn DbtxsagaSeries::max(self : DbtxsagaSeries) -> Double { @_common.max(self.vals) }
 
-pub fn db_tx_saga_series_range(s : DbtxsagaSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn DbtxsagaSeries::range(self : DbtxsagaSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn db_tx_saga_series_var(s : DbtxsagaSeries) -> Double { @_common.variance(s.vals) }
+pub fn DbtxsagaSeries::variance(self : DbtxsagaSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn db_tx_saga_series_std(s : DbtxsagaSeries) -> Double { @_common.std(s.vals) }
+pub fn DbtxsagaSeries::std(self : DbtxsagaSeries) -> Double { @_common.std(self.vals) }
 
-pub fn db_tx_saga_series_median(s : DbtxsagaSeries) -> Double { @_common.median(s.vals) }
+pub fn DbtxsagaSeries::median(self : DbtxsagaSeries) -> Double { @_common.median(self.vals) }
 
-pub fn db_tx_saga_series_scale(s : DbtxsagaSeries, f : Double) -> DbtxsagaSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn DbtxsagaSeries::scale(self : DbtxsagaSeries, f : Double) -> DbtxsagaSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn db_tx_saga_series_add(a : DbtxsagaSeries, b : DbtxsagaSeries) -> DbtxsagaSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn DbtxsagaSeries::add(self : DbtxsagaSeries, other : DbtxsagaSeries) -> DbtxsagaSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn db_tx_saga_series_sub(a : DbtxsagaSeries, b : DbtxsagaSeries) -> DbtxsagaSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn DbtxsagaSeries::sub(self : DbtxsagaSeries, other : DbtxsagaSeries) -> DbtxsagaSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn db_tx_saga_series_normalize(s : DbtxsagaSeries) -> DbtxsagaSeries {
-  let mn = db_tx_saga_series_min(s)
-  let mx = db_tx_saga_series_max(s)
+pub fn DbtxsagaSeries::normalize(self : DbtxsagaSeries) -> DbtxsagaSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn db_tx_saga_series_cumsum(s : DbtxsagaSeries) -> DbtxsagaSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn DbtxsagaSeries::cumsum(self : DbtxsagaSeries) -> DbtxsagaSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn db_tx_saga_series_to_string(s : DbtxsagaSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn DbtxsagaSeries::to_string(self : DbtxsagaSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn db_tx_saga_matrix_identity(n : Int) -> DbtxsagaMatrix {
   m
 }
 
-pub fn db_tx_saga_matrix_get(m : DbtxsagaMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn DbtxsagaMatrix::get(self : DbtxsagaMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn db_tx_saga_matrix_transpose(m : DbtxsagaMatrix) -> DbtxsagaMatrix {
-  let result = db_tx_saga_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn DbtxsagaMatrix::transpose(self : DbtxsagaMatrix) -> DbtxsagaMatrix {
+  let result = db_tx_saga_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn db_tx_saga_matrix_add(a : DbtxsagaMatrix, b : DbtxsagaMatrix) -> DbtxsagaMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = db_tx_saga_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn DbtxsagaMatrix::add(self : DbtxsagaMatrix, other : DbtxsagaMatrix) -> DbtxsagaMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = db_tx_saga_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn db_tx_saga_matrix_scale(m : DbtxsagaMatrix, s : Double) -> DbtxsagaMatrix {
-  let result = db_tx_saga_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn DbtxsagaMatrix::scale(self : DbtxsagaMatrix, s : Double) -> DbtxsagaMatrix {
+  let result = db_tx_saga_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn db_tx_saga_matrix_multiply(a : DbtxsagaMatrix, b : DbtxsagaMatrix) -> DbtxsagaMatrix {
-  if a.cols != b.rows { return db_tx_saga_make_matrix(a.rows, b.cols, 0.0) }
-  let result = db_tx_saga_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn DbtxsagaMatrix::multiply(self : DbtxsagaMatrix, other : DbtxsagaMatrix) -> DbtxsagaMatrix {
+  if self.cols != other.rows { return db_tx_saga_make_matrix(self.rows, other.cols, 0.0) }
+  let result = db_tx_saga_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn db_tx_saga_matrix_trace(m : DbtxsagaMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn DbtxsagaMatrix::trace(self : DbtxsagaMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn db_tx_saga_matrix_det(m : DbtxsagaMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn DbtxsagaMatrix::det(self : DbtxsagaMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn db_tx_saga_matrix_norm(m : DbtxsagaMatrix) -> Double {
+pub fn DbtxsagaMatrix::norm(self : DbtxsagaMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn db_tx_saga_matrix_to_string(m : DbtxsagaMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn DbtxsagaMatrix::to_string(self : DbtxsagaMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn db_tx_saga_vector_zero(dim : Int) -> DbtxsagaVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn db_tx_saga_vector_add(a : DbtxsagaVector, b : DbtxsagaVector) -> DbtxsagaVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn DbtxsagaVector::add(self : DbtxsagaVector, other : DbtxsagaVector) -> DbtxsagaVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn db_tx_saga_vector_sub(a : DbtxsagaVector, b : DbtxsagaVector) -> DbtxsagaVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn DbtxsagaVector::sub(self : DbtxsagaVector, other : DbtxsagaVector) -> DbtxsagaVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn db_tx_saga_vector_scale(v : DbtxsagaVector, s : Double) -> DbtxsagaVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn DbtxsagaVector::scale(self : DbtxsagaVector, s : Double) -> DbtxsagaVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn db_tx_saga_vector_dot(a : DbtxsagaVector, b : DbtxsagaVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn DbtxsagaVector::dot(self : DbtxsagaVector, other : DbtxsagaVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn db_tx_saga_vector_norm(v : DbtxsagaVector) -> Double { @_common.sqrt(db_tx_saga_vector_dot(v, v)) }
+pub fn DbtxsagaVector::norm(self : DbtxsagaVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn db_tx_saga_vector_normalize(v : DbtxsagaVector) -> DbtxsagaVector {
-  let n = db_tx_saga_vector_norm(v)
-  if n < 0.0000001 { v } else { db_tx_saga_vector_scale(v, 1.0 / n) }
+pub fn DbtxsagaVector::normalize(self : DbtxsagaVector) -> DbtxsagaVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn db_tx_saga_vector_dist(a : DbtxsagaVector, b : DbtxsagaVector) -> Double {
-  db_tx_saga_vector_norm(db_tx_saga_vector_sub(a, b))
+pub fn DbtxsagaVector::dist(self : DbtxsagaVector, other : DbtxsagaVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn db_tx_saga_vector_to_string(v : DbtxsagaVector) -> String {
+pub fn DbtxsagaVector::to_string(self : DbtxsagaVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn db_tx_saga_mean(data : Array[Double]) -> Double { @_common.mean(data) }

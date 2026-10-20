@@ -16,64 +16,64 @@ pub fn ds_hash_closed_make_point3(x : Double, y : Double, z : Double) -> Dshashc
   { x, y, z, label: 0 }
 }
 
-pub fn ds_hash_closed_point_x(pt : DshashclosedPoint) -> Double { pt.x }
+pub fn DshashclosedPoint::x(self : DshashclosedPoint) -> Double { self.x }
 
-pub fn ds_hash_closed_point_y(pt : DshashclosedPoint) -> Double { pt.y }
+pub fn DshashclosedPoint::y(self : DshashclosedPoint) -> Double { self.y }
 
-pub fn ds_hash_closed_point_z(pt : DshashclosedPoint) -> Double { pt.z }
+pub fn DshashclosedPoint::z(self : DshashclosedPoint) -> Double { self.z }
 
-pub fn ds_hash_closed_point_label(pt : DshashclosedPoint) -> Int { pt.label }
+pub fn DshashclosedPoint::label(self : DshashclosedPoint) -> Int { self.label }
 
-pub fn ds_hash_closed_point_dist(a : DshashclosedPoint, b : DshashclosedPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn DshashclosedPoint::dist(self : DshashclosedPoint, other : DshashclosedPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn ds_hash_closed_point_add(a : DshashclosedPoint, b : DshashclosedPoint) -> DshashclosedPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn DshashclosedPoint::add(self : DshashclosedPoint, other : DshashclosedPoint) -> DshashclosedPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn ds_hash_closed_point_sub(a : DshashclosedPoint, b : DshashclosedPoint) -> DshashclosedPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn DshashclosedPoint::sub(self : DshashclosedPoint, other : DshashclosedPoint) -> DshashclosedPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn ds_hash_closed_point_scale(pt : DshashclosedPoint, s : Double) -> DshashclosedPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn DshashclosedPoint::scale(self : DshashclosedPoint, s : Double) -> DshashclosedPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn ds_hash_closed_point_dot(a : DshashclosedPoint, b : DshashclosedPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn DshashclosedPoint::dot(self : DshashclosedPoint, other : DshashclosedPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn ds_hash_closed_point_cross(a : DshashclosedPoint, b : DshashclosedPoint) -> DshashclosedPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn DshashclosedPoint::cross(self : DshashclosedPoint, other : DshashclosedPoint) -> DshashclosedPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn ds_hash_closed_point_norm(pt : DshashclosedPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn DshashclosedPoint::norm(self : DshashclosedPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn ds_hash_closed_point_normalize(pt : DshashclosedPoint) -> DshashclosedPoint {
-  let n = ds_hash_closed_point_norm(pt)
-  if n < 0.0000001 { pt } else { ds_hash_closed_point_scale(pt, 1.0 / n) }
+pub fn DshashclosedPoint::normalize(self : DshashclosedPoint) -> DshashclosedPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn ds_hash_closed_point_negate(pt : DshashclosedPoint) -> DshashclosedPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn DshashclosedPoint::negate(self : DshashclosedPoint) -> DshashclosedPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn ds_hash_closed_point_mid(a : DshashclosedPoint, b : DshashclosedPoint) -> DshashclosedPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn DshashclosedPoint::mid(self : DshashclosedPoint, other : DshashclosedPoint) -> DshashclosedPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn ds_hash_closed_point_lerp(a : DshashclosedPoint, b : DshashclosedPoint, t : Double) -> DshashclosedPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn DshashclosedPoint::lerp(self : DshashclosedPoint, other : DshashclosedPoint, t : Double) -> DshashclosedPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn ds_hash_closed_point_to_string(pt : DshashclosedPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn DshashclosedPoint::to_string(self : DshashclosedPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct DshashclosedSeries {
@@ -86,58 +86,58 @@ pub fn ds_hash_closed_make_series(vals : Array[Double], name : String) -> Dshash
   { vals, name, meta: 0 }
 }
 
-pub fn ds_hash_closed_series_len(s : DshashclosedSeries) -> Int { s.vals.length() }
+pub fn DshashclosedSeries::len(self : DshashclosedSeries) -> Int { self.vals.length() }
 
-pub fn ds_hash_closed_series_sum(s : DshashclosedSeries) -> Double { @_common.sum(s.vals) }
+pub fn DshashclosedSeries::sum(self : DshashclosedSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn ds_hash_closed_series_mean(s : DshashclosedSeries) -> Double { @_common.mean(s.vals) }
+pub fn DshashclosedSeries::mean(self : DshashclosedSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn ds_hash_closed_series_min(s : DshashclosedSeries) -> Double { @_common.min(s.vals) }
+pub fn DshashclosedSeries::min(self : DshashclosedSeries) -> Double { @_common.min(self.vals) }
 
-pub fn ds_hash_closed_series_max(s : DshashclosedSeries) -> Double { @_common.max(s.vals) }
+pub fn DshashclosedSeries::max(self : DshashclosedSeries) -> Double { @_common.max(self.vals) }
 
-pub fn ds_hash_closed_series_range(s : DshashclosedSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn DshashclosedSeries::range(self : DshashclosedSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn ds_hash_closed_series_var(s : DshashclosedSeries) -> Double { @_common.variance(s.vals) }
+pub fn DshashclosedSeries::variance(self : DshashclosedSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn ds_hash_closed_series_std(s : DshashclosedSeries) -> Double { @_common.std(s.vals) }
+pub fn DshashclosedSeries::std(self : DshashclosedSeries) -> Double { @_common.std(self.vals) }
 
-pub fn ds_hash_closed_series_median(s : DshashclosedSeries) -> Double { @_common.median(s.vals) }
+pub fn DshashclosedSeries::median(self : DshashclosedSeries) -> Double { @_common.median(self.vals) }
 
-pub fn ds_hash_closed_series_scale(s : DshashclosedSeries, f : Double) -> DshashclosedSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn DshashclosedSeries::scale(self : DshashclosedSeries, f : Double) -> DshashclosedSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn ds_hash_closed_series_add(a : DshashclosedSeries, b : DshashclosedSeries) -> DshashclosedSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn DshashclosedSeries::add(self : DshashclosedSeries, other : DshashclosedSeries) -> DshashclosedSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn ds_hash_closed_series_sub(a : DshashclosedSeries, b : DshashclosedSeries) -> DshashclosedSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn DshashclosedSeries::sub(self : DshashclosedSeries, other : DshashclosedSeries) -> DshashclosedSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn ds_hash_closed_series_normalize(s : DshashclosedSeries) -> DshashclosedSeries {
-  let mn = ds_hash_closed_series_min(s)
-  let mx = ds_hash_closed_series_max(s)
+pub fn DshashclosedSeries::normalize(self : DshashclosedSeries) -> DshashclosedSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn ds_hash_closed_series_cumsum(s : DshashclosedSeries) -> DshashclosedSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn DshashclosedSeries::cumsum(self : DshashclosedSeries) -> DshashclosedSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn ds_hash_closed_series_to_string(s : DshashclosedSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn DshashclosedSeries::to_string(self : DshashclosedSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn ds_hash_closed_matrix_identity(n : Int) -> DshashclosedMatrix {
   m
 }
 
-pub fn ds_hash_closed_matrix_get(m : DshashclosedMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn DshashclosedMatrix::get(self : DshashclosedMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn ds_hash_closed_matrix_transpose(m : DshashclosedMatrix) -> DshashclosedMatrix {
-  let result = ds_hash_closed_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn DshashclosedMatrix::transpose(self : DshashclosedMatrix) -> DshashclosedMatrix {
+  let result = ds_hash_closed_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn ds_hash_closed_matrix_add(a : DshashclosedMatrix, b : DshashclosedMatrix) -> DshashclosedMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = ds_hash_closed_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn DshashclosedMatrix::add(self : DshashclosedMatrix, other : DshashclosedMatrix) -> DshashclosedMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = ds_hash_closed_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn ds_hash_closed_matrix_scale(m : DshashclosedMatrix, s : Double) -> DshashclosedMatrix {
-  let result = ds_hash_closed_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn DshashclosedMatrix::scale(self : DshashclosedMatrix, s : Double) -> DshashclosedMatrix {
+  let result = ds_hash_closed_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn ds_hash_closed_matrix_multiply(a : DshashclosedMatrix, b : DshashclosedMatrix) -> DshashclosedMatrix {
-  if a.cols != b.rows { return ds_hash_closed_make_matrix(a.rows, b.cols, 0.0) }
-  let result = ds_hash_closed_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn DshashclosedMatrix::multiply(self : DshashclosedMatrix, other : DshashclosedMatrix) -> DshashclosedMatrix {
+  if self.cols != other.rows { return ds_hash_closed_make_matrix(self.rows, other.cols, 0.0) }
+  let result = ds_hash_closed_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn ds_hash_closed_matrix_trace(m : DshashclosedMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn DshashclosedMatrix::trace(self : DshashclosedMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn ds_hash_closed_matrix_det(m : DshashclosedMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn DshashclosedMatrix::det(self : DshashclosedMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn ds_hash_closed_matrix_norm(m : DshashclosedMatrix) -> Double {
+pub fn DshashclosedMatrix::norm(self : DshashclosedMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn ds_hash_closed_matrix_to_string(m : DshashclosedMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn DshashclosedMatrix::to_string(self : DshashclosedMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn ds_hash_closed_vector_zero(dim : Int) -> DshashclosedVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn ds_hash_closed_vector_add(a : DshashclosedVector, b : DshashclosedVector) -> DshashclosedVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn DshashclosedVector::add(self : DshashclosedVector, other : DshashclosedVector) -> DshashclosedVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn ds_hash_closed_vector_sub(a : DshashclosedVector, b : DshashclosedVector) -> DshashclosedVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn DshashclosedVector::sub(self : DshashclosedVector, other : DshashclosedVector) -> DshashclosedVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn ds_hash_closed_vector_scale(v : DshashclosedVector, s : Double) -> DshashclosedVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn DshashclosedVector::scale(self : DshashclosedVector, s : Double) -> DshashclosedVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn ds_hash_closed_vector_dot(a : DshashclosedVector, b : DshashclosedVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn DshashclosedVector::dot(self : DshashclosedVector, other : DshashclosedVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn ds_hash_closed_vector_norm(v : DshashclosedVector) -> Double { @_common.sqrt(ds_hash_closed_vector_dot(v, v)) }
+pub fn DshashclosedVector::norm(self : DshashclosedVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn ds_hash_closed_vector_normalize(v : DshashclosedVector) -> DshashclosedVector {
-  let n = ds_hash_closed_vector_norm(v)
-  if n < 0.0000001 { v } else { ds_hash_closed_vector_scale(v, 1.0 / n) }
+pub fn DshashclosedVector::normalize(self : DshashclosedVector) -> DshashclosedVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn ds_hash_closed_vector_dist(a : DshashclosedVector, b : DshashclosedVector) -> Double {
-  ds_hash_closed_vector_norm(ds_hash_closed_vector_sub(a, b))
+pub fn DshashclosedVector::dist(self : DshashclosedVector, other : DshashclosedVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn ds_hash_closed_vector_to_string(v : DshashclosedVector) -> String {
+pub fn DshashclosedVector::to_string(self : DshashclosedVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn ds_hash_closed_mean(data : Array[Double]) -> Double { @_common.mean(data) }

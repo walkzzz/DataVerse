@@ -16,64 +16,64 @@ pub fn crypto_asym_elgamal_make_point3(x : Double, y : Double, z : Double) -> Cr
   { x, y, z, label: 0 }
 }
 
-pub fn crypto_asym_elgamal_point_x(pt : CryptoasymelgamalPoint) -> Double { pt.x }
+pub fn CryptoasymelgamalPoint::x(self : CryptoasymelgamalPoint) -> Double { self.x }
 
-pub fn crypto_asym_elgamal_point_y(pt : CryptoasymelgamalPoint) -> Double { pt.y }
+pub fn CryptoasymelgamalPoint::y(self : CryptoasymelgamalPoint) -> Double { self.y }
 
-pub fn crypto_asym_elgamal_point_z(pt : CryptoasymelgamalPoint) -> Double { pt.z }
+pub fn CryptoasymelgamalPoint::z(self : CryptoasymelgamalPoint) -> Double { self.z }
 
-pub fn crypto_asym_elgamal_point_label(pt : CryptoasymelgamalPoint) -> Int { pt.label }
+pub fn CryptoasymelgamalPoint::label(self : CryptoasymelgamalPoint) -> Int { self.label }
 
-pub fn crypto_asym_elgamal_point_dist(a : CryptoasymelgamalPoint, b : CryptoasymelgamalPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn CryptoasymelgamalPoint::dist(self : CryptoasymelgamalPoint, other : CryptoasymelgamalPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn crypto_asym_elgamal_point_add(a : CryptoasymelgamalPoint, b : CryptoasymelgamalPoint) -> CryptoasymelgamalPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn CryptoasymelgamalPoint::add(self : CryptoasymelgamalPoint, other : CryptoasymelgamalPoint) -> CryptoasymelgamalPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn crypto_asym_elgamal_point_sub(a : CryptoasymelgamalPoint, b : CryptoasymelgamalPoint) -> CryptoasymelgamalPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn CryptoasymelgamalPoint::sub(self : CryptoasymelgamalPoint, other : CryptoasymelgamalPoint) -> CryptoasymelgamalPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn crypto_asym_elgamal_point_scale(pt : CryptoasymelgamalPoint, s : Double) -> CryptoasymelgamalPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn CryptoasymelgamalPoint::scale(self : CryptoasymelgamalPoint, s : Double) -> CryptoasymelgamalPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn crypto_asym_elgamal_point_dot(a : CryptoasymelgamalPoint, b : CryptoasymelgamalPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn CryptoasymelgamalPoint::dot(self : CryptoasymelgamalPoint, other : CryptoasymelgamalPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn crypto_asym_elgamal_point_cross(a : CryptoasymelgamalPoint, b : CryptoasymelgamalPoint) -> CryptoasymelgamalPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn CryptoasymelgamalPoint::cross(self : CryptoasymelgamalPoint, other : CryptoasymelgamalPoint) -> CryptoasymelgamalPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn crypto_asym_elgamal_point_norm(pt : CryptoasymelgamalPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn CryptoasymelgamalPoint::norm(self : CryptoasymelgamalPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn crypto_asym_elgamal_point_normalize(pt : CryptoasymelgamalPoint) -> CryptoasymelgamalPoint {
-  let n = crypto_asym_elgamal_point_norm(pt)
-  if n < 0.0000001 { pt } else { crypto_asym_elgamal_point_scale(pt, 1.0 / n) }
+pub fn CryptoasymelgamalPoint::normalize(self : CryptoasymelgamalPoint) -> CryptoasymelgamalPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn crypto_asym_elgamal_point_negate(pt : CryptoasymelgamalPoint) -> CryptoasymelgamalPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn CryptoasymelgamalPoint::negate(self : CryptoasymelgamalPoint) -> CryptoasymelgamalPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn crypto_asym_elgamal_point_mid(a : CryptoasymelgamalPoint, b : CryptoasymelgamalPoint) -> CryptoasymelgamalPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn CryptoasymelgamalPoint::mid(self : CryptoasymelgamalPoint, other : CryptoasymelgamalPoint) -> CryptoasymelgamalPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn crypto_asym_elgamal_point_lerp(a : CryptoasymelgamalPoint, b : CryptoasymelgamalPoint, t : Double) -> CryptoasymelgamalPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn CryptoasymelgamalPoint::lerp(self : CryptoasymelgamalPoint, other : CryptoasymelgamalPoint, t : Double) -> CryptoasymelgamalPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn crypto_asym_elgamal_point_to_string(pt : CryptoasymelgamalPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn CryptoasymelgamalPoint::to_string(self : CryptoasymelgamalPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct CryptoasymelgamalSeries {
@@ -86,58 +86,58 @@ pub fn crypto_asym_elgamal_make_series(vals : Array[Double], name : String) -> C
   { vals, name, meta: 0 }
 }
 
-pub fn crypto_asym_elgamal_series_len(s : CryptoasymelgamalSeries) -> Int { s.vals.length() }
+pub fn CryptoasymelgamalSeries::len(self : CryptoasymelgamalSeries) -> Int { self.vals.length() }
 
-pub fn crypto_asym_elgamal_series_sum(s : CryptoasymelgamalSeries) -> Double { @_common.sum(s.vals) }
+pub fn CryptoasymelgamalSeries::sum(self : CryptoasymelgamalSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn crypto_asym_elgamal_series_mean(s : CryptoasymelgamalSeries) -> Double { @_common.mean(s.vals) }
+pub fn CryptoasymelgamalSeries::mean(self : CryptoasymelgamalSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn crypto_asym_elgamal_series_min(s : CryptoasymelgamalSeries) -> Double { @_common.min(s.vals) }
+pub fn CryptoasymelgamalSeries::min(self : CryptoasymelgamalSeries) -> Double { @_common.min(self.vals) }
 
-pub fn crypto_asym_elgamal_series_max(s : CryptoasymelgamalSeries) -> Double { @_common.max(s.vals) }
+pub fn CryptoasymelgamalSeries::max(self : CryptoasymelgamalSeries) -> Double { @_common.max(self.vals) }
 
-pub fn crypto_asym_elgamal_series_range(s : CryptoasymelgamalSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn CryptoasymelgamalSeries::range(self : CryptoasymelgamalSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn crypto_asym_elgamal_series_var(s : CryptoasymelgamalSeries) -> Double { @_common.variance(s.vals) }
+pub fn CryptoasymelgamalSeries::variance(self : CryptoasymelgamalSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn crypto_asym_elgamal_series_std(s : CryptoasymelgamalSeries) -> Double { @_common.std(s.vals) }
+pub fn CryptoasymelgamalSeries::std(self : CryptoasymelgamalSeries) -> Double { @_common.std(self.vals) }
 
-pub fn crypto_asym_elgamal_series_median(s : CryptoasymelgamalSeries) -> Double { @_common.median(s.vals) }
+pub fn CryptoasymelgamalSeries::median(self : CryptoasymelgamalSeries) -> Double { @_common.median(self.vals) }
 
-pub fn crypto_asym_elgamal_series_scale(s : CryptoasymelgamalSeries, f : Double) -> CryptoasymelgamalSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn CryptoasymelgamalSeries::scale(self : CryptoasymelgamalSeries, f : Double) -> CryptoasymelgamalSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn crypto_asym_elgamal_series_add(a : CryptoasymelgamalSeries, b : CryptoasymelgamalSeries) -> CryptoasymelgamalSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn CryptoasymelgamalSeries::add(self : CryptoasymelgamalSeries, other : CryptoasymelgamalSeries) -> CryptoasymelgamalSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn crypto_asym_elgamal_series_sub(a : CryptoasymelgamalSeries, b : CryptoasymelgamalSeries) -> CryptoasymelgamalSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn CryptoasymelgamalSeries::sub(self : CryptoasymelgamalSeries, other : CryptoasymelgamalSeries) -> CryptoasymelgamalSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn crypto_asym_elgamal_series_normalize(s : CryptoasymelgamalSeries) -> CryptoasymelgamalSeries {
-  let mn = crypto_asym_elgamal_series_min(s)
-  let mx = crypto_asym_elgamal_series_max(s)
+pub fn CryptoasymelgamalSeries::normalize(self : CryptoasymelgamalSeries) -> CryptoasymelgamalSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn crypto_asym_elgamal_series_cumsum(s : CryptoasymelgamalSeries) -> CryptoasymelgamalSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn CryptoasymelgamalSeries::cumsum(self : CryptoasymelgamalSeries) -> CryptoasymelgamalSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn crypto_asym_elgamal_series_to_string(s : CryptoasymelgamalSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn CryptoasymelgamalSeries::to_string(self : CryptoasymelgamalSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn crypto_asym_elgamal_matrix_identity(n : Int) -> CryptoasymelgamalMatrix {
   m
 }
 
-pub fn crypto_asym_elgamal_matrix_get(m : CryptoasymelgamalMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn CryptoasymelgamalMatrix::get(self : CryptoasymelgamalMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn crypto_asym_elgamal_matrix_transpose(m : CryptoasymelgamalMatrix) -> CryptoasymelgamalMatrix {
-  let result = crypto_asym_elgamal_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn CryptoasymelgamalMatrix::transpose(self : CryptoasymelgamalMatrix) -> CryptoasymelgamalMatrix {
+  let result = crypto_asym_elgamal_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn crypto_asym_elgamal_matrix_add(a : CryptoasymelgamalMatrix, b : CryptoasymelgamalMatrix) -> CryptoasymelgamalMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = crypto_asym_elgamal_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn CryptoasymelgamalMatrix::add(self : CryptoasymelgamalMatrix, other : CryptoasymelgamalMatrix) -> CryptoasymelgamalMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = crypto_asym_elgamal_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn crypto_asym_elgamal_matrix_scale(m : CryptoasymelgamalMatrix, s : Double) -> CryptoasymelgamalMatrix {
-  let result = crypto_asym_elgamal_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn CryptoasymelgamalMatrix::scale(self : CryptoasymelgamalMatrix, s : Double) -> CryptoasymelgamalMatrix {
+  let result = crypto_asym_elgamal_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn crypto_asym_elgamal_matrix_multiply(a : CryptoasymelgamalMatrix, b : CryptoasymelgamalMatrix) -> CryptoasymelgamalMatrix {
-  if a.cols != b.rows { return crypto_asym_elgamal_make_matrix(a.rows, b.cols, 0.0) }
-  let result = crypto_asym_elgamal_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn CryptoasymelgamalMatrix::multiply(self : CryptoasymelgamalMatrix, other : CryptoasymelgamalMatrix) -> CryptoasymelgamalMatrix {
+  if self.cols != other.rows { return crypto_asym_elgamal_make_matrix(self.rows, other.cols, 0.0) }
+  let result = crypto_asym_elgamal_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn crypto_asym_elgamal_matrix_trace(m : CryptoasymelgamalMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn CryptoasymelgamalMatrix::trace(self : CryptoasymelgamalMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn crypto_asym_elgamal_matrix_det(m : CryptoasymelgamalMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn CryptoasymelgamalMatrix::det(self : CryptoasymelgamalMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn crypto_asym_elgamal_matrix_norm(m : CryptoasymelgamalMatrix) -> Double {
+pub fn CryptoasymelgamalMatrix::norm(self : CryptoasymelgamalMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn crypto_asym_elgamal_matrix_to_string(m : CryptoasymelgamalMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn CryptoasymelgamalMatrix::to_string(self : CryptoasymelgamalMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn crypto_asym_elgamal_vector_zero(dim : Int) -> CryptoasymelgamalVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn crypto_asym_elgamal_vector_add(a : CryptoasymelgamalVector, b : CryptoasymelgamalVector) -> CryptoasymelgamalVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn CryptoasymelgamalVector::add(self : CryptoasymelgamalVector, other : CryptoasymelgamalVector) -> CryptoasymelgamalVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn crypto_asym_elgamal_vector_sub(a : CryptoasymelgamalVector, b : CryptoasymelgamalVector) -> CryptoasymelgamalVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn CryptoasymelgamalVector::sub(self : CryptoasymelgamalVector, other : CryptoasymelgamalVector) -> CryptoasymelgamalVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn crypto_asym_elgamal_vector_scale(v : CryptoasymelgamalVector, s : Double) -> CryptoasymelgamalVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn CryptoasymelgamalVector::scale(self : CryptoasymelgamalVector, s : Double) -> CryptoasymelgamalVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn crypto_asym_elgamal_vector_dot(a : CryptoasymelgamalVector, b : CryptoasymelgamalVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn CryptoasymelgamalVector::dot(self : CryptoasymelgamalVector, other : CryptoasymelgamalVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn crypto_asym_elgamal_vector_norm(v : CryptoasymelgamalVector) -> Double { @_common.sqrt(crypto_asym_elgamal_vector_dot(v, v)) }
+pub fn CryptoasymelgamalVector::norm(self : CryptoasymelgamalVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn crypto_asym_elgamal_vector_normalize(v : CryptoasymelgamalVector) -> CryptoasymelgamalVector {
-  let n = crypto_asym_elgamal_vector_norm(v)
-  if n < 0.0000001 { v } else { crypto_asym_elgamal_vector_scale(v, 1.0 / n) }
+pub fn CryptoasymelgamalVector::normalize(self : CryptoasymelgamalVector) -> CryptoasymelgamalVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn crypto_asym_elgamal_vector_dist(a : CryptoasymelgamalVector, b : CryptoasymelgamalVector) -> Double {
-  crypto_asym_elgamal_vector_norm(crypto_asym_elgamal_vector_sub(a, b))
+pub fn CryptoasymelgamalVector::dist(self : CryptoasymelgamalVector, other : CryptoasymelgamalVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn crypto_asym_elgamal_vector_to_string(v : CryptoasymelgamalVector) -> String {
+pub fn CryptoasymelgamalVector::to_string(self : CryptoasymelgamalVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn crypto_asym_elgamal_mean(data : Array[Double]) -> Double { @_common.mean(data) }

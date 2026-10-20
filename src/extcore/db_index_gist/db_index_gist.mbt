@@ -16,64 +16,64 @@ pub fn db_index_gist_make_point3(x : Double, y : Double, z : Double) -> Dbindexg
   { x, y, z, label: 0 }
 }
 
-pub fn db_index_gist_point_x(pt : DbindexgistPoint) -> Double { pt.x }
+pub fn DbindexgistPoint::x(self : DbindexgistPoint) -> Double { self.x }
 
-pub fn db_index_gist_point_y(pt : DbindexgistPoint) -> Double { pt.y }
+pub fn DbindexgistPoint::y(self : DbindexgistPoint) -> Double { self.y }
 
-pub fn db_index_gist_point_z(pt : DbindexgistPoint) -> Double { pt.z }
+pub fn DbindexgistPoint::z(self : DbindexgistPoint) -> Double { self.z }
 
-pub fn db_index_gist_point_label(pt : DbindexgistPoint) -> Int { pt.label }
+pub fn DbindexgistPoint::label(self : DbindexgistPoint) -> Int { self.label }
 
-pub fn db_index_gist_point_dist(a : DbindexgistPoint, b : DbindexgistPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn DbindexgistPoint::dist(self : DbindexgistPoint, other : DbindexgistPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn db_index_gist_point_add(a : DbindexgistPoint, b : DbindexgistPoint) -> DbindexgistPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn DbindexgistPoint::add(self : DbindexgistPoint, other : DbindexgistPoint) -> DbindexgistPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn db_index_gist_point_sub(a : DbindexgistPoint, b : DbindexgistPoint) -> DbindexgistPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn DbindexgistPoint::sub(self : DbindexgistPoint, other : DbindexgistPoint) -> DbindexgistPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn db_index_gist_point_scale(pt : DbindexgistPoint, s : Double) -> DbindexgistPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn DbindexgistPoint::scale(self : DbindexgistPoint, s : Double) -> DbindexgistPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn db_index_gist_point_dot(a : DbindexgistPoint, b : DbindexgistPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn DbindexgistPoint::dot(self : DbindexgistPoint, other : DbindexgistPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn db_index_gist_point_cross(a : DbindexgistPoint, b : DbindexgistPoint) -> DbindexgistPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn DbindexgistPoint::cross(self : DbindexgistPoint, other : DbindexgistPoint) -> DbindexgistPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn db_index_gist_point_norm(pt : DbindexgistPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn DbindexgistPoint::norm(self : DbindexgistPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn db_index_gist_point_normalize(pt : DbindexgistPoint) -> DbindexgistPoint {
-  let n = db_index_gist_point_norm(pt)
-  if n < 0.0000001 { pt } else { db_index_gist_point_scale(pt, 1.0 / n) }
+pub fn DbindexgistPoint::normalize(self : DbindexgistPoint) -> DbindexgistPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn db_index_gist_point_negate(pt : DbindexgistPoint) -> DbindexgistPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn DbindexgistPoint::negate(self : DbindexgistPoint) -> DbindexgistPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn db_index_gist_point_mid(a : DbindexgistPoint, b : DbindexgistPoint) -> DbindexgistPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn DbindexgistPoint::mid(self : DbindexgistPoint, other : DbindexgistPoint) -> DbindexgistPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn db_index_gist_point_lerp(a : DbindexgistPoint, b : DbindexgistPoint, t : Double) -> DbindexgistPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn DbindexgistPoint::lerp(self : DbindexgistPoint, other : DbindexgistPoint, t : Double) -> DbindexgistPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn db_index_gist_point_to_string(pt : DbindexgistPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn DbindexgistPoint::to_string(self : DbindexgistPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct DbindexgistSeries {
@@ -86,58 +86,58 @@ pub fn db_index_gist_make_series(vals : Array[Double], name : String) -> Dbindex
   { vals, name, meta: 0 }
 }
 
-pub fn db_index_gist_series_len(s : DbindexgistSeries) -> Int { s.vals.length() }
+pub fn DbindexgistSeries::len(self : DbindexgistSeries) -> Int { self.vals.length() }
 
-pub fn db_index_gist_series_sum(s : DbindexgistSeries) -> Double { @_common.sum(s.vals) }
+pub fn DbindexgistSeries::sum(self : DbindexgistSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn db_index_gist_series_mean(s : DbindexgistSeries) -> Double { @_common.mean(s.vals) }
+pub fn DbindexgistSeries::mean(self : DbindexgistSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn db_index_gist_series_min(s : DbindexgistSeries) -> Double { @_common.min(s.vals) }
+pub fn DbindexgistSeries::min(self : DbindexgistSeries) -> Double { @_common.min(self.vals) }
 
-pub fn db_index_gist_series_max(s : DbindexgistSeries) -> Double { @_common.max(s.vals) }
+pub fn DbindexgistSeries::max(self : DbindexgistSeries) -> Double { @_common.max(self.vals) }
 
-pub fn db_index_gist_series_range(s : DbindexgistSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn DbindexgistSeries::range(self : DbindexgistSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn db_index_gist_series_var(s : DbindexgistSeries) -> Double { @_common.variance(s.vals) }
+pub fn DbindexgistSeries::variance(self : DbindexgistSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn db_index_gist_series_std(s : DbindexgistSeries) -> Double { @_common.std(s.vals) }
+pub fn DbindexgistSeries::std(self : DbindexgistSeries) -> Double { @_common.std(self.vals) }
 
-pub fn db_index_gist_series_median(s : DbindexgistSeries) -> Double { @_common.median(s.vals) }
+pub fn DbindexgistSeries::median(self : DbindexgistSeries) -> Double { @_common.median(self.vals) }
 
-pub fn db_index_gist_series_scale(s : DbindexgistSeries, f : Double) -> DbindexgistSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn DbindexgistSeries::scale(self : DbindexgistSeries, f : Double) -> DbindexgistSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn db_index_gist_series_add(a : DbindexgistSeries, b : DbindexgistSeries) -> DbindexgistSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn DbindexgistSeries::add(self : DbindexgistSeries, other : DbindexgistSeries) -> DbindexgistSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn db_index_gist_series_sub(a : DbindexgistSeries, b : DbindexgistSeries) -> DbindexgistSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn DbindexgistSeries::sub(self : DbindexgistSeries, other : DbindexgistSeries) -> DbindexgistSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn db_index_gist_series_normalize(s : DbindexgistSeries) -> DbindexgistSeries {
-  let mn = db_index_gist_series_min(s)
-  let mx = db_index_gist_series_max(s)
+pub fn DbindexgistSeries::normalize(self : DbindexgistSeries) -> DbindexgistSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn db_index_gist_series_cumsum(s : DbindexgistSeries) -> DbindexgistSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn DbindexgistSeries::cumsum(self : DbindexgistSeries) -> DbindexgistSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn db_index_gist_series_to_string(s : DbindexgistSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn DbindexgistSeries::to_string(self : DbindexgistSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn db_index_gist_matrix_identity(n : Int) -> DbindexgistMatrix {
   m
 }
 
-pub fn db_index_gist_matrix_get(m : DbindexgistMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn DbindexgistMatrix::get(self : DbindexgistMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn db_index_gist_matrix_transpose(m : DbindexgistMatrix) -> DbindexgistMatrix {
-  let result = db_index_gist_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn DbindexgistMatrix::transpose(self : DbindexgistMatrix) -> DbindexgistMatrix {
+  let result = db_index_gist_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn db_index_gist_matrix_add(a : DbindexgistMatrix, b : DbindexgistMatrix) -> DbindexgistMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = db_index_gist_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn DbindexgistMatrix::add(self : DbindexgistMatrix, other : DbindexgistMatrix) -> DbindexgistMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = db_index_gist_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn db_index_gist_matrix_scale(m : DbindexgistMatrix, s : Double) -> DbindexgistMatrix {
-  let result = db_index_gist_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn DbindexgistMatrix::scale(self : DbindexgistMatrix, s : Double) -> DbindexgistMatrix {
+  let result = db_index_gist_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn db_index_gist_matrix_multiply(a : DbindexgistMatrix, b : DbindexgistMatrix) -> DbindexgistMatrix {
-  if a.cols != b.rows { return db_index_gist_make_matrix(a.rows, b.cols, 0.0) }
-  let result = db_index_gist_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn DbindexgistMatrix::multiply(self : DbindexgistMatrix, other : DbindexgistMatrix) -> DbindexgistMatrix {
+  if self.cols != other.rows { return db_index_gist_make_matrix(self.rows, other.cols, 0.0) }
+  let result = db_index_gist_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn db_index_gist_matrix_trace(m : DbindexgistMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn DbindexgistMatrix::trace(self : DbindexgistMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn db_index_gist_matrix_det(m : DbindexgistMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn DbindexgistMatrix::det(self : DbindexgistMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn db_index_gist_matrix_norm(m : DbindexgistMatrix) -> Double {
+pub fn DbindexgistMatrix::norm(self : DbindexgistMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn db_index_gist_matrix_to_string(m : DbindexgistMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn DbindexgistMatrix::to_string(self : DbindexgistMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn db_index_gist_vector_zero(dim : Int) -> DbindexgistVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn db_index_gist_vector_add(a : DbindexgistVector, b : DbindexgistVector) -> DbindexgistVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn DbindexgistVector::add(self : DbindexgistVector, other : DbindexgistVector) -> DbindexgistVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn db_index_gist_vector_sub(a : DbindexgistVector, b : DbindexgistVector) -> DbindexgistVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn DbindexgistVector::sub(self : DbindexgistVector, other : DbindexgistVector) -> DbindexgistVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn db_index_gist_vector_scale(v : DbindexgistVector, s : Double) -> DbindexgistVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn DbindexgistVector::scale(self : DbindexgistVector, s : Double) -> DbindexgistVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn db_index_gist_vector_dot(a : DbindexgistVector, b : DbindexgistVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn DbindexgistVector::dot(self : DbindexgistVector, other : DbindexgistVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn db_index_gist_vector_norm(v : DbindexgistVector) -> Double { @_common.sqrt(db_index_gist_vector_dot(v, v)) }
+pub fn DbindexgistVector::norm(self : DbindexgistVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn db_index_gist_vector_normalize(v : DbindexgistVector) -> DbindexgistVector {
-  let n = db_index_gist_vector_norm(v)
-  if n < 0.0000001 { v } else { db_index_gist_vector_scale(v, 1.0 / n) }
+pub fn DbindexgistVector::normalize(self : DbindexgistVector) -> DbindexgistVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn db_index_gist_vector_dist(a : DbindexgistVector, b : DbindexgistVector) -> Double {
-  db_index_gist_vector_norm(db_index_gist_vector_sub(a, b))
+pub fn DbindexgistVector::dist(self : DbindexgistVector, other : DbindexgistVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn db_index_gist_vector_to_string(v : DbindexgistVector) -> String {
+pub fn DbindexgistVector::to_string(self : DbindexgistVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn db_index_gist_mean(data : Array[Double]) -> Double { @_common.mean(data) }

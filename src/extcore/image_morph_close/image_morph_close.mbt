@@ -16,64 +16,64 @@ pub fn image_morph_close_make_point3(x : Double, y : Double, z : Double) -> Imag
   { x, y, z, label: 0 }
 }
 
-pub fn image_morph_close_point_x(pt : ImagemorphclosePoint) -> Double { pt.x }
+pub fn ImagemorphclosePoint::x(self : ImagemorphclosePoint) -> Double { self.x }
 
-pub fn image_morph_close_point_y(pt : ImagemorphclosePoint) -> Double { pt.y }
+pub fn ImagemorphclosePoint::y(self : ImagemorphclosePoint) -> Double { self.y }
 
-pub fn image_morph_close_point_z(pt : ImagemorphclosePoint) -> Double { pt.z }
+pub fn ImagemorphclosePoint::z(self : ImagemorphclosePoint) -> Double { self.z }
 
-pub fn image_morph_close_point_label(pt : ImagemorphclosePoint) -> Int { pt.label }
+pub fn ImagemorphclosePoint::label(self : ImagemorphclosePoint) -> Int { self.label }
 
-pub fn image_morph_close_point_dist(a : ImagemorphclosePoint, b : ImagemorphclosePoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn ImagemorphclosePoint::dist(self : ImagemorphclosePoint, other : ImagemorphclosePoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn image_morph_close_point_add(a : ImagemorphclosePoint, b : ImagemorphclosePoint) -> ImagemorphclosePoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn ImagemorphclosePoint::add(self : ImagemorphclosePoint, other : ImagemorphclosePoint) -> ImagemorphclosePoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn image_morph_close_point_sub(a : ImagemorphclosePoint, b : ImagemorphclosePoint) -> ImagemorphclosePoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn ImagemorphclosePoint::sub(self : ImagemorphclosePoint, other : ImagemorphclosePoint) -> ImagemorphclosePoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn image_morph_close_point_scale(pt : ImagemorphclosePoint, s : Double) -> ImagemorphclosePoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn ImagemorphclosePoint::scale(self : ImagemorphclosePoint, s : Double) -> ImagemorphclosePoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn image_morph_close_point_dot(a : ImagemorphclosePoint, b : ImagemorphclosePoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn ImagemorphclosePoint::dot(self : ImagemorphclosePoint, other : ImagemorphclosePoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn image_morph_close_point_cross(a : ImagemorphclosePoint, b : ImagemorphclosePoint) -> ImagemorphclosePoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn ImagemorphclosePoint::cross(self : ImagemorphclosePoint, other : ImagemorphclosePoint) -> ImagemorphclosePoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn image_morph_close_point_norm(pt : ImagemorphclosePoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn ImagemorphclosePoint::norm(self : ImagemorphclosePoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn image_morph_close_point_normalize(pt : ImagemorphclosePoint) -> ImagemorphclosePoint {
-  let n = image_morph_close_point_norm(pt)
-  if n < 0.0000001 { pt } else { image_morph_close_point_scale(pt, 1.0 / n) }
+pub fn ImagemorphclosePoint::normalize(self : ImagemorphclosePoint) -> ImagemorphclosePoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn image_morph_close_point_negate(pt : ImagemorphclosePoint) -> ImagemorphclosePoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn ImagemorphclosePoint::negate(self : ImagemorphclosePoint) -> ImagemorphclosePoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn image_morph_close_point_mid(a : ImagemorphclosePoint, b : ImagemorphclosePoint) -> ImagemorphclosePoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn ImagemorphclosePoint::mid(self : ImagemorphclosePoint, other : ImagemorphclosePoint) -> ImagemorphclosePoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn image_morph_close_point_lerp(a : ImagemorphclosePoint, b : ImagemorphclosePoint, t : Double) -> ImagemorphclosePoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn ImagemorphclosePoint::lerp(self : ImagemorphclosePoint, other : ImagemorphclosePoint, t : Double) -> ImagemorphclosePoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn image_morph_close_point_to_string(pt : ImagemorphclosePoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn ImagemorphclosePoint::to_string(self : ImagemorphclosePoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct ImagemorphcloseSeries {
@@ -86,58 +86,58 @@ pub fn image_morph_close_make_series(vals : Array[Double], name : String) -> Ima
   { vals, name, meta: 0 }
 }
 
-pub fn image_morph_close_series_len(s : ImagemorphcloseSeries) -> Int { s.vals.length() }
+pub fn ImagemorphcloseSeries::len(self : ImagemorphcloseSeries) -> Int { self.vals.length() }
 
-pub fn image_morph_close_series_sum(s : ImagemorphcloseSeries) -> Double { @_common.sum(s.vals) }
+pub fn ImagemorphcloseSeries::sum(self : ImagemorphcloseSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn image_morph_close_series_mean(s : ImagemorphcloseSeries) -> Double { @_common.mean(s.vals) }
+pub fn ImagemorphcloseSeries::mean(self : ImagemorphcloseSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn image_morph_close_series_min(s : ImagemorphcloseSeries) -> Double { @_common.min(s.vals) }
+pub fn ImagemorphcloseSeries::min(self : ImagemorphcloseSeries) -> Double { @_common.min(self.vals) }
 
-pub fn image_morph_close_series_max(s : ImagemorphcloseSeries) -> Double { @_common.max(s.vals) }
+pub fn ImagemorphcloseSeries::max(self : ImagemorphcloseSeries) -> Double { @_common.max(self.vals) }
 
-pub fn image_morph_close_series_range(s : ImagemorphcloseSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn ImagemorphcloseSeries::range(self : ImagemorphcloseSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn image_morph_close_series_var(s : ImagemorphcloseSeries) -> Double { @_common.variance(s.vals) }
+pub fn ImagemorphcloseSeries::variance(self : ImagemorphcloseSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn image_morph_close_series_std(s : ImagemorphcloseSeries) -> Double { @_common.std(s.vals) }
+pub fn ImagemorphcloseSeries::std(self : ImagemorphcloseSeries) -> Double { @_common.std(self.vals) }
 
-pub fn image_morph_close_series_median(s : ImagemorphcloseSeries) -> Double { @_common.median(s.vals) }
+pub fn ImagemorphcloseSeries::median(self : ImagemorphcloseSeries) -> Double { @_common.median(self.vals) }
 
-pub fn image_morph_close_series_scale(s : ImagemorphcloseSeries, f : Double) -> ImagemorphcloseSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn ImagemorphcloseSeries::scale(self : ImagemorphcloseSeries, f : Double) -> ImagemorphcloseSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn image_morph_close_series_add(a : ImagemorphcloseSeries, b : ImagemorphcloseSeries) -> ImagemorphcloseSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn ImagemorphcloseSeries::add(self : ImagemorphcloseSeries, other : ImagemorphcloseSeries) -> ImagemorphcloseSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn image_morph_close_series_sub(a : ImagemorphcloseSeries, b : ImagemorphcloseSeries) -> ImagemorphcloseSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn ImagemorphcloseSeries::sub(self : ImagemorphcloseSeries, other : ImagemorphcloseSeries) -> ImagemorphcloseSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn image_morph_close_series_normalize(s : ImagemorphcloseSeries) -> ImagemorphcloseSeries {
-  let mn = image_morph_close_series_min(s)
-  let mx = image_morph_close_series_max(s)
+pub fn ImagemorphcloseSeries::normalize(self : ImagemorphcloseSeries) -> ImagemorphcloseSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn image_morph_close_series_cumsum(s : ImagemorphcloseSeries) -> ImagemorphcloseSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn ImagemorphcloseSeries::cumsum(self : ImagemorphcloseSeries) -> ImagemorphcloseSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn image_morph_close_series_to_string(s : ImagemorphcloseSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn ImagemorphcloseSeries::to_string(self : ImagemorphcloseSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn image_morph_close_matrix_identity(n : Int) -> ImagemorphcloseMatrix {
   m
 }
 
-pub fn image_morph_close_matrix_get(m : ImagemorphcloseMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn ImagemorphcloseMatrix::get(self : ImagemorphcloseMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn image_morph_close_matrix_transpose(m : ImagemorphcloseMatrix) -> ImagemorphcloseMatrix {
-  let result = image_morph_close_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn ImagemorphcloseMatrix::transpose(self : ImagemorphcloseMatrix) -> ImagemorphcloseMatrix {
+  let result = image_morph_close_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn image_morph_close_matrix_add(a : ImagemorphcloseMatrix, b : ImagemorphcloseMatrix) -> ImagemorphcloseMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = image_morph_close_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn ImagemorphcloseMatrix::add(self : ImagemorphcloseMatrix, other : ImagemorphcloseMatrix) -> ImagemorphcloseMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = image_morph_close_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn image_morph_close_matrix_scale(m : ImagemorphcloseMatrix, s : Double) -> ImagemorphcloseMatrix {
-  let result = image_morph_close_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn ImagemorphcloseMatrix::scale(self : ImagemorphcloseMatrix, s : Double) -> ImagemorphcloseMatrix {
+  let result = image_morph_close_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn image_morph_close_matrix_multiply(a : ImagemorphcloseMatrix, b : ImagemorphcloseMatrix) -> ImagemorphcloseMatrix {
-  if a.cols != b.rows { return image_morph_close_make_matrix(a.rows, b.cols, 0.0) }
-  let result = image_morph_close_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn ImagemorphcloseMatrix::multiply(self : ImagemorphcloseMatrix, other : ImagemorphcloseMatrix) -> ImagemorphcloseMatrix {
+  if self.cols != other.rows { return image_morph_close_make_matrix(self.rows, other.cols, 0.0) }
+  let result = image_morph_close_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn image_morph_close_matrix_trace(m : ImagemorphcloseMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn ImagemorphcloseMatrix::trace(self : ImagemorphcloseMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn image_morph_close_matrix_det(m : ImagemorphcloseMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn ImagemorphcloseMatrix::det(self : ImagemorphcloseMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn image_morph_close_matrix_norm(m : ImagemorphcloseMatrix) -> Double {
+pub fn ImagemorphcloseMatrix::norm(self : ImagemorphcloseMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn image_morph_close_matrix_to_string(m : ImagemorphcloseMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn ImagemorphcloseMatrix::to_string(self : ImagemorphcloseMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn image_morph_close_vector_zero(dim : Int) -> ImagemorphcloseVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn image_morph_close_vector_add(a : ImagemorphcloseVector, b : ImagemorphcloseVector) -> ImagemorphcloseVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn ImagemorphcloseVector::add(self : ImagemorphcloseVector, other : ImagemorphcloseVector) -> ImagemorphcloseVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn image_morph_close_vector_sub(a : ImagemorphcloseVector, b : ImagemorphcloseVector) -> ImagemorphcloseVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn ImagemorphcloseVector::sub(self : ImagemorphcloseVector, other : ImagemorphcloseVector) -> ImagemorphcloseVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn image_morph_close_vector_scale(v : ImagemorphcloseVector, s : Double) -> ImagemorphcloseVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn ImagemorphcloseVector::scale(self : ImagemorphcloseVector, s : Double) -> ImagemorphcloseVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn image_morph_close_vector_dot(a : ImagemorphcloseVector, b : ImagemorphcloseVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn ImagemorphcloseVector::dot(self : ImagemorphcloseVector, other : ImagemorphcloseVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn image_morph_close_vector_norm(v : ImagemorphcloseVector) -> Double { @_common.sqrt(image_morph_close_vector_dot(v, v)) }
+pub fn ImagemorphcloseVector::norm(self : ImagemorphcloseVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn image_morph_close_vector_normalize(v : ImagemorphcloseVector) -> ImagemorphcloseVector {
-  let n = image_morph_close_vector_norm(v)
-  if n < 0.0000001 { v } else { image_morph_close_vector_scale(v, 1.0 / n) }
+pub fn ImagemorphcloseVector::normalize(self : ImagemorphcloseVector) -> ImagemorphcloseVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn image_morph_close_vector_dist(a : ImagemorphcloseVector, b : ImagemorphcloseVector) -> Double {
-  image_morph_close_vector_norm(image_morph_close_vector_sub(a, b))
+pub fn ImagemorphcloseVector::dist(self : ImagemorphcloseVector, other : ImagemorphcloseVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn image_morph_close_vector_to_string(v : ImagemorphcloseVector) -> String {
+pub fn ImagemorphcloseVector::to_string(self : ImagemorphcloseVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn image_morph_close_mean(data : Array[Double]) -> Double { @_common.mean(data) }

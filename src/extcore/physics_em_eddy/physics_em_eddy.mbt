@@ -16,64 +16,64 @@ pub fn physics_em_eddy_make_point3(x : Double, y : Double, z : Double) -> Physic
   { x, y, z, label: 0 }
 }
 
-pub fn physics_em_eddy_point_x(pt : PhysicsemeddyPoint) -> Double { pt.x }
+pub fn PhysicsemeddyPoint::x(self : PhysicsemeddyPoint) -> Double { self.x }
 
-pub fn physics_em_eddy_point_y(pt : PhysicsemeddyPoint) -> Double { pt.y }
+pub fn PhysicsemeddyPoint::y(self : PhysicsemeddyPoint) -> Double { self.y }
 
-pub fn physics_em_eddy_point_z(pt : PhysicsemeddyPoint) -> Double { pt.z }
+pub fn PhysicsemeddyPoint::z(self : PhysicsemeddyPoint) -> Double { self.z }
 
-pub fn physics_em_eddy_point_label(pt : PhysicsemeddyPoint) -> Int { pt.label }
+pub fn PhysicsemeddyPoint::label(self : PhysicsemeddyPoint) -> Int { self.label }
 
-pub fn physics_em_eddy_point_dist(a : PhysicsemeddyPoint, b : PhysicsemeddyPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn PhysicsemeddyPoint::dist(self : PhysicsemeddyPoint, other : PhysicsemeddyPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn physics_em_eddy_point_add(a : PhysicsemeddyPoint, b : PhysicsemeddyPoint) -> PhysicsemeddyPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn PhysicsemeddyPoint::add(self : PhysicsemeddyPoint, other : PhysicsemeddyPoint) -> PhysicsemeddyPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn physics_em_eddy_point_sub(a : PhysicsemeddyPoint, b : PhysicsemeddyPoint) -> PhysicsemeddyPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn PhysicsemeddyPoint::sub(self : PhysicsemeddyPoint, other : PhysicsemeddyPoint) -> PhysicsemeddyPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn physics_em_eddy_point_scale(pt : PhysicsemeddyPoint, s : Double) -> PhysicsemeddyPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn PhysicsemeddyPoint::scale(self : PhysicsemeddyPoint, s : Double) -> PhysicsemeddyPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn physics_em_eddy_point_dot(a : PhysicsemeddyPoint, b : PhysicsemeddyPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn PhysicsemeddyPoint::dot(self : PhysicsemeddyPoint, other : PhysicsemeddyPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn physics_em_eddy_point_cross(a : PhysicsemeddyPoint, b : PhysicsemeddyPoint) -> PhysicsemeddyPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn PhysicsemeddyPoint::cross(self : PhysicsemeddyPoint, other : PhysicsemeddyPoint) -> PhysicsemeddyPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn physics_em_eddy_point_norm(pt : PhysicsemeddyPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn PhysicsemeddyPoint::norm(self : PhysicsemeddyPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn physics_em_eddy_point_normalize(pt : PhysicsemeddyPoint) -> PhysicsemeddyPoint {
-  let n = physics_em_eddy_point_norm(pt)
-  if n < 0.0000001 { pt } else { physics_em_eddy_point_scale(pt, 1.0 / n) }
+pub fn PhysicsemeddyPoint::normalize(self : PhysicsemeddyPoint) -> PhysicsemeddyPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn physics_em_eddy_point_negate(pt : PhysicsemeddyPoint) -> PhysicsemeddyPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn PhysicsemeddyPoint::negate(self : PhysicsemeddyPoint) -> PhysicsemeddyPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn physics_em_eddy_point_mid(a : PhysicsemeddyPoint, b : PhysicsemeddyPoint) -> PhysicsemeddyPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn PhysicsemeddyPoint::mid(self : PhysicsemeddyPoint, other : PhysicsemeddyPoint) -> PhysicsemeddyPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn physics_em_eddy_point_lerp(a : PhysicsemeddyPoint, b : PhysicsemeddyPoint, t : Double) -> PhysicsemeddyPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn PhysicsemeddyPoint::lerp(self : PhysicsemeddyPoint, other : PhysicsemeddyPoint, t : Double) -> PhysicsemeddyPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn physics_em_eddy_point_to_string(pt : PhysicsemeddyPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn PhysicsemeddyPoint::to_string(self : PhysicsemeddyPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct PhysicsemeddySeries {
@@ -86,58 +86,58 @@ pub fn physics_em_eddy_make_series(vals : Array[Double], name : String) -> Physi
   { vals, name, meta: 0 }
 }
 
-pub fn physics_em_eddy_series_len(s : PhysicsemeddySeries) -> Int { s.vals.length() }
+pub fn PhysicsemeddySeries::len(self : PhysicsemeddySeries) -> Int { self.vals.length() }
 
-pub fn physics_em_eddy_series_sum(s : PhysicsemeddySeries) -> Double { @_common.sum(s.vals) }
+pub fn PhysicsemeddySeries::sum(self : PhysicsemeddySeries) -> Double { @_common.sum(self.vals) }
 
-pub fn physics_em_eddy_series_mean(s : PhysicsemeddySeries) -> Double { @_common.mean(s.vals) }
+pub fn PhysicsemeddySeries::mean(self : PhysicsemeddySeries) -> Double { @_common.mean(self.vals) }
 
-pub fn physics_em_eddy_series_min(s : PhysicsemeddySeries) -> Double { @_common.min(s.vals) }
+pub fn PhysicsemeddySeries::min(self : PhysicsemeddySeries) -> Double { @_common.min(self.vals) }
 
-pub fn physics_em_eddy_series_max(s : PhysicsemeddySeries) -> Double { @_common.max(s.vals) }
+pub fn PhysicsemeddySeries::max(self : PhysicsemeddySeries) -> Double { @_common.max(self.vals) }
 
-pub fn physics_em_eddy_series_range(s : PhysicsemeddySeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn PhysicsemeddySeries::range(self : PhysicsemeddySeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn physics_em_eddy_series_var(s : PhysicsemeddySeries) -> Double { @_common.variance(s.vals) }
+pub fn PhysicsemeddySeries::variance(self : PhysicsemeddySeries) -> Double { @_common.variance(self.vals) }
 
-pub fn physics_em_eddy_series_std(s : PhysicsemeddySeries) -> Double { @_common.std(s.vals) }
+pub fn PhysicsemeddySeries::std(self : PhysicsemeddySeries) -> Double { @_common.std(self.vals) }
 
-pub fn physics_em_eddy_series_median(s : PhysicsemeddySeries) -> Double { @_common.median(s.vals) }
+pub fn PhysicsemeddySeries::median(self : PhysicsemeddySeries) -> Double { @_common.median(self.vals) }
 
-pub fn physics_em_eddy_series_scale(s : PhysicsemeddySeries, f : Double) -> PhysicsemeddySeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn PhysicsemeddySeries::scale(self : PhysicsemeddySeries, f : Double) -> PhysicsemeddySeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn physics_em_eddy_series_add(a : PhysicsemeddySeries, b : PhysicsemeddySeries) -> PhysicsemeddySeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn PhysicsemeddySeries::add(self : PhysicsemeddySeries, other : PhysicsemeddySeries) -> PhysicsemeddySeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn physics_em_eddy_series_sub(a : PhysicsemeddySeries, b : PhysicsemeddySeries) -> PhysicsemeddySeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn PhysicsemeddySeries::sub(self : PhysicsemeddySeries, other : PhysicsemeddySeries) -> PhysicsemeddySeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn physics_em_eddy_series_normalize(s : PhysicsemeddySeries) -> PhysicsemeddySeries {
-  let mn = physics_em_eddy_series_min(s)
-  let mx = physics_em_eddy_series_max(s)
+pub fn PhysicsemeddySeries::normalize(self : PhysicsemeddySeries) -> PhysicsemeddySeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn physics_em_eddy_series_cumsum(s : PhysicsemeddySeries) -> PhysicsemeddySeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn PhysicsemeddySeries::cumsum(self : PhysicsemeddySeries) -> PhysicsemeddySeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn physics_em_eddy_series_to_string(s : PhysicsemeddySeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn PhysicsemeddySeries::to_string(self : PhysicsemeddySeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn physics_em_eddy_matrix_identity(n : Int) -> PhysicsemeddyMatrix {
   m
 }
 
-pub fn physics_em_eddy_matrix_get(m : PhysicsemeddyMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn PhysicsemeddyMatrix::get(self : PhysicsemeddyMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn physics_em_eddy_matrix_transpose(m : PhysicsemeddyMatrix) -> PhysicsemeddyMatrix {
-  let result = physics_em_eddy_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn PhysicsemeddyMatrix::transpose(self : PhysicsemeddyMatrix) -> PhysicsemeddyMatrix {
+  let result = physics_em_eddy_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn physics_em_eddy_matrix_add(a : PhysicsemeddyMatrix, b : PhysicsemeddyMatrix) -> PhysicsemeddyMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = physics_em_eddy_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn PhysicsemeddyMatrix::add(self : PhysicsemeddyMatrix, other : PhysicsemeddyMatrix) -> PhysicsemeddyMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = physics_em_eddy_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn physics_em_eddy_matrix_scale(m : PhysicsemeddyMatrix, s : Double) -> PhysicsemeddyMatrix {
-  let result = physics_em_eddy_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn PhysicsemeddyMatrix::scale(self : PhysicsemeddyMatrix, s : Double) -> PhysicsemeddyMatrix {
+  let result = physics_em_eddy_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn physics_em_eddy_matrix_multiply(a : PhysicsemeddyMatrix, b : PhysicsemeddyMatrix) -> PhysicsemeddyMatrix {
-  if a.cols != b.rows { return physics_em_eddy_make_matrix(a.rows, b.cols, 0.0) }
-  let result = physics_em_eddy_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn PhysicsemeddyMatrix::multiply(self : PhysicsemeddyMatrix, other : PhysicsemeddyMatrix) -> PhysicsemeddyMatrix {
+  if self.cols != other.rows { return physics_em_eddy_make_matrix(self.rows, other.cols, 0.0) }
+  let result = physics_em_eddy_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn physics_em_eddy_matrix_trace(m : PhysicsemeddyMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn PhysicsemeddyMatrix::trace(self : PhysicsemeddyMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn physics_em_eddy_matrix_det(m : PhysicsemeddyMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn PhysicsemeddyMatrix::det(self : PhysicsemeddyMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn physics_em_eddy_matrix_norm(m : PhysicsemeddyMatrix) -> Double {
+pub fn PhysicsemeddyMatrix::norm(self : PhysicsemeddyMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn physics_em_eddy_matrix_to_string(m : PhysicsemeddyMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn PhysicsemeddyMatrix::to_string(self : PhysicsemeddyMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn physics_em_eddy_vector_zero(dim : Int) -> PhysicsemeddyVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn physics_em_eddy_vector_add(a : PhysicsemeddyVector, b : PhysicsemeddyVector) -> PhysicsemeddyVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn PhysicsemeddyVector::add(self : PhysicsemeddyVector, other : PhysicsemeddyVector) -> PhysicsemeddyVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn physics_em_eddy_vector_sub(a : PhysicsemeddyVector, b : PhysicsemeddyVector) -> PhysicsemeddyVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn PhysicsemeddyVector::sub(self : PhysicsemeddyVector, other : PhysicsemeddyVector) -> PhysicsemeddyVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn physics_em_eddy_vector_scale(v : PhysicsemeddyVector, s : Double) -> PhysicsemeddyVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn PhysicsemeddyVector::scale(self : PhysicsemeddyVector, s : Double) -> PhysicsemeddyVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn physics_em_eddy_vector_dot(a : PhysicsemeddyVector, b : PhysicsemeddyVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn PhysicsemeddyVector::dot(self : PhysicsemeddyVector, other : PhysicsemeddyVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn physics_em_eddy_vector_norm(v : PhysicsemeddyVector) -> Double { @_common.sqrt(physics_em_eddy_vector_dot(v, v)) }
+pub fn PhysicsemeddyVector::norm(self : PhysicsemeddyVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn physics_em_eddy_vector_normalize(v : PhysicsemeddyVector) -> PhysicsemeddyVector {
-  let n = physics_em_eddy_vector_norm(v)
-  if n < 0.0000001 { v } else { physics_em_eddy_vector_scale(v, 1.0 / n) }
+pub fn PhysicsemeddyVector::normalize(self : PhysicsemeddyVector) -> PhysicsemeddyVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn physics_em_eddy_vector_dist(a : PhysicsemeddyVector, b : PhysicsemeddyVector) -> Double {
-  physics_em_eddy_vector_norm(physics_em_eddy_vector_sub(a, b))
+pub fn PhysicsemeddyVector::dist(self : PhysicsemeddyVector, other : PhysicsemeddyVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn physics_em_eddy_vector_to_string(v : PhysicsemeddyVector) -> String {
+pub fn PhysicsemeddyVector::to_string(self : PhysicsemeddyVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn physics_em_eddy_mean(data : Array[Double]) -> Double { @_common.mean(data) }

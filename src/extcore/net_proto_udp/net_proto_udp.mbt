@@ -16,64 +16,64 @@ pub fn net_proto_udp_make_point3(x : Double, y : Double, z : Double) -> Netproto
   { x, y, z, label: 0 }
 }
 
-pub fn net_proto_udp_point_x(pt : NetprotoudpPoint) -> Double { pt.x }
+pub fn NetprotoudpPoint::x(self : NetprotoudpPoint) -> Double { self.x }
 
-pub fn net_proto_udp_point_y(pt : NetprotoudpPoint) -> Double { pt.y }
+pub fn NetprotoudpPoint::y(self : NetprotoudpPoint) -> Double { self.y }
 
-pub fn net_proto_udp_point_z(pt : NetprotoudpPoint) -> Double { pt.z }
+pub fn NetprotoudpPoint::z(self : NetprotoudpPoint) -> Double { self.z }
 
-pub fn net_proto_udp_point_label(pt : NetprotoudpPoint) -> Int { pt.label }
+pub fn NetprotoudpPoint::label(self : NetprotoudpPoint) -> Int { self.label }
 
-pub fn net_proto_udp_point_dist(a : NetprotoudpPoint, b : NetprotoudpPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn NetprotoudpPoint::dist(self : NetprotoudpPoint, other : NetprotoudpPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn net_proto_udp_point_add(a : NetprotoudpPoint, b : NetprotoudpPoint) -> NetprotoudpPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn NetprotoudpPoint::add(self : NetprotoudpPoint, other : NetprotoudpPoint) -> NetprotoudpPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn net_proto_udp_point_sub(a : NetprotoudpPoint, b : NetprotoudpPoint) -> NetprotoudpPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn NetprotoudpPoint::sub(self : NetprotoudpPoint, other : NetprotoudpPoint) -> NetprotoudpPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn net_proto_udp_point_scale(pt : NetprotoudpPoint, s : Double) -> NetprotoudpPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn NetprotoudpPoint::scale(self : NetprotoudpPoint, s : Double) -> NetprotoudpPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn net_proto_udp_point_dot(a : NetprotoudpPoint, b : NetprotoudpPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn NetprotoudpPoint::dot(self : NetprotoudpPoint, other : NetprotoudpPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn net_proto_udp_point_cross(a : NetprotoudpPoint, b : NetprotoudpPoint) -> NetprotoudpPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn NetprotoudpPoint::cross(self : NetprotoudpPoint, other : NetprotoudpPoint) -> NetprotoudpPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn net_proto_udp_point_norm(pt : NetprotoudpPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn NetprotoudpPoint::norm(self : NetprotoudpPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn net_proto_udp_point_normalize(pt : NetprotoudpPoint) -> NetprotoudpPoint {
-  let n = net_proto_udp_point_norm(pt)
-  if n < 0.0000001 { pt } else { net_proto_udp_point_scale(pt, 1.0 / n) }
+pub fn NetprotoudpPoint::normalize(self : NetprotoudpPoint) -> NetprotoudpPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn net_proto_udp_point_negate(pt : NetprotoudpPoint) -> NetprotoudpPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn NetprotoudpPoint::negate(self : NetprotoudpPoint) -> NetprotoudpPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn net_proto_udp_point_mid(a : NetprotoudpPoint, b : NetprotoudpPoint) -> NetprotoudpPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn NetprotoudpPoint::mid(self : NetprotoudpPoint, other : NetprotoudpPoint) -> NetprotoudpPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn net_proto_udp_point_lerp(a : NetprotoudpPoint, b : NetprotoudpPoint, t : Double) -> NetprotoudpPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn NetprotoudpPoint::lerp(self : NetprotoudpPoint, other : NetprotoudpPoint, t : Double) -> NetprotoudpPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn net_proto_udp_point_to_string(pt : NetprotoudpPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn NetprotoudpPoint::to_string(self : NetprotoudpPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct NetprotoudpSeries {
@@ -86,58 +86,58 @@ pub fn net_proto_udp_make_series(vals : Array[Double], name : String) -> Netprot
   { vals, name, meta: 0 }
 }
 
-pub fn net_proto_udp_series_len(s : NetprotoudpSeries) -> Int { s.vals.length() }
+pub fn NetprotoudpSeries::len(self : NetprotoudpSeries) -> Int { self.vals.length() }
 
-pub fn net_proto_udp_series_sum(s : NetprotoudpSeries) -> Double { @_common.sum(s.vals) }
+pub fn NetprotoudpSeries::sum(self : NetprotoudpSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn net_proto_udp_series_mean(s : NetprotoudpSeries) -> Double { @_common.mean(s.vals) }
+pub fn NetprotoudpSeries::mean(self : NetprotoudpSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn net_proto_udp_series_min(s : NetprotoudpSeries) -> Double { @_common.min(s.vals) }
+pub fn NetprotoudpSeries::min(self : NetprotoudpSeries) -> Double { @_common.min(self.vals) }
 
-pub fn net_proto_udp_series_max(s : NetprotoudpSeries) -> Double { @_common.max(s.vals) }
+pub fn NetprotoudpSeries::max(self : NetprotoudpSeries) -> Double { @_common.max(self.vals) }
 
-pub fn net_proto_udp_series_range(s : NetprotoudpSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn NetprotoudpSeries::range(self : NetprotoudpSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn net_proto_udp_series_var(s : NetprotoudpSeries) -> Double { @_common.variance(s.vals) }
+pub fn NetprotoudpSeries::variance(self : NetprotoudpSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn net_proto_udp_series_std(s : NetprotoudpSeries) -> Double { @_common.std(s.vals) }
+pub fn NetprotoudpSeries::std(self : NetprotoudpSeries) -> Double { @_common.std(self.vals) }
 
-pub fn net_proto_udp_series_median(s : NetprotoudpSeries) -> Double { @_common.median(s.vals) }
+pub fn NetprotoudpSeries::median(self : NetprotoudpSeries) -> Double { @_common.median(self.vals) }
 
-pub fn net_proto_udp_series_scale(s : NetprotoudpSeries, f : Double) -> NetprotoudpSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn NetprotoudpSeries::scale(self : NetprotoudpSeries, f : Double) -> NetprotoudpSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn net_proto_udp_series_add(a : NetprotoudpSeries, b : NetprotoudpSeries) -> NetprotoudpSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn NetprotoudpSeries::add(self : NetprotoudpSeries, other : NetprotoudpSeries) -> NetprotoudpSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn net_proto_udp_series_sub(a : NetprotoudpSeries, b : NetprotoudpSeries) -> NetprotoudpSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn NetprotoudpSeries::sub(self : NetprotoudpSeries, other : NetprotoudpSeries) -> NetprotoudpSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn net_proto_udp_series_normalize(s : NetprotoudpSeries) -> NetprotoudpSeries {
-  let mn = net_proto_udp_series_min(s)
-  let mx = net_proto_udp_series_max(s)
+pub fn NetprotoudpSeries::normalize(self : NetprotoudpSeries) -> NetprotoudpSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn net_proto_udp_series_cumsum(s : NetprotoudpSeries) -> NetprotoudpSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn NetprotoudpSeries::cumsum(self : NetprotoudpSeries) -> NetprotoudpSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn net_proto_udp_series_to_string(s : NetprotoudpSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn NetprotoudpSeries::to_string(self : NetprotoudpSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn net_proto_udp_matrix_identity(n : Int) -> NetprotoudpMatrix {
   m
 }
 
-pub fn net_proto_udp_matrix_get(m : NetprotoudpMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn NetprotoudpMatrix::get(self : NetprotoudpMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn net_proto_udp_matrix_transpose(m : NetprotoudpMatrix) -> NetprotoudpMatrix {
-  let result = net_proto_udp_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn NetprotoudpMatrix::transpose(self : NetprotoudpMatrix) -> NetprotoudpMatrix {
+  let result = net_proto_udp_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn net_proto_udp_matrix_add(a : NetprotoudpMatrix, b : NetprotoudpMatrix) -> NetprotoudpMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = net_proto_udp_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn NetprotoudpMatrix::add(self : NetprotoudpMatrix, other : NetprotoudpMatrix) -> NetprotoudpMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = net_proto_udp_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn net_proto_udp_matrix_scale(m : NetprotoudpMatrix, s : Double) -> NetprotoudpMatrix {
-  let result = net_proto_udp_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn NetprotoudpMatrix::scale(self : NetprotoudpMatrix, s : Double) -> NetprotoudpMatrix {
+  let result = net_proto_udp_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn net_proto_udp_matrix_multiply(a : NetprotoudpMatrix, b : NetprotoudpMatrix) -> NetprotoudpMatrix {
-  if a.cols != b.rows { return net_proto_udp_make_matrix(a.rows, b.cols, 0.0) }
-  let result = net_proto_udp_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn NetprotoudpMatrix::multiply(self : NetprotoudpMatrix, other : NetprotoudpMatrix) -> NetprotoudpMatrix {
+  if self.cols != other.rows { return net_proto_udp_make_matrix(self.rows, other.cols, 0.0) }
+  let result = net_proto_udp_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn net_proto_udp_matrix_trace(m : NetprotoudpMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn NetprotoudpMatrix::trace(self : NetprotoudpMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn net_proto_udp_matrix_det(m : NetprotoudpMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn NetprotoudpMatrix::det(self : NetprotoudpMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn net_proto_udp_matrix_norm(m : NetprotoudpMatrix) -> Double {
+pub fn NetprotoudpMatrix::norm(self : NetprotoudpMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn net_proto_udp_matrix_to_string(m : NetprotoudpMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn NetprotoudpMatrix::to_string(self : NetprotoudpMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn net_proto_udp_vector_zero(dim : Int) -> NetprotoudpVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn net_proto_udp_vector_add(a : NetprotoudpVector, b : NetprotoudpVector) -> NetprotoudpVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn NetprotoudpVector::add(self : NetprotoudpVector, other : NetprotoudpVector) -> NetprotoudpVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn net_proto_udp_vector_sub(a : NetprotoudpVector, b : NetprotoudpVector) -> NetprotoudpVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn NetprotoudpVector::sub(self : NetprotoudpVector, other : NetprotoudpVector) -> NetprotoudpVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn net_proto_udp_vector_scale(v : NetprotoudpVector, s : Double) -> NetprotoudpVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn NetprotoudpVector::scale(self : NetprotoudpVector, s : Double) -> NetprotoudpVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn net_proto_udp_vector_dot(a : NetprotoudpVector, b : NetprotoudpVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn NetprotoudpVector::dot(self : NetprotoudpVector, other : NetprotoudpVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn net_proto_udp_vector_norm(v : NetprotoudpVector) -> Double { @_common.sqrt(net_proto_udp_vector_dot(v, v)) }
+pub fn NetprotoudpVector::norm(self : NetprotoudpVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn net_proto_udp_vector_normalize(v : NetprotoudpVector) -> NetprotoudpVector {
-  let n = net_proto_udp_vector_norm(v)
-  if n < 0.0000001 { v } else { net_proto_udp_vector_scale(v, 1.0 / n) }
+pub fn NetprotoudpVector::normalize(self : NetprotoudpVector) -> NetprotoudpVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn net_proto_udp_vector_dist(a : NetprotoudpVector, b : NetprotoudpVector) -> Double {
-  net_proto_udp_vector_norm(net_proto_udp_vector_sub(a, b))
+pub fn NetprotoudpVector::dist(self : NetprotoudpVector, other : NetprotoudpVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn net_proto_udp_vector_to_string(v : NetprotoudpVector) -> String {
+pub fn NetprotoudpVector::to_string(self : NetprotoudpVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn net_proto_udp_mean(data : Array[Double]) -> Double { @_common.mean(data) }

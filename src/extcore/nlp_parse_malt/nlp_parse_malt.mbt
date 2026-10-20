@@ -16,64 +16,64 @@ pub fn nlp_parse_malt_make_point3(x : Double, y : Double, z : Double) -> Nlppars
   { x, y, z, label: 0 }
 }
 
-pub fn nlp_parse_malt_point_x(pt : NlpparsemaltPoint) -> Double { pt.x }
+pub fn NlpparsemaltPoint::x(self : NlpparsemaltPoint) -> Double { self.x }
 
-pub fn nlp_parse_malt_point_y(pt : NlpparsemaltPoint) -> Double { pt.y }
+pub fn NlpparsemaltPoint::y(self : NlpparsemaltPoint) -> Double { self.y }
 
-pub fn nlp_parse_malt_point_z(pt : NlpparsemaltPoint) -> Double { pt.z }
+pub fn NlpparsemaltPoint::z(self : NlpparsemaltPoint) -> Double { self.z }
 
-pub fn nlp_parse_malt_point_label(pt : NlpparsemaltPoint) -> Int { pt.label }
+pub fn NlpparsemaltPoint::label(self : NlpparsemaltPoint) -> Int { self.label }
 
-pub fn nlp_parse_malt_point_dist(a : NlpparsemaltPoint, b : NlpparsemaltPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn NlpparsemaltPoint::dist(self : NlpparsemaltPoint, other : NlpparsemaltPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn nlp_parse_malt_point_add(a : NlpparsemaltPoint, b : NlpparsemaltPoint) -> NlpparsemaltPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn NlpparsemaltPoint::add(self : NlpparsemaltPoint, other : NlpparsemaltPoint) -> NlpparsemaltPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn nlp_parse_malt_point_sub(a : NlpparsemaltPoint, b : NlpparsemaltPoint) -> NlpparsemaltPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn NlpparsemaltPoint::sub(self : NlpparsemaltPoint, other : NlpparsemaltPoint) -> NlpparsemaltPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn nlp_parse_malt_point_scale(pt : NlpparsemaltPoint, s : Double) -> NlpparsemaltPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn NlpparsemaltPoint::scale(self : NlpparsemaltPoint, s : Double) -> NlpparsemaltPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn nlp_parse_malt_point_dot(a : NlpparsemaltPoint, b : NlpparsemaltPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn NlpparsemaltPoint::dot(self : NlpparsemaltPoint, other : NlpparsemaltPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn nlp_parse_malt_point_cross(a : NlpparsemaltPoint, b : NlpparsemaltPoint) -> NlpparsemaltPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn NlpparsemaltPoint::cross(self : NlpparsemaltPoint, other : NlpparsemaltPoint) -> NlpparsemaltPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn nlp_parse_malt_point_norm(pt : NlpparsemaltPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn NlpparsemaltPoint::norm(self : NlpparsemaltPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn nlp_parse_malt_point_normalize(pt : NlpparsemaltPoint) -> NlpparsemaltPoint {
-  let n = nlp_parse_malt_point_norm(pt)
-  if n < 0.0000001 { pt } else { nlp_parse_malt_point_scale(pt, 1.0 / n) }
+pub fn NlpparsemaltPoint::normalize(self : NlpparsemaltPoint) -> NlpparsemaltPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn nlp_parse_malt_point_negate(pt : NlpparsemaltPoint) -> NlpparsemaltPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn NlpparsemaltPoint::negate(self : NlpparsemaltPoint) -> NlpparsemaltPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn nlp_parse_malt_point_mid(a : NlpparsemaltPoint, b : NlpparsemaltPoint) -> NlpparsemaltPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn NlpparsemaltPoint::mid(self : NlpparsemaltPoint, other : NlpparsemaltPoint) -> NlpparsemaltPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn nlp_parse_malt_point_lerp(a : NlpparsemaltPoint, b : NlpparsemaltPoint, t : Double) -> NlpparsemaltPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn NlpparsemaltPoint::lerp(self : NlpparsemaltPoint, other : NlpparsemaltPoint, t : Double) -> NlpparsemaltPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn nlp_parse_malt_point_to_string(pt : NlpparsemaltPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn NlpparsemaltPoint::to_string(self : NlpparsemaltPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct NlpparsemaltSeries {
@@ -86,58 +86,58 @@ pub fn nlp_parse_malt_make_series(vals : Array[Double], name : String) -> Nlppar
   { vals, name, meta: 0 }
 }
 
-pub fn nlp_parse_malt_series_len(s : NlpparsemaltSeries) -> Int { s.vals.length() }
+pub fn NlpparsemaltSeries::len(self : NlpparsemaltSeries) -> Int { self.vals.length() }
 
-pub fn nlp_parse_malt_series_sum(s : NlpparsemaltSeries) -> Double { @_common.sum(s.vals) }
+pub fn NlpparsemaltSeries::sum(self : NlpparsemaltSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn nlp_parse_malt_series_mean(s : NlpparsemaltSeries) -> Double { @_common.mean(s.vals) }
+pub fn NlpparsemaltSeries::mean(self : NlpparsemaltSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn nlp_parse_malt_series_min(s : NlpparsemaltSeries) -> Double { @_common.min(s.vals) }
+pub fn NlpparsemaltSeries::min(self : NlpparsemaltSeries) -> Double { @_common.min(self.vals) }
 
-pub fn nlp_parse_malt_series_max(s : NlpparsemaltSeries) -> Double { @_common.max(s.vals) }
+pub fn NlpparsemaltSeries::max(self : NlpparsemaltSeries) -> Double { @_common.max(self.vals) }
 
-pub fn nlp_parse_malt_series_range(s : NlpparsemaltSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn NlpparsemaltSeries::range(self : NlpparsemaltSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn nlp_parse_malt_series_var(s : NlpparsemaltSeries) -> Double { @_common.variance(s.vals) }
+pub fn NlpparsemaltSeries::variance(self : NlpparsemaltSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn nlp_parse_malt_series_std(s : NlpparsemaltSeries) -> Double { @_common.std(s.vals) }
+pub fn NlpparsemaltSeries::std(self : NlpparsemaltSeries) -> Double { @_common.std(self.vals) }
 
-pub fn nlp_parse_malt_series_median(s : NlpparsemaltSeries) -> Double { @_common.median(s.vals) }
+pub fn NlpparsemaltSeries::median(self : NlpparsemaltSeries) -> Double { @_common.median(self.vals) }
 
-pub fn nlp_parse_malt_series_scale(s : NlpparsemaltSeries, f : Double) -> NlpparsemaltSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn NlpparsemaltSeries::scale(self : NlpparsemaltSeries, f : Double) -> NlpparsemaltSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn nlp_parse_malt_series_add(a : NlpparsemaltSeries, b : NlpparsemaltSeries) -> NlpparsemaltSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn NlpparsemaltSeries::add(self : NlpparsemaltSeries, other : NlpparsemaltSeries) -> NlpparsemaltSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn nlp_parse_malt_series_sub(a : NlpparsemaltSeries, b : NlpparsemaltSeries) -> NlpparsemaltSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn NlpparsemaltSeries::sub(self : NlpparsemaltSeries, other : NlpparsemaltSeries) -> NlpparsemaltSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn nlp_parse_malt_series_normalize(s : NlpparsemaltSeries) -> NlpparsemaltSeries {
-  let mn = nlp_parse_malt_series_min(s)
-  let mx = nlp_parse_malt_series_max(s)
+pub fn NlpparsemaltSeries::normalize(self : NlpparsemaltSeries) -> NlpparsemaltSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn nlp_parse_malt_series_cumsum(s : NlpparsemaltSeries) -> NlpparsemaltSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn NlpparsemaltSeries::cumsum(self : NlpparsemaltSeries) -> NlpparsemaltSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn nlp_parse_malt_series_to_string(s : NlpparsemaltSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn NlpparsemaltSeries::to_string(self : NlpparsemaltSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn nlp_parse_malt_matrix_identity(n : Int) -> NlpparsemaltMatrix {
   m
 }
 
-pub fn nlp_parse_malt_matrix_get(m : NlpparsemaltMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn NlpparsemaltMatrix::get(self : NlpparsemaltMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn nlp_parse_malt_matrix_transpose(m : NlpparsemaltMatrix) -> NlpparsemaltMatrix {
-  let result = nlp_parse_malt_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn NlpparsemaltMatrix::transpose(self : NlpparsemaltMatrix) -> NlpparsemaltMatrix {
+  let result = nlp_parse_malt_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn nlp_parse_malt_matrix_add(a : NlpparsemaltMatrix, b : NlpparsemaltMatrix) -> NlpparsemaltMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = nlp_parse_malt_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn NlpparsemaltMatrix::add(self : NlpparsemaltMatrix, other : NlpparsemaltMatrix) -> NlpparsemaltMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = nlp_parse_malt_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn nlp_parse_malt_matrix_scale(m : NlpparsemaltMatrix, s : Double) -> NlpparsemaltMatrix {
-  let result = nlp_parse_malt_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn NlpparsemaltMatrix::scale(self : NlpparsemaltMatrix, s : Double) -> NlpparsemaltMatrix {
+  let result = nlp_parse_malt_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn nlp_parse_malt_matrix_multiply(a : NlpparsemaltMatrix, b : NlpparsemaltMatrix) -> NlpparsemaltMatrix {
-  if a.cols != b.rows { return nlp_parse_malt_make_matrix(a.rows, b.cols, 0.0) }
-  let result = nlp_parse_malt_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn NlpparsemaltMatrix::multiply(self : NlpparsemaltMatrix, other : NlpparsemaltMatrix) -> NlpparsemaltMatrix {
+  if self.cols != other.rows { return nlp_parse_malt_make_matrix(self.rows, other.cols, 0.0) }
+  let result = nlp_parse_malt_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn nlp_parse_malt_matrix_trace(m : NlpparsemaltMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn NlpparsemaltMatrix::trace(self : NlpparsemaltMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn nlp_parse_malt_matrix_det(m : NlpparsemaltMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn NlpparsemaltMatrix::det(self : NlpparsemaltMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn nlp_parse_malt_matrix_norm(m : NlpparsemaltMatrix) -> Double {
+pub fn NlpparsemaltMatrix::norm(self : NlpparsemaltMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn nlp_parse_malt_matrix_to_string(m : NlpparsemaltMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn NlpparsemaltMatrix::to_string(self : NlpparsemaltMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn nlp_parse_malt_vector_zero(dim : Int) -> NlpparsemaltVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn nlp_parse_malt_vector_add(a : NlpparsemaltVector, b : NlpparsemaltVector) -> NlpparsemaltVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn NlpparsemaltVector::add(self : NlpparsemaltVector, other : NlpparsemaltVector) -> NlpparsemaltVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn nlp_parse_malt_vector_sub(a : NlpparsemaltVector, b : NlpparsemaltVector) -> NlpparsemaltVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn NlpparsemaltVector::sub(self : NlpparsemaltVector, other : NlpparsemaltVector) -> NlpparsemaltVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn nlp_parse_malt_vector_scale(v : NlpparsemaltVector, s : Double) -> NlpparsemaltVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn NlpparsemaltVector::scale(self : NlpparsemaltVector, s : Double) -> NlpparsemaltVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn nlp_parse_malt_vector_dot(a : NlpparsemaltVector, b : NlpparsemaltVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn NlpparsemaltVector::dot(self : NlpparsemaltVector, other : NlpparsemaltVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn nlp_parse_malt_vector_norm(v : NlpparsemaltVector) -> Double { @_common.sqrt(nlp_parse_malt_vector_dot(v, v)) }
+pub fn NlpparsemaltVector::norm(self : NlpparsemaltVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn nlp_parse_malt_vector_normalize(v : NlpparsemaltVector) -> NlpparsemaltVector {
-  let n = nlp_parse_malt_vector_norm(v)
-  if n < 0.0000001 { v } else { nlp_parse_malt_vector_scale(v, 1.0 / n) }
+pub fn NlpparsemaltVector::normalize(self : NlpparsemaltVector) -> NlpparsemaltVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn nlp_parse_malt_vector_dist(a : NlpparsemaltVector, b : NlpparsemaltVector) -> Double {
-  nlp_parse_malt_vector_norm(nlp_parse_malt_vector_sub(a, b))
+pub fn NlpparsemaltVector::dist(self : NlpparsemaltVector, other : NlpparsemaltVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn nlp_parse_malt_vector_to_string(v : NlpparsemaltVector) -> String {
+pub fn NlpparsemaltVector::to_string(self : NlpparsemaltVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn nlp_parse_malt_mean(data : Array[Double]) -> Double { @_common.mean(data) }

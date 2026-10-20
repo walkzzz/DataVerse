@@ -16,64 +16,64 @@ pub fn chem_desc_geometric_make_point3(x : Double, y : Double, z : Double) -> Ch
   { x, y, z, label: 0 }
 }
 
-pub fn chem_desc_geometric_point_x(pt : ChemdescgeometricPoint) -> Double { pt.x }
+pub fn ChemdescgeometricPoint::x(self : ChemdescgeometricPoint) -> Double { self.x }
 
-pub fn chem_desc_geometric_point_y(pt : ChemdescgeometricPoint) -> Double { pt.y }
+pub fn ChemdescgeometricPoint::y(self : ChemdescgeometricPoint) -> Double { self.y }
 
-pub fn chem_desc_geometric_point_z(pt : ChemdescgeometricPoint) -> Double { pt.z }
+pub fn ChemdescgeometricPoint::z(self : ChemdescgeometricPoint) -> Double { self.z }
 
-pub fn chem_desc_geometric_point_label(pt : ChemdescgeometricPoint) -> Int { pt.label }
+pub fn ChemdescgeometricPoint::label(self : ChemdescgeometricPoint) -> Int { self.label }
 
-pub fn chem_desc_geometric_point_dist(a : ChemdescgeometricPoint, b : ChemdescgeometricPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn ChemdescgeometricPoint::dist(self : ChemdescgeometricPoint, other : ChemdescgeometricPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn chem_desc_geometric_point_add(a : ChemdescgeometricPoint, b : ChemdescgeometricPoint) -> ChemdescgeometricPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn ChemdescgeometricPoint::add(self : ChemdescgeometricPoint, other : ChemdescgeometricPoint) -> ChemdescgeometricPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn chem_desc_geometric_point_sub(a : ChemdescgeometricPoint, b : ChemdescgeometricPoint) -> ChemdescgeometricPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn ChemdescgeometricPoint::sub(self : ChemdescgeometricPoint, other : ChemdescgeometricPoint) -> ChemdescgeometricPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn chem_desc_geometric_point_scale(pt : ChemdescgeometricPoint, s : Double) -> ChemdescgeometricPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn ChemdescgeometricPoint::scale(self : ChemdescgeometricPoint, s : Double) -> ChemdescgeometricPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn chem_desc_geometric_point_dot(a : ChemdescgeometricPoint, b : ChemdescgeometricPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn ChemdescgeometricPoint::dot(self : ChemdescgeometricPoint, other : ChemdescgeometricPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn chem_desc_geometric_point_cross(a : ChemdescgeometricPoint, b : ChemdescgeometricPoint) -> ChemdescgeometricPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn ChemdescgeometricPoint::cross(self : ChemdescgeometricPoint, other : ChemdescgeometricPoint) -> ChemdescgeometricPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn chem_desc_geometric_point_norm(pt : ChemdescgeometricPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn ChemdescgeometricPoint::norm(self : ChemdescgeometricPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn chem_desc_geometric_point_normalize(pt : ChemdescgeometricPoint) -> ChemdescgeometricPoint {
-  let n = chem_desc_geometric_point_norm(pt)
-  if n < 0.0000001 { pt } else { chem_desc_geometric_point_scale(pt, 1.0 / n) }
+pub fn ChemdescgeometricPoint::normalize(self : ChemdescgeometricPoint) -> ChemdescgeometricPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn chem_desc_geometric_point_negate(pt : ChemdescgeometricPoint) -> ChemdescgeometricPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn ChemdescgeometricPoint::negate(self : ChemdescgeometricPoint) -> ChemdescgeometricPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn chem_desc_geometric_point_mid(a : ChemdescgeometricPoint, b : ChemdescgeometricPoint) -> ChemdescgeometricPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn ChemdescgeometricPoint::mid(self : ChemdescgeometricPoint, other : ChemdescgeometricPoint) -> ChemdescgeometricPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn chem_desc_geometric_point_lerp(a : ChemdescgeometricPoint, b : ChemdescgeometricPoint, t : Double) -> ChemdescgeometricPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn ChemdescgeometricPoint::lerp(self : ChemdescgeometricPoint, other : ChemdescgeometricPoint, t : Double) -> ChemdescgeometricPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn chem_desc_geometric_point_to_string(pt : ChemdescgeometricPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn ChemdescgeometricPoint::to_string(self : ChemdescgeometricPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct ChemdescgeometricSeries {
@@ -86,58 +86,58 @@ pub fn chem_desc_geometric_make_series(vals : Array[Double], name : String) -> C
   { vals, name, meta: 0 }
 }
 
-pub fn chem_desc_geometric_series_len(s : ChemdescgeometricSeries) -> Int { s.vals.length() }
+pub fn ChemdescgeometricSeries::len(self : ChemdescgeometricSeries) -> Int { self.vals.length() }
 
-pub fn chem_desc_geometric_series_sum(s : ChemdescgeometricSeries) -> Double { @_common.sum(s.vals) }
+pub fn ChemdescgeometricSeries::sum(self : ChemdescgeometricSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn chem_desc_geometric_series_mean(s : ChemdescgeometricSeries) -> Double { @_common.mean(s.vals) }
+pub fn ChemdescgeometricSeries::mean(self : ChemdescgeometricSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn chem_desc_geometric_series_min(s : ChemdescgeometricSeries) -> Double { @_common.min(s.vals) }
+pub fn ChemdescgeometricSeries::min(self : ChemdescgeometricSeries) -> Double { @_common.min(self.vals) }
 
-pub fn chem_desc_geometric_series_max(s : ChemdescgeometricSeries) -> Double { @_common.max(s.vals) }
+pub fn ChemdescgeometricSeries::max(self : ChemdescgeometricSeries) -> Double { @_common.max(self.vals) }
 
-pub fn chem_desc_geometric_series_range(s : ChemdescgeometricSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn ChemdescgeometricSeries::range(self : ChemdescgeometricSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn chem_desc_geometric_series_var(s : ChemdescgeometricSeries) -> Double { @_common.variance(s.vals) }
+pub fn ChemdescgeometricSeries::variance(self : ChemdescgeometricSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn chem_desc_geometric_series_std(s : ChemdescgeometricSeries) -> Double { @_common.std(s.vals) }
+pub fn ChemdescgeometricSeries::std(self : ChemdescgeometricSeries) -> Double { @_common.std(self.vals) }
 
-pub fn chem_desc_geometric_series_median(s : ChemdescgeometricSeries) -> Double { @_common.median(s.vals) }
+pub fn ChemdescgeometricSeries::median(self : ChemdescgeometricSeries) -> Double { @_common.median(self.vals) }
 
-pub fn chem_desc_geometric_series_scale(s : ChemdescgeometricSeries, f : Double) -> ChemdescgeometricSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn ChemdescgeometricSeries::scale(self : ChemdescgeometricSeries, f : Double) -> ChemdescgeometricSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn chem_desc_geometric_series_add(a : ChemdescgeometricSeries, b : ChemdescgeometricSeries) -> ChemdescgeometricSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn ChemdescgeometricSeries::add(self : ChemdescgeometricSeries, other : ChemdescgeometricSeries) -> ChemdescgeometricSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn chem_desc_geometric_series_sub(a : ChemdescgeometricSeries, b : ChemdescgeometricSeries) -> ChemdescgeometricSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn ChemdescgeometricSeries::sub(self : ChemdescgeometricSeries, other : ChemdescgeometricSeries) -> ChemdescgeometricSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn chem_desc_geometric_series_normalize(s : ChemdescgeometricSeries) -> ChemdescgeometricSeries {
-  let mn = chem_desc_geometric_series_min(s)
-  let mx = chem_desc_geometric_series_max(s)
+pub fn ChemdescgeometricSeries::normalize(self : ChemdescgeometricSeries) -> ChemdescgeometricSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn chem_desc_geometric_series_cumsum(s : ChemdescgeometricSeries) -> ChemdescgeometricSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn ChemdescgeometricSeries::cumsum(self : ChemdescgeometricSeries) -> ChemdescgeometricSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn chem_desc_geometric_series_to_string(s : ChemdescgeometricSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn ChemdescgeometricSeries::to_string(self : ChemdescgeometricSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn chem_desc_geometric_matrix_identity(n : Int) -> ChemdescgeometricMatrix {
   m
 }
 
-pub fn chem_desc_geometric_matrix_get(m : ChemdescgeometricMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn ChemdescgeometricMatrix::get(self : ChemdescgeometricMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn chem_desc_geometric_matrix_transpose(m : ChemdescgeometricMatrix) -> ChemdescgeometricMatrix {
-  let result = chem_desc_geometric_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn ChemdescgeometricMatrix::transpose(self : ChemdescgeometricMatrix) -> ChemdescgeometricMatrix {
+  let result = chem_desc_geometric_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn chem_desc_geometric_matrix_add(a : ChemdescgeometricMatrix, b : ChemdescgeometricMatrix) -> ChemdescgeometricMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = chem_desc_geometric_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn ChemdescgeometricMatrix::add(self : ChemdescgeometricMatrix, other : ChemdescgeometricMatrix) -> ChemdescgeometricMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = chem_desc_geometric_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn chem_desc_geometric_matrix_scale(m : ChemdescgeometricMatrix, s : Double) -> ChemdescgeometricMatrix {
-  let result = chem_desc_geometric_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn ChemdescgeometricMatrix::scale(self : ChemdescgeometricMatrix, s : Double) -> ChemdescgeometricMatrix {
+  let result = chem_desc_geometric_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn chem_desc_geometric_matrix_multiply(a : ChemdescgeometricMatrix, b : ChemdescgeometricMatrix) -> ChemdescgeometricMatrix {
-  if a.cols != b.rows { return chem_desc_geometric_make_matrix(a.rows, b.cols, 0.0) }
-  let result = chem_desc_geometric_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn ChemdescgeometricMatrix::multiply(self : ChemdescgeometricMatrix, other : ChemdescgeometricMatrix) -> ChemdescgeometricMatrix {
+  if self.cols != other.rows { return chem_desc_geometric_make_matrix(self.rows, other.cols, 0.0) }
+  let result = chem_desc_geometric_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn chem_desc_geometric_matrix_trace(m : ChemdescgeometricMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn ChemdescgeometricMatrix::trace(self : ChemdescgeometricMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn chem_desc_geometric_matrix_det(m : ChemdescgeometricMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn ChemdescgeometricMatrix::det(self : ChemdescgeometricMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn chem_desc_geometric_matrix_norm(m : ChemdescgeometricMatrix) -> Double {
+pub fn ChemdescgeometricMatrix::norm(self : ChemdescgeometricMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn chem_desc_geometric_matrix_to_string(m : ChemdescgeometricMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn ChemdescgeometricMatrix::to_string(self : ChemdescgeometricMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn chem_desc_geometric_vector_zero(dim : Int) -> ChemdescgeometricVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn chem_desc_geometric_vector_add(a : ChemdescgeometricVector, b : ChemdescgeometricVector) -> ChemdescgeometricVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn ChemdescgeometricVector::add(self : ChemdescgeometricVector, other : ChemdescgeometricVector) -> ChemdescgeometricVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn chem_desc_geometric_vector_sub(a : ChemdescgeometricVector, b : ChemdescgeometricVector) -> ChemdescgeometricVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn ChemdescgeometricVector::sub(self : ChemdescgeometricVector, other : ChemdescgeometricVector) -> ChemdescgeometricVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn chem_desc_geometric_vector_scale(v : ChemdescgeometricVector, s : Double) -> ChemdescgeometricVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn ChemdescgeometricVector::scale(self : ChemdescgeometricVector, s : Double) -> ChemdescgeometricVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn chem_desc_geometric_vector_dot(a : ChemdescgeometricVector, b : ChemdescgeometricVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn ChemdescgeometricVector::dot(self : ChemdescgeometricVector, other : ChemdescgeometricVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn chem_desc_geometric_vector_norm(v : ChemdescgeometricVector) -> Double { @_common.sqrt(chem_desc_geometric_vector_dot(v, v)) }
+pub fn ChemdescgeometricVector::norm(self : ChemdescgeometricVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn chem_desc_geometric_vector_normalize(v : ChemdescgeometricVector) -> ChemdescgeometricVector {
-  let n = chem_desc_geometric_vector_norm(v)
-  if n < 0.0000001 { v } else { chem_desc_geometric_vector_scale(v, 1.0 / n) }
+pub fn ChemdescgeometricVector::normalize(self : ChemdescgeometricVector) -> ChemdescgeometricVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn chem_desc_geometric_vector_dist(a : ChemdescgeometricVector, b : ChemdescgeometricVector) -> Double {
-  chem_desc_geometric_vector_norm(chem_desc_geometric_vector_sub(a, b))
+pub fn ChemdescgeometricVector::dist(self : ChemdescgeometricVector, other : ChemdescgeometricVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn chem_desc_geometric_vector_to_string(v : ChemdescgeometricVector) -> String {
+pub fn ChemdescgeometricVector::to_string(self : ChemdescgeometricVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn chem_desc_geometric_mean(data : Array[Double]) -> Double { @_common.mean(data) }

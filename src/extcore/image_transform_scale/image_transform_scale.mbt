@@ -16,64 +16,64 @@ pub fn image_transform_scale_make_point3(x : Double, y : Double, z : Double) -> 
   { x, y, z, label: 0 }
 }
 
-pub fn image_transform_scale_point_x(pt : ImagetransformscalePoint) -> Double { pt.x }
+pub fn ImagetransformscalePoint::x(self : ImagetransformscalePoint) -> Double { self.x }
 
-pub fn image_transform_scale_point_y(pt : ImagetransformscalePoint) -> Double { pt.y }
+pub fn ImagetransformscalePoint::y(self : ImagetransformscalePoint) -> Double { self.y }
 
-pub fn image_transform_scale_point_z(pt : ImagetransformscalePoint) -> Double { pt.z }
+pub fn ImagetransformscalePoint::z(self : ImagetransformscalePoint) -> Double { self.z }
 
-pub fn image_transform_scale_point_label(pt : ImagetransformscalePoint) -> Int { pt.label }
+pub fn ImagetransformscalePoint::label(self : ImagetransformscalePoint) -> Int { self.label }
 
-pub fn image_transform_scale_point_dist(a : ImagetransformscalePoint, b : ImagetransformscalePoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn ImagetransformscalePoint::dist(self : ImagetransformscalePoint, other : ImagetransformscalePoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn image_transform_scale_point_add(a : ImagetransformscalePoint, b : ImagetransformscalePoint) -> ImagetransformscalePoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn ImagetransformscalePoint::add(self : ImagetransformscalePoint, other : ImagetransformscalePoint) -> ImagetransformscalePoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn image_transform_scale_point_sub(a : ImagetransformscalePoint, b : ImagetransformscalePoint) -> ImagetransformscalePoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn ImagetransformscalePoint::sub(self : ImagetransformscalePoint, other : ImagetransformscalePoint) -> ImagetransformscalePoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn image_transform_scale_point_scale(pt : ImagetransformscalePoint, s : Double) -> ImagetransformscalePoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn ImagetransformscalePoint::scale(self : ImagetransformscalePoint, s : Double) -> ImagetransformscalePoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn image_transform_scale_point_dot(a : ImagetransformscalePoint, b : ImagetransformscalePoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn ImagetransformscalePoint::dot(self : ImagetransformscalePoint, other : ImagetransformscalePoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn image_transform_scale_point_cross(a : ImagetransformscalePoint, b : ImagetransformscalePoint) -> ImagetransformscalePoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn ImagetransformscalePoint::cross(self : ImagetransformscalePoint, other : ImagetransformscalePoint) -> ImagetransformscalePoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn image_transform_scale_point_norm(pt : ImagetransformscalePoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn ImagetransformscalePoint::norm(self : ImagetransformscalePoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn image_transform_scale_point_normalize(pt : ImagetransformscalePoint) -> ImagetransformscalePoint {
-  let n = image_transform_scale_point_norm(pt)
-  if n < 0.0000001 { pt } else { image_transform_scale_point_scale(pt, 1.0 / n) }
+pub fn ImagetransformscalePoint::normalize(self : ImagetransformscalePoint) -> ImagetransformscalePoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn image_transform_scale_point_negate(pt : ImagetransformscalePoint) -> ImagetransformscalePoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn ImagetransformscalePoint::negate(self : ImagetransformscalePoint) -> ImagetransformscalePoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn image_transform_scale_point_mid(a : ImagetransformscalePoint, b : ImagetransformscalePoint) -> ImagetransformscalePoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn ImagetransformscalePoint::mid(self : ImagetransformscalePoint, other : ImagetransformscalePoint) -> ImagetransformscalePoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn image_transform_scale_point_lerp(a : ImagetransformscalePoint, b : ImagetransformscalePoint, t : Double) -> ImagetransformscalePoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn ImagetransformscalePoint::lerp(self : ImagetransformscalePoint, other : ImagetransformscalePoint, t : Double) -> ImagetransformscalePoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn image_transform_scale_point_to_string(pt : ImagetransformscalePoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn ImagetransformscalePoint::to_string(self : ImagetransformscalePoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct ImagetransformscaleSeries {
@@ -86,58 +86,58 @@ pub fn image_transform_scale_make_series(vals : Array[Double], name : String) ->
   { vals, name, meta: 0 }
 }
 
-pub fn image_transform_scale_series_len(s : ImagetransformscaleSeries) -> Int { s.vals.length() }
+pub fn ImagetransformscaleSeries::len(self : ImagetransformscaleSeries) -> Int { self.vals.length() }
 
-pub fn image_transform_scale_series_sum(s : ImagetransformscaleSeries) -> Double { @_common.sum(s.vals) }
+pub fn ImagetransformscaleSeries::sum(self : ImagetransformscaleSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn image_transform_scale_series_mean(s : ImagetransformscaleSeries) -> Double { @_common.mean(s.vals) }
+pub fn ImagetransformscaleSeries::mean(self : ImagetransformscaleSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn image_transform_scale_series_min(s : ImagetransformscaleSeries) -> Double { @_common.min(s.vals) }
+pub fn ImagetransformscaleSeries::min(self : ImagetransformscaleSeries) -> Double { @_common.min(self.vals) }
 
-pub fn image_transform_scale_series_max(s : ImagetransformscaleSeries) -> Double { @_common.max(s.vals) }
+pub fn ImagetransformscaleSeries::max(self : ImagetransformscaleSeries) -> Double { @_common.max(self.vals) }
 
-pub fn image_transform_scale_series_range(s : ImagetransformscaleSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn ImagetransformscaleSeries::range(self : ImagetransformscaleSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn image_transform_scale_series_var(s : ImagetransformscaleSeries) -> Double { @_common.variance(s.vals) }
+pub fn ImagetransformscaleSeries::variance(self : ImagetransformscaleSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn image_transform_scale_series_std(s : ImagetransformscaleSeries) -> Double { @_common.std(s.vals) }
+pub fn ImagetransformscaleSeries::std(self : ImagetransformscaleSeries) -> Double { @_common.std(self.vals) }
 
-pub fn image_transform_scale_series_median(s : ImagetransformscaleSeries) -> Double { @_common.median(s.vals) }
+pub fn ImagetransformscaleSeries::median(self : ImagetransformscaleSeries) -> Double { @_common.median(self.vals) }
 
-pub fn image_transform_scale_series_scale(s : ImagetransformscaleSeries, f : Double) -> ImagetransformscaleSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn ImagetransformscaleSeries::scale(self : ImagetransformscaleSeries, f : Double) -> ImagetransformscaleSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn image_transform_scale_series_add(a : ImagetransformscaleSeries, b : ImagetransformscaleSeries) -> ImagetransformscaleSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn ImagetransformscaleSeries::add(self : ImagetransformscaleSeries, other : ImagetransformscaleSeries) -> ImagetransformscaleSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn image_transform_scale_series_sub(a : ImagetransformscaleSeries, b : ImagetransformscaleSeries) -> ImagetransformscaleSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn ImagetransformscaleSeries::sub(self : ImagetransformscaleSeries, other : ImagetransformscaleSeries) -> ImagetransformscaleSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn image_transform_scale_series_normalize(s : ImagetransformscaleSeries) -> ImagetransformscaleSeries {
-  let mn = image_transform_scale_series_min(s)
-  let mx = image_transform_scale_series_max(s)
+pub fn ImagetransformscaleSeries::normalize(self : ImagetransformscaleSeries) -> ImagetransformscaleSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn image_transform_scale_series_cumsum(s : ImagetransformscaleSeries) -> ImagetransformscaleSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn ImagetransformscaleSeries::cumsum(self : ImagetransformscaleSeries) -> ImagetransformscaleSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn image_transform_scale_series_to_string(s : ImagetransformscaleSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn ImagetransformscaleSeries::to_string(self : ImagetransformscaleSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn image_transform_scale_matrix_identity(n : Int) -> ImagetransformscaleMatr
   m
 }
 
-pub fn image_transform_scale_matrix_get(m : ImagetransformscaleMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn ImagetransformscaleMatrix::get(self : ImagetransformscaleMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn image_transform_scale_matrix_transpose(m : ImagetransformscaleMatrix) -> ImagetransformscaleMatrix {
-  let result = image_transform_scale_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn ImagetransformscaleMatrix::transpose(self : ImagetransformscaleMatrix) -> ImagetransformscaleMatrix {
+  let result = image_transform_scale_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn image_transform_scale_matrix_add(a : ImagetransformscaleMatrix, b : ImagetransformscaleMatrix) -> ImagetransformscaleMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = image_transform_scale_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn ImagetransformscaleMatrix::add(self : ImagetransformscaleMatrix, other : ImagetransformscaleMatrix) -> ImagetransformscaleMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = image_transform_scale_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn image_transform_scale_matrix_scale(m : ImagetransformscaleMatrix, s : Double) -> ImagetransformscaleMatrix {
-  let result = image_transform_scale_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn ImagetransformscaleMatrix::scale(self : ImagetransformscaleMatrix, s : Double) -> ImagetransformscaleMatrix {
+  let result = image_transform_scale_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn image_transform_scale_matrix_multiply(a : ImagetransformscaleMatrix, b : ImagetransformscaleMatrix) -> ImagetransformscaleMatrix {
-  if a.cols != b.rows { return image_transform_scale_make_matrix(a.rows, b.cols, 0.0) }
-  let result = image_transform_scale_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn ImagetransformscaleMatrix::multiply(self : ImagetransformscaleMatrix, other : ImagetransformscaleMatrix) -> ImagetransformscaleMatrix {
+  if self.cols != other.rows { return image_transform_scale_make_matrix(self.rows, other.cols, 0.0) }
+  let result = image_transform_scale_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn image_transform_scale_matrix_trace(m : ImagetransformscaleMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn ImagetransformscaleMatrix::trace(self : ImagetransformscaleMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn image_transform_scale_matrix_det(m : ImagetransformscaleMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn ImagetransformscaleMatrix::det(self : ImagetransformscaleMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn image_transform_scale_matrix_norm(m : ImagetransformscaleMatrix) -> Double {
+pub fn ImagetransformscaleMatrix::norm(self : ImagetransformscaleMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn image_transform_scale_matrix_to_string(m : ImagetransformscaleMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn ImagetransformscaleMatrix::to_string(self : ImagetransformscaleMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn image_transform_scale_vector_zero(dim : Int) -> ImagetransformscaleVector
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn image_transform_scale_vector_add(a : ImagetransformscaleVector, b : ImagetransformscaleVector) -> ImagetransformscaleVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn ImagetransformscaleVector::add(self : ImagetransformscaleVector, other : ImagetransformscaleVector) -> ImagetransformscaleVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn image_transform_scale_vector_sub(a : ImagetransformscaleVector, b : ImagetransformscaleVector) -> ImagetransformscaleVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn ImagetransformscaleVector::sub(self : ImagetransformscaleVector, other : ImagetransformscaleVector) -> ImagetransformscaleVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn image_transform_scale_vector_scale(v : ImagetransformscaleVector, s : Double) -> ImagetransformscaleVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn ImagetransformscaleVector::scale(self : ImagetransformscaleVector, s : Double) -> ImagetransformscaleVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn image_transform_scale_vector_dot(a : ImagetransformscaleVector, b : ImagetransformscaleVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn ImagetransformscaleVector::dot(self : ImagetransformscaleVector, other : ImagetransformscaleVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn image_transform_scale_vector_norm(v : ImagetransformscaleVector) -> Double { @_common.sqrt(image_transform_scale_vector_dot(v, v)) }
+pub fn ImagetransformscaleVector::norm(self : ImagetransformscaleVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn image_transform_scale_vector_normalize(v : ImagetransformscaleVector) -> ImagetransformscaleVector {
-  let n = image_transform_scale_vector_norm(v)
-  if n < 0.0000001 { v } else { image_transform_scale_vector_scale(v, 1.0 / n) }
+pub fn ImagetransformscaleVector::normalize(self : ImagetransformscaleVector) -> ImagetransformscaleVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn image_transform_scale_vector_dist(a : ImagetransformscaleVector, b : ImagetransformscaleVector) -> Double {
-  image_transform_scale_vector_norm(image_transform_scale_vector_sub(a, b))
+pub fn ImagetransformscaleVector::dist(self : ImagetransformscaleVector, other : ImagetransformscaleVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn image_transform_scale_vector_to_string(v : ImagetransformscaleVector) -> String {
+pub fn ImagetransformscaleVector::to_string(self : ImagetransformscaleVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn image_transform_scale_mean(data : Array[Double]) -> Double { @_common.mean(data) }

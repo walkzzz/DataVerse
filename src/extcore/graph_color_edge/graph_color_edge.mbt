@@ -16,64 +16,64 @@ pub fn graph_color_edge_make_point3(x : Double, y : Double, z : Double) -> Graph
   { x, y, z, label: 0 }
 }
 
-pub fn graph_color_edge_point_x(pt : GraphcoloredgePoint) -> Double { pt.x }
+pub fn GraphcoloredgePoint::x(self : GraphcoloredgePoint) -> Double { self.x }
 
-pub fn graph_color_edge_point_y(pt : GraphcoloredgePoint) -> Double { pt.y }
+pub fn GraphcoloredgePoint::y(self : GraphcoloredgePoint) -> Double { self.y }
 
-pub fn graph_color_edge_point_z(pt : GraphcoloredgePoint) -> Double { pt.z }
+pub fn GraphcoloredgePoint::z(self : GraphcoloredgePoint) -> Double { self.z }
 
-pub fn graph_color_edge_point_label(pt : GraphcoloredgePoint) -> Int { pt.label }
+pub fn GraphcoloredgePoint::label(self : GraphcoloredgePoint) -> Int { self.label }
 
-pub fn graph_color_edge_point_dist(a : GraphcoloredgePoint, b : GraphcoloredgePoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn GraphcoloredgePoint::dist(self : GraphcoloredgePoint, other : GraphcoloredgePoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn graph_color_edge_point_add(a : GraphcoloredgePoint, b : GraphcoloredgePoint) -> GraphcoloredgePoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn GraphcoloredgePoint::add(self : GraphcoloredgePoint, other : GraphcoloredgePoint) -> GraphcoloredgePoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn graph_color_edge_point_sub(a : GraphcoloredgePoint, b : GraphcoloredgePoint) -> GraphcoloredgePoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn GraphcoloredgePoint::sub(self : GraphcoloredgePoint, other : GraphcoloredgePoint) -> GraphcoloredgePoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn graph_color_edge_point_scale(pt : GraphcoloredgePoint, s : Double) -> GraphcoloredgePoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn GraphcoloredgePoint::scale(self : GraphcoloredgePoint, s : Double) -> GraphcoloredgePoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn graph_color_edge_point_dot(a : GraphcoloredgePoint, b : GraphcoloredgePoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn GraphcoloredgePoint::dot(self : GraphcoloredgePoint, other : GraphcoloredgePoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn graph_color_edge_point_cross(a : GraphcoloredgePoint, b : GraphcoloredgePoint) -> GraphcoloredgePoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn GraphcoloredgePoint::cross(self : GraphcoloredgePoint, other : GraphcoloredgePoint) -> GraphcoloredgePoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn graph_color_edge_point_norm(pt : GraphcoloredgePoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn GraphcoloredgePoint::norm(self : GraphcoloredgePoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn graph_color_edge_point_normalize(pt : GraphcoloredgePoint) -> GraphcoloredgePoint {
-  let n = graph_color_edge_point_norm(pt)
-  if n < 0.0000001 { pt } else { graph_color_edge_point_scale(pt, 1.0 / n) }
+pub fn GraphcoloredgePoint::normalize(self : GraphcoloredgePoint) -> GraphcoloredgePoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn graph_color_edge_point_negate(pt : GraphcoloredgePoint) -> GraphcoloredgePoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn GraphcoloredgePoint::negate(self : GraphcoloredgePoint) -> GraphcoloredgePoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn graph_color_edge_point_mid(a : GraphcoloredgePoint, b : GraphcoloredgePoint) -> GraphcoloredgePoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn GraphcoloredgePoint::mid(self : GraphcoloredgePoint, other : GraphcoloredgePoint) -> GraphcoloredgePoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn graph_color_edge_point_lerp(a : GraphcoloredgePoint, b : GraphcoloredgePoint, t : Double) -> GraphcoloredgePoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn GraphcoloredgePoint::lerp(self : GraphcoloredgePoint, other : GraphcoloredgePoint, t : Double) -> GraphcoloredgePoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn graph_color_edge_point_to_string(pt : GraphcoloredgePoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn GraphcoloredgePoint::to_string(self : GraphcoloredgePoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct GraphcoloredgeSeries {
@@ -86,58 +86,58 @@ pub fn graph_color_edge_make_series(vals : Array[Double], name : String) -> Grap
   { vals, name, meta: 0 }
 }
 
-pub fn graph_color_edge_series_len(s : GraphcoloredgeSeries) -> Int { s.vals.length() }
+pub fn GraphcoloredgeSeries::len(self : GraphcoloredgeSeries) -> Int { self.vals.length() }
 
-pub fn graph_color_edge_series_sum(s : GraphcoloredgeSeries) -> Double { @_common.sum(s.vals) }
+pub fn GraphcoloredgeSeries::sum(self : GraphcoloredgeSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn graph_color_edge_series_mean(s : GraphcoloredgeSeries) -> Double { @_common.mean(s.vals) }
+pub fn GraphcoloredgeSeries::mean(self : GraphcoloredgeSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn graph_color_edge_series_min(s : GraphcoloredgeSeries) -> Double { @_common.min(s.vals) }
+pub fn GraphcoloredgeSeries::min(self : GraphcoloredgeSeries) -> Double { @_common.min(self.vals) }
 
-pub fn graph_color_edge_series_max(s : GraphcoloredgeSeries) -> Double { @_common.max(s.vals) }
+pub fn GraphcoloredgeSeries::max(self : GraphcoloredgeSeries) -> Double { @_common.max(self.vals) }
 
-pub fn graph_color_edge_series_range(s : GraphcoloredgeSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn GraphcoloredgeSeries::range(self : GraphcoloredgeSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn graph_color_edge_series_var(s : GraphcoloredgeSeries) -> Double { @_common.variance(s.vals) }
+pub fn GraphcoloredgeSeries::variance(self : GraphcoloredgeSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn graph_color_edge_series_std(s : GraphcoloredgeSeries) -> Double { @_common.std(s.vals) }
+pub fn GraphcoloredgeSeries::std(self : GraphcoloredgeSeries) -> Double { @_common.std(self.vals) }
 
-pub fn graph_color_edge_series_median(s : GraphcoloredgeSeries) -> Double { @_common.median(s.vals) }
+pub fn GraphcoloredgeSeries::median(self : GraphcoloredgeSeries) -> Double { @_common.median(self.vals) }
 
-pub fn graph_color_edge_series_scale(s : GraphcoloredgeSeries, f : Double) -> GraphcoloredgeSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn GraphcoloredgeSeries::scale(self : GraphcoloredgeSeries, f : Double) -> GraphcoloredgeSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn graph_color_edge_series_add(a : GraphcoloredgeSeries, b : GraphcoloredgeSeries) -> GraphcoloredgeSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn GraphcoloredgeSeries::add(self : GraphcoloredgeSeries, other : GraphcoloredgeSeries) -> GraphcoloredgeSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn graph_color_edge_series_sub(a : GraphcoloredgeSeries, b : GraphcoloredgeSeries) -> GraphcoloredgeSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn GraphcoloredgeSeries::sub(self : GraphcoloredgeSeries, other : GraphcoloredgeSeries) -> GraphcoloredgeSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn graph_color_edge_series_normalize(s : GraphcoloredgeSeries) -> GraphcoloredgeSeries {
-  let mn = graph_color_edge_series_min(s)
-  let mx = graph_color_edge_series_max(s)
+pub fn GraphcoloredgeSeries::normalize(self : GraphcoloredgeSeries) -> GraphcoloredgeSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn graph_color_edge_series_cumsum(s : GraphcoloredgeSeries) -> GraphcoloredgeSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn GraphcoloredgeSeries::cumsum(self : GraphcoloredgeSeries) -> GraphcoloredgeSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn graph_color_edge_series_to_string(s : GraphcoloredgeSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn GraphcoloredgeSeries::to_string(self : GraphcoloredgeSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn graph_color_edge_matrix_identity(n : Int) -> GraphcoloredgeMatrix {
   m
 }
 
-pub fn graph_color_edge_matrix_get(m : GraphcoloredgeMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn GraphcoloredgeMatrix::get(self : GraphcoloredgeMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn graph_color_edge_matrix_transpose(m : GraphcoloredgeMatrix) -> GraphcoloredgeMatrix {
-  let result = graph_color_edge_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn GraphcoloredgeMatrix::transpose(self : GraphcoloredgeMatrix) -> GraphcoloredgeMatrix {
+  let result = graph_color_edge_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn graph_color_edge_matrix_add(a : GraphcoloredgeMatrix, b : GraphcoloredgeMatrix) -> GraphcoloredgeMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = graph_color_edge_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn GraphcoloredgeMatrix::add(self : GraphcoloredgeMatrix, other : GraphcoloredgeMatrix) -> GraphcoloredgeMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = graph_color_edge_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn graph_color_edge_matrix_scale(m : GraphcoloredgeMatrix, s : Double) -> GraphcoloredgeMatrix {
-  let result = graph_color_edge_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn GraphcoloredgeMatrix::scale(self : GraphcoloredgeMatrix, s : Double) -> GraphcoloredgeMatrix {
+  let result = graph_color_edge_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn graph_color_edge_matrix_multiply(a : GraphcoloredgeMatrix, b : GraphcoloredgeMatrix) -> GraphcoloredgeMatrix {
-  if a.cols != b.rows { return graph_color_edge_make_matrix(a.rows, b.cols, 0.0) }
-  let result = graph_color_edge_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn GraphcoloredgeMatrix::multiply(self : GraphcoloredgeMatrix, other : GraphcoloredgeMatrix) -> GraphcoloredgeMatrix {
+  if self.cols != other.rows { return graph_color_edge_make_matrix(self.rows, other.cols, 0.0) }
+  let result = graph_color_edge_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn graph_color_edge_matrix_trace(m : GraphcoloredgeMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn GraphcoloredgeMatrix::trace(self : GraphcoloredgeMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn graph_color_edge_matrix_det(m : GraphcoloredgeMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn GraphcoloredgeMatrix::det(self : GraphcoloredgeMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn graph_color_edge_matrix_norm(m : GraphcoloredgeMatrix) -> Double {
+pub fn GraphcoloredgeMatrix::norm(self : GraphcoloredgeMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn graph_color_edge_matrix_to_string(m : GraphcoloredgeMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn GraphcoloredgeMatrix::to_string(self : GraphcoloredgeMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn graph_color_edge_vector_zero(dim : Int) -> GraphcoloredgeVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn graph_color_edge_vector_add(a : GraphcoloredgeVector, b : GraphcoloredgeVector) -> GraphcoloredgeVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn GraphcoloredgeVector::add(self : GraphcoloredgeVector, other : GraphcoloredgeVector) -> GraphcoloredgeVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn graph_color_edge_vector_sub(a : GraphcoloredgeVector, b : GraphcoloredgeVector) -> GraphcoloredgeVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn GraphcoloredgeVector::sub(self : GraphcoloredgeVector, other : GraphcoloredgeVector) -> GraphcoloredgeVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn graph_color_edge_vector_scale(v : GraphcoloredgeVector, s : Double) -> GraphcoloredgeVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn GraphcoloredgeVector::scale(self : GraphcoloredgeVector, s : Double) -> GraphcoloredgeVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn graph_color_edge_vector_dot(a : GraphcoloredgeVector, b : GraphcoloredgeVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn GraphcoloredgeVector::dot(self : GraphcoloredgeVector, other : GraphcoloredgeVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn graph_color_edge_vector_norm(v : GraphcoloredgeVector) -> Double { @_common.sqrt(graph_color_edge_vector_dot(v, v)) }
+pub fn GraphcoloredgeVector::norm(self : GraphcoloredgeVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn graph_color_edge_vector_normalize(v : GraphcoloredgeVector) -> GraphcoloredgeVector {
-  let n = graph_color_edge_vector_norm(v)
-  if n < 0.0000001 { v } else { graph_color_edge_vector_scale(v, 1.0 / n) }
+pub fn GraphcoloredgeVector::normalize(self : GraphcoloredgeVector) -> GraphcoloredgeVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn graph_color_edge_vector_dist(a : GraphcoloredgeVector, b : GraphcoloredgeVector) -> Double {
-  graph_color_edge_vector_norm(graph_color_edge_vector_sub(a, b))
+pub fn GraphcoloredgeVector::dist(self : GraphcoloredgeVector, other : GraphcoloredgeVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn graph_color_edge_vector_to_string(v : GraphcoloredgeVector) -> String {
+pub fn GraphcoloredgeVector::to_string(self : GraphcoloredgeVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn graph_color_edge_mean(data : Array[Double]) -> Double { @_common.mean(data) }

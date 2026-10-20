@@ -16,64 +16,64 @@ pub fn ds_graph_dynamic_make_point3(x : Double, y : Double, z : Double) -> Dsgra
   { x, y, z, label: 0 }
 }
 
-pub fn ds_graph_dynamic_point_x(pt : DsgraphdynamicPoint) -> Double { pt.x }
+pub fn DsgraphdynamicPoint::x(self : DsgraphdynamicPoint) -> Double { self.x }
 
-pub fn ds_graph_dynamic_point_y(pt : DsgraphdynamicPoint) -> Double { pt.y }
+pub fn DsgraphdynamicPoint::y(self : DsgraphdynamicPoint) -> Double { self.y }
 
-pub fn ds_graph_dynamic_point_z(pt : DsgraphdynamicPoint) -> Double { pt.z }
+pub fn DsgraphdynamicPoint::z(self : DsgraphdynamicPoint) -> Double { self.z }
 
-pub fn ds_graph_dynamic_point_label(pt : DsgraphdynamicPoint) -> Int { pt.label }
+pub fn DsgraphdynamicPoint::label(self : DsgraphdynamicPoint) -> Int { self.label }
 
-pub fn ds_graph_dynamic_point_dist(a : DsgraphdynamicPoint, b : DsgraphdynamicPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn DsgraphdynamicPoint::dist(self : DsgraphdynamicPoint, other : DsgraphdynamicPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn ds_graph_dynamic_point_add(a : DsgraphdynamicPoint, b : DsgraphdynamicPoint) -> DsgraphdynamicPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn DsgraphdynamicPoint::add(self : DsgraphdynamicPoint, other : DsgraphdynamicPoint) -> DsgraphdynamicPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn ds_graph_dynamic_point_sub(a : DsgraphdynamicPoint, b : DsgraphdynamicPoint) -> DsgraphdynamicPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn DsgraphdynamicPoint::sub(self : DsgraphdynamicPoint, other : DsgraphdynamicPoint) -> DsgraphdynamicPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn ds_graph_dynamic_point_scale(pt : DsgraphdynamicPoint, s : Double) -> DsgraphdynamicPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn DsgraphdynamicPoint::scale(self : DsgraphdynamicPoint, s : Double) -> DsgraphdynamicPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn ds_graph_dynamic_point_dot(a : DsgraphdynamicPoint, b : DsgraphdynamicPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn DsgraphdynamicPoint::dot(self : DsgraphdynamicPoint, other : DsgraphdynamicPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn ds_graph_dynamic_point_cross(a : DsgraphdynamicPoint, b : DsgraphdynamicPoint) -> DsgraphdynamicPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn DsgraphdynamicPoint::cross(self : DsgraphdynamicPoint, other : DsgraphdynamicPoint) -> DsgraphdynamicPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn ds_graph_dynamic_point_norm(pt : DsgraphdynamicPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn DsgraphdynamicPoint::norm(self : DsgraphdynamicPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn ds_graph_dynamic_point_normalize(pt : DsgraphdynamicPoint) -> DsgraphdynamicPoint {
-  let n = ds_graph_dynamic_point_norm(pt)
-  if n < 0.0000001 { pt } else { ds_graph_dynamic_point_scale(pt, 1.0 / n) }
+pub fn DsgraphdynamicPoint::normalize(self : DsgraphdynamicPoint) -> DsgraphdynamicPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn ds_graph_dynamic_point_negate(pt : DsgraphdynamicPoint) -> DsgraphdynamicPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn DsgraphdynamicPoint::negate(self : DsgraphdynamicPoint) -> DsgraphdynamicPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn ds_graph_dynamic_point_mid(a : DsgraphdynamicPoint, b : DsgraphdynamicPoint) -> DsgraphdynamicPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn DsgraphdynamicPoint::mid(self : DsgraphdynamicPoint, other : DsgraphdynamicPoint) -> DsgraphdynamicPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn ds_graph_dynamic_point_lerp(a : DsgraphdynamicPoint, b : DsgraphdynamicPoint, t : Double) -> DsgraphdynamicPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn DsgraphdynamicPoint::lerp(self : DsgraphdynamicPoint, other : DsgraphdynamicPoint, t : Double) -> DsgraphdynamicPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn ds_graph_dynamic_point_to_string(pt : DsgraphdynamicPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn DsgraphdynamicPoint::to_string(self : DsgraphdynamicPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct DsgraphdynamicSeries {
@@ -86,58 +86,58 @@ pub fn ds_graph_dynamic_make_series(vals : Array[Double], name : String) -> Dsgr
   { vals, name, meta: 0 }
 }
 
-pub fn ds_graph_dynamic_series_len(s : DsgraphdynamicSeries) -> Int { s.vals.length() }
+pub fn DsgraphdynamicSeries::len(self : DsgraphdynamicSeries) -> Int { self.vals.length() }
 
-pub fn ds_graph_dynamic_series_sum(s : DsgraphdynamicSeries) -> Double { @_common.sum(s.vals) }
+pub fn DsgraphdynamicSeries::sum(self : DsgraphdynamicSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn ds_graph_dynamic_series_mean(s : DsgraphdynamicSeries) -> Double { @_common.mean(s.vals) }
+pub fn DsgraphdynamicSeries::mean(self : DsgraphdynamicSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn ds_graph_dynamic_series_min(s : DsgraphdynamicSeries) -> Double { @_common.min(s.vals) }
+pub fn DsgraphdynamicSeries::min(self : DsgraphdynamicSeries) -> Double { @_common.min(self.vals) }
 
-pub fn ds_graph_dynamic_series_max(s : DsgraphdynamicSeries) -> Double { @_common.max(s.vals) }
+pub fn DsgraphdynamicSeries::max(self : DsgraphdynamicSeries) -> Double { @_common.max(self.vals) }
 
-pub fn ds_graph_dynamic_series_range(s : DsgraphdynamicSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn DsgraphdynamicSeries::range(self : DsgraphdynamicSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn ds_graph_dynamic_series_var(s : DsgraphdynamicSeries) -> Double { @_common.variance(s.vals) }
+pub fn DsgraphdynamicSeries::variance(self : DsgraphdynamicSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn ds_graph_dynamic_series_std(s : DsgraphdynamicSeries) -> Double { @_common.std(s.vals) }
+pub fn DsgraphdynamicSeries::std(self : DsgraphdynamicSeries) -> Double { @_common.std(self.vals) }
 
-pub fn ds_graph_dynamic_series_median(s : DsgraphdynamicSeries) -> Double { @_common.median(s.vals) }
+pub fn DsgraphdynamicSeries::median(self : DsgraphdynamicSeries) -> Double { @_common.median(self.vals) }
 
-pub fn ds_graph_dynamic_series_scale(s : DsgraphdynamicSeries, f : Double) -> DsgraphdynamicSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn DsgraphdynamicSeries::scale(self : DsgraphdynamicSeries, f : Double) -> DsgraphdynamicSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn ds_graph_dynamic_series_add(a : DsgraphdynamicSeries, b : DsgraphdynamicSeries) -> DsgraphdynamicSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn DsgraphdynamicSeries::add(self : DsgraphdynamicSeries, other : DsgraphdynamicSeries) -> DsgraphdynamicSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn ds_graph_dynamic_series_sub(a : DsgraphdynamicSeries, b : DsgraphdynamicSeries) -> DsgraphdynamicSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn DsgraphdynamicSeries::sub(self : DsgraphdynamicSeries, other : DsgraphdynamicSeries) -> DsgraphdynamicSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn ds_graph_dynamic_series_normalize(s : DsgraphdynamicSeries) -> DsgraphdynamicSeries {
-  let mn = ds_graph_dynamic_series_min(s)
-  let mx = ds_graph_dynamic_series_max(s)
+pub fn DsgraphdynamicSeries::normalize(self : DsgraphdynamicSeries) -> DsgraphdynamicSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn ds_graph_dynamic_series_cumsum(s : DsgraphdynamicSeries) -> DsgraphdynamicSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn DsgraphdynamicSeries::cumsum(self : DsgraphdynamicSeries) -> DsgraphdynamicSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn ds_graph_dynamic_series_to_string(s : DsgraphdynamicSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn DsgraphdynamicSeries::to_string(self : DsgraphdynamicSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn ds_graph_dynamic_matrix_identity(n : Int) -> DsgraphdynamicMatrix {
   m
 }
 
-pub fn ds_graph_dynamic_matrix_get(m : DsgraphdynamicMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn DsgraphdynamicMatrix::get(self : DsgraphdynamicMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn ds_graph_dynamic_matrix_transpose(m : DsgraphdynamicMatrix) -> DsgraphdynamicMatrix {
-  let result = ds_graph_dynamic_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn DsgraphdynamicMatrix::transpose(self : DsgraphdynamicMatrix) -> DsgraphdynamicMatrix {
+  let result = ds_graph_dynamic_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn ds_graph_dynamic_matrix_add(a : DsgraphdynamicMatrix, b : DsgraphdynamicMatrix) -> DsgraphdynamicMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = ds_graph_dynamic_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn DsgraphdynamicMatrix::add(self : DsgraphdynamicMatrix, other : DsgraphdynamicMatrix) -> DsgraphdynamicMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = ds_graph_dynamic_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn ds_graph_dynamic_matrix_scale(m : DsgraphdynamicMatrix, s : Double) -> DsgraphdynamicMatrix {
-  let result = ds_graph_dynamic_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn DsgraphdynamicMatrix::scale(self : DsgraphdynamicMatrix, s : Double) -> DsgraphdynamicMatrix {
+  let result = ds_graph_dynamic_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn ds_graph_dynamic_matrix_multiply(a : DsgraphdynamicMatrix, b : DsgraphdynamicMatrix) -> DsgraphdynamicMatrix {
-  if a.cols != b.rows { return ds_graph_dynamic_make_matrix(a.rows, b.cols, 0.0) }
-  let result = ds_graph_dynamic_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn DsgraphdynamicMatrix::multiply(self : DsgraphdynamicMatrix, other : DsgraphdynamicMatrix) -> DsgraphdynamicMatrix {
+  if self.cols != other.rows { return ds_graph_dynamic_make_matrix(self.rows, other.cols, 0.0) }
+  let result = ds_graph_dynamic_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn ds_graph_dynamic_matrix_trace(m : DsgraphdynamicMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn DsgraphdynamicMatrix::trace(self : DsgraphdynamicMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn ds_graph_dynamic_matrix_det(m : DsgraphdynamicMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn DsgraphdynamicMatrix::det(self : DsgraphdynamicMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn ds_graph_dynamic_matrix_norm(m : DsgraphdynamicMatrix) -> Double {
+pub fn DsgraphdynamicMatrix::norm(self : DsgraphdynamicMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn ds_graph_dynamic_matrix_to_string(m : DsgraphdynamicMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn DsgraphdynamicMatrix::to_string(self : DsgraphdynamicMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn ds_graph_dynamic_vector_zero(dim : Int) -> DsgraphdynamicVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn ds_graph_dynamic_vector_add(a : DsgraphdynamicVector, b : DsgraphdynamicVector) -> DsgraphdynamicVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn DsgraphdynamicVector::add(self : DsgraphdynamicVector, other : DsgraphdynamicVector) -> DsgraphdynamicVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn ds_graph_dynamic_vector_sub(a : DsgraphdynamicVector, b : DsgraphdynamicVector) -> DsgraphdynamicVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn DsgraphdynamicVector::sub(self : DsgraphdynamicVector, other : DsgraphdynamicVector) -> DsgraphdynamicVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn ds_graph_dynamic_vector_scale(v : DsgraphdynamicVector, s : Double) -> DsgraphdynamicVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn DsgraphdynamicVector::scale(self : DsgraphdynamicVector, s : Double) -> DsgraphdynamicVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn ds_graph_dynamic_vector_dot(a : DsgraphdynamicVector, b : DsgraphdynamicVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn DsgraphdynamicVector::dot(self : DsgraphdynamicVector, other : DsgraphdynamicVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn ds_graph_dynamic_vector_norm(v : DsgraphdynamicVector) -> Double { @_common.sqrt(ds_graph_dynamic_vector_dot(v, v)) }
+pub fn DsgraphdynamicVector::norm(self : DsgraphdynamicVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn ds_graph_dynamic_vector_normalize(v : DsgraphdynamicVector) -> DsgraphdynamicVector {
-  let n = ds_graph_dynamic_vector_norm(v)
-  if n < 0.0000001 { v } else { ds_graph_dynamic_vector_scale(v, 1.0 / n) }
+pub fn DsgraphdynamicVector::normalize(self : DsgraphdynamicVector) -> DsgraphdynamicVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn ds_graph_dynamic_vector_dist(a : DsgraphdynamicVector, b : DsgraphdynamicVector) -> Double {
-  ds_graph_dynamic_vector_norm(ds_graph_dynamic_vector_sub(a, b))
+pub fn DsgraphdynamicVector::dist(self : DsgraphdynamicVector, other : DsgraphdynamicVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn ds_graph_dynamic_vector_to_string(v : DsgraphdynamicVector) -> String {
+pub fn DsgraphdynamicVector::to_string(self : DsgraphdynamicVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn ds_graph_dynamic_mean(data : Array[Double]) -> Double { @_common.mean(data) }

@@ -16,64 +16,64 @@ pub fn crypto_hash_whirlpool_make_point3(x : Double, y : Double, z : Double) -> 
   { x, y, z, label: 0 }
 }
 
-pub fn crypto_hash_whirlpool_point_x(pt : CryptohashwhirlpoolPoint) -> Double { pt.x }
+pub fn CryptohashwhirlpoolPoint::x(self : CryptohashwhirlpoolPoint) -> Double { self.x }
 
-pub fn crypto_hash_whirlpool_point_y(pt : CryptohashwhirlpoolPoint) -> Double { pt.y }
+pub fn CryptohashwhirlpoolPoint::y(self : CryptohashwhirlpoolPoint) -> Double { self.y }
 
-pub fn crypto_hash_whirlpool_point_z(pt : CryptohashwhirlpoolPoint) -> Double { pt.z }
+pub fn CryptohashwhirlpoolPoint::z(self : CryptohashwhirlpoolPoint) -> Double { self.z }
 
-pub fn crypto_hash_whirlpool_point_label(pt : CryptohashwhirlpoolPoint) -> Int { pt.label }
+pub fn CryptohashwhirlpoolPoint::label(self : CryptohashwhirlpoolPoint) -> Int { self.label }
 
-pub fn crypto_hash_whirlpool_point_dist(a : CryptohashwhirlpoolPoint, b : CryptohashwhirlpoolPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn CryptohashwhirlpoolPoint::dist(self : CryptohashwhirlpoolPoint, other : CryptohashwhirlpoolPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn crypto_hash_whirlpool_point_add(a : CryptohashwhirlpoolPoint, b : CryptohashwhirlpoolPoint) -> CryptohashwhirlpoolPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn CryptohashwhirlpoolPoint::add(self : CryptohashwhirlpoolPoint, other : CryptohashwhirlpoolPoint) -> CryptohashwhirlpoolPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn crypto_hash_whirlpool_point_sub(a : CryptohashwhirlpoolPoint, b : CryptohashwhirlpoolPoint) -> CryptohashwhirlpoolPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn CryptohashwhirlpoolPoint::sub(self : CryptohashwhirlpoolPoint, other : CryptohashwhirlpoolPoint) -> CryptohashwhirlpoolPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn crypto_hash_whirlpool_point_scale(pt : CryptohashwhirlpoolPoint, s : Double) -> CryptohashwhirlpoolPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn CryptohashwhirlpoolPoint::scale(self : CryptohashwhirlpoolPoint, s : Double) -> CryptohashwhirlpoolPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn crypto_hash_whirlpool_point_dot(a : CryptohashwhirlpoolPoint, b : CryptohashwhirlpoolPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn CryptohashwhirlpoolPoint::dot(self : CryptohashwhirlpoolPoint, other : CryptohashwhirlpoolPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn crypto_hash_whirlpool_point_cross(a : CryptohashwhirlpoolPoint, b : CryptohashwhirlpoolPoint) -> CryptohashwhirlpoolPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn CryptohashwhirlpoolPoint::cross(self : CryptohashwhirlpoolPoint, other : CryptohashwhirlpoolPoint) -> CryptohashwhirlpoolPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn crypto_hash_whirlpool_point_norm(pt : CryptohashwhirlpoolPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn CryptohashwhirlpoolPoint::norm(self : CryptohashwhirlpoolPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn crypto_hash_whirlpool_point_normalize(pt : CryptohashwhirlpoolPoint) -> CryptohashwhirlpoolPoint {
-  let n = crypto_hash_whirlpool_point_norm(pt)
-  if n < 0.0000001 { pt } else { crypto_hash_whirlpool_point_scale(pt, 1.0 / n) }
+pub fn CryptohashwhirlpoolPoint::normalize(self : CryptohashwhirlpoolPoint) -> CryptohashwhirlpoolPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn crypto_hash_whirlpool_point_negate(pt : CryptohashwhirlpoolPoint) -> CryptohashwhirlpoolPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn CryptohashwhirlpoolPoint::negate(self : CryptohashwhirlpoolPoint) -> CryptohashwhirlpoolPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn crypto_hash_whirlpool_point_mid(a : CryptohashwhirlpoolPoint, b : CryptohashwhirlpoolPoint) -> CryptohashwhirlpoolPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn CryptohashwhirlpoolPoint::mid(self : CryptohashwhirlpoolPoint, other : CryptohashwhirlpoolPoint) -> CryptohashwhirlpoolPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn crypto_hash_whirlpool_point_lerp(a : CryptohashwhirlpoolPoint, b : CryptohashwhirlpoolPoint, t : Double) -> CryptohashwhirlpoolPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn CryptohashwhirlpoolPoint::lerp(self : CryptohashwhirlpoolPoint, other : CryptohashwhirlpoolPoint, t : Double) -> CryptohashwhirlpoolPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn crypto_hash_whirlpool_point_to_string(pt : CryptohashwhirlpoolPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn CryptohashwhirlpoolPoint::to_string(self : CryptohashwhirlpoolPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct CryptohashwhirlpoolSeries {
@@ -86,58 +86,58 @@ pub fn crypto_hash_whirlpool_make_series(vals : Array[Double], name : String) ->
   { vals, name, meta: 0 }
 }
 
-pub fn crypto_hash_whirlpool_series_len(s : CryptohashwhirlpoolSeries) -> Int { s.vals.length() }
+pub fn CryptohashwhirlpoolSeries::len(self : CryptohashwhirlpoolSeries) -> Int { self.vals.length() }
 
-pub fn crypto_hash_whirlpool_series_sum(s : CryptohashwhirlpoolSeries) -> Double { @_common.sum(s.vals) }
+pub fn CryptohashwhirlpoolSeries::sum(self : CryptohashwhirlpoolSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn crypto_hash_whirlpool_series_mean(s : CryptohashwhirlpoolSeries) -> Double { @_common.mean(s.vals) }
+pub fn CryptohashwhirlpoolSeries::mean(self : CryptohashwhirlpoolSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn crypto_hash_whirlpool_series_min(s : CryptohashwhirlpoolSeries) -> Double { @_common.min(s.vals) }
+pub fn CryptohashwhirlpoolSeries::min(self : CryptohashwhirlpoolSeries) -> Double { @_common.min(self.vals) }
 
-pub fn crypto_hash_whirlpool_series_max(s : CryptohashwhirlpoolSeries) -> Double { @_common.max(s.vals) }
+pub fn CryptohashwhirlpoolSeries::max(self : CryptohashwhirlpoolSeries) -> Double { @_common.max(self.vals) }
 
-pub fn crypto_hash_whirlpool_series_range(s : CryptohashwhirlpoolSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn CryptohashwhirlpoolSeries::range(self : CryptohashwhirlpoolSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn crypto_hash_whirlpool_series_var(s : CryptohashwhirlpoolSeries) -> Double { @_common.variance(s.vals) }
+pub fn CryptohashwhirlpoolSeries::variance(self : CryptohashwhirlpoolSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn crypto_hash_whirlpool_series_std(s : CryptohashwhirlpoolSeries) -> Double { @_common.std(s.vals) }
+pub fn CryptohashwhirlpoolSeries::std(self : CryptohashwhirlpoolSeries) -> Double { @_common.std(self.vals) }
 
-pub fn crypto_hash_whirlpool_series_median(s : CryptohashwhirlpoolSeries) -> Double { @_common.median(s.vals) }
+pub fn CryptohashwhirlpoolSeries::median(self : CryptohashwhirlpoolSeries) -> Double { @_common.median(self.vals) }
 
-pub fn crypto_hash_whirlpool_series_scale(s : CryptohashwhirlpoolSeries, f : Double) -> CryptohashwhirlpoolSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn CryptohashwhirlpoolSeries::scale(self : CryptohashwhirlpoolSeries, f : Double) -> CryptohashwhirlpoolSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn crypto_hash_whirlpool_series_add(a : CryptohashwhirlpoolSeries, b : CryptohashwhirlpoolSeries) -> CryptohashwhirlpoolSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn CryptohashwhirlpoolSeries::add(self : CryptohashwhirlpoolSeries, other : CryptohashwhirlpoolSeries) -> CryptohashwhirlpoolSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn crypto_hash_whirlpool_series_sub(a : CryptohashwhirlpoolSeries, b : CryptohashwhirlpoolSeries) -> CryptohashwhirlpoolSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn CryptohashwhirlpoolSeries::sub(self : CryptohashwhirlpoolSeries, other : CryptohashwhirlpoolSeries) -> CryptohashwhirlpoolSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn crypto_hash_whirlpool_series_normalize(s : CryptohashwhirlpoolSeries) -> CryptohashwhirlpoolSeries {
-  let mn = crypto_hash_whirlpool_series_min(s)
-  let mx = crypto_hash_whirlpool_series_max(s)
+pub fn CryptohashwhirlpoolSeries::normalize(self : CryptohashwhirlpoolSeries) -> CryptohashwhirlpoolSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn crypto_hash_whirlpool_series_cumsum(s : CryptohashwhirlpoolSeries) -> CryptohashwhirlpoolSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn CryptohashwhirlpoolSeries::cumsum(self : CryptohashwhirlpoolSeries) -> CryptohashwhirlpoolSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn crypto_hash_whirlpool_series_to_string(s : CryptohashwhirlpoolSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn CryptohashwhirlpoolSeries::to_string(self : CryptohashwhirlpoolSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn crypto_hash_whirlpool_matrix_identity(n : Int) -> CryptohashwhirlpoolMatr
   m
 }
 
-pub fn crypto_hash_whirlpool_matrix_get(m : CryptohashwhirlpoolMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn CryptohashwhirlpoolMatrix::get(self : CryptohashwhirlpoolMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn crypto_hash_whirlpool_matrix_transpose(m : CryptohashwhirlpoolMatrix) -> CryptohashwhirlpoolMatrix {
-  let result = crypto_hash_whirlpool_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn CryptohashwhirlpoolMatrix::transpose(self : CryptohashwhirlpoolMatrix) -> CryptohashwhirlpoolMatrix {
+  let result = crypto_hash_whirlpool_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn crypto_hash_whirlpool_matrix_add(a : CryptohashwhirlpoolMatrix, b : CryptohashwhirlpoolMatrix) -> CryptohashwhirlpoolMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = crypto_hash_whirlpool_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn CryptohashwhirlpoolMatrix::add(self : CryptohashwhirlpoolMatrix, other : CryptohashwhirlpoolMatrix) -> CryptohashwhirlpoolMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = crypto_hash_whirlpool_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn crypto_hash_whirlpool_matrix_scale(m : CryptohashwhirlpoolMatrix, s : Double) -> CryptohashwhirlpoolMatrix {
-  let result = crypto_hash_whirlpool_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn CryptohashwhirlpoolMatrix::scale(self : CryptohashwhirlpoolMatrix, s : Double) -> CryptohashwhirlpoolMatrix {
+  let result = crypto_hash_whirlpool_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn crypto_hash_whirlpool_matrix_multiply(a : CryptohashwhirlpoolMatrix, b : CryptohashwhirlpoolMatrix) -> CryptohashwhirlpoolMatrix {
-  if a.cols != b.rows { return crypto_hash_whirlpool_make_matrix(a.rows, b.cols, 0.0) }
-  let result = crypto_hash_whirlpool_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn CryptohashwhirlpoolMatrix::multiply(self : CryptohashwhirlpoolMatrix, other : CryptohashwhirlpoolMatrix) -> CryptohashwhirlpoolMatrix {
+  if self.cols != other.rows { return crypto_hash_whirlpool_make_matrix(self.rows, other.cols, 0.0) }
+  let result = crypto_hash_whirlpool_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn crypto_hash_whirlpool_matrix_trace(m : CryptohashwhirlpoolMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn CryptohashwhirlpoolMatrix::trace(self : CryptohashwhirlpoolMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn crypto_hash_whirlpool_matrix_det(m : CryptohashwhirlpoolMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn CryptohashwhirlpoolMatrix::det(self : CryptohashwhirlpoolMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn crypto_hash_whirlpool_matrix_norm(m : CryptohashwhirlpoolMatrix) -> Double {
+pub fn CryptohashwhirlpoolMatrix::norm(self : CryptohashwhirlpoolMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn crypto_hash_whirlpool_matrix_to_string(m : CryptohashwhirlpoolMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn CryptohashwhirlpoolMatrix::to_string(self : CryptohashwhirlpoolMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn crypto_hash_whirlpool_vector_zero(dim : Int) -> CryptohashwhirlpoolVector
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn crypto_hash_whirlpool_vector_add(a : CryptohashwhirlpoolVector, b : CryptohashwhirlpoolVector) -> CryptohashwhirlpoolVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn CryptohashwhirlpoolVector::add(self : CryptohashwhirlpoolVector, other : CryptohashwhirlpoolVector) -> CryptohashwhirlpoolVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn crypto_hash_whirlpool_vector_sub(a : CryptohashwhirlpoolVector, b : CryptohashwhirlpoolVector) -> CryptohashwhirlpoolVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn CryptohashwhirlpoolVector::sub(self : CryptohashwhirlpoolVector, other : CryptohashwhirlpoolVector) -> CryptohashwhirlpoolVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn crypto_hash_whirlpool_vector_scale(v : CryptohashwhirlpoolVector, s : Double) -> CryptohashwhirlpoolVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn CryptohashwhirlpoolVector::scale(self : CryptohashwhirlpoolVector, s : Double) -> CryptohashwhirlpoolVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn crypto_hash_whirlpool_vector_dot(a : CryptohashwhirlpoolVector, b : CryptohashwhirlpoolVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn CryptohashwhirlpoolVector::dot(self : CryptohashwhirlpoolVector, other : CryptohashwhirlpoolVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn crypto_hash_whirlpool_vector_norm(v : CryptohashwhirlpoolVector) -> Double { @_common.sqrt(crypto_hash_whirlpool_vector_dot(v, v)) }
+pub fn CryptohashwhirlpoolVector::norm(self : CryptohashwhirlpoolVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn crypto_hash_whirlpool_vector_normalize(v : CryptohashwhirlpoolVector) -> CryptohashwhirlpoolVector {
-  let n = crypto_hash_whirlpool_vector_norm(v)
-  if n < 0.0000001 { v } else { crypto_hash_whirlpool_vector_scale(v, 1.0 / n) }
+pub fn CryptohashwhirlpoolVector::normalize(self : CryptohashwhirlpoolVector) -> CryptohashwhirlpoolVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn crypto_hash_whirlpool_vector_dist(a : CryptohashwhirlpoolVector, b : CryptohashwhirlpoolVector) -> Double {
-  crypto_hash_whirlpool_vector_norm(crypto_hash_whirlpool_vector_sub(a, b))
+pub fn CryptohashwhirlpoolVector::dist(self : CryptohashwhirlpoolVector, other : CryptohashwhirlpoolVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn crypto_hash_whirlpool_vector_to_string(v : CryptohashwhirlpoolVector) -> String {
+pub fn CryptohashwhirlpoolVector::to_string(self : CryptohashwhirlpoolVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn crypto_hash_whirlpool_mean(data : Array[Double]) -> Double { @_common.mean(data) }

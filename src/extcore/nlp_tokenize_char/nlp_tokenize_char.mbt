@@ -16,64 +16,64 @@ pub fn nlp_tokenize_char_make_point3(x : Double, y : Double, z : Double) -> Nlpt
   { x, y, z, label: 0 }
 }
 
-pub fn nlp_tokenize_char_point_x(pt : NlptokenizecharPoint) -> Double { pt.x }
+pub fn NlptokenizecharPoint::x(self : NlptokenizecharPoint) -> Double { self.x }
 
-pub fn nlp_tokenize_char_point_y(pt : NlptokenizecharPoint) -> Double { pt.y }
+pub fn NlptokenizecharPoint::y(self : NlptokenizecharPoint) -> Double { self.y }
 
-pub fn nlp_tokenize_char_point_z(pt : NlptokenizecharPoint) -> Double { pt.z }
+pub fn NlptokenizecharPoint::z(self : NlptokenizecharPoint) -> Double { self.z }
 
-pub fn nlp_tokenize_char_point_label(pt : NlptokenizecharPoint) -> Int { pt.label }
+pub fn NlptokenizecharPoint::label(self : NlptokenizecharPoint) -> Int { self.label }
 
-pub fn nlp_tokenize_char_point_dist(a : NlptokenizecharPoint, b : NlptokenizecharPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn NlptokenizecharPoint::dist(self : NlptokenizecharPoint, other : NlptokenizecharPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn nlp_tokenize_char_point_add(a : NlptokenizecharPoint, b : NlptokenizecharPoint) -> NlptokenizecharPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn NlptokenizecharPoint::add(self : NlptokenizecharPoint, other : NlptokenizecharPoint) -> NlptokenizecharPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn nlp_tokenize_char_point_sub(a : NlptokenizecharPoint, b : NlptokenizecharPoint) -> NlptokenizecharPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn NlptokenizecharPoint::sub(self : NlptokenizecharPoint, other : NlptokenizecharPoint) -> NlptokenizecharPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn nlp_tokenize_char_point_scale(pt : NlptokenizecharPoint, s : Double) -> NlptokenizecharPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn NlptokenizecharPoint::scale(self : NlptokenizecharPoint, s : Double) -> NlptokenizecharPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn nlp_tokenize_char_point_dot(a : NlptokenizecharPoint, b : NlptokenizecharPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn NlptokenizecharPoint::dot(self : NlptokenizecharPoint, other : NlptokenizecharPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn nlp_tokenize_char_point_cross(a : NlptokenizecharPoint, b : NlptokenizecharPoint) -> NlptokenizecharPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn NlptokenizecharPoint::cross(self : NlptokenizecharPoint, other : NlptokenizecharPoint) -> NlptokenizecharPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn nlp_tokenize_char_point_norm(pt : NlptokenizecharPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn NlptokenizecharPoint::norm(self : NlptokenizecharPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn nlp_tokenize_char_point_normalize(pt : NlptokenizecharPoint) -> NlptokenizecharPoint {
-  let n = nlp_tokenize_char_point_norm(pt)
-  if n < 0.0000001 { pt } else { nlp_tokenize_char_point_scale(pt, 1.0 / n) }
+pub fn NlptokenizecharPoint::normalize(self : NlptokenizecharPoint) -> NlptokenizecharPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn nlp_tokenize_char_point_negate(pt : NlptokenizecharPoint) -> NlptokenizecharPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn NlptokenizecharPoint::negate(self : NlptokenizecharPoint) -> NlptokenizecharPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn nlp_tokenize_char_point_mid(a : NlptokenizecharPoint, b : NlptokenizecharPoint) -> NlptokenizecharPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn NlptokenizecharPoint::mid(self : NlptokenizecharPoint, other : NlptokenizecharPoint) -> NlptokenizecharPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn nlp_tokenize_char_point_lerp(a : NlptokenizecharPoint, b : NlptokenizecharPoint, t : Double) -> NlptokenizecharPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn NlptokenizecharPoint::lerp(self : NlptokenizecharPoint, other : NlptokenizecharPoint, t : Double) -> NlptokenizecharPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn nlp_tokenize_char_point_to_string(pt : NlptokenizecharPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn NlptokenizecharPoint::to_string(self : NlptokenizecharPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct NlptokenizecharSeries {
@@ -86,58 +86,58 @@ pub fn nlp_tokenize_char_make_series(vals : Array[Double], name : String) -> Nlp
   { vals, name, meta: 0 }
 }
 
-pub fn nlp_tokenize_char_series_len(s : NlptokenizecharSeries) -> Int { s.vals.length() }
+pub fn NlptokenizecharSeries::len(self : NlptokenizecharSeries) -> Int { self.vals.length() }
 
-pub fn nlp_tokenize_char_series_sum(s : NlptokenizecharSeries) -> Double { @_common.sum(s.vals) }
+pub fn NlptokenizecharSeries::sum(self : NlptokenizecharSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn nlp_tokenize_char_series_mean(s : NlptokenizecharSeries) -> Double { @_common.mean(s.vals) }
+pub fn NlptokenizecharSeries::mean(self : NlptokenizecharSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn nlp_tokenize_char_series_min(s : NlptokenizecharSeries) -> Double { @_common.min(s.vals) }
+pub fn NlptokenizecharSeries::min(self : NlptokenizecharSeries) -> Double { @_common.min(self.vals) }
 
-pub fn nlp_tokenize_char_series_max(s : NlptokenizecharSeries) -> Double { @_common.max(s.vals) }
+pub fn NlptokenizecharSeries::max(self : NlptokenizecharSeries) -> Double { @_common.max(self.vals) }
 
-pub fn nlp_tokenize_char_series_range(s : NlptokenizecharSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn NlptokenizecharSeries::range(self : NlptokenizecharSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn nlp_tokenize_char_series_var(s : NlptokenizecharSeries) -> Double { @_common.variance(s.vals) }
+pub fn NlptokenizecharSeries::variance(self : NlptokenizecharSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn nlp_tokenize_char_series_std(s : NlptokenizecharSeries) -> Double { @_common.std(s.vals) }
+pub fn NlptokenizecharSeries::std(self : NlptokenizecharSeries) -> Double { @_common.std(self.vals) }
 
-pub fn nlp_tokenize_char_series_median(s : NlptokenizecharSeries) -> Double { @_common.median(s.vals) }
+pub fn NlptokenizecharSeries::median(self : NlptokenizecharSeries) -> Double { @_common.median(self.vals) }
 
-pub fn nlp_tokenize_char_series_scale(s : NlptokenizecharSeries, f : Double) -> NlptokenizecharSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn NlptokenizecharSeries::scale(self : NlptokenizecharSeries, f : Double) -> NlptokenizecharSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn nlp_tokenize_char_series_add(a : NlptokenizecharSeries, b : NlptokenizecharSeries) -> NlptokenizecharSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn NlptokenizecharSeries::add(self : NlptokenizecharSeries, other : NlptokenizecharSeries) -> NlptokenizecharSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn nlp_tokenize_char_series_sub(a : NlptokenizecharSeries, b : NlptokenizecharSeries) -> NlptokenizecharSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn NlptokenizecharSeries::sub(self : NlptokenizecharSeries, other : NlptokenizecharSeries) -> NlptokenizecharSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn nlp_tokenize_char_series_normalize(s : NlptokenizecharSeries) -> NlptokenizecharSeries {
-  let mn = nlp_tokenize_char_series_min(s)
-  let mx = nlp_tokenize_char_series_max(s)
+pub fn NlptokenizecharSeries::normalize(self : NlptokenizecharSeries) -> NlptokenizecharSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn nlp_tokenize_char_series_cumsum(s : NlptokenizecharSeries) -> NlptokenizecharSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn NlptokenizecharSeries::cumsum(self : NlptokenizecharSeries) -> NlptokenizecharSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn nlp_tokenize_char_series_to_string(s : NlptokenizecharSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn NlptokenizecharSeries::to_string(self : NlptokenizecharSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn nlp_tokenize_char_matrix_identity(n : Int) -> NlptokenizecharMatrix {
   m
 }
 
-pub fn nlp_tokenize_char_matrix_get(m : NlptokenizecharMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn NlptokenizecharMatrix::get(self : NlptokenizecharMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn nlp_tokenize_char_matrix_transpose(m : NlptokenizecharMatrix) -> NlptokenizecharMatrix {
-  let result = nlp_tokenize_char_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn NlptokenizecharMatrix::transpose(self : NlptokenizecharMatrix) -> NlptokenizecharMatrix {
+  let result = nlp_tokenize_char_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn nlp_tokenize_char_matrix_add(a : NlptokenizecharMatrix, b : NlptokenizecharMatrix) -> NlptokenizecharMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = nlp_tokenize_char_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn NlptokenizecharMatrix::add(self : NlptokenizecharMatrix, other : NlptokenizecharMatrix) -> NlptokenizecharMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = nlp_tokenize_char_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn nlp_tokenize_char_matrix_scale(m : NlptokenizecharMatrix, s : Double) -> NlptokenizecharMatrix {
-  let result = nlp_tokenize_char_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn NlptokenizecharMatrix::scale(self : NlptokenizecharMatrix, s : Double) -> NlptokenizecharMatrix {
+  let result = nlp_tokenize_char_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn nlp_tokenize_char_matrix_multiply(a : NlptokenizecharMatrix, b : NlptokenizecharMatrix) -> NlptokenizecharMatrix {
-  if a.cols != b.rows { return nlp_tokenize_char_make_matrix(a.rows, b.cols, 0.0) }
-  let result = nlp_tokenize_char_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn NlptokenizecharMatrix::multiply(self : NlptokenizecharMatrix, other : NlptokenizecharMatrix) -> NlptokenizecharMatrix {
+  if self.cols != other.rows { return nlp_tokenize_char_make_matrix(self.rows, other.cols, 0.0) }
+  let result = nlp_tokenize_char_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn nlp_tokenize_char_matrix_trace(m : NlptokenizecharMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn NlptokenizecharMatrix::trace(self : NlptokenizecharMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn nlp_tokenize_char_matrix_det(m : NlptokenizecharMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn NlptokenizecharMatrix::det(self : NlptokenizecharMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn nlp_tokenize_char_matrix_norm(m : NlptokenizecharMatrix) -> Double {
+pub fn NlptokenizecharMatrix::norm(self : NlptokenizecharMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn nlp_tokenize_char_matrix_to_string(m : NlptokenizecharMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn NlptokenizecharMatrix::to_string(self : NlptokenizecharMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn nlp_tokenize_char_vector_zero(dim : Int) -> NlptokenizecharVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn nlp_tokenize_char_vector_add(a : NlptokenizecharVector, b : NlptokenizecharVector) -> NlptokenizecharVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn NlptokenizecharVector::add(self : NlptokenizecharVector, other : NlptokenizecharVector) -> NlptokenizecharVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn nlp_tokenize_char_vector_sub(a : NlptokenizecharVector, b : NlptokenizecharVector) -> NlptokenizecharVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn NlptokenizecharVector::sub(self : NlptokenizecharVector, other : NlptokenizecharVector) -> NlptokenizecharVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn nlp_tokenize_char_vector_scale(v : NlptokenizecharVector, s : Double) -> NlptokenizecharVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn NlptokenizecharVector::scale(self : NlptokenizecharVector, s : Double) -> NlptokenizecharVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn nlp_tokenize_char_vector_dot(a : NlptokenizecharVector, b : NlptokenizecharVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn NlptokenizecharVector::dot(self : NlptokenizecharVector, other : NlptokenizecharVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn nlp_tokenize_char_vector_norm(v : NlptokenizecharVector) -> Double { @_common.sqrt(nlp_tokenize_char_vector_dot(v, v)) }
+pub fn NlptokenizecharVector::norm(self : NlptokenizecharVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn nlp_tokenize_char_vector_normalize(v : NlptokenizecharVector) -> NlptokenizecharVector {
-  let n = nlp_tokenize_char_vector_norm(v)
-  if n < 0.0000001 { v } else { nlp_tokenize_char_vector_scale(v, 1.0 / n) }
+pub fn NlptokenizecharVector::normalize(self : NlptokenizecharVector) -> NlptokenizecharVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn nlp_tokenize_char_vector_dist(a : NlptokenizecharVector, b : NlptokenizecharVector) -> Double {
-  nlp_tokenize_char_vector_norm(nlp_tokenize_char_vector_sub(a, b))
+pub fn NlptokenizecharVector::dist(self : NlptokenizecharVector, other : NlptokenizecharVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn nlp_tokenize_char_vector_to_string(v : NlptokenizecharVector) -> String {
+pub fn NlptokenizecharVector::to_string(self : NlptokenizecharVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn nlp_tokenize_char_mean(data : Array[Double]) -> Double { @_common.mean(data) }

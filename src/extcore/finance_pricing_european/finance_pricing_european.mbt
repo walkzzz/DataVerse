@@ -16,64 +16,64 @@ pub fn finance_pricing_european_make_point3(x : Double, y : Double, z : Double) 
   { x, y, z, label: 0 }
 }
 
-pub fn finance_pricing_european_point_x(pt : FinancepricingeuropeanPoint) -> Double { pt.x }
+pub fn FinancepricingeuropeanPoint::x(self : FinancepricingeuropeanPoint) -> Double { self.x }
 
-pub fn finance_pricing_european_point_y(pt : FinancepricingeuropeanPoint) -> Double { pt.y }
+pub fn FinancepricingeuropeanPoint::y(self : FinancepricingeuropeanPoint) -> Double { self.y }
 
-pub fn finance_pricing_european_point_z(pt : FinancepricingeuropeanPoint) -> Double { pt.z }
+pub fn FinancepricingeuropeanPoint::z(self : FinancepricingeuropeanPoint) -> Double { self.z }
 
-pub fn finance_pricing_european_point_label(pt : FinancepricingeuropeanPoint) -> Int { pt.label }
+pub fn FinancepricingeuropeanPoint::label(self : FinancepricingeuropeanPoint) -> Int { self.label }
 
-pub fn finance_pricing_european_point_dist(a : FinancepricingeuropeanPoint, b : FinancepricingeuropeanPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn FinancepricingeuropeanPoint::dist(self : FinancepricingeuropeanPoint, other : FinancepricingeuropeanPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn finance_pricing_european_point_add(a : FinancepricingeuropeanPoint, b : FinancepricingeuropeanPoint) -> FinancepricingeuropeanPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn FinancepricingeuropeanPoint::add(self : FinancepricingeuropeanPoint, other : FinancepricingeuropeanPoint) -> FinancepricingeuropeanPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn finance_pricing_european_point_sub(a : FinancepricingeuropeanPoint, b : FinancepricingeuropeanPoint) -> FinancepricingeuropeanPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn FinancepricingeuropeanPoint::sub(self : FinancepricingeuropeanPoint, other : FinancepricingeuropeanPoint) -> FinancepricingeuropeanPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn finance_pricing_european_point_scale(pt : FinancepricingeuropeanPoint, s : Double) -> FinancepricingeuropeanPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn FinancepricingeuropeanPoint::scale(self : FinancepricingeuropeanPoint, s : Double) -> FinancepricingeuropeanPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn finance_pricing_european_point_dot(a : FinancepricingeuropeanPoint, b : FinancepricingeuropeanPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn FinancepricingeuropeanPoint::dot(self : FinancepricingeuropeanPoint, other : FinancepricingeuropeanPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn finance_pricing_european_point_cross(a : FinancepricingeuropeanPoint, b : FinancepricingeuropeanPoint) -> FinancepricingeuropeanPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn FinancepricingeuropeanPoint::cross(self : FinancepricingeuropeanPoint, other : FinancepricingeuropeanPoint) -> FinancepricingeuropeanPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn finance_pricing_european_point_norm(pt : FinancepricingeuropeanPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn FinancepricingeuropeanPoint::norm(self : FinancepricingeuropeanPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn finance_pricing_european_point_normalize(pt : FinancepricingeuropeanPoint) -> FinancepricingeuropeanPoint {
-  let n = finance_pricing_european_point_norm(pt)
-  if n < 0.0000001 { pt } else { finance_pricing_european_point_scale(pt, 1.0 / n) }
+pub fn FinancepricingeuropeanPoint::normalize(self : FinancepricingeuropeanPoint) -> FinancepricingeuropeanPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn finance_pricing_european_point_negate(pt : FinancepricingeuropeanPoint) -> FinancepricingeuropeanPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn FinancepricingeuropeanPoint::negate(self : FinancepricingeuropeanPoint) -> FinancepricingeuropeanPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn finance_pricing_european_point_mid(a : FinancepricingeuropeanPoint, b : FinancepricingeuropeanPoint) -> FinancepricingeuropeanPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn FinancepricingeuropeanPoint::mid(self : FinancepricingeuropeanPoint, other : FinancepricingeuropeanPoint) -> FinancepricingeuropeanPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn finance_pricing_european_point_lerp(a : FinancepricingeuropeanPoint, b : FinancepricingeuropeanPoint, t : Double) -> FinancepricingeuropeanPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn FinancepricingeuropeanPoint::lerp(self : FinancepricingeuropeanPoint, other : FinancepricingeuropeanPoint, t : Double) -> FinancepricingeuropeanPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn finance_pricing_european_point_to_string(pt : FinancepricingeuropeanPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn FinancepricingeuropeanPoint::to_string(self : FinancepricingeuropeanPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct FinancepricingeuropeanSeries {
@@ -86,58 +86,58 @@ pub fn finance_pricing_european_make_series(vals : Array[Double], name : String)
   { vals, name, meta: 0 }
 }
 
-pub fn finance_pricing_european_series_len(s : FinancepricingeuropeanSeries) -> Int { s.vals.length() }
+pub fn FinancepricingeuropeanSeries::len(self : FinancepricingeuropeanSeries) -> Int { self.vals.length() }
 
-pub fn finance_pricing_european_series_sum(s : FinancepricingeuropeanSeries) -> Double { @_common.sum(s.vals) }
+pub fn FinancepricingeuropeanSeries::sum(self : FinancepricingeuropeanSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn finance_pricing_european_series_mean(s : FinancepricingeuropeanSeries) -> Double { @_common.mean(s.vals) }
+pub fn FinancepricingeuropeanSeries::mean(self : FinancepricingeuropeanSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn finance_pricing_european_series_min(s : FinancepricingeuropeanSeries) -> Double { @_common.min(s.vals) }
+pub fn FinancepricingeuropeanSeries::min(self : FinancepricingeuropeanSeries) -> Double { @_common.min(self.vals) }
 
-pub fn finance_pricing_european_series_max(s : FinancepricingeuropeanSeries) -> Double { @_common.max(s.vals) }
+pub fn FinancepricingeuropeanSeries::max(self : FinancepricingeuropeanSeries) -> Double { @_common.max(self.vals) }
 
-pub fn finance_pricing_european_series_range(s : FinancepricingeuropeanSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn FinancepricingeuropeanSeries::range(self : FinancepricingeuropeanSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn finance_pricing_european_series_var(s : FinancepricingeuropeanSeries) -> Double { @_common.variance(s.vals) }
+pub fn FinancepricingeuropeanSeries::variance(self : FinancepricingeuropeanSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn finance_pricing_european_series_std(s : FinancepricingeuropeanSeries) -> Double { @_common.std(s.vals) }
+pub fn FinancepricingeuropeanSeries::std(self : FinancepricingeuropeanSeries) -> Double { @_common.std(self.vals) }
 
-pub fn finance_pricing_european_series_median(s : FinancepricingeuropeanSeries) -> Double { @_common.median(s.vals) }
+pub fn FinancepricingeuropeanSeries::median(self : FinancepricingeuropeanSeries) -> Double { @_common.median(self.vals) }
 
-pub fn finance_pricing_european_series_scale(s : FinancepricingeuropeanSeries, f : Double) -> FinancepricingeuropeanSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn FinancepricingeuropeanSeries::scale(self : FinancepricingeuropeanSeries, f : Double) -> FinancepricingeuropeanSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn finance_pricing_european_series_add(a : FinancepricingeuropeanSeries, b : FinancepricingeuropeanSeries) -> FinancepricingeuropeanSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn FinancepricingeuropeanSeries::add(self : FinancepricingeuropeanSeries, other : FinancepricingeuropeanSeries) -> FinancepricingeuropeanSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn finance_pricing_european_series_sub(a : FinancepricingeuropeanSeries, b : FinancepricingeuropeanSeries) -> FinancepricingeuropeanSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn FinancepricingeuropeanSeries::sub(self : FinancepricingeuropeanSeries, other : FinancepricingeuropeanSeries) -> FinancepricingeuropeanSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn finance_pricing_european_series_normalize(s : FinancepricingeuropeanSeries) -> FinancepricingeuropeanSeries {
-  let mn = finance_pricing_european_series_min(s)
-  let mx = finance_pricing_european_series_max(s)
+pub fn FinancepricingeuropeanSeries::normalize(self : FinancepricingeuropeanSeries) -> FinancepricingeuropeanSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn finance_pricing_european_series_cumsum(s : FinancepricingeuropeanSeries) -> FinancepricingeuropeanSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn FinancepricingeuropeanSeries::cumsum(self : FinancepricingeuropeanSeries) -> FinancepricingeuropeanSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn finance_pricing_european_series_to_string(s : FinancepricingeuropeanSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn FinancepricingeuropeanSeries::to_string(self : FinancepricingeuropeanSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn finance_pricing_european_matrix_identity(n : Int) -> Financepricingeurope
   m
 }
 
-pub fn finance_pricing_european_matrix_get(m : FinancepricingeuropeanMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn FinancepricingeuropeanMatrix::get(self : FinancepricingeuropeanMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn finance_pricing_european_matrix_transpose(m : FinancepricingeuropeanMatrix) -> FinancepricingeuropeanMatrix {
-  let result = finance_pricing_european_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn FinancepricingeuropeanMatrix::transpose(self : FinancepricingeuropeanMatrix) -> FinancepricingeuropeanMatrix {
+  let result = finance_pricing_european_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn finance_pricing_european_matrix_add(a : FinancepricingeuropeanMatrix, b : FinancepricingeuropeanMatrix) -> FinancepricingeuropeanMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = finance_pricing_european_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn FinancepricingeuropeanMatrix::add(self : FinancepricingeuropeanMatrix, other : FinancepricingeuropeanMatrix) -> FinancepricingeuropeanMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = finance_pricing_european_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn finance_pricing_european_matrix_scale(m : FinancepricingeuropeanMatrix, s : Double) -> FinancepricingeuropeanMatrix {
-  let result = finance_pricing_european_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn FinancepricingeuropeanMatrix::scale(self : FinancepricingeuropeanMatrix, s : Double) -> FinancepricingeuropeanMatrix {
+  let result = finance_pricing_european_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn finance_pricing_european_matrix_multiply(a : FinancepricingeuropeanMatrix, b : FinancepricingeuropeanMatrix) -> FinancepricingeuropeanMatrix {
-  if a.cols != b.rows { return finance_pricing_european_make_matrix(a.rows, b.cols, 0.0) }
-  let result = finance_pricing_european_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn FinancepricingeuropeanMatrix::multiply(self : FinancepricingeuropeanMatrix, other : FinancepricingeuropeanMatrix) -> FinancepricingeuropeanMatrix {
+  if self.cols != other.rows { return finance_pricing_european_make_matrix(self.rows, other.cols, 0.0) }
+  let result = finance_pricing_european_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn finance_pricing_european_matrix_trace(m : FinancepricingeuropeanMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn FinancepricingeuropeanMatrix::trace(self : FinancepricingeuropeanMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn finance_pricing_european_matrix_det(m : FinancepricingeuropeanMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn FinancepricingeuropeanMatrix::det(self : FinancepricingeuropeanMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn finance_pricing_european_matrix_norm(m : FinancepricingeuropeanMatrix) -> Double {
+pub fn FinancepricingeuropeanMatrix::norm(self : FinancepricingeuropeanMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn finance_pricing_european_matrix_to_string(m : FinancepricingeuropeanMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn FinancepricingeuropeanMatrix::to_string(self : FinancepricingeuropeanMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn finance_pricing_european_vector_zero(dim : Int) -> Financepricingeuropean
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn finance_pricing_european_vector_add(a : FinancepricingeuropeanVector, b : FinancepricingeuropeanVector) -> FinancepricingeuropeanVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn FinancepricingeuropeanVector::add(self : FinancepricingeuropeanVector, other : FinancepricingeuropeanVector) -> FinancepricingeuropeanVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn finance_pricing_european_vector_sub(a : FinancepricingeuropeanVector, b : FinancepricingeuropeanVector) -> FinancepricingeuropeanVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn FinancepricingeuropeanVector::sub(self : FinancepricingeuropeanVector, other : FinancepricingeuropeanVector) -> FinancepricingeuropeanVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn finance_pricing_european_vector_scale(v : FinancepricingeuropeanVector, s : Double) -> FinancepricingeuropeanVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn FinancepricingeuropeanVector::scale(self : FinancepricingeuropeanVector, s : Double) -> FinancepricingeuropeanVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn finance_pricing_european_vector_dot(a : FinancepricingeuropeanVector, b : FinancepricingeuropeanVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn FinancepricingeuropeanVector::dot(self : FinancepricingeuropeanVector, other : FinancepricingeuropeanVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn finance_pricing_european_vector_norm(v : FinancepricingeuropeanVector) -> Double { @_common.sqrt(finance_pricing_european_vector_dot(v, v)) }
+pub fn FinancepricingeuropeanVector::norm(self : FinancepricingeuropeanVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn finance_pricing_european_vector_normalize(v : FinancepricingeuropeanVector) -> FinancepricingeuropeanVector {
-  let n = finance_pricing_european_vector_norm(v)
-  if n < 0.0000001 { v } else { finance_pricing_european_vector_scale(v, 1.0 / n) }
+pub fn FinancepricingeuropeanVector::normalize(self : FinancepricingeuropeanVector) -> FinancepricingeuropeanVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn finance_pricing_european_vector_dist(a : FinancepricingeuropeanVector, b : FinancepricingeuropeanVector) -> Double {
-  finance_pricing_european_vector_norm(finance_pricing_european_vector_sub(a, b))
+pub fn FinancepricingeuropeanVector::dist(self : FinancepricingeuropeanVector, other : FinancepricingeuropeanVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn finance_pricing_european_vector_to_string(v : FinancepricingeuropeanVector) -> String {
+pub fn FinancepricingeuropeanVector::to_string(self : FinancepricingeuropeanVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn finance_pricing_european_mean(data : Array[Double]) -> Double { @_common.mean(data) }

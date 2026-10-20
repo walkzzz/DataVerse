@@ -16,64 +16,64 @@ pub fn finance_pricing_asian_make_point3(x : Double, y : Double, z : Double) -> 
   { x, y, z, label: 0 }
 }
 
-pub fn finance_pricing_asian_point_x(pt : FinancepricingasianPoint) -> Double { pt.x }
+pub fn FinancepricingasianPoint::x(self : FinancepricingasianPoint) -> Double { self.x }
 
-pub fn finance_pricing_asian_point_y(pt : FinancepricingasianPoint) -> Double { pt.y }
+pub fn FinancepricingasianPoint::y(self : FinancepricingasianPoint) -> Double { self.y }
 
-pub fn finance_pricing_asian_point_z(pt : FinancepricingasianPoint) -> Double { pt.z }
+pub fn FinancepricingasianPoint::z(self : FinancepricingasianPoint) -> Double { self.z }
 
-pub fn finance_pricing_asian_point_label(pt : FinancepricingasianPoint) -> Int { pt.label }
+pub fn FinancepricingasianPoint::label(self : FinancepricingasianPoint) -> Int { self.label }
 
-pub fn finance_pricing_asian_point_dist(a : FinancepricingasianPoint, b : FinancepricingasianPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn FinancepricingasianPoint::dist(self : FinancepricingasianPoint, other : FinancepricingasianPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn finance_pricing_asian_point_add(a : FinancepricingasianPoint, b : FinancepricingasianPoint) -> FinancepricingasianPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn FinancepricingasianPoint::add(self : FinancepricingasianPoint, other : FinancepricingasianPoint) -> FinancepricingasianPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn finance_pricing_asian_point_sub(a : FinancepricingasianPoint, b : FinancepricingasianPoint) -> FinancepricingasianPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn FinancepricingasianPoint::sub(self : FinancepricingasianPoint, other : FinancepricingasianPoint) -> FinancepricingasianPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn finance_pricing_asian_point_scale(pt : FinancepricingasianPoint, s : Double) -> FinancepricingasianPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn FinancepricingasianPoint::scale(self : FinancepricingasianPoint, s : Double) -> FinancepricingasianPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn finance_pricing_asian_point_dot(a : FinancepricingasianPoint, b : FinancepricingasianPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn FinancepricingasianPoint::dot(self : FinancepricingasianPoint, other : FinancepricingasianPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn finance_pricing_asian_point_cross(a : FinancepricingasianPoint, b : FinancepricingasianPoint) -> FinancepricingasianPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn FinancepricingasianPoint::cross(self : FinancepricingasianPoint, other : FinancepricingasianPoint) -> FinancepricingasianPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn finance_pricing_asian_point_norm(pt : FinancepricingasianPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn FinancepricingasianPoint::norm(self : FinancepricingasianPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn finance_pricing_asian_point_normalize(pt : FinancepricingasianPoint) -> FinancepricingasianPoint {
-  let n = finance_pricing_asian_point_norm(pt)
-  if n < 0.0000001 { pt } else { finance_pricing_asian_point_scale(pt, 1.0 / n) }
+pub fn FinancepricingasianPoint::normalize(self : FinancepricingasianPoint) -> FinancepricingasianPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn finance_pricing_asian_point_negate(pt : FinancepricingasianPoint) -> FinancepricingasianPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn FinancepricingasianPoint::negate(self : FinancepricingasianPoint) -> FinancepricingasianPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn finance_pricing_asian_point_mid(a : FinancepricingasianPoint, b : FinancepricingasianPoint) -> FinancepricingasianPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn FinancepricingasianPoint::mid(self : FinancepricingasianPoint, other : FinancepricingasianPoint) -> FinancepricingasianPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn finance_pricing_asian_point_lerp(a : FinancepricingasianPoint, b : FinancepricingasianPoint, t : Double) -> FinancepricingasianPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn FinancepricingasianPoint::lerp(self : FinancepricingasianPoint, other : FinancepricingasianPoint, t : Double) -> FinancepricingasianPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn finance_pricing_asian_point_to_string(pt : FinancepricingasianPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn FinancepricingasianPoint::to_string(self : FinancepricingasianPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct FinancepricingasianSeries {
@@ -86,58 +86,58 @@ pub fn finance_pricing_asian_make_series(vals : Array[Double], name : String) ->
   { vals, name, meta: 0 }
 }
 
-pub fn finance_pricing_asian_series_len(s : FinancepricingasianSeries) -> Int { s.vals.length() }
+pub fn FinancepricingasianSeries::len(self : FinancepricingasianSeries) -> Int { self.vals.length() }
 
-pub fn finance_pricing_asian_series_sum(s : FinancepricingasianSeries) -> Double { @_common.sum(s.vals) }
+pub fn FinancepricingasianSeries::sum(self : FinancepricingasianSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn finance_pricing_asian_series_mean(s : FinancepricingasianSeries) -> Double { @_common.mean(s.vals) }
+pub fn FinancepricingasianSeries::mean(self : FinancepricingasianSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn finance_pricing_asian_series_min(s : FinancepricingasianSeries) -> Double { @_common.min(s.vals) }
+pub fn FinancepricingasianSeries::min(self : FinancepricingasianSeries) -> Double { @_common.min(self.vals) }
 
-pub fn finance_pricing_asian_series_max(s : FinancepricingasianSeries) -> Double { @_common.max(s.vals) }
+pub fn FinancepricingasianSeries::max(self : FinancepricingasianSeries) -> Double { @_common.max(self.vals) }
 
-pub fn finance_pricing_asian_series_range(s : FinancepricingasianSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn FinancepricingasianSeries::range(self : FinancepricingasianSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn finance_pricing_asian_series_var(s : FinancepricingasianSeries) -> Double { @_common.variance(s.vals) }
+pub fn FinancepricingasianSeries::variance(self : FinancepricingasianSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn finance_pricing_asian_series_std(s : FinancepricingasianSeries) -> Double { @_common.std(s.vals) }
+pub fn FinancepricingasianSeries::std(self : FinancepricingasianSeries) -> Double { @_common.std(self.vals) }
 
-pub fn finance_pricing_asian_series_median(s : FinancepricingasianSeries) -> Double { @_common.median(s.vals) }
+pub fn FinancepricingasianSeries::median(self : FinancepricingasianSeries) -> Double { @_common.median(self.vals) }
 
-pub fn finance_pricing_asian_series_scale(s : FinancepricingasianSeries, f : Double) -> FinancepricingasianSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn FinancepricingasianSeries::scale(self : FinancepricingasianSeries, f : Double) -> FinancepricingasianSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn finance_pricing_asian_series_add(a : FinancepricingasianSeries, b : FinancepricingasianSeries) -> FinancepricingasianSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn FinancepricingasianSeries::add(self : FinancepricingasianSeries, other : FinancepricingasianSeries) -> FinancepricingasianSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn finance_pricing_asian_series_sub(a : FinancepricingasianSeries, b : FinancepricingasianSeries) -> FinancepricingasianSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn FinancepricingasianSeries::sub(self : FinancepricingasianSeries, other : FinancepricingasianSeries) -> FinancepricingasianSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn finance_pricing_asian_series_normalize(s : FinancepricingasianSeries) -> FinancepricingasianSeries {
-  let mn = finance_pricing_asian_series_min(s)
-  let mx = finance_pricing_asian_series_max(s)
+pub fn FinancepricingasianSeries::normalize(self : FinancepricingasianSeries) -> FinancepricingasianSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn finance_pricing_asian_series_cumsum(s : FinancepricingasianSeries) -> FinancepricingasianSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn FinancepricingasianSeries::cumsum(self : FinancepricingasianSeries) -> FinancepricingasianSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn finance_pricing_asian_series_to_string(s : FinancepricingasianSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn FinancepricingasianSeries::to_string(self : FinancepricingasianSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn finance_pricing_asian_matrix_identity(n : Int) -> FinancepricingasianMatr
   m
 }
 
-pub fn finance_pricing_asian_matrix_get(m : FinancepricingasianMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn FinancepricingasianMatrix::get(self : FinancepricingasianMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn finance_pricing_asian_matrix_transpose(m : FinancepricingasianMatrix) -> FinancepricingasianMatrix {
-  let result = finance_pricing_asian_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn FinancepricingasianMatrix::transpose(self : FinancepricingasianMatrix) -> FinancepricingasianMatrix {
+  let result = finance_pricing_asian_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn finance_pricing_asian_matrix_add(a : FinancepricingasianMatrix, b : FinancepricingasianMatrix) -> FinancepricingasianMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = finance_pricing_asian_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn FinancepricingasianMatrix::add(self : FinancepricingasianMatrix, other : FinancepricingasianMatrix) -> FinancepricingasianMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = finance_pricing_asian_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn finance_pricing_asian_matrix_scale(m : FinancepricingasianMatrix, s : Double) -> FinancepricingasianMatrix {
-  let result = finance_pricing_asian_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn FinancepricingasianMatrix::scale(self : FinancepricingasianMatrix, s : Double) -> FinancepricingasianMatrix {
+  let result = finance_pricing_asian_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn finance_pricing_asian_matrix_multiply(a : FinancepricingasianMatrix, b : FinancepricingasianMatrix) -> FinancepricingasianMatrix {
-  if a.cols != b.rows { return finance_pricing_asian_make_matrix(a.rows, b.cols, 0.0) }
-  let result = finance_pricing_asian_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn FinancepricingasianMatrix::multiply(self : FinancepricingasianMatrix, other : FinancepricingasianMatrix) -> FinancepricingasianMatrix {
+  if self.cols != other.rows { return finance_pricing_asian_make_matrix(self.rows, other.cols, 0.0) }
+  let result = finance_pricing_asian_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn finance_pricing_asian_matrix_trace(m : FinancepricingasianMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn FinancepricingasianMatrix::trace(self : FinancepricingasianMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn finance_pricing_asian_matrix_det(m : FinancepricingasianMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn FinancepricingasianMatrix::det(self : FinancepricingasianMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn finance_pricing_asian_matrix_norm(m : FinancepricingasianMatrix) -> Double {
+pub fn FinancepricingasianMatrix::norm(self : FinancepricingasianMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn finance_pricing_asian_matrix_to_string(m : FinancepricingasianMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn FinancepricingasianMatrix::to_string(self : FinancepricingasianMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn finance_pricing_asian_vector_zero(dim : Int) -> FinancepricingasianVector
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn finance_pricing_asian_vector_add(a : FinancepricingasianVector, b : FinancepricingasianVector) -> FinancepricingasianVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn FinancepricingasianVector::add(self : FinancepricingasianVector, other : FinancepricingasianVector) -> FinancepricingasianVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn finance_pricing_asian_vector_sub(a : FinancepricingasianVector, b : FinancepricingasianVector) -> FinancepricingasianVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn FinancepricingasianVector::sub(self : FinancepricingasianVector, other : FinancepricingasianVector) -> FinancepricingasianVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn finance_pricing_asian_vector_scale(v : FinancepricingasianVector, s : Double) -> FinancepricingasianVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn FinancepricingasianVector::scale(self : FinancepricingasianVector, s : Double) -> FinancepricingasianVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn finance_pricing_asian_vector_dot(a : FinancepricingasianVector, b : FinancepricingasianVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn FinancepricingasianVector::dot(self : FinancepricingasianVector, other : FinancepricingasianVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn finance_pricing_asian_vector_norm(v : FinancepricingasianVector) -> Double { @_common.sqrt(finance_pricing_asian_vector_dot(v, v)) }
+pub fn FinancepricingasianVector::norm(self : FinancepricingasianVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn finance_pricing_asian_vector_normalize(v : FinancepricingasianVector) -> FinancepricingasianVector {
-  let n = finance_pricing_asian_vector_norm(v)
-  if n < 0.0000001 { v } else { finance_pricing_asian_vector_scale(v, 1.0 / n) }
+pub fn FinancepricingasianVector::normalize(self : FinancepricingasianVector) -> FinancepricingasianVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn finance_pricing_asian_vector_dist(a : FinancepricingasianVector, b : FinancepricingasianVector) -> Double {
-  finance_pricing_asian_vector_norm(finance_pricing_asian_vector_sub(a, b))
+pub fn FinancepricingasianVector::dist(self : FinancepricingasianVector, other : FinancepricingasianVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn finance_pricing_asian_vector_to_string(v : FinancepricingasianVector) -> String {
+pub fn FinancepricingasianVector::to_string(self : FinancepricingasianVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn finance_pricing_asian_mean(data : Array[Double]) -> Double { @_common.mean(data) }

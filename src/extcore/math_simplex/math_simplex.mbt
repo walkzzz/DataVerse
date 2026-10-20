@@ -16,64 +16,64 @@ pub fn math_simplex_make_point3(x : Double, y : Double, z : Double) -> Mathsimpl
   { x, y, z, label: 0 }
 }
 
-pub fn math_simplex_point_x(pt : MathsimplexPoint) -> Double { pt.x }
+pub fn MathsimplexPoint::x(self : MathsimplexPoint) -> Double { self.x }
 
-pub fn math_simplex_point_y(pt : MathsimplexPoint) -> Double { pt.y }
+pub fn MathsimplexPoint::y(self : MathsimplexPoint) -> Double { self.y }
 
-pub fn math_simplex_point_z(pt : MathsimplexPoint) -> Double { pt.z }
+pub fn MathsimplexPoint::z(self : MathsimplexPoint) -> Double { self.z }
 
-pub fn math_simplex_point_label(pt : MathsimplexPoint) -> Int { pt.label }
+pub fn MathsimplexPoint::label(self : MathsimplexPoint) -> Int { self.label }
 
-pub fn math_simplex_point_dist(a : MathsimplexPoint, b : MathsimplexPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn MathsimplexPoint::dist(self : MathsimplexPoint, other : MathsimplexPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn math_simplex_point_add(a : MathsimplexPoint, b : MathsimplexPoint) -> MathsimplexPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn MathsimplexPoint::add(self : MathsimplexPoint, other : MathsimplexPoint) -> MathsimplexPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn math_simplex_point_sub(a : MathsimplexPoint, b : MathsimplexPoint) -> MathsimplexPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn MathsimplexPoint::sub(self : MathsimplexPoint, other : MathsimplexPoint) -> MathsimplexPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn math_simplex_point_scale(pt : MathsimplexPoint, s : Double) -> MathsimplexPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn MathsimplexPoint::scale(self : MathsimplexPoint, s : Double) -> MathsimplexPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn math_simplex_point_dot(a : MathsimplexPoint, b : MathsimplexPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn MathsimplexPoint::dot(self : MathsimplexPoint, other : MathsimplexPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn math_simplex_point_cross(a : MathsimplexPoint, b : MathsimplexPoint) -> MathsimplexPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn MathsimplexPoint::cross(self : MathsimplexPoint, other : MathsimplexPoint) -> MathsimplexPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn math_simplex_point_norm(pt : MathsimplexPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn MathsimplexPoint::norm(self : MathsimplexPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn math_simplex_point_normalize(pt : MathsimplexPoint) -> MathsimplexPoint {
-  let n = math_simplex_point_norm(pt)
-  if n < 0.0000001 { pt } else { math_simplex_point_scale(pt, 1.0 / n) }
+pub fn MathsimplexPoint::normalize(self : MathsimplexPoint) -> MathsimplexPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn math_simplex_point_negate(pt : MathsimplexPoint) -> MathsimplexPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn MathsimplexPoint::negate(self : MathsimplexPoint) -> MathsimplexPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn math_simplex_point_mid(a : MathsimplexPoint, b : MathsimplexPoint) -> MathsimplexPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn MathsimplexPoint::mid(self : MathsimplexPoint, other : MathsimplexPoint) -> MathsimplexPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn math_simplex_point_lerp(a : MathsimplexPoint, b : MathsimplexPoint, t : Double) -> MathsimplexPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn MathsimplexPoint::lerp(self : MathsimplexPoint, other : MathsimplexPoint, t : Double) -> MathsimplexPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn math_simplex_point_to_string(pt : MathsimplexPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn MathsimplexPoint::to_string(self : MathsimplexPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct MathsimplexSeries {
@@ -86,58 +86,58 @@ pub fn math_simplex_make_series(vals : Array[Double], name : String) -> Mathsimp
   { vals, name, meta: 0 }
 }
 
-pub fn math_simplex_series_len(s : MathsimplexSeries) -> Int { s.vals.length() }
+pub fn MathsimplexSeries::len(self : MathsimplexSeries) -> Int { self.vals.length() }
 
-pub fn math_simplex_series_sum(s : MathsimplexSeries) -> Double { @_common.sum(s.vals) }
+pub fn MathsimplexSeries::sum(self : MathsimplexSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn math_simplex_series_mean(s : MathsimplexSeries) -> Double { @_common.mean(s.vals) }
+pub fn MathsimplexSeries::mean(self : MathsimplexSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn math_simplex_series_min(s : MathsimplexSeries) -> Double { @_common.min(s.vals) }
+pub fn MathsimplexSeries::min(self : MathsimplexSeries) -> Double { @_common.min(self.vals) }
 
-pub fn math_simplex_series_max(s : MathsimplexSeries) -> Double { @_common.max(s.vals) }
+pub fn MathsimplexSeries::max(self : MathsimplexSeries) -> Double { @_common.max(self.vals) }
 
-pub fn math_simplex_series_range(s : MathsimplexSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn MathsimplexSeries::range(self : MathsimplexSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn math_simplex_series_var(s : MathsimplexSeries) -> Double { @_common.variance(s.vals) }
+pub fn MathsimplexSeries::variance(self : MathsimplexSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn math_simplex_series_std(s : MathsimplexSeries) -> Double { @_common.std(s.vals) }
+pub fn MathsimplexSeries::std(self : MathsimplexSeries) -> Double { @_common.std(self.vals) }
 
-pub fn math_simplex_series_median(s : MathsimplexSeries) -> Double { @_common.median(s.vals) }
+pub fn MathsimplexSeries::median(self : MathsimplexSeries) -> Double { @_common.median(self.vals) }
 
-pub fn math_simplex_series_scale(s : MathsimplexSeries, f : Double) -> MathsimplexSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn MathsimplexSeries::scale(self : MathsimplexSeries, f : Double) -> MathsimplexSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn math_simplex_series_add(a : MathsimplexSeries, b : MathsimplexSeries) -> MathsimplexSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn MathsimplexSeries::add(self : MathsimplexSeries, other : MathsimplexSeries) -> MathsimplexSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn math_simplex_series_sub(a : MathsimplexSeries, b : MathsimplexSeries) -> MathsimplexSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn MathsimplexSeries::sub(self : MathsimplexSeries, other : MathsimplexSeries) -> MathsimplexSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn math_simplex_series_normalize(s : MathsimplexSeries) -> MathsimplexSeries {
-  let mn = math_simplex_series_min(s)
-  let mx = math_simplex_series_max(s)
+pub fn MathsimplexSeries::normalize(self : MathsimplexSeries) -> MathsimplexSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn math_simplex_series_cumsum(s : MathsimplexSeries) -> MathsimplexSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn MathsimplexSeries::cumsum(self : MathsimplexSeries) -> MathsimplexSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn math_simplex_series_to_string(s : MathsimplexSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn MathsimplexSeries::to_string(self : MathsimplexSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn math_simplex_matrix_identity(n : Int) -> MathsimplexMatrix {
   m
 }
 
-pub fn math_simplex_matrix_get(m : MathsimplexMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn MathsimplexMatrix::get(self : MathsimplexMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn math_simplex_matrix_transpose(m : MathsimplexMatrix) -> MathsimplexMatrix {
-  let result = math_simplex_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn MathsimplexMatrix::transpose(self : MathsimplexMatrix) -> MathsimplexMatrix {
+  let result = math_simplex_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn math_simplex_matrix_add(a : MathsimplexMatrix, b : MathsimplexMatrix) -> MathsimplexMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = math_simplex_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn MathsimplexMatrix::add(self : MathsimplexMatrix, other : MathsimplexMatrix) -> MathsimplexMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = math_simplex_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn math_simplex_matrix_scale(m : MathsimplexMatrix, s : Double) -> MathsimplexMatrix {
-  let result = math_simplex_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn MathsimplexMatrix::scale(self : MathsimplexMatrix, s : Double) -> MathsimplexMatrix {
+  let result = math_simplex_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn math_simplex_matrix_multiply(a : MathsimplexMatrix, b : MathsimplexMatrix) -> MathsimplexMatrix {
-  if a.cols != b.rows { return math_simplex_make_matrix(a.rows, b.cols, 0.0) }
-  let result = math_simplex_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn MathsimplexMatrix::multiply(self : MathsimplexMatrix, other : MathsimplexMatrix) -> MathsimplexMatrix {
+  if self.cols != other.rows { return math_simplex_make_matrix(self.rows, other.cols, 0.0) }
+  let result = math_simplex_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn math_simplex_matrix_trace(m : MathsimplexMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn MathsimplexMatrix::trace(self : MathsimplexMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn math_simplex_matrix_det(m : MathsimplexMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn MathsimplexMatrix::det(self : MathsimplexMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn math_simplex_matrix_norm(m : MathsimplexMatrix) -> Double {
+pub fn MathsimplexMatrix::norm(self : MathsimplexMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn math_simplex_matrix_to_string(m : MathsimplexMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn MathsimplexMatrix::to_string(self : MathsimplexMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn math_simplex_vector_zero(dim : Int) -> MathsimplexVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn math_simplex_vector_add(a : MathsimplexVector, b : MathsimplexVector) -> MathsimplexVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn MathsimplexVector::add(self : MathsimplexVector, other : MathsimplexVector) -> MathsimplexVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn math_simplex_vector_sub(a : MathsimplexVector, b : MathsimplexVector) -> MathsimplexVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn MathsimplexVector::sub(self : MathsimplexVector, other : MathsimplexVector) -> MathsimplexVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn math_simplex_vector_scale(v : MathsimplexVector, s : Double) -> MathsimplexVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn MathsimplexVector::scale(self : MathsimplexVector, s : Double) -> MathsimplexVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn math_simplex_vector_dot(a : MathsimplexVector, b : MathsimplexVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn MathsimplexVector::dot(self : MathsimplexVector, other : MathsimplexVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn math_simplex_vector_norm(v : MathsimplexVector) -> Double { @_common.sqrt(math_simplex_vector_dot(v, v)) }
+pub fn MathsimplexVector::norm(self : MathsimplexVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn math_simplex_vector_normalize(v : MathsimplexVector) -> MathsimplexVector {
-  let n = math_simplex_vector_norm(v)
-  if n < 0.0000001 { v } else { math_simplex_vector_scale(v, 1.0 / n) }
+pub fn MathsimplexVector::normalize(self : MathsimplexVector) -> MathsimplexVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn math_simplex_vector_dist(a : MathsimplexVector, b : MathsimplexVector) -> Double {
-  math_simplex_vector_norm(math_simplex_vector_sub(a, b))
+pub fn MathsimplexVector::dist(self : MathsimplexVector, other : MathsimplexVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn math_simplex_vector_to_string(v : MathsimplexVector) -> String {
+pub fn MathsimplexVector::to_string(self : MathsimplexVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn math_simplex_mean(data : Array[Double]) -> Double { @_common.mean(data) }

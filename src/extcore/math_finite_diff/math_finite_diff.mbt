@@ -16,64 +16,64 @@ pub fn math_finite_diff_make_point3(x : Double, y : Double, z : Double) -> Mathf
   { x, y, z, label: 0 }
 }
 
-pub fn math_finite_diff_point_x(pt : MathfinitediffPoint) -> Double { pt.x }
+pub fn MathfinitediffPoint::x(self : MathfinitediffPoint) -> Double { self.x }
 
-pub fn math_finite_diff_point_y(pt : MathfinitediffPoint) -> Double { pt.y }
+pub fn MathfinitediffPoint::y(self : MathfinitediffPoint) -> Double { self.y }
 
-pub fn math_finite_diff_point_z(pt : MathfinitediffPoint) -> Double { pt.z }
+pub fn MathfinitediffPoint::z(self : MathfinitediffPoint) -> Double { self.z }
 
-pub fn math_finite_diff_point_label(pt : MathfinitediffPoint) -> Int { pt.label }
+pub fn MathfinitediffPoint::label(self : MathfinitediffPoint) -> Int { self.label }
 
-pub fn math_finite_diff_point_dist(a : MathfinitediffPoint, b : MathfinitediffPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn MathfinitediffPoint::dist(self : MathfinitediffPoint, other : MathfinitediffPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn math_finite_diff_point_add(a : MathfinitediffPoint, b : MathfinitediffPoint) -> MathfinitediffPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn MathfinitediffPoint::add(self : MathfinitediffPoint, other : MathfinitediffPoint) -> MathfinitediffPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn math_finite_diff_point_sub(a : MathfinitediffPoint, b : MathfinitediffPoint) -> MathfinitediffPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn MathfinitediffPoint::sub(self : MathfinitediffPoint, other : MathfinitediffPoint) -> MathfinitediffPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn math_finite_diff_point_scale(pt : MathfinitediffPoint, s : Double) -> MathfinitediffPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn MathfinitediffPoint::scale(self : MathfinitediffPoint, s : Double) -> MathfinitediffPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn math_finite_diff_point_dot(a : MathfinitediffPoint, b : MathfinitediffPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn MathfinitediffPoint::dot(self : MathfinitediffPoint, other : MathfinitediffPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn math_finite_diff_point_cross(a : MathfinitediffPoint, b : MathfinitediffPoint) -> MathfinitediffPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn MathfinitediffPoint::cross(self : MathfinitediffPoint, other : MathfinitediffPoint) -> MathfinitediffPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn math_finite_diff_point_norm(pt : MathfinitediffPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn MathfinitediffPoint::norm(self : MathfinitediffPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn math_finite_diff_point_normalize(pt : MathfinitediffPoint) -> MathfinitediffPoint {
-  let n = math_finite_diff_point_norm(pt)
-  if n < 0.0000001 { pt } else { math_finite_diff_point_scale(pt, 1.0 / n) }
+pub fn MathfinitediffPoint::normalize(self : MathfinitediffPoint) -> MathfinitediffPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn math_finite_diff_point_negate(pt : MathfinitediffPoint) -> MathfinitediffPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn MathfinitediffPoint::negate(self : MathfinitediffPoint) -> MathfinitediffPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn math_finite_diff_point_mid(a : MathfinitediffPoint, b : MathfinitediffPoint) -> MathfinitediffPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn MathfinitediffPoint::mid(self : MathfinitediffPoint, other : MathfinitediffPoint) -> MathfinitediffPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn math_finite_diff_point_lerp(a : MathfinitediffPoint, b : MathfinitediffPoint, t : Double) -> MathfinitediffPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn MathfinitediffPoint::lerp(self : MathfinitediffPoint, other : MathfinitediffPoint, t : Double) -> MathfinitediffPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn math_finite_diff_point_to_string(pt : MathfinitediffPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn MathfinitediffPoint::to_string(self : MathfinitediffPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct MathfinitediffSeries {
@@ -86,58 +86,58 @@ pub fn math_finite_diff_make_series(vals : Array[Double], name : String) -> Math
   { vals, name, meta: 0 }
 }
 
-pub fn math_finite_diff_series_len(s : MathfinitediffSeries) -> Int { s.vals.length() }
+pub fn MathfinitediffSeries::len(self : MathfinitediffSeries) -> Int { self.vals.length() }
 
-pub fn math_finite_diff_series_sum(s : MathfinitediffSeries) -> Double { @_common.sum(s.vals) }
+pub fn MathfinitediffSeries::sum(self : MathfinitediffSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn math_finite_diff_series_mean(s : MathfinitediffSeries) -> Double { @_common.mean(s.vals) }
+pub fn MathfinitediffSeries::mean(self : MathfinitediffSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn math_finite_diff_series_min(s : MathfinitediffSeries) -> Double { @_common.min(s.vals) }
+pub fn MathfinitediffSeries::min(self : MathfinitediffSeries) -> Double { @_common.min(self.vals) }
 
-pub fn math_finite_diff_series_max(s : MathfinitediffSeries) -> Double { @_common.max(s.vals) }
+pub fn MathfinitediffSeries::max(self : MathfinitediffSeries) -> Double { @_common.max(self.vals) }
 
-pub fn math_finite_diff_series_range(s : MathfinitediffSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn MathfinitediffSeries::range(self : MathfinitediffSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn math_finite_diff_series_var(s : MathfinitediffSeries) -> Double { @_common.variance(s.vals) }
+pub fn MathfinitediffSeries::variance(self : MathfinitediffSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn math_finite_diff_series_std(s : MathfinitediffSeries) -> Double { @_common.std(s.vals) }
+pub fn MathfinitediffSeries::std(self : MathfinitediffSeries) -> Double { @_common.std(self.vals) }
 
-pub fn math_finite_diff_series_median(s : MathfinitediffSeries) -> Double { @_common.median(s.vals) }
+pub fn MathfinitediffSeries::median(self : MathfinitediffSeries) -> Double { @_common.median(self.vals) }
 
-pub fn math_finite_diff_series_scale(s : MathfinitediffSeries, f : Double) -> MathfinitediffSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn MathfinitediffSeries::scale(self : MathfinitediffSeries, f : Double) -> MathfinitediffSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn math_finite_diff_series_add(a : MathfinitediffSeries, b : MathfinitediffSeries) -> MathfinitediffSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn MathfinitediffSeries::add(self : MathfinitediffSeries, other : MathfinitediffSeries) -> MathfinitediffSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn math_finite_diff_series_sub(a : MathfinitediffSeries, b : MathfinitediffSeries) -> MathfinitediffSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn MathfinitediffSeries::sub(self : MathfinitediffSeries, other : MathfinitediffSeries) -> MathfinitediffSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn math_finite_diff_series_normalize(s : MathfinitediffSeries) -> MathfinitediffSeries {
-  let mn = math_finite_diff_series_min(s)
-  let mx = math_finite_diff_series_max(s)
+pub fn MathfinitediffSeries::normalize(self : MathfinitediffSeries) -> MathfinitediffSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn math_finite_diff_series_cumsum(s : MathfinitediffSeries) -> MathfinitediffSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn MathfinitediffSeries::cumsum(self : MathfinitediffSeries) -> MathfinitediffSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn math_finite_diff_series_to_string(s : MathfinitediffSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn MathfinitediffSeries::to_string(self : MathfinitediffSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn math_finite_diff_matrix_identity(n : Int) -> MathfinitediffMatrix {
   m
 }
 
-pub fn math_finite_diff_matrix_get(m : MathfinitediffMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn MathfinitediffMatrix::get(self : MathfinitediffMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn math_finite_diff_matrix_transpose(m : MathfinitediffMatrix) -> MathfinitediffMatrix {
-  let result = math_finite_diff_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn MathfinitediffMatrix::transpose(self : MathfinitediffMatrix) -> MathfinitediffMatrix {
+  let result = math_finite_diff_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn math_finite_diff_matrix_add(a : MathfinitediffMatrix, b : MathfinitediffMatrix) -> MathfinitediffMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = math_finite_diff_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn MathfinitediffMatrix::add(self : MathfinitediffMatrix, other : MathfinitediffMatrix) -> MathfinitediffMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = math_finite_diff_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn math_finite_diff_matrix_scale(m : MathfinitediffMatrix, s : Double) -> MathfinitediffMatrix {
-  let result = math_finite_diff_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn MathfinitediffMatrix::scale(self : MathfinitediffMatrix, s : Double) -> MathfinitediffMatrix {
+  let result = math_finite_diff_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn math_finite_diff_matrix_multiply(a : MathfinitediffMatrix, b : MathfinitediffMatrix) -> MathfinitediffMatrix {
-  if a.cols != b.rows { return math_finite_diff_make_matrix(a.rows, b.cols, 0.0) }
-  let result = math_finite_diff_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn MathfinitediffMatrix::multiply(self : MathfinitediffMatrix, other : MathfinitediffMatrix) -> MathfinitediffMatrix {
+  if self.cols != other.rows { return math_finite_diff_make_matrix(self.rows, other.cols, 0.0) }
+  let result = math_finite_diff_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn math_finite_diff_matrix_trace(m : MathfinitediffMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn MathfinitediffMatrix::trace(self : MathfinitediffMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn math_finite_diff_matrix_det(m : MathfinitediffMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn MathfinitediffMatrix::det(self : MathfinitediffMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn math_finite_diff_matrix_norm(m : MathfinitediffMatrix) -> Double {
+pub fn MathfinitediffMatrix::norm(self : MathfinitediffMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn math_finite_diff_matrix_to_string(m : MathfinitediffMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn MathfinitediffMatrix::to_string(self : MathfinitediffMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn math_finite_diff_vector_zero(dim : Int) -> MathfinitediffVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn math_finite_diff_vector_add(a : MathfinitediffVector, b : MathfinitediffVector) -> MathfinitediffVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn MathfinitediffVector::add(self : MathfinitediffVector, other : MathfinitediffVector) -> MathfinitediffVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn math_finite_diff_vector_sub(a : MathfinitediffVector, b : MathfinitediffVector) -> MathfinitediffVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn MathfinitediffVector::sub(self : MathfinitediffVector, other : MathfinitediffVector) -> MathfinitediffVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn math_finite_diff_vector_scale(v : MathfinitediffVector, s : Double) -> MathfinitediffVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn MathfinitediffVector::scale(self : MathfinitediffVector, s : Double) -> MathfinitediffVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn math_finite_diff_vector_dot(a : MathfinitediffVector, b : MathfinitediffVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn MathfinitediffVector::dot(self : MathfinitediffVector, other : MathfinitediffVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn math_finite_diff_vector_norm(v : MathfinitediffVector) -> Double { @_common.sqrt(math_finite_diff_vector_dot(v, v)) }
+pub fn MathfinitediffVector::norm(self : MathfinitediffVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn math_finite_diff_vector_normalize(v : MathfinitediffVector) -> MathfinitediffVector {
-  let n = math_finite_diff_vector_norm(v)
-  if n < 0.0000001 { v } else { math_finite_diff_vector_scale(v, 1.0 / n) }
+pub fn MathfinitediffVector::normalize(self : MathfinitediffVector) -> MathfinitediffVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn math_finite_diff_vector_dist(a : MathfinitediffVector, b : MathfinitediffVector) -> Double {
-  math_finite_diff_vector_norm(math_finite_diff_vector_sub(a, b))
+pub fn MathfinitediffVector::dist(self : MathfinitediffVector, other : MathfinitediffVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn math_finite_diff_vector_to_string(v : MathfinitediffVector) -> String {
+pub fn MathfinitediffVector::to_string(self : MathfinitediffVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn math_finite_diff_mean(data : Array[Double]) -> Double { @_common.mean(data) }

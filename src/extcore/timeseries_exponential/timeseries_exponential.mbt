@@ -16,64 +16,64 @@ pub fn timeseries_exponential_make_point3(x : Double, y : Double, z : Double) ->
   { x, y, z, label: 0 }
 }
 
-pub fn timeseries_exponential_point_x(pt : TimeseriesexponentialPoint) -> Double { pt.x }
+pub fn TimeseriesexponentialPoint::x(self : TimeseriesexponentialPoint) -> Double { self.x }
 
-pub fn timeseries_exponential_point_y(pt : TimeseriesexponentialPoint) -> Double { pt.y }
+pub fn TimeseriesexponentialPoint::y(self : TimeseriesexponentialPoint) -> Double { self.y }
 
-pub fn timeseries_exponential_point_z(pt : TimeseriesexponentialPoint) -> Double { pt.z }
+pub fn TimeseriesexponentialPoint::z(self : TimeseriesexponentialPoint) -> Double { self.z }
 
-pub fn timeseries_exponential_point_label(pt : TimeseriesexponentialPoint) -> Int { pt.label }
+pub fn TimeseriesexponentialPoint::label(self : TimeseriesexponentialPoint) -> Int { self.label }
 
-pub fn timeseries_exponential_point_dist(a : TimeseriesexponentialPoint, b : TimeseriesexponentialPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn TimeseriesexponentialPoint::dist(self : TimeseriesexponentialPoint, other : TimeseriesexponentialPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn timeseries_exponential_point_add(a : TimeseriesexponentialPoint, b : TimeseriesexponentialPoint) -> TimeseriesexponentialPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn TimeseriesexponentialPoint::add(self : TimeseriesexponentialPoint, other : TimeseriesexponentialPoint) -> TimeseriesexponentialPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn timeseries_exponential_point_sub(a : TimeseriesexponentialPoint, b : TimeseriesexponentialPoint) -> TimeseriesexponentialPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn TimeseriesexponentialPoint::sub(self : TimeseriesexponentialPoint, other : TimeseriesexponentialPoint) -> TimeseriesexponentialPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn timeseries_exponential_point_scale(pt : TimeseriesexponentialPoint, s : Double) -> TimeseriesexponentialPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn TimeseriesexponentialPoint::scale(self : TimeseriesexponentialPoint, s : Double) -> TimeseriesexponentialPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn timeseries_exponential_point_dot(a : TimeseriesexponentialPoint, b : TimeseriesexponentialPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn TimeseriesexponentialPoint::dot(self : TimeseriesexponentialPoint, other : TimeseriesexponentialPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn timeseries_exponential_point_cross(a : TimeseriesexponentialPoint, b : TimeseriesexponentialPoint) -> TimeseriesexponentialPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn TimeseriesexponentialPoint::cross(self : TimeseriesexponentialPoint, other : TimeseriesexponentialPoint) -> TimeseriesexponentialPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn timeseries_exponential_point_norm(pt : TimeseriesexponentialPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn TimeseriesexponentialPoint::norm(self : TimeseriesexponentialPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn timeseries_exponential_point_normalize(pt : TimeseriesexponentialPoint) -> TimeseriesexponentialPoint {
-  let n = timeseries_exponential_point_norm(pt)
-  if n < 0.0000001 { pt } else { timeseries_exponential_point_scale(pt, 1.0 / n) }
+pub fn TimeseriesexponentialPoint::normalize(self : TimeseriesexponentialPoint) -> TimeseriesexponentialPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn timeseries_exponential_point_negate(pt : TimeseriesexponentialPoint) -> TimeseriesexponentialPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn TimeseriesexponentialPoint::negate(self : TimeseriesexponentialPoint) -> TimeseriesexponentialPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn timeseries_exponential_point_mid(a : TimeseriesexponentialPoint, b : TimeseriesexponentialPoint) -> TimeseriesexponentialPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn TimeseriesexponentialPoint::mid(self : TimeseriesexponentialPoint, other : TimeseriesexponentialPoint) -> TimeseriesexponentialPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn timeseries_exponential_point_lerp(a : TimeseriesexponentialPoint, b : TimeseriesexponentialPoint, t : Double) -> TimeseriesexponentialPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn TimeseriesexponentialPoint::lerp(self : TimeseriesexponentialPoint, other : TimeseriesexponentialPoint, t : Double) -> TimeseriesexponentialPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn timeseries_exponential_point_to_string(pt : TimeseriesexponentialPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn TimeseriesexponentialPoint::to_string(self : TimeseriesexponentialPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct TimeseriesexponentialSeries {
@@ -86,58 +86,58 @@ pub fn timeseries_exponential_make_series(vals : Array[Double], name : String) -
   { vals, name, meta: 0 }
 }
 
-pub fn timeseries_exponential_series_len(s : TimeseriesexponentialSeries) -> Int { s.vals.length() }
+pub fn TimeseriesexponentialSeries::len(self : TimeseriesexponentialSeries) -> Int { self.vals.length() }
 
-pub fn timeseries_exponential_series_sum(s : TimeseriesexponentialSeries) -> Double { @_common.sum(s.vals) }
+pub fn TimeseriesexponentialSeries::sum(self : TimeseriesexponentialSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn timeseries_exponential_series_mean(s : TimeseriesexponentialSeries) -> Double { @_common.mean(s.vals) }
+pub fn TimeseriesexponentialSeries::mean(self : TimeseriesexponentialSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn timeseries_exponential_series_min(s : TimeseriesexponentialSeries) -> Double { @_common.min(s.vals) }
+pub fn TimeseriesexponentialSeries::min(self : TimeseriesexponentialSeries) -> Double { @_common.min(self.vals) }
 
-pub fn timeseries_exponential_series_max(s : TimeseriesexponentialSeries) -> Double { @_common.max(s.vals) }
+pub fn TimeseriesexponentialSeries::max(self : TimeseriesexponentialSeries) -> Double { @_common.max(self.vals) }
 
-pub fn timeseries_exponential_series_range(s : TimeseriesexponentialSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn TimeseriesexponentialSeries::range(self : TimeseriesexponentialSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn timeseries_exponential_series_var(s : TimeseriesexponentialSeries) -> Double { @_common.variance(s.vals) }
+pub fn TimeseriesexponentialSeries::variance(self : TimeseriesexponentialSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn timeseries_exponential_series_std(s : TimeseriesexponentialSeries) -> Double { @_common.std(s.vals) }
+pub fn TimeseriesexponentialSeries::std(self : TimeseriesexponentialSeries) -> Double { @_common.std(self.vals) }
 
-pub fn timeseries_exponential_series_median(s : TimeseriesexponentialSeries) -> Double { @_common.median(s.vals) }
+pub fn TimeseriesexponentialSeries::median(self : TimeseriesexponentialSeries) -> Double { @_common.median(self.vals) }
 
-pub fn timeseries_exponential_series_scale(s : TimeseriesexponentialSeries, f : Double) -> TimeseriesexponentialSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn TimeseriesexponentialSeries::scale(self : TimeseriesexponentialSeries, f : Double) -> TimeseriesexponentialSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn timeseries_exponential_series_add(a : TimeseriesexponentialSeries, b : TimeseriesexponentialSeries) -> TimeseriesexponentialSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn TimeseriesexponentialSeries::add(self : TimeseriesexponentialSeries, other : TimeseriesexponentialSeries) -> TimeseriesexponentialSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn timeseries_exponential_series_sub(a : TimeseriesexponentialSeries, b : TimeseriesexponentialSeries) -> TimeseriesexponentialSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn TimeseriesexponentialSeries::sub(self : TimeseriesexponentialSeries, other : TimeseriesexponentialSeries) -> TimeseriesexponentialSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn timeseries_exponential_series_normalize(s : TimeseriesexponentialSeries) -> TimeseriesexponentialSeries {
-  let mn = timeseries_exponential_series_min(s)
-  let mx = timeseries_exponential_series_max(s)
+pub fn TimeseriesexponentialSeries::normalize(self : TimeseriesexponentialSeries) -> TimeseriesexponentialSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn timeseries_exponential_series_cumsum(s : TimeseriesexponentialSeries) -> TimeseriesexponentialSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn TimeseriesexponentialSeries::cumsum(self : TimeseriesexponentialSeries) -> TimeseriesexponentialSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn timeseries_exponential_series_to_string(s : TimeseriesexponentialSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn TimeseriesexponentialSeries::to_string(self : TimeseriesexponentialSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn timeseries_exponential_matrix_identity(n : Int) -> TimeseriesexponentialM
   m
 }
 
-pub fn timeseries_exponential_matrix_get(m : TimeseriesexponentialMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn TimeseriesexponentialMatrix::get(self : TimeseriesexponentialMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn timeseries_exponential_matrix_transpose(m : TimeseriesexponentialMatrix) -> TimeseriesexponentialMatrix {
-  let result = timeseries_exponential_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn TimeseriesexponentialMatrix::transpose(self : TimeseriesexponentialMatrix) -> TimeseriesexponentialMatrix {
+  let result = timeseries_exponential_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn timeseries_exponential_matrix_add(a : TimeseriesexponentialMatrix, b : TimeseriesexponentialMatrix) -> TimeseriesexponentialMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = timeseries_exponential_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn TimeseriesexponentialMatrix::add(self : TimeseriesexponentialMatrix, other : TimeseriesexponentialMatrix) -> TimeseriesexponentialMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = timeseries_exponential_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn timeseries_exponential_matrix_scale(m : TimeseriesexponentialMatrix, s : Double) -> TimeseriesexponentialMatrix {
-  let result = timeseries_exponential_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn TimeseriesexponentialMatrix::scale(self : TimeseriesexponentialMatrix, s : Double) -> TimeseriesexponentialMatrix {
+  let result = timeseries_exponential_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn timeseries_exponential_matrix_multiply(a : TimeseriesexponentialMatrix, b : TimeseriesexponentialMatrix) -> TimeseriesexponentialMatrix {
-  if a.cols != b.rows { return timeseries_exponential_make_matrix(a.rows, b.cols, 0.0) }
-  let result = timeseries_exponential_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn TimeseriesexponentialMatrix::multiply(self : TimeseriesexponentialMatrix, other : TimeseriesexponentialMatrix) -> TimeseriesexponentialMatrix {
+  if self.cols != other.rows { return timeseries_exponential_make_matrix(self.rows, other.cols, 0.0) }
+  let result = timeseries_exponential_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn timeseries_exponential_matrix_trace(m : TimeseriesexponentialMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn TimeseriesexponentialMatrix::trace(self : TimeseriesexponentialMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn timeseries_exponential_matrix_det(m : TimeseriesexponentialMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn TimeseriesexponentialMatrix::det(self : TimeseriesexponentialMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn timeseries_exponential_matrix_norm(m : TimeseriesexponentialMatrix) -> Double {
+pub fn TimeseriesexponentialMatrix::norm(self : TimeseriesexponentialMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn timeseries_exponential_matrix_to_string(m : TimeseriesexponentialMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn TimeseriesexponentialMatrix::to_string(self : TimeseriesexponentialMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn timeseries_exponential_vector_zero(dim : Int) -> TimeseriesexponentialVec
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn timeseries_exponential_vector_add(a : TimeseriesexponentialVector, b : TimeseriesexponentialVector) -> TimeseriesexponentialVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn TimeseriesexponentialVector::add(self : TimeseriesexponentialVector, other : TimeseriesexponentialVector) -> TimeseriesexponentialVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn timeseries_exponential_vector_sub(a : TimeseriesexponentialVector, b : TimeseriesexponentialVector) -> TimeseriesexponentialVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn TimeseriesexponentialVector::sub(self : TimeseriesexponentialVector, other : TimeseriesexponentialVector) -> TimeseriesexponentialVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn timeseries_exponential_vector_scale(v : TimeseriesexponentialVector, s : Double) -> TimeseriesexponentialVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn TimeseriesexponentialVector::scale(self : TimeseriesexponentialVector, s : Double) -> TimeseriesexponentialVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn timeseries_exponential_vector_dot(a : TimeseriesexponentialVector, b : TimeseriesexponentialVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn TimeseriesexponentialVector::dot(self : TimeseriesexponentialVector, other : TimeseriesexponentialVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn timeseries_exponential_vector_norm(v : TimeseriesexponentialVector) -> Double { @_common.sqrt(timeseries_exponential_vector_dot(v, v)) }
+pub fn TimeseriesexponentialVector::norm(self : TimeseriesexponentialVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn timeseries_exponential_vector_normalize(v : TimeseriesexponentialVector) -> TimeseriesexponentialVector {
-  let n = timeseries_exponential_vector_norm(v)
-  if n < 0.0000001 { v } else { timeseries_exponential_vector_scale(v, 1.0 / n) }
+pub fn TimeseriesexponentialVector::normalize(self : TimeseriesexponentialVector) -> TimeseriesexponentialVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn timeseries_exponential_vector_dist(a : TimeseriesexponentialVector, b : TimeseriesexponentialVector) -> Double {
-  timeseries_exponential_vector_norm(timeseries_exponential_vector_sub(a, b))
+pub fn TimeseriesexponentialVector::dist(self : TimeseriesexponentialVector, other : TimeseriesexponentialVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn timeseries_exponential_vector_to_string(v : TimeseriesexponentialVector) -> String {
+pub fn TimeseriesexponentialVector::to_string(self : TimeseriesexponentialVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn timeseries_exponential_mean(data : Array[Double]) -> Double { @_common.mean(data) }

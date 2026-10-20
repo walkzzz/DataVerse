@@ -16,64 +16,64 @@ pub fn ds_graph_adj_matrix_make_point3(x : Double, y : Double, z : Double) -> Ds
   { x, y, z, label: 0 }
 }
 
-pub fn ds_graph_adj_matrix_point_x(pt : DsgraphadjmatrixPoint) -> Double { pt.x }
+pub fn DsgraphadjmatrixPoint::x(self : DsgraphadjmatrixPoint) -> Double { self.x }
 
-pub fn ds_graph_adj_matrix_point_y(pt : DsgraphadjmatrixPoint) -> Double { pt.y }
+pub fn DsgraphadjmatrixPoint::y(self : DsgraphadjmatrixPoint) -> Double { self.y }
 
-pub fn ds_graph_adj_matrix_point_z(pt : DsgraphadjmatrixPoint) -> Double { pt.z }
+pub fn DsgraphadjmatrixPoint::z(self : DsgraphadjmatrixPoint) -> Double { self.z }
 
-pub fn ds_graph_adj_matrix_point_label(pt : DsgraphadjmatrixPoint) -> Int { pt.label }
+pub fn DsgraphadjmatrixPoint::label(self : DsgraphadjmatrixPoint) -> Int { self.label }
 
-pub fn ds_graph_adj_matrix_point_dist(a : DsgraphadjmatrixPoint, b : DsgraphadjmatrixPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn DsgraphadjmatrixPoint::dist(self : DsgraphadjmatrixPoint, other : DsgraphadjmatrixPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn ds_graph_adj_matrix_point_add(a : DsgraphadjmatrixPoint, b : DsgraphadjmatrixPoint) -> DsgraphadjmatrixPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn DsgraphadjmatrixPoint::add(self : DsgraphadjmatrixPoint, other : DsgraphadjmatrixPoint) -> DsgraphadjmatrixPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn ds_graph_adj_matrix_point_sub(a : DsgraphadjmatrixPoint, b : DsgraphadjmatrixPoint) -> DsgraphadjmatrixPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn DsgraphadjmatrixPoint::sub(self : DsgraphadjmatrixPoint, other : DsgraphadjmatrixPoint) -> DsgraphadjmatrixPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn ds_graph_adj_matrix_point_scale(pt : DsgraphadjmatrixPoint, s : Double) -> DsgraphadjmatrixPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn DsgraphadjmatrixPoint::scale(self : DsgraphadjmatrixPoint, s : Double) -> DsgraphadjmatrixPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn ds_graph_adj_matrix_point_dot(a : DsgraphadjmatrixPoint, b : DsgraphadjmatrixPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn DsgraphadjmatrixPoint::dot(self : DsgraphadjmatrixPoint, other : DsgraphadjmatrixPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn ds_graph_adj_matrix_point_cross(a : DsgraphadjmatrixPoint, b : DsgraphadjmatrixPoint) -> DsgraphadjmatrixPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn DsgraphadjmatrixPoint::cross(self : DsgraphadjmatrixPoint, other : DsgraphadjmatrixPoint) -> DsgraphadjmatrixPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn ds_graph_adj_matrix_point_norm(pt : DsgraphadjmatrixPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn DsgraphadjmatrixPoint::norm(self : DsgraphadjmatrixPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn ds_graph_adj_matrix_point_normalize(pt : DsgraphadjmatrixPoint) -> DsgraphadjmatrixPoint {
-  let n = ds_graph_adj_matrix_point_norm(pt)
-  if n < 0.0000001 { pt } else { ds_graph_adj_matrix_point_scale(pt, 1.0 / n) }
+pub fn DsgraphadjmatrixPoint::normalize(self : DsgraphadjmatrixPoint) -> DsgraphadjmatrixPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn ds_graph_adj_matrix_point_negate(pt : DsgraphadjmatrixPoint) -> DsgraphadjmatrixPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn DsgraphadjmatrixPoint::negate(self : DsgraphadjmatrixPoint) -> DsgraphadjmatrixPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn ds_graph_adj_matrix_point_mid(a : DsgraphadjmatrixPoint, b : DsgraphadjmatrixPoint) -> DsgraphadjmatrixPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn DsgraphadjmatrixPoint::mid(self : DsgraphadjmatrixPoint, other : DsgraphadjmatrixPoint) -> DsgraphadjmatrixPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn ds_graph_adj_matrix_point_lerp(a : DsgraphadjmatrixPoint, b : DsgraphadjmatrixPoint, t : Double) -> DsgraphadjmatrixPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn DsgraphadjmatrixPoint::lerp(self : DsgraphadjmatrixPoint, other : DsgraphadjmatrixPoint, t : Double) -> DsgraphadjmatrixPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn ds_graph_adj_matrix_point_to_string(pt : DsgraphadjmatrixPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn DsgraphadjmatrixPoint::to_string(self : DsgraphadjmatrixPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct DsgraphadjmatrixSeries {
@@ -86,58 +86,58 @@ pub fn ds_graph_adj_matrix_make_series(vals : Array[Double], name : String) -> D
   { vals, name, meta: 0 }
 }
 
-pub fn ds_graph_adj_matrix_series_len(s : DsgraphadjmatrixSeries) -> Int { s.vals.length() }
+pub fn DsgraphadjmatrixSeries::len(self : DsgraphadjmatrixSeries) -> Int { self.vals.length() }
 
-pub fn ds_graph_adj_matrix_series_sum(s : DsgraphadjmatrixSeries) -> Double { @_common.sum(s.vals) }
+pub fn DsgraphadjmatrixSeries::sum(self : DsgraphadjmatrixSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn ds_graph_adj_matrix_series_mean(s : DsgraphadjmatrixSeries) -> Double { @_common.mean(s.vals) }
+pub fn DsgraphadjmatrixSeries::mean(self : DsgraphadjmatrixSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn ds_graph_adj_matrix_series_min(s : DsgraphadjmatrixSeries) -> Double { @_common.min(s.vals) }
+pub fn DsgraphadjmatrixSeries::min(self : DsgraphadjmatrixSeries) -> Double { @_common.min(self.vals) }
 
-pub fn ds_graph_adj_matrix_series_max(s : DsgraphadjmatrixSeries) -> Double { @_common.max(s.vals) }
+pub fn DsgraphadjmatrixSeries::max(self : DsgraphadjmatrixSeries) -> Double { @_common.max(self.vals) }
 
-pub fn ds_graph_adj_matrix_series_range(s : DsgraphadjmatrixSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn DsgraphadjmatrixSeries::range(self : DsgraphadjmatrixSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn ds_graph_adj_matrix_series_var(s : DsgraphadjmatrixSeries) -> Double { @_common.variance(s.vals) }
+pub fn DsgraphadjmatrixSeries::variance(self : DsgraphadjmatrixSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn ds_graph_adj_matrix_series_std(s : DsgraphadjmatrixSeries) -> Double { @_common.std(s.vals) }
+pub fn DsgraphadjmatrixSeries::std(self : DsgraphadjmatrixSeries) -> Double { @_common.std(self.vals) }
 
-pub fn ds_graph_adj_matrix_series_median(s : DsgraphadjmatrixSeries) -> Double { @_common.median(s.vals) }
+pub fn DsgraphadjmatrixSeries::median(self : DsgraphadjmatrixSeries) -> Double { @_common.median(self.vals) }
 
-pub fn ds_graph_adj_matrix_series_scale(s : DsgraphadjmatrixSeries, f : Double) -> DsgraphadjmatrixSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn DsgraphadjmatrixSeries::scale(self : DsgraphadjmatrixSeries, f : Double) -> DsgraphadjmatrixSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn ds_graph_adj_matrix_series_add(a : DsgraphadjmatrixSeries, b : DsgraphadjmatrixSeries) -> DsgraphadjmatrixSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn DsgraphadjmatrixSeries::add(self : DsgraphadjmatrixSeries, other : DsgraphadjmatrixSeries) -> DsgraphadjmatrixSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn ds_graph_adj_matrix_series_sub(a : DsgraphadjmatrixSeries, b : DsgraphadjmatrixSeries) -> DsgraphadjmatrixSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn DsgraphadjmatrixSeries::sub(self : DsgraphadjmatrixSeries, other : DsgraphadjmatrixSeries) -> DsgraphadjmatrixSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn ds_graph_adj_matrix_series_normalize(s : DsgraphadjmatrixSeries) -> DsgraphadjmatrixSeries {
-  let mn = ds_graph_adj_matrix_series_min(s)
-  let mx = ds_graph_adj_matrix_series_max(s)
+pub fn DsgraphadjmatrixSeries::normalize(self : DsgraphadjmatrixSeries) -> DsgraphadjmatrixSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn ds_graph_adj_matrix_series_cumsum(s : DsgraphadjmatrixSeries) -> DsgraphadjmatrixSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn DsgraphadjmatrixSeries::cumsum(self : DsgraphadjmatrixSeries) -> DsgraphadjmatrixSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn ds_graph_adj_matrix_series_to_string(s : DsgraphadjmatrixSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn DsgraphadjmatrixSeries::to_string(self : DsgraphadjmatrixSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn ds_graph_adj_matrix_matrix_identity(n : Int) -> DsgraphadjmatrixMatrix {
   m
 }
 
-pub fn ds_graph_adj_matrix_matrix_get(m : DsgraphadjmatrixMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn DsgraphadjmatrixMatrix::get(self : DsgraphadjmatrixMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn ds_graph_adj_matrix_matrix_transpose(m : DsgraphadjmatrixMatrix) -> DsgraphadjmatrixMatrix {
-  let result = ds_graph_adj_matrix_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn DsgraphadjmatrixMatrix::transpose(self : DsgraphadjmatrixMatrix) -> DsgraphadjmatrixMatrix {
+  let result = ds_graph_adj_matrix_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn ds_graph_adj_matrix_matrix_add(a : DsgraphadjmatrixMatrix, b : DsgraphadjmatrixMatrix) -> DsgraphadjmatrixMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = ds_graph_adj_matrix_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn DsgraphadjmatrixMatrix::add(self : DsgraphadjmatrixMatrix, other : DsgraphadjmatrixMatrix) -> DsgraphadjmatrixMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = ds_graph_adj_matrix_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn ds_graph_adj_matrix_matrix_scale(m : DsgraphadjmatrixMatrix, s : Double) -> DsgraphadjmatrixMatrix {
-  let result = ds_graph_adj_matrix_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn DsgraphadjmatrixMatrix::scale(self : DsgraphadjmatrixMatrix, s : Double) -> DsgraphadjmatrixMatrix {
+  let result = ds_graph_adj_matrix_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn ds_graph_adj_matrix_matrix_multiply(a : DsgraphadjmatrixMatrix, b : DsgraphadjmatrixMatrix) -> DsgraphadjmatrixMatrix {
-  if a.cols != b.rows { return ds_graph_adj_matrix_make_matrix(a.rows, b.cols, 0.0) }
-  let result = ds_graph_adj_matrix_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn DsgraphadjmatrixMatrix::multiply(self : DsgraphadjmatrixMatrix, other : DsgraphadjmatrixMatrix) -> DsgraphadjmatrixMatrix {
+  if self.cols != other.rows { return ds_graph_adj_matrix_make_matrix(self.rows, other.cols, 0.0) }
+  let result = ds_graph_adj_matrix_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn ds_graph_adj_matrix_matrix_trace(m : DsgraphadjmatrixMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn DsgraphadjmatrixMatrix::trace(self : DsgraphadjmatrixMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn ds_graph_adj_matrix_matrix_det(m : DsgraphadjmatrixMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn DsgraphadjmatrixMatrix::det(self : DsgraphadjmatrixMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn ds_graph_adj_matrix_matrix_norm(m : DsgraphadjmatrixMatrix) -> Double {
+pub fn DsgraphadjmatrixMatrix::norm(self : DsgraphadjmatrixMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn ds_graph_adj_matrix_matrix_to_string(m : DsgraphadjmatrixMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn DsgraphadjmatrixMatrix::to_string(self : DsgraphadjmatrixMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn ds_graph_adj_matrix_vector_zero(dim : Int) -> DsgraphadjmatrixVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn ds_graph_adj_matrix_vector_add(a : DsgraphadjmatrixVector, b : DsgraphadjmatrixVector) -> DsgraphadjmatrixVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn DsgraphadjmatrixVector::add(self : DsgraphadjmatrixVector, other : DsgraphadjmatrixVector) -> DsgraphadjmatrixVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn ds_graph_adj_matrix_vector_sub(a : DsgraphadjmatrixVector, b : DsgraphadjmatrixVector) -> DsgraphadjmatrixVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn DsgraphadjmatrixVector::sub(self : DsgraphadjmatrixVector, other : DsgraphadjmatrixVector) -> DsgraphadjmatrixVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn ds_graph_adj_matrix_vector_scale(v : DsgraphadjmatrixVector, s : Double) -> DsgraphadjmatrixVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn DsgraphadjmatrixVector::scale(self : DsgraphadjmatrixVector, s : Double) -> DsgraphadjmatrixVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn ds_graph_adj_matrix_vector_dot(a : DsgraphadjmatrixVector, b : DsgraphadjmatrixVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn DsgraphadjmatrixVector::dot(self : DsgraphadjmatrixVector, other : DsgraphadjmatrixVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn ds_graph_adj_matrix_vector_norm(v : DsgraphadjmatrixVector) -> Double { @_common.sqrt(ds_graph_adj_matrix_vector_dot(v, v)) }
+pub fn DsgraphadjmatrixVector::norm(self : DsgraphadjmatrixVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn ds_graph_adj_matrix_vector_normalize(v : DsgraphadjmatrixVector) -> DsgraphadjmatrixVector {
-  let n = ds_graph_adj_matrix_vector_norm(v)
-  if n < 0.0000001 { v } else { ds_graph_adj_matrix_vector_scale(v, 1.0 / n) }
+pub fn DsgraphadjmatrixVector::normalize(self : DsgraphadjmatrixVector) -> DsgraphadjmatrixVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn ds_graph_adj_matrix_vector_dist(a : DsgraphadjmatrixVector, b : DsgraphadjmatrixVector) -> Double {
-  ds_graph_adj_matrix_vector_norm(ds_graph_adj_matrix_vector_sub(a, b))
+pub fn DsgraphadjmatrixVector::dist(self : DsgraphadjmatrixVector, other : DsgraphadjmatrixVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn ds_graph_adj_matrix_vector_to_string(v : DsgraphadjmatrixVector) -> String {
+pub fn DsgraphadjmatrixVector::to_string(self : DsgraphadjmatrixVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn ds_graph_adj_matrix_mean(data : Array[Double]) -> Double { @_common.mean(data) }

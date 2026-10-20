@@ -16,64 +16,64 @@ pub fn geo_intersect_bbox_make_point3(x : Double, y : Double, z : Double) -> Geo
   { x, y, z, label: 0 }
 }
 
-pub fn geo_intersect_bbox_point_x(pt : GeointersectbboxPoint) -> Double { pt.x }
+pub fn GeointersectbboxPoint::x(self : GeointersectbboxPoint) -> Double { self.x }
 
-pub fn geo_intersect_bbox_point_y(pt : GeointersectbboxPoint) -> Double { pt.y }
+pub fn GeointersectbboxPoint::y(self : GeointersectbboxPoint) -> Double { self.y }
 
-pub fn geo_intersect_bbox_point_z(pt : GeointersectbboxPoint) -> Double { pt.z }
+pub fn GeointersectbboxPoint::z(self : GeointersectbboxPoint) -> Double { self.z }
 
-pub fn geo_intersect_bbox_point_label(pt : GeointersectbboxPoint) -> Int { pt.label }
+pub fn GeointersectbboxPoint::label(self : GeointersectbboxPoint) -> Int { self.label }
 
-pub fn geo_intersect_bbox_point_dist(a : GeointersectbboxPoint, b : GeointersectbboxPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn GeointersectbboxPoint::dist(self : GeointersectbboxPoint, other : GeointersectbboxPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn geo_intersect_bbox_point_add(a : GeointersectbboxPoint, b : GeointersectbboxPoint) -> GeointersectbboxPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn GeointersectbboxPoint::add(self : GeointersectbboxPoint, other : GeointersectbboxPoint) -> GeointersectbboxPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn geo_intersect_bbox_point_sub(a : GeointersectbboxPoint, b : GeointersectbboxPoint) -> GeointersectbboxPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn GeointersectbboxPoint::sub(self : GeointersectbboxPoint, other : GeointersectbboxPoint) -> GeointersectbboxPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn geo_intersect_bbox_point_scale(pt : GeointersectbboxPoint, s : Double) -> GeointersectbboxPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn GeointersectbboxPoint::scale(self : GeointersectbboxPoint, s : Double) -> GeointersectbboxPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn geo_intersect_bbox_point_dot(a : GeointersectbboxPoint, b : GeointersectbboxPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn GeointersectbboxPoint::dot(self : GeointersectbboxPoint, other : GeointersectbboxPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn geo_intersect_bbox_point_cross(a : GeointersectbboxPoint, b : GeointersectbboxPoint) -> GeointersectbboxPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn GeointersectbboxPoint::cross(self : GeointersectbboxPoint, other : GeointersectbboxPoint) -> GeointersectbboxPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn geo_intersect_bbox_point_norm(pt : GeointersectbboxPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn GeointersectbboxPoint::norm(self : GeointersectbboxPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn geo_intersect_bbox_point_normalize(pt : GeointersectbboxPoint) -> GeointersectbboxPoint {
-  let n = geo_intersect_bbox_point_norm(pt)
-  if n < 0.0000001 { pt } else { geo_intersect_bbox_point_scale(pt, 1.0 / n) }
+pub fn GeointersectbboxPoint::normalize(self : GeointersectbboxPoint) -> GeointersectbboxPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn geo_intersect_bbox_point_negate(pt : GeointersectbboxPoint) -> GeointersectbboxPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn GeointersectbboxPoint::negate(self : GeointersectbboxPoint) -> GeointersectbboxPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn geo_intersect_bbox_point_mid(a : GeointersectbboxPoint, b : GeointersectbboxPoint) -> GeointersectbboxPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn GeointersectbboxPoint::mid(self : GeointersectbboxPoint, other : GeointersectbboxPoint) -> GeointersectbboxPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn geo_intersect_bbox_point_lerp(a : GeointersectbboxPoint, b : GeointersectbboxPoint, t : Double) -> GeointersectbboxPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn GeointersectbboxPoint::lerp(self : GeointersectbboxPoint, other : GeointersectbboxPoint, t : Double) -> GeointersectbboxPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn geo_intersect_bbox_point_to_string(pt : GeointersectbboxPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn GeointersectbboxPoint::to_string(self : GeointersectbboxPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct GeointersectbboxSeries {
@@ -86,58 +86,58 @@ pub fn geo_intersect_bbox_make_series(vals : Array[Double], name : String) -> Ge
   { vals, name, meta: 0 }
 }
 
-pub fn geo_intersect_bbox_series_len(s : GeointersectbboxSeries) -> Int { s.vals.length() }
+pub fn GeointersectbboxSeries::len(self : GeointersectbboxSeries) -> Int { self.vals.length() }
 
-pub fn geo_intersect_bbox_series_sum(s : GeointersectbboxSeries) -> Double { @_common.sum(s.vals) }
+pub fn GeointersectbboxSeries::sum(self : GeointersectbboxSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn geo_intersect_bbox_series_mean(s : GeointersectbboxSeries) -> Double { @_common.mean(s.vals) }
+pub fn GeointersectbboxSeries::mean(self : GeointersectbboxSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn geo_intersect_bbox_series_min(s : GeointersectbboxSeries) -> Double { @_common.min(s.vals) }
+pub fn GeointersectbboxSeries::min(self : GeointersectbboxSeries) -> Double { @_common.min(self.vals) }
 
-pub fn geo_intersect_bbox_series_max(s : GeointersectbboxSeries) -> Double { @_common.max(s.vals) }
+pub fn GeointersectbboxSeries::max(self : GeointersectbboxSeries) -> Double { @_common.max(self.vals) }
 
-pub fn geo_intersect_bbox_series_range(s : GeointersectbboxSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn GeointersectbboxSeries::range(self : GeointersectbboxSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn geo_intersect_bbox_series_var(s : GeointersectbboxSeries) -> Double { @_common.variance(s.vals) }
+pub fn GeointersectbboxSeries::variance(self : GeointersectbboxSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn geo_intersect_bbox_series_std(s : GeointersectbboxSeries) -> Double { @_common.std(s.vals) }
+pub fn GeointersectbboxSeries::std(self : GeointersectbboxSeries) -> Double { @_common.std(self.vals) }
 
-pub fn geo_intersect_bbox_series_median(s : GeointersectbboxSeries) -> Double { @_common.median(s.vals) }
+pub fn GeointersectbboxSeries::median(self : GeointersectbboxSeries) -> Double { @_common.median(self.vals) }
 
-pub fn geo_intersect_bbox_series_scale(s : GeointersectbboxSeries, f : Double) -> GeointersectbboxSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn GeointersectbboxSeries::scale(self : GeointersectbboxSeries, f : Double) -> GeointersectbboxSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn geo_intersect_bbox_series_add(a : GeointersectbboxSeries, b : GeointersectbboxSeries) -> GeointersectbboxSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn GeointersectbboxSeries::add(self : GeointersectbboxSeries, other : GeointersectbboxSeries) -> GeointersectbboxSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn geo_intersect_bbox_series_sub(a : GeointersectbboxSeries, b : GeointersectbboxSeries) -> GeointersectbboxSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn GeointersectbboxSeries::sub(self : GeointersectbboxSeries, other : GeointersectbboxSeries) -> GeointersectbboxSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn geo_intersect_bbox_series_normalize(s : GeointersectbboxSeries) -> GeointersectbboxSeries {
-  let mn = geo_intersect_bbox_series_min(s)
-  let mx = geo_intersect_bbox_series_max(s)
+pub fn GeointersectbboxSeries::normalize(self : GeointersectbboxSeries) -> GeointersectbboxSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn geo_intersect_bbox_series_cumsum(s : GeointersectbboxSeries) -> GeointersectbboxSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn GeointersectbboxSeries::cumsum(self : GeointersectbboxSeries) -> GeointersectbboxSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn geo_intersect_bbox_series_to_string(s : GeointersectbboxSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn GeointersectbboxSeries::to_string(self : GeointersectbboxSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn geo_intersect_bbox_matrix_identity(n : Int) -> GeointersectbboxMatrix {
   m
 }
 
-pub fn geo_intersect_bbox_matrix_get(m : GeointersectbboxMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn GeointersectbboxMatrix::get(self : GeointersectbboxMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn geo_intersect_bbox_matrix_transpose(m : GeointersectbboxMatrix) -> GeointersectbboxMatrix {
-  let result = geo_intersect_bbox_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn GeointersectbboxMatrix::transpose(self : GeointersectbboxMatrix) -> GeointersectbboxMatrix {
+  let result = geo_intersect_bbox_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn geo_intersect_bbox_matrix_add(a : GeointersectbboxMatrix, b : GeointersectbboxMatrix) -> GeointersectbboxMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = geo_intersect_bbox_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn GeointersectbboxMatrix::add(self : GeointersectbboxMatrix, other : GeointersectbboxMatrix) -> GeointersectbboxMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = geo_intersect_bbox_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn geo_intersect_bbox_matrix_scale(m : GeointersectbboxMatrix, s : Double) -> GeointersectbboxMatrix {
-  let result = geo_intersect_bbox_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn GeointersectbboxMatrix::scale(self : GeointersectbboxMatrix, s : Double) -> GeointersectbboxMatrix {
+  let result = geo_intersect_bbox_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn geo_intersect_bbox_matrix_multiply(a : GeointersectbboxMatrix, b : GeointersectbboxMatrix) -> GeointersectbboxMatrix {
-  if a.cols != b.rows { return geo_intersect_bbox_make_matrix(a.rows, b.cols, 0.0) }
-  let result = geo_intersect_bbox_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn GeointersectbboxMatrix::multiply(self : GeointersectbboxMatrix, other : GeointersectbboxMatrix) -> GeointersectbboxMatrix {
+  if self.cols != other.rows { return geo_intersect_bbox_make_matrix(self.rows, other.cols, 0.0) }
+  let result = geo_intersect_bbox_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn geo_intersect_bbox_matrix_trace(m : GeointersectbboxMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn GeointersectbboxMatrix::trace(self : GeointersectbboxMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn geo_intersect_bbox_matrix_det(m : GeointersectbboxMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn GeointersectbboxMatrix::det(self : GeointersectbboxMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn geo_intersect_bbox_matrix_norm(m : GeointersectbboxMatrix) -> Double {
+pub fn GeointersectbboxMatrix::norm(self : GeointersectbboxMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn geo_intersect_bbox_matrix_to_string(m : GeointersectbboxMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn GeointersectbboxMatrix::to_string(self : GeointersectbboxMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn geo_intersect_bbox_vector_zero(dim : Int) -> GeointersectbboxVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn geo_intersect_bbox_vector_add(a : GeointersectbboxVector, b : GeointersectbboxVector) -> GeointersectbboxVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn GeointersectbboxVector::add(self : GeointersectbboxVector, other : GeointersectbboxVector) -> GeointersectbboxVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn geo_intersect_bbox_vector_sub(a : GeointersectbboxVector, b : GeointersectbboxVector) -> GeointersectbboxVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn GeointersectbboxVector::sub(self : GeointersectbboxVector, other : GeointersectbboxVector) -> GeointersectbboxVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn geo_intersect_bbox_vector_scale(v : GeointersectbboxVector, s : Double) -> GeointersectbboxVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn GeointersectbboxVector::scale(self : GeointersectbboxVector, s : Double) -> GeointersectbboxVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn geo_intersect_bbox_vector_dot(a : GeointersectbboxVector, b : GeointersectbboxVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn GeointersectbboxVector::dot(self : GeointersectbboxVector, other : GeointersectbboxVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn geo_intersect_bbox_vector_norm(v : GeointersectbboxVector) -> Double { @_common.sqrt(geo_intersect_bbox_vector_dot(v, v)) }
+pub fn GeointersectbboxVector::norm(self : GeointersectbboxVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn geo_intersect_bbox_vector_normalize(v : GeointersectbboxVector) -> GeointersectbboxVector {
-  let n = geo_intersect_bbox_vector_norm(v)
-  if n < 0.0000001 { v } else { geo_intersect_bbox_vector_scale(v, 1.0 / n) }
+pub fn GeointersectbboxVector::normalize(self : GeointersectbboxVector) -> GeointersectbboxVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn geo_intersect_bbox_vector_dist(a : GeointersectbboxVector, b : GeointersectbboxVector) -> Double {
-  geo_intersect_bbox_vector_norm(geo_intersect_bbox_vector_sub(a, b))
+pub fn GeointersectbboxVector::dist(self : GeointersectbboxVector, other : GeointersectbboxVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn geo_intersect_bbox_vector_to_string(v : GeointersectbboxVector) -> String {
+pub fn GeointersectbboxVector::to_string(self : GeointersectbboxVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn geo_intersect_bbox_mean(data : Array[Double]) -> Double { @_common.mean(data) }

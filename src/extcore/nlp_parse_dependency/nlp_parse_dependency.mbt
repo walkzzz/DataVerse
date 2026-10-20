@@ -16,64 +16,64 @@ pub fn nlp_parse_dependency_make_point3(x : Double, y : Double, z : Double) -> N
   { x, y, z, label: 0 }
 }
 
-pub fn nlp_parse_dependency_point_x(pt : NlpparsedependencyPoint) -> Double { pt.x }
+pub fn NlpparsedependencyPoint::x(self : NlpparsedependencyPoint) -> Double { self.x }
 
-pub fn nlp_parse_dependency_point_y(pt : NlpparsedependencyPoint) -> Double { pt.y }
+pub fn NlpparsedependencyPoint::y(self : NlpparsedependencyPoint) -> Double { self.y }
 
-pub fn nlp_parse_dependency_point_z(pt : NlpparsedependencyPoint) -> Double { pt.z }
+pub fn NlpparsedependencyPoint::z(self : NlpparsedependencyPoint) -> Double { self.z }
 
-pub fn nlp_parse_dependency_point_label(pt : NlpparsedependencyPoint) -> Int { pt.label }
+pub fn NlpparsedependencyPoint::label(self : NlpparsedependencyPoint) -> Int { self.label }
 
-pub fn nlp_parse_dependency_point_dist(a : NlpparsedependencyPoint, b : NlpparsedependencyPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn NlpparsedependencyPoint::dist(self : NlpparsedependencyPoint, other : NlpparsedependencyPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn nlp_parse_dependency_point_add(a : NlpparsedependencyPoint, b : NlpparsedependencyPoint) -> NlpparsedependencyPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn NlpparsedependencyPoint::add(self : NlpparsedependencyPoint, other : NlpparsedependencyPoint) -> NlpparsedependencyPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn nlp_parse_dependency_point_sub(a : NlpparsedependencyPoint, b : NlpparsedependencyPoint) -> NlpparsedependencyPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn NlpparsedependencyPoint::sub(self : NlpparsedependencyPoint, other : NlpparsedependencyPoint) -> NlpparsedependencyPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn nlp_parse_dependency_point_scale(pt : NlpparsedependencyPoint, s : Double) -> NlpparsedependencyPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn NlpparsedependencyPoint::scale(self : NlpparsedependencyPoint, s : Double) -> NlpparsedependencyPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn nlp_parse_dependency_point_dot(a : NlpparsedependencyPoint, b : NlpparsedependencyPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn NlpparsedependencyPoint::dot(self : NlpparsedependencyPoint, other : NlpparsedependencyPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn nlp_parse_dependency_point_cross(a : NlpparsedependencyPoint, b : NlpparsedependencyPoint) -> NlpparsedependencyPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn NlpparsedependencyPoint::cross(self : NlpparsedependencyPoint, other : NlpparsedependencyPoint) -> NlpparsedependencyPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn nlp_parse_dependency_point_norm(pt : NlpparsedependencyPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn NlpparsedependencyPoint::norm(self : NlpparsedependencyPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn nlp_parse_dependency_point_normalize(pt : NlpparsedependencyPoint) -> NlpparsedependencyPoint {
-  let n = nlp_parse_dependency_point_norm(pt)
-  if n < 0.0000001 { pt } else { nlp_parse_dependency_point_scale(pt, 1.0 / n) }
+pub fn NlpparsedependencyPoint::normalize(self : NlpparsedependencyPoint) -> NlpparsedependencyPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn nlp_parse_dependency_point_negate(pt : NlpparsedependencyPoint) -> NlpparsedependencyPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn NlpparsedependencyPoint::negate(self : NlpparsedependencyPoint) -> NlpparsedependencyPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn nlp_parse_dependency_point_mid(a : NlpparsedependencyPoint, b : NlpparsedependencyPoint) -> NlpparsedependencyPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn NlpparsedependencyPoint::mid(self : NlpparsedependencyPoint, other : NlpparsedependencyPoint) -> NlpparsedependencyPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn nlp_parse_dependency_point_lerp(a : NlpparsedependencyPoint, b : NlpparsedependencyPoint, t : Double) -> NlpparsedependencyPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn NlpparsedependencyPoint::lerp(self : NlpparsedependencyPoint, other : NlpparsedependencyPoint, t : Double) -> NlpparsedependencyPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn nlp_parse_dependency_point_to_string(pt : NlpparsedependencyPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn NlpparsedependencyPoint::to_string(self : NlpparsedependencyPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct NlpparsedependencySeries {
@@ -86,58 +86,58 @@ pub fn nlp_parse_dependency_make_series(vals : Array[Double], name : String) -> 
   { vals, name, meta: 0 }
 }
 
-pub fn nlp_parse_dependency_series_len(s : NlpparsedependencySeries) -> Int { s.vals.length() }
+pub fn NlpparsedependencySeries::len(self : NlpparsedependencySeries) -> Int { self.vals.length() }
 
-pub fn nlp_parse_dependency_series_sum(s : NlpparsedependencySeries) -> Double { @_common.sum(s.vals) }
+pub fn NlpparsedependencySeries::sum(self : NlpparsedependencySeries) -> Double { @_common.sum(self.vals) }
 
-pub fn nlp_parse_dependency_series_mean(s : NlpparsedependencySeries) -> Double { @_common.mean(s.vals) }
+pub fn NlpparsedependencySeries::mean(self : NlpparsedependencySeries) -> Double { @_common.mean(self.vals) }
 
-pub fn nlp_parse_dependency_series_min(s : NlpparsedependencySeries) -> Double { @_common.min(s.vals) }
+pub fn NlpparsedependencySeries::min(self : NlpparsedependencySeries) -> Double { @_common.min(self.vals) }
 
-pub fn nlp_parse_dependency_series_max(s : NlpparsedependencySeries) -> Double { @_common.max(s.vals) }
+pub fn NlpparsedependencySeries::max(self : NlpparsedependencySeries) -> Double { @_common.max(self.vals) }
 
-pub fn nlp_parse_dependency_series_range(s : NlpparsedependencySeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn NlpparsedependencySeries::range(self : NlpparsedependencySeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn nlp_parse_dependency_series_var(s : NlpparsedependencySeries) -> Double { @_common.variance(s.vals) }
+pub fn NlpparsedependencySeries::variance(self : NlpparsedependencySeries) -> Double { @_common.variance(self.vals) }
 
-pub fn nlp_parse_dependency_series_std(s : NlpparsedependencySeries) -> Double { @_common.std(s.vals) }
+pub fn NlpparsedependencySeries::std(self : NlpparsedependencySeries) -> Double { @_common.std(self.vals) }
 
-pub fn nlp_parse_dependency_series_median(s : NlpparsedependencySeries) -> Double { @_common.median(s.vals) }
+pub fn NlpparsedependencySeries::median(self : NlpparsedependencySeries) -> Double { @_common.median(self.vals) }
 
-pub fn nlp_parse_dependency_series_scale(s : NlpparsedependencySeries, f : Double) -> NlpparsedependencySeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn NlpparsedependencySeries::scale(self : NlpparsedependencySeries, f : Double) -> NlpparsedependencySeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn nlp_parse_dependency_series_add(a : NlpparsedependencySeries, b : NlpparsedependencySeries) -> NlpparsedependencySeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn NlpparsedependencySeries::add(self : NlpparsedependencySeries, other : NlpparsedependencySeries) -> NlpparsedependencySeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn nlp_parse_dependency_series_sub(a : NlpparsedependencySeries, b : NlpparsedependencySeries) -> NlpparsedependencySeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn NlpparsedependencySeries::sub(self : NlpparsedependencySeries, other : NlpparsedependencySeries) -> NlpparsedependencySeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn nlp_parse_dependency_series_normalize(s : NlpparsedependencySeries) -> NlpparsedependencySeries {
-  let mn = nlp_parse_dependency_series_min(s)
-  let mx = nlp_parse_dependency_series_max(s)
+pub fn NlpparsedependencySeries::normalize(self : NlpparsedependencySeries) -> NlpparsedependencySeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn nlp_parse_dependency_series_cumsum(s : NlpparsedependencySeries) -> NlpparsedependencySeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn NlpparsedependencySeries::cumsum(self : NlpparsedependencySeries) -> NlpparsedependencySeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn nlp_parse_dependency_series_to_string(s : NlpparsedependencySeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn NlpparsedependencySeries::to_string(self : NlpparsedependencySeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn nlp_parse_dependency_matrix_identity(n : Int) -> NlpparsedependencyMatrix
   m
 }
 
-pub fn nlp_parse_dependency_matrix_get(m : NlpparsedependencyMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn NlpparsedependencyMatrix::get(self : NlpparsedependencyMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn nlp_parse_dependency_matrix_transpose(m : NlpparsedependencyMatrix) -> NlpparsedependencyMatrix {
-  let result = nlp_parse_dependency_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn NlpparsedependencyMatrix::transpose(self : NlpparsedependencyMatrix) -> NlpparsedependencyMatrix {
+  let result = nlp_parse_dependency_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn nlp_parse_dependency_matrix_add(a : NlpparsedependencyMatrix, b : NlpparsedependencyMatrix) -> NlpparsedependencyMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = nlp_parse_dependency_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn NlpparsedependencyMatrix::add(self : NlpparsedependencyMatrix, other : NlpparsedependencyMatrix) -> NlpparsedependencyMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = nlp_parse_dependency_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn nlp_parse_dependency_matrix_scale(m : NlpparsedependencyMatrix, s : Double) -> NlpparsedependencyMatrix {
-  let result = nlp_parse_dependency_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn NlpparsedependencyMatrix::scale(self : NlpparsedependencyMatrix, s : Double) -> NlpparsedependencyMatrix {
+  let result = nlp_parse_dependency_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn nlp_parse_dependency_matrix_multiply(a : NlpparsedependencyMatrix, b : NlpparsedependencyMatrix) -> NlpparsedependencyMatrix {
-  if a.cols != b.rows { return nlp_parse_dependency_make_matrix(a.rows, b.cols, 0.0) }
-  let result = nlp_parse_dependency_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn NlpparsedependencyMatrix::multiply(self : NlpparsedependencyMatrix, other : NlpparsedependencyMatrix) -> NlpparsedependencyMatrix {
+  if self.cols != other.rows { return nlp_parse_dependency_make_matrix(self.rows, other.cols, 0.0) }
+  let result = nlp_parse_dependency_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn nlp_parse_dependency_matrix_trace(m : NlpparsedependencyMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn NlpparsedependencyMatrix::trace(self : NlpparsedependencyMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn nlp_parse_dependency_matrix_det(m : NlpparsedependencyMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn NlpparsedependencyMatrix::det(self : NlpparsedependencyMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn nlp_parse_dependency_matrix_norm(m : NlpparsedependencyMatrix) -> Double {
+pub fn NlpparsedependencyMatrix::norm(self : NlpparsedependencyMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn nlp_parse_dependency_matrix_to_string(m : NlpparsedependencyMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn NlpparsedependencyMatrix::to_string(self : NlpparsedependencyMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn nlp_parse_dependency_vector_zero(dim : Int) -> NlpparsedependencyVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn nlp_parse_dependency_vector_add(a : NlpparsedependencyVector, b : NlpparsedependencyVector) -> NlpparsedependencyVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn NlpparsedependencyVector::add(self : NlpparsedependencyVector, other : NlpparsedependencyVector) -> NlpparsedependencyVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn nlp_parse_dependency_vector_sub(a : NlpparsedependencyVector, b : NlpparsedependencyVector) -> NlpparsedependencyVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn NlpparsedependencyVector::sub(self : NlpparsedependencyVector, other : NlpparsedependencyVector) -> NlpparsedependencyVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn nlp_parse_dependency_vector_scale(v : NlpparsedependencyVector, s : Double) -> NlpparsedependencyVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn NlpparsedependencyVector::scale(self : NlpparsedependencyVector, s : Double) -> NlpparsedependencyVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn nlp_parse_dependency_vector_dot(a : NlpparsedependencyVector, b : NlpparsedependencyVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn NlpparsedependencyVector::dot(self : NlpparsedependencyVector, other : NlpparsedependencyVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn nlp_parse_dependency_vector_norm(v : NlpparsedependencyVector) -> Double { @_common.sqrt(nlp_parse_dependency_vector_dot(v, v)) }
+pub fn NlpparsedependencyVector::norm(self : NlpparsedependencyVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn nlp_parse_dependency_vector_normalize(v : NlpparsedependencyVector) -> NlpparsedependencyVector {
-  let n = nlp_parse_dependency_vector_norm(v)
-  if n < 0.0000001 { v } else { nlp_parse_dependency_vector_scale(v, 1.0 / n) }
+pub fn NlpparsedependencyVector::normalize(self : NlpparsedependencyVector) -> NlpparsedependencyVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn nlp_parse_dependency_vector_dist(a : NlpparsedependencyVector, b : NlpparsedependencyVector) -> Double {
-  nlp_parse_dependency_vector_norm(nlp_parse_dependency_vector_sub(a, b))
+pub fn NlpparsedependencyVector::dist(self : NlpparsedependencyVector, other : NlpparsedependencyVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn nlp_parse_dependency_vector_to_string(v : NlpparsedependencyVector) -> String {
+pub fn NlpparsedependencyVector::to_string(self : NlpparsedependencyVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn nlp_parse_dependency_mean(data : Array[Double]) -> Double { @_common.mean(data) }

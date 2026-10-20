@@ -16,64 +16,64 @@ pub fn ds_heap_d_ary_make_point3(x : Double, y : Double, z : Double) -> Dsheapda
   { x, y, z, label: 0 }
 }
 
-pub fn ds_heap_d_ary_point_x(pt : DsheapdaryPoint) -> Double { pt.x }
+pub fn DsheapdaryPoint::x(self : DsheapdaryPoint) -> Double { self.x }
 
-pub fn ds_heap_d_ary_point_y(pt : DsheapdaryPoint) -> Double { pt.y }
+pub fn DsheapdaryPoint::y(self : DsheapdaryPoint) -> Double { self.y }
 
-pub fn ds_heap_d_ary_point_z(pt : DsheapdaryPoint) -> Double { pt.z }
+pub fn DsheapdaryPoint::z(self : DsheapdaryPoint) -> Double { self.z }
 
-pub fn ds_heap_d_ary_point_label(pt : DsheapdaryPoint) -> Int { pt.label }
+pub fn DsheapdaryPoint::label(self : DsheapdaryPoint) -> Int { self.label }
 
-pub fn ds_heap_d_ary_point_dist(a : DsheapdaryPoint, b : DsheapdaryPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn DsheapdaryPoint::dist(self : DsheapdaryPoint, other : DsheapdaryPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn ds_heap_d_ary_point_add(a : DsheapdaryPoint, b : DsheapdaryPoint) -> DsheapdaryPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn DsheapdaryPoint::add(self : DsheapdaryPoint, other : DsheapdaryPoint) -> DsheapdaryPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn ds_heap_d_ary_point_sub(a : DsheapdaryPoint, b : DsheapdaryPoint) -> DsheapdaryPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn DsheapdaryPoint::sub(self : DsheapdaryPoint, other : DsheapdaryPoint) -> DsheapdaryPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn ds_heap_d_ary_point_scale(pt : DsheapdaryPoint, s : Double) -> DsheapdaryPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn DsheapdaryPoint::scale(self : DsheapdaryPoint, s : Double) -> DsheapdaryPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn ds_heap_d_ary_point_dot(a : DsheapdaryPoint, b : DsheapdaryPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn DsheapdaryPoint::dot(self : DsheapdaryPoint, other : DsheapdaryPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn ds_heap_d_ary_point_cross(a : DsheapdaryPoint, b : DsheapdaryPoint) -> DsheapdaryPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn DsheapdaryPoint::cross(self : DsheapdaryPoint, other : DsheapdaryPoint) -> DsheapdaryPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn ds_heap_d_ary_point_norm(pt : DsheapdaryPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn DsheapdaryPoint::norm(self : DsheapdaryPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn ds_heap_d_ary_point_normalize(pt : DsheapdaryPoint) -> DsheapdaryPoint {
-  let n = ds_heap_d_ary_point_norm(pt)
-  if n < 0.0000001 { pt } else { ds_heap_d_ary_point_scale(pt, 1.0 / n) }
+pub fn DsheapdaryPoint::normalize(self : DsheapdaryPoint) -> DsheapdaryPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn ds_heap_d_ary_point_negate(pt : DsheapdaryPoint) -> DsheapdaryPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn DsheapdaryPoint::negate(self : DsheapdaryPoint) -> DsheapdaryPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn ds_heap_d_ary_point_mid(a : DsheapdaryPoint, b : DsheapdaryPoint) -> DsheapdaryPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn DsheapdaryPoint::mid(self : DsheapdaryPoint, other : DsheapdaryPoint) -> DsheapdaryPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn ds_heap_d_ary_point_lerp(a : DsheapdaryPoint, b : DsheapdaryPoint, t : Double) -> DsheapdaryPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn DsheapdaryPoint::lerp(self : DsheapdaryPoint, other : DsheapdaryPoint, t : Double) -> DsheapdaryPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn ds_heap_d_ary_point_to_string(pt : DsheapdaryPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn DsheapdaryPoint::to_string(self : DsheapdaryPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct DsheapdarySeries {
@@ -86,58 +86,58 @@ pub fn ds_heap_d_ary_make_series(vals : Array[Double], name : String) -> Dsheapd
   { vals, name, meta: 0 }
 }
 
-pub fn ds_heap_d_ary_series_len(s : DsheapdarySeries) -> Int { s.vals.length() }
+pub fn DsheapdarySeries::len(self : DsheapdarySeries) -> Int { self.vals.length() }
 
-pub fn ds_heap_d_ary_series_sum(s : DsheapdarySeries) -> Double { @_common.sum(s.vals) }
+pub fn DsheapdarySeries::sum(self : DsheapdarySeries) -> Double { @_common.sum(self.vals) }
 
-pub fn ds_heap_d_ary_series_mean(s : DsheapdarySeries) -> Double { @_common.mean(s.vals) }
+pub fn DsheapdarySeries::mean(self : DsheapdarySeries) -> Double { @_common.mean(self.vals) }
 
-pub fn ds_heap_d_ary_series_min(s : DsheapdarySeries) -> Double { @_common.min(s.vals) }
+pub fn DsheapdarySeries::min(self : DsheapdarySeries) -> Double { @_common.min(self.vals) }
 
-pub fn ds_heap_d_ary_series_max(s : DsheapdarySeries) -> Double { @_common.max(s.vals) }
+pub fn DsheapdarySeries::max(self : DsheapdarySeries) -> Double { @_common.max(self.vals) }
 
-pub fn ds_heap_d_ary_series_range(s : DsheapdarySeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn DsheapdarySeries::range(self : DsheapdarySeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn ds_heap_d_ary_series_var(s : DsheapdarySeries) -> Double { @_common.variance(s.vals) }
+pub fn DsheapdarySeries::variance(self : DsheapdarySeries) -> Double { @_common.variance(self.vals) }
 
-pub fn ds_heap_d_ary_series_std(s : DsheapdarySeries) -> Double { @_common.std(s.vals) }
+pub fn DsheapdarySeries::std(self : DsheapdarySeries) -> Double { @_common.std(self.vals) }
 
-pub fn ds_heap_d_ary_series_median(s : DsheapdarySeries) -> Double { @_common.median(s.vals) }
+pub fn DsheapdarySeries::median(self : DsheapdarySeries) -> Double { @_common.median(self.vals) }
 
-pub fn ds_heap_d_ary_series_scale(s : DsheapdarySeries, f : Double) -> DsheapdarySeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn DsheapdarySeries::scale(self : DsheapdarySeries, f : Double) -> DsheapdarySeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn ds_heap_d_ary_series_add(a : DsheapdarySeries, b : DsheapdarySeries) -> DsheapdarySeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn DsheapdarySeries::add(self : DsheapdarySeries, other : DsheapdarySeries) -> DsheapdarySeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn ds_heap_d_ary_series_sub(a : DsheapdarySeries, b : DsheapdarySeries) -> DsheapdarySeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn DsheapdarySeries::sub(self : DsheapdarySeries, other : DsheapdarySeries) -> DsheapdarySeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn ds_heap_d_ary_series_normalize(s : DsheapdarySeries) -> DsheapdarySeries {
-  let mn = ds_heap_d_ary_series_min(s)
-  let mx = ds_heap_d_ary_series_max(s)
+pub fn DsheapdarySeries::normalize(self : DsheapdarySeries) -> DsheapdarySeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn ds_heap_d_ary_series_cumsum(s : DsheapdarySeries) -> DsheapdarySeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn DsheapdarySeries::cumsum(self : DsheapdarySeries) -> DsheapdarySeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn ds_heap_d_ary_series_to_string(s : DsheapdarySeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn DsheapdarySeries::to_string(self : DsheapdarySeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn ds_heap_d_ary_matrix_identity(n : Int) -> DsheapdaryMatrix {
   m
 }
 
-pub fn ds_heap_d_ary_matrix_get(m : DsheapdaryMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn DsheapdaryMatrix::get(self : DsheapdaryMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn ds_heap_d_ary_matrix_transpose(m : DsheapdaryMatrix) -> DsheapdaryMatrix {
-  let result = ds_heap_d_ary_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn DsheapdaryMatrix::transpose(self : DsheapdaryMatrix) -> DsheapdaryMatrix {
+  let result = ds_heap_d_ary_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn ds_heap_d_ary_matrix_add(a : DsheapdaryMatrix, b : DsheapdaryMatrix) -> DsheapdaryMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = ds_heap_d_ary_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn DsheapdaryMatrix::add(self : DsheapdaryMatrix, other : DsheapdaryMatrix) -> DsheapdaryMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = ds_heap_d_ary_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn ds_heap_d_ary_matrix_scale(m : DsheapdaryMatrix, s : Double) -> DsheapdaryMatrix {
-  let result = ds_heap_d_ary_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn DsheapdaryMatrix::scale(self : DsheapdaryMatrix, s : Double) -> DsheapdaryMatrix {
+  let result = ds_heap_d_ary_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn ds_heap_d_ary_matrix_multiply(a : DsheapdaryMatrix, b : DsheapdaryMatrix) -> DsheapdaryMatrix {
-  if a.cols != b.rows { return ds_heap_d_ary_make_matrix(a.rows, b.cols, 0.0) }
-  let result = ds_heap_d_ary_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn DsheapdaryMatrix::multiply(self : DsheapdaryMatrix, other : DsheapdaryMatrix) -> DsheapdaryMatrix {
+  if self.cols != other.rows { return ds_heap_d_ary_make_matrix(self.rows, other.cols, 0.0) }
+  let result = ds_heap_d_ary_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn ds_heap_d_ary_matrix_trace(m : DsheapdaryMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn DsheapdaryMatrix::trace(self : DsheapdaryMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn ds_heap_d_ary_matrix_det(m : DsheapdaryMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn DsheapdaryMatrix::det(self : DsheapdaryMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn ds_heap_d_ary_matrix_norm(m : DsheapdaryMatrix) -> Double {
+pub fn DsheapdaryMatrix::norm(self : DsheapdaryMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn ds_heap_d_ary_matrix_to_string(m : DsheapdaryMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn DsheapdaryMatrix::to_string(self : DsheapdaryMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn ds_heap_d_ary_vector_zero(dim : Int) -> DsheapdaryVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn ds_heap_d_ary_vector_add(a : DsheapdaryVector, b : DsheapdaryVector) -> DsheapdaryVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn DsheapdaryVector::add(self : DsheapdaryVector, other : DsheapdaryVector) -> DsheapdaryVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn ds_heap_d_ary_vector_sub(a : DsheapdaryVector, b : DsheapdaryVector) -> DsheapdaryVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn DsheapdaryVector::sub(self : DsheapdaryVector, other : DsheapdaryVector) -> DsheapdaryVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn ds_heap_d_ary_vector_scale(v : DsheapdaryVector, s : Double) -> DsheapdaryVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn DsheapdaryVector::scale(self : DsheapdaryVector, s : Double) -> DsheapdaryVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn ds_heap_d_ary_vector_dot(a : DsheapdaryVector, b : DsheapdaryVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn DsheapdaryVector::dot(self : DsheapdaryVector, other : DsheapdaryVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn ds_heap_d_ary_vector_norm(v : DsheapdaryVector) -> Double { @_common.sqrt(ds_heap_d_ary_vector_dot(v, v)) }
+pub fn DsheapdaryVector::norm(self : DsheapdaryVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn ds_heap_d_ary_vector_normalize(v : DsheapdaryVector) -> DsheapdaryVector {
-  let n = ds_heap_d_ary_vector_norm(v)
-  if n < 0.0000001 { v } else { ds_heap_d_ary_vector_scale(v, 1.0 / n) }
+pub fn DsheapdaryVector::normalize(self : DsheapdaryVector) -> DsheapdaryVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn ds_heap_d_ary_vector_dist(a : DsheapdaryVector, b : DsheapdaryVector) -> Double {
-  ds_heap_d_ary_vector_norm(ds_heap_d_ary_vector_sub(a, b))
+pub fn DsheapdaryVector::dist(self : DsheapdaryVector, other : DsheapdaryVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn ds_heap_d_ary_vector_to_string(v : DsheapdaryVector) -> String {
+pub fn DsheapdaryVector::to_string(self : DsheapdaryVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn ds_heap_d_ary_mean(data : Array[Double]) -> Double { @_common.mean(data) }

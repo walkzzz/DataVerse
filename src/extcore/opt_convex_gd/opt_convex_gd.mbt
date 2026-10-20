@@ -16,64 +16,64 @@ pub fn opt_convex_gd_make_point3(x : Double, y : Double, z : Double) -> Optconve
   { x, y, z, label: 0 }
 }
 
-pub fn opt_convex_gd_point_x(pt : OptconvexgdPoint) -> Double { pt.x }
+pub fn OptconvexgdPoint::x(self : OptconvexgdPoint) -> Double { self.x }
 
-pub fn opt_convex_gd_point_y(pt : OptconvexgdPoint) -> Double { pt.y }
+pub fn OptconvexgdPoint::y(self : OptconvexgdPoint) -> Double { self.y }
 
-pub fn opt_convex_gd_point_z(pt : OptconvexgdPoint) -> Double { pt.z }
+pub fn OptconvexgdPoint::z(self : OptconvexgdPoint) -> Double { self.z }
 
-pub fn opt_convex_gd_point_label(pt : OptconvexgdPoint) -> Int { pt.label }
+pub fn OptconvexgdPoint::label(self : OptconvexgdPoint) -> Int { self.label }
 
-pub fn opt_convex_gd_point_dist(a : OptconvexgdPoint, b : OptconvexgdPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn OptconvexgdPoint::dist(self : OptconvexgdPoint, other : OptconvexgdPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn opt_convex_gd_point_add(a : OptconvexgdPoint, b : OptconvexgdPoint) -> OptconvexgdPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn OptconvexgdPoint::add(self : OptconvexgdPoint, other : OptconvexgdPoint) -> OptconvexgdPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn opt_convex_gd_point_sub(a : OptconvexgdPoint, b : OptconvexgdPoint) -> OptconvexgdPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn OptconvexgdPoint::sub(self : OptconvexgdPoint, other : OptconvexgdPoint) -> OptconvexgdPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn opt_convex_gd_point_scale(pt : OptconvexgdPoint, s : Double) -> OptconvexgdPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn OptconvexgdPoint::scale(self : OptconvexgdPoint, s : Double) -> OptconvexgdPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn opt_convex_gd_point_dot(a : OptconvexgdPoint, b : OptconvexgdPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn OptconvexgdPoint::dot(self : OptconvexgdPoint, other : OptconvexgdPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn opt_convex_gd_point_cross(a : OptconvexgdPoint, b : OptconvexgdPoint) -> OptconvexgdPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn OptconvexgdPoint::cross(self : OptconvexgdPoint, other : OptconvexgdPoint) -> OptconvexgdPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn opt_convex_gd_point_norm(pt : OptconvexgdPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn OptconvexgdPoint::norm(self : OptconvexgdPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn opt_convex_gd_point_normalize(pt : OptconvexgdPoint) -> OptconvexgdPoint {
-  let n = opt_convex_gd_point_norm(pt)
-  if n < 0.0000001 { pt } else { opt_convex_gd_point_scale(pt, 1.0 / n) }
+pub fn OptconvexgdPoint::normalize(self : OptconvexgdPoint) -> OptconvexgdPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn opt_convex_gd_point_negate(pt : OptconvexgdPoint) -> OptconvexgdPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn OptconvexgdPoint::negate(self : OptconvexgdPoint) -> OptconvexgdPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn opt_convex_gd_point_mid(a : OptconvexgdPoint, b : OptconvexgdPoint) -> OptconvexgdPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn OptconvexgdPoint::mid(self : OptconvexgdPoint, other : OptconvexgdPoint) -> OptconvexgdPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn opt_convex_gd_point_lerp(a : OptconvexgdPoint, b : OptconvexgdPoint, t : Double) -> OptconvexgdPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn OptconvexgdPoint::lerp(self : OptconvexgdPoint, other : OptconvexgdPoint, t : Double) -> OptconvexgdPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn opt_convex_gd_point_to_string(pt : OptconvexgdPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn OptconvexgdPoint::to_string(self : OptconvexgdPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct OptconvexgdSeries {
@@ -86,58 +86,58 @@ pub fn opt_convex_gd_make_series(vals : Array[Double], name : String) -> Optconv
   { vals, name, meta: 0 }
 }
 
-pub fn opt_convex_gd_series_len(s : OptconvexgdSeries) -> Int { s.vals.length() }
+pub fn OptconvexgdSeries::len(self : OptconvexgdSeries) -> Int { self.vals.length() }
 
-pub fn opt_convex_gd_series_sum(s : OptconvexgdSeries) -> Double { @_common.sum(s.vals) }
+pub fn OptconvexgdSeries::sum(self : OptconvexgdSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn opt_convex_gd_series_mean(s : OptconvexgdSeries) -> Double { @_common.mean(s.vals) }
+pub fn OptconvexgdSeries::mean(self : OptconvexgdSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn opt_convex_gd_series_min(s : OptconvexgdSeries) -> Double { @_common.min(s.vals) }
+pub fn OptconvexgdSeries::min(self : OptconvexgdSeries) -> Double { @_common.min(self.vals) }
 
-pub fn opt_convex_gd_series_max(s : OptconvexgdSeries) -> Double { @_common.max(s.vals) }
+pub fn OptconvexgdSeries::max(self : OptconvexgdSeries) -> Double { @_common.max(self.vals) }
 
-pub fn opt_convex_gd_series_range(s : OptconvexgdSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn OptconvexgdSeries::range(self : OptconvexgdSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn opt_convex_gd_series_var(s : OptconvexgdSeries) -> Double { @_common.variance(s.vals) }
+pub fn OptconvexgdSeries::variance(self : OptconvexgdSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn opt_convex_gd_series_std(s : OptconvexgdSeries) -> Double { @_common.std(s.vals) }
+pub fn OptconvexgdSeries::std(self : OptconvexgdSeries) -> Double { @_common.std(self.vals) }
 
-pub fn opt_convex_gd_series_median(s : OptconvexgdSeries) -> Double { @_common.median(s.vals) }
+pub fn OptconvexgdSeries::median(self : OptconvexgdSeries) -> Double { @_common.median(self.vals) }
 
-pub fn opt_convex_gd_series_scale(s : OptconvexgdSeries, f : Double) -> OptconvexgdSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn OptconvexgdSeries::scale(self : OptconvexgdSeries, f : Double) -> OptconvexgdSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn opt_convex_gd_series_add(a : OptconvexgdSeries, b : OptconvexgdSeries) -> OptconvexgdSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn OptconvexgdSeries::add(self : OptconvexgdSeries, other : OptconvexgdSeries) -> OptconvexgdSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn opt_convex_gd_series_sub(a : OptconvexgdSeries, b : OptconvexgdSeries) -> OptconvexgdSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn OptconvexgdSeries::sub(self : OptconvexgdSeries, other : OptconvexgdSeries) -> OptconvexgdSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn opt_convex_gd_series_normalize(s : OptconvexgdSeries) -> OptconvexgdSeries {
-  let mn = opt_convex_gd_series_min(s)
-  let mx = opt_convex_gd_series_max(s)
+pub fn OptconvexgdSeries::normalize(self : OptconvexgdSeries) -> OptconvexgdSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn opt_convex_gd_series_cumsum(s : OptconvexgdSeries) -> OptconvexgdSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn OptconvexgdSeries::cumsum(self : OptconvexgdSeries) -> OptconvexgdSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn opt_convex_gd_series_to_string(s : OptconvexgdSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn OptconvexgdSeries::to_string(self : OptconvexgdSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn opt_convex_gd_matrix_identity(n : Int) -> OptconvexgdMatrix {
   m
 }
 
-pub fn opt_convex_gd_matrix_get(m : OptconvexgdMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn OptconvexgdMatrix::get(self : OptconvexgdMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn opt_convex_gd_matrix_transpose(m : OptconvexgdMatrix) -> OptconvexgdMatrix {
-  let result = opt_convex_gd_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn OptconvexgdMatrix::transpose(self : OptconvexgdMatrix) -> OptconvexgdMatrix {
+  let result = opt_convex_gd_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn opt_convex_gd_matrix_add(a : OptconvexgdMatrix, b : OptconvexgdMatrix) -> OptconvexgdMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = opt_convex_gd_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn OptconvexgdMatrix::add(self : OptconvexgdMatrix, other : OptconvexgdMatrix) -> OptconvexgdMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = opt_convex_gd_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn opt_convex_gd_matrix_scale(m : OptconvexgdMatrix, s : Double) -> OptconvexgdMatrix {
-  let result = opt_convex_gd_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn OptconvexgdMatrix::scale(self : OptconvexgdMatrix, s : Double) -> OptconvexgdMatrix {
+  let result = opt_convex_gd_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn opt_convex_gd_matrix_multiply(a : OptconvexgdMatrix, b : OptconvexgdMatrix) -> OptconvexgdMatrix {
-  if a.cols != b.rows { return opt_convex_gd_make_matrix(a.rows, b.cols, 0.0) }
-  let result = opt_convex_gd_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn OptconvexgdMatrix::multiply(self : OptconvexgdMatrix, other : OptconvexgdMatrix) -> OptconvexgdMatrix {
+  if self.cols != other.rows { return opt_convex_gd_make_matrix(self.rows, other.cols, 0.0) }
+  let result = opt_convex_gd_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn opt_convex_gd_matrix_trace(m : OptconvexgdMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn OptconvexgdMatrix::trace(self : OptconvexgdMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn opt_convex_gd_matrix_det(m : OptconvexgdMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn OptconvexgdMatrix::det(self : OptconvexgdMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn opt_convex_gd_matrix_norm(m : OptconvexgdMatrix) -> Double {
+pub fn OptconvexgdMatrix::norm(self : OptconvexgdMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn opt_convex_gd_matrix_to_string(m : OptconvexgdMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn OptconvexgdMatrix::to_string(self : OptconvexgdMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn opt_convex_gd_vector_zero(dim : Int) -> OptconvexgdVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn opt_convex_gd_vector_add(a : OptconvexgdVector, b : OptconvexgdVector) -> OptconvexgdVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn OptconvexgdVector::add(self : OptconvexgdVector, other : OptconvexgdVector) -> OptconvexgdVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn opt_convex_gd_vector_sub(a : OptconvexgdVector, b : OptconvexgdVector) -> OptconvexgdVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn OptconvexgdVector::sub(self : OptconvexgdVector, other : OptconvexgdVector) -> OptconvexgdVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn opt_convex_gd_vector_scale(v : OptconvexgdVector, s : Double) -> OptconvexgdVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn OptconvexgdVector::scale(self : OptconvexgdVector, s : Double) -> OptconvexgdVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn opt_convex_gd_vector_dot(a : OptconvexgdVector, b : OptconvexgdVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn OptconvexgdVector::dot(self : OptconvexgdVector, other : OptconvexgdVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn opt_convex_gd_vector_norm(v : OptconvexgdVector) -> Double { @_common.sqrt(opt_convex_gd_vector_dot(v, v)) }
+pub fn OptconvexgdVector::norm(self : OptconvexgdVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn opt_convex_gd_vector_normalize(v : OptconvexgdVector) -> OptconvexgdVector {
-  let n = opt_convex_gd_vector_norm(v)
-  if n < 0.0000001 { v } else { opt_convex_gd_vector_scale(v, 1.0 / n) }
+pub fn OptconvexgdVector::normalize(self : OptconvexgdVector) -> OptconvexgdVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn opt_convex_gd_vector_dist(a : OptconvexgdVector, b : OptconvexgdVector) -> Double {
-  opt_convex_gd_vector_norm(opt_convex_gd_vector_sub(a, b))
+pub fn OptconvexgdVector::dist(self : OptconvexgdVector, other : OptconvexgdVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn opt_convex_gd_vector_to_string(v : OptconvexgdVector) -> String {
+pub fn OptconvexgdVector::to_string(self : OptconvexgdVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn opt_convex_gd_mean(data : Array[Double]) -> Double { @_common.mean(data) }

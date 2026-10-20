@@ -16,64 +16,64 @@ pub fn db_store_row_make_point3(x : Double, y : Double, z : Double) -> Dbstorero
   { x, y, z, label: 0 }
 }
 
-pub fn db_store_row_point_x(pt : DbstorerowPoint) -> Double { pt.x }
+pub fn DbstorerowPoint::x(self : DbstorerowPoint) -> Double { self.x }
 
-pub fn db_store_row_point_y(pt : DbstorerowPoint) -> Double { pt.y }
+pub fn DbstorerowPoint::y(self : DbstorerowPoint) -> Double { self.y }
 
-pub fn db_store_row_point_z(pt : DbstorerowPoint) -> Double { pt.z }
+pub fn DbstorerowPoint::z(self : DbstorerowPoint) -> Double { self.z }
 
-pub fn db_store_row_point_label(pt : DbstorerowPoint) -> Int { pt.label }
+pub fn DbstorerowPoint::label(self : DbstorerowPoint) -> Int { self.label }
 
-pub fn db_store_row_point_dist(a : DbstorerowPoint, b : DbstorerowPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn DbstorerowPoint::dist(self : DbstorerowPoint, other : DbstorerowPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn db_store_row_point_add(a : DbstorerowPoint, b : DbstorerowPoint) -> DbstorerowPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn DbstorerowPoint::add(self : DbstorerowPoint, other : DbstorerowPoint) -> DbstorerowPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn db_store_row_point_sub(a : DbstorerowPoint, b : DbstorerowPoint) -> DbstorerowPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn DbstorerowPoint::sub(self : DbstorerowPoint, other : DbstorerowPoint) -> DbstorerowPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn db_store_row_point_scale(pt : DbstorerowPoint, s : Double) -> DbstorerowPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn DbstorerowPoint::scale(self : DbstorerowPoint, s : Double) -> DbstorerowPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn db_store_row_point_dot(a : DbstorerowPoint, b : DbstorerowPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn DbstorerowPoint::dot(self : DbstorerowPoint, other : DbstorerowPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn db_store_row_point_cross(a : DbstorerowPoint, b : DbstorerowPoint) -> DbstorerowPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn DbstorerowPoint::cross(self : DbstorerowPoint, other : DbstorerowPoint) -> DbstorerowPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn db_store_row_point_norm(pt : DbstorerowPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn DbstorerowPoint::norm(self : DbstorerowPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn db_store_row_point_normalize(pt : DbstorerowPoint) -> DbstorerowPoint {
-  let n = db_store_row_point_norm(pt)
-  if n < 0.0000001 { pt } else { db_store_row_point_scale(pt, 1.0 / n) }
+pub fn DbstorerowPoint::normalize(self : DbstorerowPoint) -> DbstorerowPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn db_store_row_point_negate(pt : DbstorerowPoint) -> DbstorerowPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn DbstorerowPoint::negate(self : DbstorerowPoint) -> DbstorerowPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn db_store_row_point_mid(a : DbstorerowPoint, b : DbstorerowPoint) -> DbstorerowPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn DbstorerowPoint::mid(self : DbstorerowPoint, other : DbstorerowPoint) -> DbstorerowPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn db_store_row_point_lerp(a : DbstorerowPoint, b : DbstorerowPoint, t : Double) -> DbstorerowPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn DbstorerowPoint::lerp(self : DbstorerowPoint, other : DbstorerowPoint, t : Double) -> DbstorerowPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn db_store_row_point_to_string(pt : DbstorerowPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn DbstorerowPoint::to_string(self : DbstorerowPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct DbstorerowSeries {
@@ -86,58 +86,58 @@ pub fn db_store_row_make_series(vals : Array[Double], name : String) -> Dbstorer
   { vals, name, meta: 0 }
 }
 
-pub fn db_store_row_series_len(s : DbstorerowSeries) -> Int { s.vals.length() }
+pub fn DbstorerowSeries::len(self : DbstorerowSeries) -> Int { self.vals.length() }
 
-pub fn db_store_row_series_sum(s : DbstorerowSeries) -> Double { @_common.sum(s.vals) }
+pub fn DbstorerowSeries::sum(self : DbstorerowSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn db_store_row_series_mean(s : DbstorerowSeries) -> Double { @_common.mean(s.vals) }
+pub fn DbstorerowSeries::mean(self : DbstorerowSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn db_store_row_series_min(s : DbstorerowSeries) -> Double { @_common.min(s.vals) }
+pub fn DbstorerowSeries::min(self : DbstorerowSeries) -> Double { @_common.min(self.vals) }
 
-pub fn db_store_row_series_max(s : DbstorerowSeries) -> Double { @_common.max(s.vals) }
+pub fn DbstorerowSeries::max(self : DbstorerowSeries) -> Double { @_common.max(self.vals) }
 
-pub fn db_store_row_series_range(s : DbstorerowSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn DbstorerowSeries::range(self : DbstorerowSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn db_store_row_series_var(s : DbstorerowSeries) -> Double { @_common.variance(s.vals) }
+pub fn DbstorerowSeries::variance(self : DbstorerowSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn db_store_row_series_std(s : DbstorerowSeries) -> Double { @_common.std(s.vals) }
+pub fn DbstorerowSeries::std(self : DbstorerowSeries) -> Double { @_common.std(self.vals) }
 
-pub fn db_store_row_series_median(s : DbstorerowSeries) -> Double { @_common.median(s.vals) }
+pub fn DbstorerowSeries::median(self : DbstorerowSeries) -> Double { @_common.median(self.vals) }
 
-pub fn db_store_row_series_scale(s : DbstorerowSeries, f : Double) -> DbstorerowSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn DbstorerowSeries::scale(self : DbstorerowSeries, f : Double) -> DbstorerowSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn db_store_row_series_add(a : DbstorerowSeries, b : DbstorerowSeries) -> DbstorerowSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn DbstorerowSeries::add(self : DbstorerowSeries, other : DbstorerowSeries) -> DbstorerowSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn db_store_row_series_sub(a : DbstorerowSeries, b : DbstorerowSeries) -> DbstorerowSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn DbstorerowSeries::sub(self : DbstorerowSeries, other : DbstorerowSeries) -> DbstorerowSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn db_store_row_series_normalize(s : DbstorerowSeries) -> DbstorerowSeries {
-  let mn = db_store_row_series_min(s)
-  let mx = db_store_row_series_max(s)
+pub fn DbstorerowSeries::normalize(self : DbstorerowSeries) -> DbstorerowSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn db_store_row_series_cumsum(s : DbstorerowSeries) -> DbstorerowSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn DbstorerowSeries::cumsum(self : DbstorerowSeries) -> DbstorerowSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn db_store_row_series_to_string(s : DbstorerowSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn DbstorerowSeries::to_string(self : DbstorerowSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn db_store_row_matrix_identity(n : Int) -> DbstorerowMatrix {
   m
 }
 
-pub fn db_store_row_matrix_get(m : DbstorerowMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn DbstorerowMatrix::get(self : DbstorerowMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn db_store_row_matrix_transpose(m : DbstorerowMatrix) -> DbstorerowMatrix {
-  let result = db_store_row_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn DbstorerowMatrix::transpose(self : DbstorerowMatrix) -> DbstorerowMatrix {
+  let result = db_store_row_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn db_store_row_matrix_add(a : DbstorerowMatrix, b : DbstorerowMatrix) -> DbstorerowMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = db_store_row_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn DbstorerowMatrix::add(self : DbstorerowMatrix, other : DbstorerowMatrix) -> DbstorerowMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = db_store_row_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn db_store_row_matrix_scale(m : DbstorerowMatrix, s : Double) -> DbstorerowMatrix {
-  let result = db_store_row_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn DbstorerowMatrix::scale(self : DbstorerowMatrix, s : Double) -> DbstorerowMatrix {
+  let result = db_store_row_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn db_store_row_matrix_multiply(a : DbstorerowMatrix, b : DbstorerowMatrix) -> DbstorerowMatrix {
-  if a.cols != b.rows { return db_store_row_make_matrix(a.rows, b.cols, 0.0) }
-  let result = db_store_row_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn DbstorerowMatrix::multiply(self : DbstorerowMatrix, other : DbstorerowMatrix) -> DbstorerowMatrix {
+  if self.cols != other.rows { return db_store_row_make_matrix(self.rows, other.cols, 0.0) }
+  let result = db_store_row_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn db_store_row_matrix_trace(m : DbstorerowMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn DbstorerowMatrix::trace(self : DbstorerowMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn db_store_row_matrix_det(m : DbstorerowMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn DbstorerowMatrix::det(self : DbstorerowMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn db_store_row_matrix_norm(m : DbstorerowMatrix) -> Double {
+pub fn DbstorerowMatrix::norm(self : DbstorerowMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn db_store_row_matrix_to_string(m : DbstorerowMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn DbstorerowMatrix::to_string(self : DbstorerowMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn db_store_row_vector_zero(dim : Int) -> DbstorerowVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn db_store_row_vector_add(a : DbstorerowVector, b : DbstorerowVector) -> DbstorerowVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn DbstorerowVector::add(self : DbstorerowVector, other : DbstorerowVector) -> DbstorerowVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn db_store_row_vector_sub(a : DbstorerowVector, b : DbstorerowVector) -> DbstorerowVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn DbstorerowVector::sub(self : DbstorerowVector, other : DbstorerowVector) -> DbstorerowVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn db_store_row_vector_scale(v : DbstorerowVector, s : Double) -> DbstorerowVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn DbstorerowVector::scale(self : DbstorerowVector, s : Double) -> DbstorerowVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn db_store_row_vector_dot(a : DbstorerowVector, b : DbstorerowVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn DbstorerowVector::dot(self : DbstorerowVector, other : DbstorerowVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn db_store_row_vector_norm(v : DbstorerowVector) -> Double { @_common.sqrt(db_store_row_vector_dot(v, v)) }
+pub fn DbstorerowVector::norm(self : DbstorerowVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn db_store_row_vector_normalize(v : DbstorerowVector) -> DbstorerowVector {
-  let n = db_store_row_vector_norm(v)
-  if n < 0.0000001 { v } else { db_store_row_vector_scale(v, 1.0 / n) }
+pub fn DbstorerowVector::normalize(self : DbstorerowVector) -> DbstorerowVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn db_store_row_vector_dist(a : DbstorerowVector, b : DbstorerowVector) -> Double {
-  db_store_row_vector_norm(db_store_row_vector_sub(a, b))
+pub fn DbstorerowVector::dist(self : DbstorerowVector, other : DbstorerowVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn db_store_row_vector_to_string(v : DbstorerowVector) -> String {
+pub fn DbstorerowVector::to_string(self : DbstorerowVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn db_store_row_mean(data : Array[Double]) -> Double { @_common.mean(data) }

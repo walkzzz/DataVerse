@@ -16,64 +16,64 @@ pub fn chem_rxn_mechanism_make_point3(x : Double, y : Double, z : Double) -> Che
   { x, y, z, label: 0 }
 }
 
-pub fn chem_rxn_mechanism_point_x(pt : ChemrxnmechanismPoint) -> Double { pt.x }
+pub fn ChemrxnmechanismPoint::x(self : ChemrxnmechanismPoint) -> Double { self.x }
 
-pub fn chem_rxn_mechanism_point_y(pt : ChemrxnmechanismPoint) -> Double { pt.y }
+pub fn ChemrxnmechanismPoint::y(self : ChemrxnmechanismPoint) -> Double { self.y }
 
-pub fn chem_rxn_mechanism_point_z(pt : ChemrxnmechanismPoint) -> Double { pt.z }
+pub fn ChemrxnmechanismPoint::z(self : ChemrxnmechanismPoint) -> Double { self.z }
 
-pub fn chem_rxn_mechanism_point_label(pt : ChemrxnmechanismPoint) -> Int { pt.label }
+pub fn ChemrxnmechanismPoint::label(self : ChemrxnmechanismPoint) -> Int { self.label }
 
-pub fn chem_rxn_mechanism_point_dist(a : ChemrxnmechanismPoint, b : ChemrxnmechanismPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn ChemrxnmechanismPoint::dist(self : ChemrxnmechanismPoint, other : ChemrxnmechanismPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn chem_rxn_mechanism_point_add(a : ChemrxnmechanismPoint, b : ChemrxnmechanismPoint) -> ChemrxnmechanismPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn ChemrxnmechanismPoint::add(self : ChemrxnmechanismPoint, other : ChemrxnmechanismPoint) -> ChemrxnmechanismPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn chem_rxn_mechanism_point_sub(a : ChemrxnmechanismPoint, b : ChemrxnmechanismPoint) -> ChemrxnmechanismPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn ChemrxnmechanismPoint::sub(self : ChemrxnmechanismPoint, other : ChemrxnmechanismPoint) -> ChemrxnmechanismPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn chem_rxn_mechanism_point_scale(pt : ChemrxnmechanismPoint, s : Double) -> ChemrxnmechanismPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn ChemrxnmechanismPoint::scale(self : ChemrxnmechanismPoint, s : Double) -> ChemrxnmechanismPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn chem_rxn_mechanism_point_dot(a : ChemrxnmechanismPoint, b : ChemrxnmechanismPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn ChemrxnmechanismPoint::dot(self : ChemrxnmechanismPoint, other : ChemrxnmechanismPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn chem_rxn_mechanism_point_cross(a : ChemrxnmechanismPoint, b : ChemrxnmechanismPoint) -> ChemrxnmechanismPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn ChemrxnmechanismPoint::cross(self : ChemrxnmechanismPoint, other : ChemrxnmechanismPoint) -> ChemrxnmechanismPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn chem_rxn_mechanism_point_norm(pt : ChemrxnmechanismPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn ChemrxnmechanismPoint::norm(self : ChemrxnmechanismPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn chem_rxn_mechanism_point_normalize(pt : ChemrxnmechanismPoint) -> ChemrxnmechanismPoint {
-  let n = chem_rxn_mechanism_point_norm(pt)
-  if n < 0.0000001 { pt } else { chem_rxn_mechanism_point_scale(pt, 1.0 / n) }
+pub fn ChemrxnmechanismPoint::normalize(self : ChemrxnmechanismPoint) -> ChemrxnmechanismPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn chem_rxn_mechanism_point_negate(pt : ChemrxnmechanismPoint) -> ChemrxnmechanismPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn ChemrxnmechanismPoint::negate(self : ChemrxnmechanismPoint) -> ChemrxnmechanismPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn chem_rxn_mechanism_point_mid(a : ChemrxnmechanismPoint, b : ChemrxnmechanismPoint) -> ChemrxnmechanismPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn ChemrxnmechanismPoint::mid(self : ChemrxnmechanismPoint, other : ChemrxnmechanismPoint) -> ChemrxnmechanismPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn chem_rxn_mechanism_point_lerp(a : ChemrxnmechanismPoint, b : ChemrxnmechanismPoint, t : Double) -> ChemrxnmechanismPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn ChemrxnmechanismPoint::lerp(self : ChemrxnmechanismPoint, other : ChemrxnmechanismPoint, t : Double) -> ChemrxnmechanismPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn chem_rxn_mechanism_point_to_string(pt : ChemrxnmechanismPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn ChemrxnmechanismPoint::to_string(self : ChemrxnmechanismPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct ChemrxnmechanismSeries {
@@ -86,58 +86,58 @@ pub fn chem_rxn_mechanism_make_series(vals : Array[Double], name : String) -> Ch
   { vals, name, meta: 0 }
 }
 
-pub fn chem_rxn_mechanism_series_len(s : ChemrxnmechanismSeries) -> Int { s.vals.length() }
+pub fn ChemrxnmechanismSeries::len(self : ChemrxnmechanismSeries) -> Int { self.vals.length() }
 
-pub fn chem_rxn_mechanism_series_sum(s : ChemrxnmechanismSeries) -> Double { @_common.sum(s.vals) }
+pub fn ChemrxnmechanismSeries::sum(self : ChemrxnmechanismSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn chem_rxn_mechanism_series_mean(s : ChemrxnmechanismSeries) -> Double { @_common.mean(s.vals) }
+pub fn ChemrxnmechanismSeries::mean(self : ChemrxnmechanismSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn chem_rxn_mechanism_series_min(s : ChemrxnmechanismSeries) -> Double { @_common.min(s.vals) }
+pub fn ChemrxnmechanismSeries::min(self : ChemrxnmechanismSeries) -> Double { @_common.min(self.vals) }
 
-pub fn chem_rxn_mechanism_series_max(s : ChemrxnmechanismSeries) -> Double { @_common.max(s.vals) }
+pub fn ChemrxnmechanismSeries::max(self : ChemrxnmechanismSeries) -> Double { @_common.max(self.vals) }
 
-pub fn chem_rxn_mechanism_series_range(s : ChemrxnmechanismSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn ChemrxnmechanismSeries::range(self : ChemrxnmechanismSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn chem_rxn_mechanism_series_var(s : ChemrxnmechanismSeries) -> Double { @_common.variance(s.vals) }
+pub fn ChemrxnmechanismSeries::variance(self : ChemrxnmechanismSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn chem_rxn_mechanism_series_std(s : ChemrxnmechanismSeries) -> Double { @_common.std(s.vals) }
+pub fn ChemrxnmechanismSeries::std(self : ChemrxnmechanismSeries) -> Double { @_common.std(self.vals) }
 
-pub fn chem_rxn_mechanism_series_median(s : ChemrxnmechanismSeries) -> Double { @_common.median(s.vals) }
+pub fn ChemrxnmechanismSeries::median(self : ChemrxnmechanismSeries) -> Double { @_common.median(self.vals) }
 
-pub fn chem_rxn_mechanism_series_scale(s : ChemrxnmechanismSeries, f : Double) -> ChemrxnmechanismSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn ChemrxnmechanismSeries::scale(self : ChemrxnmechanismSeries, f : Double) -> ChemrxnmechanismSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn chem_rxn_mechanism_series_add(a : ChemrxnmechanismSeries, b : ChemrxnmechanismSeries) -> ChemrxnmechanismSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn ChemrxnmechanismSeries::add(self : ChemrxnmechanismSeries, other : ChemrxnmechanismSeries) -> ChemrxnmechanismSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn chem_rxn_mechanism_series_sub(a : ChemrxnmechanismSeries, b : ChemrxnmechanismSeries) -> ChemrxnmechanismSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn ChemrxnmechanismSeries::sub(self : ChemrxnmechanismSeries, other : ChemrxnmechanismSeries) -> ChemrxnmechanismSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn chem_rxn_mechanism_series_normalize(s : ChemrxnmechanismSeries) -> ChemrxnmechanismSeries {
-  let mn = chem_rxn_mechanism_series_min(s)
-  let mx = chem_rxn_mechanism_series_max(s)
+pub fn ChemrxnmechanismSeries::normalize(self : ChemrxnmechanismSeries) -> ChemrxnmechanismSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn chem_rxn_mechanism_series_cumsum(s : ChemrxnmechanismSeries) -> ChemrxnmechanismSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn ChemrxnmechanismSeries::cumsum(self : ChemrxnmechanismSeries) -> ChemrxnmechanismSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn chem_rxn_mechanism_series_to_string(s : ChemrxnmechanismSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn ChemrxnmechanismSeries::to_string(self : ChemrxnmechanismSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn chem_rxn_mechanism_matrix_identity(n : Int) -> ChemrxnmechanismMatrix {
   m
 }
 
-pub fn chem_rxn_mechanism_matrix_get(m : ChemrxnmechanismMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn ChemrxnmechanismMatrix::get(self : ChemrxnmechanismMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn chem_rxn_mechanism_matrix_transpose(m : ChemrxnmechanismMatrix) -> ChemrxnmechanismMatrix {
-  let result = chem_rxn_mechanism_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn ChemrxnmechanismMatrix::transpose(self : ChemrxnmechanismMatrix) -> ChemrxnmechanismMatrix {
+  let result = chem_rxn_mechanism_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn chem_rxn_mechanism_matrix_add(a : ChemrxnmechanismMatrix, b : ChemrxnmechanismMatrix) -> ChemrxnmechanismMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = chem_rxn_mechanism_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn ChemrxnmechanismMatrix::add(self : ChemrxnmechanismMatrix, other : ChemrxnmechanismMatrix) -> ChemrxnmechanismMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = chem_rxn_mechanism_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn chem_rxn_mechanism_matrix_scale(m : ChemrxnmechanismMatrix, s : Double) -> ChemrxnmechanismMatrix {
-  let result = chem_rxn_mechanism_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn ChemrxnmechanismMatrix::scale(self : ChemrxnmechanismMatrix, s : Double) -> ChemrxnmechanismMatrix {
+  let result = chem_rxn_mechanism_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn chem_rxn_mechanism_matrix_multiply(a : ChemrxnmechanismMatrix, b : ChemrxnmechanismMatrix) -> ChemrxnmechanismMatrix {
-  if a.cols != b.rows { return chem_rxn_mechanism_make_matrix(a.rows, b.cols, 0.0) }
-  let result = chem_rxn_mechanism_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn ChemrxnmechanismMatrix::multiply(self : ChemrxnmechanismMatrix, other : ChemrxnmechanismMatrix) -> ChemrxnmechanismMatrix {
+  if self.cols != other.rows { return chem_rxn_mechanism_make_matrix(self.rows, other.cols, 0.0) }
+  let result = chem_rxn_mechanism_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn chem_rxn_mechanism_matrix_trace(m : ChemrxnmechanismMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn ChemrxnmechanismMatrix::trace(self : ChemrxnmechanismMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn chem_rxn_mechanism_matrix_det(m : ChemrxnmechanismMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn ChemrxnmechanismMatrix::det(self : ChemrxnmechanismMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn chem_rxn_mechanism_matrix_norm(m : ChemrxnmechanismMatrix) -> Double {
+pub fn ChemrxnmechanismMatrix::norm(self : ChemrxnmechanismMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn chem_rxn_mechanism_matrix_to_string(m : ChemrxnmechanismMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn ChemrxnmechanismMatrix::to_string(self : ChemrxnmechanismMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn chem_rxn_mechanism_vector_zero(dim : Int) -> ChemrxnmechanismVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn chem_rxn_mechanism_vector_add(a : ChemrxnmechanismVector, b : ChemrxnmechanismVector) -> ChemrxnmechanismVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn ChemrxnmechanismVector::add(self : ChemrxnmechanismVector, other : ChemrxnmechanismVector) -> ChemrxnmechanismVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn chem_rxn_mechanism_vector_sub(a : ChemrxnmechanismVector, b : ChemrxnmechanismVector) -> ChemrxnmechanismVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn ChemrxnmechanismVector::sub(self : ChemrxnmechanismVector, other : ChemrxnmechanismVector) -> ChemrxnmechanismVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn chem_rxn_mechanism_vector_scale(v : ChemrxnmechanismVector, s : Double) -> ChemrxnmechanismVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn ChemrxnmechanismVector::scale(self : ChemrxnmechanismVector, s : Double) -> ChemrxnmechanismVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn chem_rxn_mechanism_vector_dot(a : ChemrxnmechanismVector, b : ChemrxnmechanismVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn ChemrxnmechanismVector::dot(self : ChemrxnmechanismVector, other : ChemrxnmechanismVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn chem_rxn_mechanism_vector_norm(v : ChemrxnmechanismVector) -> Double { @_common.sqrt(chem_rxn_mechanism_vector_dot(v, v)) }
+pub fn ChemrxnmechanismVector::norm(self : ChemrxnmechanismVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn chem_rxn_mechanism_vector_normalize(v : ChemrxnmechanismVector) -> ChemrxnmechanismVector {
-  let n = chem_rxn_mechanism_vector_norm(v)
-  if n < 0.0000001 { v } else { chem_rxn_mechanism_vector_scale(v, 1.0 / n) }
+pub fn ChemrxnmechanismVector::normalize(self : ChemrxnmechanismVector) -> ChemrxnmechanismVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn chem_rxn_mechanism_vector_dist(a : ChemrxnmechanismVector, b : ChemrxnmechanismVector) -> Double {
-  chem_rxn_mechanism_vector_norm(chem_rxn_mechanism_vector_sub(a, b))
+pub fn ChemrxnmechanismVector::dist(self : ChemrxnmechanismVector, other : ChemrxnmechanismVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn chem_rxn_mechanism_vector_to_string(v : ChemrxnmechanismVector) -> String {
+pub fn ChemrxnmechanismVector::to_string(self : ChemrxnmechanismVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn chem_rxn_mechanism_mean(data : Array[Double]) -> Double { @_common.mean(data) }

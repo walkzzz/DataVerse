@@ -16,64 +16,64 @@ pub fn sort_compare_heap_make_point3(x : Double, y : Double, z : Double) -> Sort
   { x, y, z, label: 0 }
 }
 
-pub fn sort_compare_heap_point_x(pt : SortcompareheapPoint) -> Double { pt.x }
+pub fn SortcompareheapPoint::x(self : SortcompareheapPoint) -> Double { self.x }
 
-pub fn sort_compare_heap_point_y(pt : SortcompareheapPoint) -> Double { pt.y }
+pub fn SortcompareheapPoint::y(self : SortcompareheapPoint) -> Double { self.y }
 
-pub fn sort_compare_heap_point_z(pt : SortcompareheapPoint) -> Double { pt.z }
+pub fn SortcompareheapPoint::z(self : SortcompareheapPoint) -> Double { self.z }
 
-pub fn sort_compare_heap_point_label(pt : SortcompareheapPoint) -> Int { pt.label }
+pub fn SortcompareheapPoint::label(self : SortcompareheapPoint) -> Int { self.label }
 
-pub fn sort_compare_heap_point_dist(a : SortcompareheapPoint, b : SortcompareheapPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn SortcompareheapPoint::dist(self : SortcompareheapPoint, other : SortcompareheapPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn sort_compare_heap_point_add(a : SortcompareheapPoint, b : SortcompareheapPoint) -> SortcompareheapPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn SortcompareheapPoint::add(self : SortcompareheapPoint, other : SortcompareheapPoint) -> SortcompareheapPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn sort_compare_heap_point_sub(a : SortcompareheapPoint, b : SortcompareheapPoint) -> SortcompareheapPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn SortcompareheapPoint::sub(self : SortcompareheapPoint, other : SortcompareheapPoint) -> SortcompareheapPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn sort_compare_heap_point_scale(pt : SortcompareheapPoint, s : Double) -> SortcompareheapPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn SortcompareheapPoint::scale(self : SortcompareheapPoint, s : Double) -> SortcompareheapPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn sort_compare_heap_point_dot(a : SortcompareheapPoint, b : SortcompareheapPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn SortcompareheapPoint::dot(self : SortcompareheapPoint, other : SortcompareheapPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn sort_compare_heap_point_cross(a : SortcompareheapPoint, b : SortcompareheapPoint) -> SortcompareheapPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn SortcompareheapPoint::cross(self : SortcompareheapPoint, other : SortcompareheapPoint) -> SortcompareheapPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn sort_compare_heap_point_norm(pt : SortcompareheapPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn SortcompareheapPoint::norm(self : SortcompareheapPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn sort_compare_heap_point_normalize(pt : SortcompareheapPoint) -> SortcompareheapPoint {
-  let n = sort_compare_heap_point_norm(pt)
-  if n < 0.0000001 { pt } else { sort_compare_heap_point_scale(pt, 1.0 / n) }
+pub fn SortcompareheapPoint::normalize(self : SortcompareheapPoint) -> SortcompareheapPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn sort_compare_heap_point_negate(pt : SortcompareheapPoint) -> SortcompareheapPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn SortcompareheapPoint::negate(self : SortcompareheapPoint) -> SortcompareheapPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn sort_compare_heap_point_mid(a : SortcompareheapPoint, b : SortcompareheapPoint) -> SortcompareheapPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn SortcompareheapPoint::mid(self : SortcompareheapPoint, other : SortcompareheapPoint) -> SortcompareheapPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn sort_compare_heap_point_lerp(a : SortcompareheapPoint, b : SortcompareheapPoint, t : Double) -> SortcompareheapPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn SortcompareheapPoint::lerp(self : SortcompareheapPoint, other : SortcompareheapPoint, t : Double) -> SortcompareheapPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn sort_compare_heap_point_to_string(pt : SortcompareheapPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn SortcompareheapPoint::to_string(self : SortcompareheapPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct SortcompareheapSeries {
@@ -86,58 +86,58 @@ pub fn sort_compare_heap_make_series(vals : Array[Double], name : String) -> Sor
   { vals, name, meta: 0 }
 }
 
-pub fn sort_compare_heap_series_len(s : SortcompareheapSeries) -> Int { s.vals.length() }
+pub fn SortcompareheapSeries::len(self : SortcompareheapSeries) -> Int { self.vals.length() }
 
-pub fn sort_compare_heap_series_sum(s : SortcompareheapSeries) -> Double { @_common.sum(s.vals) }
+pub fn SortcompareheapSeries::sum(self : SortcompareheapSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn sort_compare_heap_series_mean(s : SortcompareheapSeries) -> Double { @_common.mean(s.vals) }
+pub fn SortcompareheapSeries::mean(self : SortcompareheapSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn sort_compare_heap_series_min(s : SortcompareheapSeries) -> Double { @_common.min(s.vals) }
+pub fn SortcompareheapSeries::min(self : SortcompareheapSeries) -> Double { @_common.min(self.vals) }
 
-pub fn sort_compare_heap_series_max(s : SortcompareheapSeries) -> Double { @_common.max(s.vals) }
+pub fn SortcompareheapSeries::max(self : SortcompareheapSeries) -> Double { @_common.max(self.vals) }
 
-pub fn sort_compare_heap_series_range(s : SortcompareheapSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn SortcompareheapSeries::range(self : SortcompareheapSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn sort_compare_heap_series_var(s : SortcompareheapSeries) -> Double { @_common.variance(s.vals) }
+pub fn SortcompareheapSeries::variance(self : SortcompareheapSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn sort_compare_heap_series_std(s : SortcompareheapSeries) -> Double { @_common.std(s.vals) }
+pub fn SortcompareheapSeries::std(self : SortcompareheapSeries) -> Double { @_common.std(self.vals) }
 
-pub fn sort_compare_heap_series_median(s : SortcompareheapSeries) -> Double { @_common.median(s.vals) }
+pub fn SortcompareheapSeries::median(self : SortcompareheapSeries) -> Double { @_common.median(self.vals) }
 
-pub fn sort_compare_heap_series_scale(s : SortcompareheapSeries, f : Double) -> SortcompareheapSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn SortcompareheapSeries::scale(self : SortcompareheapSeries, f : Double) -> SortcompareheapSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn sort_compare_heap_series_add(a : SortcompareheapSeries, b : SortcompareheapSeries) -> SortcompareheapSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn SortcompareheapSeries::add(self : SortcompareheapSeries, other : SortcompareheapSeries) -> SortcompareheapSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn sort_compare_heap_series_sub(a : SortcompareheapSeries, b : SortcompareheapSeries) -> SortcompareheapSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn SortcompareheapSeries::sub(self : SortcompareheapSeries, other : SortcompareheapSeries) -> SortcompareheapSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn sort_compare_heap_series_normalize(s : SortcompareheapSeries) -> SortcompareheapSeries {
-  let mn = sort_compare_heap_series_min(s)
-  let mx = sort_compare_heap_series_max(s)
+pub fn SortcompareheapSeries::normalize(self : SortcompareheapSeries) -> SortcompareheapSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn sort_compare_heap_series_cumsum(s : SortcompareheapSeries) -> SortcompareheapSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn SortcompareheapSeries::cumsum(self : SortcompareheapSeries) -> SortcompareheapSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn sort_compare_heap_series_to_string(s : SortcompareheapSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn SortcompareheapSeries::to_string(self : SortcompareheapSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn sort_compare_heap_matrix_identity(n : Int) -> SortcompareheapMatrix {
   m
 }
 
-pub fn sort_compare_heap_matrix_get(m : SortcompareheapMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn SortcompareheapMatrix::get(self : SortcompareheapMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn sort_compare_heap_matrix_transpose(m : SortcompareheapMatrix) -> SortcompareheapMatrix {
-  let result = sort_compare_heap_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn SortcompareheapMatrix::transpose(self : SortcompareheapMatrix) -> SortcompareheapMatrix {
+  let result = sort_compare_heap_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn sort_compare_heap_matrix_add(a : SortcompareheapMatrix, b : SortcompareheapMatrix) -> SortcompareheapMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = sort_compare_heap_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn SortcompareheapMatrix::add(self : SortcompareheapMatrix, other : SortcompareheapMatrix) -> SortcompareheapMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = sort_compare_heap_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn sort_compare_heap_matrix_scale(m : SortcompareheapMatrix, s : Double) -> SortcompareheapMatrix {
-  let result = sort_compare_heap_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn SortcompareheapMatrix::scale(self : SortcompareheapMatrix, s : Double) -> SortcompareheapMatrix {
+  let result = sort_compare_heap_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn sort_compare_heap_matrix_multiply(a : SortcompareheapMatrix, b : SortcompareheapMatrix) -> SortcompareheapMatrix {
-  if a.cols != b.rows { return sort_compare_heap_make_matrix(a.rows, b.cols, 0.0) }
-  let result = sort_compare_heap_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn SortcompareheapMatrix::multiply(self : SortcompareheapMatrix, other : SortcompareheapMatrix) -> SortcompareheapMatrix {
+  if self.cols != other.rows { return sort_compare_heap_make_matrix(self.rows, other.cols, 0.0) }
+  let result = sort_compare_heap_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn sort_compare_heap_matrix_trace(m : SortcompareheapMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn SortcompareheapMatrix::trace(self : SortcompareheapMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn sort_compare_heap_matrix_det(m : SortcompareheapMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn SortcompareheapMatrix::det(self : SortcompareheapMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn sort_compare_heap_matrix_norm(m : SortcompareheapMatrix) -> Double {
+pub fn SortcompareheapMatrix::norm(self : SortcompareheapMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn sort_compare_heap_matrix_to_string(m : SortcompareheapMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn SortcompareheapMatrix::to_string(self : SortcompareheapMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn sort_compare_heap_vector_zero(dim : Int) -> SortcompareheapVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn sort_compare_heap_vector_add(a : SortcompareheapVector, b : SortcompareheapVector) -> SortcompareheapVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn SortcompareheapVector::add(self : SortcompareheapVector, other : SortcompareheapVector) -> SortcompareheapVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn sort_compare_heap_vector_sub(a : SortcompareheapVector, b : SortcompareheapVector) -> SortcompareheapVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn SortcompareheapVector::sub(self : SortcompareheapVector, other : SortcompareheapVector) -> SortcompareheapVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn sort_compare_heap_vector_scale(v : SortcompareheapVector, s : Double) -> SortcompareheapVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn SortcompareheapVector::scale(self : SortcompareheapVector, s : Double) -> SortcompareheapVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn sort_compare_heap_vector_dot(a : SortcompareheapVector, b : SortcompareheapVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn SortcompareheapVector::dot(self : SortcompareheapVector, other : SortcompareheapVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn sort_compare_heap_vector_norm(v : SortcompareheapVector) -> Double { @_common.sqrt(sort_compare_heap_vector_dot(v, v)) }
+pub fn SortcompareheapVector::norm(self : SortcompareheapVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn sort_compare_heap_vector_normalize(v : SortcompareheapVector) -> SortcompareheapVector {
-  let n = sort_compare_heap_vector_norm(v)
-  if n < 0.0000001 { v } else { sort_compare_heap_vector_scale(v, 1.0 / n) }
+pub fn SortcompareheapVector::normalize(self : SortcompareheapVector) -> SortcompareheapVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn sort_compare_heap_vector_dist(a : SortcompareheapVector, b : SortcompareheapVector) -> Double {
-  sort_compare_heap_vector_norm(sort_compare_heap_vector_sub(a, b))
+pub fn SortcompareheapVector::dist(self : SortcompareheapVector, other : SortcompareheapVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn sort_compare_heap_vector_to_string(v : SortcompareheapVector) -> String {
+pub fn SortcompareheapVector::to_string(self : SortcompareheapVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn sort_compare_heap_mean(data : Array[Double]) -> Double { @_common.mean(data) }

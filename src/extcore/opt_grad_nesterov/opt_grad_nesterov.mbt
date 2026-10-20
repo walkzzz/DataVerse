@@ -16,64 +16,64 @@ pub fn opt_grad_nesterov_make_point3(x : Double, y : Double, z : Double) -> Optg
   { x, y, z, label: 0 }
 }
 
-pub fn opt_grad_nesterov_point_x(pt : OptgradnesterovPoint) -> Double { pt.x }
+pub fn OptgradnesterovPoint::x(self : OptgradnesterovPoint) -> Double { self.x }
 
-pub fn opt_grad_nesterov_point_y(pt : OptgradnesterovPoint) -> Double { pt.y }
+pub fn OptgradnesterovPoint::y(self : OptgradnesterovPoint) -> Double { self.y }
 
-pub fn opt_grad_nesterov_point_z(pt : OptgradnesterovPoint) -> Double { pt.z }
+pub fn OptgradnesterovPoint::z(self : OptgradnesterovPoint) -> Double { self.z }
 
-pub fn opt_grad_nesterov_point_label(pt : OptgradnesterovPoint) -> Int { pt.label }
+pub fn OptgradnesterovPoint::label(self : OptgradnesterovPoint) -> Int { self.label }
 
-pub fn opt_grad_nesterov_point_dist(a : OptgradnesterovPoint, b : OptgradnesterovPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn OptgradnesterovPoint::dist(self : OptgradnesterovPoint, other : OptgradnesterovPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn opt_grad_nesterov_point_add(a : OptgradnesterovPoint, b : OptgradnesterovPoint) -> OptgradnesterovPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn OptgradnesterovPoint::add(self : OptgradnesterovPoint, other : OptgradnesterovPoint) -> OptgradnesterovPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn opt_grad_nesterov_point_sub(a : OptgradnesterovPoint, b : OptgradnesterovPoint) -> OptgradnesterovPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn OptgradnesterovPoint::sub(self : OptgradnesterovPoint, other : OptgradnesterovPoint) -> OptgradnesterovPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn opt_grad_nesterov_point_scale(pt : OptgradnesterovPoint, s : Double) -> OptgradnesterovPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn OptgradnesterovPoint::scale(self : OptgradnesterovPoint, s : Double) -> OptgradnesterovPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn opt_grad_nesterov_point_dot(a : OptgradnesterovPoint, b : OptgradnesterovPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn OptgradnesterovPoint::dot(self : OptgradnesterovPoint, other : OptgradnesterovPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn opt_grad_nesterov_point_cross(a : OptgradnesterovPoint, b : OptgradnesterovPoint) -> OptgradnesterovPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn OptgradnesterovPoint::cross(self : OptgradnesterovPoint, other : OptgradnesterovPoint) -> OptgradnesterovPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn opt_grad_nesterov_point_norm(pt : OptgradnesterovPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn OptgradnesterovPoint::norm(self : OptgradnesterovPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn opt_grad_nesterov_point_normalize(pt : OptgradnesterovPoint) -> OptgradnesterovPoint {
-  let n = opt_grad_nesterov_point_norm(pt)
-  if n < 0.0000001 { pt } else { opt_grad_nesterov_point_scale(pt, 1.0 / n) }
+pub fn OptgradnesterovPoint::normalize(self : OptgradnesterovPoint) -> OptgradnesterovPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn opt_grad_nesterov_point_negate(pt : OptgradnesterovPoint) -> OptgradnesterovPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn OptgradnesterovPoint::negate(self : OptgradnesterovPoint) -> OptgradnesterovPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn opt_grad_nesterov_point_mid(a : OptgradnesterovPoint, b : OptgradnesterovPoint) -> OptgradnesterovPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn OptgradnesterovPoint::mid(self : OptgradnesterovPoint, other : OptgradnesterovPoint) -> OptgradnesterovPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn opt_grad_nesterov_point_lerp(a : OptgradnesterovPoint, b : OptgradnesterovPoint, t : Double) -> OptgradnesterovPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn OptgradnesterovPoint::lerp(self : OptgradnesterovPoint, other : OptgradnesterovPoint, t : Double) -> OptgradnesterovPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn opt_grad_nesterov_point_to_string(pt : OptgradnesterovPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn OptgradnesterovPoint::to_string(self : OptgradnesterovPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct OptgradnesterovSeries {
@@ -86,58 +86,58 @@ pub fn opt_grad_nesterov_make_series(vals : Array[Double], name : String) -> Opt
   { vals, name, meta: 0 }
 }
 
-pub fn opt_grad_nesterov_series_len(s : OptgradnesterovSeries) -> Int { s.vals.length() }
+pub fn OptgradnesterovSeries::len(self : OptgradnesterovSeries) -> Int { self.vals.length() }
 
-pub fn opt_grad_nesterov_series_sum(s : OptgradnesterovSeries) -> Double { @_common.sum(s.vals) }
+pub fn OptgradnesterovSeries::sum(self : OptgradnesterovSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn opt_grad_nesterov_series_mean(s : OptgradnesterovSeries) -> Double { @_common.mean(s.vals) }
+pub fn OptgradnesterovSeries::mean(self : OptgradnesterovSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn opt_grad_nesterov_series_min(s : OptgradnesterovSeries) -> Double { @_common.min(s.vals) }
+pub fn OptgradnesterovSeries::min(self : OptgradnesterovSeries) -> Double { @_common.min(self.vals) }
 
-pub fn opt_grad_nesterov_series_max(s : OptgradnesterovSeries) -> Double { @_common.max(s.vals) }
+pub fn OptgradnesterovSeries::max(self : OptgradnesterovSeries) -> Double { @_common.max(self.vals) }
 
-pub fn opt_grad_nesterov_series_range(s : OptgradnesterovSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn OptgradnesterovSeries::range(self : OptgradnesterovSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn opt_grad_nesterov_series_var(s : OptgradnesterovSeries) -> Double { @_common.variance(s.vals) }
+pub fn OptgradnesterovSeries::variance(self : OptgradnesterovSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn opt_grad_nesterov_series_std(s : OptgradnesterovSeries) -> Double { @_common.std(s.vals) }
+pub fn OptgradnesterovSeries::std(self : OptgradnesterovSeries) -> Double { @_common.std(self.vals) }
 
-pub fn opt_grad_nesterov_series_median(s : OptgradnesterovSeries) -> Double { @_common.median(s.vals) }
+pub fn OptgradnesterovSeries::median(self : OptgradnesterovSeries) -> Double { @_common.median(self.vals) }
 
-pub fn opt_grad_nesterov_series_scale(s : OptgradnesterovSeries, f : Double) -> OptgradnesterovSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn OptgradnesterovSeries::scale(self : OptgradnesterovSeries, f : Double) -> OptgradnesterovSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn opt_grad_nesterov_series_add(a : OptgradnesterovSeries, b : OptgradnesterovSeries) -> OptgradnesterovSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn OptgradnesterovSeries::add(self : OptgradnesterovSeries, other : OptgradnesterovSeries) -> OptgradnesterovSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn opt_grad_nesterov_series_sub(a : OptgradnesterovSeries, b : OptgradnesterovSeries) -> OptgradnesterovSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn OptgradnesterovSeries::sub(self : OptgradnesterovSeries, other : OptgradnesterovSeries) -> OptgradnesterovSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn opt_grad_nesterov_series_normalize(s : OptgradnesterovSeries) -> OptgradnesterovSeries {
-  let mn = opt_grad_nesterov_series_min(s)
-  let mx = opt_grad_nesterov_series_max(s)
+pub fn OptgradnesterovSeries::normalize(self : OptgradnesterovSeries) -> OptgradnesterovSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn opt_grad_nesterov_series_cumsum(s : OptgradnesterovSeries) -> OptgradnesterovSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn OptgradnesterovSeries::cumsum(self : OptgradnesterovSeries) -> OptgradnesterovSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn opt_grad_nesterov_series_to_string(s : OptgradnesterovSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn OptgradnesterovSeries::to_string(self : OptgradnesterovSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn opt_grad_nesterov_matrix_identity(n : Int) -> OptgradnesterovMatrix {
   m
 }
 
-pub fn opt_grad_nesterov_matrix_get(m : OptgradnesterovMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn OptgradnesterovMatrix::get(self : OptgradnesterovMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn opt_grad_nesterov_matrix_transpose(m : OptgradnesterovMatrix) -> OptgradnesterovMatrix {
-  let result = opt_grad_nesterov_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn OptgradnesterovMatrix::transpose(self : OptgradnesterovMatrix) -> OptgradnesterovMatrix {
+  let result = opt_grad_nesterov_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn opt_grad_nesterov_matrix_add(a : OptgradnesterovMatrix, b : OptgradnesterovMatrix) -> OptgradnesterovMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = opt_grad_nesterov_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn OptgradnesterovMatrix::add(self : OptgradnesterovMatrix, other : OptgradnesterovMatrix) -> OptgradnesterovMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = opt_grad_nesterov_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn opt_grad_nesterov_matrix_scale(m : OptgradnesterovMatrix, s : Double) -> OptgradnesterovMatrix {
-  let result = opt_grad_nesterov_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn OptgradnesterovMatrix::scale(self : OptgradnesterovMatrix, s : Double) -> OptgradnesterovMatrix {
+  let result = opt_grad_nesterov_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn opt_grad_nesterov_matrix_multiply(a : OptgradnesterovMatrix, b : OptgradnesterovMatrix) -> OptgradnesterovMatrix {
-  if a.cols != b.rows { return opt_grad_nesterov_make_matrix(a.rows, b.cols, 0.0) }
-  let result = opt_grad_nesterov_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn OptgradnesterovMatrix::multiply(self : OptgradnesterovMatrix, other : OptgradnesterovMatrix) -> OptgradnesterovMatrix {
+  if self.cols != other.rows { return opt_grad_nesterov_make_matrix(self.rows, other.cols, 0.0) }
+  let result = opt_grad_nesterov_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn opt_grad_nesterov_matrix_trace(m : OptgradnesterovMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn OptgradnesterovMatrix::trace(self : OptgradnesterovMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn opt_grad_nesterov_matrix_det(m : OptgradnesterovMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn OptgradnesterovMatrix::det(self : OptgradnesterovMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn opt_grad_nesterov_matrix_norm(m : OptgradnesterovMatrix) -> Double {
+pub fn OptgradnesterovMatrix::norm(self : OptgradnesterovMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn opt_grad_nesterov_matrix_to_string(m : OptgradnesterovMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn OptgradnesterovMatrix::to_string(self : OptgradnesterovMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn opt_grad_nesterov_vector_zero(dim : Int) -> OptgradnesterovVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn opt_grad_nesterov_vector_add(a : OptgradnesterovVector, b : OptgradnesterovVector) -> OptgradnesterovVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn OptgradnesterovVector::add(self : OptgradnesterovVector, other : OptgradnesterovVector) -> OptgradnesterovVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn opt_grad_nesterov_vector_sub(a : OptgradnesterovVector, b : OptgradnesterovVector) -> OptgradnesterovVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn OptgradnesterovVector::sub(self : OptgradnesterovVector, other : OptgradnesterovVector) -> OptgradnesterovVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn opt_grad_nesterov_vector_scale(v : OptgradnesterovVector, s : Double) -> OptgradnesterovVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn OptgradnesterovVector::scale(self : OptgradnesterovVector, s : Double) -> OptgradnesterovVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn opt_grad_nesterov_vector_dot(a : OptgradnesterovVector, b : OptgradnesterovVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn OptgradnesterovVector::dot(self : OptgradnesterovVector, other : OptgradnesterovVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn opt_grad_nesterov_vector_norm(v : OptgradnesterovVector) -> Double { @_common.sqrt(opt_grad_nesterov_vector_dot(v, v)) }
+pub fn OptgradnesterovVector::norm(self : OptgradnesterovVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn opt_grad_nesterov_vector_normalize(v : OptgradnesterovVector) -> OptgradnesterovVector {
-  let n = opt_grad_nesterov_vector_norm(v)
-  if n < 0.0000001 { v } else { opt_grad_nesterov_vector_scale(v, 1.0 / n) }
+pub fn OptgradnesterovVector::normalize(self : OptgradnesterovVector) -> OptgradnesterovVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn opt_grad_nesterov_vector_dist(a : OptgradnesterovVector, b : OptgradnesterovVector) -> Double {
-  opt_grad_nesterov_vector_norm(opt_grad_nesterov_vector_sub(a, b))
+pub fn OptgradnesterovVector::dist(self : OptgradnesterovVector, other : OptgradnesterovVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn opt_grad_nesterov_vector_to_string(v : OptgradnesterovVector) -> String {
+pub fn OptgradnesterovVector::to_string(self : OptgradnesterovVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn opt_grad_nesterov_mean(data : Array[Double]) -> Double { @_common.mean(data) }

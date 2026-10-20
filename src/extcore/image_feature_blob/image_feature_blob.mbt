@@ -16,64 +16,64 @@ pub fn image_feature_blob_make_point3(x : Double, y : Double, z : Double) -> Ima
   { x, y, z, label: 0 }
 }
 
-pub fn image_feature_blob_point_x(pt : ImagefeatureblobPoint) -> Double { pt.x }
+pub fn ImagefeatureblobPoint::x(self : ImagefeatureblobPoint) -> Double { self.x }
 
-pub fn image_feature_blob_point_y(pt : ImagefeatureblobPoint) -> Double { pt.y }
+pub fn ImagefeatureblobPoint::y(self : ImagefeatureblobPoint) -> Double { self.y }
 
-pub fn image_feature_blob_point_z(pt : ImagefeatureblobPoint) -> Double { pt.z }
+pub fn ImagefeatureblobPoint::z(self : ImagefeatureblobPoint) -> Double { self.z }
 
-pub fn image_feature_blob_point_label(pt : ImagefeatureblobPoint) -> Int { pt.label }
+pub fn ImagefeatureblobPoint::label(self : ImagefeatureblobPoint) -> Int { self.label }
 
-pub fn image_feature_blob_point_dist(a : ImagefeatureblobPoint, b : ImagefeatureblobPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn ImagefeatureblobPoint::dist(self : ImagefeatureblobPoint, other : ImagefeatureblobPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn image_feature_blob_point_add(a : ImagefeatureblobPoint, b : ImagefeatureblobPoint) -> ImagefeatureblobPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn ImagefeatureblobPoint::add(self : ImagefeatureblobPoint, other : ImagefeatureblobPoint) -> ImagefeatureblobPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn image_feature_blob_point_sub(a : ImagefeatureblobPoint, b : ImagefeatureblobPoint) -> ImagefeatureblobPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn ImagefeatureblobPoint::sub(self : ImagefeatureblobPoint, other : ImagefeatureblobPoint) -> ImagefeatureblobPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn image_feature_blob_point_scale(pt : ImagefeatureblobPoint, s : Double) -> ImagefeatureblobPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn ImagefeatureblobPoint::scale(self : ImagefeatureblobPoint, s : Double) -> ImagefeatureblobPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn image_feature_blob_point_dot(a : ImagefeatureblobPoint, b : ImagefeatureblobPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn ImagefeatureblobPoint::dot(self : ImagefeatureblobPoint, other : ImagefeatureblobPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn image_feature_blob_point_cross(a : ImagefeatureblobPoint, b : ImagefeatureblobPoint) -> ImagefeatureblobPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn ImagefeatureblobPoint::cross(self : ImagefeatureblobPoint, other : ImagefeatureblobPoint) -> ImagefeatureblobPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn image_feature_blob_point_norm(pt : ImagefeatureblobPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn ImagefeatureblobPoint::norm(self : ImagefeatureblobPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn image_feature_blob_point_normalize(pt : ImagefeatureblobPoint) -> ImagefeatureblobPoint {
-  let n = image_feature_blob_point_norm(pt)
-  if n < 0.0000001 { pt } else { image_feature_blob_point_scale(pt, 1.0 / n) }
+pub fn ImagefeatureblobPoint::normalize(self : ImagefeatureblobPoint) -> ImagefeatureblobPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn image_feature_blob_point_negate(pt : ImagefeatureblobPoint) -> ImagefeatureblobPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn ImagefeatureblobPoint::negate(self : ImagefeatureblobPoint) -> ImagefeatureblobPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn image_feature_blob_point_mid(a : ImagefeatureblobPoint, b : ImagefeatureblobPoint) -> ImagefeatureblobPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn ImagefeatureblobPoint::mid(self : ImagefeatureblobPoint, other : ImagefeatureblobPoint) -> ImagefeatureblobPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn image_feature_blob_point_lerp(a : ImagefeatureblobPoint, b : ImagefeatureblobPoint, t : Double) -> ImagefeatureblobPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn ImagefeatureblobPoint::lerp(self : ImagefeatureblobPoint, other : ImagefeatureblobPoint, t : Double) -> ImagefeatureblobPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn image_feature_blob_point_to_string(pt : ImagefeatureblobPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn ImagefeatureblobPoint::to_string(self : ImagefeatureblobPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct ImagefeatureblobSeries {
@@ -86,58 +86,58 @@ pub fn image_feature_blob_make_series(vals : Array[Double], name : String) -> Im
   { vals, name, meta: 0 }
 }
 
-pub fn image_feature_blob_series_len(s : ImagefeatureblobSeries) -> Int { s.vals.length() }
+pub fn ImagefeatureblobSeries::len(self : ImagefeatureblobSeries) -> Int { self.vals.length() }
 
-pub fn image_feature_blob_series_sum(s : ImagefeatureblobSeries) -> Double { @_common.sum(s.vals) }
+pub fn ImagefeatureblobSeries::sum(self : ImagefeatureblobSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn image_feature_blob_series_mean(s : ImagefeatureblobSeries) -> Double { @_common.mean(s.vals) }
+pub fn ImagefeatureblobSeries::mean(self : ImagefeatureblobSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn image_feature_blob_series_min(s : ImagefeatureblobSeries) -> Double { @_common.min(s.vals) }
+pub fn ImagefeatureblobSeries::min(self : ImagefeatureblobSeries) -> Double { @_common.min(self.vals) }
 
-pub fn image_feature_blob_series_max(s : ImagefeatureblobSeries) -> Double { @_common.max(s.vals) }
+pub fn ImagefeatureblobSeries::max(self : ImagefeatureblobSeries) -> Double { @_common.max(self.vals) }
 
-pub fn image_feature_blob_series_range(s : ImagefeatureblobSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn ImagefeatureblobSeries::range(self : ImagefeatureblobSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn image_feature_blob_series_var(s : ImagefeatureblobSeries) -> Double { @_common.variance(s.vals) }
+pub fn ImagefeatureblobSeries::variance(self : ImagefeatureblobSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn image_feature_blob_series_std(s : ImagefeatureblobSeries) -> Double { @_common.std(s.vals) }
+pub fn ImagefeatureblobSeries::std(self : ImagefeatureblobSeries) -> Double { @_common.std(self.vals) }
 
-pub fn image_feature_blob_series_median(s : ImagefeatureblobSeries) -> Double { @_common.median(s.vals) }
+pub fn ImagefeatureblobSeries::median(self : ImagefeatureblobSeries) -> Double { @_common.median(self.vals) }
 
-pub fn image_feature_blob_series_scale(s : ImagefeatureblobSeries, f : Double) -> ImagefeatureblobSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn ImagefeatureblobSeries::scale(self : ImagefeatureblobSeries, f : Double) -> ImagefeatureblobSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn image_feature_blob_series_add(a : ImagefeatureblobSeries, b : ImagefeatureblobSeries) -> ImagefeatureblobSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn ImagefeatureblobSeries::add(self : ImagefeatureblobSeries, other : ImagefeatureblobSeries) -> ImagefeatureblobSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn image_feature_blob_series_sub(a : ImagefeatureblobSeries, b : ImagefeatureblobSeries) -> ImagefeatureblobSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn ImagefeatureblobSeries::sub(self : ImagefeatureblobSeries, other : ImagefeatureblobSeries) -> ImagefeatureblobSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn image_feature_blob_series_normalize(s : ImagefeatureblobSeries) -> ImagefeatureblobSeries {
-  let mn = image_feature_blob_series_min(s)
-  let mx = image_feature_blob_series_max(s)
+pub fn ImagefeatureblobSeries::normalize(self : ImagefeatureblobSeries) -> ImagefeatureblobSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn image_feature_blob_series_cumsum(s : ImagefeatureblobSeries) -> ImagefeatureblobSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn ImagefeatureblobSeries::cumsum(self : ImagefeatureblobSeries) -> ImagefeatureblobSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn image_feature_blob_series_to_string(s : ImagefeatureblobSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn ImagefeatureblobSeries::to_string(self : ImagefeatureblobSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn image_feature_blob_matrix_identity(n : Int) -> ImagefeatureblobMatrix {
   m
 }
 
-pub fn image_feature_blob_matrix_get(m : ImagefeatureblobMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn ImagefeatureblobMatrix::get(self : ImagefeatureblobMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn image_feature_blob_matrix_transpose(m : ImagefeatureblobMatrix) -> ImagefeatureblobMatrix {
-  let result = image_feature_blob_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn ImagefeatureblobMatrix::transpose(self : ImagefeatureblobMatrix) -> ImagefeatureblobMatrix {
+  let result = image_feature_blob_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn image_feature_blob_matrix_add(a : ImagefeatureblobMatrix, b : ImagefeatureblobMatrix) -> ImagefeatureblobMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = image_feature_blob_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn ImagefeatureblobMatrix::add(self : ImagefeatureblobMatrix, other : ImagefeatureblobMatrix) -> ImagefeatureblobMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = image_feature_blob_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn image_feature_blob_matrix_scale(m : ImagefeatureblobMatrix, s : Double) -> ImagefeatureblobMatrix {
-  let result = image_feature_blob_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn ImagefeatureblobMatrix::scale(self : ImagefeatureblobMatrix, s : Double) -> ImagefeatureblobMatrix {
+  let result = image_feature_blob_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn image_feature_blob_matrix_multiply(a : ImagefeatureblobMatrix, b : ImagefeatureblobMatrix) -> ImagefeatureblobMatrix {
-  if a.cols != b.rows { return image_feature_blob_make_matrix(a.rows, b.cols, 0.0) }
-  let result = image_feature_blob_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn ImagefeatureblobMatrix::multiply(self : ImagefeatureblobMatrix, other : ImagefeatureblobMatrix) -> ImagefeatureblobMatrix {
+  if self.cols != other.rows { return image_feature_blob_make_matrix(self.rows, other.cols, 0.0) }
+  let result = image_feature_blob_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn image_feature_blob_matrix_trace(m : ImagefeatureblobMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn ImagefeatureblobMatrix::trace(self : ImagefeatureblobMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn image_feature_blob_matrix_det(m : ImagefeatureblobMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn ImagefeatureblobMatrix::det(self : ImagefeatureblobMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn image_feature_blob_matrix_norm(m : ImagefeatureblobMatrix) -> Double {
+pub fn ImagefeatureblobMatrix::norm(self : ImagefeatureblobMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn image_feature_blob_matrix_to_string(m : ImagefeatureblobMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn ImagefeatureblobMatrix::to_string(self : ImagefeatureblobMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn image_feature_blob_vector_zero(dim : Int) -> ImagefeatureblobVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn image_feature_blob_vector_add(a : ImagefeatureblobVector, b : ImagefeatureblobVector) -> ImagefeatureblobVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn ImagefeatureblobVector::add(self : ImagefeatureblobVector, other : ImagefeatureblobVector) -> ImagefeatureblobVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn image_feature_blob_vector_sub(a : ImagefeatureblobVector, b : ImagefeatureblobVector) -> ImagefeatureblobVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn ImagefeatureblobVector::sub(self : ImagefeatureblobVector, other : ImagefeatureblobVector) -> ImagefeatureblobVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn image_feature_blob_vector_scale(v : ImagefeatureblobVector, s : Double) -> ImagefeatureblobVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn ImagefeatureblobVector::scale(self : ImagefeatureblobVector, s : Double) -> ImagefeatureblobVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn image_feature_blob_vector_dot(a : ImagefeatureblobVector, b : ImagefeatureblobVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn ImagefeatureblobVector::dot(self : ImagefeatureblobVector, other : ImagefeatureblobVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn image_feature_blob_vector_norm(v : ImagefeatureblobVector) -> Double { @_common.sqrt(image_feature_blob_vector_dot(v, v)) }
+pub fn ImagefeatureblobVector::norm(self : ImagefeatureblobVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn image_feature_blob_vector_normalize(v : ImagefeatureblobVector) -> ImagefeatureblobVector {
-  let n = image_feature_blob_vector_norm(v)
-  if n < 0.0000001 { v } else { image_feature_blob_vector_scale(v, 1.0 / n) }
+pub fn ImagefeatureblobVector::normalize(self : ImagefeatureblobVector) -> ImagefeatureblobVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn image_feature_blob_vector_dist(a : ImagefeatureblobVector, b : ImagefeatureblobVector) -> Double {
-  image_feature_blob_vector_norm(image_feature_blob_vector_sub(a, b))
+pub fn ImagefeatureblobVector::dist(self : ImagefeatureblobVector, other : ImagefeatureblobVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn image_feature_blob_vector_to_string(v : ImagefeatureblobVector) -> String {
+pub fn ImagefeatureblobVector::to_string(self : ImagefeatureblobVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn image_feature_blob_mean(data : Array[Double]) -> Double { @_common.mean(data) }

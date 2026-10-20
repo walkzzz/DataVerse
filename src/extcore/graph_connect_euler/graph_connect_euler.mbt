@@ -16,64 +16,64 @@ pub fn graph_connect_euler_make_point3(x : Double, y : Double, z : Double) -> Gr
   { x, y, z, label: 0 }
 }
 
-pub fn graph_connect_euler_point_x(pt : GraphconnecteulerPoint) -> Double { pt.x }
+pub fn GraphconnecteulerPoint::x(self : GraphconnecteulerPoint) -> Double { self.x }
 
-pub fn graph_connect_euler_point_y(pt : GraphconnecteulerPoint) -> Double { pt.y }
+pub fn GraphconnecteulerPoint::y(self : GraphconnecteulerPoint) -> Double { self.y }
 
-pub fn graph_connect_euler_point_z(pt : GraphconnecteulerPoint) -> Double { pt.z }
+pub fn GraphconnecteulerPoint::z(self : GraphconnecteulerPoint) -> Double { self.z }
 
-pub fn graph_connect_euler_point_label(pt : GraphconnecteulerPoint) -> Int { pt.label }
+pub fn GraphconnecteulerPoint::label(self : GraphconnecteulerPoint) -> Int { self.label }
 
-pub fn graph_connect_euler_point_dist(a : GraphconnecteulerPoint, b : GraphconnecteulerPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn GraphconnecteulerPoint::dist(self : GraphconnecteulerPoint, other : GraphconnecteulerPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn graph_connect_euler_point_add(a : GraphconnecteulerPoint, b : GraphconnecteulerPoint) -> GraphconnecteulerPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn GraphconnecteulerPoint::add(self : GraphconnecteulerPoint, other : GraphconnecteulerPoint) -> GraphconnecteulerPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn graph_connect_euler_point_sub(a : GraphconnecteulerPoint, b : GraphconnecteulerPoint) -> GraphconnecteulerPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn GraphconnecteulerPoint::sub(self : GraphconnecteulerPoint, other : GraphconnecteulerPoint) -> GraphconnecteulerPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn graph_connect_euler_point_scale(pt : GraphconnecteulerPoint, s : Double) -> GraphconnecteulerPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn GraphconnecteulerPoint::scale(self : GraphconnecteulerPoint, s : Double) -> GraphconnecteulerPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn graph_connect_euler_point_dot(a : GraphconnecteulerPoint, b : GraphconnecteulerPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn GraphconnecteulerPoint::dot(self : GraphconnecteulerPoint, other : GraphconnecteulerPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn graph_connect_euler_point_cross(a : GraphconnecteulerPoint, b : GraphconnecteulerPoint) -> GraphconnecteulerPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn GraphconnecteulerPoint::cross(self : GraphconnecteulerPoint, other : GraphconnecteulerPoint) -> GraphconnecteulerPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn graph_connect_euler_point_norm(pt : GraphconnecteulerPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn GraphconnecteulerPoint::norm(self : GraphconnecteulerPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn graph_connect_euler_point_normalize(pt : GraphconnecteulerPoint) -> GraphconnecteulerPoint {
-  let n = graph_connect_euler_point_norm(pt)
-  if n < 0.0000001 { pt } else { graph_connect_euler_point_scale(pt, 1.0 / n) }
+pub fn GraphconnecteulerPoint::normalize(self : GraphconnecteulerPoint) -> GraphconnecteulerPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn graph_connect_euler_point_negate(pt : GraphconnecteulerPoint) -> GraphconnecteulerPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn GraphconnecteulerPoint::negate(self : GraphconnecteulerPoint) -> GraphconnecteulerPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn graph_connect_euler_point_mid(a : GraphconnecteulerPoint, b : GraphconnecteulerPoint) -> GraphconnecteulerPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn GraphconnecteulerPoint::mid(self : GraphconnecteulerPoint, other : GraphconnecteulerPoint) -> GraphconnecteulerPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn graph_connect_euler_point_lerp(a : GraphconnecteulerPoint, b : GraphconnecteulerPoint, t : Double) -> GraphconnecteulerPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn GraphconnecteulerPoint::lerp(self : GraphconnecteulerPoint, other : GraphconnecteulerPoint, t : Double) -> GraphconnecteulerPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn graph_connect_euler_point_to_string(pt : GraphconnecteulerPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn GraphconnecteulerPoint::to_string(self : GraphconnecteulerPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct GraphconnecteulerSeries {
@@ -86,58 +86,58 @@ pub fn graph_connect_euler_make_series(vals : Array[Double], name : String) -> G
   { vals, name, meta: 0 }
 }
 
-pub fn graph_connect_euler_series_len(s : GraphconnecteulerSeries) -> Int { s.vals.length() }
+pub fn GraphconnecteulerSeries::len(self : GraphconnecteulerSeries) -> Int { self.vals.length() }
 
-pub fn graph_connect_euler_series_sum(s : GraphconnecteulerSeries) -> Double { @_common.sum(s.vals) }
+pub fn GraphconnecteulerSeries::sum(self : GraphconnecteulerSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn graph_connect_euler_series_mean(s : GraphconnecteulerSeries) -> Double { @_common.mean(s.vals) }
+pub fn GraphconnecteulerSeries::mean(self : GraphconnecteulerSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn graph_connect_euler_series_min(s : GraphconnecteulerSeries) -> Double { @_common.min(s.vals) }
+pub fn GraphconnecteulerSeries::min(self : GraphconnecteulerSeries) -> Double { @_common.min(self.vals) }
 
-pub fn graph_connect_euler_series_max(s : GraphconnecteulerSeries) -> Double { @_common.max(s.vals) }
+pub fn GraphconnecteulerSeries::max(self : GraphconnecteulerSeries) -> Double { @_common.max(self.vals) }
 
-pub fn graph_connect_euler_series_range(s : GraphconnecteulerSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn GraphconnecteulerSeries::range(self : GraphconnecteulerSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn graph_connect_euler_series_var(s : GraphconnecteulerSeries) -> Double { @_common.variance(s.vals) }
+pub fn GraphconnecteulerSeries::variance(self : GraphconnecteulerSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn graph_connect_euler_series_std(s : GraphconnecteulerSeries) -> Double { @_common.std(s.vals) }
+pub fn GraphconnecteulerSeries::std(self : GraphconnecteulerSeries) -> Double { @_common.std(self.vals) }
 
-pub fn graph_connect_euler_series_median(s : GraphconnecteulerSeries) -> Double { @_common.median(s.vals) }
+pub fn GraphconnecteulerSeries::median(self : GraphconnecteulerSeries) -> Double { @_common.median(self.vals) }
 
-pub fn graph_connect_euler_series_scale(s : GraphconnecteulerSeries, f : Double) -> GraphconnecteulerSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn GraphconnecteulerSeries::scale(self : GraphconnecteulerSeries, f : Double) -> GraphconnecteulerSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn graph_connect_euler_series_add(a : GraphconnecteulerSeries, b : GraphconnecteulerSeries) -> GraphconnecteulerSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn GraphconnecteulerSeries::add(self : GraphconnecteulerSeries, other : GraphconnecteulerSeries) -> GraphconnecteulerSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn graph_connect_euler_series_sub(a : GraphconnecteulerSeries, b : GraphconnecteulerSeries) -> GraphconnecteulerSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn GraphconnecteulerSeries::sub(self : GraphconnecteulerSeries, other : GraphconnecteulerSeries) -> GraphconnecteulerSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn graph_connect_euler_series_normalize(s : GraphconnecteulerSeries) -> GraphconnecteulerSeries {
-  let mn = graph_connect_euler_series_min(s)
-  let mx = graph_connect_euler_series_max(s)
+pub fn GraphconnecteulerSeries::normalize(self : GraphconnecteulerSeries) -> GraphconnecteulerSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn graph_connect_euler_series_cumsum(s : GraphconnecteulerSeries) -> GraphconnecteulerSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn GraphconnecteulerSeries::cumsum(self : GraphconnecteulerSeries) -> GraphconnecteulerSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn graph_connect_euler_series_to_string(s : GraphconnecteulerSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn GraphconnecteulerSeries::to_string(self : GraphconnecteulerSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn graph_connect_euler_matrix_identity(n : Int) -> GraphconnecteulerMatrix {
   m
 }
 
-pub fn graph_connect_euler_matrix_get(m : GraphconnecteulerMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn GraphconnecteulerMatrix::get(self : GraphconnecteulerMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn graph_connect_euler_matrix_transpose(m : GraphconnecteulerMatrix) -> GraphconnecteulerMatrix {
-  let result = graph_connect_euler_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn GraphconnecteulerMatrix::transpose(self : GraphconnecteulerMatrix) -> GraphconnecteulerMatrix {
+  let result = graph_connect_euler_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn graph_connect_euler_matrix_add(a : GraphconnecteulerMatrix, b : GraphconnecteulerMatrix) -> GraphconnecteulerMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = graph_connect_euler_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn GraphconnecteulerMatrix::add(self : GraphconnecteulerMatrix, other : GraphconnecteulerMatrix) -> GraphconnecteulerMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = graph_connect_euler_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn graph_connect_euler_matrix_scale(m : GraphconnecteulerMatrix, s : Double) -> GraphconnecteulerMatrix {
-  let result = graph_connect_euler_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn GraphconnecteulerMatrix::scale(self : GraphconnecteulerMatrix, s : Double) -> GraphconnecteulerMatrix {
+  let result = graph_connect_euler_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn graph_connect_euler_matrix_multiply(a : GraphconnecteulerMatrix, b : GraphconnecteulerMatrix) -> GraphconnecteulerMatrix {
-  if a.cols != b.rows { return graph_connect_euler_make_matrix(a.rows, b.cols, 0.0) }
-  let result = graph_connect_euler_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn GraphconnecteulerMatrix::multiply(self : GraphconnecteulerMatrix, other : GraphconnecteulerMatrix) -> GraphconnecteulerMatrix {
+  if self.cols != other.rows { return graph_connect_euler_make_matrix(self.rows, other.cols, 0.0) }
+  let result = graph_connect_euler_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn graph_connect_euler_matrix_trace(m : GraphconnecteulerMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn GraphconnecteulerMatrix::trace(self : GraphconnecteulerMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn graph_connect_euler_matrix_det(m : GraphconnecteulerMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn GraphconnecteulerMatrix::det(self : GraphconnecteulerMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn graph_connect_euler_matrix_norm(m : GraphconnecteulerMatrix) -> Double {
+pub fn GraphconnecteulerMatrix::norm(self : GraphconnecteulerMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn graph_connect_euler_matrix_to_string(m : GraphconnecteulerMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn GraphconnecteulerMatrix::to_string(self : GraphconnecteulerMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn graph_connect_euler_vector_zero(dim : Int) -> GraphconnecteulerVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn graph_connect_euler_vector_add(a : GraphconnecteulerVector, b : GraphconnecteulerVector) -> GraphconnecteulerVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn GraphconnecteulerVector::add(self : GraphconnecteulerVector, other : GraphconnecteulerVector) -> GraphconnecteulerVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn graph_connect_euler_vector_sub(a : GraphconnecteulerVector, b : GraphconnecteulerVector) -> GraphconnecteulerVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn GraphconnecteulerVector::sub(self : GraphconnecteulerVector, other : GraphconnecteulerVector) -> GraphconnecteulerVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn graph_connect_euler_vector_scale(v : GraphconnecteulerVector, s : Double) -> GraphconnecteulerVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn GraphconnecteulerVector::scale(self : GraphconnecteulerVector, s : Double) -> GraphconnecteulerVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn graph_connect_euler_vector_dot(a : GraphconnecteulerVector, b : GraphconnecteulerVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn GraphconnecteulerVector::dot(self : GraphconnecteulerVector, other : GraphconnecteulerVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn graph_connect_euler_vector_norm(v : GraphconnecteulerVector) -> Double { @_common.sqrt(graph_connect_euler_vector_dot(v, v)) }
+pub fn GraphconnecteulerVector::norm(self : GraphconnecteulerVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn graph_connect_euler_vector_normalize(v : GraphconnecteulerVector) -> GraphconnecteulerVector {
-  let n = graph_connect_euler_vector_norm(v)
-  if n < 0.0000001 { v } else { graph_connect_euler_vector_scale(v, 1.0 / n) }
+pub fn GraphconnecteulerVector::normalize(self : GraphconnecteulerVector) -> GraphconnecteulerVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn graph_connect_euler_vector_dist(a : GraphconnecteulerVector, b : GraphconnecteulerVector) -> Double {
-  graph_connect_euler_vector_norm(graph_connect_euler_vector_sub(a, b))
+pub fn GraphconnecteulerVector::dist(self : GraphconnecteulerVector, other : GraphconnecteulerVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn graph_connect_euler_vector_to_string(v : GraphconnecteulerVector) -> String {
+pub fn GraphconnecteulerVector::to_string(self : GraphconnecteulerVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn graph_connect_euler_mean(data : Array[Double]) -> Double { @_common.mean(data) }

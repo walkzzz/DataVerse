@@ -16,64 +16,64 @@ pub fn physics_mechanics_soft_make_point3(x : Double, y : Double, z : Double) ->
   { x, y, z, label: 0 }
 }
 
-pub fn physics_mechanics_soft_point_x(pt : PhysicsmechanicssoftPoint) -> Double { pt.x }
+pub fn PhysicsmechanicssoftPoint::x(self : PhysicsmechanicssoftPoint) -> Double { self.x }
 
-pub fn physics_mechanics_soft_point_y(pt : PhysicsmechanicssoftPoint) -> Double { pt.y }
+pub fn PhysicsmechanicssoftPoint::y(self : PhysicsmechanicssoftPoint) -> Double { self.y }
 
-pub fn physics_mechanics_soft_point_z(pt : PhysicsmechanicssoftPoint) -> Double { pt.z }
+pub fn PhysicsmechanicssoftPoint::z(self : PhysicsmechanicssoftPoint) -> Double { self.z }
 
-pub fn physics_mechanics_soft_point_label(pt : PhysicsmechanicssoftPoint) -> Int { pt.label }
+pub fn PhysicsmechanicssoftPoint::label(self : PhysicsmechanicssoftPoint) -> Int { self.label }
 
-pub fn physics_mechanics_soft_point_dist(a : PhysicsmechanicssoftPoint, b : PhysicsmechanicssoftPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn PhysicsmechanicssoftPoint::dist(self : PhysicsmechanicssoftPoint, other : PhysicsmechanicssoftPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn physics_mechanics_soft_point_add(a : PhysicsmechanicssoftPoint, b : PhysicsmechanicssoftPoint) -> PhysicsmechanicssoftPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn PhysicsmechanicssoftPoint::add(self : PhysicsmechanicssoftPoint, other : PhysicsmechanicssoftPoint) -> PhysicsmechanicssoftPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn physics_mechanics_soft_point_sub(a : PhysicsmechanicssoftPoint, b : PhysicsmechanicssoftPoint) -> PhysicsmechanicssoftPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn PhysicsmechanicssoftPoint::sub(self : PhysicsmechanicssoftPoint, other : PhysicsmechanicssoftPoint) -> PhysicsmechanicssoftPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn physics_mechanics_soft_point_scale(pt : PhysicsmechanicssoftPoint, s : Double) -> PhysicsmechanicssoftPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn PhysicsmechanicssoftPoint::scale(self : PhysicsmechanicssoftPoint, s : Double) -> PhysicsmechanicssoftPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn physics_mechanics_soft_point_dot(a : PhysicsmechanicssoftPoint, b : PhysicsmechanicssoftPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn PhysicsmechanicssoftPoint::dot(self : PhysicsmechanicssoftPoint, other : PhysicsmechanicssoftPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn physics_mechanics_soft_point_cross(a : PhysicsmechanicssoftPoint, b : PhysicsmechanicssoftPoint) -> PhysicsmechanicssoftPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn PhysicsmechanicssoftPoint::cross(self : PhysicsmechanicssoftPoint, other : PhysicsmechanicssoftPoint) -> PhysicsmechanicssoftPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn physics_mechanics_soft_point_norm(pt : PhysicsmechanicssoftPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn PhysicsmechanicssoftPoint::norm(self : PhysicsmechanicssoftPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn physics_mechanics_soft_point_normalize(pt : PhysicsmechanicssoftPoint) -> PhysicsmechanicssoftPoint {
-  let n = physics_mechanics_soft_point_norm(pt)
-  if n < 0.0000001 { pt } else { physics_mechanics_soft_point_scale(pt, 1.0 / n) }
+pub fn PhysicsmechanicssoftPoint::normalize(self : PhysicsmechanicssoftPoint) -> PhysicsmechanicssoftPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn physics_mechanics_soft_point_negate(pt : PhysicsmechanicssoftPoint) -> PhysicsmechanicssoftPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn PhysicsmechanicssoftPoint::negate(self : PhysicsmechanicssoftPoint) -> PhysicsmechanicssoftPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn physics_mechanics_soft_point_mid(a : PhysicsmechanicssoftPoint, b : PhysicsmechanicssoftPoint) -> PhysicsmechanicssoftPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn PhysicsmechanicssoftPoint::mid(self : PhysicsmechanicssoftPoint, other : PhysicsmechanicssoftPoint) -> PhysicsmechanicssoftPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn physics_mechanics_soft_point_lerp(a : PhysicsmechanicssoftPoint, b : PhysicsmechanicssoftPoint, t : Double) -> PhysicsmechanicssoftPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn PhysicsmechanicssoftPoint::lerp(self : PhysicsmechanicssoftPoint, other : PhysicsmechanicssoftPoint, t : Double) -> PhysicsmechanicssoftPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn physics_mechanics_soft_point_to_string(pt : PhysicsmechanicssoftPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn PhysicsmechanicssoftPoint::to_string(self : PhysicsmechanicssoftPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct PhysicsmechanicssoftSeries {
@@ -86,58 +86,58 @@ pub fn physics_mechanics_soft_make_series(vals : Array[Double], name : String) -
   { vals, name, meta: 0 }
 }
 
-pub fn physics_mechanics_soft_series_len(s : PhysicsmechanicssoftSeries) -> Int { s.vals.length() }
+pub fn PhysicsmechanicssoftSeries::len(self : PhysicsmechanicssoftSeries) -> Int { self.vals.length() }
 
-pub fn physics_mechanics_soft_series_sum(s : PhysicsmechanicssoftSeries) -> Double { @_common.sum(s.vals) }
+pub fn PhysicsmechanicssoftSeries::sum(self : PhysicsmechanicssoftSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn physics_mechanics_soft_series_mean(s : PhysicsmechanicssoftSeries) -> Double { @_common.mean(s.vals) }
+pub fn PhysicsmechanicssoftSeries::mean(self : PhysicsmechanicssoftSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn physics_mechanics_soft_series_min(s : PhysicsmechanicssoftSeries) -> Double { @_common.min(s.vals) }
+pub fn PhysicsmechanicssoftSeries::min(self : PhysicsmechanicssoftSeries) -> Double { @_common.min(self.vals) }
 
-pub fn physics_mechanics_soft_series_max(s : PhysicsmechanicssoftSeries) -> Double { @_common.max(s.vals) }
+pub fn PhysicsmechanicssoftSeries::max(self : PhysicsmechanicssoftSeries) -> Double { @_common.max(self.vals) }
 
-pub fn physics_mechanics_soft_series_range(s : PhysicsmechanicssoftSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn PhysicsmechanicssoftSeries::range(self : PhysicsmechanicssoftSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn physics_mechanics_soft_series_var(s : PhysicsmechanicssoftSeries) -> Double { @_common.variance(s.vals) }
+pub fn PhysicsmechanicssoftSeries::variance(self : PhysicsmechanicssoftSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn physics_mechanics_soft_series_std(s : PhysicsmechanicssoftSeries) -> Double { @_common.std(s.vals) }
+pub fn PhysicsmechanicssoftSeries::std(self : PhysicsmechanicssoftSeries) -> Double { @_common.std(self.vals) }
 
-pub fn physics_mechanics_soft_series_median(s : PhysicsmechanicssoftSeries) -> Double { @_common.median(s.vals) }
+pub fn PhysicsmechanicssoftSeries::median(self : PhysicsmechanicssoftSeries) -> Double { @_common.median(self.vals) }
 
-pub fn physics_mechanics_soft_series_scale(s : PhysicsmechanicssoftSeries, f : Double) -> PhysicsmechanicssoftSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn PhysicsmechanicssoftSeries::scale(self : PhysicsmechanicssoftSeries, f : Double) -> PhysicsmechanicssoftSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn physics_mechanics_soft_series_add(a : PhysicsmechanicssoftSeries, b : PhysicsmechanicssoftSeries) -> PhysicsmechanicssoftSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn PhysicsmechanicssoftSeries::add(self : PhysicsmechanicssoftSeries, other : PhysicsmechanicssoftSeries) -> PhysicsmechanicssoftSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn physics_mechanics_soft_series_sub(a : PhysicsmechanicssoftSeries, b : PhysicsmechanicssoftSeries) -> PhysicsmechanicssoftSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn PhysicsmechanicssoftSeries::sub(self : PhysicsmechanicssoftSeries, other : PhysicsmechanicssoftSeries) -> PhysicsmechanicssoftSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn physics_mechanics_soft_series_normalize(s : PhysicsmechanicssoftSeries) -> PhysicsmechanicssoftSeries {
-  let mn = physics_mechanics_soft_series_min(s)
-  let mx = physics_mechanics_soft_series_max(s)
+pub fn PhysicsmechanicssoftSeries::normalize(self : PhysicsmechanicssoftSeries) -> PhysicsmechanicssoftSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn physics_mechanics_soft_series_cumsum(s : PhysicsmechanicssoftSeries) -> PhysicsmechanicssoftSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn PhysicsmechanicssoftSeries::cumsum(self : PhysicsmechanicssoftSeries) -> PhysicsmechanicssoftSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn physics_mechanics_soft_series_to_string(s : PhysicsmechanicssoftSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn PhysicsmechanicssoftSeries::to_string(self : PhysicsmechanicssoftSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn physics_mechanics_soft_matrix_identity(n : Int) -> PhysicsmechanicssoftMa
   m
 }
 
-pub fn physics_mechanics_soft_matrix_get(m : PhysicsmechanicssoftMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn PhysicsmechanicssoftMatrix::get(self : PhysicsmechanicssoftMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn physics_mechanics_soft_matrix_transpose(m : PhysicsmechanicssoftMatrix) -> PhysicsmechanicssoftMatrix {
-  let result = physics_mechanics_soft_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn PhysicsmechanicssoftMatrix::transpose(self : PhysicsmechanicssoftMatrix) -> PhysicsmechanicssoftMatrix {
+  let result = physics_mechanics_soft_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn physics_mechanics_soft_matrix_add(a : PhysicsmechanicssoftMatrix, b : PhysicsmechanicssoftMatrix) -> PhysicsmechanicssoftMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = physics_mechanics_soft_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn PhysicsmechanicssoftMatrix::add(self : PhysicsmechanicssoftMatrix, other : PhysicsmechanicssoftMatrix) -> PhysicsmechanicssoftMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = physics_mechanics_soft_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn physics_mechanics_soft_matrix_scale(m : PhysicsmechanicssoftMatrix, s : Double) -> PhysicsmechanicssoftMatrix {
-  let result = physics_mechanics_soft_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn PhysicsmechanicssoftMatrix::scale(self : PhysicsmechanicssoftMatrix, s : Double) -> PhysicsmechanicssoftMatrix {
+  let result = physics_mechanics_soft_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn physics_mechanics_soft_matrix_multiply(a : PhysicsmechanicssoftMatrix, b : PhysicsmechanicssoftMatrix) -> PhysicsmechanicssoftMatrix {
-  if a.cols != b.rows { return physics_mechanics_soft_make_matrix(a.rows, b.cols, 0.0) }
-  let result = physics_mechanics_soft_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn PhysicsmechanicssoftMatrix::multiply(self : PhysicsmechanicssoftMatrix, other : PhysicsmechanicssoftMatrix) -> PhysicsmechanicssoftMatrix {
+  if self.cols != other.rows { return physics_mechanics_soft_make_matrix(self.rows, other.cols, 0.0) }
+  let result = physics_mechanics_soft_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn physics_mechanics_soft_matrix_trace(m : PhysicsmechanicssoftMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn PhysicsmechanicssoftMatrix::trace(self : PhysicsmechanicssoftMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn physics_mechanics_soft_matrix_det(m : PhysicsmechanicssoftMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn PhysicsmechanicssoftMatrix::det(self : PhysicsmechanicssoftMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn physics_mechanics_soft_matrix_norm(m : PhysicsmechanicssoftMatrix) -> Double {
+pub fn PhysicsmechanicssoftMatrix::norm(self : PhysicsmechanicssoftMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn physics_mechanics_soft_matrix_to_string(m : PhysicsmechanicssoftMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn PhysicsmechanicssoftMatrix::to_string(self : PhysicsmechanicssoftMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn physics_mechanics_soft_vector_zero(dim : Int) -> PhysicsmechanicssoftVect
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn physics_mechanics_soft_vector_add(a : PhysicsmechanicssoftVector, b : PhysicsmechanicssoftVector) -> PhysicsmechanicssoftVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn PhysicsmechanicssoftVector::add(self : PhysicsmechanicssoftVector, other : PhysicsmechanicssoftVector) -> PhysicsmechanicssoftVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn physics_mechanics_soft_vector_sub(a : PhysicsmechanicssoftVector, b : PhysicsmechanicssoftVector) -> PhysicsmechanicssoftVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn PhysicsmechanicssoftVector::sub(self : PhysicsmechanicssoftVector, other : PhysicsmechanicssoftVector) -> PhysicsmechanicssoftVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn physics_mechanics_soft_vector_scale(v : PhysicsmechanicssoftVector, s : Double) -> PhysicsmechanicssoftVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn PhysicsmechanicssoftVector::scale(self : PhysicsmechanicssoftVector, s : Double) -> PhysicsmechanicssoftVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn physics_mechanics_soft_vector_dot(a : PhysicsmechanicssoftVector, b : PhysicsmechanicssoftVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn PhysicsmechanicssoftVector::dot(self : PhysicsmechanicssoftVector, other : PhysicsmechanicssoftVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn physics_mechanics_soft_vector_norm(v : PhysicsmechanicssoftVector) -> Double { @_common.sqrt(physics_mechanics_soft_vector_dot(v, v)) }
+pub fn PhysicsmechanicssoftVector::norm(self : PhysicsmechanicssoftVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn physics_mechanics_soft_vector_normalize(v : PhysicsmechanicssoftVector) -> PhysicsmechanicssoftVector {
-  let n = physics_mechanics_soft_vector_norm(v)
-  if n < 0.0000001 { v } else { physics_mechanics_soft_vector_scale(v, 1.0 / n) }
+pub fn PhysicsmechanicssoftVector::normalize(self : PhysicsmechanicssoftVector) -> PhysicsmechanicssoftVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn physics_mechanics_soft_vector_dist(a : PhysicsmechanicssoftVector, b : PhysicsmechanicssoftVector) -> Double {
-  physics_mechanics_soft_vector_norm(physics_mechanics_soft_vector_sub(a, b))
+pub fn PhysicsmechanicssoftVector::dist(self : PhysicsmechanicssoftVector, other : PhysicsmechanicssoftVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn physics_mechanics_soft_vector_to_string(v : PhysicsmechanicssoftVector) -> String {
+pub fn PhysicsmechanicssoftVector::to_string(self : PhysicsmechanicssoftVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn physics_mechanics_soft_mean(data : Array[Double]) -> Double { @_common.mean(data) }

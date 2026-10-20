@@ -16,64 +16,64 @@ pub fn signal_transform_stft_make_point3(x : Double, y : Double, z : Double) -> 
   { x, y, z, label: 0 }
 }
 
-pub fn signal_transform_stft_point_x(pt : SignaltransformstftPoint) -> Double { pt.x }
+pub fn SignaltransformstftPoint::x(self : SignaltransformstftPoint) -> Double { self.x }
 
-pub fn signal_transform_stft_point_y(pt : SignaltransformstftPoint) -> Double { pt.y }
+pub fn SignaltransformstftPoint::y(self : SignaltransformstftPoint) -> Double { self.y }
 
-pub fn signal_transform_stft_point_z(pt : SignaltransformstftPoint) -> Double { pt.z }
+pub fn SignaltransformstftPoint::z(self : SignaltransformstftPoint) -> Double { self.z }
 
-pub fn signal_transform_stft_point_label(pt : SignaltransformstftPoint) -> Int { pt.label }
+pub fn SignaltransformstftPoint::label(self : SignaltransformstftPoint) -> Int { self.label }
 
-pub fn signal_transform_stft_point_dist(a : SignaltransformstftPoint, b : SignaltransformstftPoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn SignaltransformstftPoint::dist(self : SignaltransformstftPoint, other : SignaltransformstftPoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn signal_transform_stft_point_add(a : SignaltransformstftPoint, b : SignaltransformstftPoint) -> SignaltransformstftPoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn SignaltransformstftPoint::add(self : SignaltransformstftPoint, other : SignaltransformstftPoint) -> SignaltransformstftPoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn signal_transform_stft_point_sub(a : SignaltransformstftPoint, b : SignaltransformstftPoint) -> SignaltransformstftPoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn SignaltransformstftPoint::sub(self : SignaltransformstftPoint, other : SignaltransformstftPoint) -> SignaltransformstftPoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn signal_transform_stft_point_scale(pt : SignaltransformstftPoint, s : Double) -> SignaltransformstftPoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn SignaltransformstftPoint::scale(self : SignaltransformstftPoint, s : Double) -> SignaltransformstftPoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn signal_transform_stft_point_dot(a : SignaltransformstftPoint, b : SignaltransformstftPoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn SignaltransformstftPoint::dot(self : SignaltransformstftPoint, other : SignaltransformstftPoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn signal_transform_stft_point_cross(a : SignaltransformstftPoint, b : SignaltransformstftPoint) -> SignaltransformstftPoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn SignaltransformstftPoint::cross(self : SignaltransformstftPoint, other : SignaltransformstftPoint) -> SignaltransformstftPoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn signal_transform_stft_point_norm(pt : SignaltransformstftPoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn SignaltransformstftPoint::norm(self : SignaltransformstftPoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn signal_transform_stft_point_normalize(pt : SignaltransformstftPoint) -> SignaltransformstftPoint {
-  let n = signal_transform_stft_point_norm(pt)
-  if n < 0.0000001 { pt } else { signal_transform_stft_point_scale(pt, 1.0 / n) }
+pub fn SignaltransformstftPoint::normalize(self : SignaltransformstftPoint) -> SignaltransformstftPoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn signal_transform_stft_point_negate(pt : SignaltransformstftPoint) -> SignaltransformstftPoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn SignaltransformstftPoint::negate(self : SignaltransformstftPoint) -> SignaltransformstftPoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn signal_transform_stft_point_mid(a : SignaltransformstftPoint, b : SignaltransformstftPoint) -> SignaltransformstftPoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn SignaltransformstftPoint::mid(self : SignaltransformstftPoint, other : SignaltransformstftPoint) -> SignaltransformstftPoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn signal_transform_stft_point_lerp(a : SignaltransformstftPoint, b : SignaltransformstftPoint, t : Double) -> SignaltransformstftPoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn SignaltransformstftPoint::lerp(self : SignaltransformstftPoint, other : SignaltransformstftPoint, t : Double) -> SignaltransformstftPoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn signal_transform_stft_point_to_string(pt : SignaltransformstftPoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn SignaltransformstftPoint::to_string(self : SignaltransformstftPoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct SignaltransformstftSeries {
@@ -86,58 +86,58 @@ pub fn signal_transform_stft_make_series(vals : Array[Double], name : String) ->
   { vals, name, meta: 0 }
 }
 
-pub fn signal_transform_stft_series_len(s : SignaltransformstftSeries) -> Int { s.vals.length() }
+pub fn SignaltransformstftSeries::len(self : SignaltransformstftSeries) -> Int { self.vals.length() }
 
-pub fn signal_transform_stft_series_sum(s : SignaltransformstftSeries) -> Double { @_common.sum(s.vals) }
+pub fn SignaltransformstftSeries::sum(self : SignaltransformstftSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn signal_transform_stft_series_mean(s : SignaltransformstftSeries) -> Double { @_common.mean(s.vals) }
+pub fn SignaltransformstftSeries::mean(self : SignaltransformstftSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn signal_transform_stft_series_min(s : SignaltransformstftSeries) -> Double { @_common.min(s.vals) }
+pub fn SignaltransformstftSeries::min(self : SignaltransformstftSeries) -> Double { @_common.min(self.vals) }
 
-pub fn signal_transform_stft_series_max(s : SignaltransformstftSeries) -> Double { @_common.max(s.vals) }
+pub fn SignaltransformstftSeries::max(self : SignaltransformstftSeries) -> Double { @_common.max(self.vals) }
 
-pub fn signal_transform_stft_series_range(s : SignaltransformstftSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn SignaltransformstftSeries::range(self : SignaltransformstftSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn signal_transform_stft_series_var(s : SignaltransformstftSeries) -> Double { @_common.variance(s.vals) }
+pub fn SignaltransformstftSeries::variance(self : SignaltransformstftSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn signal_transform_stft_series_std(s : SignaltransformstftSeries) -> Double { @_common.std(s.vals) }
+pub fn SignaltransformstftSeries::std(self : SignaltransformstftSeries) -> Double { @_common.std(self.vals) }
 
-pub fn signal_transform_stft_series_median(s : SignaltransformstftSeries) -> Double { @_common.median(s.vals) }
+pub fn SignaltransformstftSeries::median(self : SignaltransformstftSeries) -> Double { @_common.median(self.vals) }
 
-pub fn signal_transform_stft_series_scale(s : SignaltransformstftSeries, f : Double) -> SignaltransformstftSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn SignaltransformstftSeries::scale(self : SignaltransformstftSeries, f : Double) -> SignaltransformstftSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn signal_transform_stft_series_add(a : SignaltransformstftSeries, b : SignaltransformstftSeries) -> SignaltransformstftSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn SignaltransformstftSeries::add(self : SignaltransformstftSeries, other : SignaltransformstftSeries) -> SignaltransformstftSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn signal_transform_stft_series_sub(a : SignaltransformstftSeries, b : SignaltransformstftSeries) -> SignaltransformstftSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn SignaltransformstftSeries::sub(self : SignaltransformstftSeries, other : SignaltransformstftSeries) -> SignaltransformstftSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn signal_transform_stft_series_normalize(s : SignaltransformstftSeries) -> SignaltransformstftSeries {
-  let mn = signal_transform_stft_series_min(s)
-  let mx = signal_transform_stft_series_max(s)
+pub fn SignaltransformstftSeries::normalize(self : SignaltransformstftSeries) -> SignaltransformstftSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn signal_transform_stft_series_cumsum(s : SignaltransformstftSeries) -> SignaltransformstftSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn SignaltransformstftSeries::cumsum(self : SignaltransformstftSeries) -> SignaltransformstftSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn signal_transform_stft_series_to_string(s : SignaltransformstftSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn SignaltransformstftSeries::to_string(self : SignaltransformstftSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn signal_transform_stft_matrix_identity(n : Int) -> SignaltransformstftMatr
   m
 }
 
-pub fn signal_transform_stft_matrix_get(m : SignaltransformstftMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn SignaltransformstftMatrix::get(self : SignaltransformstftMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn signal_transform_stft_matrix_transpose(m : SignaltransformstftMatrix) -> SignaltransformstftMatrix {
-  let result = signal_transform_stft_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn SignaltransformstftMatrix::transpose(self : SignaltransformstftMatrix) -> SignaltransformstftMatrix {
+  let result = signal_transform_stft_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn signal_transform_stft_matrix_add(a : SignaltransformstftMatrix, b : SignaltransformstftMatrix) -> SignaltransformstftMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = signal_transform_stft_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn SignaltransformstftMatrix::add(self : SignaltransformstftMatrix, other : SignaltransformstftMatrix) -> SignaltransformstftMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = signal_transform_stft_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn signal_transform_stft_matrix_scale(m : SignaltransformstftMatrix, s : Double) -> SignaltransformstftMatrix {
-  let result = signal_transform_stft_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn SignaltransformstftMatrix::scale(self : SignaltransformstftMatrix, s : Double) -> SignaltransformstftMatrix {
+  let result = signal_transform_stft_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn signal_transform_stft_matrix_multiply(a : SignaltransformstftMatrix, b : SignaltransformstftMatrix) -> SignaltransformstftMatrix {
-  if a.cols != b.rows { return signal_transform_stft_make_matrix(a.rows, b.cols, 0.0) }
-  let result = signal_transform_stft_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn SignaltransformstftMatrix::multiply(self : SignaltransformstftMatrix, other : SignaltransformstftMatrix) -> SignaltransformstftMatrix {
+  if self.cols != other.rows { return signal_transform_stft_make_matrix(self.rows, other.cols, 0.0) }
+  let result = signal_transform_stft_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn signal_transform_stft_matrix_trace(m : SignaltransformstftMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn SignaltransformstftMatrix::trace(self : SignaltransformstftMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn signal_transform_stft_matrix_det(m : SignaltransformstftMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn SignaltransformstftMatrix::det(self : SignaltransformstftMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn signal_transform_stft_matrix_norm(m : SignaltransformstftMatrix) -> Double {
+pub fn SignaltransformstftMatrix::norm(self : SignaltransformstftMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn signal_transform_stft_matrix_to_string(m : SignaltransformstftMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn SignaltransformstftMatrix::to_string(self : SignaltransformstftMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn signal_transform_stft_vector_zero(dim : Int) -> SignaltransformstftVector
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn signal_transform_stft_vector_add(a : SignaltransformstftVector, b : SignaltransformstftVector) -> SignaltransformstftVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn SignaltransformstftVector::add(self : SignaltransformstftVector, other : SignaltransformstftVector) -> SignaltransformstftVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn signal_transform_stft_vector_sub(a : SignaltransformstftVector, b : SignaltransformstftVector) -> SignaltransformstftVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn SignaltransformstftVector::sub(self : SignaltransformstftVector, other : SignaltransformstftVector) -> SignaltransformstftVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn signal_transform_stft_vector_scale(v : SignaltransformstftVector, s : Double) -> SignaltransformstftVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn SignaltransformstftVector::scale(self : SignaltransformstftVector, s : Double) -> SignaltransformstftVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn signal_transform_stft_vector_dot(a : SignaltransformstftVector, b : SignaltransformstftVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn SignaltransformstftVector::dot(self : SignaltransformstftVector, other : SignaltransformstftVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn signal_transform_stft_vector_norm(v : SignaltransformstftVector) -> Double { @_common.sqrt(signal_transform_stft_vector_dot(v, v)) }
+pub fn SignaltransformstftVector::norm(self : SignaltransformstftVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn signal_transform_stft_vector_normalize(v : SignaltransformstftVector) -> SignaltransformstftVector {
-  let n = signal_transform_stft_vector_norm(v)
-  if n < 0.0000001 { v } else { signal_transform_stft_vector_scale(v, 1.0 / n) }
+pub fn SignaltransformstftVector::normalize(self : SignaltransformstftVector) -> SignaltransformstftVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn signal_transform_stft_vector_dist(a : SignaltransformstftVector, b : SignaltransformstftVector) -> Double {
-  signal_transform_stft_vector_norm(signal_transform_stft_vector_sub(a, b))
+pub fn SignaltransformstftVector::dist(self : SignaltransformstftVector, other : SignaltransformstftVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn signal_transform_stft_vector_to_string(v : SignaltransformstftVector) -> String {
+pub fn SignaltransformstftVector::to_string(self : SignaltransformstftVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn signal_transform_stft_mean(data : Array[Double]) -> Double { @_common.mean(data) }

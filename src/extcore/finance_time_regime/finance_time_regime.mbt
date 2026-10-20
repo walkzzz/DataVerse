@@ -16,64 +16,64 @@ pub fn finance_time_regime_make_point3(x : Double, y : Double, z : Double) -> Fi
   { x, y, z, label: 0 }
 }
 
-pub fn finance_time_regime_point_x(pt : FinancetimeregimePoint) -> Double { pt.x }
+pub fn FinancetimeregimePoint::x(self : FinancetimeregimePoint) -> Double { self.x }
 
-pub fn finance_time_regime_point_y(pt : FinancetimeregimePoint) -> Double { pt.y }
+pub fn FinancetimeregimePoint::y(self : FinancetimeregimePoint) -> Double { self.y }
 
-pub fn finance_time_regime_point_z(pt : FinancetimeregimePoint) -> Double { pt.z }
+pub fn FinancetimeregimePoint::z(self : FinancetimeregimePoint) -> Double { self.z }
 
-pub fn finance_time_regime_point_label(pt : FinancetimeregimePoint) -> Int { pt.label }
+pub fn FinancetimeregimePoint::label(self : FinancetimeregimePoint) -> Int { self.label }
 
-pub fn finance_time_regime_point_dist(a : FinancetimeregimePoint, b : FinancetimeregimePoint) -> Double {
-  let dx = a.x - b.x
-  let dy = a.y - b.y
-  let dz = a.z - b.z
+pub fn FinancetimeregimePoint::dist(self : FinancetimeregimePoint, other : FinancetimeregimePoint) -> Double {
+  let dx = self.x - other.x
+  let dy = self.y - other.y
+  let dz = self.z - other.z
   @_common.sqrt(dx * dx + dy * dy + dz * dz)
 }
 
-pub fn finance_time_regime_point_add(a : FinancetimeregimePoint, b : FinancetimeregimePoint) -> FinancetimeregimePoint {
-  { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z, label: a.label }
+pub fn FinancetimeregimePoint::add(self : FinancetimeregimePoint, other : FinancetimeregimePoint) -> FinancetimeregimePoint {
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, label: self.label }
 }
 
-pub fn finance_time_regime_point_sub(a : FinancetimeregimePoint, b : FinancetimeregimePoint) -> FinancetimeregimePoint {
-  { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z, label: a.label }
+pub fn FinancetimeregimePoint::sub(self : FinancetimeregimePoint, other : FinancetimeregimePoint) -> FinancetimeregimePoint {
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, label: self.label }
 }
 
-pub fn finance_time_regime_point_scale(pt : FinancetimeregimePoint, s : Double) -> FinancetimeregimePoint {
-  { x: pt.x * s, y: pt.y * s, z: pt.z * s, label: pt.label }
+pub fn FinancetimeregimePoint::scale(self : FinancetimeregimePoint, s : Double) -> FinancetimeregimePoint {
+  { x: self.x * s, y: self.y * s, z: self.z * s, label: self.label }
 }
 
-pub fn finance_time_regime_point_dot(a : FinancetimeregimePoint, b : FinancetimeregimePoint) -> Double {
-  a.x * b.x + a.y * b.y + a.z * b.z
+pub fn FinancetimeregimePoint::dot(self : FinancetimeregimePoint, other : FinancetimeregimePoint) -> Double {
+  self.x * other.x + self.y * other.y + self.z * other.z
 }
 
-pub fn finance_time_regime_point_cross(a : FinancetimeregimePoint, b : FinancetimeregimePoint) -> FinancetimeregimePoint {
-  { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x, label: 0 }
+pub fn FinancetimeregimePoint::cross(self : FinancetimeregimePoint, other : FinancetimeregimePoint) -> FinancetimeregimePoint {
+  { x: self.y * other.z - self.z * other.y, y: self.z * other.x - self.x * other.z, z: self.x * other.y - self.y * other.x, label: 0 }
 }
 
-pub fn finance_time_regime_point_norm(pt : FinancetimeregimePoint) -> Double {
-  @_common.sqrt(pt.x * pt.x + pt.y * pt.y + pt.z * pt.z)
+pub fn FinancetimeregimePoint::norm(self : FinancetimeregimePoint) -> Double {
+  @_common.sqrt(self.x * self.x + self.y * self.y + self.z * self.z)
 }
 
-pub fn finance_time_regime_point_normalize(pt : FinancetimeregimePoint) -> FinancetimeregimePoint {
-  let n = finance_time_regime_point_norm(pt)
-  if n < 0.0000001 { pt } else { finance_time_regime_point_scale(pt, 1.0 / n) }
+pub fn FinancetimeregimePoint::normalize(self : FinancetimeregimePoint) -> FinancetimeregimePoint {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn finance_time_regime_point_negate(pt : FinancetimeregimePoint) -> FinancetimeregimePoint {
-  { x: -pt.x, y: -pt.y, z: -pt.z, label: pt.label }
+pub fn FinancetimeregimePoint::negate(self : FinancetimeregimePoint) -> FinancetimeregimePoint {
+  { x: -self.x, y: -self.y, z: -self.z, label: self.label }
 }
 
-pub fn finance_time_regime_point_mid(a : FinancetimeregimePoint, b : FinancetimeregimePoint) -> FinancetimeregimePoint {
-  { x: (a.x + b.x) / 2.0, y: (a.y + b.y) / 2.0, z: (a.z + b.z) / 2.0, label: a.label }
+pub fn FinancetimeregimePoint::mid(self : FinancetimeregimePoint, other : FinancetimeregimePoint) -> FinancetimeregimePoint {
+  { x: (self.x + other.x) / 2.0, y: (self.y + other.y) / 2.0, z: (self.z + other.z) / 2.0, label: self.label }
 }
 
-pub fn finance_time_regime_point_lerp(a : FinancetimeregimePoint, b : FinancetimeregimePoint, t : Double) -> FinancetimeregimePoint {
-  { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t, label: a.label }
+pub fn FinancetimeregimePoint::lerp(self : FinancetimeregimePoint, other : FinancetimeregimePoint, t : Double) -> FinancetimeregimePoint {
+  { x: self.x + (other.x - self.x) * t, y: self.y + (other.y - self.y) * t, z: self.z + (other.z - self.z) * t, label: self.label }
 }
 
-pub fn finance_time_regime_point_to_string(pt : FinancetimeregimePoint) -> String {
-  "(" + @_common.dbl(pt.x) + ", " + @_common.dbl(pt.y) + ", " + @_common.dbl(pt.z) + ")[" + pt.label.to_string() + "]"
+pub fn FinancetimeregimePoint::to_string(self : FinancetimeregimePoint) -> String {
+  "(" + @_common.dbl(self.x) + ", " + @_common.dbl(self.y) + ", " + @_common.dbl(self.z) + ")[" + self.label.to_string() + "]"
 }
 
 pub(all) struct FinancetimeregimeSeries {
@@ -86,58 +86,58 @@ pub fn finance_time_regime_make_series(vals : Array[Double], name : String) -> F
   { vals, name, meta: 0 }
 }
 
-pub fn finance_time_regime_series_len(s : FinancetimeregimeSeries) -> Int { s.vals.length() }
+pub fn FinancetimeregimeSeries::len(self : FinancetimeregimeSeries) -> Int { self.vals.length() }
 
-pub fn finance_time_regime_series_sum(s : FinancetimeregimeSeries) -> Double { @_common.sum(s.vals) }
+pub fn FinancetimeregimeSeries::sum(self : FinancetimeregimeSeries) -> Double { @_common.sum(self.vals) }
 
-pub fn finance_time_regime_series_mean(s : FinancetimeregimeSeries) -> Double { @_common.mean(s.vals) }
+pub fn FinancetimeregimeSeries::mean(self : FinancetimeregimeSeries) -> Double { @_common.mean(self.vals) }
 
-pub fn finance_time_regime_series_min(s : FinancetimeregimeSeries) -> Double { @_common.min(s.vals) }
+pub fn FinancetimeregimeSeries::min(self : FinancetimeregimeSeries) -> Double { @_common.min(self.vals) }
 
-pub fn finance_time_regime_series_max(s : FinancetimeregimeSeries) -> Double { @_common.max(s.vals) }
+pub fn FinancetimeregimeSeries::max(self : FinancetimeregimeSeries) -> Double { @_common.max(self.vals) }
 
-pub fn finance_time_regime_series_range(s : FinancetimeregimeSeries) -> Double {
-  @_common.max(s.vals) - @_common.min(s.vals)
+pub fn FinancetimeregimeSeries::range(self : FinancetimeregimeSeries) -> Double {
+  @_common.max(self.vals) - @_common.min(self.vals)
 }
 
-pub fn finance_time_regime_series_var(s : FinancetimeregimeSeries) -> Double { @_common.variance(s.vals) }
+pub fn FinancetimeregimeSeries::variance(self : FinancetimeregimeSeries) -> Double { @_common.variance(self.vals) }
 
-pub fn finance_time_regime_series_std(s : FinancetimeregimeSeries) -> Double { @_common.std(s.vals) }
+pub fn FinancetimeregimeSeries::std(self : FinancetimeregimeSeries) -> Double { @_common.std(self.vals) }
 
-pub fn finance_time_regime_series_median(s : FinancetimeregimeSeries) -> Double { @_common.median(s.vals) }
+pub fn FinancetimeregimeSeries::median(self : FinancetimeregimeSeries) -> Double { @_common.median(self.vals) }
 
-pub fn finance_time_regime_series_scale(s : FinancetimeregimeSeries, f : Double) -> FinancetimeregimeSeries {
-  { vals: @_common.scale_arr(s.vals, f), name: s.name, meta: s.meta }
+pub fn FinancetimeregimeSeries::scale(self : FinancetimeregimeSeries, f : Double) -> FinancetimeregimeSeries {
+  { vals: @_common.scale_arr(self.vals, f), name: self.name, meta: self.meta }
 }
 
-pub fn finance_time_regime_series_add(a : FinancetimeregimeSeries, b : FinancetimeregimeSeries) -> FinancetimeregimeSeries {
-  { vals: @_common.add_arr(a.vals, b.vals), name: a.name + "+" + b.name, meta: a.meta }
+pub fn FinancetimeregimeSeries::add(self : FinancetimeregimeSeries, other : FinancetimeregimeSeries) -> FinancetimeregimeSeries {
+  { vals: @_common.add_arr(self.vals, other.vals), name: self.name + "+" + other.name, meta: self.meta }
 }
 
-pub fn finance_time_regime_series_sub(a : FinancetimeregimeSeries, b : FinancetimeregimeSeries) -> FinancetimeregimeSeries {
-  { vals: @_common.sub_arr(a.vals, b.vals), name: a.name + "-" + b.name, meta: a.meta }
+pub fn FinancetimeregimeSeries::sub(self : FinancetimeregimeSeries, other : FinancetimeregimeSeries) -> FinancetimeregimeSeries {
+  { vals: @_common.sub_arr(self.vals, other.vals), name: self.name + "-" + other.name, meta: self.meta }
 }
 
-pub fn finance_time_regime_series_normalize(s : FinancetimeregimeSeries) -> FinancetimeregimeSeries {
-  let mn = finance_time_regime_series_min(s)
-  let mx = finance_time_regime_series_max(s)
+pub fn FinancetimeregimeSeries::normalize(self : FinancetimeregimeSeries) -> FinancetimeregimeSeries {
+  let mn = self.min()
+  let mx = self.max()
   let r = mx - mn
-  if r < 0.0000001 { s } else {
+  if r < 0.0000001 { self } else {
     let result = []
-    for i in 0..<s.vals.length() { result.push((s.vals[i] - mn) / r) }
-    { vals: result, name: s.name, meta: s.meta }
+    for i in 0..<self.vals.length() { result.push((self.vals[i] - mn) / r) }
+    { vals: result, name: self.name, meta: self.meta }
   }
 }
 
-pub fn finance_time_regime_series_cumsum(s : FinancetimeregimeSeries) -> FinancetimeregimeSeries {
-  { vals: @_common.cumsum(s.vals), name: s.name + "_cumsum", meta: s.meta }
+pub fn FinancetimeregimeSeries::cumsum(self : FinancetimeregimeSeries) -> FinancetimeregimeSeries {
+  { vals: @_common.cumsum(self.vals), name: self.name + "_cumsum", meta: self.meta }
 }
 
-pub fn finance_time_regime_series_to_string(s : FinancetimeregimeSeries) -> String {
-  let mut result = s.name + "["
-  let n = s.vals.length()
+pub fn FinancetimeregimeSeries::to_string(self : FinancetimeregimeSeries) -> String {
+  let mut result = self.name + "["
+  let n = self.vals.length()
   let lim = if n < 10 { n } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(s.vals[i]) }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.vals[i]) }
   if n > 10 { result + "...]" } else { result + "]" }
 }
 
@@ -159,73 +159,73 @@ pub fn finance_time_regime_matrix_identity(n : Int) -> FinancetimeregimeMatrix {
   m
 }
 
-pub fn finance_time_regime_matrix_get(m : FinancetimeregimeMatrix, i : Int, j : Int) -> Double {
-  if i < 0 || i >= m.rows || j < 0 || j >= m.cols { 0.0 } else { m.data[i][j] }
+pub fn FinancetimeregimeMatrix::get(self : FinancetimeregimeMatrix, i : Int, j : Int) -> Double {
+  if i < 0 || i >= self.rows || j < 0 || j >= self.cols { 0.0 } else { self.data[i][j] }
 }
 
-pub fn finance_time_regime_matrix_transpose(m : FinancetimeregimeMatrix) -> FinancetimeregimeMatrix {
-  let result = finance_time_regime_make_matrix(m.cols, m.rows, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[j][i] = m.data[i][j] } }
+pub fn FinancetimeregimeMatrix::transpose(self : FinancetimeregimeMatrix) -> FinancetimeregimeMatrix {
+  let result = finance_time_regime_make_matrix(self.cols, self.rows, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[j][i] = self.data[i][j] } }
   result
 }
 
-pub fn finance_time_regime_matrix_add(a : FinancetimeregimeMatrix, b : FinancetimeregimeMatrix) -> FinancetimeregimeMatrix {
-  if a.rows != b.rows || a.cols != b.cols { return a }
-  let result = finance_time_regime_make_matrix(a.rows, a.cols, 0.0)
-  for i in 0..<a.rows { for j in 0..<a.cols { result.data[i][j] = a.data[i][j] + b.data[i][j] } }
+pub fn FinancetimeregimeMatrix::add(self : FinancetimeregimeMatrix, other : FinancetimeregimeMatrix) -> FinancetimeregimeMatrix {
+  if self.rows != other.rows || self.cols != other.cols { return self }
+  let result = finance_time_regime_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] + other.data[i][j] } }
   result
 }
 
-pub fn finance_time_regime_matrix_scale(m : FinancetimeregimeMatrix, s : Double) -> FinancetimeregimeMatrix {
-  let result = finance_time_regime_make_matrix(m.rows, m.cols, 0.0)
-  for i in 0..<m.rows { for j in 0..<m.cols { result.data[i][j] = m.data[i][j] * s } }
+pub fn FinancetimeregimeMatrix::scale(self : FinancetimeregimeMatrix, s : Double) -> FinancetimeregimeMatrix {
+  let result = finance_time_regime_make_matrix(self.rows, self.cols, 0.0)
+  for i in 0..<self.rows { for j in 0..<self.cols { result.data[i][j] = self.data[i][j] * s } }
   result
 }
 
-pub fn finance_time_regime_matrix_multiply(a : FinancetimeregimeMatrix, b : FinancetimeregimeMatrix) -> FinancetimeregimeMatrix {
-  if a.cols != b.rows { return finance_time_regime_make_matrix(a.rows, b.cols, 0.0) }
-  let result = finance_time_regime_make_matrix(a.rows, b.cols, 0.0)
-  for i in 0..<a.rows {
-    for j in 0..<b.cols {
+pub fn FinancetimeregimeMatrix::multiply(self : FinancetimeregimeMatrix, other : FinancetimeregimeMatrix) -> FinancetimeregimeMatrix {
+  if self.cols != other.rows { return finance_time_regime_make_matrix(self.rows, other.cols, 0.0) }
+  let result = finance_time_regime_make_matrix(self.rows, other.cols, 0.0)
+  for i in 0..<self.rows {
+    for j in 0..<other.cols {
       let mut sum = 0.0
-      for k in 0..<a.cols { sum = sum + a.data[i][k] * b.data[k][j] }
+      for k in 0..<self.cols { sum = sum + self.data[i][k] * other.data[k][j] }
       result.data[i][j] = sum
     }
   }
   result
 }
 
-pub fn finance_time_regime_matrix_trace(m : FinancetimeregimeMatrix) -> Double {
-  let n = if m.rows < m.cols { m.rows } else { m.cols }
+pub fn FinancetimeregimeMatrix::trace(self : FinancetimeregimeMatrix) -> Double {
+  let n = if self.rows < self.cols { self.rows } else { self.cols }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + m.data[i][i] }
+  for i in 0..<n { sum = sum + self.data[i][i] }
   sum
 }
 
-pub fn finance_time_regime_matrix_det(m : FinancetimeregimeMatrix) -> Double {
-  if m.rows != m.cols { 0.0 } else if m.rows == 1 { m.data[0][0] } else if m.rows == 2 {
-    m.data[0][0] * m.data[1][1] - m.data[0][1] * m.data[1][0]
-  } else if m.rows == 3 {
-    let a = m.data[0][0] * (m.data[1][1] * m.data[2][2] - m.data[1][2] * m.data[2][1])
-    let b = m.data[0][1] * (m.data[1][0] * m.data[2][2] - m.data[1][2] * m.data[2][0])
-    let c = m.data[0][2] * (m.data[1][0] * m.data[2][1] - m.data[1][1] * m.data[2][0])
+pub fn FinancetimeregimeMatrix::det(self : FinancetimeregimeMatrix) -> Double {
+  if self.rows != self.cols { 0.0 } else if self.rows == 1 { self.data[0][0] } else if self.rows == 2 {
+    self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0]
+  } else if self.rows == 3 {
+    let a = self.data[0][0] * (self.data[1][1] * self.data[2][2] - self.data[1][2] * self.data[2][1])
+    let b = self.data[0][1] * (self.data[1][0] * self.data[2][2] - self.data[1][2] * self.data[2][0])
+    let c = self.data[0][2] * (self.data[1][0] * self.data[2][1] - self.data[1][1] * self.data[2][0])
     a - b + c
   } else { 0.0 }
 }
 
-pub fn finance_time_regime_matrix_norm(m : FinancetimeregimeMatrix) -> Double {
+pub fn FinancetimeregimeMatrix::norm(self : FinancetimeregimeMatrix) -> Double {
   let mut sum = 0.0
-  for i in 0..<m.rows { for j in 0..<m.cols { sum = sum + m.data[i][j] * m.data[i][j] } }
+  for i in 0..<self.rows { for j in 0..<self.cols { sum = sum + self.data[i][j] * self.data[i][j] } }
   @_common.sqrt(sum)
 }
 
-pub fn finance_time_regime_matrix_to_string(m : FinancetimeregimeMatrix) -> String {
-  let mut result = "Mat(" + m.rows.to_string() + "x" + m.cols.to_string() + ")\n"
-  let rl = if m.rows < 5 { m.rows } else { 5 }
-  let cl = if m.cols < 5 { m.cols } else { 5 }
+pub fn FinancetimeregimeMatrix::to_string(self : FinancetimeregimeMatrix) -> String {
+  let mut result = "Mat(" + self.rows.to_string() + "x" + self.cols.to_string() + ")\n"
+  let rl = if self.rows < 5 { self.rows } else { 5 }
+  let cl = if self.cols < 5 { self.cols } else { 5 }
   for i in 0..<rl {
     result = result + "  ["
-    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(m.data[i][j]) }
+    for j in 0..<cl { if j > 0 { result = result + ", " }; result = result + @_common.dbl(self.data[i][j]) }
     result = result + "]\n"
   }
   result
@@ -244,43 +244,43 @@ pub fn finance_time_regime_vector_zero(dim : Int) -> FinancetimeregimeVector {
   { comps: Array::make(dim, 0.0), dim }
 }
 
-pub fn finance_time_regime_vector_add(a : FinancetimeregimeVector, b : FinancetimeregimeVector) -> FinancetimeregimeVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.add_arr(a.comps, b.comps), dim: n }
+pub fn FinancetimeregimeVector::add(self : FinancetimeregimeVector, other : FinancetimeregimeVector) -> FinancetimeregimeVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.add_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn finance_time_regime_vector_sub(a : FinancetimeregimeVector, b : FinancetimeregimeVector) -> FinancetimeregimeVector {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
-  { comps: @_common.sub_arr(a.comps, b.comps), dim: n }
+pub fn FinancetimeregimeVector::sub(self : FinancetimeregimeVector, other : FinancetimeregimeVector) -> FinancetimeregimeVector {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
+  { comps: @_common.sub_arr(self.comps, other.comps), dim: n }
 }
 
-pub fn finance_time_regime_vector_scale(v : FinancetimeregimeVector, s : Double) -> FinancetimeregimeVector {
-  { comps: @_common.scale_arr(v.comps, s), dim: v.dim }
+pub fn FinancetimeregimeVector::scale(self : FinancetimeregimeVector, s : Double) -> FinancetimeregimeVector {
+  { comps: @_common.scale_arr(self.comps, s), dim: self.dim }
 }
 
-pub fn finance_time_regime_vector_dot(a : FinancetimeregimeVector, b : FinancetimeregimeVector) -> Double {
-  let n = if a.dim < b.dim { a.dim } else { b.dim }
+pub fn FinancetimeregimeVector::dot(self : FinancetimeregimeVector, other : FinancetimeregimeVector) -> Double {
+  let n = if self.dim < other.dim { self.dim } else { other.dim }
   let mut sum = 0.0
-  for i in 0..<n { sum = sum + a.comps[i] * b.comps[i] }
+  for i in 0..<n { sum = sum + self.comps[i] * other.comps[i] }
   sum
 }
 
-pub fn finance_time_regime_vector_norm(v : FinancetimeregimeVector) -> Double { @_common.sqrt(finance_time_regime_vector_dot(v, v)) }
+pub fn FinancetimeregimeVector::norm(self : FinancetimeregimeVector) -> Double { self.dot(self) |> @_common.sqrt }
 
-pub fn finance_time_regime_vector_normalize(v : FinancetimeregimeVector) -> FinancetimeregimeVector {
-  let n = finance_time_regime_vector_norm(v)
-  if n < 0.0000001 { v } else { finance_time_regime_vector_scale(v, 1.0 / n) }
+pub fn FinancetimeregimeVector::normalize(self : FinancetimeregimeVector) -> FinancetimeregimeVector {
+  let n = self.norm()
+  if n < 0.0000001 { self } else { self.scale(1.0 / n) }
 }
 
-pub fn finance_time_regime_vector_dist(a : FinancetimeregimeVector, b : FinancetimeregimeVector) -> Double {
-  finance_time_regime_vector_norm(finance_time_regime_vector_sub(a, b))
+pub fn FinancetimeregimeVector::dist(self : FinancetimeregimeVector, other : FinancetimeregimeVector) -> Double {
+  self.sub(other).norm()
 }
 
-pub fn finance_time_regime_vector_to_string(v : FinancetimeregimeVector) -> String {
+pub fn FinancetimeregimeVector::to_string(self : FinancetimeregimeVector) -> String {
   let mut result = "["
-  let lim = if v.dim < 10 { v.dim } else { 10 }
-  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(v.comps[i]) }
-  if v.dim > 10 { result + "...]" } else { result + "]" }
+  let lim = if self.dim < 10 { self.dim } else { 10 }
+  for i in 0..<lim { if i > 0 { result = result + ", " }; result = result + @_common.dbl(self.comps[i]) }
+  if self.dim > 10 { result + "...]" } else { result + "]" }
 }
 
 pub fn finance_time_regime_mean(data : Array[Double]) -> Double { @_common.mean(data) }

@@ -4,6 +4,22 @@
 
 ## [0.1.0-dev] - 2026-10-20
 
+### 方法链改进 — free fn → method（moonbit-refactoring）
+
+**重构 / Refactored**
+- Point: 15 个 free fn → 方法（x/y/z/label/dist/add/sub/scale/dot/cross/norm/normalize/negate/mid/lerp/to_string）
+- Series: 15 个 free fn → 方法（len/sum/mean/min/max/range/variance/std/median/scale/add/sub/normalize/cumsum/to_string）
+- Vector: 8 个 free fn → 方法（add/sub/scale/dot/norm/normalize/dist/to_string）
+- Matrix: 9 个 free fn → 方法（get/transpose/add/scale/multiply/trace/det/norm/to_string）
+- extra struct（14个）: 14×12=168 个 free fn → 方法
+- 总计 215 函数模式 × 825 包 = 177,375 个 free fn 转为方法
+- 调用更惯用：`pt.dist(qt)` vs `math_linear_algebra_point_dist(pt, qt)`
+
+| commit | 内容 |
+|--------|------|
+| 696f2d3e | Point/Series/Vector/Matrix 方法链 |
+| 86404a1f | extra struct(14个) 方法链 |
+
 ### 全面重构 — 委托 @_common 消除重复
 
 **重构 / Refactored**

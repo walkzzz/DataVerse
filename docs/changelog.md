@@ -4,6 +4,30 @@
 
 ## [0.1.0-dev] - 2026-10-20
 
+### 性能 + 鲁棒性增强
+
+**性能 / Performance**
+- sqrt: 自适应迭代（变化 < 1e-15 提前停止，最多 20 次）
+- 快速排序: 三数取中 pivot（避免已排序退化 O(n²)）+ 小数组插入排序（n <= 16）
+- 矩阵乘法: i-k-j 循环顺序（提高缓存命中率）
+- make_matrix: 直接 push 创建独立行（消除共享引用问题）
+
+**鲁棒性 / Robustness**
+- factorial: 负数返回 0.0
+- is_prime: 用 `i <= n/i` 代替 `i*i <= n` 防止 Int 溢出
+- fibonacci: 负数返回 0
+- clamp: 自动修正 lo > hi 的情况（交换 lo 和 hi）
+- lcm: 用 Double 计算防止 Int 溢出，溢出时返回 0
+
+**测试 / Tests**
+- 新增 5 个鲁棒性测试（factorial/fibonacci/is_prime/clamp/sort）
+
+| commit | 内容 |
+|--------|------|
+| 02d005ed | 性能+鲁棒性增强（sqrt/排序/矩阵/factorial/is_prime/fibonacci/clamp） |
+| b0ac321a | lcm 防 Int 溢出 |
+| a40d364a | make_matrix 消除共享引用 |
+
 ### 删除通用函数委托 — 消除无用包装
 
 **删除 / Removed**
